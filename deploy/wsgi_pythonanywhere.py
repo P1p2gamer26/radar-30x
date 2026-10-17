@@ -8,6 +8,7 @@ if path not in sys.path:
 os.environ["DJANGO_SETTINGS_MODULE"] = "config.settings"
 os.environ["DJANGO_SECRET_KEY"] = open(os.path.expanduser("~/.radar_secret")).read().strip()
 os.environ["DJANGO_ALLOWED_HOSTS"] = "p1p2gamer26.pythonanywhere.com"
+os.environ["DECISION_MODE"] = "replay"  # el servidor gratis no tiene red saliente libre: nada de LLM en vivo
 
 from django.core.wsgi import get_wsgi_application  # noqa: E402
 
