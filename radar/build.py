@@ -148,13 +148,16 @@ def build(snap: dict | None = None) -> dict:
 
         # top piezas: percentil de velocidad dentro de su fuente (Google News no trae engagement: recencia)
         rank = {}
-        for src in ("youtube", "hn", "gnews"):
+        for src in ("youtube", "hn", "gnews", "linkedin"):
             del_src = [s for s in piezas if s["source"] == src]
-            clave = (lambda s: s["published_at"]) if src == "gnews" else (lambda s: vel[s["id"]])
+            clave = (lambda s: s["published_at"]) if src in ("gnews", "linkedin") else (lambda s: vel[s["id"]])
             for i, s in enumerate(sorted(del_src, key=clave)):
                 rank[s["id"]] = (i + 1) / len(del_src) * (0.8 if src == "gnews" else 1.0)
         recientes = [s for s in piezas if s["published_at"][:10] >= hace7]
-        top = sorted(recientes, key=lambda s: -rank.get(s["id"], 0))[:6]
+        ordenadas = sorted(recientes, key=lambda s: -rank.get(s["id"], 0))
+        # ponytail: la mejor pieza de cada plataforma primero (variedad de evidencia), luego el resto por rank
+        primeras = list({s["source"]: s for s in reversed(ordenadas)}.values())
+        top = (sorted(primeras, key=lambda s: -rank.get(s["id"], 0)) + [s for s in ordenadas if s not in primeras])[:6]
 
         if g >= 1.05:
             tendencia = f"Crece {g:.1f}x frente a sus 11 días previos"

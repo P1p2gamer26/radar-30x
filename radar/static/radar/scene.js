@@ -1,5 +1,5 @@
 // Radar 30X — escena 3D "el cielo de temas". ES module, Three.js vía importmap.
-// Contrato: export function mountScene(canvas, topics, onOpen) -> { focus(slug) }
+// Contrato: export function mountScene(canvas, topics, onOpen) -> { focus(slug), discover(slug), screenPos(slug) }
 // Sin WebGL: lanza Error('no-webgl') y el index.js hace fallback 2D.
 
 import * as THREE from "three";
@@ -650,17 +650,73 @@ export function mountScene(canvas, topics, onOpen) {
   const SWEEP_PERIOD = 6; // segundos por vuelta
   let rafId = null;
 
+  // --- Descubrimiento: el barrido acelera hasta el blip, que destella con una onda en el suelo ---
+  const TAU = Math.PI * 2;
+  const BURST_MS = 900;
+  const RING_MS = 1500;
+  let pending = null; // { star, resolve, t0 }
+  let speedMul = 1;
+  const burstRings = [];
+  const ringGeo = new THREE.RingGeometry(0.88, 1, 64);
+
+  function screenPos(slug) {
+    const star = stars.find((s) => s.topic.slug === slug);
+    if (!star) return null;
+    const v = star.sprite.position.clone().project(camera);
+    if (v.z >= 1) return null;
+    const w = canvas.clientWidth || 1;
+    const h = canvas.clientHeight || 1;
+    return { x: (v.x * 0.5 + 0.5) * w, y: (-v.y * 0.5 + 0.5) * h };
+  }
+
+  function startBurst(star, nowMs) {
+    star.burstStart = nowMs;
+    star.flashUntil = Math.max(star.flashUntil, nowMs + 2500);
+    const color = STAGE_COLOR[star.topic.stage] ?? STAGE_COLOR.estable;
+    const ring = new THREE.Mesh(
+      ringGeo,
+      new THREE.MeshBasicMaterial({
+        color,
+        transparent: true,
+        opacity: 0.9,
+        side: THREE.DoubleSide,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+      })
+    );
+    ring.rotation.x = -Math.PI / 2;
+    ring.position.set(star.sprite.position.x, 0.2, star.sprite.position.z);
+    ring.scale.setScalar(0.1);
+    scene.add(ring);
+    burstRings.push({ ring, t0: nowMs });
+  }
+
+  // Resuelve con la posicion en pantalla del blip cuando el barrido lo alcanza.
+  function discover(slug) {
+    const star = stars.find((s) => s.topic.slug === slug);
+    if (!star) return Promise.resolve(null);
+    if (pending) pending.resolve(null);
+    return new Promise((resolve) => {
+      if (reducedMotion) {
+        resolve(screenPos(slug));
+        return;
+      }
+      pending = { star, resolve, t0: performance.now() };
+    });
+  }
+
   function animate() {
     rafId = requestAnimationFrame(animate);
     if (!visible) return;
-    const dt = clock.getDelta();
+    const dt = Math.min(0.1, clock.getDelta());
     const t = clock.elapsedTime;
 
     starfield.material.uniforms.uTime.value = t;
     milkyWay.material.uniforms.uTime.value = t;
 
     if (!reducedMotion) {
-      sweepAngle += (dt / SWEEP_PERIOD) * Math.PI * 2;
+      speedMul += ((pending ? 3.5 : 1) - speedMul) * Math.min(1, dt * 4);
+      sweepAngle += (dt / SWEEP_PERIOD) * Math.PI * 2 * speedMul;
       sweep.rotation.y = -sweepAngle;
 
       // Órbita lentísima de la cámara + parallax de mouse.
@@ -677,6 +733,27 @@ export function mountScene(canvas, topics, onOpen) {
 
     // Detectar paso del barrido por el azimut de cada estrella + pulso de growth.
     const normalizedSweep = ((sweepAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+    if (pending) {
+      const ahead = (((pending.star.azimuth - normalizedSweep) % TAU) + TAU) % TAU;
+      if (ahead < 0.1 || ahead > TAU - 0.06 || performance.now() - pending.t0 > 5000) {
+        startBurst(pending.star, t * 1000);
+        const done = pending;
+        pending = null;
+        done.resolve(screenPos(done.star.topic.slug));
+      }
+    }
+    for (let i = burstRings.length - 1; i >= 0; i--) {
+      const b = burstRings[i];
+      const k = (t * 1000 - b.t0) / RING_MS;
+      if (k >= 1) {
+        scene.remove(b.ring);
+        b.ring.material.dispose();
+        burstRings.splice(i, 1);
+      } else {
+        b.ring.scale.setScalar(0.5 + 7 * (1 - Math.pow(1 - k, 3)));
+        b.ring.material.opacity = 0.9 * (1 - k);
+      }
+    }
     let active = stars.filter((s) => t * 1000 < s.flashUntil).length;
     stars.forEach((star) => {
       const diff = Math.abs(
@@ -695,7 +772,11 @@ export function mountScene(canvas, topics, onOpen) {
       }
 
       const pulse = 1 + 0.18 * Math.sin(t * (1.5 + star.growth * 0.6)) * clamp01(star.growth / 3);
-      const flashScale = flashing ? 1.35 : 1;
+      let flashScale = flashing ? 1.35 : 1;
+      if (star.burstStart != null) {
+        const bk = (t * 1000 - star.burstStart) / BURST_MS;
+        if (bk < 1) flashScale = Math.max(flashScale, 1 + 1.2 * Math.pow(1 - bk, 2));
+      }
       const scale = star.baseScale * pulse * flashScale;
       star.sprite.scale.set(scale, scale, 1);
       star.sprite.material.opacity = flashing ? 1 : 0.9;
@@ -738,5 +819,5 @@ export function mountScene(canvas, topics, onOpen) {
     animate();
   }
 
-  return { focus };
+  return { focus, discover, screenPos };
 }

@@ -612,19 +612,19 @@
      "by": "teacher"
     },
     {
-     "title": "Building AI Products, Feature Factory at 10 – Food for Agile Thought 566",
-     "url": "https://age-of-product.com/food-agile-thought-566-building-ai-products/",
-     "source": "hn",
-     "published_at": "2026-10-16T15:42:19Z",
+     "title": "Escuchar no siempre es incluir: el verdadero desafío comienza cuando hay que transformar la experiencia en decisiones",
+     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOZzZGOVEwUjRjU3JyMnVIVXhWMXNURExKQ1Q1NkFqenZVVVU5NVN5NFB3SXdxV1U4MFZ5dFZfOU9EbHZ4aUI4eU9LZGY0UkVkdW5wUGQzeVl1TWYwMThWdXlFdWtpZ0YteWhfd2I2Ui1yeUVyY0tsei1aQnNvbWh5MFBaS3lKUDVJR0lOcWFlbDctbmc4ejlvM285azVrTXQwNFBv?oc=5",
+     "source": "linkedin",
+     "published_at": "2026-10-16T21:01:07Z",
      "metrics": {
-      "points": 1,
+      "points": 0,
       "comments": 0,
       "views": 0
      },
      "format": "opinion",
-     "hook": "autoridad",
-     "velocity": 0.03,
-     "by": "teacher"
+     "hook": "pregunta",
+     "velocity": 0.0,
+     "by": "student"
     },
     {
      "title": "Colombia: 25,9% usa IA y el reto es conectar agentes",
@@ -639,6 +639,21 @@
      "format": "noticia-explicada",
      "hook": "resultado-numero",
      "velocity": 0.0,
+     "by": "teacher"
+    },
+    {
+     "title": "Building AI Products, Feature Factory at 10 – Food for Agile Thought 566",
+     "url": "https://age-of-product.com/food-agile-thought-566-building-ai-products/",
+     "source": "hn",
+     "published_at": "2026-10-16T15:42:19Z",
+     "metrics": {
+      "points": 1,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "opinion",
+     "hook": "autoridad",
+     "velocity": 0.03,
      "by": "teacher"
     },
     {
@@ -668,21 +683,6 @@
      },
      "format": "noticia-explicada",
      "hook": "autoridad",
-     "velocity": 0.0,
-     "by": "teacher"
-    },
-    {
-     "title": "Gartner: 80% de los CEO espera cambios por IA en 2026",
-     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOeW14V2JTNWZSVW9WV3lIemtxRUtKcEZPeEVfNzc1N3RTaW5JNm9WQlpLbEhZeU5aZFlESzV6Rk9SbjBnZ1J4Qk5vMjNzZ21TWnZMQWNrZU9Kb01XbF9mQ2dvZDVpeFRlTjZDOVJYSEFNZV9uSmZuRGpjdlpIZzdMcUU3WGtsbDFjYXc?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-16T21:09:25Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "resultado-numero",
      "velocity": 0.0,
      "by": "teacher"
     }
@@ -797,21 +797,6 @@
      "by": "teacher"
     },
     {
-     "title": "AI Support Agent That Carries Context Between Email and WhatsApp (Python)",
-     "url": "https://github.com/team-telnyx/telnyx-code-examples/tree/main/email-whatsapp-support-python",
-     "source": "hn",
-     "published_at": "2026-10-16T14:09:18Z",
-     "metrics": {
-      "points": 2,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "promesa-proceso",
-     "velocity": 0.06,
-     "by": "teacher"
-    },
-    {
      "title": "What Will Change If You Use An AI Chatbot Instead Of Google Search?",
      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQMHNMQUc3dHlnVXN1UngyUVh2NmRIRnU0Ujg1cDdNdDVIeGxMajV2YW5WV0haenFqSUVLZ3o0alJROV9oOFRjTlNRdXlsekNQUDVmSThSS0FhcTZma2N4SU8wek5oaVJsLUpya3hITFNZN2cxdzljREdqRnB1TWFldWNmYnk1MkRPMGVLa1VNaXZrQQ?oc=5",
      "source": "gnews",
@@ -825,6 +810,21 @@
      "hook": "urgencia-novedad",
      "velocity": 0.0,
      "by": "student"
+    },
+    {
+     "title": "AI Support Agent That Carries Context Between Email and WhatsApp (Python)",
+     "url": "https://github.com/team-telnyx/telnyx-code-examples/tree/main/email-whatsapp-support-python",
+     "source": "hn",
+     "published_at": "2026-10-16T14:09:18Z",
+     "metrics": {
+      "points": 2,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "herramienta-60s",
+     "hook": "promesa-proceso",
+     "velocity": 0.06,
+     "by": "teacher"
     },
     {
      "title": "Invita OIC a denunciar malos actos de funcionarios a tráves de Chatbot",
@@ -1003,6 +1003,36 @@
      "by": "teacher"
     },
     {
+     "title": "Inteligencia artificial en planificación financiera (FP&A): cómo transformar el control de gestión y las decisiones empresariales",
+     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPTHd0YmRNeXczZXhXVEoxTlVNQ1F0UjUzM1N4ZmZxZEQyelpMSGVVOVVTcDI5Z1dHMlVxZ2Z3cVV3MkVUNTZfVUI4Ump1OEkzZkRrd0Q4NkgzOHRXSHppTDJQYmI0TmdjVl90V0V4LU9XLUkzSDNQQUpVUUduZXlXX2VodWdGbV9VMWt6Y0JydnVlYzdNTjVFc181NE91dEc4cnc?oc=5",
+     "source": "linkedin",
+     "published_at": "2026-10-14T10:15:47Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "opinion",
+     "hook": "autoridad",
+     "velocity": 0.0,
+     "by": "student"
+    },
+    {
+     "title": "Curso en India fortalece capacidades en analítica de datos para decisiones",
+     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxObHVpSTJZdWR4akpUVm5taVBCdUdITVhQUzFIaWY2X0ZVQjJjNUkyY0dhOVdDLTd6eVY3djZIRU5HMmhHVzhxOVpjYml5dXRkeEF0dEd2SDhrTWxKOFROcE5tSVVMTDNQeVFMVVpfRkJreGgydnVMQTJTZjgxcVJOZFJ5OWQxQ3I2d3lIUzZ0Q2tFVFdFWFB6YUdRMFRYTlNXVFViMU5OVjltQ3pnM1R6eXQ0QlZtbEpBS1M2LUlR?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-17T20:41:35Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "autoridad",
+     "velocity": 0.0,
+     "by": "teacher"
+    },
+    {
      "title": "ConvyCanvas – AI Tutor for Euclid's Elements",
      "url": "https://convycanvas.com/elements/reader/#euclid_i/prop_001",
      "source": "hn",
@@ -1030,36 +1060,6 @@
      "format": "entrevista-clip",
      "hook": "promesa-proceso",
      "velocity": 1.79,
-     "by": "teacher"
-    },
-    {
-     "title": "What AI is revealing about education, what education must confront about itself",
-     "url": "https://vanessaandreotti.substack.com/p/in-the-digital-waters",
-     "source": "hn",
-     "published_at": "2026-10-16T16:09:06Z",
-     "metrics": {
-      "points": 2,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "opinion",
-     "hook": "contrarian",
-     "velocity": 0.06,
-     "by": "teacher"
-    },
-    {
-     "title": "Curso en India fortalece capacidades en analítica de datos para decisiones",
-     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxObHVpSTJZdWR4akpUVm5taVBCdUdITVhQUzFIaWY2X0ZVQjJjNUkyY0dhOVdDLTd6eVY3djZIRU5HMmhHVzhxOVpjYml5dXRkeEF0dEd2SDhrTWxKOFROcE5tSVVMTDNQeVFMVVpfRkJreGgydnVMQTJTZjgxcVJOZFJ5OWQxQ3I2d3lIUzZ0Q2tFVFdFWFB6YUdRMFRYTlNXVFViMU5OVjltQ3pnM1R6eXQ0QlZtbEpBS1M2LUlR?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-17T20:41:35Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "autoridad",
-     "velocity": 0.0,
      "by": "teacher"
     }
    ],
@@ -1514,21 +1514,6 @@
    },
    "top_signals": [
     {
-     "title": "Why Entry-Level Tech Hiring Fell 65%: IRC Section 174 vs. AI Telemetry [video]",
-     "url": "https://www.youtube.com/watch?v=cve5KMawu9M",
-     "source": "hn",
-     "published_at": "2026-10-14T16:55:44Z",
-     "metrics": {
-      "points": 2,
-      "comments": 1,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "urgencia-novedad",
-     "velocity": 0.05,
-     "by": "student"
-    },
-    {
      "title": "US$74 mil de ahorro al mes con IA: de operativo a líder en 3 meses",
      "url": "https://www.youtube.com/watch?v=i3JXCTnDZ9c",
      "source": "youtube",
@@ -1542,6 +1527,21 @@
      "hook": "resultado-numero",
      "velocity": 0.94,
      "by": "teacher"
+    },
+    {
+     "title": "Why Entry-Level Tech Hiring Fell 65%: IRC Section 174 vs. AI Telemetry [video]",
+     "url": "https://www.youtube.com/watch?v=cve5KMawu9M",
+     "source": "hn",
+     "published_at": "2026-10-14T16:55:44Z",
+     "metrics": {
+      "points": 2,
+      "comments": 1,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "urgencia-novedad",
+     "velocity": 0.05,
+     "by": "student"
     },
     {
      "title": "La escasez de talento desafía la transformación de la agroindustria",
@@ -1734,6 +1734,21 @@
      "by": "teacher"
     },
     {
+     "title": "Investigación de la UE: qué implica la Ley de IA",
+     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOWGtxMWVVSS1HYjEyNWhwYjhJYnM0NS1XRTU0Z0xJdlA2ejRlZ1ZDelU1aDdCMnJlRUlROXU4U21KZU9paHBTbExGWFpMcUZLdXlvakd5MC1qMlc3ZW9hTi1ZT05UWF9LM1p6RDlzZ0RqdXJpUHNlT1NMYjNNN2JnY243blRfb1N0N1BEWHczbC16RzJsU3NLYlpZanBOcWE3VHBzaUZzbFUwOVUzZmktTGdfQlF1c2tpbTZuQXVxWQ?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-17T20:25:44Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "autoridad",
+     "velocity": 0.0,
+     "by": "teacher"
+    },
+    {
      "title": "Why do computers/phones have a restart option along with the power off option?",
      "url": "https://news.ycombinator.com/item?id=50132727",
      "source": "hn",
@@ -1777,21 +1792,6 @@
      "hook": "pregunta",
      "velocity": 1.65,
      "by": "teacher"
-    },
-    {
-     "title": "AI models may soon self-replicate without access to data centers",
-     "url": "https://www.reuters.com/business/ai-models-may-soon-self-replicate-without-access-data-centers-anthropic-warns-2026-10-13/",
-     "source": "hn",
-     "published_at": "2026-10-13T10:08:18Z",
-     "metrics": {
-      "points": 40,
-      "comments": 57,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "miedo-riesgo",
-     "velocity": 1.41,
-     "by": "student"
     }
    ],
    "adapt": {
@@ -1883,6 +1883,21 @@
    },
    "top_signals": [
     {
+     "title": "Start Small, Scale With Confidence: A Pilot-First Approach to Nearshore Engineering",
+     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPV1NHM3E0cmxCaTNYUlM2NlRqWWp6TnhWeVAtYl9yVnphT3Q5LWFpc1RRNmN2LUdud3VtZTk3dXNxbE4wbEh2Ny1TMzdRQUotanRVOEh0LVBqS0lRd0Z2S01MTDlDZ2JUcVN1RXFPajlGVUlTb0JYTnVYUURPSmlMUkNfU3NHMXRaZ09RVVUzdkQzSmV2QVRta1A1SzY?oc=5",
+     "source": "linkedin",
+     "published_at": "2026-10-12T15:54:16Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "autoridad",
+     "velocity": 0.0,
+     "by": "student"
+    },
+    {
      "title": "Delgado Sempé cuestionó los gastos en Modernización de Río Negro: \"Más de $4.000 millones y nos presentan un chatbot\"",
      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQaF9UYjdIWTRfN2J6ZS10R0lUcXFmQjY4aDhuLWJ1ZWtBRWM0RFFqYmFXOFFZUUpHalNWUlR4MzZQWWdqSjhHQU56VkQ4T0dveHRqbXphWW9WTHBhSmFYNGZSaC1qTDBUcjBGeTNybXpseWFZUTNMV3VVdnI1X1Vlc2RxMjI4aHh5X1ZRM1ZQRWNodGFKejFoUkdEUVZCeThKV1N6RFNNUjhUOXpMQmRPTTJMazdGWF9ZSnZEU1BoYVNjTEhIMVdv0gG_AUFVX3lxTE9YMWdyNlY5SlUzZXpJTXZGWmR6dDNmMkhfanVCX2Y1cUhWc2NGOXYwRVZiSDhLc1BzUktSa052VVJfN18ydzhSX0d4VkRvSjg4WFNLd3J2OGpsX2tKSUpUYUVPNHJpMzQ0QkVnenNiam56MVNSeTlGSExCOXpPU0Fud3FqYWRXejlqVmxFUnBvbHdzMDA1SHpEbFRycDYxandjeUtLNFBMLTFLaWF2azh0aDBpbjIzdWx0dUF1VjRJ?oc=5",
      "source": "gnews",
@@ -1911,21 +1926,6 @@
      "hook": "contrarian",
      "velocity": 0.0,
      "by": "teacher"
-    },
-    {
-     "title": "Start Small, Scale With Confidence: A Pilot-First Approach to Nearshore Engineering",
-     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPV1NHM3E0cmxCaTNYUlM2NlRqWWp6TnhWeVAtYl9yVnphT3Q5LWFpc1RRNmN2LUdud3VtZTk3dXNxbE4wbEh2Ny1TMzdRQUotanRVOEh0LVBqS0lRd0Z2S01MTDlDZ2JUcVN1RXFPajlGVUlTb0JYTnVYUURPSmlMUkNfU3NHMXRaZ09RVVUzdkQzSmV2QVRta1A1SzY?oc=5",
-     "source": "linkedin",
-     "published_at": "2026-10-12T15:54:16Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "autoridad",
-     "velocity": 0.0,
-     "by": "student"
     }
    ],
    "adapt": {
@@ -2240,19 +2240,19 @@
      "by": "teacher"
     },
     {
-     "title": "Prisov – Private AI for Enterprise Workflows [video]",
-     "url": "https://www.youtube.com/watch?v=9SyK9l8wi2A",
-     "source": "hn",
-     "published_at": "2026-10-16T19:04:22Z",
+     "title": "El siguiente paso de la automatización",
+     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQMHlkb29vdU9wOVczSFo5Q3pOUzlJR0Nrbm1RM25zSVlVTVJIVDhvbTNMSmhvLW1IUmItcGp0UGJCeVQ5U2pOV3RhMU5DR2ZrSjhpSnVlcjlnQmRVOUh4NWFURFJma1o0SDlTdDJGcEU2SUZBcDZ3c0tQX0F6VlBhSHpZdFJuMU5mMHpjOG5JbHg?oc=5",
+     "source": "linkedin",
+     "published_at": "2026-10-10T14:39:03Z",
      "metrics": {
-      "points": 2,
+      "points": 0,
       "comments": 0,
       "views": 0
      },
-     "format": "herramienta-60s",
-     "hook": "promesa-proceso",
-     "velocity": 0.07,
-     "by": "teacher"
+     "format": "noticia-explicada",
+     "hook": "resultado-numero",
+     "velocity": 0.0,
+     "by": "student"
     },
     {
      "title": "Argo Solutions presenta tecnología para automatizar gastos corporativos en Latam Fintech Market 2026",
@@ -2270,6 +2270,21 @@
      "by": "teacher"
     },
     {
+     "title": "Prisov – Private AI for Enterprise Workflows [video]",
+     "url": "https://www.youtube.com/watch?v=9SyK9l8wi2A",
+     "source": "hn",
+     "published_at": "2026-10-16T19:04:22Z",
+     "metrics": {
+      "points": 2,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "herramienta-60s",
+     "hook": "promesa-proceso",
+     "velocity": 0.07,
+     "by": "teacher"
+    },
+    {
      "title": "HuelvaLAB abre taller gratis de Make, Zapier y n8n",
      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPbTZvRk5INmFUOWlHblVnS1ZuTGRmeDFkUHZaSUFab3V5NnhYTjM1RmozOUhWRVNkMHhKdnExN1FKRHVuVUN5aXFxY2U1YVJMYlZHd2FESkZVYWg1UXVuXzRGalc0endaWGhpWEdkTEh4NTdOVjhBVWJwczE5Z2JUZ1JzblVabmc?oc=5",
      "source": "gnews",
@@ -2281,21 +2296,6 @@
      },
      "format": "evento-live",
      "hook": "promesa-proceso",
-     "velocity": 0.0,
-     "by": "teacher"
-    },
-    {
-     "title": "Codelco y Normet lanzan programa de 5 años para automatizar minería subterránea en El Teniente",
-     "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOc3dBeU4zbFJLV2tVLU5JYWxHX1pKRU9lbk9NUWpCem1ubk41SklIS0VuMTlIeEhhM3NReTVFUGJaRW5ZZTFvVGlzd1N1WlAtbE94T2c0N25ielZsQXFkTmhTQ190ZGE1eGVKSURjVkk5YmdIcnJyOXM1OG00Rm14b1h6TTl2ZE1tUVNJdnZ2QXJSRjJsdDQwR2xWaTZ4a0VZemFqUVhQOWJTNEJBeHdXU2xDaEdsdE90a09DM2ZLVVhJOW01b3lBZ2Nn?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-17T00:05:49Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "resultado-numero",
      "velocity": 0.0,
      "by": "teacher"
     }
@@ -2429,6 +2429,36 @@
      "by": "teacher"
     },
     {
+     "title": "Building Deeptech Ecosystem: Is Translational Research the Backbone?",
+     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPNUwxRmFmMDFBMU9Lc3lMQU4taG5hbWxabUFFTlNfdEV1V3BNeVVhMy15YzQ5bUZNRkRGeU1TMG5jYmFHeGYxaHpMXzRmUEYwRXpwaUdMUXVReHZEcGN0MnN6Q1VNVTBYQVFzalN3MHB1NHhkejREUFdOXzhUa2UtN2wycDh5NUQwUlBxTEU4UWZmVnkyZ3pkek51dUJpeUdKZWs3UQ?oc=5",
+     "source": "linkedin",
+     "published_at": "2026-10-12T21:30:29Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "urgencia-novedad",
+     "velocity": 0.0,
+     "by": "student"
+    },
+    {
+     "title": "Los agentes de IA chocan con las puertas cerradas de la web",
+     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQMDlrWFBpQ0p0cy1SWE1GcEZmUkE3QjU3RjVPVXVKZXBweWVKVzltdDZyamptRXNLelJOaGJGOWY5a3pyUk5vLWdNS3pvNDdrd2VIMUxwZUJfczdGYzIxZmRvcGszNTY3M2hKSjZBZnFjNW5GVUxJTmpFTmhHVVpuc1ZacndhbGtodGx4dFZRNWFsNENLTUhmZGRyazluMjcxVGFZ?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-17T14:40:19Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "contrarian",
+     "velocity": 0.0,
+     "by": "teacher"
+    },
+    {
      "title": "You could have invented transformers from memory",
      "url": "https://alexwang.ai/posts/associative-memory/",
      "source": "hn",
@@ -2456,36 +2486,6 @@
      "format": "herramienta-60s",
      "hook": "promesa-proceso",
      "velocity": 19.56,
-     "by": "student"
-    },
-    {
-     "title": "Llama.cpp on a jailbroken PS5: run any GGUF model natively on the console",
-     "url": "https://github.com/cobanov/PS5LM",
-     "source": "hn",
-     "published_at": "2026-10-16T18:32:35Z",
-     "metrics": {
-      "points": 365,
-      "comments": 85,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "urgencia-novedad",
-     "velocity": 18.73,
-     "by": "student"
-    },
-    {
-     "title": "Using AI to reverse engineer hardware",
-     "url": "https://blogs.gnome.org/uraeus/2026/10/15/aiandreverseengineerhardware/",
-     "source": "hn",
-     "published_at": "2026-10-15T14:35:15Z",
-     "metrics": {
-      "points": 250,
-      "comments": 248,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "resultado-numero",
-     "velocity": 13.2,
      "by": "student"
     }
    ],
@@ -2601,6 +2601,21 @@
      "by": "student"
     },
     {
+     "title": "The Uncomfortable Truth About Startups: Execution, Founder Conflicts, Money, Privilege, and the Decisions That Determine Whether a Company Survives",
+     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQZjBfWk5sai15SzNRN29zTG9NRHN1dVNRMlpkV0ZRTjJ2ZXpOa3ZkZ1pyR0xfQjNKRkRGbHJ4ZzUwZ0tqY29qUWlkdWdQSDdYY2Joa3cwUkFsNnJwOFBLNVBmRlN3R25qR29zV1pZWGFIMTJ6U2JRdE9Nd29TS1NKYnowdFN2cGRPRDZGNGEyMXVua1ZTM3ozOFNRYi0ydFgzdlE?oc=5",
+     "source": "linkedin",
+     "published_at": "2026-10-17T03:24:19Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "opinion",
+     "hook": "resultado-numero",
+     "velocity": 0.0,
+     "by": "student"
+    },
+    {
      "title": "De 4 a 15 millones de ARR: así cambia todo con product market fit | Lluís Cañadell",
      "url": "https://www.youtube.com/watch?v=jETtT9cKGlg",
      "source": "youtube",
@@ -2616,6 +2631,36 @@
      "by": "teacher"
     },
     {
+     "title": "Reach Security capta más de 50 millones de dólares para automatizar defensas empresariales",
+     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5wM29SWlNTRHVvQm1JbkQxaHFMbkoyN3Y2cVJPVDd1a01YN3ZYY3EzR0FQTnNBcFBpQ0QxSlBLTU9Mb3ZCT2E3Yjl2TTR5RGdESC14R3dhdzVHMURESVFJNm1R?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-17T21:33:00Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "resultado-numero",
+     "velocity": 0.0,
+     "by": "student"
+    },
+    {
+     "title": "The Next Version of the Startup Accelerator Is Being Drafted in New York at AcceleratorCON",
+     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOY0VFVVh5cnBkR2lmZkNQSmdyQzNPQWJrMnF4a2VrT0s2Vm5QaEgxbWdINzZieVJmLUFNb2VyamdBYThYS1pkdTZ6dHhPa2lyd2l5TXVNajN3YzQ1YzhFRXRCd0VXVWhLZ3NseDNobmJCaG1BNWtub1NUUU1jX2xYVm03VzIzeUttM19VanEwV2dlLWNvaGFoT2dlbXB2b25zOWoxdnRCLVk?oc=5",
+     "source": "linkedin",
+     "published_at": "2026-10-16T22:39:00Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "urgencia-novedad",
+     "velocity": 0.0,
+     "by": "student"
+    },
+    {
      "title": "Order to limit Starshield for Ukraine came from inside White House, sources say",
      "url": "https://www.yahoo.com/news/articles/exclusive-order-limit-starshield-ukraine-230733575.html",
      "source": "hn",
@@ -2628,51 +2673,6 @@
      "format": "noticia-explicada",
      "hook": "miedo-riesgo",
      "velocity": 0.29,
-     "by": "student"
-    },
-    {
-     "title": "Are there any more startups with real technical challenges?",
-     "url": "https://news.ycombinator.com/item?id=50091127",
-     "source": "hn",
-     "published_at": "2026-10-14T17:12:31Z",
-     "metrics": {
-      "points": 5,
-      "comments": 8,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "urgencia-novedad",
-     "velocity": 0.27,
-     "by": "student"
-    },
-    {
-     "title": "Ask HN: Could you find funding if you didn't want to build a $1-10B business?",
-     "url": "https://news.ycombinator.com/item?id=50080968",
-     "source": "hn",
-     "published_at": "2026-10-14T00:42:31Z",
-     "metrics": {
-      "points": 9,
-      "comments": 6,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "pregunta",
-     "velocity": 0.22,
-     "by": "teacher"
-    },
-    {
-     "title": "Asia chip stocks fall, AI funding worries",
-     "url": "https://www.cnbc.com/2026/10/15/sk-hynix-samsung-softbank-stocks-asia-tech-rout-ai-funding-worries.html",
-     "source": "hn",
-     "published_at": "2026-10-15T02:29:41Z",
-     "metrics": {
-      "points": 15,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "resultado-numero",
-     "velocity": 0.22,
      "by": "student"
     }
    ],
@@ -2804,6 +2804,36 @@
      "by": "teacher"
     },
     {
+     "title": "Forget Building the Next ChatGPT. These 5 Indian AI Startups Are Going After Something Bigger.",
+     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNTW5NWjNYcGFVeG93NUt2ZlBGNlhYMkhzWl9fSnZjMXVLSHI3RHM1NTFOUG96b1NCU3BIYWkwckgtVzhuYlBpTGtIYVptZTB6M1JMNWs0M3RoWTVrMlJoZTZjLTJLTUpXdUp5MGtMWVdlSE94T0JJZzRhRUtKMzJYSXdmRjZhdjJyVXFuNUJaUm9zM0ladlYw?oc=5",
+     "source": "linkedin",
+     "published_at": "2026-10-15T10:31:37Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "urgencia-novedad",
+     "velocity": 0.0,
+     "by": "student"
+    },
+    {
+     "title": "top ai chatbot apps for android/iOS",
+     "url": "https://news.google.com/rss/articles/CBMikAJBVV95cUxNQzNYX00yenNSUWVWc29PQjU4SFlTUmpLMUJSLUlOZUxMSGZ1bWhTcmJnVDhoZzExWnhWOElERFVtM0tJLUJ0cVFtempGTVBHQldWMWxlaWRHTGdZQ1JuVFQ4X0J5ZlNja3BNb09pVWlVeG9MdnZpTF9ueGhIWjZvX09ua0t2ZTVGbzB5Tzc1MkktUGR1SllVMGhfLXotZEJmdmRXa2s5Q1ZuM3BxZVAwcENzbjE5YThyRG55dEtFVjhWUFA0aXZvemdaTVN0ZWg0U3FpeWpKVXhweV94MXJZc2VtVDJiTEpyb1NxZEhkb1ZGTVJIX1dwZkNvaGw2T0ZUQ1RKWnJzaUEyVVBpSlpxNQ?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-17T09:34:18Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "lista-ranking",
+     "hook": "lista-numerada",
+     "velocity": 0.0,
+     "by": "teacher"
+    },
+    {
      "title": "Ask HN: Thoughts about the Gemini Web app?",
      "url": "https://news.ycombinator.com/item?id=50113145",
      "source": "hn",
@@ -2831,36 +2861,6 @@
      "format": "herramienta-60s",
      "hook": "miedo-riesgo",
      "velocity": 0.11,
-     "by": "student"
-    },
-    {
-     "title": "ChatGPT Plugin in Review for Weeks",
-     "url": "https://news.ycombinator.com/item?id=50065313",
-     "source": "hn",
-     "published_at": "2026-10-13T01:13:30Z",
-     "metrics": {
-      "points": 4,
-      "comments": 4,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "promesa-proceso",
-     "velocity": 0.1,
-     "by": "student"
-    },
-    {
-     "title": "Is ChatGPT a 'product' or a 'service'? Lawsuits test a theory of AI liability",
-     "url": "https://www.reuters.com/legal/litigation/is-chatgpt-product-or-service-wave-lawsuits-tests-theory-ai-liability-2026-10-07/",
-     "source": "hn",
-     "published_at": "2026-10-13T13:46:10Z",
-     "metrics": {
-      "points": 2,
-      "comments": 3,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "urgencia-novedad",
-     "velocity": 0.08,
      "by": "student"
     }
    ],
@@ -2982,6 +2982,21 @@
      "by": "teacher"
     },
     {
+     "title": "GPT-Live-1.1 has new voices and better accents.",
+     "url": "https://www.youtube.com/watch?v=GyO8Ao7yKJc",
+     "source": "youtube",
+     "published_at": "2026-10-15T18:24:44Z",
+     "metrics": {
+      "points": 2553,
+      "comments": 0,
+      "views": 162932
+     },
+     "format": "herramienta-60s",
+     "hook": "urgencia-novedad",
+     "velocity": 8.52,
+     "by": "teacher"
+    },
+    {
      "title": "#VIDEO// Diputado hace video con IA para presentar informe ante un “Parlamento Galáctico”",
      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQR291R09tMnR3Y016a3ZadzlsVldoYWw1QXVPOGVtR3BPWXJVNTc3anFTaUtCZUNCb2JmdGNEc3NBbndGMFNpZW40U1pONzkwNW82SGEtMThSRmFiTUFqdzhJWV9MZjM5ZFBUYzRxcVpWYXV0aEZPTXZmbzF6bDlQOXVFQ0k2UG9GN1pma2o5a0hvUThESzk5NFl0TXIyTkRnSXhzSnpITndaUzAzS096b0JhRU84WXFnT2JTVnJQVUs?oc=5",
      "source": "gnews",
@@ -3009,21 +3024,6 @@
      "format": "lista-ranking",
      "hook": "miedo-riesgo",
      "velocity": 0.0,
-     "by": "teacher"
-    },
-    {
-     "title": "GPT-Live-1.1 has new voices and better accents.",
-     "url": "https://www.youtube.com/watch?v=GyO8Ao7yKJc",
-     "source": "youtube",
-     "published_at": "2026-10-15T18:24:44Z",
-     "metrics": {
-      "points": 2553,
-      "comments": 0,
-      "views": 162932
-     },
-     "format": "herramienta-60s",
-     "hook": "urgencia-novedad",
-     "velocity": 8.52,
      "by": "teacher"
     },
     {
@@ -3169,6 +3169,21 @@
      "by": "teacher"
     },
     {
+     "title": "Free AI Chatbot Compared: ChatGPT vs Gemini vs Claude",
+     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9aTjRpb0UzUUJDU0FuM1FtZ2tobVdwVGVmZEVGcTdZMGd3RTJMQUxqQnR2ZjV5YjdCbTZSV2ZDWDBULVA1ZlNQUlpsUlgwdEZLSDRHTHhsc1BDYjkxMWhSNkVtZjkwRkNGTjM1UHhWak5YSUNvcDBNMG1tREs?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-17T19:50:06Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "lista-ranking",
+     "hook": "lista-numerada",
+     "velocity": 0.0,
+     "by": "teacher"
+    },
+    {
      "title": "DeepSeek: DeepSeek v4.1 Flash 1017",
      "url": "https://openrouter.ai/deepseek/deepseek-v4.1-flash-1017",
      "source": "hn",
@@ -3211,21 +3226,6 @@
      "format": "noticia-explicada",
      "hook": "urgencia-novedad",
      "velocity": 13.81,
-     "by": "teacher"
-    },
-    {
-     "title": "Designing more efficient quantum circuits with Claude",
-     "url": "https://www.anthropic.com/research/designing-efficient-quantum-circuits",
-     "source": "hn",
-     "published_at": "2026-10-16T18:00:18Z",
-     "metrics": {
-      "points": 169,
-      "comments": 36,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "autoridad",
-     "velocity": 8.28,
      "by": "teacher"
     }
    ],
@@ -3358,6 +3358,36 @@
      "by": "teacher"
     },
     {
+     "title": "Build vs Buy vs Outsource: How Singapore Startups Can Make the Right Software Development Decision",
+     "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPRUlHZm5mMWsweV92RUtsaHlyRWF0QUh2SmFJeHM2a1BmZVE1LTg1Mkk4d195dmVhWFJOR2lGODYyb3QxMWFkUThfTzVvYXd5SVdFdW5YQXhfMXJOQ2l3YlNJYlM1LS05NS1oLUdOT1lhRkFaRi1aNDZpaktXYUZxVE5ydXpJUTczRVpoVmxYSUQtVTZFUnVsc0l2MGpxSVVhUGVWaFVR?oc=5",
+     "source": "linkedin",
+     "published_at": "2026-10-12T06:17:11Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "opinion",
+     "hook": "urgencia-novedad",
+     "velocity": 0.0,
+     "by": "student"
+    },
+    {
+     "title": "AWS y Superblocks llevan el vibe coding a la empresa",
+     "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOQTctZVk3LU1yeGZXbGNpMGFZcURpdVdCNGMyaGlvZmlOUGxVNEE1eWh0bC1wS0dSeDc5a0hJdmkyaG4wSnM1cEw2RkwtRF9YVjdyT1c5RGVWdE1XRTVSM1h1MGhaQXlWYW1UX1F0WkstcXhvcmlNeDkwckNFazNJSFNFc0FvRWNxc3JXeWdVa3dEdGRtc0VIaQ?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-17T02:40:12Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "urgencia-novedad",
+     "velocity": 0.0,
+     "by": "teacher"
+    },
+    {
      "title": "90% of US working hours are spent on tasks not covered well by AI benchmarks",
      "url": "https://www.mercor.com/research/labor-index/benchmark-map/",
      "source": "hn",
@@ -3385,36 +3415,6 @@
      "format": "herramienta-60s",
      "hook": "promesa-proceso",
      "velocity": 47.94,
-     "by": "student"
-    },
-    {
-     "title": "Things to know when you get cancer",
-     "url": "https://jjmaxwell4.com/writing/things-to-know-when-you-get-cancer/",
-     "source": "hn",
-     "published_at": "2026-10-14T19:26:30Z",
-     "metrics": {
-      "points": 1950,
-      "comments": 480,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "promesa-proceso",
-     "velocity": 38.46,
-     "by": "student"
-    },
-    {
-     "title": "AI Can Write the Code. Who Verifies It?",
-     "url": "https://mihaisplace.com/blog/ai-can-write-the-code-who-verifies-it",
-     "source": "hn",
-     "published_at": "2026-10-17T18:31:30Z",
-     "metrics": {
-      "points": 25,
-      "comments": 57,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "urgencia-novedad",
-     "velocity": 30.29,
      "by": "student"
     }
    ],
@@ -3545,6 +3545,21 @@
      "by": "teacher"
     },
     {
+     "title": "Tu chatbot no es tu diario: por qué lo que le cuentas a la IA nunca es del todo privado",
+     "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPZkJfQ0x3dHQyXzhHSHB5QWhzV0NuY2hTaUJmZmptVzFUOWI0NjluZmVRTXZRbjRPdk5uLVJhQ0t5ZzlpRHBJMG85cGdsbG9SUU1UOHNqUjZpWEdtejdNUlBIaWppS3RaMUxFczlOcURUel83dC1Xb28yV01TdTRUNS16dHFXT2lYZ2R1S0NydER3Y3FvT29WSzNwZmNuaXRydFhuRlJBdGFSakh3dW94MldwSTgzeEM0YlF1MVM2c1dWbWQ2?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-17T13:46:03Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "opinion",
+     "hook": "miedo-riesgo",
+     "velocity": 0.0,
+     "by": "teacher"
+    },
+    {
      "title": "Amazon uses AI to monitor union risk in UK warehouses",
      "url": "https://www.opendemocracy.net/amazon-ai-surveillance-monitor-union-activity-uk-warehouses-birmingham-coventry-atlas-sutton-coldfield/",
      "source": "hn",
@@ -3587,21 +3602,6 @@
      "format": "herramienta-60s",
      "hook": "miedo-riesgo",
      "velocity": 25.42,
-     "by": "student"
-    },
-    {
-     "title": "OpenAI engineer arrested in bugging of executive conference room",
-     "url": "https://sfstandard.com/2026/10/13/openai-engineer-arrested-alleged-bugging-executive-conference-room/",
-     "source": "hn",
-     "published_at": "2026-10-13T20:23:55Z",
-     "metrics": {
-      "points": 654,
-      "comments": 543,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "miedo-riesgo",
-     "velocity": 17.63,
      "by": "student"
     }
    ],
@@ -3716,6 +3716,36 @@
      "by": "student"
     },
     {
+     "title": "ASUS finally joins the Intel Arc party with a 32GB Battlemage GPU",
+     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNNXR3UTlLWlpvM0VMLUhONnpUX2hRbm5xanYxS3hMc2ktdnVuVXhqb2ZXbS1rSzNzdnFzdDhRUFlTc1dPTndrcTF6bFpycWVvRDRVVU44X29PNnBlZjNIeERFdWtSN0VVTjNWN3NudW5ZT1FBMnd4ejlORG9ybkVkRXl5bXZOTm5tYkFndWdNbWlhMFJYZDBRX2pJcms4ZFh6QnROcGJiLUlaYlc0VHNJZDJpNTg?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-17T20:27:11Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "urgencia-novedad",
+     "velocity": 0.0,
+     "by": "student"
+    },
+    {
+     "title": "Demo con Jev, usa menos tokens al desarrollar  - Hackathon 30X",
+     "url": "https://www.youtube.com/watch?v=EbztG-aww9I",
+     "source": "youtube",
+     "published_at": "2026-10-15T11:08:35Z",
+     "metrics": {
+      "points": 17,
+      "comments": 0,
+      "views": 825
+     },
+     "format": "evento-live",
+     "hook": "promesa-proceso",
+     "velocity": 2.05,
+     "by": "teacher"
+    },
+    {
      "title": "Intel D270 GPU AI Accelerator–Up to 480 GB LPDDR5X",
      "url": "https://www.intel.com/content/www/us/en/products/details/discrete-gpus/data-center-gpu/d-series.html",
      "source": "hn",
@@ -3759,36 +3789,6 @@
      "hook": "autoridad",
      "velocity": 2.13,
      "by": "teacher"
-    },
-    {
-     "title": "Tom Brown used GOP ties to broker a $1.25B/month SpaceX compute deal",
-     "url": "https://wsj.com/tech/ai/tom-brown-athropic-669005ad",
-     "source": "hn",
-     "published_at": "2026-10-10T15:04:38Z",
-     "metrics": {
-      "points": 136,
-      "comments": 53,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "resultado-numero",
-     "velocity": 1.37,
-     "by": "student"
-    },
-    {
-     "title": "Lithos-metal: Qwen3.8-27B on 40-core M5 Max at 168 tokens/s",
-     "url": "https://github.com/lithos-ai/lithos-metal",
-     "source": "hn",
-     "published_at": "2026-10-17T04:06:23Z",
-     "metrics": {
-      "points": 9,
-      "comments": 1,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "resultado-numero",
-     "velocity": 0.58,
-     "by": "student"
     }
    ],
    "adapt": {

@@ -400,6 +400,181 @@ function renderFallback2D(canvas, topics) {
   return svg;
 }
 
+// --- Descubrimiento en vivo (hero) ---
+const PLATFORMS = ["linkedin", "youtube", "hn", "gnews"];
+const PLATFORM_NAME = { linkedin: "LinkedIn", youtube: "YouTube", hn: "Hacker News", gnews: "Google News" };
+const SVG_NS = "http://www.w3.org/2000/svg";
+
+// Un hallazgo por tema (por p, Recomendar/Aprender primero) rotando plataforma entre hallazgos consecutivos.
+function buildQueue(topics) {
+  const rank = { Recomendar: 0, Aprender: 1 };
+  const sorted = [...topics].sort(
+    (a, b) => (rank[a.decision] ?? 2) - (rank[b.decision] ?? 2) || (b.p || 0) - (a.p || 0)
+  );
+  const queue = [];
+  let ptr = 0;
+  let prev = null;
+  for (const topic of sorted) {
+    const sigs = topic.top_signals || [];
+    const avail = [0, 1, 2, 3]
+      .map((o) => (ptr + o) % PLATFORMS.length)
+      .filter((i) => sigs.some((s) => s.source === PLATFORMS[i]));
+    if (!avail.length) continue;
+    const pick = avail.find((i) => PLATFORMS[i] !== prev) ?? avail[0];
+    prev = PLATFORMS[pick];
+    ptr = pick + 1;
+    queue.push({ topic, signal: sigs.find((s) => s.source === prev) });
+  }
+  return queue;
+}
+
+function ago(iso) {
+  const ms = Date.now() - new Date(iso).getTime();
+  if (!iso || !isFinite(ms) || ms < 0) return "";
+  const min = Math.round(ms / 60000);
+  if (min < 60) return ` · hace ${Math.max(1, min)} min`;
+  const h = Math.round(min / 60);
+  return h < 48 ? ` · hace ${h} h` : ` · hace ${Math.round(h / 24)} d`;
+}
+
+function growthText(g) {
+  if (g > 1.15) return `Crece ${g.toFixed(1)}x`;
+  if (g < 0.9) return "Cae";
+  return "Ritmo constante";
+}
+
+function setupDiscovery(hero, data, scene, onOpen) {
+  const queue = buildQueue(data.topics || []);
+  if (!queue.length) return;
+  const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const total = (data.totals && data.totals.signals) || 0;
+
+  const line = document.createElementNS(SVG_NS, "line");
+  const dot = document.createElementNS(SVG_NS, "circle");
+  dot.setAttribute("r", "3");
+  const svg = document.createElementNS(SVG_NS, "svg");
+  svg.setAttribute("class", "disc-line");
+  svg.setAttribute("aria-hidden", "true");
+  svg.append(line, dot);
+
+  const status = el("p", { class: "disc-status" });
+  status.append("Escaneando YouTube, LinkedIn, Hacker News, Google News y Wikipedia");
+  status.appendChild(el("span", { class: "disc-dots" }, [el("i"), el("i"), el("i")]));
+  const stack = el("div", { class: "disc-stack" });
+  const counter = el("p", { class: "disc-count nums" });
+  const box = el("div", { class: "disc" }, [status, stack, counter]);
+  hero.append(svg, box);
+
+  let found = 0;
+  let scanned = reduced ? total : 0;
+  const paintCount = () => {
+    counter.textContent = `${found} ${found === 1 ? "hallazgo" : "hallazgos"} · ${scanned.toLocaleString("es-CO")} señales escaneadas`;
+  };
+  paintCount();
+
+  let current = null; // { node, slug }
+  let hover = false;
+  const panelOpen = () => document.getElementById("panel").classList.contains("open");
+  const paused = () => hover || document.hidden || panelOpen();
+
+  function drawLine() {
+    requestAnimationFrame(drawLine);
+    if (!current || !scene || !current.node.isConnected) return svg.classList.remove("on");
+    const pos = scene.screenPos(current.slug);
+    if (!pos) return svg.classList.remove("on");
+    const h = hero.getBoundingClientRect();
+    const c = current.node.getBoundingClientRect();
+    const cx = Math.max(c.left - h.left, Math.min(pos.x, c.right - h.left));
+    const cy = Math.max(c.top - h.top, Math.min(pos.y, c.bottom - h.top));
+    line.setAttribute("x1", cx);
+    line.setAttribute("y1", cy);
+    line.setAttribute("x2", pos.x);
+    line.setAttribute("y2", pos.y);
+    dot.setAttribute("cx", pos.x);
+    dot.setAttribute("cy", pos.y);
+    svg.classList.add("on");
+  }
+  if (scene) drawLine();
+
+  function showCard({ topic, signal }) {
+    const color = DECISION_COLOR[topic.decision] || "var(--gris)";
+    const dec = el("span", { class: "disc-chip", text: topic.decision });
+    dec.style.color = color;
+    dec.style.borderColor = color;
+    const node = el(
+      "button",
+      { class: "disc-card", "aria-label": `Abrir ${topic.name}`, onclick: () => onOpen(topic.slug) },
+      [
+        el("span", { class: "disc-src" }, [
+          el("b", { text: PLATFORM_NAME[signal.source] || signal.source }),
+          ago(signal.published_at),
+        ]),
+        el("span", { class: "disc-title", text: `Descubrimos: ${topic.name}` }),
+        el("span", { class: "disc-sig", text: signal.title }),
+        el("span", { class: "disc-chips" }, [
+          el("span", { class: "disc-chip", text: cap(topic.stage) }),
+          el("span", { class: "disc-chip", text: growthText(topic.growth || 1) }),
+          dec,
+        ]),
+      ]
+    );
+    const old = current && current.node;
+    if (old) {
+      old.classList.add("out");
+      setTimeout(() => old.remove(), 220);
+    }
+    node.classList.add("enter");
+    stack.appendChild(node);
+    requestAnimationFrame(() => requestAnimationFrame(() => node.classList.remove("enter")));
+    current = { node, slug: topic.slug };
+    found += 1;
+    paintCount();
+  }
+
+  for (const ev of ["mouseenter", "focusin"]) box.addEventListener(ev, () => (hover = true));
+  for (const ev of ["mouseleave", "focusout"]) box.addEventListener(ev, () => (hover = false));
+
+  if (reduced) {
+    status.hidden = true;
+    showCard(queue[0]);
+    return;
+  }
+
+  // Espera que se congela mientras paused().
+  const wait = (ms) =>
+    new Promise((resolve) => {
+      let left = ms;
+      const id = setInterval(() => {
+        if (paused()) return;
+        left -= 100;
+        if (left <= 0) {
+          clearInterval(id);
+          resolve();
+        }
+      }, 100);
+    });
+
+  (async () => {
+    // 1 s de "buscando": el contador de señales sube.
+    const t0 = performance.now();
+    await new Promise((resolve) => {
+      const step = () => {
+        const k = Math.min(1, (performance.now() - t0) / 1000);
+        scanned = Math.round(total * k);
+        paintCount();
+        if (k < 1) requestAnimationFrame(step);
+        else resolve();
+      };
+      step();
+    });
+    for (let i = 0; ; i = (i + 1) % queue.length) {
+      if (current) await wait(3000);
+      if (scene) await scene.discover(queue[i].topic.slug);
+      showCard(queue[i]);
+    }
+  })();
+}
+
 async function loadData() {
   try {
     const res = await fetch("/api/radar.json");
@@ -431,11 +606,13 @@ async function main() {
 
   const canvas = document.getElementById("scene-canvas");
   if (canvas) {
+    let scene = null;
     try {
-      mountScene(canvas, data.topics || [], onOpen);
+      scene = mountScene(canvas, data.topics || [], onOpen);
     } catch (e) {
       renderFallback2D(canvas, data.topics || []);
     }
+    setupDiscovery(document.getElementById("hero"), data, scene, onOpen);
   }
 }
 
