@@ -1,0 +1,918 @@
+{
+ "sources": [
+  "https://www.youtube.com/channel/UCh1FjjawQrD-T844bCzkEFQ",
+  "https://www.youtube.com/channel/UC7XEsp8j6NfMpIbscPsl8aw",
+  "https://www.youtube.com/feeds/videos.xml?channel_id=UCh1FjjawQrD-T844bCzkEFQ",
+  "https://www.youtube.com/feeds/videos.xml?channel_id=UC7XEsp8j6NfMpIbscPsl8aw",
+  "https://30x.com",
+  "https://www.instagram.com/crece30x/ (solo bio y miniaturas visibles sin login; captions no accesibles, no se evadió el login)"
+ ],
+ "items": [
+  {
+   "text": "De niña vendía las cosas de sus abuelos",
+   "source": "youtube",
+   "views": 1100,
+   "format": "short",
+   "date": "2026-10-16"
+  },
+  {
+   "text": "Emprender en tribu: pide ayuda sin pena",
+   "source": "youtube",
+   "views": 242,
+   "format": "short",
+   "date": "2026-10-16"
+  },
+  {
+   "text": "No sabía nada de startups seis meses antes de emprender",
+   "source": "youtube",
+   "views": 280,
+   "format": "short",
+   "date": "2026-10-15"
+  },
+  {
+   "text": "De 4 a 15 millones de ARR: así cambia todo con product market fit",
+   "source": "youtube",
+   "views": 353,
+   "format": "short",
+   "date": "2026-10-15"
+  },
+  {
+   "text": "Por qué ayudar a otros también te hace crecer",
+   "source": "youtube",
+   "views": 867,
+   "format": "short",
+   "date": "2026-10-15"
+  },
+  {
+   "text": "No le regatees a tu amigo emprendedor",
+   "source": "youtube",
+   "views": 1200,
+   "format": "short",
+   "date": "2026-10-15"
+  },
+  {
+   "text": "Renunció a una multinacional para construir algo grande",
+   "source": "youtube",
+   "views": 510,
+   "format": "short",
+   "date": "2026-10-15"
+  },
+  {
+   "text": "32 departamentos, 32 reglas para vender licores",
+   "source": "youtube",
+   "views": 686,
+   "format": "short",
+   "date": "2026-10-15"
+  },
+  {
+   "text": "¿Ser infiel es ilegal? El debate se salió de control",
+   "source": "youtube",
+   "views": 344,
+   "format": "short",
+   "date": "2026-10-15"
+  },
+  {
+   "text": "¿Harías negocios con alguien infiel?",
+   "source": "youtube",
+   "views": 797,
+   "format": "short",
+   "date": "2026-10-15"
+  },
+  {
+   "text": "Le dijeron que no abriera un restaurante y hoy tiene 30 tiendas",
+   "source": "youtube",
+   "views": 3300,
+   "format": "short",
+   "date": "2026-10-15"
+  },
+  {
+   "text": "Aprende IA desde cero con más de 85 clases gratis",
+   "source": "youtube",
+   "views": 1400,
+   "format": "short",
+   "date": "2026-10-15"
+  },
+  {
+   "text": "Comida de verdad en 13 minutos",
+   "source": "youtube",
+   "views": 605,
+   "format": "short",
+   "date": "2026-10-14"
+  },
+  {
+   "text": "US$74 mil de ahorro al mes con IA: de operativo a líder en 3 meses",
+   "source": "youtube",
+   "views": 759,
+   "format": "short",
+   "date": "2026-10-14"
+  },
+  {
+   "text": "Cómo disfrutan la vida los emprendedores exitosos",
+   "source": "youtube",
+   "views": 32000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Así funciona un segundo cerebro con IA que trabaja como tú",
+   "source": "youtube",
+   "views": 14000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Experto en anuncios: invirtieron 50 mil a los 18 y facturó 1 millón en 6 meses",
+   "source": "youtube",
+   "views": 22000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "El problema de las marcas que intentan hacer memes",
+   "source": "youtube",
+   "views": 4000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "De Monterrey a una fintech: la lección de tres meses que lo cambió todo",
+   "source": "youtube",
+   "views": 7500,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Más herramientas de IA no te vuelven una empresa nativa en IA",
+   "source": "youtube",
+   "views": 4200,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Masterclass de ventas en LinkedIn: de 705 a 600.000 seguidores",
+   "source": "youtube",
+   "views": 15000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Cómo trabajar menos horas y entregar mejores resultados",
+   "source": "youtube",
+   "views": 109000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Nadie quiere trabajarle a un jefe que no respeta",
+   "source": "youtube",
+   "views": 15000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Quebró 4 veces y hoy dirige la fintech más grande de Venezuela",
+   "source": "youtube",
+   "views": 166000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "El futuro del trabajo con IA y cómo prepararse para vivirlo",
+   "source": "youtube",
+   "views": 4300,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "30X Mentors: diagnóstico real de 5 startups en vivo",
+   "source": "youtube",
+   "views": null,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "La mujer que construyó una cadena de gimnasios desde cero",
+   "source": "youtube",
+   "views": 22000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Un millón de personas usaban su app y casi nadie pagaba",
+   "source": "youtube",
+   "views": 18000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Qué hacer cuando tu empresa se queda sin caja",
+   "source": "youtube",
+   "views": null,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Fundó un unicornio a los 18. Así vende hoy con 30 personas",
+   "source": "youtube",
+   "views": 21000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "La década que define el resto de tu carrera",
+   "source": "youtube",
+   "views": 38000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Construyó marcas globales de comida rápida y hoy vende jabón",
+   "source": "youtube",
+   "views": null,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Dirige 3.500 personas y tiene una sola regla",
+   "source": "youtube",
+   "views": 13000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Invirtió en más de 100 empresas: esto es lo que busca en cada una",
+   "source": "youtube",
+   "views": 23000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "De distribuidor a dueño del ecosistema de lujo en Colombia",
+   "source": "youtube",
+   "views": 9200,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Mi mentora de YouTube revela cómo vender millones con videos",
+   "source": "youtube",
+   "views": null,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Cómo construir tu primer producto de IA desde cero",
+   "source": "youtube",
+   "views": 106000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "\"Yo no quiero ser directora de una empresa\"",
+   "source": "youtube",
+   "views": 42000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Ver el dinero como un lujo te arruina las decisiones",
+   "source": "youtube",
+   "views": null,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "\"Que me DESPIDIERAN ha sido un gran REGALO\"",
+   "source": "youtube",
+   "views": null,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Nunca emprendas con un socio sin ver esto primero",
+   "source": "youtube",
+   "views": null,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Construir a largo plazo en Venezuela: el reto que casi lo hace renunciar",
+   "source": "youtube",
+   "views": 6800,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "¿Hacer el bien puede ser realmente buen negocio?",
+   "source": "youtube",
+   "views": 34000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Experto en ventas con IA revela su sistema completo",
+   "source": "youtube",
+   "views": null,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Mi mentora de inteligencia artificial revela sus mejores secretos",
+   "source": "youtube",
+   "views": 105000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "\"Vamos a conquistar Estados Unidos\"",
+   "source": "youtube",
+   "views": 31000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Lo que Aprendí sobre la Educación del Futuro y Cómo Aplicarlo con tus Hijos Hoy",
+   "source": "youtube",
+   "views": 18000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "La reina de belleza que construye el Netflix del futuro",
+   "source": "youtube",
+   "views": 137000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Lo que aprendí de la estrategia del restaurante más eficiente de Colombia",
+   "source": "youtube",
+   "views": 57000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Lo que aprendí sobre montar un negocio imposible",
+   "source": "youtube",
+   "views": 351000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "La estrategia para alcanzar 1 millón de seguidores en Instagram",
+   "source": "youtube",
+   "views": 49000,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Duplica tu meta.",
+   "source": "youtube",
+   "views": 1400,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Cuida tu ego",
+   "source": "youtube",
+   "views": 2200,
+   "format": "short",
+   "date": "2026-07-06"
+  },
+  {
+   "text": "Trabajar en una compañía de hipercrecimiento",
+   "source": "youtube",
+   "views": 370,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Protege tu negocio",
+   "source": "youtube",
+   "views": 155,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Emprender es duro",
+   "source": "youtube",
+   "views": 52,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Cómo eliminar el estrés siendo emprendedor",
+   "source": "youtube",
+   "views": 63,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Cuánto tiempo pasa el CEO de Apple en pantalla",
+   "source": "youtube",
+   "views": 63,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Esta es la joya de la corona en 30X",
+   "source": "youtube",
+   "views": 239,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Este es el mejor lugar para crecer como empresario",
+   "source": "youtube",
+   "views": 148,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Inmersivo Presencial 30X en 30x.com",
+   "source": "youtube",
+   "views": 125,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Cómo entra un gigante al mercado asiático",
+   "source": "youtube",
+   "views": 1400,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "No persigas símbolos. Construye sistemas. Los símbolos llegan solos.",
+   "source": "youtube",
+   "views": 12000,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Rodéate de mejores personas que tú",
+   "source": "youtube",
+   "views": 1500,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Esto es elegir un inversionista",
+   "source": "youtube",
+   "views": 1800,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "El equipo de Growth de Facebook",
+   "source": "youtube",
+   "views": 305,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Lecciones de un founder",
+   "source": "youtube",
+   "views": 1400,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Robots reemplazando bailarines en China",
+   "source": "youtube",
+   "views": 1100,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Que no te dé miedo empezar de cero",
+   "source": "youtube",
+   "views": 160,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Cohete diseñado 100% con IA",
+   "source": "youtube",
+   "views": 1300,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Este robot hizo creer a muchos que era un humano en traje",
+   "source": "youtube",
+   "views": 1300,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Life hacks que te da la tecnología 👽",
+   "source": "youtube",
+   "views": 258,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Los mejores emprendedores del futuro serán bastante hábiles en 6 a 8 cosas",
+   "source": "youtube",
+   "views": 1100,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Grandes compañías que surgieron de solucionar problemas por diversión",
+   "source": "youtube",
+   "views": 12,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "La labor más importante de un CEO es reclutar talento excepcional",
+   "source": "youtube",
+   "views": 3600,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Así se usa la persuasión para negocios",
+   "source": "youtube",
+   "views": 953,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "¿Qué tan grande es tu mercado?",
+   "source": "youtube",
+   "views": 777,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "No tenés que emprender sola ni solo",
+   "source": "youtube",
+   "views": 219,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Efecto dominó en inversiones de capital de riesgo",
+   "source": "youtube",
+   "views": 118,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "El CEO no es el que manda",
+   "source": "youtube",
+   "views": 4300,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Tu compañía puede fracasar si no estás listo para escalar",
+   "source": "youtube",
+   "views": 856,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Persuasión para negocios #1",
+   "source": "youtube",
+   "views": 1100,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "¿Tienes menos de 30? Escucha esto",
+   "source": "youtube",
+   "views": 1000,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Ser CEO es un sacrificio eterno",
+   "source": "youtube",
+   "views": 606,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "La importancia de tener desarrolladores en la cabeza de tu compañía tecnológica",
+   "source": "youtube",
+   "views": 199,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Así Airbnb llamó la atención de Y Combinator",
+   "source": "youtube",
+   "views": 145,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Así se aprende cualquier habilidad",
+   "source": "youtube",
+   "views": 192,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "La cualidad más subestimada es la determinación (cita de un CEO de IA)",
+   "source": "youtube",
+   "views": 136,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Cuando entiendes el valor de tu negocio",
+   "source": "youtube",
+   "views": 288,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "El CEO de Nvidia siempre se enamoró de sus trabajos",
+   "source": "youtube",
+   "views": 614,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "La ventana de tiempo exacta para entregar el valor de tu producto",
+   "source": "youtube",
+   "views": 21,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Solo debes hacer esto si buscas trabajar en tecnología",
+   "source": "youtube",
+   "views": 692,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "¿Diversificar o no diversificar?",
+   "source": "youtube",
+   "views": 807,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Las excusas detienen tu crecimiento",
+   "source": "youtube",
+   "views": 1100,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Esto es para vos, emprendedor",
+   "source": "youtube",
+   "views": 78,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "No sabía trabajar sin hacerme daño",
+   "source": "youtube",
+   "views": 1600,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Me encanta la actitud, no me gusta el millonario",
+   "source": "youtube",
+   "views": 165,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Esta es nuestra historia",
+   "source": "youtube",
+   "views": 545,
+   "format": "short",
+   "date": null
+  },
+  {
+   "text": "Habilidades comerciales 30X, día 9: preguntas y respuestas",
+   "source": "youtube",
+   "views": 764,
+   "format": "video largo",
+   "date": "2026-06-01"
+  },
+  {
+   "text": "Habilidades comerciales 30X, día 8: rutinas comerciales",
+   "source": "youtube",
+   "views": 718,
+   "format": "video largo",
+   "date": "2026-05-31"
+  },
+  {
+   "text": "Habilidades comerciales 30X, día 7: negociaciones complejas",
+   "source": "youtube",
+   "views": 813,
+   "format": "video largo",
+   "date": "2026-05-26"
+  },
+  {
+   "text": "Habilidades comerciales 30X, día 6: ventas desde el corazón",
+   "source": "youtube",
+   "views": 755,
+   "format": "video largo",
+   "date": "2026-05-26"
+  },
+  {
+   "text": "Habilidades comerciales 30X, día 5: setting",
+   "source": "youtube",
+   "views": 667,
+   "format": "video largo",
+   "date": "2026-05-26"
+  },
+  {
+   "text": "Habilidades comerciales 30X, día 4: prospección",
+   "source": "youtube",
+   "views": 1800,
+   "format": "video largo",
+   "date": "2026-05-20"
+  },
+  {
+   "text": "Habilidades comerciales 30X, día 3: principios de persuasión",
+   "source": "youtube",
+   "views": 3000,
+   "format": "video largo",
+   "date": "2026-05-18"
+  },
+  {
+   "text": "Habilidades comerciales 30X, día 1: principios de ventas",
+   "source": "youtube",
+   "views": 5600,
+   "format": "video largo",
+   "date": "2026-05-14"
+  },
+  {
+   "text": "Habilidades comerciales 30X, día 2: cómo iniciar una llamada de ventas",
+   "source": "youtube",
+   "views": 1700,
+   "format": "video largo",
+   "date": "2026-05-14"
+  },
+  {
+   "text": "Cómo construir un ecosistema que multiplica los resultados de tu empresa",
+   "source": "youtube",
+   "views": 448,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Sistema completo de ventas con IA: tutorial desde cero",
+   "source": "youtube",
+   "views": 1200,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Prospectar con correos en frío con n8n: tutorial desde cero",
+   "source": "youtube",
+   "views": 308,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Prospectar con correos en frío con Instantly: paso a paso",
+   "source": "youtube",
+   "views": null,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Cómo crear un agente de voz de ventas: tutorial paso a paso",
+   "source": "youtube",
+   "views": null,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Crea tu CRM profesional y seguimiento de proyectos en Notion: paso a paso",
+   "source": "youtube",
+   "views": 407,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Build Your Own CRM in Notion from SCRATCH | Step-by",
+   "source": "youtube",
+   "views": null,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "Así fue la Inmersión Ejecutiva 30X en Bogotá (sep. 2025)",
+   "source": "youtube",
+   "views": 809,
+   "format": "video largo",
+   "date": null
+  },
+  {
+   "text": "La mejor Educación Ejecutiva de Latinoamérica",
+   "source": "web",
+   "views": null,
+   "format": "página",
+   "date": null
+  },
+  {
+   "text": "Los líderes que construyen son quienes enseñan",
+   "source": "web",
+   "views": null,
+   "format": "página",
+   "date": null
+  },
+  {
+   "text": "Donde los mejores operadores construyen ventajas injustas",
+   "source": "web",
+   "views": null,
+   "format": "página",
+   "date": null
+  },
+  {
+   "text": "Programas diseñados para cada etapa de tu carrera ejecutiva",
+   "source": "web",
+   "views": null,
+   "format": "página",
+   "date": null
+  },
+  {
+   "text": "Inteligencia Artificial: implementación estratégica de IA para equipos y directivos",
+   "source": "web",
+   "views": null,
+   "format": "página",
+   "date": null
+  },
+  {
+   "text": "Alternativa moderna al MBA tradicional para Latinoamérica",
+   "source": "web",
+   "views": null,
+   "format": "página",
+   "date": null
+  },
+  {
+   "text": "Inmersión Ejecutiva: tres días presenciales de estrategia, networking y mentores (Caracas, Bogotá, Miami, CDMX)",
+   "source": "web",
+   "views": null,
+   "format": "página",
+   "date": null
+  },
+  {
+   "text": "Clases gratis de IA, ventas y growth",
+   "source": "web",
+   "views": null,
+   "format": "página",
+   "date": null
+  },
+  {
+   "text": "Carruseles de texto sobre crecimiento y escalamiento de negocios (sep-oct 2026)",
+   "source": "ig",
+   "views": null,
+   "format": "carrusel",
+   "date": null
+  },
+  {
+   "text": "Historias destacadas: Inmersivos, Inmersivo México, Inmersivo Colombia",
+   "source": "ig",
+   "views": null,
+   "format": "stories destacadas",
+   "date": null
+  }
+ ],
+ "themes": [
+  "IA aplicada a ventas, prospección y CRM (n8n, agentes de voz, Notion)",
+  "Empresa nativa en IA y futuro del trabajo",
+  "Aprender IA desde cero (clases gratis)",
+  "Ahorro y productividad medidos con IA (casos con cifras en USD)",
+  "Historias de fundadores y escalamiento (startups, fintech, unicornios)",
+  "Mentalidad de CEO, liderazgo, reclutar talento",
+  "Ventas, persuasión y negociación",
+  "Crecimiento en redes (LinkedIn, Instagram) y marca personal",
+  "Robótica y tecnología llamativa en shorts (robots, cohetes con IA)",
+  "Educación ejecutiva presencial (Inmersiones en Caracas, Bogotá, Miami, CDMX)"
+ ],
+ "hooks": [
+  "Cifra concreta + transformación (\"de 705 a 600.000 seguidores\", \"US$74 mil de ahorro al mes con IA\")",
+  "Promesa de sistema completo (\"revela su sistema COMPLETO\", \"paso a paso\", \"desde cero\")",
+  "Contraste o fracaso (\"quebró 4 veces y hoy dirige...\", \"le dijeron que no abriera un restaurante\")",
+  "Afirmación contraintuitiva (\"más herramientas de IA no te vuelven nativo en IA\", \"el CEO no es el que manda\")",
+  "Autoridad/mentor que revela secretos (\"mi mentora de IA revela sus mejores secretos\")",
+  "Pregunta o debate polémico (\"¿Harías negocios con alguien infiel?\")",
+  "Frase corta imperativa en shorts (\"Cuida tu ego\", \"Duplica tu meta\", \"Protege tu negocio\")",
+  "Citas de CEOs famosos reinterpretadas para fundadores"
+ ],
+ "formats": [
+  "Podcast/entrevista larga en YouTube (30X Podcast, Inevitable, NEXT)",
+  "Shorts verticales recortados de entrevistas (1 idea, título corto)",
+  "Series de clases/bootcamp por días (Habilidades comerciales, 9 días)",
+  "Tutoriales paso a paso de herramientas (n8n, Instantly, Notion)",
+  "Carruseles de texto en Instagram",
+  "Páginas de programa y clases gratis en 30x.com"
+ ],
+ "audience": "Fundadores, emprendedores ambiciosos, ejecutivos y equipos comerciales, de growth e innovación en Latinoamérica (Colombia, México, Venezuela, Argentina). Buscan crecer su empresa, vender más y adoptar IA en el negocio sin ser técnicos; valoran casos reales con cifras, sistemas replicables y mentores que ya construyeron empresas. Son compradores de educación ejecutiva (alternativa al MBA). Canal principal ~79 mil suscriptores, @crece30x ~4 mil en YouTube y ~425 mil en Instagram. Contenido en español con títulos también en inglés; el contenido de IA es el que más se orienta a negocio (ventas, productividad, empresa nativa en IA), no a código."
+}

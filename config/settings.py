@@ -7,6 +7,8 @@ from django.core.exceptions import ImproperlyConfigured
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+DATA_DIR = BASE_DIR / "data"
+
 # ponytail: mini-cargador de .env en vez de python-dotenv (0 dependencias). Solo KEY=VALOR simple.
 _env = BASE_DIR / ".env"
 if _env.exists():
@@ -34,12 +36,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "app",
+    "radar",
     "decision",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -75,9 +78,9 @@ STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_URL = "login"
-LOGIN_REDIRECT_URL = "casos"
-LOGOUT_REDIRECT_URL = "login"
+if not DEBUG and "pytest" not in sys.modules:
+    STORAGES = {"default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+                "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"}}
 
 if not DEBUG:
     SESSION_COOKIE_HTTPONLY = True
@@ -88,7 +91,7 @@ DECISION_MODE = os.environ.get("DECISION_MODE", "live")
 AUTO_THRESHOLD = float(os.environ.get("AUTO_THRESHOLD", "0.80"))
 REVIEW_THRESHOLD = float(os.environ.get("REVIEW_THRESHOLD", "0.50"))
 LLM_BASE_URL = os.environ.get("LLM_BASE_URL", "http://localhost:20128/v1")
-LLM_API_KEY = os.environ.get("LLM_API_KEY", "")
+LLM_API_KEY = os.environ.get("LLM_API_KEY") or os.environ.get("9ROUTER_API_KEY", "")
 LLM_MODEL = os.environ.get("LLM_MODEL", "")
 LLM_TIMEOUT = float(os.environ.get("LLM_TIMEOUT", "5"))
 LLM_PRICE_IN_PER_1M = float(os.environ.get("LLM_PRICE_IN_PER_1M", "0"))
@@ -96,5 +99,3 @@ LLM_PRICE_OUT_PER_1M = float(os.environ.get("LLM_PRICE_OUT_PER_1M", "0"))
 SYSTEMONE_URL = os.environ.get("SYSTEMONE_URL", "")
 DECISION_RECORDINGS_DIR = BASE_DIR / "decision" / "recordings"
 
-if "pytest" in sys.modules:  # ponytail: hasher rapido solo en tests (PBKDF2 tarda ~3 s por usuario en este PC)
-    PASSWORD_HASHERS = ["django.contrib.auth.hashers.MD5PasswordHasher"]

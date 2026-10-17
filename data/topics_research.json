@@ -1,0 +1,867 @@
+[
+ {
+  "slug": "agentes-de-ia",
+  "name": "Agentes de IA autónomos",
+  "category": "agentes",
+  "keywords": [
+   "ai agents",
+   "agentic ai",
+   "agentes de ia",
+   "ia agéntica"
+  ],
+  "wiki": [
+   "AI_agent",
+   "Intelligent_agent"
+  ]
+ },
+ {
+  "slug": "agentes-de-navegador",
+  "name": "Agentes que usan el navegador y el computador",
+  "category": "agentes",
+  "keywords": [
+   "computer use agent",
+   "browser agent",
+   "agente de navegador"
+  ],
+  "wiki": [
+   "Computer_use"
+  ]
+ },
+ {
+  "slug": "agentes-de-ventas",
+  "name": "Agentes de IA en ventas y prospección",
+  "category": "agentes",
+  "keywords": [
+   "ai sdr",
+   "sales agent ai",
+   "agente de ventas con ia",
+   "prospección con ia"
+  ],
+  "wiki": [
+   "Customer_relationship_management"
+  ]
+ },
+ {
+  "slug": "agentes-de-atencion",
+  "name": "Agentes de IA en atención al cliente",
+  "category": "agentes",
+  "keywords": [
+   "ai customer support agent",
+   "customer service ai",
+   "atención al cliente con ia"
+  ],
+  "wiki": [
+   "Chatbot"
+  ]
+ },
+ {
+  "slug": "agentes-de-voz",
+  "name": "Agentes de voz con IA",
+  "category": "agentes",
+  "keywords": [
+   "voice agent ai",
+   "ai voice agent",
+   "agente de voz con ia"
+  ],
+  "wiki": [
+   "Voice_user_interface",
+   "Speech_recognition"
+  ]
+ },
+ {
+  "slug": "multiagente",
+  "name": "Sistemas multiagente",
+  "category": "agentes",
+  "keywords": [
+   "multi-agent systems",
+   "multiagente",
+   "agent orchestration"
+  ],
+  "wiki": [
+   "Multi-agent_system"
+  ]
+ },
+ {
+  "slug": "mcp",
+  "name": "Model Context Protocol (MCP)",
+  "category": "agentes",
+  "keywords": [
+   "model context protocol",
+   "mcp server",
+   "servidor mcp"
+  ],
+  "wiki": [
+   "Model_Context_Protocol"
+  ]
+ },
+ {
+  "slug": "protocolos-de-agentes",
+  "name": "Protocolos de agentes (A2A, pagos entre agentes)",
+  "category": "agentes",
+  "keywords": [
+   "agent2agent protocol",
+   "a2a protocol",
+   "agentic commerce",
+   "comercio con agentes"
+  ],
+  "wiki": [
+   "Application_programming_interface"
+  ]
+ },
+ {
+  "slug": "memoria-de-agentes",
+  "name": "Memoria y contexto largo en agentes",
+  "category": "agentes",
+  "keywords": [
+   "agent memory",
+   "context engineering",
+   "ingeniería de contexto"
+  ],
+  "wiki": [
+   "Context_window"
+  ]
+ },
+ {
+  "slug": "automatizacion-n8n",
+  "name": "Automatización con n8n y flujos de IA",
+  "category": "herramientas",
+  "keywords": [
+   "n8n",
+   "workflow automation ai",
+   "automatización con ia"
+  ],
+  "wiki": [
+   "N8n"
+  ]
+ },
+ {
+  "slug": "modelos-de-razonamiento",
+  "name": "Modelos de razonamiento",
+  "category": "modelos",
+  "keywords": [
+   "reasoning models",
+   "chain of thought",
+   "modelos de razonamiento"
+  ],
+  "wiki": [
+   "Reasoning_language_model"
+  ]
+ },
+ {
+  "slug": "gpt",
+  "name": "Familia GPT de OpenAI",
+  "category": "modelos",
+  "keywords": [
+   "gpt-6",
+   "openai new model",
+   "nuevo modelo de openai"
+  ],
+  "wiki": [
+   "GPT-5",
+   "OpenAI",
+   "GPT-4"
+  ]
+ },
+ {
+  "slug": "claude-anthropic",
+  "name": "Claude de Anthropic",
+  "category": "modelos",
+  "keywords": [
+   "claude anthropic",
+   "anthropic new model",
+   "anthropic"
+  ],
+  "wiki": [
+   "Claude_(language_model)",
+   "Anthropic"
+  ]
+ },
+ {
+  "slug": "gemini-google",
+  "name": "Gemini de Google",
+  "category": "modelos",
+  "keywords": [
+   "gemini 4",
+   "google gemini",
+   "gemini nuevo modelo"
+  ],
+  "wiki": [
+   "Gemini_(language_model)",
+   "Google_DeepMind"
+  ]
+ },
+ {
+  "slug": "llama-meta",
+  "name": "Modelos de Meta (Llama y sucesores)",
+  "category": "modelos",
+  "keywords": [
+   "meta ai model",
+   "meta superintelligence",
+   "llama"
+  ],
+  "wiki": [
+   "Llama_(language_model)"
+  ]
+ },
+ {
+  "slug": "modelos-abiertos-chinos",
+  "name": "Modelos abiertos chinos (DeepSeek, Qwen, Kimi)",
+  "category": "modelos",
+  "keywords": [
+   "deepseek",
+   "qwen",
+   "kimi k2",
+   "open-weight models china"
+  ],
+  "wiki": [
+   "DeepSeek",
+   "Qwen"
+  ]
+ },
+ {
+  "slug": "modelos-abiertos",
+  "name": "Modelos de pesos abiertos",
+  "category": "modelos",
+  "keywords": [
+   "open-weight models",
+   "open source llm",
+   "modelos abiertos"
+  ],
+  "wiki": [
+   "Open-source_artificial_intelligence",
+   "Hugging_Face"
+  ]
+ },
+ {
+  "slug": "modelos-pequenos-en-dispositivo",
+  "name": "Modelos pequeños e IA en el dispositivo",
+  "category": "modelos",
+  "keywords": [
+   "small language models",
+   "on-device ai",
+   "ia en el dispositivo"
+  ],
+  "wiki": [
+   "Small_language_model"
+  ]
+ },
+ {
+  "slug": "grok-xai",
+  "name": "Grok de xAI",
+  "category": "modelos",
+  "keywords": [
+   "grok xai",
+   "xai grok",
+   "grok"
+  ],
+  "wiki": [
+   "Grok_(chatbot)"
+  ]
+ },
+ {
+  "slug": "mistral",
+  "name": "Mistral AI",
+  "category": "modelos",
+  "keywords": [
+   "mistral ai",
+   "mistral model",
+   "mistral"
+  ],
+  "wiki": [
+   "Mistral_AI"
+  ]
+ },
+ {
+  "slug": "multimodal",
+  "name": "Modelos multimodales",
+  "category": "modelos",
+  "keywords": [
+   "multimodal ai",
+   "multimodal model",
+   "ia multimodal"
+  ],
+  "wiki": [
+   "Multimodal_learning"
+  ]
+ },
+ {
+  "slug": "agi-superinteligencia",
+  "name": "AGI y superinteligencia",
+  "category": "modelos",
+  "keywords": [
+   "agi",
+   "superintelligence",
+   "superinteligencia",
+   "inteligencia artificial general"
+  ],
+  "wiki": [
+   "Artificial_general_intelligence"
+  ]
+ },
+ {
+  "slug": "alucinaciones",
+  "name": "Alucinaciones y confiabilidad de la IA",
+  "category": "modelos",
+  "keywords": [
+   "llm hallucination",
+   "ai hallucinations",
+   "alucinaciones de ia"
+  ],
+  "wiki": [
+   "Hallucination_(artificial_intelligence)"
+  ]
+ },
+ {
+  "slug": "rag-y-conocimiento",
+  "name": "RAG: IA con los datos de tu empresa",
+  "category": "herramientas",
+  "keywords": [
+   "rag retrieval augmented generation",
+   "enterprise search ai",
+   "chat con tus documentos"
+  ],
+  "wiki": [
+   "Retrieval-augmented_generation"
+  ]
+ },
+ {
+  "slug": "segundo-cerebro",
+  "name": "Segundo cerebro y asistentes personales con IA",
+  "category": "herramientas",
+  "keywords": [
+   "second brain ai",
+   "personal ai assistant",
+   "segundo cerebro con ia",
+   "notebooklm"
+  ],
+  "wiki": [
+   "NotebookLM"
+  ]
+ },
+ {
+  "slug": "copilots-oficina",
+  "name": "Copilots de oficina (Microsoft, Google Workspace)",
+  "category": "herramientas",
+  "keywords": [
+   "microsoft copilot",
+   "gemini for workspace",
+   "copilot para empresas"
+  ],
+  "wiki": [
+   "Microsoft_Copilot"
+  ]
+ },
+ {
+  "slug": "chatgpt",
+  "name": "ChatGPT y asistentes de chat",
+  "category": "herramientas",
+  "keywords": [
+   "chatgpt",
+   "chatgpt new features",
+   "chatgpt empresas"
+  ],
+  "wiki": [
+   "ChatGPT"
+  ]
+ },
+ {
+  "slug": "busqueda-con-ia",
+  "name": "Búsqueda con IA (Perplexity, AI Overviews)",
+  "category": "herramientas",
+  "keywords": [
+   "perplexity",
+   "ai overviews",
+   "ai search",
+   "búsqueda con ia"
+  ],
+  "wiki": [
+   "Perplexity_AI",
+   "Generative_engine_optimization"
+  ]
+ },
+ {
+  "slug": "navegadores-con-ia",
+  "name": "Navegadores con IA",
+  "category": "herramientas",
+  "keywords": [
+   "ai browser",
+   "comet browser",
+   "chatgpt atlas",
+   "navegador con ia"
+  ],
+  "wiki": [
+   "Web_browser"
+  ]
+ },
+ {
+  "slug": "vibe-coding",
+  "name": "Vibe coding",
+  "category": "dev",
+  "keywords": [
+   "vibe coding",
+   "programar con ia sin código"
+  ],
+  "wiki": [
+   "Vibe_coding"
+  ]
+ },
+ {
+  "slug": "asistentes-de-codigo",
+  "name": "Asistentes y agentes de programación",
+  "category": "dev",
+  "keywords": [
+   "ai coding agent",
+   "claude code",
+   "codex cli",
+   "cursor ai editor"
+  ],
+  "wiki": [
+   "Cursor_(code_editor)",
+   "GitHub_Copilot"
+  ]
+ },
+ {
+  "slug": "sin-codigo-con-ia",
+  "name": "Apps sin código creadas con IA",
+  "category": "herramientas",
+  "keywords": [
+   "no-code ai app builder",
+   "lovable",
+   "bolt.new",
+   "crear apps con ia sin programar"
+  ],
+  "wiki": [
+   "No-code_development_platform"
+  ]
+ },
+ {
+  "slug": "spec-driven-development",
+  "name": "Desarrollo guiado por especificaciones",
+  "category": "dev",
+  "keywords": [
+   "spec-driven development",
+   "spec driven ai",
+   "desarrollo con especificaciones"
+  ],
+  "wiki": [
+   "Software_requirements_specification"
+  ]
+ },
+ {
+  "slug": "evaluacion-de-ia",
+  "name": "Evaluaciones y benchmarks de LLM",
+  "category": "dev",
+  "keywords": [
+   "llm evals",
+   "ai benchmarks",
+   "evaluación de modelos"
+  ],
+  "wiki": [
+   "Benchmark_(computing)"
+  ]
+ },
+ {
+  "slug": "fine-tuning",
+  "name": "Fine-tuning y aprendizaje por refuerzo",
+  "category": "dev",
+  "keywords": [
+   "fine-tuning llm",
+   "reinforcement learning llm",
+   "rlhf"
+  ],
+  "wiki": [
+   "Fine-tuning_(deep_learning)"
+  ]
+ },
+ {
+  "slug": "inferencia-barata",
+  "name": "Costo de inferencia y tokens baratos",
+  "category": "dev",
+  "keywords": [
+   "llm inference cost",
+   "token price",
+   "costo de modelos de ia"
+  ],
+  "wiki": [
+   "Large_language_model"
+  ]
+ },
+ {
+  "slug": "chips-y-centros-de-datos",
+  "name": "Chips y centros de datos de IA",
+  "category": "negocio",
+  "keywords": [
+   "nvidia ai chips",
+   "ai data center",
+   "centros de datos ia",
+   "gpu shortage"
+  ],
+  "wiki": [
+   "Nvidia",
+   "Graphics_processing_unit"
+  ]
+ },
+ {
+  "slug": "burbuja-de-ia",
+  "name": "¿Burbuja de la IA? Inversión y valoraciones",
+  "category": "negocio",
+  "keywords": [
+   "ai bubble",
+   "ai valuation",
+   "burbuja de la inteligencia artificial"
+  ],
+  "wiki": [
+   "AI_boom",
+   "Dot-com_bubble"
+  ]
+ },
+ {
+  "slug": "roi-de-ia",
+  "name": "ROI de la IA en empresas",
+  "category": "negocio",
+  "keywords": [
+   "ai roi",
+   "return on investment generative ai",
+   "retorno de inversión ia"
+  ],
+  "wiki": [
+   "Return_on_investment"
+  ]
+ },
+ {
+  "slug": "adopcion-en-empresas",
+  "name": "Adopción de IA en empresas",
+  "category": "negocio",
+  "keywords": [
+   "enterprise ai adoption",
+   "ai adoption companies",
+   "adopción de ia en empresas"
+  ],
+  "wiki": [
+   "Digital_transformation"
+  ]
+ },
+ {
+  "slug": "productividad-con-ia",
+  "name": "IA y productividad laboral",
+  "category": "negocio",
+  "keywords": [
+   "ai productivity",
+   "ai workplace productivity",
+   "productividad con inteligencia artificial"
+  ],
+  "wiki": [
+   "Productivity"
+  ]
+ },
+ {
+  "slug": "empleo-e-ia",
+  "name": "Empleo y futuro del trabajo con IA",
+  "category": "negocio",
+  "keywords": [
+   "ai jobs impact",
+   "ai layoffs",
+   "empleo e inteligencia artificial",
+   "futuro del trabajo ia"
+  ],
+  "wiki": [
+   "Technological_unemployment"
+  ]
+ },
+ {
+  "slug": "empresa-nativa-en-ia",
+  "name": "Empresa nativa en IA y transformación de procesos",
+  "category": "negocio",
+  "keywords": [
+   "ai-native company",
+   "ai transformation",
+   "empresa nativa en ia"
+  ],
+  "wiki": [
+   "Digital_transformation"
+  ]
+ },
+ {
+  "slug": "ia-en-latinoamerica",
+  "name": "IA en Latinoamérica",
+  "category": "negocio",
+  "keywords": [
+   "latin america ai",
+   "inteligencia artificial latinoamérica",
+   "ia en colombia",
+   "ia en méxico"
+  ],
+  "wiki": [
+   "Artificial_intelligence"
+  ]
+ },
+ {
+  "slug": "startups-de-ia",
+  "name": "Startups de IA y rondas de inversión",
+  "category": "negocio",
+  "keywords": [
+   "ai startup funding",
+   "ai unicorn",
+   "startups de ia"
+  ],
+  "wiki": [
+   "OpenAI"
+  ]
+ },
+ {
+  "slug": "ia-en-finanzas",
+  "name": "IA en banca y finanzas",
+  "category": "negocio",
+  "keywords": [
+   "ai banking",
+   "ai in finance",
+   "ia en banca"
+  ],
+  "wiki": [
+   "Financial_technology"
+  ]
+ },
+ {
+  "slug": "ia-en-marketing",
+  "name": "IA en marketing y contenido",
+  "category": "negocio",
+  "keywords": [
+   "ai marketing",
+   "generative ai marketing",
+   "marketing con ia"
+  ],
+  "wiki": [
+   "Generative_artificial_intelligence"
+  ]
+ },
+ {
+  "slug": "ia-en-salud",
+  "name": "IA en salud",
+  "category": "negocio",
+  "keywords": [
+   "ai healthcare",
+   "medical ai",
+   "ia en salud"
+  ],
+  "wiki": [
+   "Artificial_intelligence_in_healthcare"
+  ]
+ },
+ {
+  "slug": "ia-en-educacion",
+  "name": "IA en educación",
+  "category": "negocio",
+  "keywords": [
+   "ai in education",
+   "ai tutor",
+   "ia en la educación"
+  ],
+  "wiki": [
+   "Educational_technology",
+   "Artificial_intelligence_in_education"
+  ]
+ },
+ {
+  "slug": "regulacion-ia-ue",
+  "name": "Ley de IA de la Unión Europea",
+  "category": "regulacion",
+  "keywords": [
+   "eu ai act",
+   "ai act",
+   "ley de ia europea"
+  ],
+  "wiki": [
+   "Artificial_Intelligence_Act"
+  ]
+ },
+ {
+  "slug": "regulacion-ia-latam",
+  "name": "Regulación de IA en Latinoamérica",
+  "category": "regulacion",
+  "keywords": [
+   "regulación de ia colombia",
+   "ley de inteligencia artificial méxico",
+   "brasil marco legal ia"
+  ],
+  "wiki": [
+   "Regulation_of_artificial_intelligence"
+  ]
+ },
+ {
+  "slug": "regulacion-ia-eeuu",
+  "name": "Regulación de IA en EE. UU.",
+  "category": "regulacion",
+  "keywords": [
+   "us ai regulation",
+   "ai executive order",
+   "state ai laws"
+  ],
+  "wiki": [
+   "Regulation_of_artificial_intelligence"
+  ]
+ },
+ {
+  "slug": "seguridad-y-alineacion",
+  "name": "Seguridad y alineación de IA",
+  "category": "regulacion",
+  "keywords": [
+   "ai safety",
+   "ai alignment",
+   "seguridad de la ia"
+  ],
+  "wiki": [
+   "AI_alignment",
+   "AI_safety"
+  ]
+ },
+ {
+  "slug": "gobernanza-de-ia",
+  "name": "Gobernanza y ética de IA en empresas",
+  "category": "regulacion",
+  "keywords": [
+   "ai governance",
+   "responsible ai",
+   "gobernanza de ia"
+  ],
+  "wiki": [
+   "Ethics_of_artificial_intelligence"
+  ]
+ },
+ {
+  "slug": "privacidad-de-datos-ia",
+  "name": "Privacidad de datos y IA",
+  "category": "regulacion",
+  "keywords": [
+   "ai privacy",
+   "data protection ai",
+   "privacidad datos ia"
+  ],
+  "wiki": [
+   "Information_privacy"
+  ]
+ },
+ {
+  "slug": "derechos-de-autor-ia",
+  "name": "Derechos de autor y entrenamiento de IA",
+  "category": "regulacion",
+  "keywords": [
+   "ai copyright lawsuit",
+   "ai training data copyright",
+   "derechos de autor ia"
+  ],
+  "wiki": [
+   "Artificial_intelligence_and_copyright"
+  ]
+ },
+ {
+  "slug": "deepfakes",
+  "name": "Deepfakes y desinformación",
+  "category": "regulacion",
+  "keywords": [
+   "deepfake",
+   "ai misinformation",
+   "deepfakes"
+  ],
+  "wiki": [
+   "Deepfake"
+  ]
+ },
+ {
+  "slug": "video-generativo",
+  "name": "Video generativo (Sora, Veo, Kling)",
+  "category": "creatividad",
+  "keywords": [
+   "sora",
+   "veo 3",
+   "kling ai",
+   "ai video generator",
+   "video con ia"
+  ],
+  "wiki": [
+   "Sora_(text-to-video_model)",
+   "Generative_artificial_intelligence"
+  ]
+ },
+ {
+  "slug": "imagen-generativa",
+  "name": "Imágenes con IA",
+  "category": "creatividad",
+  "keywords": [
+   "ai image generation",
+   "midjourney",
+   "nano banana",
+   "imágenes con ia"
+  ],
+  "wiki": [
+   "Text-to-image_model",
+   "Midjourney"
+  ]
+ },
+ {
+  "slug": "musica-con-ia",
+  "name": "Música generada con IA",
+  "category": "creatividad",
+  "keywords": [
+   "suno ai",
+   "ai music",
+   "música con inteligencia artificial"
+  ],
+  "wiki": [
+   "Suno_AI"
+  ]
+ },
+ {
+  "slug": "avatares-y-voces",
+  "name": "Avatares y clonación de voz",
+  "category": "creatividad",
+  "keywords": [
+   "ai avatar",
+   "voice cloning",
+   "avatares con ia"
+  ],
+  "wiki": [
+   "Voice_cloning"
+  ]
+ },
+ {
+  "slug": "contenido-ia-slop",
+  "name": "Contenido basura de IA (slop) y autenticidad",
+  "category": "creatividad",
+  "keywords": [
+   "ai slop",
+   "ai generated content flood",
+   "contenido hecho con ia"
+  ],
+  "wiki": [
+   "AI_slop"
+  ]
+ },
+ {
+  "slug": "robotica-humanoides",
+  "name": "Robots humanoides",
+  "category": "creatividad",
+  "keywords": [
+   "humanoid robot",
+   "figure robot",
+   "robots humanoides"
+  ],
+  "wiki": [
+   "Humanoid_robot",
+   "Tesla_Optimus"
+  ]
+ },
+ {
+  "slug": "vehiculos-autonomos",
+  "name": "Vehículos autónomos y robotaxis",
+  "category": "negocio",
+  "keywords": [
+   "robotaxi",
+   "waymo",
+   "autonomous vehicles"
+  ],
+  "wiki": [
+   "Self-driving_car",
+   "Waymo"
+  ]
+ }
+]
