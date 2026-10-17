@@ -4,6 +4,7 @@ Cada fetch_* devuelve una lista de Signals (ver SPEC.md) y nunca lanza: si la re
 imprime un aviso y devuelve []. Solo stdlib.
 """
 import json
+import re
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET  # ponytail: expat de py3.13 no resuelve entidades externas; fuentes fijas (Google/YouTube)
@@ -104,6 +105,14 @@ YT = {"a": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/sche
       "media": "http://search.yahoo.com/mrss/"}
 
 
+# ponytail: regex simple; quita emails, URLs y @handles de textos libres (descripciones) antes de guardarlos.
+_PII = re.compile(r"[\w.+-]+@[\w-]+(\.[\w-]+)+|https?://\S+|www\.\S+|(?<!\w)@\w[\w.]*")
+
+
+def sin_pii(texto: str) -> str:
+    return re.sub(r"\s+", " ", _PII.sub("", texto or "")).strip()
+
+
 def parse_youtube(crudo: bytes, canal: dict) -> list:
     out = []
     for e in ET.fromstring(crudo).findall("a:entry", YT):
@@ -114,7 +123,7 @@ def parse_youtube(crudo: bytes, canal: dict) -> list:
         rating = e.find(".//media:starRating", YT)
         out.append({
             "id": f"youtube:{vid}", "source": "youtube", "url": f"https://www.youtube.com/watch?v={vid}",
-            "title": e.findtext("a:title", default="", namespaces=YT), "text": desc[:500], "lang": canal.get("lang", "en"),
+            "title": e.findtext("a:title", default="", namespaces=YT), "text": sin_pii(desc)[:500], "lang": canal.get("lang", "en"),
             "published_at": _iso(datetime.fromisoformat(e.findtext("a:published", namespaces=YT))),
             "author_type": canal.get("author_type", "creador"),
             "metrics": {"points": int(rating.get("count", 0)) if rating is not None else 0, "comments": 0,
