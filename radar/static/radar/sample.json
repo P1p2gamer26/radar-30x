@@ -1,0 +1,515 @@
+{
+  "generated_at": "2026-10-15T13:00:00Z",
+  "week": "2026-W42",
+  "window_days": 14,
+  "sources": [
+    {"name": "hn", "label": "Hacker News", "signals": 210},
+    {"name": "gnews", "label": "Google News", "signals": 340},
+    {"name": "youtube", "label": "YouTube", "signals": 180},
+    {"name": "wiki", "label": "Wikipedia", "signals": 90},
+    {"name": "comunidad", "label": "Comunidad", "signals": 80}
+  ],
+  "totals": {
+    "signals": 900,
+    "labeled": 900,
+    "teacher_cost_usd": 0.41,
+    "student_cost_usd": 0.0,
+    "cost_per_signal_usd": 0.00045,
+    "paid_alternative_usd_year": 12000
+  },
+  "student": {"accuracy_topic": 0.86, "accuracy_format": 0.7, "n_train": 700, "n_test": 200},
+  "topics": [
+    {
+      "slug": "agentes-ia",
+      "name": "Agentes de IA",
+      "rank": 1,
+      "stage": "temprana",
+      "growth": 2.3,
+      "z": 1.8,
+      "volume": 42,
+      "series": [3, 4, 3, 5, 6, 5, 7, 8, 9, 12, 14, 16, 19, 22],
+      "wiki_series": [120, 118, 125, 130, 128, 140, 145, 150, 160, 175, 190, 210, 230, 260],
+      "momentum": 0.87,
+      "exec_fit": 0.81,
+      "p": 0.84,
+      "decision": "Recomendar",
+      "reason": "Crece x2.3 vs su base, 9 de 12 piezas sirven a ejecutivos, formato ganador: caso-de-uso.",
+      "why": {
+        "format_winner": "caso-de-uso",
+        "hook_winner": "numero-dato",
+        "best_day": "martes",
+        "author_mix": {"medio": 0.5, "creador": 0.3, "empresa": 0.15, "comunidad": 0.05},
+        "formats": {"caso-de-uso": 0.4, "tutorial-pantalla": 0.25, "noticia-explicada": 0.2, "entrevista-podcast": 0.15},
+        "hooks": {"numero-dato": 0.3, "promesa-ahorro": 0.25, "contraste-antes-despues": 0.2, "lista-top": 0.15, "pregunta": 0.1}
+      },
+      "top_signals": [
+        {"title": "Cómo un agente de IA redujo el tiempo de cierre contable en 70%", "url": "https://example.com/agentes-ia/1", "source": "gnews", "published_at": "2026-10-14T09:00:00Z", "metrics": {"points": 0, "comments": 0, "views": 15000}, "format": "caso-de-uso", "hook": "numero-dato", "velocity": 18.2},
+        {"title": "Show HN: un agente que negocia contratos con proveedores", "url": "https://example.com/agentes-ia/2", "source": "hn", "published_at": "2026-10-13T15:30:00Z", "metrics": {"points": 410, "comments": 220, "views": 0}, "format": "herramienta-demo", "hook": "promesa-ahorro", "velocity": 22.4},
+        {"title": "5 agentes de IA que ya usan bancos en LatAm", "url": "https://example.com/agentes-ia/3", "source": "youtube", "published_at": "2026-10-12T12:00:00Z", "metrics": {"points": 0, "comments": 340, "views": 98000}, "format": "carrusel-lista", "hook": "lista-top", "velocity": 14.9}
+      ],
+      "adapt": {
+        "title": "El agente de IA que le ahorra 10 horas a la semana a tu equipo",
+        "hook": "primeros 3 s",
+        "format": "reel-cara",
+        "beats": [
+          "Un ejecutivo mostrando su calendario saturado antes del agente.",
+          "El mismo calendario, vacío de tareas repetitivas, después del agente.",
+          "Cifra en pantalla: 70% menos tiempo en cierre contable.",
+          "Llamado a probar el caso de uso con datos propios."
+        ],
+        "cta": "Agenda una demo de 20 minutos con tu equipo."
+      }
+    },
+    {
+      "slug": "vibe-coding",
+      "name": "Vibe coding",
+      "rank": 2,
+      "stage": "creciendo",
+      "growth": 1.9,
+      "z": 1.4,
+      "volume": 55,
+      "series": [5, 6, 6, 7, 8, 9, 10, 11, 13, 15, 17, 18, 20, 23],
+      "wiki_series": [80, 85, 88, 90, 95, 100, 102, 108, 115, 120, 130, 140, 150, 165],
+      "momentum": 0.78,
+      "exec_fit": 0.69,
+      "p": 0.735,
+      "decision": "Recomendar",
+      "reason": "Crece x1.9 vs su base, 7 de 10 piezas sirven a ejecutivos, formato ganador: tutorial-pantalla.",
+      "why": {
+        "format_winner": "tutorial-pantalla",
+        "hook_winner": "contraste-antes-despues",
+        "best_day": "miércoles",
+        "author_mix": {"creador": 0.55, "medio": 0.2, "empresa": 0.15, "comunidad": 0.1},
+        "formats": {"tutorial-pantalla": 0.45, "opinion-polemica": 0.2, "caso-de-uso": 0.2, "herramienta-demo": 0.15},
+        "hooks": {"contraste-antes-despues": 0.3, "numero-dato": 0.25, "secreto-truco": 0.25, "pregunta": 0.2}
+      },
+      "top_signals": [
+        {"title": "Programé una app completa en un fin de semana sin escribir código a mano", "url": "https://example.com/vibe-coding/1", "source": "youtube", "published_at": "2026-10-14T10:00:00Z", "metrics": {"points": 0, "comments": 500, "views": 210000}, "format": "tutorial-pantalla", "hook": "contraste-antes-despues", "velocity": 25.1},
+        {"title": "Show HN: mi editor con vibe coding integrado", "url": "https://example.com/vibe-coding/2", "source": "hn", "published_at": "2026-10-13T08:00:00Z", "metrics": {"points": 320, "comments": 180, "views": 0}, "format": "herramienta-demo", "hook": "secreto-truco", "velocity": 19.3},
+        {"title": "El vibe coding no reemplaza a tu equipo, lo multiplica", "url": "https://example.com/vibe-coding/3", "source": "gnews", "published_at": "2026-10-12T11:00:00Z", "metrics": {"points": 0, "comments": 0, "views": 12000}, "format": "opinion-polemica", "hook": "pregunta", "velocity": 10.5}
+      ],
+      "adapt": {
+        "title": "Así construimos un prototipo funcional en una tarde con vibe coding",
+        "hook": "primeros 3 s",
+        "format": "tutorial-pantalla",
+        "beats": [
+          "Pantalla en blanco y un reloj corriendo.",
+          "El prototipo tomando forma con cada instrucción en español.",
+          "Comparación de costo: una tarde vs. un sprint completo.",
+          "Invitación a aplicarlo en el próximo proyecto del equipo."
+        ],
+        "cta": "Descarga la guía de vibe coding para equipos ejecutivos."
+      }
+    },
+    {
+      "slug": "modelos-nuevos",
+      "name": "Modelos nuevos",
+      "rank": 3,
+      "stage": "creciendo",
+      "growth": 1.6,
+      "z": 1.1,
+      "volume": 60,
+      "series": [8, 9, 9, 10, 11, 10, 12, 13, 14, 15, 16, 17, 19, 21],
+      "wiki_series": [200, 205, 210, 208, 215, 220, 225, 230, 235, 240, 250, 260, 270, 285],
+      "momentum": 0.66,
+      "exec_fit": 0.72,
+      "p": 0.69,
+      "decision": "Aprender",
+      "reason": "Crece x1.6 vs su base, 8 de 12 piezas sirven a ejecutivos, formato ganador: noticia-explicada.",
+      "why": {
+        "format_winner": "noticia-explicada",
+        "hook_winner": "noticia-ultima-hora",
+        "best_day": "lunes",
+        "author_mix": {"medio": 0.6, "empresa": 0.25, "creador": 0.1, "comunidad": 0.05},
+        "formats": {"noticia-explicada": 0.4, "informe-datos": 0.3, "entrevista-podcast": 0.2, "opinion-polemica": 0.1},
+        "hooks": {"noticia-ultima-hora": 0.35, "numero-dato": 0.3, "autoridad": 0.2, "pregunta": 0.15}
+      },
+      "top_signals": [
+        {"title": "Nuevo modelo promete razonamiento más confiable en tareas financieras", "url": "https://example.com/modelos-nuevos/1", "source": "gnews", "published_at": "2026-10-14T07:00:00Z", "metrics": {"points": 0, "comments": 0, "views": 22000}, "format": "noticia-explicada", "hook": "noticia-ultima-hora", "velocity": 16.7},
+        {"title": "Comparativa: el modelo nuevo vs el anterior en benchmarks de negocio", "url": "https://example.com/modelos-nuevos/2", "source": "hn", "published_at": "2026-10-13T09:00:00Z", "metrics": {"points": 260, "comments": 140, "views": 0}, "format": "informe-datos", "hook": "numero-dato", "velocity": 13.4},
+        {"title": "Lo que cambia para las empresas con el modelo recién lanzado", "url": "https://example.com/modelos-nuevos/3", "source": "youtube", "published_at": "2026-10-12T14:00:00Z", "metrics": {"points": 0, "comments": 90, "views": 54000}, "format": "entrevista-podcast", "hook": "autoridad", "velocity": 9.8}
+      ],
+      "adapt": {
+        "title": "Lo que el modelo nuevo cambia para tu negocio en LatAm",
+        "hook": "primeros 3 s",
+        "format": "noticia-explicada",
+        "beats": [
+          "Titular del lanzamiento en pantalla.",
+          "Traducción a un caso de negocio concreto.",
+          "Qué sigue igual y qué cambia para tu equipo.",
+          "Recomendación clara: adoptar, esperar o ignorar."
+        ],
+        "cta": "Suscríbete para recibir el análisis de cada lanzamiento."
+      }
+    },
+    {
+      "slug": "ia-ventas-marketing",
+      "name": "IA en ventas y marketing",
+      "rank": 4,
+      "stage": "creciendo",
+      "growth": 1.5,
+      "z": 1.0,
+      "volume": 48,
+      "series": [6, 6, 7, 7, 8, 9, 9, 10, 11, 12, 13, 14, 15, 17],
+      "wiki_series": [60, 62, 65, 64, 68, 70, 72, 75, 78, 82, 86, 90, 95, 100],
+      "momentum": 0.6,
+      "exec_fit": 0.75,
+      "p": 0.675,
+      "decision": "Aprender",
+      "reason": "Crece x1.5 vs su base, 8 de 11 piezas sirven a ejecutivos, formato ganador: caso-de-uso.",
+      "why": {
+        "format_winner": "caso-de-uso",
+        "hook_winner": "promesa-ahorro",
+        "best_day": "jueves",
+        "author_mix": {"empresa": 0.4, "medio": 0.3, "creador": 0.2, "comunidad": 0.1},
+        "formats": {"caso-de-uso": 0.35, "informe-datos": 0.3, "carrusel-lista": 0.2, "entrevista-podcast": 0.15},
+        "hooks": {"promesa-ahorro": 0.3, "numero-dato": 0.25, "lista-top": 0.25, "contraste-antes-despues": 0.2}
+      },
+      "top_signals": [
+        {"title": "La IA que escribe el 80% de las campañas de una marca regional", "url": "https://example.com/ia-ventas-marketing/1", "source": "gnews", "published_at": "2026-10-14T08:30:00Z", "metrics": {"points": 0, "comments": 0, "views": 18000}, "format": "caso-de-uso", "hook": "numero-dato", "velocity": 12.1},
+        {"title": "Cómo automatizar el seguimiento de leads sin perder el trato cercano", "url": "https://example.com/ia-ventas-marketing/2", "source": "youtube", "published_at": "2026-10-13T13:00:00Z", "metrics": {"points": 0, "comments": 60, "views": 42000}, "format": "tutorial-pantalla", "hook": "promesa-ahorro", "velocity": 10.3},
+        {"title": "5 herramientas de IA que ya usan los equipos de ventas en Bogotá", "url": "https://example.com/ia-ventas-marketing/3", "source": "hn", "published_at": "2026-10-12T16:00:00Z", "metrics": {"points": 90, "comments": 40, "views": 0}, "format": "carrusel-lista", "hook": "lista-top", "velocity": 7.6}
+      ],
+      "adapt": {
+        "title": "La IA que recupera clientes que creías perdidos",
+        "hook": "primeros 3 s",
+        "format": "caso-de-uso",
+        "beats": [
+          "Lista de clientes inactivos en pantalla.",
+          "La IA generando un mensaje personalizado por cliente.",
+          "Resultado: porcentaje de clientes reactivados.",
+          "Paso a paso para implementarlo esta semana."
+        ],
+        "cta": "Escríbenos para ver el caso completo."
+      }
+    },
+    {
+      "slug": "automatizacion-procesos",
+      "name": "Automatización de procesos",
+      "rank": 5,
+      "stage": "estable",
+      "growth": 1.3,
+      "z": 0.6,
+      "volume": 70,
+      "series": [10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 16, 16, 17],
+      "wiki_series": [140, 142, 145, 143, 148, 150, 152, 155, 158, 160, 163, 166, 170, 174],
+      "momentum": 0.52,
+      "exec_fit": 0.7,
+      "p": 0.61,
+      "decision": "Aprender",
+      "reason": "Crece x1.3 vs su base, 7 de 11 piezas sirven a ejecutivos, formato ganador: informe-datos.",
+      "why": {
+        "format_winner": "informe-datos",
+        "hook_winner": "numero-dato",
+        "best_day": "martes",
+        "author_mix": {"empresa": 0.45, "medio": 0.3, "comunidad": 0.15, "creador": 0.1},
+        "formats": {"informe-datos": 0.4, "caso-de-uso": 0.3, "noticia-explicada": 0.2, "entrevista-podcast": 0.1},
+        "hooks": {"numero-dato": 0.35, "promesa-ahorro": 0.3, "autoridad": 0.2, "pregunta": 0.15}
+      },
+      "top_signals": [
+        {"title": "El informe que muestra cuánto ahorran las empresas automatizando procesos con IA", "url": "https://example.com/automatizacion-procesos/1", "source": "gnews", "published_at": "2026-10-14T06:00:00Z", "metrics": {"points": 0, "comments": 0, "views": 9000}, "format": "informe-datos", "hook": "numero-dato", "velocity": 8.2},
+        {"title": "Automatizamos la facturación y liberamos 15 horas semanales", "url": "https://example.com/automatizacion-procesos/2", "source": "youtube", "published_at": "2026-10-13T10:00:00Z", "metrics": {"points": 0, "comments": 30, "views": 21000}, "format": "caso-de-uso", "hook": "promesa-ahorro", "velocity": 6.9},
+        {"title": "Show HN: motor de reglas que aprende de tus procesos", "url": "https://example.com/automatizacion-procesos/3", "source": "hn", "published_at": "2026-10-12T09:00:00Z", "metrics": {"points": 150, "comments": 70, "views": 0}, "format": "herramienta-demo", "hook": "autoridad", "velocity": 5.4}
+      ],
+      "adapt": {
+        "title": "El proceso que automatizamos y nadie extraña",
+        "hook": "primeros 3 s",
+        "format": "informe-datos",
+        "beats": [
+          "El proceso manual mostrado en un diagrama lento.",
+          "El mismo proceso automatizado en segundos.",
+          "Cifra de horas ahorradas al mes.",
+          "Cómo identificar el siguiente proceso a automatizar."
+        ],
+        "cta": "Pide el diagnóstico gratuito de tus procesos."
+      }
+    },
+    {
+      "slug": "copilotos-productividad",
+      "name": "Copilotos de productividad",
+      "rank": 6,
+      "stage": "estable",
+      "growth": 1.2,
+      "z": 0.5,
+      "volume": 65,
+      "series": [9, 9, 10, 10, 11, 11, 11, 12, 12, 13, 13, 14, 14, 15],
+      "wiki_series": [110, 112, 114, 113, 116, 118, 120, 122, 124, 126, 128, 130, 133, 136],
+      "momentum": 0.47,
+      "exec_fit": 0.66,
+      "p": 0.565,
+      "decision": "Aprender",
+      "reason": "Crece x1.2 vs su base, 6 de 10 piezas sirven a ejecutivos, formato ganador: tutorial-pantalla.",
+      "why": {
+        "format_winner": "tutorial-pantalla",
+        "hook_winner": "promesa-ahorro",
+        "best_day": "miércoles",
+        "author_mix": {"creador": 0.4, "empresa": 0.3, "medio": 0.2, "comunidad": 0.1},
+        "formats": {"tutorial-pantalla": 0.35, "caso-de-uso": 0.3, "carrusel-lista": 0.2, "opinion-polemica": 0.15},
+        "hooks": {"promesa-ahorro": 0.3, "contraste-antes-despues": 0.25, "lista-top": 0.25, "pregunta": 0.2}
+      },
+      "top_signals": [
+        {"title": "El copiloto que redacta el 60% de los correos de un equipo directivo", "url": "https://example.com/copilotos-productividad/1", "source": "gnews", "published_at": "2026-10-14T05:30:00Z", "metrics": {"points": 0, "comments": 0, "views": 11000}, "format": "caso-de-uso", "hook": "numero-dato", "velocity": 7.1},
+        {"title": "3 copilotos que probamos durante un mes en la oficina", "url": "https://example.com/copilotos-productividad/2", "source": "youtube", "published_at": "2026-10-13T12:00:00Z", "metrics": {"points": 0, "comments": 45, "views": 30000}, "format": "tutorial-pantalla", "hook": "contraste-antes-despues", "velocity": 6.0},
+        {"title": "Show HN: copiloto de escritorio de código abierto", "url": "https://example.com/copilotos-productividad/3", "source": "hn", "published_at": "2026-10-12T10:00:00Z", "metrics": {"points": 110, "comments": 55, "views": 0}, "format": "herramienta-demo", "hook": "secreto-truco", "velocity": 4.8}
+      ],
+      "adapt": {
+        "title": "El copiloto que le devolvió dos horas al día a un gerente",
+        "hook": "primeros 3 s",
+        "format": "tutorial-pantalla",
+        "beats": [
+          "La bandeja de entrada saturada al inicio del día.",
+          "El copiloto resumiendo y priorizando en segundos.",
+          "El gerente saliendo a tiempo de la oficina.",
+          "Invitación a probarlo una semana."
+        ],
+        "cta": "Prueba el copiloto gratis por 7 días."
+      }
+    },
+    {
+      "slug": "roi-adopcion",
+      "name": "ROI y adopción",
+      "rank": 7,
+      "stage": "estable",
+      "growth": 1.15,
+      "z": 0.4,
+      "volume": 58,
+      "series": [7, 7, 8, 8, 8, 9, 9, 9, 10, 10, 11, 11, 12, 12],
+      "wiki_series": [50, 51, 52, 52, 53, 54, 55, 56, 57, 58, 59, 60, 62, 64],
+      "momentum": 0.43,
+      "exec_fit": 0.73,
+      "p": 0.58,
+      "decision": "Aprender",
+      "reason": "Crece x1.15 vs su base, 8 de 11 piezas sirven a ejecutivos, formato ganador: informe-datos.",
+      "why": {
+        "format_winner": "informe-datos",
+        "hook_winner": "autoridad",
+        "best_day": "lunes",
+        "author_mix": {"empresa": 0.5, "medio": 0.25, "academia": 0.15, "creador": 0.1},
+        "formats": {"informe-datos": 0.45, "entrevista-podcast": 0.25, "caso-de-uso": 0.2, "opinion-polemica": 0.1},
+        "hooks": {"autoridad": 0.3, "numero-dato": 0.3, "promesa-ahorro": 0.2, "pregunta": 0.2}
+      },
+      "top_signals": [
+        {"title": "El estudio que mide el retorno real de la IA en 200 empresas de LatAm", "url": "https://example.com/roi-adopcion/1", "source": "gnews", "published_at": "2026-10-14T04:00:00Z", "metrics": {"points": 0, "comments": 0, "views": 8000}, "format": "informe-datos", "hook": "numero-dato", "velocity": 5.9},
+        {"title": "Por qué el 40% de los proyectos de IA no llegan a producción", "url": "https://example.com/roi-adopcion/2", "source": "hn", "published_at": "2026-10-13T07:00:00Z", "metrics": {"points": 180, "comments": 95, "views": 0}, "format": "opinion-polemica", "hook": "autoridad", "velocity": 7.2},
+        {"title": "La charla donde un CFO explica el retorno de su primer piloto de IA", "url": "https://example.com/roi-adopcion/3", "source": "youtube", "published_at": "2026-10-12T15:00:00Z", "metrics": {"points": 0, "comments": 28, "views": 17000}, "format": "entrevista-podcast", "hook": "autoridad", "velocity": 4.3}
+      ],
+      "adapt": {
+        "title": "El piloto de IA que sí llegó a producción",
+        "hook": "primeros 3 s",
+        "format": "entrevista-podcast",
+        "beats": [
+          "La pregunta: ¿por qué fallan los pilotos de IA?",
+          "La respuesta del ejecutivo en primera persona.",
+          "El dato de retorno que convenció al comité.",
+          "La lección para replicarlo en otra empresa."
+        ],
+        "cta": "Escucha la entrevista completa en el enlace."
+      }
+    },
+    {
+      "slug": "ia-generativa-video",
+      "name": "IA generativa de video",
+      "rank": 8,
+      "stage": "bajando",
+      "growth": 0.9,
+      "z": -0.3,
+      "volume": 75,
+      "series": [20, 19, 18, 18, 17, 16, 16, 15, 14, 14, 13, 13, 12, 12],
+      "wiki_series": [300, 295, 290, 285, 280, 275, 270, 265, 260, 255, 250, 245, 240, 235],
+      "momentum": 0.3,
+      "exec_fit": 0.5,
+      "p": 0.4,
+      "decision": "Descartar",
+      "reason": "Baja a x0.9 vs su base, solo 5 de 12 piezas sirven a ejecutivos, formato ganador: herramienta-demo.",
+      "why": {
+        "format_winner": "herramienta-demo",
+        "hook_winner": "promesa-ahorro",
+        "best_day": "viernes",
+        "author_mix": {"creador": 0.5, "medio": 0.2, "empresa": 0.2, "comunidad": 0.1},
+        "formats": {"herramienta-demo": 0.4, "tutorial-pantalla": 0.3, "meme-humor": 0.2, "opinion-polemica": 0.1},
+        "hooks": {"promesa-ahorro": 0.3, "secreto-truco": 0.25, "numero-dato": 0.25, "pregunta": 0.2}
+      },
+      "top_signals": [
+        {"title": "El nuevo generador de video con IA que ya satura las redes", "url": "https://example.com/ia-generativa-video/1", "source": "youtube", "published_at": "2026-10-14T03:00:00Z", "metrics": {"points": 0, "comments": 200, "views": 90000}, "format": "herramienta-demo", "hook": "promesa-ahorro", "velocity": 3.1},
+        {"title": "Show HN: generador de video de código abierto", "url": "https://example.com/ia-generativa-video/2", "source": "hn", "published_at": "2026-10-13T06:00:00Z", "metrics": {"points": 95, "comments": 40, "views": 0}, "format": "tutorial-pantalla", "hook": "secreto-truco", "velocity": 2.2},
+        {"title": "El meme del video generado por IA que no pudo con las manos", "url": "https://example.com/ia-generativa-video/3", "source": "gnews", "published_at": "2026-10-12T05:00:00Z", "metrics": {"points": 0, "comments": 0, "views": 6000}, "format": "meme-humor", "hook": "pregunta", "velocity": 1.5}
+      ],
+      "adapt": {
+        "title": "Lo que ya no sorprende del video generado por IA",
+        "hook": "primeros 3 s",
+        "format": "opinion-polemica",
+        "beats": [
+          "Clips virales de hace un año.",
+          "Los mismos clips comparados con hoy.",
+          "La pregunta: ¿qué sigue después de la novedad?",
+          "Cierre con una postura clara."
+        ],
+        "cta": "Cuéntanos tu opinión en los comentarios."
+      }
+    },
+    {
+      "slug": "regulacion-etica",
+      "name": "Regulación y ética",
+      "rank": 9,
+      "stage": "estable",
+      "growth": 1.05,
+      "z": 0.1,
+      "volume": 40,
+      "series": [5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8],
+      "wiki_series": [40, 41, 41, 42, 42, 43, 43, 44, 44, 45, 45, 46, 46, 47],
+      "momentum": 0.37,
+      "exec_fit": 0.6,
+      "p": 0.485,
+      "decision": "Descartar",
+      "reason": "Crece apenas x1.05 vs su base, 6 de 12 piezas sirven a ejecutivos, formato ganador: noticia-explicada.",
+      "why": {
+        "format_winner": "noticia-explicada",
+        "hook_winner": "autoridad",
+        "best_day": "jueves",
+        "author_mix": {"medio": 0.5, "academia": 0.25, "empresa": 0.15, "comunidad": 0.1},
+        "formats": {"noticia-explicada": 0.4, "informe-datos": 0.3, "entrevista-podcast": 0.2, "opinion-polemica": 0.1},
+        "hooks": {"autoridad": 0.35, "numero-dato": 0.25, "noticia-ultima-hora": 0.2, "pregunta": 0.2}
+      },
+      "top_signals": [
+        {"title": "La nueva regulación de IA que afecta a empresas que operan en varios países", "url": "https://example.com/regulacion-etica/1", "source": "gnews", "published_at": "2026-10-14T02:00:00Z", "metrics": {"points": 0, "comments": 0, "views": 7000}, "format": "noticia-explicada", "hook": "noticia-ultima-hora", "velocity": 2.8},
+        {"title": "Lo que dice el nuevo marco ético sobre el uso de datos de clientes", "url": "https://example.com/regulacion-etica/2", "source": "hn", "published_at": "2026-10-13T05:00:00Z", "metrics": {"points": 60, "comments": 30, "views": 0}, "format": "informe-datos", "hook": "autoridad", "velocity": 2.0},
+        {"title": "Entrevista con una académica sobre los límites de la IA en decisiones", "url": "https://example.com/regulacion-etica/3", "source": "youtube", "published_at": "2026-10-12T04:00:00Z", "metrics": {"points": 0, "comments": 15, "views": 9000}, "format": "entrevista-podcast", "hook": "autoridad", "velocity": 1.4}
+      ],
+      "adapt": {
+        "title": "Lo que tu empresa necesita saber antes de que llegue la regulación",
+        "hook": "primeros 3 s",
+        "format": "noticia-explicada",
+        "beats": [
+          "Titular de la nueva regulación.",
+          "Traducción a tres obligaciones concretas.",
+          "El riesgo de ignorarla.",
+          "Checklist para prepararse esta semana."
+        ],
+        "cta": "Descarga el checklist de cumplimiento."
+      }
+    },
+    {
+      "slug": "ia-finanzas",
+      "name": "IA en finanzas",
+      "rank": 10,
+      "stage": "creciendo",
+      "growth": 1.4,
+      "z": 0.9,
+      "volume": 38,
+      "series": [4, 4, 5, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10],
+      "wiki_series": [70, 71, 72, 73, 74, 75, 77, 78, 80, 82, 84, 86, 88, 91],
+      "momentum": 0.56,
+      "exec_fit": 0.62,
+      "p": 0.59,
+      "decision": "Aprender",
+      "reason": "Crece x1.4 vs su base, 7 de 10 piezas sirven a ejecutivos, formato ganador: caso-de-uso.",
+      "why": {
+        "format_winner": "caso-de-uso",
+        "hook_winner": "numero-dato",
+        "best_day": "martes",
+        "author_mix": {"empresa": 0.45, "medio": 0.3, "academia": 0.15, "creador": 0.1},
+        "formats": {"caso-de-uso": 0.4, "informe-datos": 0.3, "noticia-explicada": 0.2, "entrevista-podcast": 0.1},
+        "hooks": {"numero-dato": 0.35, "promesa-ahorro": 0.25, "autoridad": 0.25, "pregunta": 0.15}
+      },
+      "top_signals": [
+        {"title": "El banco que redujo el fraude 30% con un modelo de IA propio", "url": "https://example.com/ia-finanzas/1", "source": "gnews", "published_at": "2026-10-14T01:00:00Z", "metrics": {"points": 0, "comments": 0, "views": 10000}, "format": "caso-de-uso", "hook": "numero-dato", "velocity": 4.6},
+        {"title": "Cómo usar IA para proyectar flujo de caja sin un equipo de datos", "url": "https://example.com/ia-finanzas/2", "source": "youtube", "published_at": "2026-10-13T04:00:00Z", "metrics": {"points": 0, "comments": 25, "views": 14000}, "format": "tutorial-pantalla", "hook": "promesa-ahorro", "velocity": 3.9},
+        {"title": "Show HN: modelo abierto para detección de fraude financiero", "url": "https://example.com/ia-finanzas/3", "source": "hn", "published_at": "2026-10-12T03:00:00Z", "metrics": {"points": 75, "comments": 35, "views": 0}, "format": "herramienta-demo", "hook": "autoridad", "velocity": 2.7}
+      ],
+      "adapt": {
+        "title": "El modelo que detectó el fraude antes que el equipo humano",
+        "hook": "primeros 3 s",
+        "format": "caso-de-uso",
+        "beats": [
+          "Una transacción sospechosa marcada en tiempo real.",
+          "El proceso manual que hubiera tardado días.",
+          "Cifra de fraude evitado en el trimestre.",
+          "Cómo empezar con los datos que ya tienes."
+        ],
+        "cta": "Solicita el análisis de riesgo de tu cartera."
+      }
+    },
+    {
+      "slug": "ia-educacion-talento",
+      "name": "IA en educación y talento",
+      "rank": 11,
+      "stage": "bajando",
+      "growth": 0.85,
+      "z": -0.5,
+      "volume": 30,
+      "series": [6, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 3, 2, 2],
+      "wiki_series": [55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42],
+      "momentum": 0.2,
+      "exec_fit": 0.45,
+      "p": 0.325,
+      "decision": "Descartar",
+      "reason": "Baja a x0.85 vs su base, solo 4 de 11 piezas sirven a ejecutivos, formato ganador: tutorial-pantalla.",
+      "why": {
+        "format_winner": "tutorial-pantalla",
+        "hook_winner": "promesa-ahorro",
+        "best_day": "lunes",
+        "author_mix": {"academia": 0.4, "medio": 0.3, "creador": 0.2, "comunidad": 0.1},
+        "formats": {"tutorial-pantalla": 0.35, "informe-datos": 0.3, "caso-de-uso": 0.2, "opinion-polemica": 0.15},
+        "hooks": {"promesa-ahorro": 0.3, "numero-dato": 0.3, "pregunta": 0.2, "autoridad": 0.2}
+      },
+      "top_signals": [
+        {"title": "La universidad que usa IA para personalizar el plan de estudio de cada alumno", "url": "https://example.com/ia-educacion-talento/1", "source": "gnews", "published_at": "2026-10-13T23:00:00Z", "metrics": {"points": 0, "comments": 0, "views": 5000}, "format": "informe-datos", "hook": "numero-dato", "velocity": 1.6},
+        {"title": "Cómo capacitar a tu equipo en IA en cuatro semanas", "url": "https://example.com/ia-educacion-talento/2", "source": "youtube", "published_at": "2026-10-12T22:00:00Z", "metrics": {"points": 0, "comments": 12, "views": 6000}, "format": "tutorial-pantalla", "hook": "promesa-ahorro", "velocity": 1.1},
+        {"title": "Show HN: plataforma abierta para entrenar habilidades de IA", "url": "https://example.com/ia-educacion-talento/3", "source": "hn", "published_at": "2026-10-11T21:00:00Z", "metrics": {"points": 40, "comments": 18, "views": 0}, "format": "herramienta-demo", "hook": "pregunta", "velocity": 0.8}
+      ],
+      "adapt": {
+        "title": "El plan de capacitación en IA que sí completó tu equipo",
+        "hook": "primeros 3 s",
+        "format": "tutorial-pantalla",
+        "beats": [
+          "El plan de capacitación abandonado a la mitad.",
+          "El nuevo formato corto que sí se completa.",
+          "Cifra de personas certificadas en el equipo.",
+          "Cómo replicarlo en el próximo trimestre."
+        ],
+        "cta": "Pide el temario de capacitación para tu equipo."
+      }
+    },
+    {
+      "slug": "open-source-local",
+      "name": "Open source y modelos locales",
+      "rank": 12,
+      "stage": "saturada",
+      "growth": 1.1,
+      "z": 0.2,
+      "volume": 85,
+      "series": [15, 15, 16, 16, 16, 17, 17, 17, 18, 18, 18, 19, 19, 19],
+      "wiki_series": [180, 181, 182, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192],
+      "momentum": 0.4,
+      "exec_fit": 0.4,
+      "p": 0.4,
+      "decision": "Descartar",
+      "reason": "Crece apenas x1.1 vs su base pero con alto volumen ya cubierto, solo 4 de 12 piezas sirven a ejecutivos.",
+      "why": {
+        "format_winner": "herramienta-demo",
+        "hook_winner": "secreto-truco",
+        "best_day": "miércoles",
+        "author_mix": {"comunidad": 0.5, "creador": 0.3, "empresa": 0.15, "medio": 0.05},
+        "formats": {"herramienta-demo": 0.4, "tutorial-pantalla": 0.3, "informe-datos": 0.2, "opinion-polemica": 0.1},
+        "hooks": {"secreto-truco": 0.3, "numero-dato": 0.3, "promesa-ahorro": 0.2, "pregunta": 0.2}
+      },
+      "top_signals": [
+        {"title": "Show HN: modelo local que corre en una laptop de oficina", "url": "https://example.com/open-source-local/1", "source": "hn", "published_at": "2026-10-13T20:00:00Z", "metrics": {"points": 520, "comments": 310, "views": 0}, "format": "herramienta-demo", "hook": "secreto-truco", "velocity": 1.3},
+        {"title": "Guía para correr modelos de IA sin depender de la nube", "url": "https://example.com/open-source-local/2", "source": "youtube", "published_at": "2026-10-12T19:00:00Z", "metrics": {"points": 0, "comments": 80, "views": 40000}, "format": "tutorial-pantalla", "hook": "numero-dato", "velocity": 1.0},
+        {"title": "El informe que compara costos entre modelos locales y en la nube", "url": "https://example.com/open-source-local/3", "source": "gnews", "published_at": "2026-10-11T18:00:00Z", "metrics": {"points": 0, "comments": 0, "views": 4000}, "format": "informe-datos", "hook": "numero-dato", "velocity": 0.6}
+      ],
+      "adapt": {
+        "title": "El modelo que corre en tu oficina sin salir a la nube",
+        "hook": "primeros 3 s",
+        "format": "herramienta-demo",
+        "beats": [
+          "Una laptop común corriendo un modelo de IA.",
+          "El costo comparado con la nube durante un mes.",
+          "El caso de privacidad que convence al área legal.",
+          "Los pasos para instalarlo esta semana."
+        ],
+        "cta": "Descarga la guía de instalación local."
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{% load static %}<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Radar 30X{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'radar/app.css' %}">
+{% block extra_head %}{% endblock %}
+</head>
+<body>
+<header class="site-header">
+  <a class="logo" href="/">Radar 30X</a>
+  <nav>
+    <a href="/" {% block nav_radar %}{% endblock %}>Radar</a>
+    <a href="/analizar/" {% block nav_analizar %}{% endblock %}>Analizar</a>
+    <a href="/como-funciona/" {% block nav_como %}{% endblock %}>Cómo funciona</a>
+  </nav>
+</header>
+
+<main>
+{% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <span>Datos públicos · sin login · sin datos personales</span>
+  <a href="https://github.com/P1p2gamer26/radar-30x" target="_blank" rel="noopener noreferrer">Ver el repositorio</a>
+</footer>
+
+{% block extra_scripts %}{% endblock %}
+</body>
+</html>

@@ -111,3 +111,38 @@ def run(signals: list, n: int = 900, log=print) -> dict:
         ruta().write_text(json.dumps(lab, ensure_ascii=False, indent=0), encoding="utf-8")
         log(f"lote {k // LOTE + 1}/{-(-len(pendientes) // LOTE)}: {len(lab['labels'])} etiquetas, ${meta['cost_usd']}")
     return lab
+
+
+# ------------------------------------------------------------------ adaptación (idea de pieza para 30X)
+
+ESTILO_30X = ("Estilo 30X (Andrés Bilbao): español neutro latino, directo, sin tecnicismos, casos concretos con cifras, "
+              "su mejor video es 'Así se transforma un proceso con IA, paso a paso | AI for Executives' (~30x su mediana).")
+
+
+def adaptar(topic: dict, benchmark: list) -> dict | None:
+    datos = {"tema": topic["name"], "etapa": topic["stage"], "razon": topic["reason"],
+             "formato_ganador": topic["why"].get("format_winner"), "gancho_ganador": topic["why"].get("hook_winner"),
+             "piezas_que_funcionan": [_sanitizar(s["title"])[:160] for s in topic["top_signals"][:5]],
+             "lo_que_mejor_le_funciona_a_30x": [_sanitizar(b["title"])[:120] for b in benchmark[:4]]}
+    usuario = (f"Audiencia: {AUDIENCIA}. {ESTILO_30X}\nPropón UNA pieza para que 30X publique esta semana sobre el tema. "
+               f"format debe ser uno de {sorted(FORMATS)}. "
+               'Esquema: {"title": "...", "hook": "frase exacta de los primeros 3 segundos", "format": "...", '
+               '"beats": ["...", "...", "..."], "cta": "..."}\n'
+               f"<items>{json.dumps(datos, ensure_ascii=False)}</items>")
+    payload = {"model": settings.LLM_MODEL, "temperature": 0.4, "stream": False,
+               "messages": [{"role": "system", "content": SISTEMA}, {"role": "user", "content": usuario}]}
+    headers = {"Authorization": f"Bearer {settings.LLM_API_KEY}"} if settings.LLM_API_KEY else {}
+    try:
+        data = _post_json(settings.LLM_BASE_URL.rstrip("/") + "/chat/completions", payload, settings.LLM_TIMEOUT, headers)
+        a = json.loads(_sin_cercas(data["choices"][0]["message"]["content"]))
+        beats = [str(b)[:200] for b in a["beats"]][:4]
+        if a["format"] not in FORMATS or len(beats) < 3:
+            return None
+        uso = data.get("usage") or {}
+        costo = (int(uso.get("prompt_tokens") or 0) * settings.LLM_PRICE_IN_PER_1M
+                 + int(uso.get("completion_tokens") or 0) * settings.LLM_PRICE_OUT_PER_1M) / 1e6
+        return {"title": str(a["title"])[:160], "hook": str(a["hook"])[:200], "format": a["format"], "beats": beats,
+                "cta": str(a["cta"])[:160], "by": "teacher", "cost_usd": round(costo, 5)}
+    except Exception as e:
+        print(f"[aviso] adaptar {topic['slug']}: {e}")
+        return None

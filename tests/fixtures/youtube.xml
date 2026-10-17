@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+ <entry><yt:videoId>abc</yt:videoId><title>Así se transforma un proceso con IA, paso a paso</title><published>2026-10-14T12:00:00+00:00</published>
+  <media:group><media:description>Caso real en una empresa</media:description><media:community><media:starRating count="900" average="5.00"/><media:statistics views="25473"/></media:community></media:group></entry>
+ <entry><yt:videoId>def</yt:videoId><title>Clip corto</title><published>2026-10-13T12:00:00+00:00</published>
+  <media:group><media:description></media:description><media:community><media:starRating count="10" average="5.00"/><media:statistics views="800"/></media:community></media:group></entry>
+</feed>

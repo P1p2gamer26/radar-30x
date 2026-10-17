@@ -1,0 +1,46 @@
+{% extends "radar/base.html" %}
+{% load static %}
+{% block title %}Radar 30X — temas de IA que están despegando{% endblock %}
+{% block nav_radar %}aria-current="page"{% endblock %}
+
+{% block content %}
+<section class="hero" id="hero">
+  <canvas id="scene-canvas" aria-hidden="true"></canvas>
+  <div class="hero-content">
+    <p class="hero-meta nums" id="hero-week">Semana —</p>
+    <h1 id="hero-title">Esta semana, <span class="accent" id="hero-count">0</span> temas de IA están despegando.</h1>
+    <p class="lead">Qué temas crecen, por qué funcionan y cómo los adapta 30X para ejecutivos de LatAm.</p>
+  </div>
+</section>
+
+<div class="wrap">
+
+<section class="block" id="ranking">
+  <h2>Ranking de la semana</h2>
+  <div class="ranking-list" id="ranking-list" role="list"></div>
+</section>
+
+<section class="block" id="por-que-funciona">
+  <h2>Por qué funciona</h2>
+  <div class="why-grid" id="why-grid"></div>
+</section>
+
+<section class="block" id="costo">
+  <h2>Costo de esta corrida</h2>
+  <div class="cost-grid" id="cost-grid"></div>
+</section>
+
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<div class="panel-overlay" id="panel-overlay"></div>
+<aside class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="panel-title" aria-hidden="true">
+  <button class="panel-close" id="panel-close" aria-label="Cerrar panel">&times;</button>
+  <div class="panel-meta" id="panel-meta"></div>
+  <h2 id="panel-title"></h2>
+  <div id="panel-body"></div>
+</aside>
+
+<script type="module" src="{% static 'radar/index.js' %}"></script>
+{% endblock %}
