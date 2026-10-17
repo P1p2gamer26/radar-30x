@@ -1,0 +1,33 @@
+# Radar diario gratis: recolecta fuentes públicas, clasifica con el estudiante (costo 0) y versiona data/.
+# El profesor LLM no corre aquí (es local/9Router); el estudiante ya destilado basta para el día a día.
+name: radar-diario
+on:
+  push: {branches: [main]}
+  schedule: [{cron: "0 11 * * *"}]   # 06:00 Bogotá
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  radar:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    env: {DJANGO_DEBUG: "1", DECISION_MODE: replay}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.13"}
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -q
+      - run: python manage.py collect && python manage.py build_radar
+      - run: |
+          git config user.name "radar-bot"
+          git config user.email "radar-bot@users.noreply.github.com"
+          git add data/ && git commit -m "data: radar $(date -u +%F)" && git push || echo "sin cambios"
+  test:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.13"}
+      - run: pip install -r requirements.txt && python -m pytest -q

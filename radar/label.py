@@ -60,12 +60,25 @@ def validar(fila: dict) -> dict | None:
     return {"topic": topic, "format": fmt, "hook": hook, "exec_fit": round(fit, 2)}
 
 
+RESPALDO = "ag/gemini-3-flash"  # ponytail: segundo modelo gratis de 9Router si el primero responde vacío o sin JSON
+
+
+def _json(texto: str) -> dict:
+    t = _sin_cercas(texto)
+    return json.loads(t[t.index("{"): t.rindex("}") + 1])
+
+
 def llamar(items: list) -> tuple[list, dict]:
-    payload = {"model": settings.LLM_MODEL, "messages": prompt(items), "temperature": 0, "stream": False}
     headers = {"Authorization": f"Bearer {settings.LLM_API_KEY}"} if settings.LLM_API_KEY else {}
-    data = _post_json(settings.LLM_BASE_URL.rstrip("/") + "/chat/completions", payload, settings.LLM_TIMEOUT, headers)
-    filas = json.loads(_sin_cercas(data["choices"][0]["message"]["content"]))["labels"]
-    return filas, data.get("usage") or {}
+    error = None
+    for modelo in (settings.LLM_MODEL, RESPALDO):
+        payload = {"model": modelo, "messages": prompt(items), "temperature": 0, "stream": False}
+        try:
+            data = _post_json(settings.LLM_BASE_URL.rstrip("/") + "/chat/completions", payload, settings.LLM_TIMEOUT, headers)
+            return _json(data["choices"][0]["message"]["content"])["labels"], data.get("usage") or {}
+        except Exception as e:
+            error = e
+    raise RuntimeError(error)
 
 
 def muestra(signals: list, n: int) -> list:
@@ -134,7 +147,7 @@ def adaptar(topic: dict, benchmark: list) -> dict | None:
     headers = {"Authorization": f"Bearer {settings.LLM_API_KEY}"} if settings.LLM_API_KEY else {}
     try:
         data = _post_json(settings.LLM_BASE_URL.rstrip("/") + "/chat/completions", payload, settings.LLM_TIMEOUT, headers)
-        a = json.loads(_sin_cercas(data["choices"][0]["message"]["content"]))
+        a = _json(data["choices"][0]["message"]["content"])
         beats = [str(b)[:200] for b in a["beats"]][:4]
         if a["format"] not in FORMATS or len(beats) < 3:
             return None
