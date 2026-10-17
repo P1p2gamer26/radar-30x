@@ -1,0 +1,184 @@
+{% extends "radar/base.html" %}
+{% block title %}{{ topic.name }} — Radar 30X{% endblock %}
+
+{% block extra_head %}
+<style>
+  .tema-hero {
+    padding: 56px 0 32px;
+    border-bottom: var(--borde);
+  }
+  .tema-hero .stage-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .tema-hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin-bottom: 14px;
+  }
+  .tema-hero .reason {
+    color: var(--gris);
+    font-size: 1.05rem;
+    max-width: 620px;
+  }
+  .tema-nums {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+  .tema-num { display: flex; flex-direction: column; gap: 4px; }
+  .tema-num .v { font-family: var(--font-display); font-size: 1.8rem; color: var(--lima); }
+  .tema-num .l { color: var(--gris); font-size: 0.85rem; }
+
+  .tema-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 40px;
+  }
+  @media (max-width: 820px) {
+    .tema-grid { grid-template-columns: 1fr; }
+  }
+
+  .adapt-card {
+    border: var(--borde);
+    border-radius: var(--radio);
+    padding: 24px;
+    background: var(--polvo);
+  }
+  .adapt-card h3.titulo {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--hueso);
+    margin-bottom: 14px;
+  }
+  .adapt-meta {
+    display: flex;
+    gap: 10px;
+    color: var(--gris);
+    font-size: 0.88rem;
+    margin-bottom: 16px;
+  }
+  .adapt-card .cta {
+    margin-top: 18px;
+    color: var(--lima);
+    font-size: 0.95rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: var(--gris);
+    font-size: 0.9rem;
+  }
+  .back-link:hover { color: var(--lima); }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="wrap">
+  <section class="tema-hero">
+    <a class="back-link" href="{% url 'index' %}">Volver al radar</a>
+    <div class="stage-row">
+      <span class="stage-chip">{{ topic.stage }}</span>
+      <span class="decision-label decision-{{ topic.decision }}">{{ topic.decision }}</span>
+      <span class="nums" style="color: var(--gris); font-size: 0.9rem;">crece x{{ topic.growth }}</span>
+    </div>
+    <h1>{{ topic.name }}</h1>
+    <p class="reason">{{ topic.reason }}</p>
+
+    <div class="tema-nums">
+      <div class="tema-num">
+        <span class="v nums">{{ topic.p }}</span>
+        <span class="l">Puntaje p</span>
+      </div>
+      <div class="tema-num">
+        <span class="v nums">{{ topic.momentum }}</span>
+        <span class="l">Momentum</span>
+      </div>
+      <div class="tema-num">
+        <span class="v nums">{{ topic.exec_fit }}</span>
+        <span class="l">Encaje ejecutivo</span>
+      </div>
+      <div class="tema-num">
+        <span class="v nums">{{ topic.volume }}</span>
+        <span class="l">Señales (14 días)</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="tema-grid">
+      <div>
+        <h2>Por qué funciona</h2>
+        <div class="why-grid">
+          <div class="why-card">
+            <h3>Resumen</h3>
+            <p>Formato ganador: {{ topic.why.format_winner }}. Gancho ganador: {{ topic.why.hook_winner }}. Mejor día: {{ topic.why.best_day }}.</p>
+          </div>
+          <div class="why-card">
+            <h3>Formatos (agregado)</h3>
+            {% for nombre, valor in topic.why.formats.items %}
+            <div class="bar-row">
+              <span class="bar-label">{{ nombre }}</span>
+              <div class="bar-track"><div class="bar-fill" style="width: {% widthratio valor 1 100 %}%"></div></div>
+              <span class="bar-value nums">{{ valor|floatformat:2 }}</span>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="why-card">
+            <h3>Ganchos (agregado)</h3>
+            {% for nombre, valor in topic.why.hooks.items %}
+            <div class="bar-row">
+              <span class="bar-label">{{ nombre }}</span>
+              <div class="bar-track"><div class="bar-fill" style="width: {% widthratio valor 1 100 %}%"></div></div>
+              <span class="bar-value nums">{{ valor|floatformat:2 }}</span>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="why-card">
+            <h3>Mezcla de autores</h3>
+            {% for nombre, valor in topic.why.author_mix.items %}
+            <div class="bar-row">
+              <span class="bar-label">{{ nombre }}</span>
+              <div class="bar-track"><div class="bar-fill" style="width: {% widthratio valor 1 100 %}%"></div></div>
+              <span class="bar-value nums">{{ valor|floatformat:2 }}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <h2 style="margin-top: 40px;">Señales principales</h2>
+        <div>
+          {% for s in topic.top_signals %}
+          <div class="signal-item">
+            <a href="{{ s.url }}" target="_blank" rel="noopener noreferrer">{{ s.title }}</a>
+            <div class="signal-meta">{{ s.source }} · {{ s.format }} · {{ s.hook }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div>
+        <h2>Cómo adaptarlo</h2>
+        <div class="adapt-card">
+          <h3 class="titulo">{{ topic.adapt.title }}</h3>
+          <div class="adapt-meta">
+            <span>{{ topic.adapt.hook }}</span>
+            <span>·</span>
+            <span>{{ topic.adapt.format }}</span>
+          </div>
+          <ol class="beats-list">
+            {% for beat in topic.adapt.beats %}
+            <li>{{ beat }}</li>
+            {% endfor %}
+          </ol>
+          <p class="cta">{{ topic.adapt.cta }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

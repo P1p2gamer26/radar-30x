@@ -1,0 +1,230 @@
+{% extends "radar/base.html" %}
+{% block title %}Cómo funciona — Radar 30X{% endblock %}
+{% block nav_como %}aria-current="page"{% endblock %}
+
+{% block extra_head %}
+<style>
+  .como-hero {
+    padding: 56px 0 24px;
+    border-bottom: var(--borde);
+  }
+  .como-hero h1 {
+    font-size: clamp(2rem, 4.5vw, 2.9rem);
+    max-width: 680px;
+    margin-bottom: 14px;
+  }
+  .como-hero p.lead {
+    color: var(--gris);
+    max-width: 580px;
+  }
+
+  .pipeline {
+    display: flex;
+    flex-direction: column;
+  }
+  .pipeline-step {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 20px;
+    padding: 28px 0;
+    border-bottom: var(--borde);
+  }
+  .pipeline-step:last-child { border-bottom: none; }
+  .pipeline-step .step-n {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--lima);
+  }
+  .pipeline-step h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    color: var(--hueso);
+    font-weight: 500;
+  }
+  .pipeline-step p {
+    color: var(--gris);
+    max-width: 560px;
+  }
+
+  .fuentes-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .fuentes-table th, .fuentes-table td {
+    text-align: left;
+    padding: 14px 12px;
+    border-bottom: var(--borde);
+    font-size: 0.92rem;
+  }
+  .fuentes-table th {
+    color: var(--gris);
+    font-weight: 500;
+    font-size: 0.85rem;
+  }
+  .fuentes-table td.fuente-nombre {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--hueso);
+  }
+
+  .umbrales-wrap { max-width: 560px; margin-top: 12px; }
+
+  .privacidad-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  .privacidad-card {
+    border: var(--borde);
+    border-radius: var(--radio);
+    padding: 22px;
+    background: var(--polvo);
+  }
+  .privacidad-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    color: var(--hueso);
+    font-family: var(--font-body);
+    font-weight: 500;
+  }
+  .privacidad-card p { color: var(--gris); font-size: 0.92rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="wrap">
+  <section class="como-hero">
+    <h1>Cinco pasos, costo casi cero, nada de datos personales.</h1>
+    <p class="lead">El radar lee fuentes públicas toda la semana, las etiqueta con un modelo grande una sola vez, y entrena uno propio que clasifica todo lo nuevo sin gastar un centavo.</p>
+  </section>
+
+  <section class="block">
+    <h2>El pipeline</h2>
+    <div class="pipeline">
+      <div class="pipeline-step">
+        <span class="step-n nums">1</span>
+        <div>
+          <h3>Recolectar fuentes públicas</h3>
+          <p>Todos los días el radar junta señales de Hacker News, Google News, canales de YouTube y Wikipedia: solo títulos, textos cortos y métricas que ya son públicas.</p>
+        </div>
+      </div>
+      <div class="pipeline-step">
+        <span class="step-n nums">2</span>
+        <div>
+          <h3>Etiquetar con profesor LLM</h3>
+          <p>Un modelo de lenguaje grande revisa cada señal una vez: a qué tema de IA pertenece, qué formato es, qué gancho usa y si le sirve a un ejecutivo de LatAm.</p>
+        </div>
+      </div>
+      <div class="pipeline-step">
+        <span class="step-n nums">3</span>
+        <div>
+          <h3>Entrenar estudiante propio (costo 0)</h3>
+          <p>Con esas etiquetas se entrena un modelo propio, simple y liviano, que aprende a clasificar señales nuevas sin volver a llamar al profesor.</p>
+        </div>
+      </div>
+      <div class="pipeline-step">
+        <span class="step-n nums">4</span>
+        <div>
+          <h3>Medir crecimiento y etapa</h3>
+          <p>Cada tema tiene una serie diaria de 14 días. De ahí se calcula si crece, si está temprano, saturado o bajando, y qué tan rápido se mueve frente a su propia base.</p>
+        </div>
+      </div>
+      <div class="pipeline-step">
+        <span class="step-n nums">5</span>
+        <div>
+          <h3>Decidir con umbrales 0.80/0.50</h3>
+          <p>Se mezcla el momentum del tema con qué tan bien le sirve a un ejecutivo. Por encima de 0.80 se recomienda producir esta semana; por encima de 0.50, aprender y monitorear; el resto se descarta.</p>
+          <div class="umbrales-wrap">
+            <div class="threshold-track">
+              <div class="threshold-fill" style="width: 65%;"></div>
+              <div class="threshold-mark" style="left: 80%;"><span class="mark-label">0.80 Recomendar</span></div>
+              <div class="threshold-mark" style="left: 50%;"><span class="mark-label">0.50 Aprender</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Las fuentes</h2>
+    <table class="fuentes-table">
+      <thead>
+        <tr>
+          <th>Fuente</th>
+          <th>Qué aporta</th>
+          <th>Por qué está</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="fuente-nombre">Hacker News</td>
+          <td>Discusión técnica temprana, puntos y comentarios de la comunidad</td>
+          <td>Adelanta qué herramientas y lanzamientos le interesan a quien construye con IA antes de que sean noticia masiva.</td>
+        </tr>
+        <tr>
+          <td class="fuente-nombre">Google News</td>
+          <td>Cobertura de medios en español e inglés sobre cada tema</td>
+          <td>Mide si un tema ya cruzó a prensa general, en LatAm y en inglés.</td>
+        </tr>
+        <tr>
+          <td class="fuente-nombre">YouTube</td>
+          <td>Videos de canales de IA, con vistas y comentarios</td>
+          <td>Capta el formato y el gancho que ya funcionan en video, el canal donde más se consume contenido sobre IA.</td>
+        </tr>
+        <tr>
+          <td class="fuente-nombre">Wikipedia</td>
+          <td>Vistas diarias a los artículos de cada tema</td>
+          <td>Sirve de termómetro independiente de demanda: cuánta gente busca entender un tema, no solo quién escribe sobre él.</td>
+        </tr>
+        <tr>
+          <td class="fuente-nombre">Comunidad</td>
+          <td>Piezas que el equipo pega manualmente en /analizar</td>
+          <td>Suma lo que circula en redes cerradas (LinkedIn, Instagram, TikTok) que las otras fuentes no pueden leer.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="block">
+    <h2>Términos de servicio y privacidad</h2>
+    <div class="privacidad-grid">
+      <div class="privacidad-card">
+        <h3>Solo contenido público</h3>
+        <p>Cada fuente se consulta a través de sus APIs o feeds públicos y oficiales (Algolia de Hacker News, RSS de Google News y YouTube, pageviews de Wikimedia), respetando sus límites de uso.</p>
+      </div>
+      <div class="privacidad-card">
+        <h3>Sin datos personales</h3>
+        <p>No se guardan nombres de personas comunes, correos ni teléfonos. Los autores solo se clasifican por tipo: medio, creador, empresa, comunidad o academia.</p>
+      </div>
+      <div class="privacidad-card">
+        <h3>Lo que pegas en /analizar</h3>
+        <p>Antes de clasificar, se quitan automáticamente correos, usuarios, teléfonos y enlaces del texto. El texto no se guarda en ningún lado.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Costo</h2>
+    <div class="cost-grid">
+      <div class="cost-card">
+        <span class="cost-value nums">USD {{ radar.totals.teacher_cost_usd|default:"0.00" }}</span>
+        <span class="cost-label">Costo del profesor (LLM) esta corrida</span>
+      </div>
+      <div class="cost-card">
+        <span class="cost-value nums">USD {{ radar.totals.student_cost_usd|default:"0.00" }}</span>
+        <span class="cost-label">Costo del estudiante por clasificación</span>
+      </div>
+      <div class="cost-card">
+        <span class="cost-value nums">USD {{ radar.totals.cost_per_signal_usd|default:"0.00" }}</span>
+        <span class="cost-label">Costo por señal procesada</span>
+      </div>
+      <div class="cost-card">
+        <span class="cost-value nums">USD {{ radar.totals.paid_alternative_usd_year|default:"0" }}</span>
+        <span class="cost-label">Lo que costaría un scraping pago al año</span>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

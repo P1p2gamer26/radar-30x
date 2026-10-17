@@ -1,0 +1,168 @@
+{% extends "radar/base.html" %}
+{% block title %}Analizar — Radar 30X{% endblock %}
+{% block nav_analizar %}aria-current="page"{% endblock %}
+
+{% block extra_head %}
+<style>
+  .analizar-hero {
+    padding: 56px 0 24px;
+    border-bottom: var(--borde);
+  }
+  .analizar-hero h1 {
+    font-size: clamp(2rem, 4.5vw, 2.9rem);
+    margin-bottom: 14px;
+    max-width: 680px;
+  }
+  .analizar-hero p.lead {
+    color: var(--gris);
+    max-width: 580px;
+  }
+
+  .form-card {
+    margin-top: 32px;
+    max-width: 680px;
+  }
+  .form-card textarea {
+    width: 100%;
+    min-height: 160px;
+    background: var(--polvo);
+    border: var(--borde);
+    border-radius: var(--radio);
+    color: var(--hueso);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 16px;
+    resize: vertical;
+  }
+  .form-card textarea:focus-visible {
+    outline: 2px solid var(--lima);
+    outline-offset: 2px;
+  }
+  .form-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .submit-btn {
+    background: var(--lima);
+    color: var(--noche);
+    border: none;
+    border-radius: 999px;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .submit-btn:hover { opacity: 0.9; }
+  .form-hint { color: var(--gris); font-size: 0.85rem; }
+
+  .resultado-section {
+    padding-top: 40px;
+  }
+  .resultado-top {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+  .engine-chip {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--linea);
+    font-size: 0.78rem;
+    color: var(--gris);
+  }
+  .resultado-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 760px) {
+    .resultado-grid { grid-template-columns: 1fr; }
+  }
+  .resultado-topic {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  .resultado-reason { color: var(--gris); margin-bottom: 20px; }
+  .resultado-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .resultado-tags span {
+    border: 1px solid var(--linea);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    color: var(--gris);
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="wrap">
+  <section class="analizar-hero">
+    <h1>Pega el título o texto de una pieza pública y mira dónde cae en el radar.</h1>
+    <p class="lead">La comunidad como sensor: cuando el equipo encuentra una pieza en LinkedIn, Instagram o TikTok que suena interesante, la pega aquí y el radar la clasifica.</p>
+
+    <form class="form-card" method="post" action="{% url 'analizar' %}">
+      {% csrf_token %}
+      <textarea name="texto" placeholder="Pega el título o texto de una pieza pública" maxlength="3000">{{ texto }}</textarea>
+      <div class="form-actions">
+        <button class="submit-btn" type="submit">Analizar</button>
+        <span class="form-hint">No se guarda el texto ni datos personales.</span>
+      </div>
+    </form>
+  </section>
+
+  {% if resultado %}
+  <section class="block resultado-section">
+    <div class="resultado-top">
+      <span class="decision-label decision-{{ resultado.decision }}">{{ resultado.decision }}</span>
+      <span class="engine-chip">{{ resultado.engine }}</span>
+      <span class="nums" style="color: var(--gris); font-size: 0.9rem;">costo USD {{ resultado.cost_usd }}</span>
+    </div>
+
+    <div class="resultado-grid">
+      <div>
+        <h2 class="resultado-topic">{{ resultado.topic_name }}</h2>
+        <p class="resultado-reason">{{ resultado.reason }}</p>
+        <div class="resultado-tags">
+          <span>{{ resultado.format_name }}</span>
+          <span>{{ resultado.hook_name }}</span>
+          <span class="nums">encaje ejecutivo {{ resultado.exec_fit }}</span>
+        </div>
+        <div class="threshold-track">
+          <div class="threshold-fill" style="width: {% widthratio resultado.p 1 100 %}%"></div>
+          <div class="threshold-mark" style="left: 80%;"><span class="mark-label">0.80 Recomendar</span></div>
+          <div class="threshold-mark" style="left: 50%;"><span class="mark-label">0.50 Aprender</span></div>
+        </div>
+        <p class="nums" style="margin-top: 28px; color: var(--gris); font-size: 0.9rem;">p = {{ resultado.p }}</p>
+      </div>
+
+      {% if resultado.adapt %}
+      <div class="adapt-card">
+        <h3 class="titulo" style="font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 14px;">{{ resultado.adapt.title }}</h3>
+        <div class="adapt-meta" style="display:flex; gap:10px; color: var(--gris); font-size: 0.88rem; margin-bottom: 16px;">
+          <span>{{ resultado.adapt.hook }}</span>
+          <span>·</span>
+          <span>{{ resultado.adapt.format }}</span>
+        </div>
+        <ol class="beats-list">
+          {% for beat in resultado.adapt.beats %}
+          <li>{{ beat }}</li>
+          {% endfor %}
+        </ol>
+        <p class="cta" style="color: var(--lima); margin-top: 18px;">{{ resultado.adapt.cta }}</p>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+  {% endif %}
+</div>
+{% endblock %}
