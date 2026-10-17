@@ -35,6 +35,17 @@ function fmtGrowth(g) {
   return `x${g.toFixed(1)}`;
 }
 
+function cap(str) {
+  const x = String(str || "");
+  return x.charAt(0).toUpperCase() + x.slice(1);
+}
+
+// USD con los decimales justos: 0.000011 -> "USD 0.00001".
+function fmtUsdSmall(n) {
+  if (!n) return "USD 0";
+  return `USD ${n.toFixed(Math.max(2, Math.min(8, -Math.floor(Math.log10(n)))))}`;
+}
+
 function fmtUsd(n) {
   if (n >= 1000) return `USD ${Math.round(n).toLocaleString("es-CO")}`;
   return `USD ${n.toFixed(2)}`;
@@ -74,11 +85,23 @@ function countEarlyOrRising(topics) {
   ).length;
 }
 
+// Titular con plural correcto; se arma con nodos (el template trae el texto fijo).
+function renderTitle(n) {
+  const h1 = document.getElementById("hero-title");
+  h1.textContent = "";
+  if (n === 0) {
+    h1.textContent = "Esta semana ningún tema de IA despega: esto es lo que se mueve.";
+    return;
+  }
+  h1.appendChild(document.createTextNode("Esta semana, "));
+  h1.appendChild(el("span", { class: "accent", id: "hero-count", text: String(n) }));
+  h1.appendChild(document.createTextNode(n === 1 ? " tema de IA está despegando." : " temas de IA están despegando."));
+}
+
 function renderHero(data) {
-  const titleCount = document.getElementById("hero-count");
   const weekEl = document.getElementById("hero-week");
   const n = countEarlyOrRising(data.topics || []);
-  titleCount.textContent = String(n);
+  renderTitle(n);
   const date = data.generated_at ? new Date(data.generated_at) : new Date();
   const dateStr = date.toLocaleDateString("es-CO", { day: "numeric", month: "long", year: "numeric" });
   weekEl.textContent = `Semana ${data.week || ""} · ${dateStr}`;
@@ -96,7 +119,7 @@ function renderRankingRow(topic, onOpen) {
 
   const decisionCell = el("div", { class: "decision-cell" }, [
     el("span", { class: `decision-label decision-${topic.decision}`, text: topic.decision }),
-    el("span", { class: "decision-reason", text: topic.reason }),
+    el("span", { class: "decision-reason", text: topic.reason, title: topic.reason }),
   ]);
 
   const row = el(
@@ -110,7 +133,7 @@ function renderRankingRow(topic, onOpen) {
     [
       el("span", { class: "rank nums", text: `#${topic.rank}` }),
       el("span", { class: "name", text: topic.name }),
-      el("span", { class: "stage-chip", text: topic.stage }),
+      el("span", { class: "stage-chip", text: cap(topic.stage) }),
       el("span", { class: "growth nums", text: fmtGrowth(topic.growth) }),
       sparklineSvg(topic.series),
       pBar,
@@ -165,11 +188,13 @@ function renderWhy(data) {
 function renderCost(data) {
   const grid = document.getElementById("cost-grid");
   const t = data.totals || {};
+  const perSignal = t.cost_per_signal_usd || 0;
   const items = [
-    { label: "Costo por señal", value: `USD ${(t.cost_per_signal_usd || 0).toFixed(5)}` },
-    { label: "Costo del profesor (LLM)", value: fmtUsd(t.teacher_cost_usd || 0) },
+    { label: "Costo por señal", value: fmtUsdSmall(perSignal) },
+    { label: "USD por 1.000 señales", value: fmtUsdSmall(perSignal * 1000) },
+    { label: `Costo del profesor (${t.teacher_model || "LLM"})`, value: fmtUsd(t.teacher_cost_usd || 0) },
     { label: "Costo del estudiante", value: fmtUsd(t.student_cost_usd || 0) },
-    { label: "Señales procesadas", value: String(t.signals || 0) },
+    { label: "Señales procesadas", value: (t.signals || 0).toLocaleString("es-CO") },
   ];
   for (const item of items) {
     grid.appendChild(
@@ -189,12 +214,28 @@ function renderCost(data) {
   highlight.appendChild(document.createTextNode(" al año."));
   grid.appendChild(highlight);
 
+  // Precisión del estudiante: student.accuracy_topic o student.topic.accuracy; sin dato, no hay tarjeta.
   const student = data.student || {};
-  const accCard = el("div", { class: "cost-card" }, [
-    el("span", { class: "cost-value nums", text: `${Math.round((student.accuracy_topic || 0) * 100)}%` }),
-    el("span", { class: "cost-label", text: "Precisión del estudiante en tema" }),
-  ]);
-  grid.appendChild(accCard);
+  const pct = (v) => `${Math.round(v * 100)}%`;
+  const acc = typeof student.accuracy_topic === "number" ? student.accuracy_topic : student.topic && student.topic.accuracy;
+  const base = student.topic && student.topic.baseline;
+  if (typeof acc === "number") {
+    grid.appendChild(
+      el("div", { class: "cost-card" }, [
+        el("span", { class: "cost-value nums", text: pct(acc) }),
+        el("span", { class: "cost-label", text: `Precisión del modelo propio: ${pct(acc)}${typeof base === "number" ? ` (base ${pct(base)})` : ""}` }),
+      ])
+    );
+    const fmt = student.format;
+    if (fmt && typeof fmt.accuracy === "number") {
+      grid.appendChild(
+        el("div", { class: "cost-card" }, [
+          el("span", { class: "cost-value nums", text: pct(fmt.accuracy) }),
+          el("span", { class: "cost-label", text: `Precisión en formato: ${pct(fmt.accuracy)}${typeof fmt.baseline === "number" ? ` (base ${pct(fmt.baseline)})` : ""}` }),
+        ])
+      );
+    }
+  }
 }
 
 // --- Panel lateral ---
@@ -247,7 +288,7 @@ function openPanel(topic, triggerEl) {
 
   title.textContent = topic.name;
   meta.textContent = "";
-  meta.appendChild(el("span", { class: "stage-chip", text: topic.stage }));
+  meta.appendChild(el("span", { class: "stage-chip", text: cap(topic.stage) }));
   meta.appendChild(el("span", { class: "growth nums", text: fmtGrowth(topic.growth) }));
   meta.appendChild(el("span", { class: `decision-label decision-${topic.decision}`, text: topic.decision }));
 
@@ -255,7 +296,7 @@ function openPanel(topic, triggerEl) {
 
   const resumen = el("div", { class: "panel-section" }, [
     el("h3", { text: "Resumen" }),
-    el("p", { text: topic.reason }),
+    el("p", { text: topic.reason, title: topic.reason }),
     renderThreshold(topic.p),
     el("p", { class: "nums", text: `p = ${topic.p.toFixed(2)} · momentum ${topic.momentum.toFixed(2)} · exec_fit ${topic.exec_fit.toFixed(2)} · z ${topic.z.toFixed(2)}` }),
   ]);

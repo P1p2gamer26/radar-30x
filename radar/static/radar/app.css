@@ -127,6 +127,16 @@ button {
   background: var(--noche);
 }
 
+/* Sombra suave abajo-izquierda: el titular siempre se lee. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 75% 70% at 0% 100%, rgba(5, 5, 6, 0.92), rgba(5, 5, 6, 0.55) 55%, rgba(5, 5, 6, 0) 100%);
+}
+
 .hero canvas {
   position: absolute;
   inset: 0;

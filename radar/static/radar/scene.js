@@ -4,17 +4,21 @@
 
 import * as THREE from "three";
 
-const DECISION_COLOR = {
-  Recomendar: 0xebff6f,
-  Aprender: 0xffcc6e,
-  Descartar: 0x8a8a8a,
+// Color por ETAPA (casi todo es Descartar); la decision se lee por la distancia al centro.
+const STAGE_COLOR = {
+  temprana: 0xebff6f,
+  creciendo: 0xd4f06a,
+  estable: 0xf7f5f2,
+  saturada: 0xffcc6e,
+  bajando: 0x6b6b6b,
 };
 
-const DECISION_RING_RADIUS = {
-  Recomendar: 6,
-  Aprender: 11,
-  Descartar: 17,
-};
+// Distancia de una estrella segun p (coincide con los anillos de umbral).
+const R_MIN = 4;
+const R_MAX = 21;
+const ringRadius = (p) => R_MIN + (R_MAX - R_MIN) * (1 - p);
+// ponytail: intensidad alta porque el albedo es casi negro (luces fisicas de three r160).
+const LIME_LIGHT = 16;
 
 function hasWebGL() {
   try {
@@ -50,7 +54,7 @@ function makeStarTexture(colorHex) {
     size / 2,
     size / 2
   );
-  grad.addColorStop(0, `rgba(255,255,255,0.95)`);
+  grad.addColorStop(0, `rgba(255,255,255,0.8)`);
   grad.addColorStop(0.18, `rgba(${r},${g},${b},0.95)`);
   grad.addColorStop(0.5, `rgba(${r},${g},${b},0.35)`);
   grad.addColorStop(1, "rgba(0,0,0,0)");
@@ -59,6 +63,40 @@ function makeStarTexture(colorHex) {
   const tex = new THREE.CanvasTexture(cv);
   tex.needsUpdate = true;
   return tex;
+}
+
+// Anillo suave para el halo de "Recomendar".
+function makeHaloTexture() {
+  const cv = document.createElement("canvas");
+  cv.width = 128;
+  cv.height = 128;
+  const ctx = cv.getContext("2d");
+  const g = ctx.createRadialGradient(64, 64, 20, 64, 64, 64);
+  g.addColorStop(0, "rgba(235,255,111,0)");
+  g.addColorStop(0.72, "rgba(235,255,111,0.9)");
+  g.addColorStop(0.8, "rgba(235,255,111,0.5)");
+  g.addColorStop(1, "rgba(235,255,111,0)");
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, 128, 128);
+  return new THREE.CanvasTexture(cv);
+}
+
+// Etiqueta de texto en canvas, para los anillos de umbral.
+function makeTextSprite(text) {
+  const cv = document.createElement("canvas");
+  cv.width = 512;
+  cv.height = 96;
+  const ctx = cv.getContext("2d");
+  ctx.font = "500 40px Geist, 'Helvetica Neue', Arial, sans-serif";
+  ctx.fillStyle = "rgba(190,190,185,0.85)";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(text, 256, 48);
+  const sp = new THREE.Sprite(
+    new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(cv), transparent: true, depthWrite: false })
+  );
+  sp.scale.set(6.4, 1.2, 1);
+  return sp;
 }
 
 // Textura de banda de vía láctea: ruido suave en gradiente.
@@ -110,15 +148,16 @@ function buildDunes() {
   for (let i = 0; i < pos.count; i++) {
     const x = pos.getX(i);
     const z = pos.getZ(i);
-    pos.setY(i, duneHeight(x, z, 0));
+    // Centro plano (donde gira el radar) y crestas hacia afuera.
+    const k = THREE.MathUtils.smoothstep(Math.hypot(x, z), 20, 60);
+    pos.setY(i, (duneHeight(x, z, 0) + 3) * k - 0.2);
   }
   geo.computeVertexNormals();
 
   const mat = new THREE.MeshStandardMaterial({
-    color: 0x0b0b0c,
-    roughness: 0.95,
-    metalness: 0.05,
-    flatShading: false,
+    color: 0x0d0d0b,
+    roughness: 1,
+    metalness: 0,
   });
   const mesh = new THREE.Mesh(geo, mat);
   mesh.receiveShadow = false;
@@ -171,47 +210,57 @@ function buildStarfield() {
 }
 
 function buildMilkyWay() {
-  const count = 6000;
+  const count = 9000;
   const geo = new THREE.BufferGeometry();
   const positions = new Float32Array(count * 3);
   const opacities = new Float32Array(count);
+  const warm = new Float32Array(count);
   const bandAngle = 0.55; // inclinación de la banda
   for (let i = 0; i < count; i++) {
-    const t = (Math.random() - 0.5) * 2;
+    // Más densidad en el centro de la banda, tinte cálido en el núcleo.
+    const t = Math.sign(Math.random() - 0.5) * Math.pow(Math.random(), 1.6);
     const spread = Math.random();
     const along = t * 240;
-    const across = (Math.random() - 0.5) * 50 * Math.pow(spread, 1.6);
+    const core = 1 - Math.abs(t);
+    const across = (Math.random() - 0.5) * (14 + 40 * core) * Math.pow(spread, 1.6);
     const x = along * Math.cos(bandAngle) - across * Math.sin(bandAngle);
-    const y = along * Math.sin(bandAngle) * 0.25 + across * Math.sin(bandAngle) + 60 + Math.abs(across) * 0.3;
+    const y = along * Math.sin(bandAngle) * 0.75 + across * Math.sin(bandAngle) + 38 + Math.abs(across) * 0.3;
     const z = along * Math.sin(bandAngle) + across * Math.cos(bandAngle) - 120;
     positions[i * 3] = x;
     positions[i * 3 + 1] = Math.max(10, y);
     positions[i * 3 + 2] = z;
     opacities[i] = 0.2 + Math.random() * 0.8;
+    warm[i] = core * 0.5;
   }
   geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
   geo.setAttribute("aOpacity", new THREE.BufferAttribute(opacities, 1));
+  geo.setAttribute("aWarm", new THREE.BufferAttribute(warm, 1));
 
   const mat = new THREE.ShaderMaterial({
     uniforms: { uTime: { value: 0 }, uColor: { value: new THREE.Color(0xf7f5f2) } },
     vertexShader: `
       attribute float aOpacity;
+      attribute float aWarm;
       varying float vOpacity;
+      varying float vWarm;
       uniform float uTime;
       void main() {
+        vWarm = aWarm;
         vOpacity = aOpacity * (0.5 + 0.5 * sin(uTime * 0.35 + aOpacity * 60.0));
         vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-        gl_PointSize = 1.3 * (160.0 / -mvPosition.z);
+        gl_PointSize = 1.5 * (160.0 / -mvPosition.z);
         gl_Position = projectionMatrix * mvPosition;
       }
     `,
     fragmentShader: `
       varying float vOpacity;
+      varying float vWarm;
       uniform vec3 uColor;
       void main() {
         float d = length(gl_PointCoord - vec2(0.5));
         if (d > 0.5) discard;
-        gl_FragColor = vec4(uColor, vOpacity * 0.6 * (1.0 - d * 2.0));
+        vec3 c = mix(uColor, vec3(1.0, 0.86, 0.66), vWarm);
+        gl_FragColor = vec4(c, vOpacity * 0.75 * (1.0 - d * 2.0));
       }
     `,
     transparent: true,
@@ -220,43 +269,92 @@ function buildMilkyWay() {
   return new THREE.Points(geo, mat);
 }
 
+// Resplandor del horizonte: cilindro abierto con gradiente vertical lima.
+function buildHorizonGlow() {
+  const cv = document.createElement("canvas");
+  cv.width = 4;
+  cv.height = 128;
+  const ctx = cv.getContext("2d");
+  const g = ctx.createLinearGradient(0, 0, 0, 128);
+  g.addColorStop(0, "rgba(235,255,111,0)");
+  g.addColorStop(0.72, "rgba(235,255,111,0.10)");
+  g.addColorStop(0.9, "rgba(235,255,111,0.22)");
+  g.addColorStop(1, "rgba(235,255,111,0.05)");
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, 4, 128);
+  const mat = new THREE.MeshBasicMaterial({
+    map: new THREE.CanvasTexture(cv),
+    transparent: true,
+    side: THREE.BackSide,
+    depthWrite: false,
+    fog: false,
+    blending: THREE.AdditiveBlending,
+  });
+  const mesh = new THREE.Mesh(new THREE.CylinderGeometry(300, 300, 70, 48, 1, true), mat);
+  mesh.position.y = 28;
+  return mesh;
+}
+
 function buildRadarRings() {
   const group = new THREE.Group();
-  const radii = [
-    DECISION_RING_RADIUS.Recomendar,
-    DECISION_RING_RADIUS.Aprender,
-    DECISION_RING_RADIUS.Descartar,
+  // Umbrales p=0.80 (Recomendar), p=0.50 (Aprender) y borde p=0.
+  const defs = [
+    [ringRadius(0.8), 0xebff6f, 0.55, "Recomendar"],
+    [ringRadius(0.5), 0xffcc6e, 0.45, "Aprender"],
+    [R_MAX, 0x8a8a8a, 0.3, null],
   ];
-  const colors = [0xebff6f, 0xffcc6e, 0x525252];
-  radii.forEach((r, i) => {
-    const geo = new THREE.RingGeometry(r - 0.06, r + 0.06, 96);
-    const mat = new THREE.MeshBasicMaterial({
-      color: colors[i],
-      transparent: true,
-      opacity: 0.28,
-      side: THREE.DoubleSide,
-    });
+  defs.forEach(([r, color, opacity, label]) => {
+    const geo = new THREE.RingGeometry(r - 0.07, r + 0.07, 128);
+    const mat = new THREE.MeshBasicMaterial({ color, transparent: true, opacity, side: THREE.DoubleSide });
     const ring = new THREE.Mesh(geo, mat);
     ring.rotation.x = -Math.PI / 2;
     ring.position.y = 0.05;
     group.add(ring);
+    if (label) {
+      const sp = makeTextSprite(label);
+      sp.position.set(Math.cos(1.6) * r, 0.7, Math.sin(1.6) * r);
+      group.add(sp);
+    }
   });
   return group;
 }
 
-function buildSweepCone(radius) {
-  const geo = new THREE.ConeGeometry(radius, 0.001, 32, 1, true, 0, Math.PI / 7);
-  geo.rotateX(Math.PI / 2);
-  geo.translate(0, 0.08, 0);
-  const mat = new THREE.MeshBasicMaterial({
-    color: 0xebff6f,
-    transparent: true,
-    opacity: 0.16,
-    side: THREE.DoubleSide,
-    depthWrite: false,
-  });
-  const mesh = new THREE.Mesh(geo, mat);
-  return mesh;
+// Barrido: cuña lima con degradado hacia atrás + línea brillante en el borde de ataque.
+// Con rotation.y = -s, el borde de ataque apunta al azimut s (x=cos, z=sin).
+function buildSweep(radius) {
+  const group = new THREE.Group();
+  const span = 0.5;
+  const wedge = new THREE.Mesh(
+    new THREE.CircleGeometry(radius, 48, 0, span),
+    new THREE.ShaderMaterial({
+      uniforms: { uSpan: { value: span } },
+      vertexShader: `
+        varying float vA;
+        uniform float uSpan;
+        void main() {
+          vA = 1.0 - clamp(atan(position.y, position.x) / uSpan, 0.0, 1.0);
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        varying float vA;
+        void main() { gl_FragColor = vec4(0.92, 1.0, 0.43, vA * vA * 0.55); }
+      `,
+      transparent: true,
+      depthWrite: false,
+      side: THREE.DoubleSide,
+      blending: THREE.AdditiveBlending,
+    })
+  );
+  wedge.rotation.x = -Math.PI / 2;
+  wedge.position.y = 0.12;
+  group.add(wedge);
+  const line = new THREE.Line(
+    new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, 0.14, 0), new THREE.Vector3(radius, 0.14, 0)]),
+    new THREE.LineBasicMaterial({ color: 0xebff6f, transparent: true, opacity: 0.95 })
+  );
+  group.add(line);
+  return group;
 }
 
 export function mountScene(canvas, topics, onOpen) {
@@ -283,22 +381,19 @@ export function mountScene(canvas, topics, onOpen) {
     0.1,
     900
   );
-  const baseCamPos = new THREE.Vector3(0, 9, 26);
+  const baseCamPos = new THREE.Vector3(0, 15, 31);
   camera.position.copy(baseCamPos);
-  camera.lookAt(0, 3, 0);
+  camera.lookAt(0, 2, 0);
 
-  // Luz rasante lima tenue sobre las crestas de las dunas.
-  const rim = new THREE.DirectionalLight(0xebff6f, 0.35);
-  rim.position.set(-40, 6, -10);
+  // Luz rasante lima desde un lado y bajo: dibuja las crestas.
+  const rim = new THREE.DirectionalLight(0xebff6f, LIME_LIGHT);
+  rim.position.set(-60, 1.5, -25);
   scene.add(rim);
-  const ambient = new THREE.AmbientLight(0x3a3a3a, 0.5);
-  scene.add(ambient);
-  const fill = new THREE.DirectionalLight(0x8899aa, 0.12);
-  fill.position.set(20, 15, 20);
-  scene.add(fill);
+  scene.add(new THREE.AmbientLight(0x101010, 0.4));
 
   const dunes = buildDunes();
   scene.add(dunes);
+  scene.add(buildHorizonGlow());
 
   const starfield = buildStarfield();
   scene.add(starfield);
@@ -309,8 +404,7 @@ export function mountScene(canvas, topics, onOpen) {
   const rings = buildRadarRings();
   scene.add(rings);
 
-  const maxRingRadius = DECISION_RING_RADIUS.Descartar;
-  const sweep = buildSweepCone(maxRingRadius);
+  const sweep = buildSweep(R_MAX);
   scene.add(sweep);
 
   // --- Estrellas de los temas ---
@@ -326,10 +420,15 @@ export function mountScene(canvas, topics, onOpen) {
   parent.appendChild(labelLayer);
 
   const stars = [];
+  const texCache = {};
+  const haloTex = makeHaloTexture();
+  const top3 = new Set(
+    [...topics].sort((a, b) => (b.p || 0) - (a.p || 0)).slice(0, 3).map((t) => t.slug)
+  );
   const n = Math.max(1, topics.length);
   topics.forEach((topic, i) => {
-    const color = DECISION_COLOR[topic.decision] ?? DECISION_COLOR.Descartar;
-    const tex = makeStarTexture(color);
+    const color = STAGE_COLOR[topic.stage] ?? STAGE_COLOR.estable;
+    const tex = (texCache[color] ??= makeStarTexture(color));
     const mat = new THREE.SpriteMaterial({
       map: tex,
       transparent: true,
@@ -338,15 +437,16 @@ export function mountScene(canvas, topics, onOpen) {
     });
     const sprite = new THREE.Sprite(mat);
 
-    const azimuth = (i / n) * Math.PI * 2;
+    // Arco que deja libre el cuadrante cercano-izquierdo (titular abajo-izquierda).
+    const azimuth = -Math.PI * 0.72 + (i / n) * Math.PI * 1.0;
     const momentum = clamp01(topic.momentum);
     const p = clamp01(topic.p);
     const volume = Math.max(0, topic.volume || 0);
     const growth = Math.max(0, topic.growth || 1);
 
-    const distance = THREE.MathUtils.lerp(4, maxRingRadius + 4, 1 - p);
+    const distance = ringRadius(p);
     const height = THREE.MathUtils.lerp(2, 14, momentum);
-    const baseScale = THREE.MathUtils.lerp(1.1, 3.4, Math.min(1, volume / 60));
+    const baseScale = THREE.MathUtils.lerp(1.6, 4, Math.min(1, volume / 60));
 
     const x = Math.cos(azimuth) * distance;
     const z = Math.sin(azimuth) * distance;
@@ -357,11 +457,11 @@ export function mountScene(canvas, topics, onOpen) {
     label.className = "star-label";
     label.textContent = topic.name || topic.slug || "";
     label.style.position = "absolute";
-    label.style.transform = "translate(-50%, -100%)";
+    label.style.transform = "translateX(-50%)";
     label.style.fontFamily = "'EB Garamond', Georgia, serif";
     label.style.color = "var(--hueso)";
     label.style.textShadow = "0 1px 6px rgba(0,0,0,0.85), 0 0 14px rgba(0,0,0,0.6)";
-    label.style.fontSize = "16px";
+    label.style.fontSize = top3.has(topic.slug) ? "13px" : "16px";
     label.style.letterSpacing = "0.01em";
     label.style.whiteSpace = "nowrap";
     label.style.opacity = "0";
@@ -371,7 +471,18 @@ export function mountScene(canvas, topics, onOpen) {
 
     starGroup.add(sprite);
 
+    let halo = null;
+    if (topic.decision === "Recomendar") {
+      halo = new THREE.Sprite(
+        new THREE.SpriteMaterial({ map: haloTex, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending })
+      );
+      halo.position.copy(sprite.position);
+      starGroup.add(halo);
+    }
+
     stars.push({
+      halo,
+      top3: top3.has(topic.slug),
       topic,
       sprite,
       label,
@@ -379,6 +490,7 @@ export function mountScene(canvas, topics, onOpen) {
       baseScale,
       growth,
       flashUntil: 0,
+      flashing: false,
       hoverLabel: false,
     });
   });
@@ -387,16 +499,48 @@ export function mountScene(canvas, topics, onOpen) {
     return Math.max(0, Math.min(1, v == null ? 0 : v));
   }
 
-  function setLabelPosition(star, visible) {
-    const v = star.sprite.position.clone().project(camera);
-    const w = canvas.clientWidth || renderer.domElement.clientWidth || 1;
-    const h = canvas.clientHeight || renderer.domElement.clientHeight || 1;
-    const sx = (v.x * 0.5 + 0.5) * w;
-    const sy = (-v.y * 0.5 + 0.5) * h;
-    const onscreen = v.z < 1 && sx >= -40 && sx <= w + 40 && sy >= -40 && sy <= h + 40;
-    star.label.style.left = `${sx}px`;
-    star.label.style.top = `${sy - 10}px`;
-    star.label.style.opacity = visible && onscreen ? "1" : "0";
+  // Etiquetas: hover, destellos del barrido (máx 2) y top 3 por p. Se recortan al
+  // viewport y se oculta la de menor p si dos se solapan.
+  function layoutLabels() {
+    const w = canvas.clientWidth || 1;
+    const h = canvas.clientHeight || 1;
+    const edge = 12;
+    const cand = [];
+    stars.forEach((star) => {
+      const want = star.hoverLabel || star.flashing || star.top3;
+      if (!want) {
+        star.label.style.opacity = "0";
+        return;
+      }
+      const v = star.sprite.position.clone().project(camera);
+      const sx = (v.x * 0.5 + 0.5) * w;
+      const sy = (-v.y * 0.5 + 0.5) * h - 14;
+      const lw = star.label.offsetWidth || 80;
+      const lh = star.label.offsetHeight || 20;
+      const ok = v.z < 1 && sx > 0 && sx < w && sy > edge && sy < h - edge;
+      if (!ok) {
+        star.label.style.opacity = "0";
+        return;
+      }
+      const x = Math.max(edge + lw / 2, Math.min(w - edge - lw / 2, sx));
+      const y = Math.max(edge, Math.min(h - edge - lh, sy - lh));
+      cand.push({ star, x, y, lw, prio: star.hoverLabel ? 2 : star.top3 ? 1 : 0 });
+    });
+    cand.sort((a, b) => b.prio - a.prio || (b.star.topic.p || 0) - (a.star.topic.p || 0));
+    const placed = [];
+    cand.forEach((c) => {
+      const clash = placed.some(
+        (o) => Math.abs(o.y - c.y) < 24 && Math.abs(o.x - c.x) < (o.lw + c.lw) / 2
+      );
+      if (clash) {
+        c.star.label.style.opacity = "0";
+        return;
+      }
+      placed.push(c);
+      c.star.label.style.left = `${c.x}px`;
+      c.star.label.style.top = `${c.y}px`;
+      c.star.label.style.opacity = "1";
+    });
   }
 
   // --- Interacción: hover y clic ---
@@ -465,6 +609,9 @@ export function mountScene(canvas, topics, onOpen) {
     const h = parent.clientHeight || window.innerHeight || 1;
     renderer.setSize(w, h, false);
     camera.aspect = w / Math.max(1, h);
+    // En pantallas anchas empuja la escena a la derecha/arriba: el titular queda libre.
+    if (w > 800) camera.setViewOffset(w, h, -w * 0.2, h * 0.08, w, h);
+    else camera.setViewOffset(w, h, -w * 0.04, h * 0.14, w, h);
     camera.updateProjectionMatrix();
   }
   resize();
@@ -481,7 +628,7 @@ export function mountScene(canvas, topics, onOpen) {
 
   const clock = new THREE.Clock();
   let sweepAngle = 0;
-  const SWEEP_PERIOD = 8; // segundos por vuelta
+  const SWEEP_PERIOD = 6; // segundos por vuelta
   let rafId = null;
 
   function animate() {
@@ -511,23 +658,30 @@ export function mountScene(canvas, topics, onOpen) {
 
     // Detectar paso del barrido por el azimut de cada estrella + pulso de growth.
     const normalizedSweep = ((sweepAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+    let active = stars.filter((s) => t * 1000 < s.flashUntil).length;
     stars.forEach((star) => {
       const diff = Math.abs(
         Math.atan2(Math.sin(normalizedSweep - star.azimuth), Math.cos(normalizedSweep - star.azimuth))
       );
-      if (!reducedMotion && diff < 0.12 && t * 1000 - star.flashUntil > 500) {
+      if (!reducedMotion && active < 2 && diff < 0.12 && t * 1000 - star.flashUntil > 500) {
         star.flashUntil = t * 1000 + 1500;
+        active++;
       }
       const flashing = t * 1000 < star.flashUntil;
+      star.flashing = flashing;
+      if (star.halo) {
+        const hs = star.baseScale * (3.2 + 0.9 * Math.sin(t * 2.4));
+        star.halo.scale.set(hs, hs, 1);
+        star.halo.material.opacity = 0.55 + 0.35 * Math.sin(t * 2.4);
+      }
 
       const pulse = 1 + 0.18 * Math.sin(t * (1.5 + star.growth * 0.6)) * clamp01(star.growth / 3);
       const flashScale = flashing ? 1.35 : 1;
       const scale = star.baseScale * pulse * flashScale;
       star.sprite.scale.set(scale, scale, 1);
       star.sprite.material.opacity = flashing ? 1 : 0.9;
-
-      setLabelPosition(star, flashing || star.hoverLabel);
     });
+    layoutLabels();
 
     // Raycaster hover.
     raycaster.setFromCamera(pointerNdc, camera);
@@ -559,7 +713,7 @@ export function mountScene(canvas, topics, onOpen) {
 
   if (reducedMotion) {
     // Escena estática: un solo render, sin barrido ni órbita.
-    stars.forEach((star) => setLabelPosition(star, false));
+    layoutLabels();
     renderer.render(scene, camera);
   } else {
     animate();
