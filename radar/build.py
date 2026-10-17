@@ -11,7 +11,7 @@ from .collect import latest
 from .taxonomy import FORMATS, HOOKS, TOPICS, match_topics
 
 DIAS_SEMANA = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
-FUENTES = {"hn": "Hacker News", "gnews": "Google News", "youtube": "YouTube", "wiki": "Wikipedia"}
+FUENTES = {"hn": "Hacker News", "gnews": "Google News", "linkedin": "LinkedIn (vía Google News)", "youtube": "YouTube", "wiki": "Wikipedia"}
 PAID_ALTERNATIVE_USD_YEAR = 3000  # Apify Scale ~USD 2.388/año, Exolyt ~2.700/año (hackaton x30/radar/investigacion.md)
 
 
@@ -86,6 +86,7 @@ def build(snap: dict | None = None) -> dict:
     hace7 = (ahora - timedelta(days=7)).strftime("%Y-%m-%d")
     medianas = _medianas_canal(signals, ahora)
     cobertura = cobertura_30x()
+    max_cob = max(cobertura.values(), default=0) or 1
     adapts = {}
     ruta_adapt = settings.DATA_DIR / "adapt.json"
     if ruta_adapt.exists():
@@ -108,9 +109,18 @@ def build(snap: dict | None = None) -> dict:
         mom = trend.momentum(z, g, len(crecen))
         piezas = por_tema.get(slug, [])
         pesos = [trend.peso(s) for s in piezas]
-        fit = round(sum(labs[s["id"]]["exec_fit"] * w for s, w in zip(piezas, pesos)) / sum(pesos), 3) if piezas else 0.0
-        p = round(0.5 * mom + 0.5 * fit, 3)
-        decision = "Recomendar" if p >= settings.AUTO_THRESHOLD else "Aprender" if p >= settings.REVIEW_THRESHOLD else "Descartar"
+        # encaje = 60 % etiquetas (español/YouTube/LinkedIn pesan el doble que HN en inglés) + 40 % afinidad con 30X
+        # ponytail: promedio por grupo (HN en inglés pesa 0.5, el resto 1.0) para que 700 posts de HN no ahoguen a la prensa en español
+        grupos = {"hn": [], "otras": []}
+        for s, w in zip(piezas, pesos):
+            grupos["hn" if s["source"] == "hn" else "otras"].append((labs[s["id"]]["exec_fit"], w))
+        pg = {"hn": 0.5, "otras": 1.0}
+        medias = {g_: sum(f * w for f, w in v) / sum(w for _, w in v) for g_, v in grupos.items() if v}
+        ajuste = sum(pg[g_] * m for g_, m in medias.items()) / sum(pg[g_] for g_ in medias) if medias else 0.0
+        afinidad = cobertura.get(slug, 0) / max_cob
+        fit = round(0.6 * ajuste + 0.4 * afinidad, 3)
+        p_raw = round(0.5 * mom + 0.5 * fit, 3)
+        etapa = trend.etapa(g, z, acc, volumen[slug], p50, p75)
 
         vel = {s["id"]: trend.velocidad(s, ahora, medianas.get(s.get("channel", "")) if s["source"] == "youtube" else None)
                for s in piezas}
@@ -146,12 +156,20 @@ def build(snap: dict | None = None) -> dict:
         recientes = [s for s in piezas if s["published_at"][:10] >= hace7]
         top = sorted(recientes, key=lambda s: -rank.get(s["id"], 0))[:6]
 
-        razon = (f"Crece x{g:.1f} vs su base de 11 días (z={z:.1f}, {len(crecen)} fuentes al alza); "
-                 f"encaje ejecutivo {fit:.0%}; formato ganador: {FORMATS.get(why['format_winner'], 'sin datos')}.")
+        if g >= 1.05:
+            tendencia = f"Crece {g:.1f}x frente a sus 11 días previos"
+        elif g < 0.95:
+            tendencia = "Cae a la mitad frente a sus 11 días previos" if g <= 0.55 else f"Cae {round((1 - g) * 100)}% frente a sus 11 días previos"
+        else:
+            tendencia = "Estable frente a sus 11 días previos"
+        nombres_src = [FUENTES.get(c, c) for c in crecen]
+        razon = (f"{tendencia}; encaje con la audiencia 30X {fit:.0%}; "
+                 f"{'al alza en ' + ', '.join(nombres_src) if nombres_src else 'sin fuentes al alza'}; "
+                 f"formato ganador: {FORMATS.get(why['format_winner'], 'sin datos')}.")
         topics.append({
-            "slug": slug, "name": t["name"], "stage": trend.etapa(g, z, acc, volumen[slug], p50, p75),
+            "slug": slug, "name": t["name"], "stage": etapa,
             "growth": g, "z": z, "acceleration": acc, "volume": volumen[slug], "series": serie,
-            "wiki_series": wiki.get(slug, []), "momentum": mom, "exec_fit": fit, "p": p, "decision": decision,
+            "wiki_series": wiki.get(slug, []), "momentum": mom, "exec_fit": fit, "p": p_raw, "p_raw": p_raw, "decision": "",
             "reason": razon, "why": why,
             "top_signals": [{"title": s["title"], "url": s["url"], "source": s["source"], "published_at": s["published_at"],
                              "metrics": s["metrics"], "format": labs[s["id"]]["format"], "hook": labs[s["id"]]["hook"],
@@ -159,6 +177,16 @@ def build(snap: dict | None = None) -> dict:
             "adapt": adapts.get(slug) or adapt_por_defecto(slug, why),
         })
 
+    # p = puntaje relativo de la semana (min-max entre temas); la decisión usa los umbrales sobre p
+    lo, hi = min(x["p_raw"] for x in topics), max(x["p_raw"] for x in topics)
+    for x in topics:
+        x["p"] = round((x["p_raw"] - lo) / (hi - lo), 3) if hi > lo else 0.5
+        d = "Recomendar" if x["p"] >= settings.AUTO_THRESHOLD else "Aprender" if x["p"] >= settings.REVIEW_THRESHOLD else "Descartar"
+        if x["stage"] == "bajando":
+            d = "Descartar"
+        elif x["stage"] == "saturada" and d == "Recomendar":
+            d = "Aprender"
+        x["decision"] = d
     topics.sort(key=lambda x: -x["p"])
     for i, x in enumerate(topics, 1):
         x["rank"] = i
@@ -187,6 +215,7 @@ def build(snap: dict | None = None) -> dict:
                            "outlier": trend.velocidad(s, ahora, medianas.get(s["channel"])),
                            "format": labs.get(s["id"], {}).get("format"), "hook": labs.get(s["id"], {}).get("hook")}
                           for s in bench],
+        "calibration": {"method": "min-max semanal", "thresholds": [settings.AUTO_THRESHOLD, settings.REVIEW_THRESHOLD]},
         "topics": topics,
     }
     (settings.DATA_DIR / "radar.json").write_text(json.dumps(radar, ensure_ascii=False, indent=1), encoding="utf-8")

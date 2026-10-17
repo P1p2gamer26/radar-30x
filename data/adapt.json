@@ -1,0 +1,152 @@
+{
+ "ia-ventas": {
+  "title": "Así usa un equipo de ventas la IA para cerrar más, paso a paso | AI for Executives",
+  "hook": "Una startup colombiana de IA en ventas acaba de levantar US$6M.",
+  "format": "caso-paso-a-paso",
+  "beats": [
+   "0:00-0:03: Andrés aparece frente a cámara y dice la cifra de Dapta (US$6M) como contraste: si los inversionistas apuestan por IA para vender, ¿cómo lo aplica un ejecutivo común en su equipo?",
+   "0:03-0:30: Se muestra un proceso real de ventas de principio a fin (por ejemplo, calificar un prospecto entrante) con la pantalla dividida: lo que hace hoy el vendedor a mano frente al mismo paso con ",
+   "0:30-0:50: Se explica en lenguaje simple qué decisión sigue tomando la persona (aprobar la propuesta, hablar con el cliente) y qué tarea se delega a la IA, sin jerga técnica.",
+   "0:50-1:00: Cierre con un resumen de tres pasos que el espectador puede copiar en su empresa esta semana y un recordatorio de revisar siempre lo que la IA entrega antes de enviarlo a un cliente."
+  ],
+  "cta": "Comenta qué proceso de ventas de tu empresa te gustaría ver transformado con IA en el próximo video y suscríbete para no perderte la segunda parte.",
+  "platform": "YouTube",
+  "by": "teacher",
+  "cost_usd": 0.00706
+ },
+ "ia-finanzas": {
+  "title": "La IA en finanzas: qué significa para tu empresa (y qué riesgos ya están en la mesa)",
+  "hook": "En junio, Anthropic recibió la calificación crediticia más alta dentro de la categoría basura. Te explico qué significa para tu empresa.",
+  "format": "noticia-explicada",
+  "beats": [
+   "Plano corto con el titular: Anthropic recibió en junio la calificación crediticia más alta dentro de la categoría basura. Aclarar en una frase que es una señal de riesgo financiero, no una quiebra.",
+   "Explicar en lenguaje simple qué mide una calificación crediticia y por qué una empresa de IA de alto perfil puede tener este tipo de señal, usando una analogía cotidiana (como el historial de pagos de",
+   "Tres preguntas que todo ejecutivo debería hacerse: ¿qué proveedores de IA tenemos y cuál es su solidez financiera?, ¿qué pasa con nuestros datos y operaciones si un proveedor se debilita?, ¿tenemos un",
+   "Cierre con una lista de tres acciones concretas para esta semana: revisar contratos de IA, identificar dependencias críticas y definir un proveedor alterno. Mostrar en pantalla el checklist."
+  ],
+  "cta": "Comenta cuál es el proveedor de IA más crítico en tu empresa y descarga el checklist de 3 pasos para revisarlo esta semana.",
+  "platform": "LinkedIn",
+  "by": "teacher",
+  "cost_usd": 0.00853
+ },
+ "estrategia-adopcion": {
+  "title": "El 80% de los CEO espera cambios por IA en 2026: ¿tu empresa ya empezó?",
+  "hook": "El 80% de los CEO espera cambios por IA en 2026. ¿Y tu proceso sigue igual que hace un año?",
+  "format": "opinion",
+  "beats": [
+   "0-3 s: Cifra de Gartner en pantalla grande (80% de los CEO) y la pregunta sobre el proceso de la audiencia.",
+   "3-12 s: Opinión directa: esperar cambios no es lo mismo que tener un plan, y la mayoría de las empresas se queda en la expectativa.",
+   "12-22 s: Contraste con Colombia: 25,9% de la población ya usa IA, así que el reto ya no es conocer la herramienta sino conectarla con el trabajo diario.",
+   "22-30 s: Un solo paso accionable para esta semana: elegir un proceso repetitivo y medir cuánto tiempo toma hoy."
+  ],
+  "cta": "Comenta cuál es el proceso que más tiempo te quita y te muestro cómo lo revisaría con IA en el próximo video.",
+  "platform": "LinkedIn",
+  "by": "teacher",
+  "cost_usd": 0.00669
+ },
+ "ia-servicio": {
+  "title": "Así se arma un chatbot de servicio al cliente que no prometa lo que no puede cumplir, paso a paso",
+  "hook": "Un chatbot de DoorDash ofreció un reembolso total y, después de que el cliente canceló el pedido, se lo negó.",
+  "format": "caso-paso-a-paso",
+  "beats": [
+   "Mostrar el caso de DoorDash en pantalla: el mensaje del chatbot ofreciendo el reembolso y el mensaje posterior negándolo, y explicar en una frase qué salió mal.",
+   "Recorrer paso a paso un proceso real de atención al cliente con IA: qué consultas atiende el bot, cuándo pasa a una persona y qué reglas de reembolso puede aplicar, con pantallas simples.",
+   "Enseñar cómo revisar las respuestas del bot antes de lanzarlo: una lista de 5 preguntas de prueba que un líder puede hacer en 15 minutos, y qué hacer si el bot se equivoca.",
+   "Cerrar con el resultado esperado y una cifra del proceso demostrado (tiempo de respuesta o casos resueltos sin escalar), aclarando que el dato depende de la prueba del propio negocio."
+  ],
+  "cta": "Comenta qué proceso de atención a tus clientes te gustaría ver convertido en paso a paso y guarda el video para revisarlo con tu equipo esta semana.",
+  "platform": "YouTube",
+  "by": "teacher",
+  "cost_usd": 0.00667
+ },
+ "educacion-ia": {
+  "title": "Aprende IA desde cero: sesión en vivo para líderes que quieren empezar",
+  "hook": "Aprende IA desde cero con más de 85 clases gratis",
+  "format": "evento-live",
+  "beats": [
+   "0:00-0:03: Andrés aparece en cámara con el titular en pantalla: \"Aprende IA desde cero con más de 85 clases gratis\". Dice que hoy no hace falta ser programador para usar IA en el negocio.",
+   "0:03-0:40: Presenta la agenda del live en un solo cuadro: qué es IA, qué puede hacer hoy en una empresa y cómo empezar sin programar. Invita a registrarse y a escribir en el chat qué proceso de su áre",
+   "0:40-1:30: Muestra en pantalla un proceso real de un área (por ejemplo, responder solicitudes internas) antes y después de usar IA, paso a paso, para que el líder vea qué cambia y qué se queda igual.",
+   "1:30-2:00: Cierra con una lista corta de tres primeros pasos para equipos no técnicos y recuerda la fecha y hora del live, con el enlace de registro visible."
+  ],
+  "cta": "Regístrate al live en el enlace de la publicación y escribe en los comentarios el proceso de tu área que quieres transformar con IA.",
+  "platform": "LinkedIn",
+  "by": "teacher",
+  "cost_usd": 0.00683
+ },
+ "empleo-futuro": {
+  "title": "¿La IA se va a llevar los empleos? Lo que dicen los datos y lo que tu equipo debería hacer",
+  "hook": "Cada generación cree que esta vez es diferente. ¿Y si el miedo a la IA y el trabajo es el mismo de siempre?",
+  "format": "opinion",
+  "beats": [
+   "0:00-0:03: Hook a cámara, directo, con la frase de la generación que cree que esta vez es diferente. Texto en pantalla: '¿Esta vez sí es diferente?'",
+   "0:03-0:25: Tu postura en tres ideas simples: qué tareas cambian, cuáles no, y por qué la pregunta correcta no es si te reemplaza la IA sino si tu equipo sabe usarla. Apoyo visual: '85.000 empleos tecn",
+   "0:25-0:45: Un ejemplo concreto de un ejecutivo que automatizó una tarea repetitiva y reasignó a su equipo a clientes, con una cifra de horas ahorradas por semana (usar solo cifras reales del caso que ",
+   "0:45-0:60: Cierre con una predicción clara y una acción que el espectador puede hacer esta semana con su equipo."
+  ],
+  "cta": "Comenta cuál tarea de tu equipo te gustaría automatizar primero y comparte este video con alguien que esté preocupado por su puesto.",
+  "platform": "LinkedIn",
+  "by": "teacher",
+  "cost_usd": 0.00734
+ },
+ "ia-marketing": {
+  "title": "La IA en marketing ya no es para después: lo que están haciendo las marcas que crecen",
+  "hook": "Elevator Boys tiene 48 millones de seguidores. ¿Y tu marca todavía cree que la IA en marketing es para después?",
+  "format": "opinion",
+  "beats": [
+   "Plano directo a cámara: 'Muchos líderes creen que la IA en marketing es una moda. Hoy les voy a decir por qué están equivocados.'",
+   "Mostrar el caso de Elevator Boys (48M de seguidores) y explicar en una frase cómo usan la IA para producir contenido más rápido y sin perder su voz.",
+   "Contrastar con una marca que no se adapta: mismo presupuesto, menos alcance. Mostrar en pantalla dos columnas simples: 'antes' y 'con IA'.",
+   "Cierre con una predicción concreta para los próximos 12 meses y una pregunta para el equipo: '¿Qué parte de tu marketing podrías automatizar esta semana?'"
+  ],
+  "cta": "Comenta cuál es el primer proceso de marketing que automatizarías con IA y comparte este video con tu equipo de marketing.",
+  "platform": "LinkedIn",
+  "by": "teacher",
+  "cost_usd": 0.00681
+ },
+ "ia-talento": {
+  "title": "Lo que la IA ya cambió en RR.HH. y por qué tu equipo no puede esperar",
+  "hook": "US$74 mil de ahorro al mes con IA: de operativo a líder en 3 meses",
+  "format": "opinion",
+  "beats": [
+   "0-3 s: Cifra en pantalla (US$74 mil al mes) y una frase directa: esto ya pasa en empresas de la región, no es un experimento.",
+   "3-20 s: Opinión con tesis clara: la IA está cambiando la gestión del talento más rápido de lo que los líderes lo están discutiendo, y el que espere pierde ventaja.",
+   "20-45 s: Contraste simple: mientras algunas áreas automatizan tareas operativas, otras siguen contratando y capacitando igual que hace 5 años. Explicar qué cambia en la práctica para un ejecutivo.",
+   "45-60 s: Predicción concreta para los próximos 6 meses y una pregunta abierta a los líderes de RR.HH. sobre qué procesos revisarían primero."
+  ],
+  "cta": "Comenta cuál proceso de tu área de talento automatizarías primero y comparte este post con tu equipo de RR.HH.",
+  "platform": "LinkedIn",
+  "by": "teacher",
+  "cost_usd": 0.00735
+ },
+ "regulacion-etica": {
+  "title": "Regulación de IA: qué significa para tu empresa (y por qué 'un humano revisando' no basta)",
+  "hook": "Poner a un humano en el circuito no es una estrategia de gobernanza de IA.",
+  "format": "noticia-explicada",
+  "beats": [
+   "Texto en pantalla con el titular: 'Human in the Loop no es una estrategia de gobernanza para IA agéntica'. Andrés aparece y dice en una frase qué significa para un ejecutivo.",
+   "Explicación en lenguaje simple: un humano que aprueba cada respuesta no sirve si la IA ejecuta cientos de acciones por hora. Se muestra un ejemplo de compras o atención a clientes donde nadie revisa t",
+   "Contraste con la noticia de Linux: Linus Torvalds llama 'utterly stupid' a las reglas de divulgación de IA y Linux retira su etiqueta. Se explica por qué las reglas mal diseñadas no protegen a nadie y",
+   "Cierre con tres preguntas que cualquier líder puede hacerse esta semana: quién es responsable si la IA se equivoca, qué decisiones no puede tomar sola y cómo se audita lo que hace."
+  ],
+  "cta": "Comenta cuál de las tres preguntas no sabrías responder hoy en tu empresa, y te comparto una plantilla simple para definir responsables de IA.",
+  "platform": "LinkedIn",
+  "by": "teacher",
+  "cost_usd": 0.00774
+ },
+ "roi-casos": {
+  "title": "¿Más de $4.000 millones para un chatbot? Cómo saber si la IA de tu empresa realmente paga",
+  "hook": "Más de $4.000 millones y nos presentan un chatbot.",
+  "format": "opinion",
+  "beats": [
+   "Segundos 0-3: aparece la cita literal de Delgado Sempé sobre Modernización de Río Negro, en pantalla y en voz, sin comentario previo.",
+   "Contraste: mostrar que SpaceX factura con sus GPU, mientras Goldman alerta sobre la brecha de ingresos de la IA. Explicar en una frase que hay quien cobra y quien solo invierte.",
+   "Opinión directa: el problema no es el chatbot, es empezar por la herramienta en vez de por el proceso y el resultado esperado. Proponer arrancar con un piloto pequeño, medir antes y escalar solo si fu",
+   "Cierre práctica: tres preguntas que todo ejecutivo debería hacerse antes de aprobar un presupuesto de IA (qué proceso mejora, cuánto cuesta hoy, cómo sabremos que funcionó)."
+  ],
+  "cta": "Comenta cuál es el primer proceso de tu empresa que medirías con IA y sigue la página para ver el paso a paso de cómo se hace.",
+  "platform": "LinkedIn",
+  "by": "teacher",
+  "cost_usd": 0.00781
+ }
+}

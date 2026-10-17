@@ -76,23 +76,29 @@ def cargar() -> dict | None:
     return json.loads(ruta().read_text(encoding="utf-8")) if ruta().exists() else None
 
 
-def run(signals: list, labels: dict) -> dict:
-    """Entrena con 80 % de las etiquetas, mide contra el 20 % y guarda el modelo (reentrenado con todo)."""
+def run(signals: list, labels: dict, k: int = 5) -> dict:
+    """Validación cruzada de k pliegues (determinista por hash del id) y modelo final entrenado con todo."""
     por_id = {s["id"]: s for s in signals}
     datos = [(sid, tokens(por_id[sid]["title"] + " " + por_id[sid].get("text", ""), por_id[sid]["source"]),
               {t: objetivo(lab, t) for t in TAREAS})
              for sid, lab in labels.items() if sid in por_id]
-    train = [(t, y) for sid, t, y in datos if not es_test(sid)]
-    test = [(t, y) for sid, t, y in datos if es_test(sid)]
-    m = entrenar(train)
+    pliegue = lambda sid: int(hashlib.md5(sid.encode()).hexdigest(), 16) % k  # noqa: E731
+    ok, base_ok, n = Counter(), Counter(), 0
+    for f in range(k):
+        train = [(t, y) for sid, t, y in datos if pliegue(sid) != f]
+        test = [(t, y) for sid, t, y in datos if pliegue(sid) == f]
+        m = entrenar(train)
+        n += len(test)
+        for tarea in TAREAS:
+            mayor = Counter(y[tarea] for _, y in train).most_common(1)[0][0]
+            ok[tarea] += sum(predecir(m, toks)[tarea][0] == y[tarea] for toks, y in test)
+            base_ok[tarea] += sum(y[tarea] == mayor for _, y in test)
     acc = {}
     for tarea in TAREAS:
-        aciertos = sum(predecir(m, toks)[tarea][0] == y[tarea] for toks, y in test)
-        base = Counter(y[tarea] for _, y in train).most_common(1)[0][0]
-        acc[tarea] = {"accuracy": round(aciertos / max(len(test), 1), 3),
-                      "baseline": round(sum(y[tarea] == base for _, y in test) / max(len(test), 1), 3)}
+        a_, b_ = round(ok[tarea] / max(n, 1), 3), round(base_ok[tarea] / max(n, 1), 3)
+        acc[tarea] = {"accuracy": a_, "baseline": b_, "usable": a_ > b_}
     modelo = entrenar([(t, y) for _, t, y in datos])
-    modelo["eval"] = {"n_train": len(train), "n_test": len(test), **acc}
+    modelo["eval"] = {"method": f"validación cruzada {k} pliegues", "n_train": n - n // k, "n_test": n, **acc}
     ruta().write_text(json.dumps(modelo, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     return modelo["eval"]
 

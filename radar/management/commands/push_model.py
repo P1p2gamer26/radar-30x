@@ -38,6 +38,6 @@ class Command(BaseCommand):
         api = HfApi(token=os.environ["HF_TOKEN"])
         api.create_repo(REPO, exist_ok=True)
         api.upload_file(path_or_fileobj=str(settings.DATA_DIR / "student.json"), path_in_repo="student.json", repo_id=REPO)
-        api.upload_file(path_or_fileobj=CARD.format(teacher=meta["model"], n=ev["n_train"] + ev["n_test"], eval=tabla).encode(),
+        api.upload_file(path_or_fileobj=CARD.format(teacher=meta["model"], n=ev["n_test"], eval=tabla).encode(),
                         path_in_repo="README.md", repo_id=REPO)
         self.stdout.write(f"https://huggingface.co/{REPO}")

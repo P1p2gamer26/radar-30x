@@ -7,3 +7,4 @@ staticfiles/
 .pytest_cache/
 test-results/
 .prompts/
+data/social/

@@ -45,8 +45,8 @@ def clasificar(texto: str) -> dict:
             return {"topic": pred["topic"][0], "format": pred["format"][0], "hook": pred["hook"][0],
                     "exec_fit": round(fit_p if fit_c == "alto" else 1 - fit_p, 2), "engine": "estudiante",
                     "confidence": pred["topic"][1], "cost_usd": 0.0}
-    d = decide(texto, PREGUNTAS, referencia="analizar")
-    if d.engine == "fallback":  # sin LLM ni grabación: regla por keywords, confianza baja a propósito
+    d = None if settings.DECISION_MODE == "replay" else decide(texto, PREGUNTAS, referencia="analizar")  # replay = producción: cero LLM
+    if d is None or d.engine == "fallback":  # sin LLM ni grabación: regla por keywords, confianza baja a propósito
         kw = match_topics(texto)
         return {"topic": kw[0] if kw else "otro", "format": "post-texto", "hook": "pregunta" if "?" in texto else "urgencia-novedad",
                 "exec_fit": 0.5, "engine": "regla", "confidence": 0.3, "cost_usd": 0.0}
@@ -62,8 +62,15 @@ def analizar(texto: str) -> dict:
     r = clasificar(limpiar(texto))
     tema = next((t for t in cargar_radar().get("topics", []) if t["slug"] == r["topic"]), None)
     momentum = tema["momentum"] if tema else 0.0
-    p = round(0.5 * momentum + 0.5 * r["exec_fit"], 3)
+    p_raw = round(0.5 * momentum + 0.5 * r["exec_fit"], 3)
+    crudos = [t["p_raw"] for t in cargar_radar().get("topics", []) if "p_raw" in t]  # mismo min-max semanal del radar
+    lo, hi = (min(crudos), max(crudos)) if crudos else (0.0, 1.0)
+    p = round(min(1.0, max(0.0, (p_raw - lo) / (hi - lo))), 3) if hi > lo else p_raw
     r["decision"] = "Recomendar" if p >= settings.AUTO_THRESHOLD else "Aprender" if p >= settings.REVIEW_THRESHOLD else "Descartar"
+    if tema and tema["stage"] == "bajando":
+        r["decision"] = "Descartar"
+    elif tema and tema["stage"] == "saturada" and r["decision"] == "Recomendar":
+        r["decision"] = "Aprender"
     r["p"] = p
     r["topic_name"] = TOPICS[r["topic"]]["name"] if r["topic"] in TOPICS else "Fuera del radar"
     r["format_name"], r["hook_name"] = FORMATS.get(r["format"], r["format"]), HOOKS.get(r["hook"], r["hook"])

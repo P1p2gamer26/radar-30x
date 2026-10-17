@@ -5,6 +5,7 @@ imprime un aviso y devuelve []. Solo stdlib.
 """
 import json
 import re
+import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET  # ponytail: expat de py3.13 no resuelve entidades externas; fuentes fijas (Google/YouTube)
@@ -16,6 +17,7 @@ from django.conf import settings
 from .taxonomy import TOPICS
 
 UA = "Radar30X/0.1 (https://github.com/P1p2gamer26/radar-30x; radar30x@users.noreply.github.com)"  # Wikimedia exige URL + contacto
+PAUSA_LINKEDIN = 1.0  # s entre consultas, para no abusar de Google News
 HN_QUERIES = ["AI", "LLM", "GPT", "Claude", "Gemini", "agent", "OpenAI", "Anthropic"]
 
 
@@ -94,6 +96,44 @@ def fetch_gnews(now: datetime, days: int = 14) -> list:
                     "id": f"gnews:{item.findtext('guid') or item.findtext('link')}", "source": "gnews",
                     "url": item.findtext("link") or "", "title": titulo, "text": "", "lang": lang,
                     "published_at": _iso(fecha), "author_type": "medio",
+                    "metrics": {"points": 0, "comments": 0, "views": 0}, "query": slug,
+                })
+    return out
+
+
+# ------------------------------------------------------------------ LinkedIn Pulse (vía Google News)
+
+_SUFIJO_LI = re.compile(r"\s*[-|]\s*LinkedIn\s*$", re.I)
+
+
+def limpiar_titulo_linkedin(titulo: str) -> str:
+    """Quita ' - LinkedIn' y el nombre de autor que sigue a ' - ' o ' | ' (solo contenido, nunca personas)."""
+    titulo = _SUFIJO_LI.sub("", titulo)
+    return sin_pii(re.split(r"\s+[-|]\s+", titulo)[0])
+
+
+def fetch_linkedin(now: datetime, days: int = 14) -> list:
+    out = []
+    for slug, t in TOPICS.items():
+        q = "site:linkedin.com/pulse " + " ".join(f'"{k}"' for k in t["keywords"][:2])
+        for lang, loc in GNEWS_LOCALES:
+            time.sleep(PAUSA_LINKEDIN)
+            url = f"https://news.google.com/rss/search?q={urllib.parse.quote(q + f' when:{days}d')}&{loc}"
+            crudo = _seguro("linkedin", get, url)
+            if not crudo:
+                continue
+            for item in ET.fromstring(crudo).iter("item"):
+                titulo = limpiar_titulo_linkedin(item.findtext("title") or "")
+                try:
+                    fecha = parsedate_to_datetime(item.findtext("pubDate"))
+                except Exception:
+                    continue
+                if not titulo:
+                    continue
+                out.append({
+                    "id": f"linkedin:{item.findtext('guid') or item.findtext('link')}", "source": "linkedin",
+                    "url": item.findtext("link") or "", "title": titulo, "text": "", "lang": lang,
+                    "published_at": _iso(fecha), "author_type": "creador",
                     "metrics": {"points": 0, "comments": 0, "views": 0}, "query": slug,
                 })
     return out

@@ -110,6 +110,7 @@
     <h1>Pega el título o texto de una pieza pública y mira dónde cae en el radar.</h1>
     <p class="lead">La comunidad como sensor: cuando el equipo encuentra una pieza en LinkedIn, Instagram o TikTok que suena interesante, la pega aquí y el radar la clasifica.</p>
 
+    {% if error %}<p class="form-error" role="alert">{{ error }}</p>{% endif %}
     <form class="form-card" method="post" action="{% url 'analizar' %}">
       {% csrf_token %}
       <textarea name="texto" placeholder="Pega el título o texto de una pieza pública" maxlength="3000">{{ texto }}</textarea>

@@ -543,3 +543,5 @@ section.block h2 {
 
   .panel { width: 100%; }
 }
+
+.form-error { color: var(--ambar); margin: 0 0 16px; }

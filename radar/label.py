@@ -132,15 +132,22 @@ ESTILO_30X = ("Estilo 30X (Andrés Bilbao): español neutro latino, directo, sin
               "su mejor video es 'Así se transforma un proceso con IA, paso a paso | AI for Executives' (~30x su mediana).")
 
 
+PLATAFORMAS = ("LinkedIn", "Instagram", "TikTok", "YouTube")
+
+
 def adaptar(topic: dict, benchmark: list) -> dict | None:
     datos = {"tema": topic["name"], "etapa": topic["stage"], "razon": topic["reason"],
              "formato_ganador": topic["why"].get("format_winner"), "gancho_ganador": topic["why"].get("hook_winner"),
-             "piezas_que_funcionan": [_sanitizar(s["title"])[:160] for s in topic["top_signals"][:5]],
+             "top_signals": [_sanitizar(s["title"])[:160] for s in topic["top_signals"][:6]],
              "lo_que_mejor_le_funciona_a_30x": [_sanitizar(b["title"])[:120] for b in benchmark[:4]]}
     usuario = (f"Audiencia: {AUDIENCIA}. {ESTILO_30X}\nPropón UNA pieza para que 30X publique esta semana sobre el tema. "
-               f"format debe ser uno de {sorted(FORMATS)}. "
-               'Esquema: {"title": "...", "hook": "frase exacta de los primeros 3 segundos", "format": "...", '
-               '"beats": ["...", "...", "..."], "cta": "..."}\n'
+               "Escribe en español de Latinoamérica, para ejecutivos, sin tecnicismos. "
+               "hook = la frase LITERAL de los primeros 3 segundos y debe contener una cifra o un contraste concreto "
+               "sacado de las top_signals (no inventes datos que no estén ahí). "
+               f"format debe ser uno de {sorted(FORMATS)}. beats = 3 o 4 pasos concretos de la pieza (qué se muestra o dice en cada uno). "
+               f"cta = llamado a la acción. platform = una de {list(PLATAFORMAS)} (la mejor para este formato). "
+               'Esquema: {"title": "...", "hook": "...", "format": "...", "beats": ["...", "...", "..."], '
+               '"cta": "...", "platform": "..."}\n'
                f"<items>{json.dumps(datos, ensure_ascii=False)}</items>")
     payload = {"model": settings.LLM_MODEL, "temperature": 0.4, "stream": False,
                "messages": [{"role": "system", "content": SISTEMA}, {"role": "user", "content": usuario}]}
@@ -155,7 +162,7 @@ def adaptar(topic: dict, benchmark: list) -> dict | None:
         costo = (int(uso.get("prompt_tokens") or 0) * settings.LLM_PRICE_IN_PER_1M
                  + int(uso.get("completion_tokens") or 0) * settings.LLM_PRICE_OUT_PER_1M) / 1e6
         return {"title": str(a["title"])[:160], "hook": str(a["hook"])[:200], "format": a["format"], "beats": beats,
-                "cta": str(a["cta"])[:160], "by": "teacher", "cost_usd": round(costo, 5)}
+                "cta": str(a["cta"])[:160], "platform": a.get("platform") if a.get("platform") in PLATAFORMAS else "LinkedIn", "by": "teacher", "cost_usd": round(costo, 5)}
     except Exception as e:
         print(f"[aviso] adaptar {topic['slug']}: {e}")
         return None

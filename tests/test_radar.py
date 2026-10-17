@@ -35,6 +35,16 @@ def test_gnews_quita_medio_y_salta_fechas_malas(monkeypatch):
     assert out[0]["author_type"] == "medio"
 
 
+def test_linkedin_limpia_titulo_y_autor(monkeypatch):
+    monkeypatch.setattr(sources, "TOPICS", {"agentes-ia": {"keywords": ["agentes de ia", "ai agents"]}})
+    monkeypatch.setattr(sources, "GNEWS_LOCALES", [("es", "hl=es-419")])
+    monkeypatch.setattr(sources, "PAUSA_LINKEDIN", 0)
+    monkeypatch.setattr(sources, "get", lambda url: (FIX / "linkedin.xml").read_bytes())
+    out = sources.fetch_linkedin(AHORA)
+    assert [s["title"] for s in out] == ["Cómo usar agentes de IA en ventas", "IA y productividad"]
+    assert out[0]["source"] == "linkedin" and out[0]["author_type"] == "creador"
+
+
 def test_youtube_trae_vistas():
     out = sources.parse_youtube((FIX / "youtube.xml").read_bytes(), {"name": "30X", "lang": "es", "author_type": "empresa"})
     assert out[0]["metrics"]["views"] == 25473 and out[0]["metrics"]["points"] == 900
@@ -103,3 +113,15 @@ def test_analizar_quita_pii_y_no_falla_sin_modelo(datos, settings, db):
 def test_api_radar(client, datos):
     (datos / "radar.json").write_text('{"topics": [], "week": "x"}', encoding="utf-8")
     assert client.get("/api/radar.json").json()["week"] == "x"
+
+
+def test_analizar_limite_por_ip_y_replay_sin_llm(client, datos, settings, monkeypatch, db):
+    from django.core.cache import cache
+    cache.clear()
+    settings.DECISION_MODE = "replay"
+    monkeypatch.setattr(analyze, "decide", lambda *a, **k: pytest.fail("replay no debe llamar al LLM"))
+    for _ in range(20):
+        assert client.post("/analizar/", {"texto": "agentes de ia en ventas"}).status_code == 200
+    r = client.post("/analizar/", {"texto": "agentes de ia en ventas"})
+    assert r.status_code == 429
+    cache.clear()
