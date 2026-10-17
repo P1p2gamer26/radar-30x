@@ -9,6 +9,6 @@ cd ~/radar-30x && git fetch -q origin && git checkout -q -f -B main origin/main 
 .venv/bin/pip install -q --no-cache-dir -r requirements.txt
 export DJANGO_SECRET_KEY="$(cat ~/.radar_secret)" DJANGO_ALLOWED_HOSTS="${USER,,}.pythonanywhere.com"
 .venv/bin/python manage.py migrate -v0
-.venv/bin/python manage.py collectstatic --noinput -v0
+# sin collectstatic: STATIC_SIN_COLLECT=1 (ver config/settings.py)
 touch /var/www/${USER,,}_pythonanywhere_com_wsgi.py 2>/dev/null || true
 echo "OK: recarga la web app en la pestaña Web"

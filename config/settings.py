@@ -78,7 +78,9 @@ STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-if not DEBUG and "pytest" not in sys.modules:
+# ponytail: en PythonAnywhere free (100 s de CPU/día) no se comprime ni se copia nada: whitenoise sirve desde las apps.
+WHITENOISE_USE_FINDERS = os.environ.get("STATIC_SIN_COLLECT") == "1"
+if not DEBUG and "pytest" not in sys.modules and not WHITENOISE_USE_FINDERS:
     STORAGES = {"default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
                 "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"}}
 
