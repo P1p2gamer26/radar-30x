@@ -426,6 +426,15 @@ export function mountScene(canvas, topics, onOpen) {
     [...topics].sort((a, b) => (b.p || 0) - (a.p || 0)).slice(0, 3).map((t) => t.slug)
   );
   const n = Math.max(1, topics.length);
+  // Blips sobre el disco: orden por categoria y slug, azimut repartido en un arco que deja libre
+  // el cuadrante cercano-izquierdo (titular). ponytail: reparto uniforme, sin relajacion de colisiones.
+  const catRank = { Recomendar: 0, Aprender: 1 };
+  const order = [...topics].sort(
+    (a, b) =>
+      (catRank[a.decision] ?? 2) - (catRank[b.decision] ?? 2) || String(a.slug).localeCompare(String(b.slug))
+  );
+  const rRec = ringRadius(0.8);
+  const rApr = ringRadius(0.5);
   topics.forEach((topic, i) => {
     const color = STAGE_COLOR[topic.stage] ?? STAGE_COLOR.estable;
     const tex = (texCache[color] ??= makeStarTexture(color));
@@ -437,21 +446,31 @@ export function mountScene(canvas, topics, onOpen) {
     });
     const sprite = new THREE.Sprite(mat);
 
-    // Arco que deja libre el cuadrante cercano-izquierdo (titular abajo-izquierda).
-    const azimuth = -Math.PI * 0.72 + (i / n) * Math.PI * 1.0;
+    const k = order.indexOf(topic);
+    const azimuth = -Math.PI * 0.8 + ((k + 0.5) / n) * Math.PI * 1.2;
     const momentum = clamp01(topic.momentum);
     const p = clamp01(topic.p);
     const volume = Math.max(0, topic.volume || 0);
     const growth = Math.max(0, topic.growth || 1);
 
-    const distance = ringRadius(p);
-    const height = THREE.MathUtils.lerp(2, 14, momentum);
-    const baseScale = THREE.MathUtils.lerp(1.6, 4, Math.min(1, volume / 60));
+    // Mismo mapeo que los anillos, ajustado para que la decision caiga en su zona.
+    let distance = ringRadius(p);
+    if (topic.decision === "Recomendar") distance = Math.min(distance, rRec - 1.6);
+    else if (topic.decision === "Aprender") distance = THREE.MathUtils.clamp(distance, rRec + 0.8, rApr - 0.8);
+    else distance = THREE.MathUtils.clamp(distance, rApr + 0.8, R_MAX - 1.2);
+    const height = THREE.MathUtils.lerp(0.25, 1.1, momentum); // bajo: en perspectiva, más alto parece más lejos del centro
+    const baseScale = THREE.MathUtils.lerp(0.9, 2.2, Math.min(1, volume / 60));
 
     const x = Math.cos(azimuth) * distance;
     const z = Math.sin(azimuth) * distance;
     sprite.position.set(x, height, z);
     sprite.scale.set(baseScale, baseScale, 1);
+
+    const pin = new THREE.Line(
+      new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(x, 0.1, z), new THREE.Vector3(x, height, z)]),
+      new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.35 })
+    );
+    starGroup.add(pin);
 
     const label = document.createElement("div");
     label.className = "star-label";
@@ -670,9 +689,9 @@ export function mountScene(canvas, topics, onOpen) {
       const flashing = t * 1000 < star.flashUntil;
       star.flashing = flashing;
       if (star.halo) {
-        const hs = star.baseScale * (3.2 + 0.9 * Math.sin(t * 2.4));
+        const hs = star.baseScale * 2.1 * (1 + 0.08 * Math.sin(t * 2.4));
         star.halo.scale.set(hs, hs, 1);
-        star.halo.material.opacity = 0.55 + 0.35 * Math.sin(t * 2.4);
+        star.halo.material.opacity = 0.4 + 0.15 * Math.sin(t * 2.4);
       }
 
       const pulse = 1 + 0.18 * Math.sin(t * (1.5 + star.growth * 0.6)) * clamp01(star.growth / 3);
