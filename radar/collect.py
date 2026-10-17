@@ -10,7 +10,7 @@ from . import sources
 def run(now=None) -> dict:
     now = now or datetime.now(timezone.utc)
     signals, vistos = [], set()
-    for fn in (sources.fetch_hn, sources.fetch_gnews, sources.fetch_linkedin, sources.fetch_youtube):
+    for fn in (sources.fetch_hn, sources.fetch_gnews, sources.fetch_linkedin, sources.fetch_youtube, sources.fetch_instagram, sources.fetch_tiktok):
         for s in fn(now):
             if s["url"] not in vistos:
                 vistos.add(s["url"])

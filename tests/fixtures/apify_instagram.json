@@ -1,0 +1,24 @@
+[
+ {
+  "shortCode": "AAA111",
+  "type": "Sidecar",
+  "productType": "carousel_container",
+  "caption": "5 agentes de IA para tu empresa\nEscríbeme a juan@x.com o @crece30x https://t.co/x",
+  "likesCount": 740,
+  "commentsCount": 50,
+  "videoViewCount": null,
+  "timestamp": "2026-10-10T10:00:00.000Z",
+  "ownerUsername": "crece30x"
+ },
+ {
+  "shortCode": "BBB222",
+  "type": "Video",
+  "productType": "clips",
+  "caption": "ChatGPT en 30 segundos by @tercero_fulano",
+  "likesCount": 10,
+  "commentsCount": 1,
+  "videoViewCount": 900,
+  "timestamp": "2026-10-11T10:00:00.000Z",
+  "ownerUsername": "tercero_fulano"
+ }
+]

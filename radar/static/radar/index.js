@@ -205,12 +205,11 @@ function renderCost(data) {
     );
   }
   const highlight = el("p", { class: "cost-highlight" });
-  highlight.appendChild(document.createTextNode("Esta corrida costó "));
-  const strongCost = el("strong", { text: fmtUsd(t.teacher_cost_usd || 0) });
-  highlight.appendChild(strongCost);
-  highlight.appendChild(document.createTextNode(". El scraping pago cuesta "));
-  const strongAlt = el("strong", { text: fmtUsd(t.paid_alternative_usd_year || 0) });
-  highlight.appendChild(strongAlt);
+  const semanal = t.weekly_cost_usd ?? 0;
+  highlight.appendChild(document.createTextNode("Cada semana cuesta "));
+  highlight.appendChild(el("strong", { text: fmtUsd(semanal) }));
+  highlight.appendChild(document.createTextNode(` (Instagram y TikTok vía Apify; el modelo propio clasifica gratis), unos ${fmtUsd(semanal * 52)} al año. El entrenamiento inicial con el LLM costó ${fmtUsd(t.teacher_cost_usd || 0)} una sola vez. El scraping pago cuesta `));
+  highlight.appendChild(el("strong", { text: fmtUsd(t.paid_alternative_usd_year || 0) }));
   highlight.appendChild(document.createTextNode(" al año."));
   grid.appendChild(highlight);
 

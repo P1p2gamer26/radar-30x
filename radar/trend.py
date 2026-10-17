@@ -81,8 +81,9 @@ def velocidad(signal: dict, ahora: datetime, mediana_canal: float | None = None)
     """Engagement por hora; en YouTube, veces sobre la mediana de su canal (outlier >= 3 = funcionó)."""
     horas = max((ahora - datetime.fromisoformat(signal["published_at"].replace("Z", "+00:00"))).total_seconds() / 3600, 1)
     m = signal.get("metrics") or {}
-    if signal["source"] == "youtube":
-        vh = m.get("views", 0) / horas
+    if signal["source"] == "youtube" or (signal["source"] in ("instagram", "tiktok") and signal.get("channel")):
+        # cuentas oficiales: vistas (o likes si el post no tiene vistas) por hora
+        vh = (m.get("views") or m.get("points", 0)) / horas
         return round(vh / mediana_canal, 2) if mediana_canal else round(vh, 2)
     return round((m.get("points", 0) + 2 * m.get("comments", 0)) / horas, 2)
 

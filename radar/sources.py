@@ -4,6 +4,7 @@ Cada fetch_* devuelve una lista de Signals (ver SPEC.md) y nunca lanza: si la re
 imprime un aviso y devuelve []. Solo stdlib.
 """
 import json
+import os
 import re
 import time
 import urllib.parse
@@ -210,4 +211,93 @@ def fetch_wiki(now: datetime, days: int = 14) -> dict:
                 if d in total:
                     total[d] += v
         out[slug] = [total[d] for d in dias]
+    return out
+
+
+# ------------------------------------------------------------------ Instagram y TikTok (vía Apify, contenido público)
+
+OFICIALES = {"crece30x": "empresa", "andresbilbao": "creador"}  # únicas cuentas cuyo nombre se guarda (en "channel")
+APIFY = "https://api.apify.com/v2/acts/{}/run-sync-get-dataset-items?token={}&timeout=240"
+IG_HASHTAGS = ["inteligenciaartificial", "ia", "chatgpt", "agentesia", "iaparaempresas"]
+TT_HASHTAGS = ["inteligenciaartificial", "ia", "chatgpt"]
+
+
+def _apify(actor: str, entrada: dict) -> list:
+    """POST síncrono a Apify; sin APIFY_TOKEN devuelve [] (demo y CI sin red). El token nunca se imprime."""
+    token = os.environ.get("APIFY_TOKEN", "")
+    if not token:
+        return []
+    req = urllib.request.Request(APIFY.format(actor, token), data=json.dumps(entrada).encode(),
+                                 headers={"Content-Type": "application/json", "User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=260) as resp:
+        return json.loads(resp.read())
+
+
+def _lang(texto: str) -> str:
+    return "es" if re.search(r"[áéíóúñ¿¡]|\b(el|la|los|que|para|con|una|de)\b", texto.lower()) else "en"
+
+
+def _senal(source, ident, url, caption, publicado, metricas, dueno, formato, query):
+    """Item crudo -> Signal. Solo las cuentas oficiales conservan nombre ('channel'); el resto queda anónimo."""
+    texto = sin_pii(caption)
+    linea = sin_pii((caption or "").strip().split("\n")[0])
+    s = {"id": f"{source}:{ident}", "source": source, "url": url, "title": linea[:160] or texto[:160], "text": texto[:500],
+         "lang": _lang(texto), "published_at": publicado,
+         "author_type": OFICIALES.get(dueno, "creador"), "metrics": metricas, "format": formato, "query": query}
+    if dueno in OFICIALES:
+        s["channel"] = dueno
+    return s
+
+
+def parse_instagram(items: list, query: str) -> list:
+    out = []
+    for i in items:
+        if not i.get("shortCode") or not i.get("timestamp"):
+            continue
+        tipo = i.get("type")
+        formato = "reel" if i.get("productType") == "clips" else "carrusel" if tipo == "Sidecar" else "video corto" if tipo == "Video" else "imagen"
+        out.append(_senal("instagram", i["shortCode"], f"https://www.instagram.com/p/{i['shortCode']}/", i.get("caption"),
+                          _iso(datetime.fromisoformat(i["timestamp"].replace("Z", "+00:00"))),
+                          {"points": max(i.get("likesCount") or 0, 0), "comments": i.get("commentsCount") or 0,
+                           "views": i.get("videoViewCount") or i.get("videoPlayCount") or 0},
+                          (i.get("ownerUsername") or "").lower(), formato, query))
+    return out
+
+
+def parse_tiktok(items: list, query: str) -> list:
+    out = []
+    for i in items:
+        if not i.get("id") or not i.get("createTimeISO"):
+            continue
+        dueno = ((i.get("authorMeta") or {}).get("name") or "").lower()
+        url = i.get("webVideoUrl") if dueno in OFICIALES else f"https://www.tiktok.com/@_/video/{i['id']}"  # sin handle de terceros
+        out.append(_senal("tiktok", i["id"], url, i.get("text"),
+                          _iso(datetime.fromisoformat(i["createTimeISO"].replace("Z", "+00:00"))),
+                          {"points": i.get("diggCount") or 0, "comments": i.get("commentCount") or 0, "views": i.get("playCount") or 0},
+                          dueno, "video corto", query))
+    return out
+
+
+def fetch_instagram(now: datetime, days: int = 14) -> list:
+    if not os.environ.get("APIFY_TOKEN"):
+        return []
+    runs = [("perfil-30x", [f"https://www.instagram.com/{p}/" for p in OFICIALES], 30)]
+    runs += [(h, [f"https://www.instagram.com/explore/tags/{h}/"], 15) for h in IG_HASHTAGS]
+    out = []
+    for query, urls, n in runs:
+        crudo = _seguro("instagram", _apify, "apify~instagram-scraper",
+                        {"directUrls": urls, "resultsType": "posts", "resultsLimit": n, "addParentData": False})
+        out += _seguro("instagram", parse_instagram, crudo or [], query) or []
+    return out
+
+
+def fetch_tiktok(now: datetime, days: int = 14) -> list:
+    if not os.environ.get("APIFY_TOKEN"):
+        return []
+    runs = [("perfil-30x", {"profiles": list(OFICIALES), "resultsPerPage": 20})]
+    runs += [(h, {"hashtags": [h], "resultsPerPage": 15}) for h in TT_HASHTAGS]
+    out = []
+    for query, entrada in runs:
+        crudo = _seguro("tiktok", _apify, "clockworks~tiktok-scraper", {**entrada, "shouldDownloadVideos": False, "shouldDownloadCovers": False})
+        out += _seguro("tiktok", parse_tiktok, crudo or [], query) or []
     return out

@@ -125,3 +125,20 @@ def test_analizar_limite_por_ip_y_replay_sin_llm(client, datos, settings, monkey
     r = client.post("/analizar/", {"texto": "agentes de ia en ventas"})
     assert r.status_code == 429
     cache.clear()
+
+
+def test_apify_mapea_y_no_guarda_handles_de_terceros():
+    ig = sources.parse_instagram(json.loads((FIX / "apify_instagram.json").read_text(encoding="utf-8")), "perfil-30x")
+    tt = sources.parse_tiktok(json.loads((FIX / "apify_tiktok.json").read_text(encoding="utf-8")), "ia")
+    assert ig[0]["id"] == "instagram:AAA111" and ig[0]["channel"] == "crece30x" and ig[0]["author_type"] == "empresa"
+    assert ig[0]["format"] == "carrusel" and ig[0]["title"] == "5 agentes de IA para tu empresa"
+    assert ig[1]["format"] == "reel" and ig[1]["metrics"] == {"points": 10, "comments": 1, "views": 900} and "channel" not in ig[1]
+    assert tt[0]["metrics"]["views"] == 2072 and "channel" not in tt[0] and tt[1]["channel"] == "andresbilbao"
+    assert tt[1]["author_type"] == "creador"
+    txt = json.dumps(ig + tt)
+    assert "tercero" not in txt and "otro_usuario" not in txt and "juan@x.com" not in txt
+
+
+def test_apify_sin_token_devuelve_vacio(monkeypatch):
+    monkeypatch.delenv("APIFY_TOKEN", raising=False)
+    assert sources.fetch_instagram(AHORA) == [] and sources.fetch_tiktok(AHORA) == []

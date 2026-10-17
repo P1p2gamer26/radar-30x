@@ -11,7 +11,9 @@ from .collect import latest
 from .taxonomy import FORMATS, HOOKS, TOPICS, match_topics
 
 DIAS_SEMANA = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
-FUENTES = {"hn": "Hacker News", "gnews": "Google News", "linkedin": "LinkedIn (vía Google News)", "youtube": "YouTube", "wiki": "Wikipedia"}
+FUENTES = {"hn": "Hacker News", "gnews": "Google News", "linkedin": "LinkedIn (vía Google News)", "youtube": "YouTube", "instagram": "Instagram (vía Apify)", "tiktok": "TikTok (vía Apify)", "wiki": "Wikipedia"}
+REDES = ("youtube", "instagram", "tiktok")  # fuentes con outlier vs la mediana de su perfil
+APIFY_USD_POR_CORRIDA = 0.55  # medido 17-oct: IG + TikTok (2 perfiles + 8 hashtags), plan gratis de USD 5/mes
 PAID_ALTERNATIVE_USD_YEAR = 3000  # Apify Scale ~USD 2.388/año, Exolyt ~2.700/año (hackaton x30/radar/investigacion.md)
 
 
@@ -48,8 +50,8 @@ def _reparto(contador: Counter) -> dict:
 def _medianas_canal(signals: list, ahora: datetime) -> dict:
     por_canal = defaultdict(list)
     for s in signals:
-        if s["source"] == "youtube":
-            por_canal[s.get("channel", "")].append(trend.velocidad(s, ahora))
+        if s["source"] in REDES and s.get("channel"):
+            por_canal[(s["source"], s["channel"])].append(trend.velocidad(s, ahora))
     return {c: median(v) or 1 for c, v in por_canal.items()}
 
 
@@ -122,11 +124,11 @@ def build(snap: dict | None = None) -> dict:
         p_raw = round(0.5 * mom + 0.5 * fit, 3)
         etapa = trend.etapa(g, z, acc, volumen[slug], p50, p75)
 
-        vel = {s["id"]: trend.velocidad(s, ahora, medianas.get(s.get("channel", "")) if s["source"] == "youtube" else None)
+        vel = {s["id"]: trend.velocidad(s, ahora, medianas.get((s["source"], s.get("channel"))) if s["source"] in REDES else None)
                for s in piezas}
         formatos = Counter(labs[s["id"]]["format"] for s in piezas)
         ganchos = Counter(labs[s["id"]]["hook"] for s in piezas)
-        con_eng = [s for s in piezas if s["source"] in ("youtube", "hn")]
+        con_eng = [s for s in piezas if s["source"] in ("youtube", "hn", "instagram", "tiktok")]
 
         def ganador(campo):
             grupos = defaultdict(list)
@@ -148,7 +150,7 @@ def build(snap: dict | None = None) -> dict:
 
         # top piezas: percentil de velocidad dentro de su fuente (Google News no trae engagement: recencia)
         rank = {}
-        for src in ("youtube", "hn", "gnews", "linkedin"):
+        for src in ("youtube", "instagram", "tiktok", "hn", "gnews", "linkedin"):
             del_src = [s for s in piezas if s["source"] == src]
             clave = (lambda s: s["published_at"]) if src in ("gnews", "linkedin") else (lambda s: vel[s["id"]])
             for i, s in enumerate(sorted(del_src, key=clave)):
@@ -200,8 +202,9 @@ def build(snap: dict | None = None) -> dict:
     clasificadas = len(labs)
     propios = {c["name"] for c in json.loads((settings.BASE_DIR / "config" / "channels.json").read_text(encoding="utf-8"))
                if c.get("own")}
+    propios |= {"crece30x", "andresbilbao"}
     bench = sorted([s for s in signals if s.get("channel") in propios],
-                   key=lambda s: -trend.velocidad(s, ahora, medianas.get(s["channel"])))[:8]
+                   key=lambda s: -trend.velocidad(s, ahora, medianas.get((s["source"], s["channel"]))))[:8]
     radar = {
         "generated_at": snap["collected_at"],
         "week": ahora.strftime("%G-W%V"), "window_days": 14,
@@ -211,11 +214,12 @@ def build(snap: dict | None = None) -> dict:
         "totals": {"signals": len(signals), "classified": clasificadas, "labeled": n_teacher,
                    "teacher_model": meta.get("model", ""), "teacher_cost_usd": meta.get("cost_usd", 0.0),
                    "student_cost_usd": 0.0,
+                   "apify_cost_usd": APIFY_USD_POR_CORRIDA, "weekly_cost_usd": APIFY_USD_POR_CORRIDA,
                    "cost_per_signal_usd": round(meta.get("cost_usd", 0.0) / max(clasificadas, 1), 6),
                    "paid_alternative_usd_year": PAID_ALTERNATIVE_USD_YEAR},
         "student": modelo.get("eval", {}),
-        "benchmark_30x": [{"title": s["title"], "url": s["url"], "channel": s["channel"], "views": s["metrics"]["views"],
-                           "outlier": trend.velocidad(s, ahora, medianas.get(s["channel"])),
+        "benchmark_30x": [{"title": s["title"], "url": s["url"], "channel": s["channel"], "source": s["source"], "views": s["metrics"]["views"],
+                           "outlier": trend.velocidad(s, ahora, medianas.get((s["source"], s["channel"]))),
                            "format": labs.get(s["id"], {}).get("format"), "hook": labs.get(s["id"], {}).get("hook")}
                           for s in bench],
         "calibration": {"method": "min-max semanal", "thresholds": [settings.AUTO_THRESHOLD, settings.REVIEW_THRESHOLD]},

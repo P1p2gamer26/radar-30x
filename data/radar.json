@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T23:06:50Z",
+ "generated_at": "2026-10-17T23:22:37Z",
  "week": "2026-W42",
  "window_days": 14,
  "question": "¿Cuáles son los 10 temas de IA que más están creciendo esta semana, por qué y cómo los adapta 30X?",
@@ -7,22 +7,32 @@
   {
    "name": "hn",
    "label": "Hacker News",
-   "signals": 3260
+   "signals": 3259
   },
   {
    "name": "gnews",
    "label": "Google News",
-   "signals": 2013
+   "signals": 2018
   },
   {
    "name": "linkedin",
    "label": "LinkedIn (vía Google News)",
-   "signals": 181
+   "signals": 180
   },
   {
    "name": "youtube",
    "label": "YouTube",
    "signals": 108
+  },
+  {
+   "name": "instagram",
+   "label": "Instagram (vía Apify)",
+   "signals": 127
+  },
+  {
+   "name": "tiktok",
+   "label": "TikTok (vía Apify)",
+   "signals": 45
   },
   {
    "name": "wiki",
@@ -31,13 +41,15 @@
   }
  ],
  "totals": {
-  "signals": 5562,
-  "classified": 5562,
-  "labeled": 1238,
+  "signals": 5737,
+  "classified": 5737,
+  "labeled": 1229,
   "teacher_model": "gh/claude-haiku-5.5",
   "teacher_cost_usd": 0.8086,
   "student_cost_usd": 0.0,
-  "cost_per_signal_usd": 0.000145,
+  "apify_cost_usd": 0.55,
+  "weekly_cost_usd": 0.55,
+  "cost_per_signal_usd": 0.000141,
   "paid_alternative_usd_year": 3000
  },
  "student": {
@@ -67,11 +79,52 @@
  },
  "benchmark_30x": [
   {
+   "title": "Dejó Wall Street para crear un producto que le devuelve tiempo a la gente. Y en 36 horas ya había vendido $10,000 USD. 👇",
+   "url": "https://www.instagram.com/p/Dem-vM8FJya/",
+   "channel": "crece30x",
+   "source": "instagram",
+   "views": 0,
+   "outlier": 20.0,
+   "format": "opinion",
+   "hook": "pregunta"
+  },
+  {
    "title": "El peor consejo que casi cierra PayU | José Vélez, fundador de Bold",
    "url": "https://www.youtube.com/watch?v=vfoEzKfxK1I",
    "channel": "30X by Andrés Bilbao",
-   "views": 4325,
-   "outlier": 18.08,
+   "source": "youtube",
+   "views": 4354,
+   "outlier": 17.7,
+   "format": "entrevista-clip",
+   "hook": "error-confesion"
+  },
+  {
+   "title": "Comenta cualquier palabra y te enviamos el link del podcast completo con",
+   "url": "https://www.instagram.com/p/Decn0-RFawC/",
+   "channel": "andresbilbao",
+   "source": "instagram",
+   "views": 127490,
+   "outlier": 12.1,
+   "format": "noticia-explicada",
+   "hook": "autoridad"
+  },
+  {
+   "title": "Un “no” de una empresa grande no es el final. A veces es el empujón que necesitas. 💪",
+   "url": "https://www.instagram.com/p/Demi242iP4D/",
+   "channel": "crece30x",
+   "source": "instagram",
+   "views": 0,
+   "outlier": 7.47,
+   "format": "entrevista-clip",
+   "hook": "error-confesion"
+  },
+  {
+   "title": "Nadie nace sabiendo construir una empresa. 🚀",
+   "url": "https://www.instagram.com/p/Dekq2E5FKiV/",
+   "channel": "crece30x",
+   "source": "instagram",
+   "views": 0,
+   "outlier": 5.59,
    "format": "entrevista-clip",
    "hook": "error-confesion"
   },
@@ -79,64 +132,31 @@
    "title": "Le dijeron que no abriera un restaurante y hoy tiene 30 tiendas",
    "url": "https://www.youtube.com/watch?v=mnw7yJNutRw",
    "channel": "30X by Andrés Bilbao",
-   "views": 3376,
-   "outlier": 4.22,
+   "source": "youtube",
+   "views": 3383,
+   "outlier": 4.15,
    "format": "entrevista-clip",
    "hook": "error-confesion"
   },
   {
-   "title": "Kickoff - Hackathon 30X",
-   "url": "https://www.youtube.com/watch?v=WdXQBNzHHIg",
-   "channel": "30X AI Devs",
-   "views": 657,
-   "outlier": 4.09,
-   "format": "evento-live",
-   "hook": "urgencia-novedad"
+   "title": "Mi peor error de inversión 😔😔",
+   "url": "https://www.instagram.com/p/DemVEnSAQQV/",
+   "channel": "andresbilbao",
+   "source": "instagram",
+   "views": 3873,
+   "outlier": 4.13,
+   "format": "noticia-explicada",
+   "hook": "resultado-numero"
   },
   {
-   "title": "De niña vendía las cosas de sus abuelos | Mercedes Campuzano",
-   "url": "https://www.youtube.com/watch?v=vgRMGtSD1J8",
-   "channel": "30X by Andrés Bilbao",
-   "views": 1117,
-   "outlier": 3.69,
+   "title": "Aprendiendo a trabajar: comunicación top down. Entre más efectiva y clara sea tu comunicación, mejor te va a ir en tu trabajo y vida.",
+   "url": "https://www.instagram.com/p/DejwUExEU8B/",
+   "channel": "andresbilbao",
+   "source": "instagram",
+   "views": 14340,
+   "outlier": 4.12,
    "format": "entrevista-clip",
-   "hook": "error-confesion"
-  },
-  {
-   "title": "UX con propósito: diseñar cuando la IA genera las primeras versiones - Hackathon 30X",
-   "url": "https://www.youtube.com/watch?v=ByOGwoOrJNM",
-   "channel": "30X AI Devs",
-   "views": 502,
-   "outlier": 2.13,
-   "format": "evento-live",
-   "hook": "promesa-proceso"
-  },
-  {
-   "title": "No le regatees a tu amigo emprendedor | René Saúl",
-   "url": "https://www.youtube.com/watch?v=BjEg0iEbBjI",
-   "channel": "30X by Andrés Bilbao",
-   "views": 1250,
-   "outlier": 2.06,
-   "format": "entrevista-clip",
-   "hook": "autoridad"
-  },
-  {
-   "title": "Demo con Jev, usa menos tokens al desarrollar  - Hackathon 30X",
-   "url": "https://www.youtube.com/watch?v=EbztG-aww9I",
-   "channel": "30X AI Devs",
-   "views": 825,
-   "outlier": 2.05,
-   "format": "evento-live",
-   "hook": "promesa-proceso"
-  },
-  {
-   "title": "Aprende IA desde cero con más de 85 clases gratis",
-   "url": "https://www.youtube.com/watch?v=WxpxAm8FhzU",
-   "channel": "30X by Andrés Bilbao",
-   "views": 1428,
-   "outlier": 1.79,
-   "format": "entrevista-clip",
-   "hook": "promesa-proceso"
+   "hook": "pregunta"
   }
  ],
  "calibration": {
@@ -151,10 +171,10 @@
    "slug": "ia-ventas",
    "name": "IA en ventas",
    "stage": "estable",
-   "growth": 0.952,
-   "z": 1.1,
-   "acceleration": -0.607,
-   "volume": 8,
+   "growth": 0.984,
+   "z": 1.243,
+   "acceleration": -0.534,
+   "volume": 9,
    "series": [
     0.0,
     0.0,
@@ -164,12 +184,12 @@
     0.296,
     0.0,
     0.0,
-    0.292,
-    0.308,
-    0.5,
-    0.068,
-    0.069,
-    0.193
+    0.271,
+    0.287,
+    0.474,
+    0.063,
+    0.064,
+    0.246
    ],
    "wiki_series": [
     0,
@@ -187,10 +207,10 @@
     1,
     0
    ],
-   "momentum": 0.138,
-   "exec_fit": 0.798,
+   "momentum": 0.155,
+   "exec_fit": 0.805,
    "p": 1.0,
-   "p_raw": 0.468,
+   "p_raw": 0.48,
    "decision": "Recomendar",
    "reason": "Estable frente a sus 11 días previos; encaje con la audiencia 30X 80%; sin fuentes al alza; formato ganador: Caso de uso paso a paso / demo de proceso.",
    "why": {
@@ -198,22 +218,24 @@
     "hook_winner": "promesa-proceso",
     "best_day": "miércoles",
     "author_mix": {
-     "medio": 0.636,
-     "comunidad": 0.273,
-     "empresa": 0.091
+     "medio": 0.583,
+     "comunidad": 0.25,
+     "empresa": 0.083,
+     "creador": 0.083
     },
     "formats": {
-     "noticia-explicada": 0.636,
-     "caso-paso-a-paso": 0.182,
-     "post-texto": 0.091,
-     "herramienta-60s": 0.091
+     "noticia-explicada": 0.667,
+     "caso-paso-a-paso": 0.167,
+     "post-texto": 0.083,
+     "herramienta-60s": 0.083
     },
     "hooks": {
-     "resultado-numero": 0.455,
-     "promesa-proceso": 0.182,
-     "urgencia-novedad": 0.182,
-     "miedo-riesgo": 0.091,
-     "pregunta": 0.091
+     "resultado-numero": 0.417,
+     "promesa-proceso": 0.167,
+     "urgencia-novedad": 0.167,
+     "miedo-riesgo": 0.083,
+     "pregunta": 0.083,
+     "autoridad": 0.083
     },
     "sources_growing": [],
     "covered_by_30x": 15
@@ -231,8 +253,23 @@
      },
      "format": "post-texto",
      "hook": "promesa-proceso",
-     "velocity": 0.19,
+     "velocity": 0.18,
      "by": "teacher"
+    },
+    {
+     "title": "Un comentario que pregunta el precio es un cliente esperando respuesta.",
+     "url": "https://www.instagram.com/p/Dem-Vb0mzAw/",
+     "source": "instagram",
+     "published_at": "2026-10-17T20:32:26Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "autoridad",
+     "velocity": 0.0,
+     "by": "student"
     },
     {
      "title": "Cooking up a catering business with ChatGPT",
@@ -242,11 +279,11 @@
      "metrics": {
       "points": 408,
       "comments": 0,
-      "views": 9677
+      "views": 9682
      },
      "format": "caso-paso-a-paso",
      "hook": "promesa-proceso",
-     "velocity": 0.34,
+     "velocity": 0.35,
      "by": "teacher"
     },
     {
@@ -293,21 +330,6 @@
      "hook": "pregunta",
      "velocity": 0.02,
      "by": "teacher"
-    },
-    {
-     "title": "La estrategia de IA de Salesforce reduce el riesgo de desintermediación, según Bank of America tras elevar su recomendación",
-     "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPNjZPMXpaQk8wM1MxM25FQmVTNDJLazZEa1lzMjQwaWhqZGlTNGlBLWh2UmcxcTEzcHJkYzFPQXVjWmN6X2hRTUF0NTdoMDJoQ0dHeFI5dDUtWmZ5UWVlOEdhQXVPR3pYRHBTTnJTMUw0V3JVd09MWjZzTG1vSEZmcFJvM3l2YW1WR3UzN3hLeUxwc19rOURodWc2QjNSSEtWcUl5TDJ0a2tCOXBxQjhvQmVFc1RmRlpwNXA4Z2dMQ3NkakFocXRWUVlYQkYtbGJzRkJBNlBZRzByVUxBUXBBcWtQeXpYYnBjVnc?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-12T16:27:35Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "resultado-numero",
-     "velocity": 0.0,
-     "by": "teacher"
     }
    ],
    "adapt": {
@@ -328,13 +350,583 @@
    "rank": 1
   },
   {
+   "slug": "empleo-futuro",
+   "name": "Empleo y futuro del trabajo",
+   "stage": "creciendo",
+   "growth": 1.462,
+   "z": 1.098,
+   "acceleration": -0.048,
+   "volume": 25,
+   "series": [
+    0.364,
+    0.228,
+    0.483,
+    0.152,
+    0.408,
+    0.296,
+    0.0,
+    0.0,
+    0.365,
+    0.811,
+    0.683,
+    0.127,
+    0.671,
+    1.407
+   ],
+   "wiki_series": [
+    121,
+    129,
+    114,
+    129,
+    180,
+    166,
+    183,
+    138,
+    123,
+    118,
+    153,
+    156,
+    157,
+    173
+   ],
+   "momentum": 0.314,
+   "exec_fit": 0.623,
+   "p": 0.972,
+   "p_raw": 0.469,
+   "decision": "Recomendar",
+   "reason": "Crece 1.5x frente a sus 11 días previos; encaje con la audiencia 30X 62%; al alza en Wikipedia; formato ganador: Opinión / predicción.",
+   "why": {
+    "format_winner": "opinion",
+    "hook_winner": "pregunta",
+    "best_day": "martes",
+    "author_mix": {
+     "medio": 0.632,
+     "creador": 0.237,
+     "comunidad": 0.079,
+     "empresa": 0.053
+    },
+    "formats": {
+     "evento-live": 0.421,
+     "opinion": 0.263,
+     "noticia-explicada": 0.132,
+     "lista-ranking": 0.079,
+     "herramienta-60s": 0.026,
+     "carrusel": 0.026,
+     "entrevista-clip": 0.026,
+     "post-texto": 0.026
+    },
+    "hooks": {
+     "pregunta": 0.474,
+     "autoridad": 0.211,
+     "resultado-numero": 0.079,
+     "urgencia-novedad": 0.053,
+     "miedo-riesgo": 0.053,
+     "promesa-proceso": 0.053,
+     "contrarian": 0.053,
+     "lista-numerada": 0.026
+    },
+    "sources_growing": [
+     "wiki"
+    ],
+    "covered_by_30x": 8
+   },
+   "top_signals": [
+    {
+     "title": "¿Qué cambiaría en tu empresa si cada persona de tu organigrama pudiera producir diez veces más?",
+     "url": "https://www.instagram.com/p/Dem-_wRGWwB/",
+     "source": "instagram",
+     "published_at": "2026-10-17T20:38:08Z",
+     "metrics": {
+      "points": 1,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "evento-live",
+     "hook": "pregunta",
+     "velocity": 0.36,
+     "by": "student"
+    },
+    {
+     "title": "Ask HN: Thoughts on hiring junior engineers in 2026?",
+     "url": "https://news.ycombinator.com/item?id=50118474",
+     "source": "hn",
+     "published_at": "2026-10-16T13:59:14Z",
+     "metrics": {
+      "points": 11,
+      "comments": 21,
+      "views": 0
+     },
+     "format": "opinion",
+     "hook": "pregunta",
+     "velocity": 1.59,
+     "by": "teacher"
+    },
+    {
+     "title": "Every Generation Thinks This Time Is Different: The AI Job Myth",
+     "url": "https://www.youtube.com/watch?v=wSuWuPUTC10",
+     "source": "youtube",
+     "published_at": "2026-10-13T11:00:22Z",
+     "metrics": {
+      "points": 1435,
+      "comments": 0,
+      "views": 80765
+     },
+     "format": "opinion",
+     "hook": "contrarian",
+     "velocity": 4.54,
+     "by": "teacher"
+    },
+    {
+     "title": "Vuelve Tecweek: Doce días de tecnología, innovación, Inteligencia Artificial y gaming con todo el potencial de la Ciudad",
+     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5uOV8xdVZDRUNPRFo1T0ZKdlRsTUx5bElobXdRZUNuQTJ6QkdaZThGTTQxWXZyM0tjZnk2WWV0Q3hKamNtdDc2cDd5R3I3RnJ1QUhCUA?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-16T21:05:51Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "post-texto",
+     "hook": "autoridad",
+     "velocity": 0.0,
+     "by": "student"
+    },
+    {
+     "title": "La red dorsal fue un fracaso en Perú 🇵🇪? Analizamos el impacto de la inteligencia artificial en Perú hacia el futuro.",
+     "url": "https://www.tiktok.com/@_/video/7697690342862114055",
+     "source": "tiktok",
+     "published_at": "2026-10-17T17:30:03Z",
+     "metrics": {
+      "points": 1867,
+      "comments": 53,
+      "views": 25500
+     },
+     "format": "evento-live",
+     "hook": "pregunta",
+     "velocity": 335.77,
+     "by": "student"
+    },
+    {
+     "title": "¿Por dónde empezar con inteligencia artificial en tu empresa?",
+     "url": "https://www.instagram.com/p/Dem_542Gcqg/",
+     "source": "instagram",
+     "published_at": "2026-10-17T20:46:04Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "evento-live",
+     "hook": "pregunta",
+     "velocity": 0.0,
+     "by": "student"
+    }
+   ],
+   "adapt": {
+    "title": "¿La IA se va a llevar los empleos? Lo que dicen los datos y lo que tu equipo debería hacer",
+    "hook": "Cada generación cree que esta vez es diferente. ¿Y si el miedo a la IA y el trabajo es el mismo de siempre?",
+    "format": "opinion",
+    "beats": [
+     "0:00-0:03: Hook a cámara, directo, con la frase de la generación que cree que esta vez es diferente. Texto en pantalla: '¿Esta vez sí es diferente?'",
+     "0:03-0:25: Tu postura en tres ideas simples: qué tareas cambian, cuáles no, y por qué la pregunta correcta no es si te reemplaza la IA sino si tu equipo sabe usarla. Apoyo visual: '85.000 empleos tecn",
+     "0:25-0:45: Un ejemplo concreto de un ejecutivo que automatizó una tarea repetitiva y reasignó a su equipo a clientes, con una cifra de horas ahorradas por semana (usar solo cifras reales del caso que ",
+     "0:45-0:60: Cierre con una predicción clara y una acción que el espectador puede hacer esta semana con su equipo."
+    ],
+    "cta": "Comenta cuál tarea de tu equipo te gustaría automatizar primero y comparte este video con alguien que esté preocupado por su puesto.",
+    "platform": "LinkedIn",
+    "by": "teacher",
+    "cost_usd": 0.00734
+   },
+   "rank": 2
+  },
+  {
+   "slug": "educacion-ia",
+   "name": "Educación y formación en IA",
+   "stage": "creciendo",
+   "growth": 1.65,
+   "z": 0.921,
+   "acceleration": 0.468,
+   "volume": 53,
+   "series": [
+    0.0,
+    0.823,
+    0.483,
+    1.087,
+    0.408,
+    0.0,
+    3.0,
+    0.803,
+    0.136,
+    1.657,
+    1.409,
+    1.18,
+    1.091,
+    3.117
+   ],
+   "wiki_series": [
+    49,
+    37,
+    33,
+    46,
+    56,
+    49,
+    41,
+    52,
+    33,
+    12,
+    30,
+    44,
+    40,
+    60
+   ],
+   "momentum": 0.393,
+   "exec_fit": 0.434,
+   "p": 0.829,
+   "p_raw": 0.413,
+   "decision": "Recomendar",
+   "reason": "Crece 1.6x frente a sus 11 días previos; encaje con la audiencia 30X 43%; al alza en Google News, Wikipedia; formato ganador: Entrevista / clip de charla.",
+   "why": {
+    "format_winner": "entrevista-clip",
+    "hook_winner": "autoridad",
+    "best_day": "jueves",
+    "author_mix": {
+     "creador": 0.493,
+     "medio": 0.28,
+     "comunidad": 0.133,
+     "empresa": 0.093
+    },
+    "formats": {
+     "evento-live": 0.373,
+     "noticia-explicada": 0.227,
+     "caso-paso-a-paso": 0.093,
+     "opinion": 0.08,
+     "entrevista-clip": 0.08,
+     "herramienta-60s": 0.067,
+     "post-texto": 0.053,
+     "lista-ranking": 0.013,
+     "reel-cara": 0.013
+    },
+    "hooks": {
+     "promesa-proceso": 0.347,
+     "pregunta": 0.32,
+     "urgencia-novedad": 0.12,
+     "autoridad": 0.12,
+     "resultado-numero": 0.04,
+     "contrarian": 0.027,
+     "miedo-riesgo": 0.013,
+     "lista-numerada": 0.013
+    },
+    "sources_growing": [
+     "gnews",
+     "wiki"
+    ],
+    "covered_by_30x": 2
+   },
+   "top_signals": [
+    {
+     "title": "Comentá 30X y te mando toda la info para que seas parte del próximo Inmersivo Presencial 30X 👇🏻",
+     "url": "https://www.instagram.com/p/Decg08gAt2z/",
+     "source": "instagram",
+     "published_at": "2026-10-13T19:04:42Z",
+     "metrics": {
+      "points": 356,
+      "comments": 22,
+      "views": 11260
+     },
+     "format": "evento-live",
+     "hook": "promesa-proceso",
+     "velocity": 3.99,
+     "by": "student"
+    },
+    {
+     "title": "Show HN: Thoreau's Walden as a 3D browser game with an AI guide",
+     "url": "https://walden.learnmer.com/",
+     "source": "hn",
+     "published_at": "2026-10-17T20:33:22Z",
+     "metrics": {
+      "points": 2,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "herramienta-60s",
+     "hook": "urgencia-novedad",
+     "velocity": 0.71,
+     "by": "teacher"
+    },
+    {
+     "title": "Kickoff - Hackathon 30X",
+     "url": "https://www.youtube.com/watch?v=WdXQBNzHHIg",
+     "source": "youtube",
+     "published_at": "2026-10-16T23:11:08Z",
+     "metrics": {
+      "points": 31,
+      "comments": 0,
+      "views": 671
+     },
+     "format": "evento-live",
+     "hook": "urgencia-novedad",
+     "velocity": 4.11,
+     "by": "teacher"
+    },
+    {
+     "title": "‼️Consejo de la Inteligencia Artificial para nosotros los humanos‼️",
+     "url": "https://www.tiktok.com/@_/video/7695075364720184607",
+     "source": "tiktok",
+     "published_at": "2026-10-10T16:22:46Z",
+     "metrics": {
+      "points": 25200,
+      "comments": 635,
+      "views": 251800
+     },
+     "format": "evento-live",
+     "hook": "autoridad",
+     "velocity": 151.26,
+     "by": "student"
+    },
+    {
+     "title": "Inteligencia artificial en planificación financiera (FP&A): cómo transformar el control de gestión y las decisiones empresariales",
+     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPTHd0YmRNeXczZXhXVEoxTlVNQ1F0UjUzM1N4ZmZxZEQyelpMSGVVOVVTcDI5Z1dHMlVxZ2Z3cVV3MkVUNTZfVUI4Ump1OEkzZkRrd0Q4NkgzOHRXSHppTDJQYmI0TmdjVl90V0V4LU9XLUkzSDNQQUpVUUduZXlXX2VodWdGbV9VMWt6Y0JydnVlYzdNTjVFc181NE91dEc4cnc?oc=5",
+     "source": "linkedin",
+     "published_at": "2026-10-14T10:15:47Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "opinion",
+     "hook": "autoridad",
+     "velocity": 0.0,
+     "by": "student"
+    },
+    {
+     "title": "Curso en India fortalece capacidades en analítica de datos para decisiones",
+     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxObHVpSTJZdWR4akpUVm5taVBCdUdITVhQUzFIaWY2X0ZVQjJjNUkyY0dhOVdDLTd6eVY3djZIRU5HMmhHVzhxOVpjYml5dXRkeEF0dEd2SDhrTWxKOFROcE5tSVVMTDNQeVFMVVpfRkJreGgydnVMQTJTZjgxcVJOZFJ5OWQxQ3I2d3lIUzZ0Q2tFVFdFWFB6YUdRMFRYTlNXVFViMU5OVjltQ3pnM1R6eXQ0QlZtbEpBS1M2LUlR?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-17T20:41:35Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "autoridad",
+     "velocity": 0.0,
+     "by": "teacher"
+    }
+   ],
+   "adapt": {
+    "title": "Aprende IA desde cero: sesión en vivo para líderes que quieren empezar",
+    "hook": "Aprende IA desde cero con más de 85 clases gratis",
+    "format": "evento-live",
+    "beats": [
+     "0:00-0:03: Andrés aparece en cámara con el titular en pantalla: \"Aprende IA desde cero con más de 85 clases gratis\". Dice que hoy no hace falta ser programador para usar IA en el negocio.",
+     "0:03-0:40: Presenta la agenda del live en un solo cuadro: qué es IA, qué puede hacer hoy en una empresa y cómo empezar sin programar. Invita a registrarse y a escribir en el chat qué proceso de su áre",
+     "0:40-1:30: Muestra en pantalla un proceso real de un área (por ejemplo, responder solicitudes internas) antes y después de usar IA, paso a paso, para que el líder vea qué cambia y qué se queda igual.",
+     "1:30-2:00: Cierra con una lista corta de tres primeros pasos para equipos no técnicos y recuerda la fecha y hora del live, con el enlace de registro visible."
+    ],
+    "cta": "Regístrate al live en el enlace de la publicación y escribe en los comentarios el proceso de tu área que quieres transformar con IA.",
+    "platform": "LinkedIn",
+    "by": "teacher",
+    "cost_usd": 0.00683
+   },
+   "rank": 3
+  },
+  {
+   "slug": "estrategia-adopcion",
+   "name": "Estrategia y adopción de IA",
+   "stage": "estable",
+   "growth": 1.075,
+   "z": 0.955,
+   "acceleration": 0.362,
+   "volume": 27,
+   "series": [
+    0.0,
+    2.597,
+    0.645,
+    0.152,
+    0.136,
+    0.148,
+    0.0,
+    0.212,
+    0.0,
+    0.303,
+    0.308,
+    0.621,
+    0.536,
+    0.275
+   ],
+   "wiki_series": [
+    83,
+    75,
+    68,
+    81,
+    93,
+    103,
+    106,
+    88,
+    88,
+    73,
+    109,
+    106,
+    113,
+    91
+   ],
+   "momentum": 0.274,
+   "exec_fit": 0.525,
+   "p": 0.796,
+   "p_raw": 0.4,
+   "decision": "Aprender",
+   "reason": "Crece 1.1x frente a sus 11 días previos; encaje con la audiencia 30X 52%; al alza en Hacker News, Wikipedia; formato ganador: Opinión / predicción.",
+   "why": {
+    "format_winner": "opinion",
+    "hook_winner": "contrarian",
+    "best_day": "lunes",
+    "author_mix": {
+     "medio": 0.73,
+     "comunidad": 0.135,
+     "creador": 0.135
+    },
+    "formats": {
+     "noticia-explicada": 0.405,
+     "opinion": 0.378,
+     "evento-live": 0.081,
+     "entrevista-clip": 0.054,
+     "caso-paso-a-paso": 0.054,
+     "lista-ranking": 0.027
+    },
+    "hooks": {
+     "autoridad": 0.351,
+     "contrarian": 0.243,
+     "resultado-numero": 0.135,
+     "pregunta": 0.081,
+     "urgencia-novedad": 0.081,
+     "promesa-proceso": 0.054,
+     "error-confesion": 0.027,
+     "lista-numerada": 0.027
+    },
+    "sources_growing": [
+     "hn",
+     "wiki"
+    ],
+    "covered_by_30x": 5
+   },
+   "top_signals": [
+    {
+     "title": "Steering AI Beyond Automation",
+     "url": "https://www.normaltech.ai/p/steering-ai-beyond-automation",
+     "source": "hn",
+     "published_at": "2026-10-15T17:20:14Z",
+     "metrics": {
+      "points": 2,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "opinion",
+     "hook": "contrarian",
+     "velocity": 0.04,
+     "by": "teacher"
+    },
+    {
+     "title": "Escuchar no siempre es incluir: el verdadero desafío comienza cuando hay que transformar la experiencia en decisiones",
+     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOZzZGOVEwUjRjU3JyMnVIVXhWMXNURExKQ1Q1NkFqenZVVVU5NVN5NFB3SXdxV1U4MFZ5dFZfOU9EbHZ4aUI4eU9LZGY0UkVkdW5wUGQzeVl1TWYwMThWdXlFdWtpZ0YteWhfd2I2Ui1yeUVyY0tsei1aQnNvbWh5MFBaS3lKUDVJR0lOcWFlbDctbmc4ejlvM285azVrTXQwNFBv?oc=5",
+     "source": "linkedin",
+     "published_at": "2026-10-16T21:01:07Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "opinion",
+     "hook": "pregunta",
+     "velocity": 0.0,
+     "by": "student"
+    },
+    {
+     "title": "🤖 Hay libros que lees una vez y olvidas. Y hay libros a los que vuelves porque el mundo, mientras tanto, ha cambiado.",
+     "url": "https://www.instagram.com/p/Dem_E96FuCl/",
+     "source": "instagram",
+     "published_at": "2026-10-17T20:38:51Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "opinion",
+     "hook": "autoridad",
+     "velocity": 0.0,
+     "by": "student"
+    },
+    {
+     "title": "Colombia: 25,9% usa IA y el reto es conectar agentes",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNbUZ3MjdCMTdUWFpoX09yN3h2Mkhjck5VRXYtSzk4dVk1WG1JRktrMkpfM1NSOHVYS2FkLW5sT1lWVDlQSlBDazNYNTAtUUtlal9xSXI5MlRtRXV2clUwc0g2Nzl4UjRTTVdnQWZaS1BTYnllM1FmUkc1c1c0cFYzeFZPV1E3UmM?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-17T14:33:39Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "resultado-numero",
+     "velocity": 0.0,
+     "by": "teacher"
+    },
+    {
+     "title": "Building AI Products, Feature Factory at 10 – Food for Agile Thought 566",
+     "url": "https://age-of-product.com/food-agile-thought-566-building-ai-products/",
+     "source": "hn",
+     "published_at": "2026-10-16T15:42:19Z",
+     "metrics": {
+      "points": 1,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "opinion",
+     "hook": "autoridad",
+     "velocity": 0.03,
+     "by": "teacher"
+    },
+    {
+     "title": "Techable VC: qué es la automatización consciente en IA física",
+     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQeUlqVmZnRTRrT3R4SWVIdTM5Zms2UmxFZFFmbzdic2pZaElIRktvLUZfYk5yTWlCX3RBQ0dXV2ZBYzdmaEJjWm5jZHNPcUJsejVJNG8zM2VkN0JGVWNwTTc4YTZKX0JMZnJjNFpVVzNlU2dPWE44MFdOcmZaM2dTR1VveThVMWlZVXoySmc1X0lFT1cxWUE?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-17T01:48:29Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "pregunta",
+     "velocity": 0.0,
+     "by": "teacher"
+    }
+   ],
+   "adapt": {
+    "title": "El 80% de los CEO espera cambios por IA en 2026: ¿tu empresa ya empezó?",
+    "hook": "El 80% de los CEO espera cambios por IA en 2026. ¿Y tu proceso sigue igual que hace un año?",
+    "format": "opinion",
+    "beats": [
+     "0-3 s: Cifra de Gartner en pantalla grande (80% de los CEO) y la pregunta sobre el proceso de la audiencia.",
+     "3-12 s: Opinión directa: esperar cambios no es lo mismo que tener un plan, y la mayoría de las empresas se queda en la expectativa.",
+     "12-22 s: Contraste con Colombia: 25,9% de la población ya usa IA, así que el reto ya no es conocer la herramienta sino conectarla con el trabajo diario.",
+     "22-30 s: Un solo paso accionable para esta semana: elegir un proceso repetitivo y medir cuánto tiempo toma hoy."
+    ],
+    "cta": "Comenta cuál es el proceso que más tiempo te quita y te muestro cómo lo revisaría con IA en el próximo video.",
+    "platform": "LinkedIn",
+    "by": "teacher",
+    "cost_usd": 0.00669
+   },
+   "rank": 4
+  },
+  {
    "slug": "ia-finanzas",
    "name": "IA en finanzas",
    "stage": "temprana",
-   "growth": 1.566,
-   "z": 1.256,
-   "acceleration": 0.025,
-   "volume": 21,
+   "growth": 1.523,
+   "z": 1.074,
+   "acceleration": 0.103,
+   "volume": 19,
    "series": [
     0.0,
     0.0,
@@ -344,12 +936,12 @@
     0.296,
     0.0,
     0.0,
-    0.146,
-    0.243,
-    0.765,
-    0.475,
-    0.611,
-    0.51
+    0.136,
+    0.151,
+    0.659,
+    0.444,
+    0.57,
+    0.41
    ],
    "wiki_series": [
     219,
@@ -367,38 +959,38 @@
     328,
     293
    ],
-   "momentum": 0.486,
-   "exec_fit": 0.324,
-   "p": 0.836,
-   "p_raw": 0.405,
-   "decision": "Recomendar",
-   "reason": "Crece 1.6x frente a sus 11 días previos; encaje con la audiencia 30X 32%; al alza en Hacker News, Google News, Wikipedia; formato ganador: Noticia explicada (qué significa para tu empresa).",
+   "momentum": 0.456,
+   "exec_fit": 0.325,
+   "p": 0.773,
+   "p_raw": 0.391,
+   "decision": "Aprender",
+   "reason": "Crece 1.5x frente a sus 11 días previos; encaje con la audiencia 30X 32%; al alza en Hacker News, Google News, Wikipedia; formato ganador: Noticia explicada (qué significa para tu empresa).",
    "why": {
     "format_winner": "noticia-explicada",
     "hook_winner": "miedo-riesgo",
-    "best_day": "miércoles",
+    "best_day": "viernes",
     "author_mix": {
-     "medio": 0.84,
-     "comunidad": 0.12,
-     "empresa": 0.04
+     "medio": 0.826,
+     "comunidad": 0.13,
+     "empresa": 0.043
     },
     "formats": {
-     "noticia-explicada": 0.76,
-     "opinion": 0.08,
-     "herramienta-60s": 0.04,
-     "evento-live": 0.04,
-     "carrusel": 0.04,
-     "caso-paso-a-paso": 0.04
+     "noticia-explicada": 0.739,
+     "opinion": 0.087,
+     "herramienta-60s": 0.043,
+     "evento-live": 0.043,
+     "carrusel": 0.043,
+     "caso-paso-a-paso": 0.043
     },
     "hooks": {
-     "urgencia-novedad": 0.32,
-     "resultado-numero": 0.16,
-     "miedo-riesgo": 0.12,
-     "autoridad": 0.12,
-     "contrarian": 0.12,
-     "promesa-proceso": 0.08,
-     "pregunta": 0.04,
-     "lista-numerada": 0.04
+     "urgencia-novedad": 0.261,
+     "resultado-numero": 0.174,
+     "miedo-riesgo": 0.13,
+     "autoridad": 0.13,
+     "contrarian": 0.13,
+     "promesa-proceso": 0.087,
+     "pregunta": 0.043,
+     "lista-numerada": 0.043
     },
     "sources_growing": [
      "hn",
@@ -420,7 +1012,7 @@
      },
      "format": "noticia-explicada",
      "hook": "miedo-riesgo",
-     "velocity": 15.73,
+     "velocity": 15.59,
      "by": "teacher"
     },
     {
@@ -514,219 +1106,31 @@
     "by": "teacher",
     "cost_usd": 0.00853
    },
-   "rank": 2
-  },
-  {
-   "slug": "estrategia-adopcion",
-   "name": "Estrategia y adopción de IA",
-   "stage": "estable",
-   "growth": 1.083,
-   "z": 0.99,
-   "acceleration": 0.357,
-   "volume": 26,
-   "series": [
-    0.0,
-    2.603,
-    0.646,
-    0.152,
-    0.136,
-    0.148,
-    0.0,
-    0.211,
-    0.0,
-    0.324,
-    0.325,
-    0.664,
-    0.575,
-    0.228
-   ],
-   "wiki_series": [
-    83,
-    75,
-    68,
-    81,
-    93,
-    103,
-    106,
-    88,
-    88,
-    73,
-    109,
-    106,
-    113,
-    91
-   ],
-   "momentum": 0.28,
-   "exec_fit": 0.522,
-   "p": 0.826,
-   "p_raw": 0.401,
-   "decision": "Recomendar",
-   "reason": "Crece 1.1x frente a sus 11 días previos; encaje con la audiencia 30X 52%; al alza en Hacker News, Wikipedia; formato ganador: Opinión / predicción.",
-   "why": {
-    "format_winner": "opinion",
-    "hook_winner": "contrarian",
-    "best_day": "lunes",
-    "author_mix": {
-     "medio": 0.75,
-     "comunidad": 0.139,
-     "creador": 0.111
-    },
-    "formats": {
-     "noticia-explicada": 0.417,
-     "opinion": 0.361,
-     "evento-live": 0.083,
-     "entrevista-clip": 0.056,
-     "caso-paso-a-paso": 0.056,
-     "lista-ranking": 0.028
-    },
-    "hooks": {
-     "autoridad": 0.333,
-     "contrarian": 0.25,
-     "resultado-numero": 0.139,
-     "pregunta": 0.083,
-     "urgencia-novedad": 0.083,
-     "promesa-proceso": 0.056,
-     "error-confesion": 0.028,
-     "lista-numerada": 0.028
-    },
-    "sources_growing": [
-     "hn",
-     "wiki"
-    ],
-    "covered_by_30x": 5
-   },
-   "top_signals": [
-    {
-     "title": "Steering AI Beyond Automation",
-     "url": "https://www.normaltech.ai/p/steering-ai-beyond-automation",
-     "source": "hn",
-     "published_at": "2026-10-15T17:20:14Z",
-     "metrics": {
-      "points": 2,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "opinion",
-     "hook": "contrarian",
-     "velocity": 0.04,
-     "by": "teacher"
-    },
-    {
-     "title": "Escuchar no siempre es incluir: el verdadero desafío comienza cuando hay que transformar la experiencia en decisiones",
-     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOZzZGOVEwUjRjU3JyMnVIVXhWMXNURExKQ1Q1NkFqenZVVVU5NVN5NFB3SXdxV1U4MFZ5dFZfOU9EbHZ4aUI4eU9LZGY0UkVkdW5wUGQzeVl1TWYwMThWdXlFdWtpZ0YteWhfd2I2Ui1yeUVyY0tsei1aQnNvbWh5MFBaS3lKUDVJR0lOcWFlbDctbmc4ejlvM285azVrTXQwNFBv?oc=5",
-     "source": "linkedin",
-     "published_at": "2026-10-16T21:01:07Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "opinion",
-     "hook": "pregunta",
-     "velocity": 0.0,
-     "by": "student"
-    },
-    {
-     "title": "Colombia: 25,9% usa IA y el reto es conectar agentes",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNbUZ3MjdCMTdUWFpoX09yN3h2Mkhjck5VRXYtSzk4dVk1WG1JRktrMkpfM1NSOHVYS2FkLW5sT1lWVDlQSlBDazNYNTAtUUtlal9xSXI5MlRtRXV2clUwc0g2Nzl4UjRTTVdnQWZaS1BTYnllM1FmUkc1c1c0cFYzeFZPV1E3UmM?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-17T14:33:39Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "resultado-numero",
-     "velocity": 0.0,
-     "by": "teacher"
-    },
-    {
-     "title": "Building AI Products, Feature Factory at 10 – Food for Agile Thought 566",
-     "url": "https://age-of-product.com/food-agile-thought-566-building-ai-products/",
-     "source": "hn",
-     "published_at": "2026-10-16T15:42:19Z",
-     "metrics": {
-      "points": 1,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "opinion",
-     "hook": "autoridad",
-     "velocity": 0.03,
-     "by": "teacher"
-    },
-    {
-     "title": "Techable VC: qué es la automatización consciente en IA física",
-     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQeUlqVmZnRTRrT3R4SWVIdTM5Zms2UmxFZFFmbzdic2pZaElIRktvLUZfYk5yTWlCX3RBQ0dXV2ZBYzdmaEJjWm5jZHNPcUJsejVJNG8zM2VkN0JGVWNwTTc4YTZKX0JMZnJjNFpVVzNlU2dPWE44MFdOcmZaM2dTR1VveThVMWlZVXoySmc1X0lFT1cxWUE?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-17T01:48:29Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "pregunta",
-     "velocity": 0.0,
-     "by": "teacher"
-    },
-    {
-     "title": "Impulsa COFOCE la transformación digital y los negocios internacionales de Guanajuato - Blog | GPI NEWS",
-     "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxQT20yWjMxWUlLMWFQZFF0YzEwRGFXdTlpcDVwbEF2ZTRDM3duSTVKZGxnZ2ItaWh1eENjeXFTOVRxY2xPdWtHRjl5OVE4aDlDWm5lbWRsYkJUVklZZEE0NjR0NnB5TG12WTg2UHVjN0x6Zi1PY0NoZXVhOXpXaEFXc3NZOHo4RFZ1b0EzTU9uTjlGUkZVMlk2SHB5Q0FlNVB1Z3hrN1VzRHN4RGhLTGd6MUlVLVdqRmdTeGJ1eUpMeUNoeF9vR19LOXdfd2paMDNHVXpQckRrRlFfMWs?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-16T23:33:25Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "autoridad",
-     "velocity": 0.0,
-     "by": "teacher"
-    }
-   ],
-   "adapt": {
-    "title": "El 80% de los CEO espera cambios por IA en 2026: ¿tu empresa ya empezó?",
-    "hook": "El 80% de los CEO espera cambios por IA en 2026. ¿Y tu proceso sigue igual que hace un año?",
-    "format": "opinion",
-    "beats": [
-     "0-3 s: Cifra de Gartner en pantalla grande (80% de los CEO) y la pregunta sobre el proceso de la audiencia.",
-     "3-12 s: Opinión directa: esperar cambios no es lo mismo que tener un plan, y la mayoría de las empresas se queda en la expectativa.",
-     "12-22 s: Contraste con Colombia: 25,9% de la población ya usa IA, así que el reto ya no es conocer la herramienta sino conectarla con el trabajo diario.",
-     "22-30 s: Un solo paso accionable para esta semana: elegir un proceso repetitivo y medir cuánto tiempo toma hoy."
-    ],
-    "cta": "Comenta cuál es el proceso que más tiempo te quita y te muestro cómo lo revisaría con IA en el próximo video.",
-    "platform": "LinkedIn",
-    "by": "teacher",
-    "cost_usd": 0.00669
-   },
-   "rank": 3
+   "rank": 5
   },
   {
    "slug": "ia-servicio",
    "name": "IA en servicio al cliente",
    "stage": "creciendo",
-   "growth": 1.364,
-   "z": 1.25,
-   "acceleration": 0.393,
+   "growth": 1.321,
+   "z": 1.185,
+   "acceleration": 0.362,
    "volume": 14,
    "series": [
-    0.361,
+    0.364,
     0.0,
     0.0,
     0.55,
     0.0,
     0.0,
     0.0,
-    0.211,
-    0.146,
-    0.081,
-    0.138,
-    0.23,
-    0.755,
-    0.114
+    0.212,
+    0.136,
+    0.076,
+    0.131,
+    0.215,
+    0.704,
+    0.092
    ],
    "wiki_series": [
     654,
@@ -744,12 +1148,12 @@
     769,
     800
    ],
-   "momentum": 0.379,
+   "momentum": 0.362,
    "exec_fit": 0.337,
-   "p": 0.714,
-   "p_raw": 0.358,
+   "p": 0.668,
+   "p_raw": 0.35,
    "decision": "Aprender",
-   "reason": "Crece 1.4x frente a sus 11 días previos; encaje con la audiencia 30X 34%; al alza en Hacker News, Wikipedia; formato ganador: Caso de uso paso a paso / demo de proceso.",
+   "reason": "Crece 1.3x frente a sus 11 días previos; encaje con la audiencia 30X 34%; al alza en Hacker News, Wikipedia; formato ganador: Caso de uso paso a paso / demo de proceso.",
    "why": {
     "format_winner": "caso-paso-a-paso",
     "hook_winner": "resultado-numero",
@@ -793,7 +1197,7 @@
      },
      "format": "caso-paso-a-paso",
      "hook": "resultado-numero",
-     "velocity": 1.16,
+     "velocity": 1.15,
      "by": "teacher"
     },
     {
@@ -887,561 +1291,15 @@
     "by": "teacher",
     "cost_usd": 0.00667
    },
-   "rank": 4
-  },
-  {
-   "slug": "educacion-ia",
-   "name": "Educación y formación en IA",
-   "stage": "creciendo",
-   "growth": 1.448,
-   "z": 0.908,
-   "acceleration": 0.596,
-   "volume": 29,
-   "series": [
-    0.0,
-    0.825,
-    0.484,
-    1.087,
-    0.409,
-    0.0,
-    0.403,
-    0.801,
-    0.146,
-    0.551,
-    0.361,
-    0.89,
-    1.238,
-    0.545
-   ],
-   "wiki_series": [
-    49,
-    37,
-    33,
-    46,
-    56,
-    49,
-    41,
-    52,
-    33,
-    12,
-    30,
-    44,
-    40,
-    60
-   ],
-   "momentum": 0.354,
-   "exec_fit": 0.328,
-   "p": 0.67,
-   "p_raw": 0.341,
-   "decision": "Aprender",
-   "reason": "Crece 1.4x frente a sus 11 días previos; encaje con la audiencia 30X 33%; al alza en Google News, Wikipedia; formato ganador: Live / webinar / evento.",
-   "why": {
-    "format_winner": "evento-live",
-    "hook_winner": "urgencia-novedad",
-    "best_day": "jueves",
-    "author_mix": {
-     "medio": 0.524,
-     "comunidad": 0.238,
-     "empresa": 0.143,
-     "creador": 0.095
-    },
-    "formats": {
-     "noticia-explicada": 0.381,
-     "evento-live": 0.19,
-     "herramienta-60s": 0.119,
-     "opinion": 0.095,
-     "post-texto": 0.095,
-     "caso-paso-a-paso": 0.048,
-     "entrevista-clip": 0.024,
-     "lista-ranking": 0.024,
-     "reel-cara": 0.024
-    },
-    "hooks": {
-     "promesa-proceso": 0.286,
-     "pregunta": 0.238,
-     "urgencia-novedad": 0.19,
-     "autoridad": 0.19,
-     "contrarian": 0.048,
-     "miedo-riesgo": 0.024,
-     "lista-numerada": 0.024
-    },
-    "sources_growing": [
-     "gnews",
-     "wiki"
-    ],
-    "covered_by_30x": 2
-   },
-   "top_signals": [
-    {
-     "title": "Show HN: Thoreau's Walden as a 3D browser game with an AI guide",
-     "url": "https://walden.learnmer.com/",
-     "source": "hn",
-     "published_at": "2026-10-17T20:33:22Z",
-     "metrics": {
-      "points": 2,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "urgencia-novedad",
-     "velocity": 0.78,
-     "by": "teacher"
-    },
-    {
-     "title": "Kickoff - Hackathon 30X",
-     "url": "https://www.youtube.com/watch?v=WdXQBNzHHIg",
-     "source": "youtube",
-     "published_at": "2026-10-16T23:11:08Z",
-     "metrics": {
-      "points": 31,
-      "comments": 0,
-      "views": 657
-     },
-     "format": "evento-live",
-     "hook": "urgencia-novedad",
-     "velocity": 4.09,
-     "by": "teacher"
-    },
-    {
-     "title": "Inteligencia artificial en planificación financiera (FP&A): cómo transformar el control de gestión y las decisiones empresariales",
-     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPTHd0YmRNeXczZXhXVEoxTlVNQ1F0UjUzM1N4ZmZxZEQyelpMSGVVOVVTcDI5Z1dHMlVxZ2Z3cVV3MkVUNTZfVUI4Ump1OEkzZkRrd0Q4NkgzOHRXSHppTDJQYmI0TmdjVl90V0V4LU9XLUkzSDNQQUpVUUduZXlXX2VodWdGbV9VMWt6Y0JydnVlYzdNTjVFc181NE91dEc4cnc?oc=5",
-     "source": "linkedin",
-     "published_at": "2026-10-14T10:15:47Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "opinion",
-     "hook": "autoridad",
-     "velocity": 0.0,
-     "by": "student"
-    },
-    {
-     "title": "Curso en India fortalece capacidades en analítica de datos para decisiones",
-     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxObHVpSTJZdWR4akpUVm5taVBCdUdITVhQUzFIaWY2X0ZVQjJjNUkyY0dhOVdDLTd6eVY3djZIRU5HMmhHVzhxOVpjYml5dXRkeEF0dEd2SDhrTWxKOFROcE5tSVVMTDNQeVFMVVpfRkJreGgydnVMQTJTZjgxcVJOZFJ5OWQxQ3I2d3lIUzZ0Q2tFVFdFWFB6YUdRMFRYTlNXVFViMU5OVjltQ3pnM1R6eXQ0QlZtbEpBS1M2LUlR?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-17T20:41:35Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "autoridad",
-     "velocity": 0.0,
-     "by": "teacher"
-    },
-    {
-     "title": "ConvyCanvas – AI Tutor for Euclid's Elements",
-     "url": "https://convycanvas.com/elements/reader/#euclid_i/prop_001",
-     "source": "hn",
-     "published_at": "2026-10-17T14:37:28Z",
-     "metrics": {
-      "points": 1,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "pregunta",
-     "velocity": 0.12,
-     "by": "teacher"
-    },
-    {
-     "title": "Aprende IA desde cero con más de 85 clases gratis",
-     "url": "https://www.youtube.com/watch?v=WxpxAm8FhzU",
-     "source": "youtube",
-     "published_at": "2026-10-15T00:32:06Z",
-     "metrics": {
-      "points": 74,
-      "comments": 0,
-      "views": 1428
-     },
-     "format": "entrevista-clip",
-     "hook": "promesa-proceso",
-     "velocity": 1.79,
-     "by": "teacher"
-    }
-   ],
-   "adapt": {
-    "title": "Aprende IA desde cero: sesión en vivo para líderes que quieren empezar",
-    "hook": "Aprende IA desde cero con más de 85 clases gratis",
-    "format": "evento-live",
-    "beats": [
-     "0:00-0:03: Andrés aparece en cámara con el titular en pantalla: \"Aprende IA desde cero con más de 85 clases gratis\". Dice que hoy no hace falta ser programador para usar IA en el negocio.",
-     "0:03-0:40: Presenta la agenda del live en un solo cuadro: qué es IA, qué puede hacer hoy en una empresa y cómo empezar sin programar. Invita a registrarse y a escribir en el chat qué proceso de su áre",
-     "0:40-1:30: Muestra en pantalla un proceso real de un área (por ejemplo, responder solicitudes internas) antes y después de usar IA, paso a paso, para que el líder vea qué cambia y qué se queda igual.",
-     "1:30-2:00: Cierra con una lista corta de tres primeros pasos para equipos no técnicos y recuerda la fecha y hora del live, con el enlace de registro visible."
-    ],
-    "cta": "Regístrate al live en el enlace de la publicación y escribe en los comentarios el proceso de tu área que quieres transformar con IA.",
-    "platform": "LinkedIn",
-    "by": "teacher",
-    "cost_usd": 0.00683
-   },
-   "rank": 5
-  },
-  {
-   "slug": "empleo-futuro",
-   "name": "Empleo y futuro del trabajo",
-   "stage": "estable",
-   "growth": 0.885,
-   "z": -0.211,
-   "acceleration": -0.595,
-   "volume": 19,
-   "series": [
-    0.361,
-    0.229,
-    0.484,
-    0.152,
-    0.545,
-    0.296,
-    0.0,
-    0.211,
-    0.393,
-    0.869,
-    0.722,
-    0.136,
-    0.72,
-    0.0
-   ],
-   "wiki_series": [
-    121,
-    129,
-    114,
-    129,
-    180,
-    166,
-    183,
-    138,
-    123,
-    118,
-    153,
-    156,
-    157,
-    173
-   ],
-   "momentum": 0.067,
-   "exec_fit": 0.548,
-   "p": 0.582,
-   "p_raw": 0.307,
-   "decision": "Aprender",
-   "reason": "Cae 12% frente a sus 11 días previos; encaje con la audiencia 30X 55%; al alza en Wikipedia; formato ganador: Opinión / predicción.",
-   "why": {
-    "format_winner": "opinion",
-    "hook_winner": "pregunta",
-    "best_day": "martes",
-    "author_mix": {
-     "medio": 0.806,
-     "comunidad": 0.097,
-     "empresa": 0.065,
-     "creador": 0.032
-    },
-    "formats": {
-     "evento-live": 0.323,
-     "opinion": 0.258,
-     "noticia-explicada": 0.194,
-     "lista-ranking": 0.097,
-     "herramienta-60s": 0.032,
-     "carrusel": 0.032,
-     "entrevista-clip": 0.032,
-     "post-texto": 0.032
-    },
-    "hooks": {
-     "pregunta": 0.355,
-     "autoridad": 0.29,
-     "resultado-numero": 0.097,
-     "urgencia-novedad": 0.065,
-     "miedo-riesgo": 0.065,
-     "contrarian": 0.065,
-     "lista-numerada": 0.032,
-     "promesa-proceso": 0.032
-    },
-    "sources_growing": [
-     "wiki"
-    ],
-    "covered_by_30x": 8
-   },
-   "top_signals": [
-    {
-     "title": "Ask HN: Thoughts on hiring junior engineers in 2026?",
-     "url": "https://news.ycombinator.com/item?id=50118474",
-     "source": "hn",
-     "published_at": "2026-10-16T13:59:14Z",
-     "metrics": {
-      "points": 11,
-      "comments": 21,
-      "views": 0
-     },
-     "format": "opinion",
-     "hook": "pregunta",
-     "velocity": 1.6,
-     "by": "teacher"
-    },
-    {
-     "title": "Every Generation Thinks This Time Is Different: The AI Job Myth",
-     "url": "https://www.youtube.com/watch?v=wSuWuPUTC10",
-     "source": "youtube",
-     "published_at": "2026-10-13T11:00:22Z",
-     "metrics": {
-      "points": 1435,
-      "comments": 0,
-      "views": 80728
-     },
-     "format": "opinion",
-     "hook": "contrarian",
-     "velocity": 4.53,
-     "by": "teacher"
-    },
-    {
-     "title": "Vuelve Tecweek: Doce días de tecnología, innovación, Inteligencia Artificial y gaming con todo el potencial de la Ciudad",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5uOV8xdVZDRUNPRFo1T0ZKdlRsTUx5bElobXdRZUNuQTJ6QkdaZThGTTQxWXZyM0tjZnk2WWV0Q3hKamNtdDc2cDd5R3I3RnJ1QUhCUA?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-16T21:05:51Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "post-texto",
-     "hook": "autoridad",
-     "velocity": 0.0,
-     "by": "student"
-    },
-    {
-     "title": "People Day, el festival en CDMX donde el futuro del trabajo se celebra con talleres, gastronomía y After Office",
-     "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNSl9jNno0SmFDWlpQVGZnc3J3bmppcGhiMExfRDlpUEtvRWxNMzJYUTFYR0gtb01IUHJvYXJTanMwUUJuVEY4Q093Vl9jWllPVnpLZkxGMUVrVVpMZzNGSmw5eTMwWlB6S0tSbHJTaF9QYVZCLWkzbEp3VGxURGdBdE5WQjd2RmRDT3I2Vkw1UWM2SmZON1g0aGE5STBFaHBJVEFraF85eDBWbFFTTnl4M3J5bnI3dk5qcWFZMUlMUWNwczlvVUVJSlRRdmRVUV9uUm4tWmRKdnlSdw?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-16T20:38:03Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "evento-live",
-     "hook": "urgencia-novedad",
-     "velocity": 0.0,
-     "by": "teacher"
-    },
-    {
-     "title": "+Talento Digital: 85.000 empleos tecnológicos esperan por los jóvenes",
-     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQSmoyVWtBQ2tHVWh3Sk9pT19aeGlXd3NXcXJ5YnJ2QncweFAzYlY0eUxKOW1VNVZzS1owZ0UzaFpvOV9YU3FOblJtMUFsUGVkMDhUdHJDRmlTVzk3aHBTRzhfTmc4TzBwOHBPM2dLZ251M1h1TUJtMDl2SXNjbU1IcWZ4blpscGNWY0xTbFdsQm8tQTlDbkMyb3VqaU5PWmRyV1BpU0NyVHRjbTlZclhVc0RoSzREdUpMNGh6b1BLM04?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-16T17:48:41Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "resultado-numero",
-     "velocity": 0.0,
-     "by": "teacher"
-    },
-    {
-     "title": "Modelo ONU en Santa Fe: 80 jóvenes ponen el foco en la salud mental y el futuro del trabajo",
-     "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxOcXpDdzVLVFpya2ZVWnROOTNNOXpCcnNVUXE4OVZkcjJNMzBuLUZSeGx5Uk5zZmVXUDVWUzRjdFFGd05NZk5Zc1B3VUx5S3pUeHdPQkVPTHRnSHlfWkJIenFoZ2JYX3Nial9UYXRvb1l5dGtjN0hqZm1BdlItc1dEd1NfLWgwQzNyNDlJZ1l4MHl2MEpqTU9EZnhTTjR3Nzl5Z2laelZlSUZKN2pDdnBrZF90YnRYd0FTLVpJYl8xTXlaQ0RMVFd5MUpuS3RiQ1ZraXF6NzZfY1NMZWR4alNJU3BhZXNGdjg4a3pXMFVuUmo3bG4tZVE?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-16T13:44:50Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "evento-live",
-     "hook": "autoridad",
-     "velocity": 0.0,
-     "by": "teacher"
-    }
-   ],
-   "adapt": {
-    "title": "¿La IA se va a llevar los empleos? Lo que dicen los datos y lo que tu equipo debería hacer",
-    "hook": "Cada generación cree que esta vez es diferente. ¿Y si el miedo a la IA y el trabajo es el mismo de siempre?",
-    "format": "opinion",
-    "beats": [
-     "0:00-0:03: Hook a cámara, directo, con la frase de la generación que cree que esta vez es diferente. Texto en pantalla: '¿Esta vez sí es diferente?'",
-     "0:03-0:25: Tu postura en tres ideas simples: qué tareas cambian, cuáles no, y por qué la pregunta correcta no es si te reemplaza la IA sino si tu equipo sabe usarla. Apoyo visual: '85.000 empleos tecn",
-     "0:25-0:45: Un ejemplo concreto de un ejecutivo que automatizó una tarea repetitiva y reasignó a su equipo a clientes, con una cifra de horas ahorradas por semana (usar solo cifras reales del caso que ",
-     "0:45-0:60: Cierre con una predicción clara y una acción que el espectador puede hacer esta semana con su equipo."
-    ],
-    "cta": "Comenta cuál tarea de tu equipo te gustaría automatizar primero y comparte este video con alguien que esté preocupado por su puesto.",
-    "platform": "LinkedIn",
-    "by": "teacher",
-    "cost_usd": 0.00734
-   },
    "rank": 6
-  },
-  {
-   "slug": "ia-marketing",
-   "name": "IA en marketing y contenido",
-   "stage": "estable",
-   "growth": 1.079,
-   "z": 1.443,
-   "acceleration": 0.184,
-   "volume": 5,
-   "series": [
-    0.0,
-    0.755,
-    0.161,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.081,
-    0.069,
-    0.136,
-    0.0,
-    0.297
-   ],
-   "wiki_series": [
-    337,
-    290,
-    256,
-    336,
-    375,
-    331,
-    288,
-    300,
-    220,
-    213,
-    294,
-    322,
-    338,
-    353
-   ],
-   "momentum": 0.269,
-   "exec_fit": 0.341,
-   "p": 0.577,
-   "p_raw": 0.305,
-   "decision": "Aprender",
-   "reason": "Crece 1.1x frente a sus 11 días previos; encaje con la audiencia 30X 34%; al alza en Wikipedia; formato ganador: Opinión / predicción.",
-   "why": {
-    "format_winner": "opinion",
-    "hook_winner": "contrarian",
-    "best_day": "lunes",
-    "author_mix": {
-     "medio": 0.714,
-     "comunidad": 0.286
-    },
-    "formats": {
-     "opinion": 0.286,
-     "noticia-explicada": 0.286,
-     "caso-paso-a-paso": 0.286,
-     "herramienta-60s": 0.143
-    },
-    "hooks": {
-     "contrarian": 0.429,
-     "resultado-numero": 0.286,
-     "urgencia-novedad": 0.143,
-     "promesa-proceso": 0.143
-    },
-    "sources_growing": [
-     "wiki"
-    ],
-    "covered_by_30x": 0
-   },
-   "top_signals": [
-    {
-     "title": "Life After SEO",
-     "url": "https://reutersinstitute.politics.ox.ac.uk/news/life-after-seo-how-newsrooms-are-adapting-ai-search-shift",
-     "source": "hn",
-     "published_at": "2026-10-17T13:13:34Z",
-     "metrics": {
-      "points": 2,
-      "comments": 2,
-      "views": 0
-     },
-     "format": "opinion",
-     "hook": "contrarian",
-     "velocity": 0.61,
-     "by": "teacher"
-    },
-    {
-     "title": "Synthesys – Agente de vídeo con IA, orquestación de múltiples modelos y generador de vídeos de marketing",
-     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPSjhCbmExNVJzUmd5NDNFQzF1U0g3S20zdHNHVGpUbzJOWnl4SXJQRDRkQVhLX3Rwc0JvSFNYNmdpSS1fNHJuVDVnTlZZdjhHN2dsZXVkUjZpT2lvcG5wNUlPYnVjQndUbXltaGpnaDVOSVA5RlUwZmN2aUlEQ3RlMUk4N25vVDNYQ0p3NnlWSnMwYXFQS3ZsUENCaUtZeGdIaTJPcHB4dUxSYklfTkQ5dDh5akQwdDF5Vy1xTWFkbDhud1cxeUE?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-15T19:46:39Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "promesa-proceso",
-     "velocity": 0.0,
-     "by": "teacher"
-    },
-    {
-     "title": "Elevator Boys: 48M seguidores y el marketing con IA",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPRkJ2OXlZXy0tVG8wNFNiRXBRbVdsaVl1a3ROQ09HRVFXV1JLNU9HUjlHdm1JOUp6by1abWt5bWtldXp4WFB6emVJdC1IOGZEcW10WGhXMU1KQVRoNnd5NHJSdEVCVXhsVnFsbVJJOGd2cTQzRDI4d3pjUjlZOGhSRlU0bk9kUUk0?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-15T18:24:43Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "caso-paso-a-paso",
-     "hook": "resultado-numero",
-     "velocity": 0.0,
-     "by": "teacher"
-    },
-    {
-     "title": "UpPipe: la startup colombiana que escala marketing con IA",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOa2Y1eURlT203MXZBNklxdmZpakxPcnh2LXBFT3dWMXU4MTRQUEVINzhBUGxENW5ObDBDWkRfZlNsRlBzWW5ITEM3U1hzVElHUnNJbzNEUVFRR2d6TjAzc3N3cE41dXpEQ0FQYm8zOGFXS1I1UlFxM20yMWJaZjJFT1VMMGlfSmZEX18tZWtSSlk?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-14T17:51:41Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "caso-paso-a-paso",
-     "hook": "resultado-numero",
-     "velocity": 0.0,
-     "by": "teacher"
-    },
-    {
-     "title": "Ikan Agency: el marketing digital ya no es secundario",
-     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPaHp0dms1Z1FFVFBFdWFodExacU1HbU9Yd2wyYmVRQ2d2c2lnRVk5YlJfM1ZtYzc3NmNkUUtqMmtwaHRtbHNIaktGaHNGMFN1b1Y5WnlndGhjX3B5eFRZWC03bGw2SW5Ub3JOUmFnbERhNUxEd3dXY2FVQWZXanZYckVGUE85Z2R5Qmdn?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-13T17:24:54Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "opinion",
-     "hook": "contrarian",
-     "velocity": 0.0,
-     "by": "teacher"
-    }
-   ],
-   "adapt": {
-    "title": "La IA en marketing ya no es para después: lo que están haciendo las marcas que crecen",
-    "hook": "Elevator Boys tiene 48 millones de seguidores. ¿Y tu marca todavía cree que la IA en marketing es para después?",
-    "format": "opinion",
-    "beats": [
-     "Plano directo a cámara: 'Muchos líderes creen que la IA en marketing es una moda. Hoy les voy a decir por qué están equivocados.'",
-     "Mostrar el caso de Elevator Boys (48M de seguidores) y explicar en una frase cómo usan la IA para producir contenido más rápido y sin perder su voz.",
-     "Contrastar con una marca que no se adapta: mismo presupuesto, menos alcance. Mostrar en pantalla dos columnas simples: 'antes' y 'con IA'.",
-     "Cierre con una predicción concreta para los próximos 12 meses y una pregunta para el equipo: '¿Qué parte de tu marketing podrías automatizar esta semana?'"
-    ],
-    "cta": "Comenta cuál es el primer proceso de marketing que automatizarías con IA y comparte este video con tu equipo de marketing.",
-    "platform": "LinkedIn",
-    "by": "teacher",
-    "cost_usd": 0.00681
-   },
-   "rank": 7
   },
   {
    "slug": "ia-talento",
    "name": "IA en RR.HH. y talento",
    "stage": "estable",
-   "growth": 1.022,
-   "z": 1.29,
-   "acceleration": -0.252,
+   "growth": 1.006,
+   "z": 1.157,
+   "acceleration": -0.246,
    "volume": 10,
    "series": [
     0.0,
@@ -1454,10 +1312,10 @@
     0.0,
     0.0,
     0.0,
-    0.688,
-    0.136,
-    0.137,
-    0.114
+    0.651,
+    0.127,
+    0.128,
+    0.092
    ],
    "wiki_series": [
     15,
@@ -1475,36 +1333,37 @@
     14,
     34
    ],
-   "momentum": 0.301,
-   "exec_fit": 0.3,
-   "p": 0.564,
-   "p_raw": 0.3,
+   "momentum": 0.28,
+   "exec_fit": 0.361,
+   "p": 0.594,
+   "p_raw": 0.321,
    "decision": "Aprender",
-   "reason": "Estable frente a sus 11 días previos; encaje con la audiencia 30X 30%; al alza en Google News, Wikipedia; formato ganador: Opinión / predicción.",
+   "reason": "Estable frente a sus 11 días previos; encaje con la audiencia 30X 36%; al alza en Google News, Wikipedia; formato ganador: Opinión / predicción.",
    "why": {
     "format_winner": "opinion",
-    "hook_winner": "urgencia-novedad",
-    "best_day": "miércoles",
+    "hook_winner": "resultado-numero",
+    "best_day": "jueves",
     "author_mix": {
-     "medio": 0.75,
-     "comunidad": 0.167,
-     "empresa": 0.083
+     "medio": 0.692,
+     "comunidad": 0.154,
+     "empresa": 0.077,
+     "creador": 0.077
     },
     "formats": {
-     "opinion": 0.583,
-     "noticia-explicada": 0.083,
-     "post-texto": 0.083,
-     "evento-live": 0.083,
-     "entrevista-clip": 0.083,
-     "caso-paso-a-paso": 0.083
+     "opinion": 0.538,
+     "entrevista-clip": 0.154,
+     "noticia-explicada": 0.077,
+     "post-texto": 0.077,
+     "evento-live": 0.077,
+     "caso-paso-a-paso": 0.077
     },
     "hooks": {
-     "pregunta": 0.417,
-     "urgencia-novedad": 0.167,
-     "promesa-proceso": 0.167,
-     "miedo-riesgo": 0.083,
-     "contrarian": 0.083,
-     "resultado-numero": 0.083
+     "pregunta": 0.385,
+     "urgencia-novedad": 0.154,
+     "promesa-proceso": 0.154,
+     "resultado-numero": 0.154,
+     "miedo-riesgo": 0.077,
+     "contrarian": 0.077
     },
     "sources_growing": [
      "gnews",
@@ -1525,7 +1384,7 @@
      },
      "format": "caso-paso-a-paso",
      "hook": "resultado-numero",
-     "velocity": 0.94,
+     "velocity": 0.92,
      "by": "teacher"
     },
     {
@@ -1619,31 +1478,196 @@
     "by": "teacher",
     "cost_usd": 0.00735
    },
+   "rank": 7
+  },
+  {
+   "slug": "ia-marketing",
+   "name": "IA en marketing y contenido",
+   "stage": "estable",
+   "growth": 1.044,
+   "z": 1.22,
+   "acceleration": 0.153,
+   "volume": 5,
+   "series": [
+    0.0,
+    0.753,
+    0.161,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.076,
+    0.066,
+    0.127,
+    0.0,
+    0.239
+   ],
+   "wiki_series": [
+    337,
+    290,
+    256,
+    336,
+    375,
+    331,
+    288,
+    300,
+    220,
+    213,
+    294,
+    322,
+    338,
+    353
+   ],
+   "momentum": 0.232,
+   "exec_fit": 0.341,
+   "p": 0.508,
+   "p_raw": 0.287,
+   "decision": "Aprender",
+   "reason": "Estable frente a sus 11 días previos; encaje con la audiencia 30X 34%; al alza en Wikipedia; formato ganador: Opinión / predicción.",
+   "why": {
+    "format_winner": "opinion",
+    "hook_winner": "contrarian",
+    "best_day": "lunes",
+    "author_mix": {
+     "medio": 0.714,
+     "comunidad": 0.286
+    },
+    "formats": {
+     "opinion": 0.286,
+     "noticia-explicada": 0.286,
+     "caso-paso-a-paso": 0.286,
+     "herramienta-60s": 0.143
+    },
+    "hooks": {
+     "contrarian": 0.429,
+     "resultado-numero": 0.286,
+     "urgencia-novedad": 0.143,
+     "promesa-proceso": 0.143
+    },
+    "sources_growing": [
+     "wiki"
+    ],
+    "covered_by_30x": 0
+   },
+   "top_signals": [
+    {
+     "title": "Life After SEO",
+     "url": "https://reutersinstitute.politics.ox.ac.uk/news/life-after-seo-how-newsrooms-are-adapting-ai-search-shift",
+     "source": "hn",
+     "published_at": "2026-10-17T13:13:34Z",
+     "metrics": {
+      "points": 2,
+      "comments": 2,
+      "views": 0
+     },
+     "format": "opinion",
+     "hook": "contrarian",
+     "velocity": 0.59,
+     "by": "teacher"
+    },
+    {
+     "title": "Synthesys – Agente de vídeo con IA, orquestación de múltiples modelos y generador de vídeos de marketing",
+     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPSjhCbmExNVJzUmd5NDNFQzF1U0g3S20zdHNHVGpUbzJOWnl4SXJQRDRkQVhLX3Rwc0JvSFNYNmdpSS1fNHJuVDVnTlZZdjhHN2dsZXVkUjZpT2lvcG5wNUlPYnVjQndUbXltaGpnaDVOSVA5RlUwZmN2aUlEQ3RlMUk4N25vVDNYQ0p3NnlWSnMwYXFQS3ZsUENCaUtZeGdIaTJPcHB4dUxSYklfTkQ5dDh5akQwdDF5Vy1xTWFkbDhud1cxeUE?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-15T19:46:39Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "herramienta-60s",
+     "hook": "promesa-proceso",
+     "velocity": 0.0,
+     "by": "teacher"
+    },
+    {
+     "title": "Elevator Boys: 48M seguidores y el marketing con IA",
+     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPRkJ2OXlZXy0tVG8wNFNiRXBRbVdsaVl1a3ROQ09HRVFXV1JLNU9HUjlHdm1JOUp6by1abWt5bWtldXp4WFB6emVJdC1IOGZEcW10WGhXMU1KQVRoNnd5NHJSdEVCVXhsVnFsbVJJOGd2cTQzRDI4d3pjUjlZOGhSRlU0bk9kUUk0?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-15T18:24:43Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "caso-paso-a-paso",
+     "hook": "resultado-numero",
+     "velocity": 0.0,
+     "by": "teacher"
+    },
+    {
+     "title": "UpPipe: la startup colombiana que escala marketing con IA",
+     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOa2Y1eURlT203MXZBNklxdmZpakxPcnh2LXBFT3dWMXU4MTRQUEVINzhBUGxENW5ObDBDWkRfZlNsRlBzWW5ITEM3U1hzVElHUnNJbzNEUVFRR2d6TjAzc3N3cE41dXpEQ0FQYm8zOGFXS1I1UlFxM20yMWJaZjJFT1VMMGlfSmZEX18tZWtSSlk?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-14T17:51:41Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "caso-paso-a-paso",
+     "hook": "resultado-numero",
+     "velocity": 0.0,
+     "by": "teacher"
+    },
+    {
+     "title": "Ikan Agency: el marketing digital ya no es secundario",
+     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPaHp0dms1Z1FFVFBFdWFodExacU1HbU9Yd2wyYmVRQ2d2c2lnRVk5YlJfM1ZtYzc3NmNkUUtqMmtwaHRtbHNIaktGaHNGMFN1b1Y5WnlndGhjX3B5eFRZWC03bGw2SW5Ub3JOUmFnbERhNUxEd3dXY2FVQWZXanZYckVGUE85Z2R5Qmdn?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-13T17:24:54Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "opinion",
+     "hook": "contrarian",
+     "velocity": 0.0,
+     "by": "teacher"
+    }
+   ],
+   "adapt": {
+    "title": "La IA en marketing ya no es para después: lo que están haciendo las marcas que crecen",
+    "hook": "Elevator Boys tiene 48 millones de seguidores. ¿Y tu marca todavía cree que la IA en marketing es para después?",
+    "format": "opinion",
+    "beats": [
+     "Plano directo a cámara: 'Muchos líderes creen que la IA en marketing es una moda. Hoy les voy a decir por qué están equivocados.'",
+     "Mostrar el caso de Elevator Boys (48M de seguidores) y explicar en una frase cómo usan la IA para producir contenido más rápido y sin perder su voz.",
+     "Contrastar con una marca que no se adapta: mismo presupuesto, menos alcance. Mostrar en pantalla dos columnas simples: 'antes' y 'con IA'.",
+     "Cierre con una predicción concreta para los próximos 12 meses y una pregunta para el equipo: '¿Qué parte de tu marketing podrías automatizar esta semana?'"
+    ],
+    "cta": "Comenta cuál es el primer proceso de marketing que automatizarías con IA y comparte este video con tu equipo de marketing.",
+    "platform": "LinkedIn",
+    "by": "teacher",
+    "cost_usd": 0.00681
+   },
    "rank": 8
   },
   {
    "slug": "regulacion-etica",
    "name": "Regulación y ética de IA",
    "stage": "creciendo",
-   "growth": 1.237,
-   "z": 0.55,
-   "acceleration": 0.522,
-   "volume": 133,
+   "growth": 1.226,
+   "z": 0.584,
+   "acceleration": 0.559,
+   "volume": 135,
    "series": [
-    2.951,
-    4.111,
-    1.677,
-    4.271,
-    2.618,
+    2.472,
+    4.102,
+    1.674,
+    4.423,
+    2.615,
     4.063,
-    2.7,
-    1.763,
-    1.758,
-    1.986,
-    2.301,
-    3.987,
-    3.907,
-    2.649
+    2.63,
+    1.767,
+    1.635,
+    1.63,
+    2.179,
+    4.23,
+    3.644,
+    2.222
    ],
    "wiki_series": [
     439,
@@ -1661,40 +1685,40 @@
     562,
     476
    ],
-   "momentum": 0.263,
-   "exec_fit": 0.214,
-   "p": 0.403,
-   "p_raw": 0.238,
+   "momentum": 0.265,
+   "exec_fit": 0.216,
+   "p": 0.388,
+   "p_raw": 0.24,
    "decision": "Descartar",
-   "reason": "Crece 1.2x frente a sus 11 días previos; encaje con la audiencia 30X 21%; al alza en Hacker News, Wikipedia; formato ganador: Noticia explicada (qué significa para tu empresa).",
+   "reason": "Crece 1.2x frente a sus 11 días previos; encaje con la audiencia 30X 22%; al alza en Hacker News, Wikipedia; formato ganador: Live / webinar / evento.",
    "why": {
-    "format_winner": "noticia-explicada",
+    "format_winner": "evento-live",
     "hook_winner": "promesa-proceso",
-    "best_day": "jueves",
+    "best_day": "viernes",
     "author_mix": {
-     "medio": 0.647,
-     "comunidad": 0.313,
-     "creador": 0.02,
-     "empresa": 0.02
+     "medio": 0.636,
+     "comunidad": 0.292,
+     "creador": 0.053,
+     "empresa": 0.019
     },
     "formats": {
-     "noticia-explicada": 0.816,
-     "opinion": 0.08,
-     "herramienta-60s": 0.055,
-     "evento-live": 0.015,
-     "reel-cara": 0.015,
+     "noticia-explicada": 0.804,
+     "opinion": 0.081,
+     "herramienta-60s": 0.062,
+     "evento-live": 0.019,
+     "reel-cara": 0.014,
      "post-texto": 0.01,
      "entrevista-clip": 0.005,
      "caso-paso-a-paso": 0.005
     },
     "hooks": {
-     "urgencia-novedad": 0.358,
-     "miedo-riesgo": 0.328,
-     "contrarian": 0.124,
-     "autoridad": 0.095,
-     "pregunta": 0.055,
-     "promesa-proceso": 0.025,
-     "resultado-numero": 0.015
+     "urgencia-novedad": 0.364,
+     "miedo-riesgo": 0.316,
+     "contrarian": 0.12,
+     "autoridad": 0.091,
+     "pregunta": 0.057,
+     "promesa-proceso": 0.038,
+     "resultado-numero": 0.014
     },
     "sources_growing": [
      "hn",
@@ -1715,7 +1739,22 @@
      },
      "format": "noticia-explicada",
      "hook": "miedo-riesgo",
-     "velocity": 2.96,
+     "velocity": 2.94,
+     "by": "student"
+    },
+    {
+     "title": "Comenta \"Redes\" y te enviamos toda la información",
+     "url": "https://www.instagram.com/p/DeiKZTfCHeg/",
+     "source": "instagram",
+     "published_at": "2026-10-15T23:41:54Z",
+     "metrics": {
+      "points": 174,
+      "comments": 180,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "urgencia-novedad",
+     "velocity": 0.03,
      "by": "student"
     },
     {
@@ -1726,11 +1765,11 @@
      "metrics": {
       "points": 842,
       "comments": 0,
-      "views": 70856
+      "views": 70861
      },
      "format": "opinion",
      "hook": "contrarian",
-     "velocity": 2.75,
+     "velocity": 2.76,
      "by": "teacher"
     },
     {
@@ -1760,7 +1799,7 @@
      },
      "format": "noticia-explicada",
      "hook": "promesa-proceso",
-     "velocity": 2.73,
+     "velocity": 2.62,
      "by": "student"
     },
     {
@@ -1775,23 +1814,8 @@
      },
      "format": "noticia-explicada",
      "hook": "urgencia-novedad",
-     "velocity": 2.06,
+     "velocity": 1.96,
      "by": "student"
-    },
-    {
-     "title": "Google DeepMind's New Resident Philosopher Tackles AI Ethics",
-     "url": "https://spectrum.ieee.org/ai-ethics-deepmind-philosopher-shevlin",
-     "source": "hn",
-     "published_at": "2026-10-17T21:54:10Z",
-     "metrics": {
-      "points": 2,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "pregunta",
-     "velocity": 1.65,
-     "by": "teacher"
     }
    ],
    "adapt": {
@@ -1815,23 +1839,23 @@
    "slug": "roi-casos",
    "name": "ROI y casos de uso empresariales",
    "stage": "estable",
-   "growth": 0.906,
-   "z": 0.227,
-   "acceleration": -0.028,
+   "growth": 0.905,
+   "z": 0.21,
+   "acceleration": -0.024,
    "volume": 3,
    "series": [
     0.0,
-    0.229,
+    0.228,
     0.0,
     0.258,
     0.0,
     0.0,
     0.0,
-    0.211,
-    0.146,
+    0.212,
+    0.136,
     0.0,
     0.0,
-    0.068,
+    0.063,
     0.0,
     0.0
    ],
@@ -1851,10 +1875,10 @@
     504,
     352
    ],
-   "momentum": 0.095,
+   "momentum": 0.093,
    "exec_fit": 0.376,
-   "p": 0.395,
-   "p_raw": 0.235,
+   "p": 0.372,
+   "p_raw": 0.234,
    "decision": "Descartar",
    "reason": "Cae 9% frente a sus 11 días previos; encaje con la audiencia 30X 38%; al alza en Wikipedia; formato ganador: Opinión / predicción.",
    "why": {
@@ -1949,24 +1973,24 @@
    "slug": "datos-rag",
    "name": "Datos, RAG y conocimiento corporativo",
    "stage": "bajando",
-   "growth": 0.598,
-   "z": -0.398,
+   "growth": 0.621,
+   "z": -0.222,
    "acceleration": -0.198,
    "volume": 9,
    "series": [
-    0.361,
     0.0,
-    0.339,
+    0.0,
+    0.338,
     1.552,
     0.136,
     0.0,
-    1.692,
+    1.648,
     0.0,
     0.0,
-    0.615,
-    0.298,
+    0.574,
+    0.282,
     0.0,
-    0.212,
+    0.198,
     0.0
    ],
    "wiki_series": [
@@ -1986,35 +2010,35 @@
     1223
    ],
    "momentum": 0.067,
-   "exec_fit": 0.387,
-   "p": 0.374,
-   "p_raw": 0.227,
+   "exec_fit": 0.392,
+   "p": 0.362,
+   "p_raw": 0.23,
    "decision": "Descartar",
-   "reason": "Cae 40% frente a sus 11 días previos; encaje con la audiencia 30X 39%; al alza en Wikipedia; formato ganador: Caso de uso paso a paso / demo de proceso.",
+   "reason": "Cae 38% frente a sus 11 días previos; encaje con la audiencia 30X 39%; al alza en Wikipedia; formato ganador: Caso de uso paso a paso / demo de proceso.",
    "why": {
     "format_winner": "caso-paso-a-paso",
     "hook_winner": "promesa-proceso",
     "best_day": "miércoles",
     "author_mix": {
-     "comunidad": 0.529,
-     "medio": 0.412,
-     "empresa": 0.059
+     "comunidad": 0.562,
+     "medio": 0.375,
+     "empresa": 0.062
     },
     "formats": {
-     "caso-paso-a-paso": 0.353,
-     "opinion": 0.294,
-     "noticia-explicada": 0.118,
-     "post-texto": 0.118,
-     "herramienta-60s": 0.059,
-     "entrevista-clip": 0.059
+     "caso-paso-a-paso": 0.312,
+     "opinion": 0.312,
+     "noticia-explicada": 0.125,
+     "post-texto": 0.125,
+     "herramienta-60s": 0.062,
+     "entrevista-clip": 0.062
     },
     "hooks": {
-     "promesa-proceso": 0.353,
-     "contrarian": 0.294,
-     "autoridad": 0.118,
-     "resultado-numero": 0.118,
-     "miedo-riesgo": 0.059,
-     "pregunta": 0.059
+     "promesa-proceso": 0.312,
+     "contrarian": 0.312,
+     "autoridad": 0.125,
+     "resultado-numero": 0.125,
+     "miedo-riesgo": 0.062,
+     "pregunta": 0.062
     },
     "sources_growing": [
      "wiki"
@@ -2109,7 +2133,7 @@
      },
      "format": "noticia-explicada",
      "hook": "autoridad",
-     "velocity": 0.05,
+     "velocity": 0.04,
      "by": "teacher"
     }
    ],
@@ -2128,28 +2152,216 @@
    "rank": 11
   },
   {
+   "slug": "copilotos",
+   "name": "Copilotos y asistentes de trabajo",
+   "stage": "creciendo",
+   "growth": 1.327,
+   "z": 0.55,
+   "acceleration": -0.06,
+   "volume": 99,
+   "series": [
+    1.928,
+    0.456,
+    0.999,
+    1.63,
+    2.613,
+    3.004,
+    1.61,
+    2.008,
+    3.871,
+    3.509,
+    0.61,
+    3.359,
+    2.748,
+    2.435
+   ],
+   "wiki_series": [
+    40990,
+    32921,
+    32190,
+    48129,
+    63033,
+    58849,
+    51289,
+    51983,
+    36365,
+    29274,
+    41241,
+    46903,
+    57605,
+    56825
+   ],
+   "momentum": 0.217,
+   "exec_fit": 0.189,
+   "p": 0.293,
+   "p_raw": 0.203,
+   "decision": "Descartar",
+   "reason": "Crece 1.3x frente a sus 11 días previos; encaje con la audiencia 30X 19%; al alza en Wikipedia; formato ganador: Lista / ranking.",
+   "why": {
+    "format_winner": "lista-ranking",
+    "hook_winner": "lista-numerada",
+    "best_day": "jueves",
+    "author_mix": {
+     "medio": 0.595,
+     "comunidad": 0.198,
+     "creador": 0.176,
+     "empresa": 0.031
+    },
+    "formats": {
+     "noticia-explicada": 0.557,
+     "herramienta-60s": 0.359,
+     "lista-ranking": 0.046,
+     "post-texto": 0.015,
+     "opinion": 0.008,
+     "caso-paso-a-paso": 0.008,
+     "entrevista-clip": 0.008
+    },
+    "hooks": {
+     "urgencia-novedad": 0.718,
+     "promesa-proceso": 0.084,
+     "miedo-riesgo": 0.053,
+     "lista-numerada": 0.053,
+     "pregunta": 0.023,
+     "autoridad": 0.023,
+     "contrarian": 0.015,
+     "resultado-numero": 0.015,
+     "antes-despues": 0.008,
+     "error-confesion": 0.008
+    },
+    "sources_growing": [
+     "wiki"
+    ],
+    "covered_by_30x": 0
+   },
+   "top_signals": [
+    {
+     "title": "#fy chatgpt is joking at me 🤦🏽‍♂️😂",
+     "url": "https://www.tiktok.com/@_/video/7696291618076265741",
+     "source": "tiktok",
+     "published_at": "2026-10-13T23:02:21Z",
+     "metrics": {
+      "points": 1600000,
+      "comments": 8739,
+      "views": 12800000
+     },
+     "format": "herramienta-60s",
+     "hook": "urgencia-novedad",
+     "velocity": 16789.65,
+     "by": "student"
+    },
+    {
+     "title": "#chatgpt 🖤🤍",
+     "url": "https://www.instagram.com/p/DenKo9rjtS3/",
+     "source": "instagram",
+     "published_at": "2026-10-17T22:19:52Z",
+     "metrics": {
+      "points": 5,
+      "comments": 3,
+      "views": 0
+     },
+     "format": "herramienta-60s",
+     "hook": "urgencia-novedad",
+     "velocity": 10.52,
+     "by": "student"
+    },
+    {
+     "title": "Ask HN: How do I stop Gemini Live from asking.\"Would like to know more about..?\"",
+     "url": "https://news.ycombinator.com/item?id=50131248",
+     "source": "hn",
+     "published_at": "2026-10-17T13:59:05Z",
+     "metrics": {
+      "points": 2,
+      "comments": 3,
+      "views": 0
+     },
+     "format": "herramienta-60s",
+     "hook": "pregunta",
+     "velocity": 0.85,
+     "by": "teacher"
+    },
+    {
+     "title": "Forget Building the Next ChatGPT. These 5 Indian AI Startups Are Going After Something Bigger.",
+     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNTW5NWjNYcGFVeG93NUt2ZlBGNlhYMkhzWl9fSnZjMXVLSHI3RHM1NTFOUG96b1NCU3BIYWkwckgtVzhuYlBpTGtIYVptZTB6M1JMNWs0M3RoWTVrMlJoZTZjLTJLTUpXdUp5MGtMWVdlSE94T0JJZzRhRUtKMzJYSXdmRjZhdjJyVXFuNUJaUm9zM0ladlYw?oc=5",
+     "source": "linkedin",
+     "published_at": "2026-10-15T10:31:37Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "urgencia-novedad",
+     "velocity": 0.0,
+     "by": "student"
+    },
+    {
+     "title": "Build more personal sites with Codex",
+     "url": "https://www.youtube.com/watch?v=KJ_7KPKlO_Q",
+     "source": "youtube",
+     "published_at": "2026-10-15T20:48:59Z",
+     "metrics": {
+      "points": 903,
+      "comments": 0,
+      "views": 89206
+     },
+     "format": "herramienta-60s",
+     "hook": "urgencia-novedad",
+     "velocity": 4.89,
+     "by": "teacher"
+    },
+    {
+     "title": "top ai chatbot apps for android/iOS",
+     "url": "https://news.google.com/rss/articles/CBMikAJBVV95cUxNQzNYX00yenNSUWVWc29PQjU4SFlTUmpLMUJSLUlOZUxMSGZ1bWhTcmJnVDhoZzExWnhWOElERFVtM0tJLUJ0cVFtempGTVBHQldWMWxlaWRHTGdZQ1JuVFQ4X0J5ZlNja3BNb09pVWlVeG9MdnZpTF9ueGhIWjZvX09ua0t2ZTVGbzB5Tzc1MkktUGR1SllVMGhfLXotZEJmdmRXa2s5Q1ZuM3BxZVAwcENzbjE5YThyRG55dEtFVjhWUFA0aXZvemdaTVN0ZWg0U3FpeWpKVXhweV94MXJZc2VtVDJiTEpyb1NxZEhkb1ZGTVJIX1dwZkNvaGw2T0ZUQ1RKWnJzaUEyVVBpSlpxNQ?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-17T09:34:18Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "lista-ranking",
+     "hook": "lista-numerada",
+     "velocity": 0.0,
+     "by": "teacher"
+    }
+   ],
+   "adapt": {
+    "title": "Copilotos y asistentes de trabajo: qué significa para tu empresa esta semana",
+    "hook": "Lista numerada en los primeros 3 segundos",
+    "format": "lista-ranking",
+    "beats": [
+     "Qué pasó (1 dato, 1 fuente)",
+     "Un caso real en una empresa de LatAm",
+     "Qué hacer el lunes"
+    ],
+    "cta": "Comenta qué área de tu empresa probaría esto primero",
+    "by": "plantilla"
+   },
+   "rank": 12
+  },
+  {
    "slug": "automatizacion",
    "name": "Productividad y automatización",
-   "stage": "bajando",
-   "growth": 0.761,
-   "z": -1.195,
-   "acceleration": -0.291,
-   "volume": 30,
+   "stage": "estable",
+   "growth": 0.959,
+   "z": -0.28,
+   "acceleration": -0.036,
+   "volume": 31,
    "series": [
-    0.722,
-    1.143,
-    0.646,
-    0.761,
-    0.776,
+    0.728,
+    1.14,
+    0.806,
+    0.609,
+    0.774,
     0.444,
-    0.714,
+    0.695,
     0.0,
-    0.146,
-    0.71,
-    1.275,
-    0.475,
-    0.35,
-    0.341
+    0.136,
+    0.587,
+    1.208,
+    0.444,
+    0.326,
+    1.034
    ],
    "wiki_series": [
     562,
@@ -2168,39 +2380,39 @@
     693
    ],
    "momentum": 0.067,
-   "exec_fit": 0.313,
-   "p": 0.278,
-   "p_raw": 0.19,
+   "exec_fit": 0.33,
+   "p": 0.283,
+   "p_raw": 0.199,
    "decision": "Descartar",
-   "reason": "Cae 24% frente a sus 11 días previos; encaje con la audiencia 30X 31%; al alza en Wikipedia; formato ganador: Noticia explicada (qué significa para tu empresa).",
+   "reason": "Estable frente a sus 11 días previos; encaje con la audiencia 30X 33%; al alza en Wikipedia; formato ganador: Opinión / predicción.",
    "why": {
-    "format_winner": "noticia-explicada",
+    "format_winner": "opinion",
     "hook_winner": "urgencia-novedad",
     "best_day": "miércoles",
     "author_mix": {
-     "medio": 0.8,
-     "comunidad": 0.091,
-     "creador": 0.091,
-     "empresa": 0.018
+     "medio": 0.768,
+     "creador": 0.107,
+     "comunidad": 0.089,
+     "empresa": 0.036
     },
     "formats": {
-     "noticia-explicada": 0.582,
-     "caso-paso-a-paso": 0.164,
-     "opinion": 0.073,
-     "herramienta-60s": 0.055,
+     "noticia-explicada": 0.554,
+     "caso-paso-a-paso": 0.161,
+     "opinion": 0.089,
+     "herramienta-60s": 0.054,
      "evento-live": 0.036,
      "lista-ranking": 0.036,
+     "entrevista-clip": 0.036,
      "carrusel": 0.018,
-     "post-texto": 0.018,
-     "entrevista-clip": 0.018
+     "post-texto": 0.018
     },
     "hooks": {
-     "urgencia-novedad": 0.309,
-     "resultado-numero": 0.255,
-     "promesa-proceso": 0.182,
-     "autoridad": 0.091,
-     "contrarian": 0.073,
-     "pregunta": 0.055,
+     "urgencia-novedad": 0.304,
+     "resultado-numero": 0.232,
+     "promesa-proceso": 0.179,
+     "autoridad": 0.107,
+     "contrarian": 0.071,
+     "pregunta": 0.071,
      "lista-numerada": 0.036
     },
     "sources_growing": [
@@ -2225,14 +2437,29 @@
      "by": "teacher"
     },
     {
+     "title": "Dejó Wall Street para crear un producto que le devuelve tiempo a la gente. Y en 36 horas ya había vendido $10,000 USD. 👇",
+     "url": "https://www.instagram.com/p/Dem-vM8FJya/",
+     "source": "instagram",
+     "published_at": "2026-10-17T20:36:11Z",
+     "metrics": {
+      "points": 541,
+      "comments": 3,
+      "views": 0
+     },
+     "format": "opinion",
+     "hook": "pregunta",
+     "velocity": 20.0,
+     "by": "student"
+    },
+    {
      "title": "The Cheapest Robot On The Market?!",
      "url": "https://www.youtube.com/watch?v=XEl4ZQKKxig",
      "source": "youtube",
      "published_at": "2026-10-14T14:41:38Z",
      "metrics": {
-      "points": 304,
+      "points": 305,
       "comments": 0,
-      "views": 10498
+      "views": 10519
      },
      "format": "noticia-explicada",
      "hook": "urgencia-novedad",
@@ -2283,27 +2510,12 @@
      "hook": "promesa-proceso",
      "velocity": 0.07,
      "by": "teacher"
-    },
-    {
-     "title": "HuelvaLAB abre taller gratis de Make, Zapier y n8n",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPbTZvRk5INmFUOWlHblVnS1ZuTGRmeDFkUHZaSUFab3V5NnhYTjM1RmozOUhWRVNkMHhKdnExN1FKRHVuVUN5aXFxY2U1YVJMYlZHd2FESkZVYWg1UXVuXzRGalc0endaWGhpWEdkTEh4NTdOVjhBVWJwczE5Z2JUZ1JzblVabmc?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-17T11:33:27Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "evento-live",
-     "hook": "promesa-proceso",
-     "velocity": 0.0,
-     "by": "teacher"
     }
    ],
    "adapt": {
     "title": "Productividad y automatización: qué significa para tu empresa esta semana",
     "hook": "Urgencia / novedad en los primeros 3 segundos",
-    "format": "noticia-explicada",
+    "format": "opinion",
     "beats": [
      "Qué pasó (1 dato, 1 fuente)",
      "Un caso real en una empresa de LatAm",
@@ -2312,31 +2524,31 @@
     "cta": "Comenta qué área de tu empresa probaría esto primero",
     "by": "plantilla"
    },
-   "rank": 12
+   "rank": 13
   },
   {
    "slug": "agentes-ia",
    "name": "Agentes de IA",
    "stage": "saturada",
-   "growth": 0.844,
-   "z": -0.913,
-   "acceleration": -0.158,
-   "volume": 568,
+   "growth": 0.8,
+   "z": -1.277,
+   "acceleration": -0.141,
+   "volume": 579,
    "series": [
-    9.969,
-    7.641,
-    21.523,
+    10.056,
+    7.624,
+    21.488,
     21.028,
-    22.829,
+    22.798,
     20.237,
-    21.445,
-    23.953,
-    23.549,
-    17.075,
-    15.247,
-    17.285,
-    15.151,
-    14.377
+    20.886,
+    24.003,
+    21.896,
+    15.857,
+    14.439,
+    16.297,
+    14.528,
+    12.591
    ],
    "wiki_series": [
     2463,
@@ -2354,45 +2566,47 @@
     2945,
     2982
    ],
-   "momentum": 0.067,
-   "exec_fit": 0.226,
-   "p": 0.166,
-   "p_raw": 0.147,
+   "momentum": 0.133,
+   "exec_fit": 0.235,
+   "p": 0.245,
+   "p_raw": 0.184,
    "decision": "Descartar",
-   "reason": "Cae 16% frente a sus 11 días previos; encaje con la audiencia 30X 23%; al alza en Wikipedia; formato ganador: Post de texto largo.",
+   "reason": "Cae 20% frente a sus 11 días previos; encaje con la audiencia 30X 24%; al alza en Google News, Wikipedia; formato ganador: Lista / ranking.",
    "why": {
-    "format_winner": "post-texto",
+    "format_winner": "lista-ranking",
     "hook_winner": "error-confesion",
     "best_day": "jueves",
     "author_mix": {
-     "comunidad": 0.928,
-     "medio": 0.061,
-     "empresa": 0.007,
-     "creador": 0.004
+     "comunidad": 0.915,
+     "medio": 0.064,
+     "creador": 0.012,
+     "empresa": 0.008
     },
     "formats": {
-     "herramienta-60s": 0.717,
-     "noticia-explicada": 0.195,
+     "herramienta-60s": 0.708,
+     "noticia-explicada": 0.2,
      "opinion": 0.038,
-     "post-texto": 0.026,
+     "post-texto": 0.029,
      "caso-paso-a-paso": 0.017,
+     "lista-ranking": 0.002,
      "evento-live": 0.002,
      "reel-cara": 0.001,
-     "lista-ranking": 0.001,
-     "carrusel": 0.001
+     "carrusel": 0.001,
+     "entrevista-clip": 0.001
     },
     "hooks": {
      "urgencia-novedad": 0.576,
-     "promesa-proceso": 0.208,
-     "miedo-riesgo": 0.08,
-     "contrarian": 0.058,
+     "promesa-proceso": 0.206,
+     "miedo-riesgo": 0.079,
+     "contrarian": 0.057,
      "resultado-numero": 0.047,
-     "autoridad": 0.02,
-     "pregunta": 0.009,
+     "autoridad": 0.022,
+     "pregunta": 0.008,
      "error-confesion": 0.002,
-     "lista-numerada": 0.001
+     "lista-numerada": 0.002
     },
     "sources_growing": [
+     "gnews",
      "wiki"
     ],
     "covered_by_30x": 0
@@ -2410,7 +2624,22 @@
      },
      "format": "herramienta-60s",
      "hook": "urgencia-novedad",
-     "velocity": 34.94,
+     "velocity": 34.77,
+     "by": "student"
+    },
+    {
+     "title": "🤖 Meta presentó sus modelos de IA más capaces hasta ahora para ejecutar tareas complejas.",
+     "url": "https://www.instagram.com/p/DenFAAeFMCu/",
+     "source": "instagram",
+     "published_at": "2026-10-17T21:30:39Z",
+     "metrics": {
+      "points": 3,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "lista-ranking",
+     "hook": "urgencia-novedad",
+     "velocity": 1.61,
      "by": "student"
     },
     {
@@ -2419,13 +2648,13 @@
      "source": "youtube",
      "published_at": "2026-10-15T11:00:06Z",
      "metrics": {
-      "points": 2102,
+      "points": 2107,
       "comments": 0,
-      "views": 154968
+      "views": 155218
      },
      "format": "post-texto",
      "hook": "miedo-riesgo",
-     "velocity": 15.65,
+     "velocity": 15.66,
      "by": "teacher"
     },
     {
@@ -2444,19 +2673,19 @@
      "by": "student"
     },
     {
-     "title": "Los agentes de IA chocan con las puertas cerradas de la web",
-     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQMDlrWFBpQ0p0cy1SWE1GcEZmUkE3QjU3RjVPVXVKZXBweWVKVzltdDZyamptRXNLelJOaGJGOWY5a3pyUk5vLWdNS3pvNDdrd2VIMUxwZUJfczdGYzIxZmRvcGszNTY3M2hKSjZBZnFjNW5GVUxJTmpFTmhHVVpuc1ZacndhbGtodGx4dFZRNWFsNENLTUhmZGRyazluMjcxVGFZ?oc=5",
+     "title": "¿Han cambiado los agentes de IA creados por los propios empleados el discurso de inversión en ServiceNow (NOW)?",
+     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNQzV5TllpTEdGQ3pZMGZyRldPZ3dJdTg1LU1lQ2tPT0ktNVBoMHFRMjNGMzdFLVJBaEFsenBGZGdXVmhRNENQWHR5U096eWxTUEFCVE9uZTlsRVp6LWNOMmhoUTZvbjEza0NCZURsZUQyekpac0dLM3JVWTB0TzZrTmRadVZlQ3UwVjh4M0M1bk9QcVhSUjJOV2pyaHpSY01GVkxVdFNxZGVfZnZZWGtaTmRiUkxCeWJkMjhPQkZ5VGtDYS1jWVNOSdIBzgFBVV95cUxOV1dhMUdpNWFQWWE2aXRQcWJxNU9xdENBby0xTTF2MEoybFplNUFkSUR4VnZaOEFXS0QxQnA5VDA2RDl1VVJjSVoyUkJDb1l2ZHdQbHFCQWQ4Vm1Ba2xsOTRVMHFaSjRPYXlpcTc3NG95NVd4RkUycDFWVkNLMU5nUDVIQlFRN0dCM2gtWko5Ynl4R1J5czdpZkV2MU1seFJDb20xUHl4Mld1dFVENTQ3MklYN2NYczc5ZmVucWN4NU9lWnk4aHhmWXFYUGVjUQ?oc=5",
      "source": "gnews",
-     "published_at": "2026-10-17T14:40:19Z",
+     "published_at": "2026-10-17T20:39:55Z",
      "metrics": {
       "points": 0,
       "comments": 0,
       "views": 0
      },
      "format": "noticia-explicada",
-     "hook": "contrarian",
+     "hook": "urgencia-novedad",
      "velocity": 0.0,
-     "by": "teacher"
+     "by": "student"
     },
     {
      "title": "You could have invented transformers from memory",
@@ -2464,35 +2693,20 @@
      "source": "hn",
      "published_at": "2026-10-16T19:01:17Z",
      "metrics": {
-      "points": 477,
-      "comments": 110,
+      "points": 478,
+      "comments": 112,
       "views": 0
      },
      "format": "noticia-explicada",
      "hook": "miedo-riesgo",
-     "velocity": 24.81,
-     "by": "student"
-    },
-    {
-     "title": "The gap in shared understanding of LLM capability is widening",
-     "url": "https://twitter.com/karpathy/status/2109361546505966046",
-     "source": "hn",
-     "published_at": "2026-10-11T20:20:52Z",
-     "metrics": {
-      "points": 727,
-      "comments": 1072,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "promesa-proceso",
-     "velocity": 19.56,
+     "velocity": 24.76,
      "by": "student"
     }
    ],
    "adapt": {
     "title": "Agentes de IA: qué significa para tu empresa esta semana",
     "hook": "Error o confesión en los primeros 3 segundos",
-    "format": "post-texto",
+    "format": "lista-ranking",
     "beats": [
      "Qué pasó (1 dato, 1 fuente)",
      "Un caso real en una empresa de LatAm",
@@ -2501,31 +2715,31 @@
     "cta": "Comenta qué área de tu empresa probaría esto primero",
     "by": "plantilla"
    },
-   "rank": 13
+   "rank": 14
   },
   {
    "slug": "startups-inversion",
    "name": "Startups e inversión en IA",
    "stage": "saturada",
-   "growth": 1.006,
-   "z": 0.12,
-   "acceleration": -0.252,
-   "volume": 150,
+   "growth": 1.081,
+   "z": 0.092,
+   "acceleration": -0.133,
+   "volume": 155,
    "series": [
     0.0,
-    2.514,
-    2.52,
+    2.28,
+    2.516,
     1.991,
-    1.921,
+    2.19,
     3.322,
-    1.758,
-    1.456,
-    1.021,
-    2.582,
-    4.088,
-    2.948,
-    2.579,
-    0.84
+    1.712,
+    1.459,
+    1.085,
+    2.409,
+    3.871,
+    3.709,
+    2.47,
+    0.676
    ],
    "wiki_series": [
     1140,
@@ -2543,41 +2757,41 @@
     1225,
     1114
    ],
-   "momentum": 0.083,
-   "exec_fit": 0.202,
-   "p": 0.156,
-   "p_raw": 0.143,
+   "momentum": 0.101,
+   "exec_fit": 0.208,
+   "p": 0.168,
+   "p_raw": 0.154,
    "decision": "Descartar",
-   "reason": "Estable frente a sus 11 días previos; encaje con la audiencia 30X 20%; al alza en Hacker News; formato ganador: Noticia explicada (qué significa para tu empresa).",
+   "reason": "Crece 1.1x frente a sus 11 días previos; encaje con la audiencia 30X 21%; al alza en Hacker News; formato ganador: Noticia explicada (qué significa para tu empresa).",
    "why": {
     "format_winner": "noticia-explicada",
     "hook_winner": "pregunta",
-    "best_day": "miércoles",
+    "best_day": "jueves",
     "author_mix": {
-     "medio": 0.555,
-     "creador": 0.294,
-     "comunidad": 0.147,
-     "empresa": 0.005
+     "medio": 0.558,
+     "creador": 0.295,
+     "comunidad": 0.143,
+     "empresa": 0.004
     },
     "formats": {
-     "noticia-explicada": 0.862,
-     "lista-ranking": 0.064,
-     "opinion": 0.028,
-     "post-texto": 0.028,
+     "noticia-explicada": 0.866,
+     "lista-ranking": 0.062,
+     "post-texto": 0.031,
+     "opinion": 0.022,
      "entrevista-clip": 0.009,
-     "caso-paso-a-paso": 0.005,
-     "evento-live": 0.005
+     "caso-paso-a-paso": 0.004,
+     "evento-live": 0.004
     },
     "hooks": {
-     "resultado-numero": 0.509,
-     "urgencia-novedad": 0.239,
-     "contrarian": 0.106,
-     "lista-numerada": 0.069,
-     "autoridad": 0.041,
+     "resultado-numero": 0.513,
+     "urgencia-novedad": 0.241,
+     "contrarian": 0.103,
+     "lista-numerada": 0.067,
+     "autoridad": 0.04,
      "miedo-riesgo": 0.018,
      "pregunta": 0.009,
-     "error-confesion": 0.005,
-     "promesa-proceso": 0.005
+     "error-confesion": 0.004,
+     "promesa-proceso": 0.004
     },
     "sources_growing": [
      "hn"
@@ -2601,18 +2815,33 @@
      "by": "student"
     },
     {
-     "title": "The Uncomfortable Truth About Startups: Execution, Founder Conflicts, Money, Privilege, and the Decisions That Determine Whether a Company Survives",
-     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQZjBfWk5sai15SzNRN29zTG9NRHN1dVNRMlpkV0ZRTjJ2ZXpOa3ZkZ1pyR0xfQjNKRkRGbHJ4ZzUwZ0tqY29qUWlkdWdQSDdYY2Joa3cwUkFsNnJwOFBLNVBmRlN3R25qR29zV1pZWGFIMTJ6U2JRdE9Nd29TS1NKYnowdFN2cGRPRDZGNGEyMXVua1ZTM3ozOFNRYi0ydFgzdlE?oc=5",
+     "title": "The Next Version of the Startup Accelerator Is Being Drafted in New York at AcceleratorCON",
+     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOY0VFVVh5cnBkR2lmZkNQSmdyQzNPQWJrMnF4a2VrT0s2Vm5QaEgxbWdINzZieVJmLUFNb2VyamdBYThYS1pkdTZ6dHhPa2lyd2l5TXVNajN3YzQ1YzhFRXRCd0VXVWhLZ3NseDNobmJCaG1BNWtub1NUUU1jX2xYVm03VzIzeUttM19VanEwV2dlLWNvaGFoT2dlbXB2b25zOWoxdnRCLVk?oc=5",
      "source": "linkedin",
-     "published_at": "2026-10-17T03:24:19Z",
+     "published_at": "2026-10-16T22:39:00Z",
      "metrics": {
       "points": 0,
       "comments": 0,
       "views": 0
      },
-     "format": "opinion",
-     "hook": "resultado-numero",
+     "format": "noticia-explicada",
+     "hook": "urgencia-novedad",
      "velocity": 0.0,
+     "by": "student"
+    },
+    {
+     "title": "Ronda 0 es el reto que tu stratup necesitaba para poder empezar a dar sus primeros pasos en el mundo del Venture Capital.",
+     "url": "https://www.instagram.com/p/DeiHTLPGY8p/",
+     "source": "instagram",
+     "published_at": "2026-10-15T23:14:29Z",
+     "metrics": {
+      "points": 143,
+      "comments": 196,
+      "views": 0
+     },
+     "format": "post-texto",
+     "hook": "resultado-numero",
+     "velocity": 11.11,
      "by": "student"
     },
     {
@@ -2627,7 +2856,7 @@
      },
      "format": "entrevista-clip",
      "hook": "resultado-numero",
-     "velocity": 0.59,
+     "velocity": 0.58,
      "by": "teacher"
     },
     {
@@ -2646,10 +2875,10 @@
      "by": "student"
     },
     {
-     "title": "The Next Version of the Startup Accelerator Is Being Drafted in New York at AcceleratorCON",
-     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOY0VFVVh5cnBkR2lmZkNQSmdyQzNPQWJrMnF4a2VrT0s2Vm5QaEgxbWdINzZieVJmLUFNb2VyamdBYThYS1pkdTZ6dHhPa2lyd2l5TXVNajN3YzQ1YzhFRXRCd0VXVWhLZ3NseDNobmJCaG1BNWtub1NUUU1jX2xYVm03VzIzeUttM19VanEwV2dlLWNvaGFoT2dlbXB2b25zOWoxdnRCLVk?oc=5",
+     "title": "Silicon Florist 🌹 New AI startups, Pitch Latino Portland 💰",
+     "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNSWFKOUoyY0NjNklPVnc1WWtMNWhXaEcwdzR0OXZSektRM0tRaE5aaDZIdjVncVllREgtLVBfbHFsQldRSGtucUhBZm1saFZUZ1pURUtOdE9XejBCeDdaaUY2aGtRTWEyRGhublFqaElrY1FTQlhOc2xxVXVLMUlyT0tPQkppak1fd2NRSmItZlNFNEd1WXZKUFVmeXVDSTZTWGFKVS13?oc=5",
      "source": "linkedin",
-     "published_at": "2026-10-16T22:39:00Z",
+     "published_at": "2026-10-16T22:36:24Z",
      "metrics": {
       "points": 0,
       "comments": 0,
@@ -2658,21 +2887,6 @@
      "format": "noticia-explicada",
      "hook": "urgencia-novedad",
      "velocity": 0.0,
-     "by": "student"
-    },
-    {
-     "title": "Order to limit Starshield for Ukraine came from inside White House, sources say",
-     "url": "https://www.yahoo.com/news/articles/exclusive-order-limit-starshield-ukraine-230733575.html",
-     "source": "hn",
-     "published_at": "2026-10-16T09:28:52Z",
-     "metrics": {
-      "points": 9,
-      "comments": 1,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "miedo-riesgo",
-     "velocity": 0.29,
      "by": "student"
     }
    ],
@@ -2688,219 +2902,31 @@
     "cta": "Comenta qué área de tu empresa probaría esto primero",
     "by": "plantilla"
    },
-   "rank": 14
-  },
-  {
-   "slug": "copilotos",
-   "name": "Copilotos y asistentes de trabajo",
-   "stage": "bajando",
-   "growth": 0.771,
-   "z": -0.548,
-   "acceleration": -0.23,
-   "volume": 81,
-   "series": [
-    1.911,
-    0.457,
-    1.0,
-    1.63,
-    2.617,
-    3.004,
-    1.653,
-    2.004,
-    2.203,
-    2.514,
-    0.644,
-    1.891,
-    1.235,
-    0.659
-   ],
-   "wiki_series": [
-    40990,
-    32921,
-    32190,
-    48129,
-    63033,
-    58849,
-    51289,
-    51983,
-    36365,
-    29274,
-    41241,
-    46903,
-    57605,
-    56825
-   ],
-   "momentum": 0.067,
-   "exec_fit": 0.217,
-   "p": 0.153,
-   "p_raw": 0.142,
-   "decision": "Descartar",
-   "reason": "Cae 23% frente a sus 11 días previos; encaje con la audiencia 30X 22%; al alza en Wikipedia; formato ganador: Herramienta X en 60 segundos.",
-   "why": {
-    "format_winner": "herramienta-60s",
-    "hook_winner": "pregunta",
-    "best_day": "jueves",
-    "author_mix": {
-     "medio": 0.705,
-     "comunidad": 0.232,
-     "empresa": 0.036,
-     "creador": 0.027
-    },
-    "formats": {
-     "noticia-explicada": 0.652,
-     "herramienta-60s": 0.277,
-     "lista-ranking": 0.027,
-     "post-texto": 0.018,
-     "opinion": 0.009,
-     "caso-paso-a-paso": 0.009,
-     "entrevista-clip": 0.009
-    },
-    "hooks": {
-     "urgencia-novedad": 0.777,
-     "promesa-proceso": 0.08,
-     "miedo-riesgo": 0.027,
-     "lista-numerada": 0.027,
-     "pregunta": 0.027,
-     "autoridad": 0.027,
-     "antes-despues": 0.009,
-     "contrarian": 0.009,
-     "error-confesion": 0.009,
-     "resultado-numero": 0.009
-    },
-    "sources_growing": [
-     "wiki"
-    ],
-    "covered_by_30x": 0
-   },
-   "top_signals": [
-    {
-     "title": "Ask HN: How do I stop Gemini Live from asking.\"Would like to know more about..?\"",
-     "url": "https://news.ycombinator.com/item?id=50131248",
-     "source": "hn",
-     "published_at": "2026-10-17T13:59:05Z",
-     "metrics": {
-      "points": 2,
-      "comments": 3,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "pregunta",
-     "velocity": 0.88,
-     "by": "teacher"
-    },
-    {
-     "title": "Build more personal sites with Codex",
-     "url": "https://www.youtube.com/watch?v=KJ_7KPKlO_Q",
-     "source": "youtube",
-     "published_at": "2026-10-15T20:48:59Z",
-     "metrics": {
-      "points": 903,
-      "comments": 0,
-      "views": 89168
-     },
-     "format": "herramienta-60s",
-     "hook": "urgencia-novedad",
-     "velocity": 4.89,
-     "by": "teacher"
-    },
-    {
-     "title": "Forget Building the Next ChatGPT. These 5 Indian AI Startups Are Going After Something Bigger.",
-     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNTW5NWjNYcGFVeG93NUt2ZlBGNlhYMkhzWl9fSnZjMXVLSHI3RHM1NTFOUG96b1NCU3BIYWkwckgtVzhuYlBpTGtIYVptZTB6M1JMNWs0M3RoWTVrMlJoZTZjLTJLTUpXdUp5MGtMWVdlSE94T0JJZzRhRUtKMzJYSXdmRjZhdjJyVXFuNUJaUm9zM0ladlYw?oc=5",
-     "source": "linkedin",
-     "published_at": "2026-10-15T10:31:37Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "urgencia-novedad",
-     "velocity": 0.0,
-     "by": "student"
-    },
-    {
-     "title": "top ai chatbot apps for android/iOS",
-     "url": "https://news.google.com/rss/articles/CBMikAJBVV95cUxNQzNYX00yenNSUWVWc29PQjU4SFlTUmpLMUJSLUlOZUxMSGZ1bWhTcmJnVDhoZzExWnhWOElERFVtM0tJLUJ0cVFtempGTVBHQldWMWxlaWRHTGdZQ1JuVFQ4X0J5ZlNja3BNb09pVWlVeG9MdnZpTF9ueGhIWjZvX09ua0t2ZTVGbzB5Tzc1MkktUGR1SllVMGhfLXotZEJmdmRXa2s5Q1ZuM3BxZVAwcENzbjE5YThyRG55dEtFVjhWUFA0aXZvemdaTVN0ZWg0U3FpeWpKVXhweV94MXJZc2VtVDJiTEpyb1NxZEhkb1ZGTVJIX1dwZkNvaGw2T0ZUQ1RKWnJzaUEyVVBpSlpxNQ?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-17T09:34:18Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "lista-ranking",
-     "hook": "lista-numerada",
-     "velocity": 0.0,
-     "by": "teacher"
-    },
-    {
-     "title": "Ask HN: Thoughts about the Gemini Web app?",
-     "url": "https://news.ycombinator.com/item?id=50113145",
-     "source": "hn",
-     "published_at": "2026-10-16T02:24:28Z",
-     "metrics": {
-      "points": 2,
-      "comments": 3,
-      "views": 0
-     },
-     "format": "opinion",
-     "hook": "pregunta",
-     "velocity": 0.18,
-     "by": "teacher"
-    },
-    {
-     "title": "Does Claude Have Rights?",
-     "url": "https://www.project-syndicate.org/onpoint/anthropic-training-claude-to-believe-it-may-have-rights-by-mustafa-suleyman-2026-09",
-     "source": "hn",
-     "published_at": "2026-10-11T14:50:31Z",
-     "metrics": {
-      "points": 6,
-      "comments": 5,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "miedo-riesgo",
-     "velocity": 0.11,
-     "by": "student"
-    }
-   ],
-   "adapt": {
-    "title": "Copilotos y asistentes de trabajo: qué significa para tu empresa esta semana",
-    "hook": "Pregunta provocadora en los primeros 3 segundos",
-    "format": "herramienta-60s",
-    "beats": [
-     "Qué pasó (1 dato, 1 fuente)",
-     "Un caso real en una empresa de LatAm",
-     "Qué hacer el lunes"
-    ],
-    "cta": "Comenta qué área de tu empresa probaría esto primero",
-    "by": "plantilla"
-   },
    "rank": 15
   },
   {
    "slug": "video-voz",
    "name": "Video, voz e imagen generativa",
    "stage": "estable",
-   "growth": 1.05,
-   "z": 0.307,
-   "acceleration": -0.361,
-   "volume": 11,
+   "growth": 1.082,
+   "z": 0.348,
+   "acceleration": -0.291,
+   "volume": 12,
    "series": [
     0.0,
     0.0,
     0.0,
     0.152,
-    0.409,
+    0.408,
     0.148,
-    0.476,
+    0.464,
     0.0,
-    0.306,
-    0.681,
-    0.256,
-    0.701,
-    0.069,
-    0.0
+    0.285,
+    0.636,
+    0.242,
+    0.656,
+    0.064,
+    0.092
    ],
    "wiki_series": [
     814,
@@ -2918,34 +2944,35 @@
     766,
     666
    ],
-   "momentum": 0.052,
-   "exec_fit": 0.178,
-   "p": 0.083,
-   "p_raw": 0.115,
+   "momentum": 0.066,
+   "exec_fit": 0.177,
+   "p": 0.084,
+   "p_raw": 0.121,
    "decision": "Descartar",
    "reason": "Crece 1.1x frente a sus 11 días previos; encaje con la audiencia 30X 18%; sin fuentes al alza; formato ganador: Herramienta X en 60 segundos.",
    "why": {
     "format_winner": "herramienta-60s",
-    "hook_winner": "promesa-proceso",
+    "hook_winner": "urgencia-novedad",
     "best_day": "miércoles",
     "author_mix": {
-     "medio": 0.706,
-     "empresa": 0.176,
-     "comunidad": 0.118
+     "medio": 0.667,
+     "empresa": 0.167,
+     "comunidad": 0.111,
+     "creador": 0.056
     },
     "formats": {
-     "herramienta-60s": 0.412,
-     "noticia-explicada": 0.294,
-     "reel-cara": 0.235,
-     "lista-ranking": 0.059
+     "herramienta-60s": 0.444,
+     "noticia-explicada": 0.278,
+     "reel-cara": 0.222,
+     "lista-ranking": 0.056
     },
     "hooks": {
-     "urgencia-novedad": 0.294,
-     "promesa-proceso": 0.235,
-     "miedo-riesgo": 0.235,
-     "contrarian": 0.118,
-     "resultado-numero": 0.059,
-     "pregunta": 0.059
+     "urgencia-novedad": 0.278,
+     "promesa-proceso": 0.278,
+     "miedo-riesgo": 0.222,
+     "contrarian": 0.111,
+     "resultado-numero": 0.056,
+     "pregunta": 0.056
     },
     "sources_growing": [],
     "covered_by_30x": 0
@@ -2965,6 +2992,21 @@
      "hook": "promesa-proceso",
      "velocity": 0.01,
      "by": "teacher"
+    },
+    {
+     "title": "Ton IA t'a sorti un chiffre précis, sérieux… pis complètement inventé? 🤯",
+     "url": "https://www.instagram.com/p/DenRf9JjkUA/",
+     "source": "instagram",
+     "published_at": "2026-10-17T23:19:49Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "herramienta-60s",
+     "hook": "promesa-proceso",
+     "velocity": 0.0,
+     "by": "student"
     },
     {
      "title": "KK’s Priest Estrena Video con IA para su Versión de «Never Satisfied»",
@@ -2987,9 +3029,9 @@
      "source": "youtube",
      "published_at": "2026-10-15T18:24:44Z",
      "metrics": {
-      "points": 2553,
+      "points": 2554,
       "comments": 0,
-      "views": 162932
+      "views": 162993
      },
      "format": "herramienta-60s",
      "hook": "urgencia-novedad",
@@ -3025,26 +3067,11 @@
      "hook": "miedo-riesgo",
      "velocity": 0.0,
      "by": "teacher"
-    },
-    {
-     "title": "Polémica por video con IA de Donald Trump jugando con un tigre luego de la muerte de un joven atacado por un felino",
-     "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxPdnhEWHlHWW9rRjhrWjZOa0hIX2J3UTFVcEl0aTl2Z3V3QlRERHlQMEVwcG53Z0ktWFJBaWtub3FvaWVRNm9FTmdINnl2aFhVcmwteHVJb1V6SThEMGpfcGhvUjFoQkQza0xZZ0lQa2lUWFg4Y2ZLcXMycTdWNWpNVmp6ZFZDUHIySEZuRjZsMDgxMVNVaDZyMWpaeWt5UzFxcTRkWnRwVTExaDBpYjlST0VGNWstekNnemdGeTRuU0NYY3pZRlE3dDEtdThTWl96bU5IeVRNX2l5VVd2TUVKTDhZOHJLU0FKXzRFWkdR0gHzAUFVX3lxTE5tZ3phV0VnckZWS3pLUTBjLWJ0YWFhdWw3WmM4WnN1M1lQMWhwVUI5QzJDZlJGUGJEN0FXV3k3UGRTLXI2eGd6dFZlMXU0LTJkT1BhYTJ6UEJtN1pGVUNRanZ3cWRiN2pBS0tuQkFSQ2tLV2QxblhKdHc0d3RGVmJySDJoYTlxZHNoYjQtUUZFN2RZNFFxZlJJTmZ0cFJWOHZsZEhuY0trWXBqVGpFS1FSTk40WEMtMzF6QVBKV3BLZWNFYzIxYzh0Q1E5dmpkMmpwaWw5WHpvRERRWVVWUW5wempndkY1Rmh2VFZIQ1cxbzdBTQ?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-14T18:10:11Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "miedo-riesgo",
-     "velocity": 0.0,
-     "by": "teacher"
     }
    ],
    "adapt": {
     "title": "Video, voz e imagen generativa: qué significa para tu empresa esta semana",
-    "hook": "Promesa de proceso (paso a paso) en los primeros 3 segundos",
+    "hook": "Urgencia / novedad en los primeros 3 segundos",
     "format": "herramienta-60s",
     "beats": [
      "Qué pasó (1 dato, 1 fuente)",
@@ -3060,25 +3087,25 @@
    "slug": "modelos-nuevos",
    "name": "Modelos y lanzamientos",
    "stage": "estable",
-   "growth": 0.822,
-   "z": -0.142,
-   "acceleration": 0.102,
-   "volume": 123,
+   "growth": 0.867,
+   "z": -0.06,
+   "acceleration": 0.127,
+   "volume": 131,
    "series": [
-    11.006,
-    6.798,
-    5.627,
+    11.102,
+    6.782,
+    5.618,
     11.169,
-    4.159,
+    4.153,
     5.746,
-    2.702,
-    8.353,
-    3.054,
-    8.121,
-    3.41,
-    4.031,
-    4.758,
-    6.661
+    2.632,
+    8.371,
+    2.84,
+    8.078,
+    4.106,
+    4.619,
+    4.753,
+    7.127
    ],
    "wiki_series": [
     4900,
@@ -3097,39 +3124,39 @@
     5546
    ],
    "momentum": 0.067,
-   "exec_fit": 0.14,
-   "p": 0.055,
-   "p_raw": 0.104,
+   "exec_fit": 0.136,
+   "p": 0.036,
+   "p_raw": 0.102,
    "decision": "Descartar",
-   "reason": "Cae 18% frente a sus 11 días previos; encaje con la audiencia 30X 14%; al alza en Wikipedia; formato ganador: Lista / ranking.",
+   "reason": "Cae 13% frente a sus 11 días previos; encaje con la audiencia 30X 14%; al alza en Wikipedia; formato ganador: Lista / ranking.",
    "why": {
     "format_winner": "lista-ranking",
     "hook_winner": "lista-numerada",
     "best_day": "martes",
     "author_mix": {
-     "comunidad": 0.817,
-     "creador": 0.1,
-     "medio": 0.052,
-     "empresa": 0.031
+     "comunidad": 0.786,
+     "creador": 0.134,
+     "medio": 0.05,
+     "empresa": 0.029
     },
     "formats": {
-     "noticia-explicada": 0.725,
-     "herramienta-60s": 0.197,
-     "opinion": 0.031,
-     "lista-ranking": 0.026,
-     "caso-paso-a-paso": 0.009,
-     "entrevista-clip": 0.009,
+     "noticia-explicada": 0.706,
+     "herramienta-60s": 0.206,
+     "opinion": 0.034,
+     "lista-ranking": 0.029,
+     "caso-paso-a-paso": 0.013,
+     "entrevista-clip": 0.008,
      "reel-cara": 0.004
     },
     "hooks": {
-     "urgencia-novedad": 0.559,
-     "contrarian": 0.131,
-     "resultado-numero": 0.105,
-     "miedo-riesgo": 0.074,
-     "autoridad": 0.07,
-     "promesa-proceso": 0.022,
+     "urgencia-novedad": 0.55,
+     "contrarian": 0.13,
+     "resultado-numero": 0.101,
+     "miedo-riesgo": 0.084,
+     "autoridad": 0.067,
+     "lista-numerada": 0.025,
+     "promesa-proceso": 0.021,
      "pregunta": 0.017,
-     "lista-numerada": 0.017,
      "error-confesion": 0.004
     },
     "sources_growing": [
@@ -3144,14 +3171,44 @@
      "source": "hn",
      "published_at": "2026-10-17T08:21:25Z",
      "metrics": {
-      "points": 644,
-      "comments": 545,
+      "points": 646,
+      "comments": 547,
       "views": 0
      },
      "format": "noticia-explicada",
      "hook": "urgencia-novedad",
-     "velocity": 117.5,
+     "velocity": 115.85,
      "by": "teacher"
+    },
+    {
+     "title": "Hey ChatGPT make me rich 💵 #money #funny",
+     "url": "https://www.tiktok.com/@_/video/7696745892069608711",
+     "source": "tiktok",
+     "published_at": "2026-10-15T04:25:07Z",
+     "metrics": {
+      "points": 209500,
+      "comments": 1502,
+      "views": 2300000
+     },
+     "format": "herramienta-60s",
+     "hook": "urgencia-novedad",
+     "velocity": 3173.68,
+     "by": "student"
+    },
+    {
+     "title": "#guatemala #guate #championsleague #chatgpt #instagram",
+     "url": "https://www.instagram.com/p/DenLI1sR0bK/",
+     "source": "instagram",
+     "published_at": "2026-10-17T22:25:50Z",
+     "metrics": {
+      "points": 1,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "herramienta-60s",
+     "hook": "urgencia-novedad",
+     "velocity": 1.0,
+     "by": "student"
     },
     {
      "title": "AI News: 6 New Models & A Nano Banana Killer",
@@ -3159,13 +3216,13 @@
      "source": "youtube",
      "published_at": "2026-10-16T16:20:28Z",
      "metrics": {
-      "points": 2324,
+      "points": 2330,
       "comments": 0,
-      "views": 123544
+      "views": 124086
      },
      "format": "lista-ranking",
      "hook": "lista-numerada",
-     "velocity": 30.75,
+     "velocity": 30.67,
      "by": "teacher"
     },
     {
@@ -3195,38 +3252,8 @@
      },
      "format": "noticia-explicada",
      "hook": "urgencia-novedad",
-     "velocity": 35.97,
+     "velocity": 35.33,
      "by": "student"
-    },
-    {
-     "title": "Gemini 4 Argon",
-     "url": "https://deepmind.google/models/gemini/",
-     "source": "hn",
-     "published_at": "2026-10-13T16:03:16Z",
-     "metrics": {
-      "points": 1464,
-      "comments": 1042,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "urgencia-novedad",
-     "velocity": 34.43,
-     "by": "student"
-    },
-    {
-     "title": "Show HN: Gemini 4 Argon plays StarCraft",
-     "url": "https://starskirmish.com/bench/v0-2/",
-     "source": "hn",
-     "published_at": "2026-10-16T14:18:44Z",
-     "metrics": {
-      "points": 241,
-      "comments": 106,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "urgencia-novedad",
-     "velocity": 13.81,
-     "by": "teacher"
     }
    ],
    "adapt": {
@@ -3247,25 +3274,25 @@
    "slug": "vibe-coding",
    "name": "Vibe coding: crear apps con IA",
    "stage": "saturada",
-   "growth": 0.941,
-   "z": -0.141,
-   "acceleration": -0.146,
-   "volume": 936,
+   "growth": 0.866,
+   "z": -0.491,
+   "acceleration": -0.168,
+   "volume": 946,
    "series": [
-    33.727,
-    36.595,
-    24.327,
+    34.02,
+    36.512,
+    24.288,
     26.882,
-    29.763,
+    29.722,
     28.35,
-    26.046,
-    31.52,
-    34.647,
-    28.265,
-    33.918,
-    25.725,
-    27.141,
-    32.803
+    25.366,
+    32.01,
+    33.392,
+    26.45,
+    32.122,
+    24.067,
+    25.774,
+    27.656
    ],
    "wiki_series": [
     1861,
@@ -3284,40 +3311,40 @@
     3500
    ],
    "momentum": 0.067,
-   "exec_fit": 0.108,
-   "p": 0.01,
-   "p_raw": 0.087,
+   "exec_fit": 0.135,
+   "p": 0.033,
+   "p_raw": 0.101,
    "decision": "Descartar",
-   "reason": "Cae 6% frente a sus 11 días previos; encaje con la audiencia 30X 11%; al alza en Wikipedia; formato ganador: Lista / ranking.",
+   "reason": "Cae 13% frente a sus 11 días previos; encaje con la audiencia 30X 14%; al alza en Wikipedia; formato ganador: Lista / ranking.",
    "why": {
     "format_winner": "lista-ranking",
     "hook_winner": "lista-numerada",
     "best_day": "miércoles",
     "author_mix": {
-     "comunidad": 0.932,
-     "medio": 0.062,
-     "empresa": 0.004,
-     "creador": 0.002
+     "comunidad": 0.924,
+     "medio": 0.064,
+     "creador": 0.007,
+     "empresa": 0.005
     },
     "formats": {
-     "herramienta-60s": 0.766,
+     "herramienta-60s": 0.763,
      "noticia-explicada": 0.155,
      "opinion": 0.057,
      "post-texto": 0.009,
-     "caso-paso-a-paso": 0.005,
+     "caso-paso-a-paso": 0.006,
+     "evento-live": 0.004,
      "lista-ranking": 0.004,
      "reel-cara": 0.001,
-     "entrevista-clip": 0.001,
-     "evento-live": 0.001
+     "entrevista-clip": 0.001
     },
     "hooks": {
-     "urgencia-novedad": 0.566,
-     "promesa-proceso": 0.225,
-     "contrarian": 0.085,
+     "urgencia-novedad": 0.564,
+     "promesa-proceso": 0.227,
+     "contrarian": 0.084,
      "resultado-numero": 0.036,
-     "miedo-riesgo": 0.033,
+     "miedo-riesgo": 0.032,
      "autoridad": 0.027,
-     "pregunta": 0.022,
+     "pregunta": 0.021,
      "error-confesion": 0.004,
      "lista-numerada": 0.004
     },
@@ -3339,7 +3366,22 @@
      },
      "format": "herramienta-60s",
      "hook": "urgencia-novedad",
-     "velocity": 62.6,
+     "velocity": 62.02,
+     "by": "student"
+    },
+    {
+     "title": "La versión 2 de mi Jarvis OS: un prompt lo instala y corre todo tu día.",
+     "url": "https://www.instagram.com/p/DenRZJKjGGN/",
+     "source": "instagram",
+     "published_at": "2026-10-17T23:19:04Z",
+     "metrics": {
+      "points": 10,
+      "comments": 5,
+      "views": 0
+     },
+     "format": "herramienta-60s",
+     "hook": "promesa-proceso",
+     "velocity": 20.0,
      "by": "student"
     },
     {
@@ -3350,11 +3392,11 @@
      "metrics": {
       "points": 893,
       "comments": 0,
-      "views": 496245
+      "views": 502018
      },
      "format": "caso-paso-a-paso",
      "hook": "resultado-numero",
-     "velocity": 7.19,
+     "velocity": 7.27,
      "by": "teacher"
     },
     {
@@ -3373,17 +3415,17 @@
      "by": "student"
     },
     {
-     "title": "AWS y Superblocks llevan el vibe coding a la empresa",
-     "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOQTctZVk3LU1yeGZXbGNpMGFZcURpdVdCNGMyaGlvZmlOUGxVNEE1eWh0bC1wS0dSeDc5a0hJdmkyaG4wSnM1cEw2RkwtRF9YVjdyT1c5RGVWdE1XRTVSM1h1MGhaQXlWYW1UX1F0WkstcXhvcmlNeDkwckNFazNJSFNFc0FvRWNxc3JXeWdVa3dEdGRtc0VIaQ?oc=5",
+     "title": "Day 225 – Vibe Coding An App Until I Make $1,000,000 | ARR: $210,364 Paris Jackson (aUxOVsFZeK)",
+     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1uazItSzU1RUlHcnBWWlVxSnh5Yy01ZU9fY21ZUzhDbEo5ajVyU0lQcGhfMTBTbnlNeVowUlRtRGdfN2tidGdWYnREOGNOWHlubU96ejdEck5razZXbWNyUF8xVWc5U05Pc3FZ?oc=5",
      "source": "gnews",
-     "published_at": "2026-10-17T02:40:12Z",
+     "published_at": "2026-10-17T03:51:08Z",
      "metrics": {
       "points": 0,
       "comments": 0,
       "views": 0
      },
-     "format": "noticia-explicada",
-     "hook": "urgencia-novedad",
+     "format": "caso-paso-a-paso",
+     "hook": "resultado-numero",
      "velocity": 0.0,
      "by": "teacher"
     },
@@ -3399,22 +3441,7 @@
      },
      "format": "herramienta-60s",
      "hook": "urgencia-novedad",
-     "velocity": 55.52,
-     "by": "student"
-    },
-    {
-     "title": "How the Claude Code team does code review",
-     "url": "https://claude.dev/blog/solving-code-review-at-anthropic/",
-     "source": "hn",
-     "published_at": "2026-10-16T19:04:47Z",
-     "metrics": {
-      "points": 454,
-      "comments": 445,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "promesa-proceso",
-     "velocity": 47.94,
+     "velocity": 55.04,
      "by": "student"
     }
    ],
@@ -3433,215 +3460,28 @@
    "rank": 18
   },
   {
-   "slug": "seguridad-riesgos",
-   "name": "Seguridad y riesgos de IA",
-   "stage": "saturada",
-   "growth": 0.832,
-   "z": -0.947,
-   "acceleration": 0.005,
-   "volume": 335,
-   "series": [
-    14.155,
-    13.52,
-    17.205,
-    9.453,
-    14.502,
-    13.447,
-    17.561,
-    8.186,
-    7.279,
-    13.295,
-    12.682,
-    8.882,
-    12.471,
-    10.436
-   ],
-   "wiki_series": [
-    1256,
-    1010,
-    960,
-    1331,
-    1422,
-    1749,
-    1436,
-    1201,
-    1054,
-    1201,
-    1220,
-    1434,
-    1352,
-    1356
-   ],
-   "momentum": 0.0,
-   "exec_fit": 0.174,
-   "p": 0.01,
-   "p_raw": 0.087,
-   "decision": "Descartar",
-   "reason": "Cae 17% frente a sus 11 días previos; encaje con la audiencia 30X 17%; sin fuentes al alza; formato ganador: Entrevista / clip de charla.",
-   "why": {
-    "format_winner": "entrevista-clip",
-    "hook_winner": "error-confesion",
-    "best_day": "viernes",
-    "author_mix": {
-     "comunidad": 0.852,
-     "medio": 0.118,
-     "empresa": 0.016,
-     "creador": 0.014
-    },
-    "formats": {
-     "noticia-explicada": 0.691,
-     "herramienta-60s": 0.228,
-     "opinion": 0.046,
-     "caso-paso-a-paso": 0.012,
-     "post-texto": 0.008,
-     "reel-cara": 0.004,
-     "entrevista-clip": 0.004,
-     "lista-ranking": 0.002,
-     "evento-live": 0.002,
-     "carrusel": 0.002
-    },
-    "hooks": {
-     "miedo-riesgo": 0.523,
-     "urgencia-novedad": 0.242,
-     "promesa-proceso": 0.088,
-     "contrarian": 0.062,
-     "resultado-numero": 0.032,
-     "autoridad": 0.024,
-     "pregunta": 0.02,
-     "error-confesion": 0.008
-    },
-    "sources_growing": [],
-    "covered_by_30x": 0
-   },
-   "top_signals": [
-    {
-     "title": "OpenAI discloses four more rogue incidents",
-     "url": "https://fortune.com/2026/10/16/openai-discloses-four-more-rogue-incidents-involving-financial-medical-and-government-data/",
-     "source": "hn",
-     "published_at": "2026-10-17T16:31:12Z",
-     "metrics": {
-      "points": 113,
-      "comments": 140,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "miedo-riesgo",
-     "velocity": 59.6,
-     "by": "student"
-    },
-    {
-     "title": "Using Gemini 4 Argon to protect against Cyber attackers",
-     "url": "https://www.youtube.com/watch?v=ftkic7Tdpcg",
-     "source": "youtube",
-     "published_at": "2026-10-13T16:38:14Z",
-     "metrics": {
-      "points": 311,
-      "comments": 0,
-      "views": 190156
-     },
-     "format": "caso-paso-a-paso",
-     "hook": "resultado-numero",
-     "velocity": 2.76,
-     "by": "teacher"
-    },
-    {
-     "title": "Tu chatbot no es tu diario: por qué lo que le cuentas a la IA nunca es del todo privado",
-     "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPZkJfQ0x3dHQyXzhHSHB5QWhzV0NuY2hTaUJmZmptVzFUOWI0NjluZmVRTXZRbjRPdk5uLVJhQ0t5ZzlpRHBJMG85cGdsbG9SUU1UOHNqUjZpWEdtejdNUlBIaWppS3RaMUxFczlOcURUel83dC1Xb28yV01TdTRUNS16dHFXT2lYZ2R1S0NydER3Y3FvT29WSzNwZmNuaXRydFhuRlJBdGFSakh3dW94MldwSTgzeEM0YlF1MVM2c1dWbWQ2?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-17T13:46:03Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "opinion",
-     "hook": "miedo-riesgo",
-     "velocity": 0.0,
-     "by": "teacher"
-    },
-    {
-     "title": "Amazon uses AI to monitor union risk in UK warehouses",
-     "url": "https://www.opendemocracy.net/amazon-ai-surveillance-monitor-union-activity-uk-warehouses-birmingham-coventry-atlas-sutton-coldfield/",
-     "source": "hn",
-     "published_at": "2026-10-17T16:04:23Z",
-     "metrics": {
-      "points": 140,
-      "comments": 57,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "miedo-riesgo",
-     "velocity": 36.08,
-     "by": "student"
-    },
-    {
-     "title": "Containment and monitoring failures are to blame for AI hacking reports: experts",
-     "url": "https://www.csoonline.com/article/4234854/ai-agents-arent-going-rogue-frontier-labs-are-skipping-security-basics.html",
-     "source": "hn",
-     "published_at": "2026-10-14T17:45:23Z",
-     "metrics": {
-      "points": 948,
-      "comments": 620,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "miedo-riesgo",
-     "velocity": 28.28,
-     "by": "student"
-    },
-    {
-     "title": "I never authorized an integration that scans my secrets",
-     "url": "https://github.com/home-assistant/home-assistant.io/issues/49314",
-     "source": "hn",
-     "published_at": "2026-10-16T20:33:41Z",
-     "metrics": {
-      "points": 237,
-      "comments": 219,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "miedo-riesgo",
-     "velocity": 25.42,
-     "by": "student"
-    }
-   ],
-   "adapt": {
-    "title": "Seguridad y riesgos de IA: qué significa para tu empresa esta semana",
-    "hook": "Error o confesión en los primeros 3 segundos",
-    "format": "entrevista-clip",
-    "beats": [
-     "Qué pasó (1 dato, 1 fuente)",
-     "Un caso real en una empresa de LatAm",
-     "Qué hacer el lunes"
-    ],
-    "cta": "Comenta qué área de tu empresa probaría esto primero",
-    "by": "plantilla"
-   },
-   "rank": 19
-  },
-  {
    "slug": "infra-costos",
    "name": "Infraestructura y costos (chips, nube, tokens)",
    "stage": "saturada",
-   "growth": 0.939,
-   "z": -0.095,
-   "acceleration": -0.427,
-   "volume": 185,
+   "growth": 0.856,
+   "z": -0.253,
+   "acceleration": -0.567,
+   "volume": 187,
    "series": [
-    1.515,
-    3.705,
-    4.681,
+    1.528,
+    3.696,
+    4.673,
     5.187,
-    3.816,
+    3.811,
     2.699,
-    3.67,
-    1.851,
-    5.843,
-    5.151,
-    3.444,
-    5.015,
-    3.598,
-    1.943
+    3.575,
+    1.855,
+    6.5,
+    5.299,
+    3.261,
+    4.692,
+    3.356,
+    1.563
    ],
    "wiki_series": [
     5415,
@@ -3660,37 +3500,37 @@
     6892
    ],
    "momentum": 0.067,
-   "exec_fit": 0.099,
-   "p": 0.0,
-   "p_raw": 0.083,
+   "exec_fit": 0.127,
+   "p": 0.023,
+   "p_raw": 0.097,
    "decision": "Descartar",
-   "reason": "Cae 6% frente a sus 11 días previos; encaje con la audiencia 30X 10%; al alza en Wikipedia; formato ganador: Noticia explicada (qué significa para tu empresa).",
+   "reason": "Cae 14% frente a sus 11 días previos; encaje con la audiencia 30X 13%; al alza en Wikipedia; formato ganador: Live / webinar / evento.",
    "why": {
-    "format_winner": "noticia-explicada",
+    "format_winner": "evento-live",
     "hook_winner": "resultado-numero",
     "best_day": "martes",
     "author_mix": {
-     "comunidad": 0.494,
-     "medio": 0.486,
-     "creador": 0.012,
-     "empresa": 0.008
+     "comunidad": 0.49,
+     "medio": 0.482,
+     "creador": 0.016,
+     "empresa": 0.012
     },
     "formats": {
-     "noticia-explicada": 0.698,
-     "herramienta-60s": 0.237,
+     "noticia-explicada": 0.692,
+     "herramienta-60s": 0.235,
      "post-texto": 0.02,
      "caso-paso-a-paso": 0.016,
      "opinion": 0.016,
-     "lista-ranking": 0.008,
-     "evento-live": 0.004
+     "evento-live": 0.012,
+     "lista-ranking": 0.008
     },
     "hooks": {
-     "urgencia-novedad": 0.469,
-     "resultado-numero": 0.229,
-     "autoridad": 0.114,
-     "promesa-proceso": 0.078,
+     "urgencia-novedad": 0.466,
+     "resultado-numero": 0.227,
+     "autoridad": 0.113,
+     "promesa-proceso": 0.085,
      "contrarian": 0.053,
-     "miedo-riesgo": 0.029,
+     "miedo-riesgo": 0.028,
      "pregunta": 0.024,
      "error-confesion": 0.004
     },
@@ -3712,7 +3552,22 @@
      },
      "format": "herramienta-60s",
      "hook": "urgencia-novedad",
-     "velocity": 10.25,
+     "velocity": 10.2,
+     "by": "student"
+    },
+    {
+     "title": "Usa estos comandos para obtener estos resultados",
+     "url": "https://www.instagram.com/p/DeZdK58iGzW/",
+     "source": "instagram",
+     "published_at": "2026-10-12T14:32:45Z",
+     "metrics": {
+      "points": 957,
+      "comments": 1,
+      "views": 0
+     },
+     "format": "evento-live",
+     "hook": "promesa-proceso",
+     "velocity": 0.76,
      "by": "student"
     },
     {
@@ -3738,11 +3593,11 @@
      "metrics": {
       "points": 17,
       "comments": 0,
-      "views": 825
+      "views": 822
      },
      "format": "evento-live",
      "hook": "promesa-proceso",
-     "velocity": 2.05,
+     "velocity": 2.02,
      "by": "teacher"
     },
     {
@@ -3757,7 +3612,7 @@
      },
      "format": "noticia-explicada",
      "hook": "resultado-numero",
-     "velocity": 5.48,
+     "velocity": 5.47,
      "by": "student"
     },
     {
@@ -3772,29 +3627,201 @@
      },
      "format": "noticia-explicada",
      "hook": "urgencia-novedad",
-     "velocity": 4.19,
-     "by": "teacher"
-    },
-    {
-     "title": "Nvidia's first GPU: GeForce 256",
-     "url": "https://dfarq.homeip.net/nvidias-first-gpu-geforce-256/",
-     "source": "hn",
-     "published_at": "2026-10-14T12:05:44Z",
-     "metrics": {
-      "points": 79,
-      "comments": 49,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "autoridad",
-     "velocity": 2.13,
+     "velocity": 4.18,
      "by": "teacher"
     }
    ],
    "adapt": {
     "title": "Infraestructura y costos (chips, nube, tokens): qué significa para tu empresa esta semana",
     "hook": "Resultado cuantificado en los primeros 3 segundos",
-    "format": "noticia-explicada",
+    "format": "evento-live",
+    "beats": [
+     "Qué pasó (1 dato, 1 fuente)",
+     "Un caso real en una empresa de LatAm",
+     "Qué hacer el lunes"
+    ],
+    "cta": "Comenta qué área de tu empresa probaría esto primero",
+    "by": "plantilla"
+   },
+   "rank": 19
+  },
+  {
+   "slug": "seguridad-riesgos",
+   "name": "Seguridad y riesgos de IA",
+   "stage": "bajando",
+   "growth": 0.776,
+   "z": -1.002,
+   "acceleration": -0.002,
+   "volume": 335,
+   "series": [
+    14.278,
+    13.49,
+    17.177,
+    9.453,
+    14.482,
+    13.447,
+    17.103,
+    8.203,
+    6.768,
+    12.406,
+    11.88,
+    8.318,
+    11.632,
+    9.061
+   ],
+   "wiki_series": [
+    1256,
+    1010,
+    960,
+    1331,
+    1422,
+    1749,
+    1436,
+    1201,
+    1054,
+    1201,
+    1220,
+    1434,
+    1352,
+    1356
+   ],
+   "momentum": 0.0,
+   "exec_fit": 0.177,
+   "p": 0.0,
+   "p_raw": 0.088,
+   "decision": "Descartar",
+   "reason": "Cae 22% frente a sus 11 días previos; encaje con la audiencia 30X 18%; sin fuentes al alza; formato ganador: Entrevista / clip de charla.",
+   "why": {
+    "format_winner": "entrevista-clip",
+    "hook_winner": "error-confesion",
+    "best_day": "viernes",
+    "author_mix": {
+     "comunidad": 0.852,
+     "medio": 0.114,
+     "creador": 0.018,
+     "empresa": 0.016
+    },
+    "formats": {
+     "noticia-explicada": 0.687,
+     "herramienta-60s": 0.23,
+     "opinion": 0.048,
+     "caso-paso-a-paso": 0.012,
+     "post-texto": 0.008,
+     "reel-cara": 0.004,
+     "entrevista-clip": 0.004,
+     "lista-ranking": 0.002,
+     "evento-live": 0.002,
+     "carrusel": 0.002
+    },
+    "hooks": {
+     "miedo-riesgo": 0.521,
+     "urgencia-novedad": 0.242,
+     "promesa-proceso": 0.09,
+     "contrarian": 0.064,
+     "resultado-numero": 0.032,
+     "autoridad": 0.022,
+     "pregunta": 0.02,
+     "error-confesion": 0.008
+    },
+    "sources_growing": [],
+    "covered_by_30x": 0
+   },
+   "top_signals": [
+    {
+     "title": "OpenAI discloses four more rogue incidents",
+     "url": "https://fortune.com/2026/10/16/openai-discloses-four-more-rogue-incidents-involving-financial-medical-and-government-data/",
+     "source": "hn",
+     "published_at": "2026-10-17T16:31:12Z",
+     "metrics": {
+      "points": 114,
+      "comments": 140,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "miedo-riesgo",
+     "velocity": 57.46,
+     "by": "student"
+    },
+    {
+     "title": "Using Gemini 4 Argon to protect against Cyber attackers",
+     "url": "https://www.youtube.com/watch?v=ftkic7Tdpcg",
+     "source": "youtube",
+     "published_at": "2026-10-13T16:38:14Z",
+     "metrics": {
+      "points": 311,
+      "comments": 0,
+      "views": 192362
+     },
+     "format": "caso-paso-a-paso",
+     "hook": "resultado-numero",
+     "velocity": 2.79,
+     "by": "teacher"
+    },
+    {
+     "title": "Click the link in my bio to access the full prompt plus ChatGPT and Claude masterclasses and step by step course to setup AI agents!",
+     "url": "https://www.tiktok.com/@_/video/7696997300240993542",
+     "source": "tiktok",
+     "published_at": "2026-10-17T15:00:00Z",
+     "metrics": {
+      "points": 65,
+      "comments": 16,
+      "views": 1436
+     },
+     "format": "herramienta-60s",
+     "hook": "promesa-proceso",
+     "velocity": 11.58,
+     "by": "student"
+    },
+    {
+     "title": "Stop getting walls of text from AI — tell it HOW to format the answer.",
+     "url": "https://www.instagram.com/p/DenK2FXE9oP/",
+     "source": "instagram",
+     "published_at": "2026-10-17T22:21:45Z",
+     "metrics": {
+      "points": 1,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "opinion",
+     "hook": "contrarian",
+     "velocity": 0.99,
+     "by": "student"
+    },
+    {
+     "title": "Tu chatbot no es tu diario: por qué lo que le cuentas a la IA nunca es del todo privado",
+     "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPZkJfQ0x3dHQyXzhHSHB5QWhzV0NuY2hTaUJmZmptVzFUOWI0NjluZmVRTXZRbjRPdk5uLVJhQ0t5ZzlpRHBJMG85cGdsbG9SUU1UOHNqUjZpWEdtejdNUlBIaWppS3RaMUxFczlOcURUel83dC1Xb28yV01TdTRUNS16dHFXT2lYZ2R1S0NydER3Y3FvT29WSzNwZmNuaXRydFhuRlJBdGFSakh3dW94MldwSTgzeEM0YlF1MVM2c1dWbWQ2?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-17T13:46:03Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "opinion",
+     "hook": "miedo-riesgo",
+     "velocity": 0.0,
+     "by": "teacher"
+    },
+    {
+     "title": "Amazon uses AI to monitor union risk in UK warehouses",
+     "url": "https://www.opendemocracy.net/amazon-ai-surveillance-monitor-union-activity-uk-warehouses-birmingham-coventry-atlas-sutton-coldfield/",
+     "source": "hn",
+     "published_at": "2026-10-17T16:04:23Z",
+     "metrics": {
+      "points": 142,
+      "comments": 57,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "miedo-riesgo",
+     "velocity": 35.05,
+     "by": "student"
+    }
+   ],
+   "adapt": {
+    "title": "Seguridad y riesgos de IA: qué significa para tu empresa esta semana",
+    "hook": "Error o confesión en los primeros 3 segundos",
+    "format": "entrevista-clip",
     "beats": [
      "Qué pasó (1 dato, 1 fuente)",
      "Un caso real en una empresa de LatAm",

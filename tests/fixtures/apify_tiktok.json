@@ -1,0 +1,26 @@
+[
+ {
+  "id": "123",
+  "text": "LA IA siendo la IA #ia @otro_usuario",
+  "createTimeISO": "2026-10-12T18:53:00.000Z",
+  "authorMeta": {
+   "name": "tercero.x"
+  },
+  "webVideoUrl": "https://www.tiktok.com/@tercero.x/video/123",
+  "diggCount": 20,
+  "commentCount": 1,
+  "playCount": 2072
+ },
+ {
+  "id": "456",
+  "text": "Demo de agentes",
+  "createTimeISO": "2026-10-13T18:53:00.000Z",
+  "authorMeta": {
+   "name": "andresbilbao"
+  },
+  "webVideoUrl": "https://www.tiktok.com/@andresbilbao/video/456",
+  "diggCount": 99,
+  "commentCount": 5,
+  "playCount": 5000
+ }
+]
