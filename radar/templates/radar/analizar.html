@@ -124,7 +124,7 @@
   </section>
 
   <section class="informe" id="informe">
-    <div class="tarjeta veredicto">
+    <div class="tarjeta veredicto" data-estrellita-accion="{{ r.veredicto.accion }}" data-estrellita-tema="{{ r.topic_name }}" data-estrellita-seguro="{% if r.seguro %}1{% endif %}">
       <h3>Veredicto</h3>
       <div class="dec decision-{{ r.decision }}">{{ r.veredicto.accion }}</div>
       <p class="frase">{{ r.veredicto.porque }}</p>

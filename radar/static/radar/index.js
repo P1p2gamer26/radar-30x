@@ -408,6 +408,7 @@ function openSourcePanel(data, name, onOpen) {
       ])
     );
   }
+  if (window.estrellita) window.estrellita.planet(SRC_NAME[name] || name, nf(info.signals || 0), ranked[0] && ranked[0].t.name);
   showPanel(
     SRC_NAME[name] || name,
     [el("span", { class: "stage-chip", text: "Red" })],
@@ -799,6 +800,7 @@ async function main() {
   if (Array.isArray(th) && th.length === 2) UMBRALES = th;
   renderHero(data);
   setupGuide();
+  if (window.estrellita) window.estrellita.home(data);
 
   setupPanelClosers();
 
@@ -809,6 +811,7 @@ async function main() {
     if (topic) {
       hideGuide();
       openPanel(topic, document.activeElement);
+      if (window.estrellita) window.estrellita.topic(topic);
     }
   };
   const onOpenList = (slug) => {

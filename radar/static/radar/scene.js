@@ -306,6 +306,9 @@ function buildSweep(radius) {
   return group;
 }
 
+// Etiquetas de anillos ("Producir ya", "Vigilar"): se ocultan mientras la cámara está sobre una estrella para no tapar su título.
+const ringLabels = [];
+
 function buildRings() {
   const group = new THREE.Group();
   // Producir ya = Recomendar p>=0.80; Vigilar = Aprender p>=0.50; borde = p 0.
@@ -324,6 +327,7 @@ function buildRings() {
       const sp = makeTextSprite(label, textColor);
       sp.position.set(Math.cos(1.2) * r, 0.5, Math.sin(1.2) * r);
       group.add(sp);
+      ringLabels.push(sp);
     }
   });
   return group;
@@ -870,21 +874,9 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
     heroAnchor = null;
   }
   function layoutHero() {
+    // título fijo arriba a la izquierda (posición en CSS .hero-label); solo se oculta si el ancla queda detrás de la cámara
     if (!heroOn) return;
-    const w = canvas.clientWidth || 1;
-    const h = canvas.clientHeight || 1;
-    const pos = heroAnchor.fn();
-    const v = project(pos);
-    let y = v.y - 64;
-    let tf = "translate(-50%,-100%)";
-    if (heroAnchor.planetRadius) {
-      const R = (h / (2 * Math.tan((camera.fov * Math.PI) / 360))) * (heroAnchor.planetRadius / Math.max(0.1, camera.position.distanceTo(pos)));
-      y = v.y - R - 14;
-    }
-    hero.style.visibility = v.z < 1 ? "visible" : "hidden";
-    hero.style.left = `${Math.max(140, Math.min(w - 140, v.x))}px`;
-    hero.style.top = `${Math.max(70, Math.min(h - 80, y))}px`;
-    hero.style.transform = tf;
+    hero.style.visibility = project(heroAnchor.fn()).z < 1 ? "visible" : "hidden";
   }
 
   // --- Rayos de luz: de una estrella a las redes de donde vienen sus piezas (o de un planeta a sus temas) ---
@@ -1232,6 +1224,7 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
         controls.update();
       } else camera.lookAt(lookAt);
     };
+    ringLabels.forEach((sp) => (sp.visible = !held || exploring));
     if (dolly) {
       const k = Math.min(1, (nowP - dolly.start) / dolly.duration);
       const e = easeExpo(k);
