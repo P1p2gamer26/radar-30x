@@ -4,8 +4,8 @@
  "llm_top1": 0.869,
  "llm_unparsed": 0,
  "llm_seconds_per_item": 0.68,
- "student_top1": 0.797,
- "student_seconds_per_item": 0.00013,
+ "student_top1": 0.869,
+ "student_seconds_per_item": 0.00017,
  "fecha": "2026-10-18",
  "items": [
   {
@@ -13,1071 +13,1071 @@
    "gold": "modelos-nuevos",
    "llm": "modelos-nuevos",
    "student": "modelos-nuevos",
-   "student_conf": 0.9656
+   "student_conf": 0.6549
   },
   {
    "id": "youtube:BOTAeAU5ExQ",
    "gold": "seguridad-riesgos",
    "llm": "roi-casos",
    "student": "seguridad-riesgos",
-   "student_conf": 0.9282
+   "student_conf": 0.9547
   },
   {
    "id": "youtube:3Tk0sFoFYvM",
    "gold": "regulacion-etica",
    "llm": "regulacion-etica",
    "student": "regulacion-etica",
-   "student_conf": 0.8514
+   "student_conf": 0.6732
   },
   {
    "id": "youtube:B3LXEW4Pc-w",
    "gold": "modelos-nuevos",
    "llm": "modelos-nuevos",
    "student": "modelos-nuevos",
-   "student_conf": 0.5129
+   "student_conf": 0.6074
   },
   {
    "id": "gnews:CBMiswFBVV95cUxNTTc2Z2lUZjIzemFoczkxQWJZSXlzS1FRR2VUSEQtUVBsSXRsYXRRbEI1M3VBVWphc0R4eGdJY3VfSHR1eXN0QnZXa2dYeGlmOS1qcTUzeE1VdXB0YWY1cVIzV04tLS1FRlZhd0I0QTVGY3FMNGxTM1hBSllGQ1dsQU1KS1pLOW1UellyaUw1U182YWg1dU1fQThfLUQwWkwzRWotSlB0UmRSa1FIcjVHbWZTMA",
    "gold": "startups-inversion",
    "llm": "startups-inversion",
    "student": "startups-inversion",
-   "student_conf": 0.8202
+   "student_conf": 0.8752
   },
   {
    "id": "hn:50064470",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.9061
+   "student_conf": 0.9412
   },
   {
    "id": "hn:50005243",
    "gold": "otro",
    "llm": "otro",
    "student": "copilotos",
-   "student_conf": 0.5867
+   "student_conf": 0.4481
   },
   {
    "id": "gnews:CBMihgJBVV95cUxQRVdGd3ZqeEc4MGF2VU12RW1LNldZenNOMFlocnNObHNPUVJsMkZoNUdHaGpwWmEyWkIwTkZBYTdyUndWNWZjbXpNMVpITkZ3aTE0d0RXbUFnVE5uTDNvcVFKaTg5LURKT2N6dHlYSExXSmZqVTlrUzVBMC13T0xNSnEyanlCUG80VDJQQ1gtSzk5TjI2X1d2Z3lhRmdoeXNZemE1LVZsNFBNUzRIN1BwS0lrLTBjV1dLdklFUzFEZnpzTDlFSkN3eksyUE5EN2ZaQXNaVzFoa3VUcWRidGlyZHFmU2w5d1ppbFVseGpub0lnSmZiVEZjQVlwZ00zVWVyalhPXzdR",
    "gold": "startups-inversion",
    "llm": "startups-inversion",
    "student": "startups-inversion",
-   "student_conf": 0.7952
+   "student_conf": 0.8382
   },
   {
    "id": "hn:50092215",
    "gold": "otro",
    "llm": "otro",
-   "student": "regulacion-etica",
-   "student_conf": 0.3346
+   "student": "seguridad-riesgos",
+   "student_conf": 0.198
   },
   {
    "id": "hn:50039633",
    "gold": "agentes-ia",
    "llm": "agentes-ia",
    "student": "agentes-ia",
-   "student_conf": 0.4658
+   "student_conf": 0.7399
   },
   {
    "id": "hn:49951137",
    "gold": "modelos-nuevos",
    "llm": "modelos-nuevos",
    "student": "seguridad-riesgos",
-   "student_conf": 0.4666
+   "student_conf": 0.6582
   },
   {
    "id": "hn:50074797",
    "gold": "agentes-ia",
    "llm": "agentes-ia",
    "student": "agentes-ia",
-   "student_conf": 0.842
+   "student_conf": 0.9456
   },
   {
    "id": "gnews:CBMiygFBVV95cUxPZU5QU3h2WTg4M1BfNEhVRGpFaXNTVUVTLV95UEVjYk1tM3R0V3NRSXRBNnJKMWdEUmVTRVc5cFRqdE9LY0JkN3lyeDRTSExkWE95REJ0LWRHdTd3YlZINnNIbXJDRTljZTRGb0lpbjVJb1gzT0E4SFBTbTduUmRoNkljWnFRREpmUnd6UWFCck1EVmp5ZnBiZjFGUjFtNjBGU0RGTWVrSmtQcmFIR00xS3AwX0p0VmZEdW1KNTJib05NTDIzTFl1UllR",
    "gold": "seguridad-riesgos",
    "llm": "seguridad-riesgos",
    "student": "seguridad-riesgos",
-   "student_conf": 0.4134
+   "student_conf": 0.6955
   },
   {
    "id": "gnews:CBMinAFBVV95cUxNRU5GeUxjbHJFTC1FeUdNcHNjM1g2MnRIMXlWNVNwOUFuTDV4MVNrV1JUaUtXYXRoejFqaUNIQWRyVkE5UEpIM04xLXpJVUFkZlVKeUdUclcxUThwLXpwY3l5X0dmWmZUNzRabDUzUnBoNVVyQ2VQNkE3aENjLUR6SmxDOU1XRnJwbEdlZDNhN2RaS2NmWUZLeklUZGs",
    "gold": "infra-costos",
    "llm": "infra-costos",
    "student": "infra-costos",
-   "student_conf": 0.5888
+   "student_conf": 0.7487
   },
   {
    "id": "gnews:CBMinAFBVV95cUxOZ2UteGhxRkRiSlNLeDNFWkRCSkt4dFRlQU5UcjE5NjNfRkh5c1oxblR0U1pGb3F1V1dEVlNwcGl4YkEtekw0cUhVemJxSnMwUnlXWlJ6ZndrNHlyYjBwTG5PZi1CR24tT3pPM3NQYlNubEx6Zkxac2tOQWZSd2pVRVd4LV9CUG9sRXU3R1RWSklleVM1VkRlQ3A4em8",
    "gold": "estrategia-adopcion",
    "llm": "estrategia-adopcion",
-   "student": "modelos-nuevos",
-   "student_conf": 0.2053
+   "student": "estrategia-adopcion",
+   "student_conf": 0.211
   },
   {
    "id": "hn:50066493",
    "gold": "agentes-ia",
    "llm": "agentes-ia",
    "student": "agentes-ia",
-   "student_conf": 0.6876
+   "student_conf": 0.6203
   },
   {
    "id": "gnews:CBMimwFBVV95cUxNQ1RwcTZxUU1yZFpySzVmeEZFRlkza0V6LWY5WFZTczBFOEhrUF9wUXpqZjZRUnEtSll6c1h6OFJyWkpHcm9FemlEbHlXRVpNX0RoSWdXUU93bHVleEc5TnZ5MWlINTgwdHY0M095UURxM3poaWNoc3ljUWltLVZqeVotSWhab1JSYWxHZU5waWRITndNQzRHQWk4Yw",
    "gold": "startups-inversion",
    "llm": "startups-inversion",
    "student": "startups-inversion",
-   "student_conf": 0.8859
+   "student_conf": 0.9495
   },
   {
    "id": "youtube:WXWFmwfo1JA",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.7445
+   "student_conf": 0.789
   },
   {
    "id": "youtube:KL9_1GbmCic",
    "gold": "modelos-nuevos",
    "llm": "modelos-nuevos",
    "student": "modelos-nuevos",
-   "student_conf": 0.6696
+   "student_conf": 0.6712
   },
   {
    "id": "youtube:wSuWuPUTC10",
    "gold": "empleo-futuro",
    "llm": "empleo-futuro",
    "student": "empleo-futuro",
-   "student_conf": 0.6887
+   "student_conf": 0.7959
   },
   {
    "id": "youtube:R9momwXV9w4",
    "gold": "modelos-nuevos",
    "llm": "modelos-nuevos",
    "student": "modelos-nuevos",
-   "student_conf": 0.5908
+   "student_conf": 0.6578
   },
   {
    "id": "youtube:ftkic7Tdpcg",
    "gold": "seguridad-riesgos",
    "llm": "seguridad-riesgos",
    "student": "seguridad-riesgos",
-   "student_conf": 0.7664
+   "student_conf": 0.8208
   },
   {
    "id": "youtube:hTAWHgQI4xg",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.4692
+   "student_conf": 0.6309
   },
   {
    "id": "youtube:qZBibWYcKH4",
    "gold": "infra-costos",
    "llm": "infra-costos",
    "student": "infra-costos",
-   "student_conf": 0.9025
+   "student_conf": 0.9472
   },
   {
    "id": "youtube:N6K_pxaAh0w",
    "gold": "seguridad-riesgos",
    "llm": "seguridad-riesgos",
    "student": "seguridad-riesgos",
-   "student_conf": 0.9772
+   "student_conf": 0.9816
   },
   {
    "id": "youtube:G-9Y2xNiDKQ",
    "gold": "copilotos",
    "llm": "copilotos",
    "student": "copilotos",
-   "student_conf": 0.4505
+   "student_conf": 0.5776
   },
   {
    "id": "hn:50111375",
    "gold": "infra-costos",
    "llm": "infra-costos",
    "student": "infra-costos",
-   "student_conf": 0.321
+   "student_conf": 0.5557
   },
   {
    "id": "hn:49966293",
    "gold": "regulacion-etica",
    "llm": "regulacion-etica",
    "student": "regulacion-etica",
-   "student_conf": 0.8054
+   "student_conf": 0.5607
   },
   {
    "id": "hn:49954801",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.9323
+   "student_conf": 0.9661
   },
   {
    "id": "gnews:CBMivAFBVV95cUxNcFBuUEgzU3pkcWROcEJwQlpacHdNQVpsUFFjdXZrRTVqelhHREtwMm1WWjZjUnY0OU1acElyY3o4YjJTekEtUVZsN3ppVkpWRXpyaTVocnBTeUJEZkR3TDhOSEtLQXU0UjJiZUJLZzVMWGRZYkg4UmpfQXdKMngtckgxZlJNcXBYVm42bllJUFJHUDZMeVpLUDVuWk9NZFpzWkhod2RTMnNPbEt0MnUtMmcybVN5aXF4VkUwZA",
    "gold": "agentes-ia",
    "llm": "agentes-ia",
    "student": "agentes-ia",
-   "student_conf": 0.8065
+   "student_conf": 0.8805
   },
   {
    "id": "hn:50088856",
    "gold": "seguridad-riesgos",
    "llm": "datos-rag",
-   "student": "agentes-ia",
-   "student_conf": 0.6113
+   "student": "seguridad-riesgos",
+   "student_conf": 0.6989
   },
   {
    "id": "gnews:CBMijAFBVV95cUxOTmt5b0xqNjBvejJ2NHJBV3VBSzZ4akxBM01HM05OeTlRWnFGNjk0aEEtdE1SM3JRYVdNakNJRnFCa3BOMjItRzJXdGwzQTUzVDhtbm4xNHc3WFpMTThLYTFUSHNxbWZwRWpCTHRBbWdlVUpPUmFLMGgweWlhM1VWWVc2dTVxaHloZ19FMA",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.636
+   "student_conf": 0.3681
   },
   {
    "id": "hn:50065859",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.8574
+   "student_conf": 0.9206
   },
   {
    "id": "hn:50132169",
    "gold": "seguridad-riesgos",
    "llm": "video-voz",
    "student": "seguridad-riesgos",
-   "student_conf": 0.315
+   "student_conf": 0.6661
   },
   {
    "id": "gnews:CBMic0FVX3lxTE9SMDJCVjN4ZEtKZnFXaklnVUh0cE9lTjB6NVFhQnJua18zX2FOZ08taGRRZjl3eGZXbFQtenlyMldRM0Z3MUdReU5jQ0tmMF9hRGhUOUMyNTdmQ2doVDV1aVhiLWlSb0FhM2UzTGxHU01BcVU",
    "gold": "regulacion-etica",
    "llm": "regulacion-etica",
    "student": "seguridad-riesgos",
-   "student_conf": 0.44
+   "student_conf": 0.5012
   },
   {
    "id": "hn:50041856",
    "gold": "agentes-ia",
    "llm": "vibe-coding",
    "student": "agentes-ia",
-   "student_conf": 0.9673
+   "student_conf": 0.9234
   },
   {
    "id": "hn:50071796",
    "gold": "seguridad-riesgos",
    "llm": "seguridad-riesgos",
    "student": "otro",
-   "student_conf": 0.4658
+   "student_conf": 0.2846
   },
   {
    "id": "hn:50033405",
    "gold": "agentes-ia",
    "llm": "automatizacion",
    "student": "agentes-ia",
-   "student_conf": 0.964
+   "student_conf": 0.9563
   },
   {
    "id": "hn:50119093",
    "gold": "copilotos",
    "llm": "copilotos",
    "student": "copilotos",
-   "student_conf": 0.7877
+   "student_conf": 0.7871
   },
   {
    "id": "hn:50117772",
    "gold": "seguridad-riesgos",
    "llm": "seguridad-riesgos",
    "student": "seguridad-riesgos",
-   "student_conf": 0.7861
+   "student_conf": 0.8735
   },
   {
    "id": "gnews:CBMipgFBVV95cUxPSDZkUWoyQU01T295N09LWUlkY05IVUpIbUVGR1VqUXQzN0QxR1ViR08yZWN1OE1kNzUyaGNOcE9JcU9kSWU5Z3FIMW0tSXRWSXFaWlhXRmwzbjJjNWUxa3lrV3hFbzZDczNNM0hXVDQ4azdGbHVBanl6a19YWVdSUTJZaDhqNVhMcFl5YWFZeExCV0NkeEhLWE1iRmdzc0JZZnM2azFB",
    "gold": "infra-costos",
    "llm": "infra-costos",
    "student": "copilotos",
-   "student_conf": 0.5539
+   "student_conf": 0.5462
   },
   {
    "id": "gnews:CBMijgFBVV95cUxPWEZBNTQ4eW1yQXF3SnN0RVZQcVV0UFFnOHNHaVIxVnZXaUs5bEFlMHlIVnVaT1ItZ2RsWG45cE9XbUs4alVFTGlfOWt4WlNvMTJwdUZ5bnFvbWptYndTbmZ2blpGQVVwUmM3dlM1QWpCdnR0cklEdklFRkkwVWVubTFVd19FOExBNE5DckR3",
    "gold": "agentes-ia",
    "llm": "agentes-ia",
    "student": "agentes-ia",
-   "student_conf": 0.702
+   "student_conf": 0.8282
   },
   {
    "id": "hn:50118153",
    "gold": "modelos-nuevos",
    "llm": "modelos-nuevos",
    "student": "infra-costos",
-   "student_conf": 0.8308
+   "student_conf": 0.75
   },
   {
    "id": "gnews:CBMikAFBVV95cUxQM0poeTZPd2NHQndHU18xX2o4TVFBdHB2Z1BwYUlNODk5ZmYxUW03NlNtLUNOY2EwYVVlOFR6Z1llTU01c3ZIeWJQT3ptUVBKRmYycVg1T0ZlRmlsR3lXN0tvREVrVnJNZWlab3JUNVhMY2FLb0JZSXVLazZ3cmJZRU4yb3V1MGtUMnJDLTFnR2g",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.9656
+   "student_conf": 0.9677
   },
   {
    "id": "gnews:CBMif0FVX3lxTE9CcS1GeVh5MEUwSVVIdEx3c1JMVWJFOGhFTVhjVlEwb0VESmRVOHJORS1nS0daY21GMm9PTVVXM2tqbG4xT0ZfVmhNLXN1dDlfZ3VsZnZWZ09hSzF3b0cybkF5dGNKYkEtVFJlZ2xJNlJZRDVua19GRmQ4NlpkMEU",
    "gold": "startups-inversion",
    "llm": "startups-inversion",
    "student": "startups-inversion",
-   "student_conf": 0.9565
+   "student_conf": 0.972
   },
   {
    "id": "gnews:CBMiqAFBVV95cUxQeXB1R1YtLVBNdEt0RFA1UzRfMWNtVUNha1RYd3FFUGU5N2MxQnNmU0pyajlyWEg5d1d6X3JUS21QTVktRGFtbFdnZG1PVGVPaDNaSnZMdEJ6WE4wRnBoRjI5NkRIT1hvcEwzcEN6X0JLdlhTaUZPTjZvNkZ6bEpESXpYVjVTUWdDRVNYMnZ4LTdkLXcyb3k5bWZ0MHRLaHAtYWZsNXYyZGs",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.8489
+   "student_conf": 0.9104
   },
   {
    "id": "hn:50118975",
    "gold": "regulacion-etica",
    "llm": "regulacion-etica",
    "student": "agentes-ia",
-   "student_conf": 0.5937
+   "student_conf": 0.7059
   },
   {
    "id": "hn:49949914",
    "gold": "vibe-coding",
    "llm": "agentes-ia",
-   "student": "modelos-nuevos",
-   "student_conf": 0.8719
+   "student": "vibe-coding",
+   "student_conf": 0.3952
   },
   {
    "id": "hn:50116859",
    "gold": "startups-inversion",
    "llm": "startups-inversion",
    "student": "startups-inversion",
-   "student_conf": 0.9741
+   "student_conf": 0.9949
   },
   {
    "id": "gnews:CBMiqAFBVV95cUxObVJITmFpV3ZXV3Y5RURmUmQ3Si12R2xEV2VxYmVZMGJHOXJPNVNjbVhZeHpLM0Zqb0RhWXA1alpyVnQ5aUdEWTlvRzc5RUYxYWtLNTV2TUhFdGwxVkh4UFFhX3UxdHdyaS15NVhORGR0SXZFVG8zdkVoNkFTX0JmVy05WjEtNnR4NkpXVm1rTjgtcDJiT1prQ2lDV1lmX1JILWtMYllGVVI",
    "gold": "startups-inversion",
    "llm": "otro",
    "student": "startups-inversion",
-   "student_conf": 0.9037
+   "student_conf": 0.9655
   },
   {
    "id": "gnews:CBMiqwFBVV95cUxPQjJNMlNzU2FIX1BtY2M5M0ZXbFcyMTRlS2MtVW5BQjlzUEd2NFlTTDIzUGdWTXAtWFlLRUQ3Q2tTbUdSaWJwTWVyNDFXQkphdlJLU3NIdnUtT0UtWFNtVTNfMVlLSVh6UTAxU2g3NG5rc1JIZE1DSG5VNG05cjhiWTAzaW44c1BOWjJIaVJfVl9mUDFXel84OHVTSmhaWWpOMnBRbXJwUWJmMkXSAasBQVVfeXFMT01SYjBtWEplakVVOTZMMjFBLWxjbUY0Z21pc3Z3WEJNc0ZTVjRzSFdCTkJwYjhBN1NKVElkdnlyVFZIWmVMZ0NEcWFmd05vam45V1BDNlV0SnF2UFl1RmV3Nmc3eFdNbF9kVGRQeVRBMEZ3ZGhfb0d6X1NRVFpWY2dmQ1JONGtBbGNONmNzdjhWSld6bUh6QTBscjVyN0pvdFU3NzhYWHA0YWIw",
    "gold": "regulacion-etica",
    "llm": "regulacion-etica",
    "student": "regulacion-etica",
-   "student_conf": 0.694
+   "student_conf": 0.8834
   },
   {
    "id": "gnews:CBMi_wFBVV95cUxOUlE2b0QyQjdQczVkSWZJWUFBYzFPaHNWSDB5RGNkTVZpaVItVm5WZXJ2UHpmZ0NVQ1h6Rk9pbi1TQkJfN3c1NUhkYm5DOHRodXRuNXVHWHgzZFJuckpvTDc0eGFzOVRnWk9oWjVEa01qZnhpbzA5cmw2dU9UVXhuc3pwUVk1UUM0NHpKajVMSnBuVG9scGJDSWUyRUpUeU5zV2xpZVdES3NVUTIwZlBpZGY3N2RXWlNVRjk1ZmVJNlNFNExMaGRyX2xrN0E0eXYxUWdzX0JYWGZBZEFiVzFUTVh3TmRBdU54OUU3MzlINnl1YmM5Qi14QlpucEhaSVU",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.3564
+   "student_conf": 0.738
   },
   {
    "id": "gnews:CBMia0FVX3lxTE1uazItSzU1RUlHcnBWWlVxSnh5Yy01ZU9fY21ZUzhDbEo5ajVyU0lQcGhfMTBTbnlNeVowUlRtRGdfN2tidGdWYnREOGNOWHlubU96ejdEck5razZXbWNyUF8xVWc5U05Pc3FZ",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.9823
+   "student_conf": 0.9084
   },
   {
    "id": "gnews:CBMiyAFBVV95cUxNSGVOcExtQWEtU3BoeGE5LVZROGJ4RFc5bDhqWjdYem9HSGFtOUVlQnYxQUJvbFdNYi1FNkp0azhTZ21PNWJLRVJxRmduQ1NkTWlBRGxwdlN4WTk2MVNKT0pNWnJDQU5MLXp3M1pLQUNPZkxfbENtSFN4b0ttSXZpb2RRZVF4NTJvQkRsTWZramJnaFdUa21CYlpIVWJJeThpM3g4cTFfUlluVmRIeTBlcElMcEtqVkZ3MF9uQWlGNkVPbl95am0tdNIB3AFBVV95cUxOQ2Jzb1l0OHJkLWVNQVdCV1p0bi1vWUI3SzBhcGJNU1hCY190QTN4QWpXeEpBUmRnblpQbEZWS2RVS3ZCN1l4czYxQUtQZ2Fqc18tX1h6SllqZUlJVFFjWEdQZVZzdEVyTDU2ZkxSaUlJdzBUNUl4a2Z6WWR6bzdRYThDTDJfc25RODhpTTlHRTRSZ2pHV3ZaVHVPUWEtakdJbnk3NC1NYVlmZlJfemdBWWlCZUZJUHhKbU1ITUh6Q0FqU0JJR1ROSjc2eHdBTHZKbTNsRW9jam5FT0hr",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.9403
+   "student_conf": 0.9445
   },
   {
    "id": "hn:50118724",
    "gold": "vibe-coding",
    "llm": "agentes-ia",
    "student": "seguridad-riesgos",
-   "student_conf": 0.6403
+   "student_conf": 0.5865
   },
   {
    "id": "hn:50106794",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.994
+   "student_conf": 0.9915
   },
   {
    "id": "gnews:CBMihwFBVV95cUxNNUVZZ3J4NFRhRnFfeWpXMnlrNnFpM3hKaEZYTDRlT1ZSYXBEbHZyLTRHcjNWWjFuLTBad1JvRkRnU1dWSXhNZEYwZ3VOaE5Yd2VkWm00T2xqU05ZWmVVQnZQcVFFVDJ2eU9MYW44dXJTM1MzUjhYTmRzVkFhNnNZS1JXeHI0dFE",
    "gold": "regulacion-etica",
    "llm": "regulacion-etica",
-   "student": "otro",
-   "student_conf": 0.6482
+   "student": "regulacion-etica",
+   "student_conf": 0.2364
   },
   {
    "id": "hn:50026741",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.9874
+   "student_conf": 0.993
   },
   {
    "id": "gnews:CBMinwFBVV95cUxOR1JhaW03ZmZNS2I0ZjN6UFpvZ0ZZLU95Y19wQnJpajZfbHBDQ0ZvNlJfS3dpUVZMVmo0VHVKTXZveDRLd3RXLUJqNFVHVklEYkw4SGZBd2txXy04eWdoclFOZzZoR2ZqTTJFaDZIWU81dVphLUtiek5WQU9DTWppMHh5VFFrT0xuaGVfNTlSaDdneHlOeFp5VDk0ZmR6d00",
    "gold": "video-voz",
    "llm": "video-voz",
    "student": "video-voz",
-   "student_conf": 0.7673
+   "student_conf": 0.7103
   },
   {
    "id": "hn:50085296",
    "gold": "agentes-ia",
    "llm": "agentes-ia",
    "student": "startups-inversion",
-   "student_conf": 0.4026
+   "student_conf": 0.4612
   },
   {
    "id": "gnews:CBMiXEFVX3lxTE1rem9hcHhwelhocnlhd2o5d3JtMVEtWHo1YmlEclI5aUwxeldfckY3bXlxaEdZQXhaeTZsTzVuVm1YeS1pS19YTVM5T3RpQ1dNcjMzbFRuaGw0Uk9B0gFcQVVfeXFMTWt6b2FweHB6WGhyeWF3ajl3cm0xUS1YejViaURyUjlpTDF6V19yRjdteXFoR1lBeFp5NmxPNW5WbVh5LWlLX1hNUzlPdGlDV01yMzNsVG5obDRST0E",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.9626
+   "student_conf": 0.9768
   },
   {
    "id": "hn:50131320",
    "gold": "seguridad-riesgos",
    "llm": "seguridad-riesgos",
    "student": "seguridad-riesgos",
-   "student_conf": 0.5994
+   "student_conf": 0.8225
   },
   {
    "id": "gnews:CBMic0FVX3lxTE1lVjBrbjJEZFZlLUJnZTNpTWNRcXdxbkszXzlKOExHeE1fVmY3SW1ya2NXbzhlS2ZGZlFSZU1ZSU9hMEd5UUctcDZJU1MxNDFIUzE3OF9VRDlSTGttVG5OSm1PdUFlZlpuMTNnQ2M3OVJ3bXM",
    "gold": "copilotos",
    "llm": "modelos-nuevos",
    "student": "copilotos",
-   "student_conf": 0.9685
+   "student_conf": 0.9055
   },
   {
    "id": "hn:50073898",
    "gold": "modelos-nuevos",
    "llm": "modelos-nuevos",
    "student": "modelos-nuevos",
-   "student_conf": 0.9651
+   "student_conf": 0.9782
   },
   {
    "id": "hn:50005648",
    "gold": "startups-inversion",
    "llm": "startups-inversion",
    "student": "startups-inversion",
-   "student_conf": 0.5609
+   "student_conf": 0.7746
   },
   {
    "id": "gnews:CBMid0FVX3lxTE5aRmFpQUZXc2I4c1BFV2tzQ0ZjTmFoRkwxUjdmeHhKdkZDNzIzMV9vMDZTcnNQdXVHODJpZ1p3WENLblJsU0tDWjd1Q0VUZ1ZfNTZ1aWl6anRpcmpBUzB1SWdJTktRbTcwSzZCdG9iMG1TVDZLLVZj",
    "gold": "startups-inversion",
    "llm": "infra-costos",
    "student": "startups-inversion",
-   "student_conf": 0.6255
+   "student_conf": 0.7562
   },
   {
    "id": "gnews:CBMi2AFBVV95cUxPXzNQYlp5T0dXeU1pYzMtU2FVU0x5NDB5aVlFVE9ZZkFmcnNDSDczamptalY0QnpRTTNHel90LWFKRWJVcGxjVTVaZ2RYSkZtcWVIYUd6dVF6cDc0MUZHMWVZNFNzb09TLVR4SFhuNV8xODZGNGc4NFlNcmRXeVhTcEdOdlJvTUhJUTE4T01va2xLWk9NU2tmQlBybjBxcUVndGM2aGctcEtMcG5ZRm8wQTNPc1VkaHFhcnMzcENad2luMVd6ZEtpdEJVQ3JfS2hmdEw5SEpnY20",
    "gold": "infra-costos",
    "llm": "infra-costos",
    "student": "infra-costos",
-   "student_conf": 0.9652
+   "student_conf": 0.983
   },
   {
    "id": "hn:50094903",
    "gold": "seguridad-riesgos",
    "llm": "seguridad-riesgos",
    "student": "seguridad-riesgos",
-   "student_conf": 0.4817
+   "student_conf": 0.6559
   },
   {
    "id": "gnews:CBMigwFBVV95cUxPSWJ5RXB6WlM0TFJabnVJTk9DcUpCNmN4S3BiUDhyekRaNWFSQlVJMVpDNFI1UWJTMTBnNC1uOTNKQ3JvUXVWbjZiVGloNXRaN19TMW8xcHNvbUl0MktqV19HWEw1aWFKc1ZZRU1WOEFIeWg1OEo2ODFOLWdySW5jY1FJWQ",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.5389
+   "student_conf": 0.6226
   },
   {
    "id": "hn:49999508",
    "gold": "infra-costos",
    "llm": "infra-costos",
    "student": "infra-costos",
-   "student_conf": 0.3053
+   "student_conf": 0.3863
   },
   {
    "id": "gnews:CBMi1gFBVV95cUxONlNuTG5OcXVXc2xmNm1FWVBTc3J5dTZ6OU9ZSXV2UDFkbHpOZHpxSkJPTURnSGhpbTlGemcxN09YUXFkZmZ0LXVLc2QyM1EyWmtubVFqWTNtZE1PMWdEM0RQT2VzYmtmNWZTanYzYU9ZcHgzamNzRGg1c1gtaktPX3g4MEtXT3BJblRJa2Zfc0VidlJ5Q1oyV3BmczJXbmhOWllGQ095WGFOODlWU3lOU29ZMVdObnMzUkx4VWdaZEctZDkyOHNvUkhGbm1YSVZHQnZLRG1B",
    "gold": "startups-inversion",
    "llm": "startups-inversion",
-   "student": "startups-inversion",
-   "student_conf": 0.5862
+   "student": "otro",
+   "student_conf": 0.4817
   },
   {
    "id": "gnews:CBMigwJBVV95cUxOcHNmQmxjSmg3ak84QUpsTy1hbkxHT2xGUUFZZGdKU2pxSURXSURnajg1YmRkWHV0bVJLNWxIdEhDVjRLLXdkRlM2alFjNXZ6Um9TRTZKQkkza1hSVDlxNGkwaVlDMXlDT2xFVWhXazBiRlVDRWN5Sl9BY282cmg2R0dqSTVZN3Nna1Z3S1BCcGR3UWxjbFdZX3czZk9ZVUxJMExXcUpKVDhuSHpqM0Jydnczck4yX09oQjJ4dVpUMWFlVkZkaWtkd1czNHh1VTNjLWdYbk4wRk5McUpqSmxsblJtdE80Ymg4ZTlCdWlsYXF6a2xkeUhkNFphMmpsaV82RGpJ",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.9404
+   "student_conf": 0.87
   },
   {
    "id": "gnews:CBMiogFBVV95cUxOMlZvTmRJaTFNSi1WLVpIbU41dmpuVWJOTmdfX0tETE1ZTlFfVmFxeDFUckRkZFJyM3YzdUd3QmthX3FfZGQtd0w3bXB6Y1kwRnBwQ1dRekJ2Nzd2VWhkSzFjY3ZqeHNhWUNzc1FydzM2SktCSVVtbUhfMzZxTzNkOVBXSkxrQWYwOXpsXzRQZ19WMHRKbWJLOHZQcG55Uk9qTXc",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.954
+   "student_conf": 0.9598
   },
   {
    "id": "gnews:CBMiogFBVV95cUxNaUZJa210MFhPQXJPdThXdWJJZnpsYlJ1dkNaNEVJMk5LazUtZnZIb2g1WFVxU2U3ZlRfQlRZdmwxSy1YQ0pkdkxwTHlpNGxUT1doZHJkVV9EekV2dno3eGJwamFBcHRfd2VCS1AzQThpbHFqelVEb0gzeFV2bkZqNksxdUFJRzVxaFhLTDdHcXRHeS1CUmpsaUVNMkZnMkJvU3c",
    "gold": "startups-inversion",
    "llm": "startups-inversion",
    "student": "startups-inversion",
-   "student_conf": 0.9634
+   "student_conf": 0.9854
   },
   {
    "id": "gnews:CBMiigFBVV95cUxOZWpoRUt2aEh6YW5nZFVobGp5RGxsUUdYWWc0OEUwcWVHc3ZPQmdGWW5Vazg3Q0RHZmt2cU02a0VSZWRxakpHa1lreG54elQzQjVRcGlVNVo3MUE4Y0VyTDZlRDRFaDY5S3l0SjVCR1ItYVhzMzV6UFJRVlA1VFdlZkh0aEYwdk5mX0E",
    "gold": "automatizacion",
    "llm": "automatizacion",
    "student": "automatizacion",
-   "student_conf": 0.9042
+   "student_conf": 0.8633
   },
   {
    "id": "hn:50042950",
    "gold": "seguridad-riesgos",
    "llm": "seguridad-riesgos",
    "student": "seguridad-riesgos",
-   "student_conf": 0.9596
+   "student_conf": 0.9902
   },
   {
    "id": "gnews:CBMiowFBVV95cUxQNlZhZEFRczhvRktPdVdKWHM2OUdVRFZZSENQd1FoQzZFZXAyWTl0UlRkYnJ4cEZHc2kxU1BBZnBRQ2FVeWtKTmlXYUZ0YmI1dVF0bGdiMHdDaXBTbFN6aHNZZS1SdWE5eWJHTG9icW93SS1KQ3JQbHNtMWlXMGtsQVJDUkZ1WGRIbjl5eHRnNFpjeFJLYXAzYW8xRTluZ3pCVTVj",
    "gold": "seguridad-riesgos",
    "llm": "seguridad-riesgos",
-   "student": "seguridad-riesgos",
-   "student_conf": 0.3649
+   "student": "datos-rag",
+   "student_conf": 0.1986
   },
   {
    "id": "gnews:CBMi2gFBVV95cUxNRFk2Y0s5QjdrWktubllRUWpwSWI0bzcyQnFsTUZWUGpDYk05b2JFeENvQ3JIbXFKODdqVkhsLVo0Rk1iYU83WWtiMDJlVklKdzBqanB4dWh0endPQ0d1R0ZzRnV3akJQRUVQb2JMd2czT0FieTVDaklyam9FX2lIamxzYzRaOE9CdjZjTjRHZklUUUgxR3dCNTMxUDlabXg2V2x4emhnNExRYnh6dDFjVXJEaWJlZ1MwTHNEMnFfN3pMaXlUbDVielZKeDdodndDcmhna1JVZGN3QQ",
    "gold": "automatizacion",
    "llm": "automatizacion",
    "student": "automatizacion",
-   "student_conf": 0.5916
+   "student_conf": 0.4685
   },
   {
    "id": "gnews:CBMi3AFBVV95cUxNelRDU0x1Snc4TW5CdzQ5eElCbEZNeXMxbVE0TXZDRkJWYkM5MlBMY1ZjdlRhYzEwSVBTZ0o4Sng3RVdVTlhJSS01cU0tQVN5ZHVKMnF1VjUxemwyWFhVbXlCbkdtbXFRTmdGUThMa0VKOE5IN1JHWEpsbzBvem5YbEplV203UDVmcGo2czVqVnllWEllWGYzc0g0SlMzZEVPNFM2Zmp3U2RFamxkUWdfdFRUcjNfWEFSd0lEQkJveUg2Q2ZMNzRFYTNVWDcxZ2R1Tnk2dkRicGRKWVg2",
    "gold": "infra-costos",
    "llm": "infra-costos",
    "student": "infra-costos",
-   "student_conf": 0.9597
+   "student_conf": 0.8362
   },
   {
    "id": "gnews:CBMigAJBVV95cUxObTg5TGpWb3Rrb2NrRXZVZzRyd2tZbFJDN0prQWh4SVhGLTlBU0FfUjg1cHVpZmpMYkdTaHJLVEduVFMyY1pwTnE3ZFg4OEhzcWRFU3BTcWlCWlJmeXdzRnkybHRrT2VTa1k2N0h2VkxQa04wOTVCS19Ta1V3YXh0aUhPWnk3VUpTLXplU2JkYlp2SjVseEhpMHI1eU14aENZNHgtQl9oOHlRbktCUHFCbm50WkVXaWsyVGM1M1A0bzB4aW9Jc1NsWFAxZ2FFWVI5bG51SHVWY0VkaTJQbTYzcXVqSnhOaTQ1V0NJb2pSejBZS3RIZldabWg0WmFjUDZm0gGGAkFVX3lxTE5oX3BmVXAzdjc5Z1JRX1o2aFlDOVphWWRBcHJLSGdFb0tKY05uSWFHTlVoQ3kteEFrOU0yYW9QbGw5Z0U1cWFveVpUcXlSWnZWWjdxN0loVXlpcDk2TldmX05jNHRfdmFET0g3a3VCTkM0T2N6TkdiSmZTTHRUNm1ZamVKUHhkOWdaSDBDQVRZclpmSUxoOGo4cjdWNkpnbFFoLUtHV2pkZ3ZGdXJsZ1VyQ1NINVBwb1h4UC1sa1VELUZzVmtJX2RsQ1BrU2w4dVYtNnRSalg3YzRCNUpuZnhxQlBjUktiV1hlMFlfSnkxOHEtRU4ydnE3Wk1JWlQwRlVvRmxHY2c",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.8548
+   "student_conf": 0.7192
   },
   {
    "id": "gnews:CBMi6gFBVV95cUxNS09UY3ZjQkJVNmJsRVEySW1xUWZvYUp0a3FIdHNZZ2drYVlORjgzQ09vTkdFR2xSdld6TVo4cndfZDRyMW9GTmhlRjRmYW9hU0UyLUdVa1JGZ2FvS215OE9oTEh3eHZvRTV2enlRaG90amNNUFJmWl83TFVwVHp5MEhlcm9udnJ6N3NvYTRxd21qclpDYmVPUGoxeVFYWGVtM1l5NHJuTWZzYkZsMTFmQ2RRNDBVQml6MVlGTEZyWUNkWkVtdzF3cU84U3p1N3hHcndNMDg2YjJzNXQwZmNmYUMtejlKc0tiWGc",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.9333
+   "student_conf": 0.9328
   },
   {
    "id": "gnews:CBMi3wFBVV95cUxQc0M5c3JjbGpTSmtzYk1kN09uTC1NbEVEdnctTEF0UElVX0xpOVFGbmxBUzZEM09PV0FuZW8yM2JqdGR2eE1IY3l4V29od0VrUTZkaFB2N0lrTzBqODdJNTN6Rkh0OEJaN2ctN2tubGMxbm9fRC1pMWd3NXVocVBlYmI3OXhldlhOSWhkYzlWM2FjY0YxZGhnZmw2ZFF5ZGI4MDB4X21mRlkzNjhhQk9JalVkUy1Fc2k4SVZzOVpGYUxMSmsyTm1EV2ZqVjNqNWtrQmw5c3JBVG1OcVVZUk0w",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.9374
+   "student_conf": 0.9688
   },
   {
    "id": "gnews:CBMihAFBVV95cUxPQnpvTTJ2OVFQSlFDaEJxby03Z3VhSmpkYkM0WUg2MEFySDdzOWpJZkx4YnU2WjJSZWZEbXJZOXRUVV9KYlpxaGIyVGFNSWowa09ydmZMSXVfMjh4OXlfaVcwVkJhT3ZnRnRVRkczSXk0bTdOWkcyTlU4dGtRTzdJc0hrelE",
    "gold": "infra-costos",
    "llm": "infra-costos",
    "student": "infra-costos",
-   "student_conf": 0.4575
+   "student_conf": 0.595
   },
   {
    "id": "gnews:CBMisAFBVV95cUxNN0h0OVgyMTBsaERoQXpPbHBEcmFUc1NBNXItSzl6T1d5U21XSXZqakN6ZExFeEhSYndoZWJDYm9aY0RnYzl3N3QzV2xzeFZQeXAxSm5sdF92OHRLNjVCd2NkTVVLVHBOX1ZyNkFPUWFmNmtGeG4wQVpfVW9HUEVHZ3BrOVVrdkFwaHI1aTJEbnEtWEVlT3JmUFQyaGZTWUJPOUtZWm1mR2paOGhMOTlzTQ",
    "gold": "infra-costos",
    "llm": "infra-costos",
    "student": "infra-costos",
-   "student_conf": 0.9807
+   "student_conf": 0.9873
   },
   {
    "id": "gnews:CBMixgFBVV95cUxOMWpzb0JwM2lTUmRQME8tSURTVlgtVk96b3M3RWdXVGkxemdBSXdaWmRPQi1NVjBuRUdUSWFhZzRWVmpTbDdpNVZkR0h2R1ptN1FfVjdVa0lWMDRQOGMyeTkySkFOakNrWHRGTU1UQzY4N01pNUNya3JuNXVwWkhKTGUzOXNoX3RjT0lpUkdEUE5odjFGTWtHYVYtS2R5SWNFdmFIVWRnYm9xXzdzRDFMMzdxVjBlX2ZET3lNN055VU1zeDV3Q3c",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.6388
+   "student_conf": 0.6045
   },
   {
    "id": "hn:50117908",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.9764
+   "student_conf": 0.9859
   },
   {
    "id": "gnews:CBMiZEFVX3lxTE4xdXdCcE1NZkd1c0VFQ0RrbHRFcjQ3UVRDOG1NWkpFLUxVdUFwdFNNbHF4N2hjRUxmWS1XWDZ6dXNyLVYyblhqUkx1N3NUZzJsWmxoMEZ6RlhiTnBtVGMyV25VOVQ",
    "gold": "startups-inversion",
    "llm": "startups-inversion",
    "student": "startups-inversion",
-   "student_conf": 0.6055
+   "student_conf": 0.4192
   },
   {
    "id": "gnews:CBMid0FVX3lxTE9nWHJWY2thY0lMbWlQNmFsSzYtb0lBLVFBN0pmTVhDNjJEQWhzZ1MtQzBKTlBzSnU3Q290MDVQN21heWlfSWRHQVQ4eGZtYkx0SGpSdW5MWmFfMjVseklJY1oxWHVSeDM5ZmZpQ0xzaHpxWThSVVdz",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.9742
+   "student_conf": 0.9477
   },
   {
    "id": "gnews:CBMijAFBVV95cUxOVlhabUJCaE9DTWpZLUlCeTU0YnY4NDl0RUtHUWJHbnRKVW1CR2NFSFBOUlJMODFmVGJnVkJQQy1hTkNOOUhlSUdCUi1rZ1dpQXNIUUc4blk5RFhrbzZLMjRPb2Ezb0hKSUFpbVhuM0daYll2S3JDeVRlTEpCUFlzeFFmZDlOVEVYVTE3Zg",
    "gold": "infra-costos",
    "llm": "infra-costos",
    "student": "infra-costos",
-   "student_conf": 0.7457
+   "student_conf": 0.8233
   },
   {
    "id": "gnews:CBMi2wFBVV95cUxOZ09tZzFWTy1BaGhkaGlTaXp3bjNzUlgxVXVlTzNZV0lLX1BFcE5kdlROT3U3MXhMSktDaHdVMjc1aHNvS2RMWVBmNXE3WGc5cDF2RVRIeGRSZU1mQkZOODB4dzRYX2NsOTh0dzFqNTZ0Zk5ILWJzQU8xME0tUHZxdmdBMzJCNW9sbER6LXhGLWFWM3JGZG5HRGt2RTN4TUNOQjVscnJzcWxXWlhhWGdEejlMRWU1TUpaUkJheGdMczc0Z2REbFdNeEx6bURPYi1YZjhROWx5RXFidlU",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.6074
+   "student_conf": 0.9308
   },
   {
    "id": "gnews:CBMijgJBVV95cUxPdVYwSm5adHZVMV9Oa2hIa3pHb3A3YTljUlRZdHc1UFdraGJLRzIwWEpqVks1UG8yUUJFNUU5WFJrc014UDMwbzlBWkZOcXJBVGN6bnRqWTdKTHV6VGdtQnNHc0hLNTBDblNUS1VyYXAtaXF5M3l1MGtrRzBmcndkWjJzZnhXV2RKc0NhZXpZYnY4Y2NsbWFOQXUxOWZKNUxiNE5vWVB4YUxrbmwyUGNmS01obERXVHE2cnBfYjFqMUlEUnlvRTF3NXI2TWJsNFFLdnBncWxCV0RKUS01MFh6SzdHRGNUb0NXRkFGSWNnTllybE1JUEZJeC1CemtFRUhBd0daSWpyeTA4eEZMRGc",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.8361
+   "student_conf": 0.7532
   },
   {
    "id": "gnews:CBMiwwFBVV95cUxQWU1BcUY3eldsczQxQTJCV0lid21vUDhNUTY3NmpYQ1JoTGpINVVDREh4MXlDYXdVNGg2elpMSmpIX3Y2OEZQM3A1cmh4MjNxVTRGZlNQYjNicDRZaUxERVRMZ3l6R1ppUjNZdS1tZHh0QWpXV1RUTFNGUGhhaWFWQ1BOYkNWNWJKU1h0aWk1em1aYlJURFk2S3pYN2liZzJvU1kxVTlFdHRTZFRUc0hjTTBVV1I1dHp1bjJUNGM5Nk8tTXc",
    "gold": "ia-talento",
    "llm": "ia-talento",
-   "student": "otro",
-   "student_conf": 0.5182
+   "student": "ia-talento",
+   "student_conf": 0.4556
   },
   {
    "id": "gnews:CBMiqwFBVV95cUxNUmFDbEpSTEJsVy1FRE1Tb1JwMWFKSW1icWxXYkVjaV9RMmh6NDRHQlF4Q2UzOWpQb1JRbFVjdmpaT3U0dzFUVmFmVkctWmRjVEdzMmxTdXBOSEhvdEs5bF9Ja2JZZWYyWThMcXNFSzcweGhzWXpENUNvUUdRUGo5VzZBUXYwUXIwWVI3TEtGNVdDcVZSWEFkQ0tWd3ZHNUFzeVpndUcyU2k3dWM",
    "gold": "otro",
    "llm": "infra-costos",
-   "student": "infra-costos",
-   "student_conf": 0.4129
+   "student": "otro",
+   "student_conf": 0.4245
   },
   {
    "id": "gnews:CBMirAFBVV95cUxOY0JGaEphMUw1eW1WZUJkS3lBZ1BXd3dEbHJWOGVTYkVGME5ha1FUMVVMOFFOX2pOckxkUDRjMUIxZGtRVjZ2VmJTR09WOGxtQXZtczU0T1piRldEOF9KcUoxX1lmaFlfZlhsOGR1RV9sWDNzaDgwaU12cHhLc3JaMXNhWVhZVXlsTlg4QUpXTFc1T09hWEZuMDE4c0JlSU9tOE5zQWlsQ21YakdH",
    "gold": "otro",
    "llm": "infra-costos",
-   "student": "infra-costos",
-   "student_conf": 0.5221
+   "student": "otro",
+   "student_conf": 0.5757
   },
   {
    "id": "gnews:CBMiowFBVV95cUxNSzZVQlYtQzVpVEFiRjVkMXk3R09qZUJuR284VDNadWtlVXF1bEN4VDJ0dlRpTjBLZmVVWTctLUxBclFfMWxSVDFZZWRwUzFMcUJzdjlLN3dkT0dxaGRHZEVaWF8yUTlyWnJ2dDFxLXhrODk1Z016cUdjZXFrc3ZYS0lvcGpYMEJJRmw0Z21MV1oyNFBJT3F0M1FZMzVRRDJPYXpv",
    "gold": "startups-inversion",
    "llm": "startups-inversion",
    "student": "startups-inversion",
-   "student_conf": 0.8357
+   "student_conf": 0.9162
   },
   {
    "id": "gnews:CBMi6wFBVV95cUxOb1dhTEhBMHdJVVpWanpId3pKOWYtMlFOZHVWRi12a0hEdWhzVlNvTmI5ZHdPY1lHM2o4MEsydlRKZGNXSFEtM3FxMTctaEstYk40TWR0MWhzd1hCM29yLUw0RzRpRXVjQkVKa0x4azRBYnVyeTVzQldsMmhLaXhndG5jNml2bm5jLVktTzRRNDVrLTdQWF9YVTdzS1EySmd2cjRkMmtXNnU3U2RjX2F1elBRNU9QX3FldFpCY3RlLWVXaC02a1Z5Ql9ONmk4bmgyMk5Fa1VOaEV5c0hacFpmY2tuUHRXVnE5cjFj",
    "gold": "startups-inversion",
    "llm": "startups-inversion",
    "student": "startups-inversion",
-   "student_conf": 0.5232
+   "student_conf": 0.686
   },
   {
    "id": "gnews:CBMixgJBVV95cUxPUnBQUDVFU3dRc21oNHQyYkRuLXdhMExGOGw0djl2eGlhWTBmTTd3ZWg3RmZabjhOcUpMeFpTNGk2eTIwdnhhXzd0WGVKRlIwd2t2VjA4SFlnTGF0X0Y0YjRWelJfSmo3UEkydHZqNU5sc04xWnNLTWpJMzZkU3BHMGRibXU5MVBfYmVNaHNqbUxtTmVjbWpMY25tSUJCU1E2RjZqaERuTFhZOXJIalR6LS1JbU1CTWV0c3gtVm1rZlVOZF9hTHgxMGd1VGtkOXktbUNicmI1WVpwVEk0UC1IWUZTdlpraGdxZGZLcGk2MGN6U294bkZHRk1uQzRHUVNTaXptZ3haRUVnUEJ4UVpVNGRTTFo3aXp1RFIwVllDWVpQUjBCeXhfUmhVLVBWM1dyeGRpNnowUlY5YzRGd21zbmtyMUs0dw",
    "gold": "otro",
    "llm": "infra-costos",
    "student": "otro",
-   "student_conf": 0.6635
+   "student_conf": 0.7638
   },
   {
    "id": "gnews:CBMia0FVX3lxTFBfcDQzU0h2Z0dXaGVwMk1yWUc1TDk4Z1hpbWgwV1Y0cEh1S1NJZEFERFVKY3pMWXUxNTE3cWh5RjZRWEh2aTYyOGp0S1NLVUZQNGJqZVdaeVJNa0xCTmJMaUwtTHRKcmNqOTVZ",
    "gold": "otro",
    "llm": "infra-costos",
    "student": "infra-costos",
-   "student_conf": 0.8589
+   "student_conf": 0.82
   },
   {
    "id": "hn:50106258",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.7333
+   "student_conf": 0.7098
   },
   {
    "id": "hn:50113628",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.7352
+   "student_conf": 0.9647
   },
   {
    "id": "gnews:CBMiXEFVX3lxTE9hZUdMOHE4OXFQNU9ZTERDQ2xYcjBTWVl2amVRZzF5UGNadmRtUmd4cERzb0NqQy03eFhUMlRqbEdnZ29rTXQ0SG5mbGt0SzE4ZHhCWnc2YjUtTWk0",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.9699
+   "student_conf": 0.9727
   },
   {
    "id": "gnews:CBMiuAFBVV95cUxOREk2R192R0hQTy02RllJQXZHS0R1QTJDeTJYZUx1RWNGZWtzakpWMkUxdHVQZm1wSDNvS0ZheS1OM2FyaGpDX1FHOUtXdUFoYW1RRXRVdDZ4TFh4d0hjWEtLYXpMS0NnYkxwRjdDeVFaZV9mdlVJem5BU09RZTZLaG5XSmJMVGRIQ1gzYm1uRFM0WnlieU1GYjhMMWgteDh0MVo1aGwzMEJBNFdkei1yRDYyZUUydGhD",
    "gold": "ia-servicio",
    "llm": "ia-servicio",
    "student": "ia-servicio",
-   "student_conf": 0.5886
+   "student_conf": 0.8184
   },
   {
    "id": "hn:50118603",
    "gold": "ia-servicio",
    "llm": "ia-servicio",
    "student": "agentes-ia",
-   "student_conf": 0.863
+   "student_conf": 0.8727
   },
   {
    "id": "gnews:CBMiZEFVX3lxTE4yYXRJanBiTjVfMWdQRGJjSlYwbXpQT1pfNGQxaGNsTmd2MUxYTHZVeUNzV28yOFdkUXlkV2NLdXN0NkxjRVcwUENlMmdkUkx1VmI3ZnBRZ05wN2NqWVFXdmRXUHo",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.9449
+   "student_conf": 0.9747
   },
   {
    "id": "hn:50122510",
    "gold": "infra-costos",
    "llm": "infra-costos",
    "student": "infra-costos",
-   "student_conf": 0.6826
+   "student_conf": 0.8465
   },
   {
    "id": "hn:50120190",
    "gold": "educacion-ia",
    "llm": "educacion-ia",
-   "student": "otro",
-   "student_conf": 0.3636
+   "student": "educacion-ia",
+   "student_conf": 0.6198
   },
   {
    "id": "gnews:CBMihAFBVV95cUxQaFd3WGh2UjRFdHVWWGF0MzFUMjlMQnlnM1FXNEUtQVB4dGgzUmlTbEdVdWNIaHhWQWtWeVZ3SVZZdkVuWExBVmJ3Y3VHX21CUEdMWlBlOUp2WjZGRGRZWTNLTmRuME1FVUxxWkpDWWN0ZmNiY2t2bDJ5cVRwYWF2SlpNdXo",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.9511
+   "student_conf": 0.9754
   },
   {
    "id": "gnews:CBMiZ0FVX3lxTE80YXdtWGRBM0JNSU5Yc3VsUk4xYm5WT3BoUGRpdHpRYmd3bWdORHJIZG9tdjRJVmpBWVZTX1lxa3p1LWpVbnlCSTVURklOTHc0enMtX0pqcnplZnRvbU5VSWJFY240aXPSAVxBVV95cUxNa3pvYXB4cHpYaHJ5YXdqOXdybTFRLVh6NWJpRHJSOWlMMXpXX3JGN215cWhHWUF4Wnk2bE81blZtWHktaUtfWE1TOU90aUNXTXIzM2xUbmhsNFJPQQ",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.9626
+   "student_conf": 0.9768
   },
   {
    "id": "gnews:CBMidkFVX3lxTFB1dDQ2c01UWmVWUUQtZFFkallYY29tQkN2T0Z5YzhVbDlJcEJQTEdfbU1WamdoZTdGWUJfdnVLRklqMmU5RlBRbi1GSEFfd2tNazNyb3N6S1hldkkta2NIZGpLNHlNeGdkbmVFUUJPYS1mWk9ORVE",
    "gold": "copilotos",
    "llm": "copilotos",
-   "student": "vibe-coding",
-   "student_conf": 0.4615
+   "student": "copilotos",
+   "student_conf": 0.4664
   },
   {
    "id": "gnews:CBMi4gFBVV95cUxQRFRJcm5palhNRXBhZUtyUmtldnJPQmFkbVRqR3M3c1RTOGc2eWdxYlFFR0o1clhXLU1wVTJsSTFZNGZQNm40OHpUa3JLc19aYWRkY3diVWx2c3BLRWhoX0tVTTJlUGZzNWNZZmlrdUw3RUk4LThlNm1Mek9vSjVYU055b3ZIMlFUdVJpWXpabFg3Vk5qc0FmQlo0dWhNeFZvbk5TV29VbTVLdXNEc0dMa0xpU0g5NDZpdkY5Z0hkamduVDZWYnQ2Um9tclRjR1FhczNZUGtMN2hnNkNkT0VTSXNn0gH8AUFVX3lxTE9BeEZ0Y080YzhGNHlYM3A3M1NYUUJjczJQSGtQaDBQMDM2ci00ZzBINml3YlQwbDA2VWVtbG1SVnhpYTItSGhiQU95RG9JX2xQR282ZFR5NVhIYUg0bjJROUg2TTN4eFNEamIzZ29XOVY1bzkyM1lLUktiM3pYNkFQY2hzWmFBZU5hbDJEYUlJZ3BfVl9nSDJEVUpScDB5eHRFenNpMmJGel9HRDdhMGZ6Ymw2N0hVd1hBVUFFNXI0bmFXVm1IYlI5QkU1OE1DZ1FROE81clZqUERGZWlEdWpXSFdHNUYtQ0lhUURsRXpObkZPWGk4ZVBfVk5HOQ",
    "gold": "seguridad-riesgos",
    "llm": "estrategia-adopcion",
-   "student": "startups-inversion",
-   "student_conf": 0.4032
+   "student": "estrategia-adopcion",
+   "student_conf": 0.6111
   },
   {
    "id": "gnews:CBMi3AFBVV95cUxQTzhpVjAxbFJITVJ6Y1NfSWxQSDlEXzRuYkJiR0Z2VmJ6Ykx2VnNzLXFHcW1NYmlQdGZWOU4wYWc5SkJKX3pCUlczYm1jN0N0QU1Rd2h0N3FsNmcxVXBfaHREVXVqRU0wYWhjbFBCbk1Ja0I5Yl9SZjdrTUMxYnIyNllUOV90dHlKSFFEcVlxZjM5MmlZY0FMWUxqWEpKWk1NTTNDM3U4TE5zRl9IOGJGTEpid2pxdTlqZVhyX1Z3VjRiTThiYVZ2X3hPSWJ1bUFVdFpxVzkyclZERnNl",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.5848
+   "student_conf": 0.8333
   },
   {
    "id": "gnews:CBMiogFBVV95cUxQR05QeExQbVJtdndwNGxrMGN0b2otcWJYVk56dU9WSVdlNjZzcnpsREVuQUhSbzhnTDBiUFY2TEJCOUNqME9pS2E0UXFYbVk4VDctU0t0V2pZc0pCdlVZZnFOam1TWHhkSURIWTkzWFp6WERrak5vaEhlaFkyNzV0RHdEZXBPc1R4ZVZlSF9kUjFmdV9DQVlQYU9DX1lON0RvOEE",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.8512
+   "student_conf": 0.8652
   },
   {
    "id": "gnews:CBMi8AFBVV95cUxPRFBwdWtzV2lwSE5ydUtZcGpVTnhxbmRyTHVUNEY4Sy1OUDFPUnRCdHRrc3VFaW5FdjNLajFvQlp5UHFWMkw2bFdyeWNRaklfTFpIdGF3S3F1MFFaU2ZvUDhiQkxrbFZhU3h3QTZmdUh3SnJDbHR2cUJRNFpGaDk3X1JXRmxmN3BxUDN2cEdZV1dzVHpPOGIwc3BpYzdHNm5aQVJTY0FDeS1wWTktNVFsczE2S19QZDVpM3VOU1otWjd6MXhma2xjc0xBX2k0Wi1IbmU1QjdlWkgxVDJoV3VUU2EtV1p5VmRJWkFaU1dwcjY",
    "gold": "automatizacion",
    "llm": "automatizacion",
    "student": "automatizacion",
-   "student_conf": 0.8581
+   "student_conf": 0.6261
   },
   {
    "id": "gnews:CBMiiwFBVV95cUxOTFpDR1FpYkxnaEo0UEs1aDNyRjhuSXVNWWRnTXBvVXdfeUlHNEtmbll4Wm1yalJCbUdkVWlaR3J2MlFPRE9vR1dETm9TTm82ZlpDaThyT2xabU9TcXFNblFqZ05GRnhLSEVRMndTclpJU0hsbXExOHNRQV9HT1Z4V3EwZ185OEdlVDR3",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.971
+   "student_conf": 0.8589
   },
   {
    "id": "gnews:CBMi5gFBVV95cUxPelVZbE1RaVI0bVM0VVNQTGozU0RiVlpGc0RseHpMRDN1ZS1iSm04ZHZKS0lkbGdVMFBBaDdBUm80NHcyM3ZTd1FvNjIxQkM5QWR3Wjd0ejVMUkN3dlRqdUV3VVV3TkhuN2V6a05CZ1BWU05SVm5heDB6bHBsemtvWkFrelhaR0JLVm1LZlVmWlhVY2xxNjJqeWtlSVpWd2hmY2ljZmVuaVpyNWVubkZrVS1LbWluUXZNUlg4bHZnM2hvUlRETnoyaXc1NXRubjcwUjFLVG40QlNmT2VoZFBodWRuMHF4dw",
    "gold": "regulacion-etica",
    "llm": "regulacion-etica",
    "student": "regulacion-etica",
-   "student_conf": 0.952
+   "student_conf": 0.9776
   },
   {
    "id": "gnews:CBMiigFBVV95cUxPNnZrcllSendFZkswT0tmZjdmbDJTWUhLMDZnSnNBWEg1b3Fha2JaaHJLRmtxVEs2bnZKNjNLZXIzdnpjaFBYR0ZMcFpfRDFveTY5QUpGaWxmLUVtSGxfd0t2d0RDSmROREFHR0V2cjlUUEFyRTQtX2dmandEOWx1QUxDR1B2dWgwYXc",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.8384
+   "student_conf": 0.9123
   },
   {
    "id": "gnews:CBMitAFBVV95cUxObndzTkpmTnhhSFMzeTZOUERsaVFiZTFyVTU5VEZvS3MtLUlNZ1dCMkZHUXpiLWxJUjVHVjlrd0tQdkZXUkVQSURKZ0pnWjJDeGNoOVh0bFMtZjhCZUhyTlFtczZacV9BUndfNVk2Wmw3QjBnSEFrUDNfX0x4Q1A2X0d5YTBkX0lSdkNjZ3lETkptMEU3Vkd4Zk9NVFBhcF9kNDJ6bHFBUmlybUE0eW9VMml5Z1fSAboBQVVfeXFMTnBwN2dOa0QtcGtLazctYThfYjhBdEI5WUJENU54YUlLTkVaaUJCcXZhb1hPM3Fxd2dWR1RCdk4xSGl3cUFVYTZVVkxfSzVveGJCQTdmeU00MXEwdUUweUdIWHlWWGUwaGJCU0o2YldSSlF0d1BVUFJNZktfUkpzSzZIVGxWNHFOdnNyR1QzZjBFbFNLdm9HYnppNE9PZ3JtdnRqMVU3aHZNVGVFck1yZno5ZXZDbEh2bVNR",
    "gold": "estrategia-adopcion",
    "llm": "automatizacion",
    "student": "automatizacion",
-   "student_conf": 0.9325
+   "student_conf": 0.6599
   },
   {
    "id": "gnews:CBMi2gFBVV95cUxORmxvQTNFWWoyd1dJbHhpUnBUdmdvS2kyX3hwZ2NObWNOVTUwSU5fYVZVQjFLbThUY0tXT1MxZi10WG1mR3I4YktkUjE3cE9TU08yWDdZU2wzVm1KVm8wSFVFTUtkdXdRaXlHMTFfV1NvcVVVSTBWT1BRMXRJZjU4VXRxRkNWNE94STI2dHhUaFVuV2doaWFLS2pwTERfRTl3MFdpbnhlZkpvTkY1UTZzZmhLUElZRm8wV2dNOW5vYTdtSVdrcWI2dElxR2tHTklxek52VEMzUDRwZ9IB9AFBVV95cUxPY1EwdHN2SkJnSjdJQkVfN254c1dRNXJhUi1ucFlCeTZ6WVBMZEtyY1NlMkIyRFZobVhoY0l1dDZ3UHVEWUdmSkxxbTJlcUVMTkNITzh2Y2oxU2dPSng3X243RURtdURScTVQWnpUaUlXMlNxWVN4ZmFxUlY5MFdhZEg5ekJrMWRUbHEtR0lKak02Z0l0MWFRMTB0ME44TmVlVFFTeFFyUktUUkR2SjNzcFJPS01HLWFqV0JMRVJUNUpsaTJsWmx1dWtoaEs1elJGWjJHNTFmQXlpUDBJZ3lvR3lBU1dqczFQZC1QWDZwWlhEek9N",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.9604
+   "student_conf": 0.8914
   },
   {
    "id": "gnews:CBMijgFBVV95cUxNcjNiUzRiam1Gd1NaVFlFbkczM0RiVjZ3V19KZGxrcGhCNXJWMW82UEVtZHJneXA3TGtWYUxxVjhoMFNTM1RuakM5Rnc2cERiZEFkSWVaZ25jNzFQZjVxTERTRldLS3E5QzhjUnRBcGFtRFluaXFKN3FPSU9GOV9RTXE3NjlUVkdrdDhINnNn0gGTAUFVX3lxTE1YQ1Yxd0tlbElVZzZsaTNGd3NFN1ZIWnlKQ1dUWGxlTzBNYUVfUmo5eWlpQ1J1UkxHSUdTeU5vM2Z6b0xSTzRMYlVUQ1Y1akREbVp5RHk0V180cExaN1Z1TnVjaUc2ZE5ISkxEdjZ5cHZUUnZXelUyUHRuVlVHVm1lb0NwZ1VZYk1aNUlDN0wyX3FSTQ",
    "gold": "regulacion-etica",
    "llm": "regulacion-etica",
    "student": "regulacion-etica",
-   "student_conf": 0.789
+   "student_conf": 0.9198
   },
   {
    "id": "gnews:CBMi5gJBVV95cUxPclZiOHFUUHExQTVRZXN3VFpwQmw1aFQ0Qzh3LVJyVVMyNlNxS0V2akpLaHZOdTU4RGFfSEJlMm0wZzFXZklHVXJIYmlJcGNNWlpoQlBEOFVtQTNib3UzVUgxVlBTZlExTTd5WnlsT1k3OG1GNzdqR3NjMUx4bTVua045NFJmNjljaDlGaEtRTG5NbHhEUGpNZ3NKSlZSUDJ4cmZzVEFHX0U5U0tfUXFJR3ZmdE1VNDc0QnZtWHZJWGJLRGFhbnF5RDNnamlEc0J6YnZ4ZGVaOHhFYlptSlUwamxaMHdtMGdNa1ZBWTNobUhzbnkyZmZYd2JMRnlfR0o5WTU0TTBuSUo2RHZOZ0hRMlE1d3EwalBpejRLbndOSkYwTWEzTjNuWGE4SkV1OEhRam1ScDBlaHpRNUFQTmtSSElPYnVvVFFMQ21FS1V4emxmVU5ZM3dzbGM4aXZYOUFQSlhJblZn",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.5934
+   "student_conf": 0.5101
   },
   {
    "id": "gnews:CBMitgFBVV95cUxQV2kya2Q3ODdNXzZub1lhTDYxVDNWMEgzXzBHRmVQS0tFQldXaEJaZDBveVVCdTM3LWRqVHFJSzhmdTFfSFVwYUp5aGZzM01Qdi0wRmRMdTR6UXNFdmhiWUxRNVdKMHBLejBmUXZlcURrcVhvcW5rMHFzcWwyM1F5T3hnNXpTOWRaOTNuMXYtOGpuWE10TFQ0ZGxHbE43cERTbUszNi1XZEk0c2xIQjdXa042WU5Qdw",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.8688
+   "student_conf": 0.9698
   },
   {
    "id": "gnews:CBMisAFBVV95cUxQQVRJTkNnUnZ6cngta2tKR2RjSzlKWjBMd1ZDVTFiU0FMdVJManRyT1lNMW00ZWM2c2UzeUM1d0pxZENKVGYybjhfcVNIZWQ0VTI1TEJ3WV9VQjlJU3UyVk1lbzltNWpMSGhncjhBdWJvZlMwek0wM0I2b2wxLU4zRmVRbE5xTW9NT3VxaHAxWDdseXltMGdjY1gxSUFndVFMXy1abGl2dVV3RkhkNXhUMA",
    "gold": "ia-talento",
    "llm": "ia-talento",
-   "student": "otro",
-   "student_conf": 0.5543
+   "student": "ia-talento",
+   "student_conf": 0.6409
   },
   {
    "id": "gnews:CBMia0FVX3lxTFA5Q2F0UFhGcENkdkpxV29uTklKbWVMWUFXS2MwTlBnbURpYThoaWktVG9DMGx4SzVYbXo1QnNaamhKLTRBSDJ4MVVFY2d1QVNQYkhobWNQR2JiVkVWcWlfQmpKTkZtZUxNWkhJ",
    "gold": "educacion-ia",
    "llm": "educacion-ia",
    "student": "educacion-ia",
-   "student_conf": 0.5822
+   "student_conf": 0.7971
   },
   {
    "id": "gnews:CBMi1wFBVV95cUxPek1vMWZBWFVaU3ZPcktHOTh4c1NVQWh5QjhoRzZQWDd4MThLNjNiVUFERU9DZDJFZURacktVS3FlMXB0VzBmeTRqR1Q3SEduU2ZEWTgzVlFudGc4c1JRcko4Rloxb0hqamc1cVBLUXBjN2NCYWx3aW0xWEFGdTgzQkRJUjZDU1d1Y0p6UjdVV045UXR6ZjhULU1QaTFnRDlhQTJXT0FRN2ZRdlFxUXFfVG1RcXhkeWlkSjlEQlB1Q1RaRkVVV1lvRUZWcnZqeG1aampVMXAydw",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.9516
+   "student_conf": 0.9645
   },
   {
    "id": "hn:50112219",
    "gold": "estrategia-adopcion",
    "llm": "infra-costos",
-   "student": "seguridad-riesgos",
-   "student_conf": 0.2238
+   "student": "regulacion-etica",
+   "student_conf": 0.4652
   },
   {
    "id": "gnews:CBMijgFBVV95cUxNUWd3VG82akRreVcwdkNvRHluS200QW1wcFk2M0NHTEIyN3JUcm54aW00c1dsazd0YzFoVEdLTFp1UnRYczFNUi1JTXFmdVBXSE9HVHFHOTRNSkRlUHdKVy1FQlBreWp5T0t2VW9YMXlCYXRycnZka2tFSmh4ZEotbkVQQVVKOWRtdGxkcjNn",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.8381
+   "student_conf": 0.9158
   },
   {
    "id": "gnews:CBMiuAFBVV95cUxNdTh3UzRrSV9uU2J6aXlGdThzNWYtcXRUcDlLTWpaVXZ2aWwzbzVJRk16ZjUwMFRaWEs4S1BjOEMzY0NDNlRpZGZqUEJxcmNQZmJRY0dXNmFaMFdQTFRDcG1uV1ZseXBpamlRNmcxRnRZbmxBQmRvRjVvaVFjYjA2NHdGRVRJTEE3VzJoVEdyS2Q1ZEl3YnRhNnh3Y2J0OXZlTkw4MjEwYVYtM0UxZFVPbTBDNXNZLXVy",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.9549
+   "student_conf": 0.9585
   },
   {
    "id": "hn:50122321",
    "gold": "regulacion-etica",
    "llm": "seguridad-riesgos",
-   "student": "seguridad-riesgos",
-   "student_conf": 0.4972
+   "student": "regulacion-etica",
+   "student_conf": 0.6577
   },
   {
    "id": "gnews:CBMi8wFBVV95cUxQUnZHeWFrWU5wODM0S3Q2ZlhoeEhVUGJ4UloteEU3bEJ0VTROUGRXU1ZFTFhPZWVlVVp4b3RzRE81ZERSWjM1Q2puQ192WWp2NHpVT1BPbnZZR1hGc0Jvd0tKRzNnUmowTWpieVhOQnk3RXVVVW43V1VZZ2xYRllBc1Q1c3RHb3hRS0ZrU1Boeng1WlF2bm5LbW9jZEh6bWtWaGhEUDVwUmVyemtHQXBuWmFYVE1WZUF0S3dBS1I4UUhDcDZQNHpuZ0QydEw4X0NCZDJNZzM2bVFYVUJfdDU1aEt2b1RQd2RwX1V1NHZxMUd0R3c",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.5885
+   "student_conf": 0.3898
   },
   {
    "id": "gnews:CBMiigFBVV95cUxPYlk4U2FIcHU4TGJiaUpIT29pNEZQT0FRUnlfY2dQSmpJMXdWNTBFZ0RjSUtpSEt1ZERXbnhfbDRCTHBMSEZnM2E2NTlteUFKMl9hekFNWEN3TFNDVlZwMmxQUS1nenNUS3dfUFBuZHNEc3lxOVhOdFVIc1B2OUFpVmhSRWRUQldiQWc",
    "gold": "vibe-coding",
    "llm": "vibe-coding",
    "student": "vibe-coding",
-   "student_conf": 0.956
+   "student_conf": 0.9736
   },
   {
    "id": "gnews:CBMizAFBVV95cUxQUkphY1Y2S1Y1SGZWU1V1aWg3N0JudmtPTlRUVnV1OVhGa0tCYXU4d1BJaUMzNHB4NFFrcmVBREtwVnpBZEtQSEUyUmp6MTJZbVF1eWpRZ2FYQVdTTElZc1ZlTTF6bmliQmRyR19IekV1SDBmMXhiWFlWV3RqMmdkck5HM05CSzcyM2g5X2QtaXdZbTNkbEZHdXZubWVPVTh2SFFKaU8zTWxJX2V3VXVFR0Z4bFV5MmhCOHdYYm4xcVl4R0VRelFUMTBPRWU",
    "gold": "regulacion-etica",
    "llm": "video-voz",
    "student": "regulacion-etica",
-   "student_conf": 0.8514
+   "student_conf": 0.9405
   },
   {
    "id": "gnews:CBMickFVX3lxTE9uMW44QW5GVElfMUFQOHpDR240R25XR1VrMDNOb0kyc0VvQzNmSlFiTGRZTWdfOGRTX04zaWM4cVhJUWp3YWdoREhnYTVCX1FrWkFIUmcwSDlGYmJsZ2tWWkpLWmtzdVJCTFJMOGc1WW9sZw",
    "gold": "regulacion-etica",
    "llm": "regulacion-etica",
    "student": "regulacion-etica",
-   "student_conf": 0.7336
+   "student_conf": 0.4986
   },
   {
    "id": "hn:50065324",
    "gold": "educacion-ia",
    "llm": "educacion-ia",
-   "student": "otro",
-   "student_conf": 0.3821
+   "student": "educacion-ia",
+   "student_conf": 0.3745
   },
   {
    "id": "gnews:CBMivAFBVV95cUxQaVJYWWgxSGRiS1J4Vk5EdG4zV3hCbHhxZkZVWXNnekRxLTQ0WEFjWElMdVZINTA3WGdXQ3o3aXppZTJxUFZTdTdManZYTllNdENfTXVwZ1RTTnNSRGo3MktGMUY1NXphTWRlUGVWbUVDZnJJd2xUSXR2SXZ0dVI0TThrTjVkc1UtV0FDaUpaTlM0VTFaR3JfZTA1Y2VmaXZGMmxMS3NGLWtiMTNpdXhmMURGOXJwWm1IcnRjaw",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.9692
+   "student_conf": 0.9836
   },
   {
    "id": "hn:50083366",
    "gold": "automatizacion",
    "llm": "automatizacion",
-   "student": "estrategia-adopcion",
-   "student_conf": 0.3122
+   "student": "automatizacion",
+   "student_conf": 0.4692
   },
   {
    "id": "gnews:CBMitgFBVV95cUxNSi1HTmxYd1M4UzNINjFWR25GSFJaZ0pSWnQ2SDdpdWR3VzBCNmlSRWpIb1gyT2dQcE11cjVpRk9QMGxYN25neTRLWTdTQlpFT0tSTUJEVUVJb0dlY1pzdFd4c2JWZWNOTFNod1FRWE1SOVlRN2hrSkpVdXJEWW9pUWVYWkJic2FOLTRKakV0emhnaTRLeXpHcG9VOTY4S01rcGM0NXo4dFZXbEVqLVI4dTdjOU0ydw",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.945
+   "student_conf": 0.97
   },
   {
    "id": "gnews:CBMi0AFBVV95cUxOQ09VOENfQmtlc2dES0gtMWM4VGxsem1FLVpHenV1Y0ZEMWtlS0tYN3JacllqQTVjNklCSFFLdFl6X0lQUldidUpwZW9yVDNiZWZEM2lPQmZIcHJhTDBMMER0ajVzcDRzd3FFZUZkTVRBb1h5Ym1Kc0IzZDdMVDZMOFJFY1U5b1RHV004a3hiSUdmSGdpZkFLVXJzQlNQUG04ZWlhZzJoQ1FvS3ZQdUhadnduYU9hNkFrS25hZFo4cWlYdlliRExudEs4cXFrYXVn",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.4196
+   "student_conf": 0.6174
   },
   {
    "id": "gnews:CBMibEFVX3lxTFBQcDVuUzRwYnNOaVZlWUhpRlhnaXRLTUN4OExkZWg3REtzQVNDUXd3akJEeWJsV3pmSDRyYnAwTTc2RTNLVnRGSGVubEhFaFFuZHVvMFdya28xTW1OSTdTLWxySkc5RDFtYlQ5Vw",
    "gold": "video-voz",
    "llm": "video-voz",
    "student": "video-voz",
-   "student_conf": 0.6796
+   "student_conf": 0.6999
   },
   {
    "id": "gnews:CBMirgFBVV95cUxObFUwTlZMOTZONzFVU2U0MVRGQXJlNktaUmg2MFNYWkxjaE9uZ1BpMkpsUl9SMmZQM3Q2RTYwc2hBbl9nNHV1aVljZVlnNWVyQzN2aGlkZ1duT2ZuV1Jsb2VqSW1uZmh1QjItZEh2SE9tYVlfd1c2NTZocnR1NnByNFJDNktsT0RFVXRYbFpsVXBXT0tqSHpKRm9hWnRqUXBfZkQ5Umt1MFl6akVHUkE",
    "gold": "agentes-ia",
    "llm": "agentes-ia",
    "student": "automatizacion",
-   "student_conf": 0.8833
+   "student_conf": 0.7315
   },
   {
    "id": "gnews:CBMihAFBVV95cUxNRDRIM1FUeFk3V1ZhUHVxdjdsRXl6amVQMXdaVlNfY29qcklNX0tzUmJ2aGJLOWpnamRrUk1IYl9xTUhiYUdpLXhJS0RiaGNrOGtLZW0tc3RVNGxGYmpCZ1ItTTRPcHN6VUlBUTNRaWxfMTNFMXNNSUpDLVhvYjVUYlMtYU8",
    "gold": "otro",
    "llm": "otro",
    "student": "startups-inversion",
-   "student_conf": 0.6345
+   "student_conf": 0.7859
   },
   {
    "id": "gnews:CBMiyAFBVV95cUxNLWhXQUZQMkJjT3I5VlBXVEx2RDJVeTNhbmdPYklSS2hnOU9BMDBERFV5WVdZMjNOeXhEVHE0ZXllaEgyaUY1VkY4THppTF9WV2ZndkRjTUdXYjhUVW43R3hpVkNhTlp6eThYd2IybFFjOGduODJ4NXVMTmJKUUFuSGVhYUFzQmYtRXVXbUMtelBMQmhpeW0xVkp0V2RiSlVhMVJYbDlWTUt2c1VNZ0c0R1BSQ3BhdHdLNXNjU2FOWkkzOWFjeTctRA",
    "gold": "regulacion-etica",
    "llm": "ia-marketing",
    "student": "regulacion-etica",
-   "student_conf": 0.4694
+   "student_conf": 0.5197
   },
   {
    "id": "gnews:CBMi1gFBVV95cUxPQmlINkEzcC1fMWdoRVFfaEl1MTZZblhHMXJtbGNtMzA4c2pNSTdHd0RQam11VW1xMDJFQ0tCNGtvSWJ4V2VoaVhZaGJKRko1bTN4cXpRZ3NCZmVCM2QyMW9QbHVIR2ZJczNZU2NIYlJFX0MycU4tWDl0MUZja0thMFJ4QnMzZ3QtT3k1b3NyX2M2NG5SQkc4VzBrNFBNa1dnalF5cC1hX3BMYXdmVXZqZFNuQmtIeWNGZzFYbmh5NFp4SVFsVVhSMGwwWWV5YV9uajQzN1FB",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.6581
+   "student_conf": 0.9137
   },
   {
    "id": "gnews:CBMisAFBVV95cUxNeDNxb1hxejdUQnd3dmJqMHRjRGZ5a1Q1ZG56enZCNlhzN1FVVTMyV284Qlhyc0ZFcE5yRXEwcTg4MFdKNnBOczlMQzkzTTRPZE5hUjkzMm83UmM1VDlSNGhVMWJpY2xlS092LTJwVGx3ZEdJSy1IZkxmRUExVjNVa3l4aWFFMlFQVERiTG5KT0JTXzdxVXpNb3Q1SFV3aDdiYkdHamVrZ25tR1ZteVhINA",
    "gold": "empleo-futuro",
    "llm": "empleo-futuro",
    "student": "empleo-futuro",
-   "student_conf": 0.9607
+   "student_conf": 0.9321
   },
   {
    "id": "gnews:CBMijwFBVV95cUxQQVpkVWpXNlZaaUstWTYzYzJsOFlnY0xHSmctQ1o5Nkh5R2ZDV0c2REU1RDk2dXNicXVOM3JFYkotNDVzeURNSHBOYzZZQ050a2FvMVdNb2RfYU5vM0lOdG0zdkp5WFV2Y3VRSVBtTVBHY0hUZ0hoLWRlVkF0cDJYNzRjTk45Tkg0cWYwVW1WNA",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.9855
+   "student_conf": 0.9924
   },
   {
    "id": "gnews:CBMimAFBVV95cUxOUGtBN3BDX2JKTEJfb0F1cTBaRjBRSnIxSjdCMWdhX0hvS2hsOFZBRkxfN3AtUGVwOXhkdDVYaG4wM0czdTBUcXJRbEtHRGxJTzd5WTMwbUlCWGVQczVIWTFEN2xmVTNtVW5oaFgxLUlPWDJCUmFpTzlTSUxkN2xuSG8wakxFbUhBTzd4eW05NkxucDB6bnFSYtIBoAFBVV95cUxNQUd4UU1UdXpITFF4MGt6MjV0dUM5bzlDRmJldzJhblQ2NFd2eWhOWVo3YXhzRDFNd0N5dFpqVkpaLXZNV3d5MnhYSGx6Q0VURklmX0VnVU1TVlo2SjZCUExYRkJZZVpHMHpiU2h4cHFROHVZSXc1QVJQdnQ0LVQ4T1dZdngwUjJUVU1nVTR2VG43RzBfWnRsTDZuaC10OEQ0",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.9681
+   "student_conf": 0.9901
   },
   {
    "id": "gnews:CBMi8wFBVV95cUxNOXJvME9za1ZzamlHZ2txUzlNTlgyZzA1RE1XQ2V2OUV5SWZFZ1QtV0pwb1JodmNlTU1tRnpWZ2x6Rl9FOVJCMlNITHdIbEZWeVpjVDRLUmNuYm1iWU5LWDRNSUZUVjIxYksxNzU1eWFsY1dNdUF6bmQtTlY4SVZfWUdmNk5xdmc1NU9hWFFsNG1KdHJyOFVlSVMzOVM5WXZhbjV2d0Jid2FKLVZsT0dENmRZWExiSGl0bDE4VWdPR1V3azd4aEpCUHB5Y2dBTXFQeC1aSWxrRThkMGlaM0tMNkNNLVU4RzdfNmVDZHhjS05aeU0",
    "gold": "automatizacion",
    "llm": "automatizacion",
    "student": "automatizacion",
-   "student_conf": 0.9302
+   "student_conf": 0.938
   },
   {
    "id": "gnews:CBMivAFBVV95cUxPd2NGSnp3MkYwbVlkQVFPRzVhaFpkR1loWXJQRnFKc1lPejRLYk5Gbm1HRk5waTZJT0Nwd25uTWRLcTZBdjRCVGZwX3VZbEI1VG8tRHlmWFpNTFM4M0xXTmRLQ1NMRUtnNVhHZThRMV9wcUxIR0F1TFktU3MwZDJZNTJnam55OFlYMDYxRjdNd2VuWHR4Rlh6b29qV3hCcFBFZlNVbEkwM203TmJoV0dSa2RuWm5OeEZwdkhoRA",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.8508
+   "student_conf": 0.9018
   },
   {
    "id": "gnews:CBMi7AFBVV95cUxPMVhERDFxZ1p2Y3NjVzZmSlgyTGlJX2wtNWRJTklTb0Fzc3JXQXpBRkxKcFNLMWFQR1hXY0hVbk5wbUxMc1RKNmJGZXcwV3RZT1ZZWGZMQUljU3V0MVhfRWVWeENaVXRWQnNBdFEyOXQ4OEdGemI5ZDBQVVVPOU42VUNIclZGWU94SkVsSnV4OFIzTnVKclViM1JQc1JpWHZsa2l1V2ZpOFVrV2tUU2UtbWJHWnNlOTNDRzBJTFFKUUVDUV85Yk1iWHlJdUVQWHhRYlhhMDJ6NUVNZzZwX2pvM1N2d0I1R0ljaFFEYtIB8gFBVV95cUxNd29fUkI2S1hxQ1Eybkt1VnlqMEY4Vkwta05jbGJxUF9mWTctQkhhYm9JNFA1QVlWMm9ndElpaERkNnF4T2FYaU9zVmQySjI4eUluOV9rT1NaX0dPa1pOaEtfNlN0Z3BEZmRzb3MtVUk4M1Z0eThMNmpjN2lLVGFLN0ZRX3NDSXNieXUzNDZ3OXo2NmhwcnRrcTdib1JwamtkRFl4NGY3NTExOUdvNThWZFlXQ2RZMHhRbEdZSFJPbE02N2NEWkhVeWEyX01KdzE2VW1DVDJrOFQ2QnR4XzFTcDBSZHE3RHhuUzVqaDVLMmRldw",
    "gold": "seguridad-riesgos",
    "llm": "seguridad-riesgos",
-   "student": "regulacion-etica",
-   "student_conf": 0.5857
+   "student": "seguridad-riesgos",
+   "student_conf": 0.6616
   },
   {
    "id": "gnews:CBMiiwFBVV95cUxPZUZCcHY4OHY0RW9kcVlJd0xQV1Fnd19tUGd1cmtBdjh2X29nMC1QQ2lfV2h6N1dBQUpOcHBhaHNuMXZJQUwzYUxTSFVMbENWQVdBSHBaOUxBejBHMlhwdXRUUVpLanUzbmtsMG03cXI5UTFnOHZSWHI4ejdPVU1PMmM3QVFkMS1Wa1gw",
    "gold": "regulacion-etica",
    "llm": "regulacion-etica",
    "student": "regulacion-etica",
-   "student_conf": 0.9872
+   "student_conf": 0.9851
   },
   {
    "id": "gnews:CBMimgFBVV95cUxNN3dGRmhnTk9YRGdnT2hrd3ZOZElwVjlhWGhON2N6VEZCRkJrWHNHNHllVlRBZWJXNFBTbl9FVmRKUmh5TDc1WTdSM3RRem5nVHZERWhGY1FOWVNMRVYzeDE1b3lHUUJXVXE4WjZPQ1JodUtGZTJTSXVmYVFsYWdIUEpSeHplSV9wWHdqUkRUZ1R0Q2pVV3ZqcUFn",
    "gold": "regulacion-etica",
    "llm": "regulacion-etica",
    "student": "regulacion-etica",
-   "student_conf": 0.9791
+   "student_conf": 0.8986
   },
   {
    "id": "gnews:CBMiwgFBVV95cUxQekF4dHBFMmQ4LUZtdlVod0FDVmtoRFRwZXFsS2NLU0Vpa2U0VlNXNEprV1JMTjZ3bExaNXlzamRsUGRtTVhyZFlUMlNjNzQ3Rklpa2ZaVFVoWXM5ZDhYeXBITnF0akdMd05Zdm1IOXNwM2wtWWJoYzh1QmVKZllfX2pjblhjNl9tVGFDMjBLelh2amI1QVFGOE9LM0QxNDctOVhvT1RwYnRzREdKd0ZUYW9oSEZLa21SRW1sZFRLOGQ5dw",
    "gold": "empleo-futuro",
    "llm": "empleo-futuro",
    "student": "empleo-futuro",
-   "student_conf": 0.7584
+   "student_conf": 0.7218
   },
   {
    "id": "gnews:CBMif0FVX3lxTE1sSHJzN25xQ0ltVV9rY0Y0Nm1ZSDhKc1o0c0tCX091SWFQZU41ZEptVW5SeTN0Y1ZFSUMya2R2Q2U5OG40WWllLWVYMnB4dDhWekNDU2lONFVtOENYZW9hbmtFVVR0VWdfVGZES3Uzakc5TDZ5OXRSN0dPbk5SU00",
    "gold": "video-voz",
    "llm": "video-voz",
-   "student": "video-voz",
-   "student_conf": 0.4707
+   "student": "otro",
+   "student_conf": 0.6879
   },
   {
    "id": "gnews:CBMixwFBVV95cUxQMGhyZml4QWdqemd2REFyUUk4UmE0d19KQzh2ZV83WnhVQVBYMng1bVhNLTU2V3dmNVhTZnRRSGp2c0swdVFfNHVrRks2ZmsyQ2d4bGd5MDd0LXBjaUgzbUlLN3lKdi1xOXZOQ1JCQUVFOVF6dklCYndjTlJlTV9NSUVFREFTNE5zMjVzQ1o0UEItYWV6X3hvb1huZldFUkx1T2RDVHBWLWJoLVp1ODlzbDB5M2xhYzlBSFViLWZCMVE1VEtfaFFj",
    "gold": "otro",
    "llm": "otro",
    "student": "otro",
-   "student_conf": 0.7506
+   "student_conf": 0.8722
   }
  ]
 }

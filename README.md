@@ -34,7 +34,7 @@ El equipo de media de 30X paga scraping («miles de USD al año», brief oficial
 ```mermaid
 flowchart LR
   A[Fuentes públicas<br/>HN, Google News, YouTube,<br/>Wikipedia, LinkedIn vía GNews,<br/>Reddit, arXiv, IG y TikTok vía Apify] --> B[Etiquetado<br/>2 LLM: profesor + revisor<br/>= consenso]
-  B --> C[Modelo propio<br/>embeddings + regresión logística<br/>Python puro]
+  B --> C[Modelo propio<br/>ensamble TF-IDF + 3 embeddings<br/>+ regresión logística]
   C --> D{¿Seguro?}
   D -- sí --> F[Tema, formato, gancho]
   D -- no --> E[Cascada a LLM gratis]
@@ -50,7 +50,7 @@ Cada etapa tiene su archivo: `radar/sources.py`, `radar/label.py`, `radar/studen
 ### Qué hace
 1. **Recolecta** señales públicas sin login: Hacker News (Algolia), Google News (es-419 y en), canales públicos de YouTube por RSS (incluidos los de 30X), páginas vistas de Wikipedia, Reddit (RSS público de subreddits de IA y negocio, sin votos), arXiv (API Atom, papers recientes de IA), titulares de LinkedIn indexados en Google News, y posts/reels públicos de Instagram y TikTok (30X, Andrés Bilbao y hashtags de IA) vía Apify.
 2. **Etiqueta** una muestra con un LLM "profesor" barato: tema, formato, gancho, tipo de autor y si le sirve a un ejecutivo.
-3. **Entrena un modelo propio** (`radar/student.py`) con las etiquetas donde un segundo LLM coincide con el profesor (consenso, `python manage.py review_labels`). Offline: embeddings multilingües + regresión logística clasifican el corpus al armar `radar.json`. En el servidor: regresión logística sobre TF-IDF exportada a JSON e inferida en Python puro (NB/kNN de respaldo), a **costo cero**.
+3. **Entrena un modelo propio** (`radar/student.py`) con las etiquetas donde un segundo LLM coincide con el profesor (consenso, `python manage.py review_labels`). Offline: un ensamble (TF-IDF + tres modelos de embeddings multilingües: `multilingual-e5-base`, `bge-m3` y `paraphrase-multilingual-mpnet`, cada uno con regresión logística, probabilidades promediadas) clasifica el corpus al armar `radar.json`; el ensamble lo eligió la validación cruzada (tema 71,9 % → 78,6 % en CV) frente a 6 modelos de embeddings y sus combinaciones (`ml/experimento_modelo.py`). En el servidor: regresión logística sobre TF-IDF exportada a JSON e inferida en Python puro (NB/kNN de respaldo), a **costo cero**.
 4. **Mide crecimiento y etapa** por tema y **decide** con umbrales trazables.
 5. **Explica y adapta**: formato y gancho ganadores, mejor día y 4 guiones por tema (gancho de 3 s, beats, CTA).
 6. **Verifica las cifras de los guiones** (`radar/verificar.py`, sin LLM): cada porcentaje, monto, múltiplo o año debe aparecer en las piezas reales del tema. En la corrida actual, 59 de 64 cifras quedaron verificadas (`data/verificacion.json`).
@@ -64,19 +64,19 @@ Corrida 2026-W42 (generada 2026-10-17; datos en `data/`, reproducible sin red). 
 - **Señales:** 6.196 (Hacker News 3.240, Google News 2.018, arXiv 300, LinkedIn (vía Google News) 180, Reddit 178, Instagram (vía Apify) 127, YouTube 108, TikTok (vía Apify) 45, Wikipedia 20).
 - **Temas:** 20 analizados; 2 Recomendar (Estrategia y adopción de IA, IA en finanzas), 7 Aprender, 11 Descartar.
 - **Costo:** USD 0.55 por semana (scraping de Instagram/TikTok vía Apify) y USD 0.81 una sola vez por etiquetar 5.687 señales con el LLM (USD 0.000131 por señal); el estudiante clasifica a USD 0.00.
-- **Modelo propio, tema** (hold-out fijo del 20 %, 234 piezas): top-1 **80 %**, top-3 98 %, cuando está seguro acierta 94 % y cubre el 61 % de las piezas; contra todas las etiquetas (incluidas las dudosas) 67 %; adivinar da 25 %.
+- **Modelo propio, tema** (hold-out fijo del 20 %, 153 piezas con consenso de tema): top-1 **87 %**, top-3 99 %, cuando está seguro acierta 91 % y cubre el 82 % de las piezas; contra todas las etiquetas (incluidas las dudosas) 71 %; adivinar da 25 %.
 
 | Tarea | Top-1 | Top-3 | Cuando está seguro (cobertura) | Contra todas | Base |
 |---|---|---|---|---|---|
-| Tema (radar, offline) | 80 % | 98 % | 94 % (61 %) | 67 % | 25 % |
-| Formato (radar, offline) | 74 % | 95 % | 91 % (59 %) | 63 % | 53 % |
-| Gancho (radar, offline) | 68 % | 92 % | 92 % (26 %) | 57 % | 16 % |
+| Tema (radar, offline) | 87 % | 99 % | 91 % (82 %) | 71 % | 25 % |
+| Formato (radar, offline) | 85 % | 98 % | 91 % (82 %) | 70 % | 53 % |
+| Gancho (radar, offline) | 79 % | 92 % | 92 % (60 %) | 62 % | 16 % |
 | Tema (escáner, servidor) | 76 % | 97 % | 93 % (37 %) | 63 % | 25 % |
 <!-- /RESULTADOS -->
 
-**Afinado en Hugging Face (probado, no adoptado):** `ml/train_hf.py` (y `ml/estelaria_finetune.ipynb` para Kaggle/Colab) afina `paraphrase-multilingual-MiniLM-L12-v2` con las ~4.200 etiquetas de consenso: en el mismo hold-out da tema 76 % top-1, 88 % top-3, 92 % seguro (58 % de cobertura). Los embeddings congelados + regresión logística (arriba) ganan con 80 / 98 / 94 %, así que quedan como modelo del radar; el afinado queda como alternativa reproducible (`python manage.py push_model_hf` lo sube al Hub con `HF_TOKEN`). Resultados en `data/hf_eval_topic.json`.
+**Afinado en Hugging Face (probado, no adoptado):** `ml/train_hf.py` (y `ml/estelaria_finetune.ipynb` para Kaggle/Colab) afina `paraphrase-multilingual-MiniLM-L12-v2` con las ~4.200 etiquetas de consenso: en el mismo hold-out da tema 76 % top-1, 88 % top-3, 92 % seguro (58 % de cobertura). El ensamble de embeddings congelados + regresión logística (arriba) gana con 87 / 99 / 91 % (cobertura 82 %), así que queda como modelo del radar; el afinado queda como alternativa reproducible (`python manage.py push_model_hf` lo sube al Hub con `HF_TOKEN`). Resultados en `data/hf_eval_topic.json`.
 
-**Nuestro modelo propio vs un LLM grande gratis** (mismo hold-out de tema, 153 piezas, etiqueta = consenso de dos LLM; `python manage.py llm_vs_student`): `deepseek-v4.1-flash-free` por el CLI de OpenCode Zen acierta 87 % (0 sin parsear, ~0,68 s por pieza, USD 0 pero con límite de uso y sin garantía de servicio); nuestro estudiante acierta 80 % (~0,0001 s por pieza, USD 0, corre en el servidor propio). El LLM grande gana en acierto; el estudiante gana en velocidad, independencia y control. **Cascada ('Jev abierto')**: si el estudiante está seguro (umbral τ = 0,66 elegido en validación cruzada, no en este hold-out) responde él; si no, escala al LLM. Resultado: **88,9 %** de acierto (más que el LLM solo, 86,9 %), resolviendo al instante el 61 % de las piezas y llamando al LLM en 60 de 153.
+**Nuestro modelo propio vs un LLM grande gratis** (mismo hold-out de tema, 153 piezas, etiqueta = consenso de dos LLM; `python manage.py llm_vs_student`): `deepseek-v4.1-flash-free` por el CLI de OpenCode Zen acierta 87 % (0 sin parsear, ~0,68 s por pieza, USD 0 pero con límite de uso y sin garantía de servicio); nuestro estudiante acierta lo mismo, 87 % (~0,0002 s por pieza, USD 0, sin depender de un servicio externo). Con el modelo anterior (un solo embedding) el estudiante acertaba 80 %. **Cascada ('Jev abierto')**: si el estudiante está seguro (umbral τ = 0,58 elegido en validación cruzada, no en este hold-out) responde él; si no, escala al LLM. Resultado: **89,5 %** de acierto (más que el LLM solo, 86,9 %), resolviendo al instante el 82 % de las piezas y llamando al LLM solo en 28 de 153 (antes 60). Las respuestas del LLM son las mismas guardadas (`llm_vs_student --reusar`); solo cambió el estudiante.
 
 **Jev (modelo aliado del reto):** lo intentamos el 18-oct por OpenCode Zen (`jev-1.13-free`): la API pública de Zen solo permite el plan gratis desde la app OpenCode y el cliente `opencode run` no habla el protocolo de Jev (System One), así que no pudimos medirlo a tiempo. Nuestro modelo propio clasifica a USD 0 por pieza y acierta 80 % en el hold-out; comparar Jev en ese mismo hold-out es el siguiente paso.
 

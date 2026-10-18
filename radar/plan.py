@@ -15,7 +15,7 @@ def metricas(student_eval: dict) -> dict:
     o = t.get("offline") or t
     return {"top1": _pct(o.get("holdout_accuracy")), "top3": _pct(o.get("holdout_top3")), "seguro": _pct(o.get("safe_accuracy")),
             "cobertura": _pct(o.get("safe_coverage")), "todas": _pct(o.get("holdout_accuracy_all")),
-            "base": _pct(o.get("holdout_baseline")), "n": (student_eval or {}).get("n_holdout", 0),
+            "base": _pct(o.get("holdout_baseline")), "n": t.get("n_holdout") or (student_eval or {}).get("n_holdout", 0),  # piezas del hold-out con consenso de tema
             "escaner_top1": _pct(t.get("holdout_accuracy")), "escaner_top3": _pct(t.get("holdout_top3"))}
 
 

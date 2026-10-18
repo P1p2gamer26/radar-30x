@@ -23,7 +23,7 @@ def bloque(radar: dict, ev: dict) -> str:
          f"{len(c['Aprender'])} Aprender, {len(c['Descartar'])} Descartar.",
          f"- **Costo:** USD {tot.get('weekly_cost_usd', 0):.2f} por semana (scraping de Instagram/TikTok vía Apify) y USD {tot['teacher_cost_usd']:.2f} una sola vez por etiquetar "
          f"{_n(tot['labeled'])} señales con el LLM (USD {tot['cost_per_signal_usd']} por señal); el estudiante clasifica a USD {tot['student_cost_usd']:.2f}.",
-         f"- **Modelo propio, tema** (hold-out fijo del 20 %, {m['n']} piezas): top-1 **{m['top1']} %**, top-3 {m['top3']} %, "
+         f"- **Modelo propio, tema** (hold-out fijo del 20 %, {m['n']} piezas con consenso de tema): top-1 **{m['top1']} %**, top-3 {m['top3']} %, "
          f"cuando está seguro acierta {m['seguro']} % y cubre el {m['cobertura']} % de las piezas; contra todas las etiquetas (incluidas las dudosas) {m['todas']} %; adivinar da {m['base']} %.",
          "", "| Tarea | Top-1 | Top-3 | Cuando está seguro (cobertura) | Contra todas | Base |", "|---|---|---|---|---|---|"]
     for k, nombre in (("topic", "Tema"), ("format", "Formato"), ("hook", "Gancho")):
