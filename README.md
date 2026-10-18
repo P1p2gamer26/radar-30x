@@ -44,6 +44,8 @@ Corrida 2026-W42 (generada 2026-10-17; datos en `data/`, reproducible sin red). 
 
 **Afinado en Hugging Face (probado, no adoptado):** `ml/train_hf.py` (y `ml/estelaria_finetune.ipynb` para Kaggle/Colab) afina `paraphrase-multilingual-MiniLM-L12-v2` con las ~4.200 etiquetas de consenso: en el mismo hold-out da tema 76 % top-1, 88 % top-3, 92 % seguro (58 % de cobertura). Los embeddings congelados + regresión logística (arriba) ganan con 80 / 98 / 94 %, así que quedan como modelo del radar; el afinado queda como alternativa reproducible (`python manage.py push_model_hf` lo sube al Hub con `HF_TOKEN`). Resultados en `data/hf_eval_topic.json`.
 
+**Jev (modelo aliado del reto):** lo intentamos el 18-oct por OpenCode Zen (`jev-1.13-free`): la API pública de Zen solo permite el plan gratis desde la app OpenCode y el cliente `opencode run` no habla el protocolo de Jev (System One), así que no pudimos medirlo a tiempo. Nuestro modelo propio clasifica a USD 0 por pieza y acierta 80 % en el hold-out; comparar Jev en ese mismo hold-out es el siguiente paso.
+
 ## Integraciones: sacar el plan de la semana
 El plan (temas Recomendar + Aprender con etapa, por qué, guion, reel y plataforma) sale en dos formatos, siempre desde `data/radar.json`:
 
