@@ -18,7 +18,7 @@ Cada semana responde: *¿cuáles son los 10 temas de IA que más crecen, por qu�
 
 1. **Recolecta** señales públicas sin login: Hacker News (Algolia), Google News (es-419 y en), canales públicos de YouTube por RSS (incluidos los de 30X), páginas vistas de Wikipedia posts públicos de LinkedIn indexados en Google News, y posts/reels públicos de Instagram y TikTok (30X, Andrés Bilbao y hashtags de IA) vía Apify.
 2. **Etiqueta** una muestra con un LLM "profesor" barato: tema, formato, gancho, tipo de autor y si le sirve a un ejecutivo.
-3. **Entrena un modelo propio** (Naive Bayes en Python puro, `radar/student.py`) con esas etiquetas. Clasifica todo lo demás a **costo cero** y corre en el servidor gratuito.
+3. **Entrena un modelo propio** (`radar/student.py`) con las etiquetas donde un segundo LLM coincide con el profesor (consenso, `python manage.py review_labels`). Offline: embeddings multilingües + regresión logística clasifican el corpus al armar `radar.json`. En el servidor: regresión logística sobre TF-IDF exportada a JSON e inferida en Python puro (NB/kNN de respaldo), a **costo cero**.
 4. **Mide crecimiento y etapa** por tema (`radar/trend.py`): crecimiento frente a su base, z-score y etapa (`temprana`, `creciendo`, `saturada`, `bajando`, `estable`). Así contesta si el tema recién empieza o ya todos lo copiaron.
 5. **Decide** con umbrales trazables (`decision/decide.py`): `Recomendar` (≥ 0.80), `Aprender` (≥ 0.50) o `Descartar`. El motivo cita los números.
 6. **Explica y adapta**: formato y gancho ganadores, mejor día y un guion corto para 30X (gancho de 3 s, beats, CTA).
@@ -63,6 +63,7 @@ Para actualizar los datos (con red):
 ```bash
 python manage.py collect          # fuentes públicas -> data/snapshots/
 python manage.py label            # profesor LLM (OpenAI-compatible, variables en .env.example)
+python manage.py review_labels    # segundo LLM -> marca de consenso en labels.json
 python manage.py train_student    # modelo propio -> data/student.json
 python manage.py build_radar      # -> data/radar.json
 ```
@@ -74,7 +75,7 @@ python manage.py build_radar      # -> data/radar.json
 | `radar/sources.py` | recolectores (HN, Google News, YouTube RSS, Wikipedia) |
 | `radar/taxonomy.py` | temas, formatos, ganchos y tipos de autor |
 | `radar/label.py` | profesor LLM con validación estricta del JSON |
-| `radar/student.py` | modelo propio Naive Bayes (stdlib) |
+| `radar/student.py` | modelo propio: NB/kNN + LR TF-IDF en JSON (Python puro) y embeddings+LR offline |
 | `radar/trend.py` | crecimiento, z-score y etapa |
 | `radar/build.py` | arma `data/radar.json` (contrato en `SPEC.md`) |
 | `decision/decide.py` | motor de decisión con umbrales, regla de respaldo y registro |
@@ -88,3 +89,15 @@ python manage.py build_radar      # -> data/radar.json
 
 ## Licencia
 MIT
+
+## Precisión del modelo propio (hold-out fijo del 20 %, jamás usado para entrenar ni para elegir)
+Solo cuentan piezas donde dos LLM coinciden. "Seguro" = probabilidad sobre el umbral con el que el modelo acierta ≥ 90 % en validación cruzada del 80 % de entrenamiento. Cifras en `data/student.json` → `eval`.
+
+| Tarea | Top-1 | Top-3 | Cuando está seguro (cobertura) | Base |
+|---|---|---|---|---|
+| Tema (radar, offline) | 74 % | 95 % | 92 % (62 % de las piezas) | 25 % |
+| Formato (radar, offline) | 74 % | 93 % | 92 % (56 %) | 53 % |
+| Gancho (radar, offline) | 56 % | 85 % | 95 % (14 %) | 16 % |
+| Tema (escáner, servidor) | 71 % | 91 % | 93 % (19 %) | 25 % |
+
+Contra todas las etiquetas del hold-out (incluidas las dudosas) el tema baja a 64 % (radar) y 61 % (escáner).

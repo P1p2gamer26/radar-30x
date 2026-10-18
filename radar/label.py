@@ -68,10 +68,10 @@ def _json(texto: str) -> dict:
     return json.loads(t[t.index("{"): t.rindex("}") + 1])
 
 
-def llamar(items: list) -> tuple[list, dict]:
+def llamar(items: list, modelos: tuple = ()) -> tuple[list, dict]:
     headers = {"Authorization": f"Bearer {settings.LLM_API_KEY}"} if settings.LLM_API_KEY else {}
     error = None
-    for modelo in (settings.LLM_MODEL, RESPALDO):
+    for modelo in modelos or (settings.LLM_MODEL, RESPALDO):
         payload = {"model": modelo, "messages": prompt(items), "temperature": 0, "stream": False}
         try:
             data = _post_json(settings.LLM_BASE_URL.rstrip("/") + "/chat/completions", payload, settings.LLM_TIMEOUT, headers)
@@ -123,6 +123,45 @@ def run(signals: list, n: int = 900, log=print) -> dict:
                                  + meta["completion_tokens"] * settings.LLM_PRICE_OUT_PER_1M / 1e6, 4)
         ruta().write_text(json.dumps(lab, ensure_ascii=False, indent=0), encoding="utf-8")
         log(f"lote {k // LOTE + 1}/{-(-len(pendientes) // LOTE)}: {len(lab['labels'])} etiquetas, ${meta['cost_usd']}")
+    return lab
+
+
+MODELOS_REVISOR = ("gh/claude-sonnet-5", "gh/claude-haiku-5.5")  # segundo LLM, distinto del profesor
+
+
+def revisar(signals: list, max_llamadas: int = 600, log=print) -> dict:
+    """Segundo LLM re-etiqueta (mismo prompt/validación) y marca agree_* donde coincide con el profesor.
+    Guarda t2 (su etiqueta) y agree (tema), agree_format, agree_hook en cada etiqueta; no toca la etiqueta del profesor."""
+    lab = cargar()
+    por_id = {s["id"]: s for s in signals}
+    pend = [por_id[i] for i, v in lab["labels"].items() if i in por_id and "agree" not in v]
+    pend.sort(key=lambda s: (lab["labels"][s["id"]]["topic"] != "otro", s["id"]))  # primero los "otro"
+    llamadas = 0
+    for k in range(0, len(pend), LOTE):
+        if llamadas >= max_llamadas:
+            break
+        lote = pend[k:k + LOTE]
+        try:
+            filas, _ = llamar(lote, MODELOS_REVISOR)
+        except Exception as e:
+            log(f"[aviso] revisión lote {k // LOTE}: {e}")
+            llamadas += 2
+            continue
+        llamadas += 1
+        for fila in filas:
+            i = fila.get("i") if isinstance(fila, dict) else None
+            v = validar(fila) if isinstance(i, int) and 0 <= i < len(lote) else None
+            if v:
+                t = lab["labels"][lote[i]["id"]]
+                t["t2"] = {"topic": v["topic"], "format": v["format"], "hook": v["hook"]}
+                t["agree"] = v["topic"] == t["topic"]
+                t["agree_format"] = v["format"] == t["format"]
+                t["agree_hook"] = v["hook"] == t["hook"]
+        ruta().write_text(json.dumps(lab, ensure_ascii=False, indent=0), encoding="utf-8")
+        log(f"revisión {k // LOTE + 1}/{-(-len(pend) // LOTE)}")
+    lab["meta"]["reviewer"] = MODELOS_REVISOR[0]
+    lab["meta"]["review_calls"] = lab["meta"].get("review_calls", 0) + llamadas
+    ruta().write_text(json.dumps(lab, ensure_ascii=False, indent=0), encoding="utf-8")
     return lab
 
 

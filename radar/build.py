@@ -22,6 +22,8 @@ def etiquetar_todo(signals: list) -> dict:
     labels = label.cargar()["labels"]
     modelo = student.cargar()
     out = {}
+    # modelo offline (embeddings + LR) para todo el corpus sin etiqueta del profesor; None si faltan sentence-transformers/sklearn
+    corpus = student.clasificar_corpus(modelo, signals, labels) if modelo and modelo.get("offline_best") else None
     for s in signals:
         if s["id"] in labels:
             out[s["id"]] = labels[s["id"]]
@@ -33,13 +35,13 @@ def etiquetar_todo(signals: list) -> dict:
                                 "exec_fit": 0.5, "by": "regla"}
             continue
         x = s["title"] + " " + s.get("text", "")
-        pred = student.predecir(modelo, student.tokens(x, s["source"]), x)
+        pred = corpus[s["id"]] if corpus else student.predecir(modelo, student.tokens(x, s["source"]), x)
         topic, conf = pred["topic"]
         if conf < 0.4 and kw:
             topic = kw[0]
         fit_c, fit_p = pred["fit"]
         out[s["id"]] = {"topic": topic, "format": pred["format"][0], "hook": pred["hook"][0],
-                        "exec_fit": round(fit_p if fit_c == "alto" else 1 - fit_p, 2), "by": "student"}
+                        "exec_fit": round(fit_p if fit_c == "alto" else 1 - fit_p, 2), "by": "student-emb" if corpus else "student"}
     return out
 
 

@@ -69,6 +69,7 @@
   .sim { border-top: var(--borde); padding: 12px 0; } .sim:first-of-type { border-top: none; padding-top: 0; }
   .sim a { display: block; margin-bottom: 4px; } .sim small { color: var(--gris); }
   .aviso-conf { color: var(--ambar); margin: 8px 0 0; }
+  .aviso-conf.seguro { color: var(--ok, #7ddc8a); }
   .outlier { color: var(--lima); font-weight: 600; }
   .acciones { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
   .ghost-btn { border: 1px solid var(--lima); border-radius: 999px; padding: 10px 20px; font-size: 0.92rem; color: var(--lima); display: inline-block; }
@@ -123,7 +124,7 @@
     <div class="tarjeta veredicto">
       <h3>Veredicto</h3>
       <div class="dec decision-{{ r.decision }}">{{ r.decision }}</div>
-      {% if r.baja_confianza %}<p class="aviso-conf" role="alert"><strong>Confianza baja: revisa antes de producir.</strong></p>{% endif %}
+      {% if r.seguro %}<p class="aviso-conf seguro"><strong>Seguro:</strong> el modelo acierta el tema ≥90% de las veces cuando está así de convencido.</p>{% else %}<p class="aviso-conf" role="alert"><strong>Revisa antes de producir:</strong> el modelo no está lo bastante seguro del tema.</p>{% endif %}
       <p class="frase">
         {% if r.no_audiencia %}Esta pieza roza el tema <strong>{{ r.topic_name }}</strong>, pero no es para tu audiencia: le sirve poco a un ejecutivo que aprende IA ({{ r.fit_pct }}% de encaje).
         {% elif r.slug_ok %}Esta pieza habla de <strong>{{ r.topic_name }}</strong>, un tema en etapa «{{ r.early_label }}»{% if r.growth %} ({{ r.growth|floatformat:1 }}x){% endif %}

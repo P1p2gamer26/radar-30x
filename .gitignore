@@ -8,3 +8,4 @@ staticfiles/
 test-results/
 .prompts/
 data/social/
+.cache/

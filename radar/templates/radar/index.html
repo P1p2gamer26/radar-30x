@@ -55,6 +55,7 @@
 <section class="block" id="costo">
   <h2>Costo de esta corrida</h2>
   <div class="cost-grid" id="cost-grid"></div>
+  {% with o=radar.student.topic.offline %}{% if o %}<p class="form-hint">Nuestro modelo propio, probado en piezas que nunca vio: acierta el tema en <strong>{% widthratio o.holdout_accuracy 1 100 %}%</strong> (entre sus 3 primeras opciones, {% widthratio o.holdout_top3 1 100 %}%; adivinando sería {% widthratio o.holdout_baseline 1 100 %}%).{% if o.safe_accuracy %} Cuando está seguro acierta {% widthratio o.safe_accuracy 1 100 %}% y eso cubre el {% widthratio o.safe_coverage 1 100 %}% de las piezas.{% endif %} <a href="{% url 'como_funciona' %}">Cómo lo medimos</a></p>{% endif %}{% endwith %}
 </section>
 
 </div>

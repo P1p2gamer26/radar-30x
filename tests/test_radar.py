@@ -291,3 +291,31 @@ def test_como_funciona_muestra_holdout_y_cumplimiento(client):
     html = client.get("/como-funciona/").content.decode()
     assert "prueba aparte" in html.lower() or "prueba" in html and "Apify" in html
     assert "titulares públicos indexados en Google News" in html
+
+
+def test_lr_exportado_reproduce_sklearn():
+    """El JSON exportado + inferencia en Python puro da las mismas probabilidades que sklearn en 20 ejemplos."""
+    np = pytest.importorskip("numpy")
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.linear_model import LogisticRegression
+
+    import random
+    rnd = random.Random(1)
+    vocab = {"a": "agentes ventas crm leads prospeccion".split(), "b": "nvidia gpu chips datacenter costos".split(),
+             "c": "ley regulacion etica sesgo privacidad".split()}
+    ej = []
+    for _ in range(90):
+        c = rnd.choice("abc")
+        toks = [rnd.choice(vocab[c]) for _ in range(5)] + [rnd.choice(vocab[rnd.choice("abc")])]
+        ej.append((toks, {"topic": c, "format": "x" if c == "a" else "y", "hook": c, "fit": "alto" if c != "b" else "bajo"}))
+    lr = student.entrenar_lr(ej, 10, topn=30, min_df=1)
+    json.loads(json.dumps(lr))  # serializable
+    v = TfidfVectorizer(analyzer=lambda d: d, sublinear_tf=True, vocabulary=lr["terms"])
+    X = v.fit_transform([t for t, _ in ej])
+    for tarea in student.TAREAS:
+        clf = LogisticRegression(C=10, max_iter=3000).fit(X, [y[tarea] for _, y in ej])
+        for toks, _ in ej[:20]:
+            ref = dict(zip(clf.classes_, clf.predict_proba(v.transform([toks]))[0]))
+            got = student._dist_lr(lr, toks, tarea)
+            assert max(ref, key=ref.get) == max(got, key=got.get)
+            assert max(abs(ref[c] - got[c]) for c in ref) < 0.02

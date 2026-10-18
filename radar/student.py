@@ -34,6 +34,14 @@ def objetivo(lab: dict, tarea: str) -> str:
     return ("alto" if lab["exec_fit"] >= 0.6 else "bajo") if tarea == "fit" else lab[tarea]
 
 
+ACUERDO = {"topic": "agree", "format": "agree_format", "hook": "agree_hook"}  # marcas de label.revisar; fit no se revisa
+
+
+def consenso(lab: dict, tarea: str) -> str | None:
+    """Etiqueta solo si los dos LLM coinciden en esa tarea (None = dudosa, no se entrena ni se evalúa)."""
+    return objetivo(lab, tarea) if tarea == "fit" or lab.get(ACUERDO[tarea]) else None
+
+
 def es_test(sid: str) -> bool:
     return int(hashlib.md5(sid.encode()).hexdigest(), 16) % 5 == 0  # 20 % fijo para evaluar
 
@@ -44,10 +52,11 @@ def entrenar(ejemplos: list, min_df: int = 2) -> dict:
     vocab = {t for t, n in df.items() if n >= min_df}
     modelo = {"vocab_size": len(vocab), "tasks": {}}
     for tarea in TAREAS:
-        clases = Counter(y[tarea] for _, y in ejemplos)
+        clases = Counter(y[tarea] for _, y in ejemplos if y.get(tarea) is not None)
         cuenta = defaultdict(Counter)
         for toks, y in ejemplos:
-            cuenta[y[tarea]].update(t for t in toks if t in vocab)
+            if y.get(tarea) is not None:
+                cuenta[y[tarea]].update(t for t in toks if t in vocab)
         total_docs = sum(clases.values())
         tarea_m = {}
         for c, n in clases.items():
@@ -59,6 +68,68 @@ def entrenar(ejemplos: list, min_df: int = 2) -> dict:
     return modelo
 
 
+# ------------------------------------------------------------------ regresión logística TF-IDF (sklearn offline -> JSON -> Python puro)
+TOPN_LR = 40  # términos con mayor coeficiente por clase y tarea que se exportan (controla el tamaño del JSON)
+
+
+def entrenar_lr(ejemplos: list, C, topn: int = TOPN_LR, min_df: int = 2) -> dict:
+    """Entrena con sklearn (TF-IDF sublineal + LR multinomial), poda a los top-N términos por clase, reentrena sobre
+    ese vocabulario y exporta a listas JSON: la predicción en Python puro reproduce la de sklearn. C: número o {tarea: C}."""
+    import numpy as np
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.linear_model import LogisticRegression
+
+    docs = [t for t, _ in ejemplos]
+    ident = lambda d: d  # noqa: E731  (los documentos ya vienen tokenizados con tokens())
+    c_de = lambda tarea: C[tarea] if isinstance(C, dict) else C  # noqa: E731
+
+    def ajustar(X, tarea):
+        idx = [i for i, (_, y) in enumerate(ejemplos) if y.get(tarea) is not None]
+        clf = LogisticRegression(C=c_de(tarea), max_iter=3000).fit(X[idx], [ejemplos[i][1][tarea] for i in idx])
+        co = clf.coef_
+        return clf, (np.vstack([-co, co]) if co.shape[0] == 1 else co)
+
+    v = TfidfVectorizer(analyzer=ident, sublinear_tf=True, min_df=min_df)
+    X = v.fit_transform(docs)
+    terms = np.array(v.get_feature_names_out())
+    sel = set()
+    for tarea in TAREAS:
+        _, co = ajustar(X, tarea)
+        for fila in co:
+            sel.update(terms[np.argsort(-fila)[:topn]])
+    voc = sorted(sel)
+    v2 = TfidfVectorizer(analyzer=ident, sublinear_tf=True, vocabulary=voc)
+    X2 = v2.fit_transform(docs)
+    out = {"terms": voc, "idf": [round(float(x), 4) for x in v2.idf_], "tasks": {}}
+    for tarea in TAREAS:
+        clf, co = ajustar(X2, tarea)
+        b = clf.intercept_
+        if len(clf.classes_) == 2:  # binaria: puntaje de la clase 0 fijo en 0, el de la 1 = w.x + b
+            W = np.column_stack([np.zeros(len(voc)), clf.coef_[0]])
+            b = [0.0, float(b[0])]
+        else:
+            W = clf.coef_.T
+        out["tasks"][tarea] = {"classes": [str(c) for c in clf.classes_], "b": [round(float(x), 4) for x in b],
+                               "W": [[round(float(x), 4) for x in fila] for fila in W]}
+    return out
+
+
+def _dist_lr(lr: dict, toks: list, tarea: str) -> dict:
+    ix = lr.setdefault("_ix", {t: i for i, t in enumerate(lr["terms"])})  # cache en memoria
+    tf = Counter(t for t in toks if t in ix)
+    v = {ix[t]: (1 + math.log(n)) * lr["idf"][ix[t]] for t, n in tf.items()}
+    norma = math.sqrt(sum(x * x for x in v.values())) or 1.0
+    m = lr["tasks"][tarea]
+    sc = list(m["b"])
+    for i, x in v.items():
+        for c, w in enumerate(m["W"][i]):
+            sc[c] += x / norma * w
+    mx = max(sc)
+    e = [math.exp(x - mx) for x in sc]
+    z = sum(e)
+    return {c: x / z for c, x in zip(m["classes"], e)}
+
+
 def _knn(ejemplos: list, vocab: set) -> dict:
     """Vecinos por coseno TF-IDF: idf + vector normalizado de cada ejemplo + sus clases."""
     n = len(ejemplos)
@@ -68,7 +139,7 @@ def _knn(ejemplos: list, vocab: set) -> dict:
     for toks, y in ejemplos:
         v = _vector(toks, idf)
         if v:
-            docs.append([v, [y[t] for t in TAREAS]])
+            docs.append([v, [y.get(t) for t in TAREAS]])
     return {"idf": idf, "docs": docs}
 
 
@@ -104,9 +175,15 @@ def _dist_knn(modelo: dict, toks: list, tarea: str) -> dict:
         for d, w2 in modelo["_idx"].get(t, ()):
             sim[d] += w * w2
     col = TAREAS.index(tarea)
-    votos = Counter()
-    for d, s in sim.most_common(K_VECINOS):
-        votos[knn["docs"][d][1][col]] += s ** POT_SIM
+    votos, usados = Counter(), 0
+    for d, s in sim.most_common():
+        c = knn["docs"][d][1][col]
+        if c is None:  # vecino sin etiqueta de consenso en esta tarea
+            continue
+        votos[c] += s ** POT_SIM
+        usados += 1
+        if usados == K_VECINOS:
+            break
     total = sum(votos.values())
     return {c: v / total for c, v in votos.items()} if total else {c: 1 / len(modelo["tasks"][tarea]) for c in modelo["tasks"][tarea]}
 
@@ -117,6 +194,11 @@ def distribucion(modelo: dict, toks: list, tarea: str, metodo: str, texto: str =
         return _dist_nb(modelo, toks, tarea)
     if metodo == "knn":
         return _dist_knn(modelo, toks, tarea)
+    if metodo == "lr" and "lr" in modelo:
+        return _dist_lr(modelo["lr"], toks, tarea)
+    if metodo == "lrens" and "lr" in modelo:
+        a, b = _dist_lr(modelo["lr"], toks, tarea), distribucion(modelo, toks, tarea, "ens", texto)
+        return {c: (a.get(c, 0) + b.get(c, 0)) / 2 for c in set(a) | set(b)}
     a, b = _dist_nb(modelo, toks, tarea), _dist_knn(modelo, toks, tarea)
     d = {c: W_NB * a.get(c, 0) + (1 - W_NB) * b.get(c, 0) for c in set(a) | set(b)}
     if tarea == "topic" and texto:
@@ -125,6 +207,12 @@ def distribucion(modelo: dict, toks: list, tarea: str, metodo: str, texto: str =
                 d[slug] += PESO_KW / (r + 1)
     z = sum(d.values())
     return {c: v / z for c, v in d.items()}
+
+
+def seguro(modelo: dict, tarea: str, prob: float) -> bool | None:
+    """¿La probabilidad supera el umbral (elegido en train) con el que el modelo acierta >= 90 %? None si no hay umbral."""
+    tau = modelo.get("eval", {}).get(tarea, {}).get("tau")
+    return None if tau is None else prob >= tau
 
 
 def predecir(modelo: dict, toks: list, texto: str = "") -> dict:
@@ -145,56 +233,234 @@ def cargar() -> dict | None:
     return json.loads(ruta().read_text(encoding="utf-8")) if ruta().exists() else None
 
 
-def _acierto(modelo: dict, test: list, tarea: str, met: str) -> int:
-    return sum(max(d, key=lambda c: d[c]) == y[tarea] for toks, y, x in test for d in [distribucion(modelo, toks, tarea, met, x)])
+# ------------------------------------------------------------------ embeddings (solo offline: sentence-transformers + sklearn)
+MODELO_EMB = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+_ST = None
+
+
+def embeber(textos: list):
+    """Embeddings normalizados (n x 384) con caché en disco por texto; requiere sentence-transformers (no en producción)."""
+    import numpy as np
+    global _ST
+    cache_f = settings.BASE_DIR / ".cache" / "emb.npz"
+    cache = {}
+    if cache_f.exists():
+        z = np.load(cache_f)
+        cache = dict(zip(z["k"].tolist(), z["v"]))
+    llaves = [hashlib.md5(t[:600].encode()).hexdigest() for t in textos]
+    faltan = sorted({k: t for k, t in zip(llaves, textos) if k not in cache}.items())
+    if faltan:
+        if _ST is None:
+            from sentence_transformers import SentenceTransformer
+            _ST = SentenceTransformer(MODELO_EMB)
+        vecs = _ST.encode([t[:600] for _, t in faltan], batch_size=64, normalize_embeddings=True, show_progress_bar=False)
+        for (k, _), v in zip(faltan, vecs):
+            cache[k] = v.astype("float32")
+        cache_f.parent.mkdir(exist_ok=True)
+        np.savez(cache_f, k=np.array(list(cache)), v=np.array(list(cache.values())))
+    return np.array([cache[k] for k in llaves])
+
+
+def _ajustar_emb(E, filas: list, ys: list, C: float):
+    from sklearn.linear_model import LogisticRegression
+    return LogisticRegression(C=C, max_iter=3000).fit(E[filas], ys)
+
+
+def _dists_emb(clf, E, filas: list) -> list:
+    return [dict(zip(clf.classes_, p)) for p in clf.predict_proba(E[filas])] if filas else []
+
+
+def _prom(*ds) -> dict:
+    return {c: sum(d.get(c, 0) for d in ds) / len(ds) for c in set().union(*ds)}
+
+
+# ------------------------------------------------------------------ evaluación
+CS_LR = (3, 30)
+CS_EMB = (1, 10)
+C_MIX = (30, 10)  # mix = promedio de lr@30 (TF-IDF) y emb@10
+SERVIDOR = ("nb", "knn", "ens", "lr@3", "lr@30", "lrens")  # candidatos que corren en Python puro en producción
+OFFLINE = SERVIDOR + ("emb@1", "emb@10", "mix")
+OBJ_SEGURO = 0.90  # precisión que debe alcanzar el umbral "seguro"
+MIN_SEGURO = 30  # piezas mínimas para fijar el umbral (menos sería ruido)
+
+
+def _top(d: dict) -> tuple:
+    c = max(d, key=lambda k: d[k])
+    return c, d[c]
+
+
+def umbral_seguro(pares: list) -> float | None:
+    """Menor probabilidad p tal que las predicciones con prob >= p aciertan >= 90 % (pares = [(prob, acertó)] de CV en train)."""
+    pares = sorted(pares, reverse=True)
+    ok, mejor = 0, None
+    for i, (p, c) in enumerate(pares, 1):
+        ok += c
+        if i >= MIN_SEGURO and ok / i >= OBJ_SEGURO and (i == len(pares) or pares[i][0] < p):
+            mejor = p
+    return round(float(mejor), 4) if mejor is not None else None
+
+
+def metricas(dists: list, ys: list, tau: float | None) -> dict:
+    n = max(len(ys), 1)
+    ords = [sorted(d, key=lambda c: -d[c]) for d in dists]
+    out = {"accuracy": round(sum(o[0] == y for o, y in zip(ords, ys)) / n, 3),
+           "top3": round(sum(y in o[:3] for o, y in zip(ords, ys)) / n, 3), "n": len(ys)}
+    if tau is not None:
+        seg = [o[0] == y for d, o, y in zip(dists, ords, ys) if d[o[0]] >= tau]
+        out["safe_accuracy"] = round(sum(seg) / len(seg), 3) if seg else None
+        out["safe_coverage"] = round(len(seg) / n, 3)
+    return out
+
+
+def _dist_cand(cand: str, m: dict, lrs: dict, emb: dict, i: int, toks: list, tarea: str, x: str) -> dict:
+    """Distribución de un candidato. lrs = {C: export LR}; emb = {C: {fila: dist}} de la tarea."""
+    if cand in ("nb", "knn", "ens"):
+        return distribucion(m, toks, tarea, cand, x)
+    if cand == "lrens":
+        return _prom(_dist_lr(lrs[30], toks, tarea), distribucion(m, toks, tarea, "ens", x))
+    if cand.startswith("lr@"):
+        return _dist_lr(lrs[int(cand[3:])], toks, tarea)
+    if cand.startswith("emb@"):
+        return emb[int(cand[4:])][i]
+    return _prom(_dist_lr(lrs[C_MIX[0]], toks, tarea), emb[C_MIX[1]][i])  # mix
 
 
 def run(signals: list, labels: dict, k: int = 5) -> dict:
-    """Separa un 20 % fijo (es_test) como hold-out; elige método por tarea con validación cruzada SOLO sobre el 80 %
-    (NB, kNN o ensamble); la cifra honesta es el acierto en el hold-out, que ninguna decisión vio."""
+    """Etiquetas de consenso (dos LLM coinciden). Hold-out fijo del 20 % (es_test) que no se usa para entrenar NI para
+    elegir: método (NB, kNN, ensamble, LR-TF-IDF, embeddings), C y umbral "seguro" se eligen con CV SOLO en el 80 %."""
     por_id = {s["id"]: s for s in signals}
-    todos = [(sid, tokens(por_id[sid]["title"] + " " + por_id[sid].get("text", ""), por_id[sid]["source"]),
-              {t: objetivo(lab, t) for t in TAREAS}, por_id[sid]["title"] + " " + por_id[sid].get("text", ""))
+    filas = [(sid, tokens(por_id[sid]["title"] + " " + por_id[sid].get("text", ""), por_id[sid]["source"]),
+              {t: consenso(lab, t) for t in TAREAS}, {t: objetivo(lab, t) for t in TAREAS},
+              por_id[sid]["title"] + " " + por_id[sid].get("text", ""))
              for sid, lab in labels.items() if sid in por_id]
-    holdout = [d for d in todos if es_test(d[0])]
-    datos = [d for d in todos if not es_test(d[0])]
-    pliegue = lambda sid: int(hashlib.md5(sid.encode()).hexdigest(), 16) % k  # noqa: E731
-    metodos = ("nb", "knn", "ens")
-    ok, base_ok, n = {m: Counter() for m in metodos}, Counter(), 0
+    try:
+        E = embeber([f[4] for f in filas])
+    except ImportError:
+        E = None
+    cands = OFFLINE if E is not None else SERVIDOR
+    hold = [i for i, f in enumerate(filas) if es_test(f[0])]
+    dat = [i for i, f in enumerate(filas) if not es_test(f[0])]
+    pliegue = lambda i: int(hashlib.md5(filas[i][0].encode()).hexdigest(), 16) % k  # noqa: E731
+    ej = lambda idx: [(filas[i][1], filas[i][2]) for i in idx]  # noqa: E731
+    con = lambda idx, t: [i for i in idx if filas[i][2][t] is not None]  # noqa: E731
+
+    def preparar(tr, te, todas=False):
+        """Modelos entrenados con `tr`; distribuciones de embeddings para las filas de `te`, por tarea."""
+        m = entrenar(ej(tr))
+        lrs = {C: entrenar_lr(ej(tr), C) for C in CS_LR}
+        emb = {t: {} for t in TAREAS}
+        if E is not None:
+            for t in TAREAS:
+                for C in CS_EMB:
+                    clf = _ajustar_emb(E, con(tr, t), [filas[i][2][t] for i in con(tr, t)], C)
+                    fs = te if todas else con(te, t)  # todas: también las filas sin consenso (para medir contra todas las etiquetas)
+                    emb[t][C] = dict(zip(fs, _dists_emb(clf, E, fs)))
+        return m, lrs, emb
+
+    oof = {t: {c: {} for c in cands} for t in TAREAS}
+    base_ok, n_cv = Counter(), Counter()
     for f in range(k):
-        train = [(t, y) for sid, t, y, _ in datos if pliegue(sid) != f]
-        test = [(t, y, x) for sid, t, y, x in datos if pliegue(sid) == f]
-        m = entrenar(train)
-        n += len(test)
-        for tarea in TAREAS:
-            mayor = Counter(y[tarea] for _, y in train).most_common(1)[0][0]
-            base_ok[tarea] += sum(y[tarea] == mayor for _, y, _ in test)
-            for met in metodos:
-                ok[met][tarea] += _acierto(m, test, tarea, met)
-    acc, best = {}, {}
-    for tarea in TAREAS:
-        por_met = {met: round(ok[met][tarea] / max(n, 1), 3) for met in metodos}
-        best[tarea] = max(metodos, key=lambda met: por_met[met])
-        base = round(base_ok[tarea] / max(n, 1), 3)
-        acc[tarea] = {"accuracy": por_met[best[tarea]], "baseline": base, "nb": por_met["nb"], "knn": por_met["knn"],
-                      "ensemble": por_met["ens"], "method": best[tarea],
-                      "usable": por_met[best[tarea]] - base >= MARGEN_USABLE}
-        if not acc[tarea]["usable"]:
-            best[tarea] = "nb"  # sin mejora real sobre la base, nos quedamos con el modelo simple de siempre
-            acc[tarea]["method"] = "nb"
-    # hold-out: modelo entrenado solo con el 80 %, evaluado una vez con el método ya elegido
-    m80 = entrenar([(t, y) for _, t, y, _ in datos])
-    prueba = [(t, y, x) for _, t, y, x in holdout]
-    for tarea in TAREAS:
-        mayor = Counter(y[tarea] for _, _, y, _ in datos).most_common(1)[0][0]
-        acc[tarea]["holdout_accuracy"] = round(_acierto(m80, prueba, tarea, best[tarea]) / max(len(prueba), 1), 3)
-        acc[tarea]["holdout_baseline"] = round(sum(y[tarea] == mayor for _, y, _ in prueba) / max(len(prueba), 1), 3)
-    modelo = entrenar([(t, y) for _, t, y, _ in todos])  # el modelo publicado aprende de todo; la cifra honesta es la del hold-out
-    modelo["best"] = best
-    modelo["eval"] = {"method": f"método elegido con validación cruzada {k} pliegues sobre el 80 %; cifra final en hold-out del 20 % fijo",
-                      "n_train": len(datos), "n_test": n, "n_holdout": len(prueba), **acc}
+        tr = [i for i in dat if pliegue(i) != f]
+        te = [i for i in dat if pliegue(i) == f]
+        m, lrs, emb = preparar(tr, te)
+        for t in TAREAS:
+            mayor = Counter(filas[i][2][t] for i in con(tr, t)).most_common(1)[0][0]
+            base_ok[t] += sum(filas[i][2][t] == mayor for i in con(te, t))
+            n_cv[t] += len(con(te, t))
+            for i in con(te, t):
+                for c in cands:
+                    oof[t][c][i] = _dist_cand(c, m, lrs, emb[t], i, filas[i][1], t, filas[i][4])
+
+    elegido, acc = {}, {}
+    for t in TAREAS:
+        base = round(base_ok[t] / max(n_cv[t], 1), 3)
+        por = {c: round(sum(_top(v)[0] == filas[i][2][t] for i, v in oof[t][c].items()) / max(len(oof[t][c]), 1), 3) for c in cands}
+        srv, off = max(SERVIDOR, key=lambda c: por[c]), max(cands, key=lambda c: por[c])
+        usable = por[srv] - base >= MARGEN_USABLE
+        if not usable:  # sin mejora real sobre la base: nos quedamos con el modelo simple de siempre
+            srv = off = "nb"
+        elegido[t] = (srv, off)
+        acc[t] = {"accuracy": por[srv], "baseline": base, "nb": por["nb"], "knn": por["knn"], "ensemble": por["ens"],
+                  "lr": max(por["lr@3"], por["lr@30"]), "method": srv, "usable": usable, "cv": por}
+
+    # umbral "seguro" por tarea y modelo elegido: probabilidades de las predicciones de CV en el 80 %
+    tau = {t: [umbral_seguro([(_top(v)[1], _top(v)[0] == filas[i][2][t]) for i, v in oof[t][c].items()]) for c in elegido[t]]
+           for t in TAREAS}
+
+    # hold-out: modelos entrenados con el 80 %, evaluados UNA vez con lo ya elegido
+    c_lr = {t: int(elegido[t][0][3:]) if elegido[t][0].startswith("lr@") else 30 for t in TAREAS}  # C del LR servido
+    m80, lrs80, emb80 = preparar(dat, hold, todas=True)
+    lrs80[30] = entrenar_lr(ej(dat), c_lr)  # el LR servido (C por tarea, podado a top-N) es el que se mide
+    for t in TAREAS:
+        mayor = Counter(filas[i][2][t] for i in con(dat, t)).most_common(1)[0][0]
+        hc = con(hold, t)
+        acc[t]["n_holdout"] = len(hc)
+        acc[t]["holdout_baseline"] = round(sum(filas[i][2][t] == mayor for i in hc) / max(len(hc), 1), 3)
+        acc[t]["holdout_baseline_all"] = round(sum(filas[i][3][t] == mayor for i in hold) / max(len(hold), 1), 3)
+        for nombre, c, t_ in (("", elegido[t][0], tau[t][0]), ("offline", elegido[t][1], tau[t][1])):
+            emb_h = emb80[t]
+            if c.startswith("lr@"):
+                c = "lr@30"  # lrs80[30] ya trae el C elegido para esta tarea
+            dist = lambda i: _dist_cand(c, m80, lrs80, emb_h, i, filas[i][1], t, filas[i][4])  # noqa: E731
+            r_c = metricas([dist(i) for i in hc], [filas[i][2][t] for i in hc], t_)
+            r_a = metricas([dist(i) for i in hold], [filas[i][3][t] for i in hold], t_)  # contra TODAS las etiquetas (incluye dudosas)
+            campos = {"holdout_accuracy": r_c["accuracy"], "holdout_top3": r_c["top3"], "tau": t_,
+                      "safe_accuracy": r_c.get("safe_accuracy"), "safe_coverage": r_c.get("safe_coverage"),
+                      "holdout_accuracy_all": r_a["accuracy"], "holdout_top3_all": r_a["top3"]}
+            if nombre:
+                acc[t]["offline"] = {**campos, "holdout_baseline": acc[t]["holdout_baseline"], "method": elegido[t][1],
+                                     "cv_accuracy": acc[t]["cv"][elegido[t][1]]}
+            else:
+                acc[t].update(campos)
+
+    # modelo publicado: aprende de todo el consenso; la cifra honesta es la del hold-out
+    todo = dat + hold
+    modelo = entrenar(ej(todo))
+    modelo["lr"] = entrenar_lr(ej(todo), c_lr)
+    modelo["best"] = {t: ("lr" if elegido[t][0].startswith("lr@") else elegido[t][0]) for t in TAREAS}
+    modelo["offline_best"] = {t: ("lr" if elegido[t][1].startswith("lr@") else elegido[t][1]) for t in TAREAS}
+    modelo["eval"] = {"method": f"consenso de dos LLM; método y umbral elegidos con validación cruzada {k} pliegues sobre el 80 %; "
+                                "cifra final en hold-out del 20 % fijo",
+                      "n_train": len(dat), "n_test": max(n_cv.values()), "n_holdout": len(hold),
+                      "n_labels": len(filas), "target_precision": OBJ_SEGURO, **acc}
     ruta().write_text(json.dumps(modelo, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     return modelo["eval"]
+
+
+def clasificar_corpus(modelo: dict, signals: list, labels: dict) -> dict | None:
+    """Clasifica TODAS las `signals` (labels = etiquetas para entrenar embeddings). {sid: {tarea: (clase, prob)}} con el mejor modelo OFFLINE de cada tarea (embeddings si ganaron en CV). None si faltan
+    las librerías offline: el llamador cae al estudiante de servidor."""
+    ob = modelo.get("offline_best") or modelo.get("best", {})
+    emb = {t: m for t, m in ob.items() if m.startswith(("emb@", "mix"))}
+    texto = lambda s: s["title"] + " " + s.get("text", "")  # noqa: E731
+    por_id = {s["id"]: s for s in signals}
+    ent = [sid for sid in labels if sid in por_id]
+    clfs = {}
+    if emb:
+        try:
+            E_all = embeber([texto(s) for s in signals])
+        except ImportError:
+            return None
+        pos = {s["id"]: j for j, s in enumerate(signals)}
+        E_tr = E_all[[pos[sid] for sid in ent]]
+        for t, m in emb.items():
+            idx = [j for j, sid in enumerate(ent) if consenso(labels[sid], t) is not None]
+            clfs[t] = _ajustar_emb(E_tr, idx, [consenso(labels[ent[j]], t) for j in idx], int(m[4:]) if m.startswith("emb@") else C_MIX[1])
+    out = {s["id"]: {} for s in signals}
+    for t in modelo["tasks"]:
+        m = ob.get(t, "nb")
+        ds = _dists_emb(clfs[t], E_all, list(range(len(signals)))) if t in clfs else None
+        for j, s in enumerate(signals):
+            toks = tokens(texto(s), s["source"])
+            if ds is None:
+                d = distribucion(modelo, toks, t, m, texto(s))
+            elif m.startswith("emb@"):
+                d = ds[j]
+            else:
+                d = _prom(distribucion(modelo, toks, t, "lr", texto(s)), ds[j])
+            c = max(d, key=lambda q: d[q])
+            out[s["id"]][t] = (c, round(float(d[c]), 3))
+    return out
 
 
 if __name__ == "__main__":

@@ -114,6 +114,9 @@ def analizar(texto: str) -> dict:
     p = round(min(1.0, max(0.0, (p_raw - lo) / (hi - lo))), 3) if hi > lo else p_raw
     r["decision"] = decision_pieza(tema, r["exec_fit"])
     r["baja_confianza"] = r["engine"] == "regla" or r["confidence"] < 0.5
+    modelo = student.cargar()  # "Seguro" = la probabilidad del tema supera el umbral con el que el modelo acierta >= 90 % (train)
+    r["seguro"] = bool(r["engine"] != "regla" and modelo and student.seguro(modelo, "topic", r["confidence"]))
+    r["tau_pct"] = round(((modelo or {}).get("eval", {}).get("topic", {}).get("tau") or 0) * 100)
     r["p"] = p
     r["topic_name"] = TOPICS[r["topic"]]["name"] if r["topic"] in TOPICS else "Fuera del radar"
     r["format_name"], r["hook_name"] = FORMATS.get(r["format"], r["format"]), HOOKS.get(r["hook"], r["hook"])
