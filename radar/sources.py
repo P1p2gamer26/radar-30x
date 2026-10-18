@@ -150,8 +150,20 @@ YT = {"a": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/sche
 _PII = re.compile(r"[\w.+-]+@[\w-]+(\.[\w-]+)+|https?://\S+|www\.\S+|(?<!\w)@\w[\w.]*")
 
 
+_HANDLE_URL = re.compile(r"/@(?!_/)[\w.-]+")  # medium.com/@usuario, tiktok.com/@usuario: handles de particulares
+
+
+def con_handle(url: str) -> bool:
+    return bool(_HANDLE_URL.search(url or ""))
+
+
 def sin_pii(texto: str) -> str:
     return re.sub(r"\s+", " ", _PII.sub("", texto or "")).strip()
+
+
+def _alias(canal: dict) -> str:
+    """Solo los canales propios de 30X guardan su nombre; los demás, un alias estable (privacidad)."""
+    return canal.get("name", "") if canal.get("own") else "canal-" + canal.get("id", "")[-6:]
 
 
 def parse_youtube(crudo: bytes, canal: dict) -> list:
@@ -169,7 +181,7 @@ def parse_youtube(crudo: bytes, canal: dict) -> list:
             "author_type": canal.get("author_type", "creador"),
             "metrics": {"points": int(rating.get("count", 0)) if rating is not None else 0, "comments": 0,
                         "views": int(stats.get("views", 0)) if stats is not None else 0},
-            "query": canal.get("name", ""), "channel": canal.get("name", ""),
+            "query": _alias(canal), "channel": _alias(canal),
         })
     return out
 

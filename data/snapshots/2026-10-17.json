@@ -1346,22 +1346,6 @@
    "query": "AI"
   },
   {
-   "id": "hn:50130587",
-   "source": "hn",
-   "url": "https://medium.com/@GiovambattistaVieri/strip-digital-signatures-from-pdfs-before-feeding-them-to-ai-linux-guide-611a023f8d7e",
-   "title": "Strip Digital Signatures from PDFs Before Feeding Them to AI (LinuxGuide)",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-17T12:39:09Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 2,
-    "comments": 0,
-    "views": 0
-   },
-   "query": "AI"
-  },
-  {
    "id": "hn:50130491",
    "source": "hn",
    "url": "https://crypticinkling.co.uk",
@@ -2237,22 +2221,6 @@
    "metrics": {
     "points": 3,
     "comments": 0,
-    "views": 0
-   },
-   "query": "AI"
-  },
-  {
-   "id": "hn:50126481",
-   "source": "hn",
-   "url": "https://latticenet.ai/@bender/wrong-bender-a-ruling-on-ai-feelings",
-   "title": "Wrong Bender: A Ruling on AI Feelings",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-17T00:16:00Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 2,
-    "comments": 1,
     "views": 0
    },
    "query": "AI"
@@ -5132,22 +5100,6 @@
    "author_type": "comunidad",
    "metrics": {
     "points": 3,
-    "comments": 0,
-    "views": 0
-   },
-   "query": "AI"
-  },
-  {
-   "id": "hn:50114487",
-   "source": "hn",
-   "url": "https://medium.com/@simon-pitt/my-ai-apps-are-bad-in-exactly-the-right-ways-c4b43e8fd371",
-   "title": "My AI Apps Are Bad in the Right Ways",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-16T05:37:41Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 2,
     "comments": 0,
     "views": 0
    },
@@ -12946,22 +12898,6 @@
    "query": "AI"
   },
   {
-   "id": "hn:50081861",
-   "source": "hn",
-   "url": "https://www.npmjs.com/package/@genclass/runtime",
-   "title": "Show HN: GenClass, A 10 MB in-browser model that catches bugs that never throw",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-14T02:59:44Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 3,
-    "comments": 0,
-    "views": 0
-   },
-   "query": "AI"
-  },
-  {
    "id": "hn:50081857",
    "source": "hn",
    "url": "https://news.ycombinator.com/item?id=50081857",
@@ -15650,22 +15586,6 @@
    "query": "LLM"
   },
   {
-   "id": "hn:50120707",
-   "source": "hn",
-   "url": "https://medium.com/@kate8382/aura-v0-1-0-deterministic-trigger-extraction-auditable-math-a-self-healing-analytics-engine-fb96dd64b8a4",
-   "title": "Aura v0.1.0: Deterministic behavioral threat-intelligence for LLM safety",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-16T16:40:48Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 2,
-    "comments": 0,
-    "views": 0
-   },
-   "query": "LLM"
-  },
-  {
    "id": "hn:50120217",
    "source": "hn",
    "url": "https://lemmapark.com",
@@ -16653,22 +16573,6 @@
    "metrics": {
     "points": 10,
     "comments": 1,
-    "views": 0
-   },
-   "query": "LLM"
-  },
-  {
-   "id": "hn:50091413",
-   "source": "hn",
-   "url": "https://medium.com/@kate8382/why-big-tech-keeps-losing-llms-to-basic-social-engineering-efc1a87a3daf",
-   "title": "Why Big Tech Keeps Losing LLMs to Basic Social Engineering",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-14T17:26:30Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 2,
-    "comments": 0,
     "views": 0
    },
    "query": "LLM"
@@ -20269,22 +20173,6 @@
    "metrics": {
     "points": 2,
     "comments": 0,
-    "views": 0
-   },
-   "query": "LLM"
-  },
-  {
-   "id": "hn:49991218",
-   "source": "hn",
-   "url": "https://medium.com/@eslam.elsewedy/synthetic-truth-how-marketing-power-and-ai-bend-reality-cd8a1173b968",
-   "title": "LLMs and Data Poisoning Are Weaponized to Manufacture Consensus",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-07T11:23:55Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 31,
-    "comments": 25,
     "views": 0
    },
    "query": "LLM"
@@ -26428,22 +26316,6 @@
    "author_type": "comunidad",
    "metrics": {
     "points": 1,
-    "comments": 0,
-    "views": 0
-   },
-   "query": "GPT"
-  },
-  {
-   "id": "hn:50094846",
-   "source": "hn",
-   "url": "https://medium.com/@yanivleven/liquid-clustering-isnt-free-it-s-just-cheaper-to-get-wrong-fe51bbf57a2e",
-   "title": "Liquid clustering isn't free, it's just cheaper to get wrong",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-14T20:39:24Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 2,
     "comments": 0,
     "views": 0
    },
@@ -33010,22 +32882,6 @@
    "query": "GPT"
   },
   {
-   "id": "hn:49967344",
-   "source": "hn",
-   "url": "https://medium.com/@hazalmestci/localhost-our-first-user-conference-and-why-the-cloud-needs-to-get-out-of-your-way-2380005f6ebc",
-   "title": "Localhost: Our First Conference and Why the Cloud Needs to Get Out of Your Way",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-05T16:53:31Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 3,
-    "comments": 0,
-    "views": 0
-   },
-   "query": "GPT"
-  },
-  {
    "id": "hn:49967183",
    "source": "hn",
    "url": "https://playgama.ai/play/55p62bkfsc",
@@ -35533,22 +35389,6 @@
    "metrics": {
     "points": 1,
     "comments": 0,
-    "views": 0
-   },
-   "query": "Claude"
-  },
-  {
-   "id": "hn:50046117",
-   "source": "hn",
-   "url": "https://dair-community.social/@emilymbender/117412868905734653",
-   "title": "Anthropic is out with new nonsense about Claude",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-11T18:16:54Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 27,
-    "comments": 31,
     "views": 0
    },
    "query": "Claude"
@@ -38770,22 +38610,6 @@
    "query": "agent"
   },
   {
-   "id": "hn:50133304",
-   "source": "hn",
-   "url": "https://medium.com/@MirArshadTalpur/how-to-make-auditability-a-sales-asset-when-you-build-agents-for-enterprises-eaefaf91d91b",
-   "title": "How to Make Auditability a Sales Asset When You Build Agents for Enterprises",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-17T17:52:47Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 1,
-    "comments": 0,
-    "views": 0
-   },
-   "query": "agent"
-  },
-  {
    "id": "hn:50132963",
    "source": "hn",
    "url": "https://junie.jetbrains.com/",
@@ -39913,22 +39737,6 @@
    "text": "",
    "lang": "en",
    "published_at": "2026-10-14T20:09:18Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 1,
-    "comments": 0,
-    "views": 0
-   },
-   "query": "agent"
-  },
-  {
-   "id": "hn:50093801",
-   "source": "hn",
-   "url": "https://medium.com/@MirArshadTalpur/how-to-instrument-a-multi-agent-system-for-complete-causal-lineage-e75d61150f9b",
-   "title": "How to Instrument a Multi-Agent System for Complete Causal Lineage",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-14T19:38:17Z",
    "author_type": "comunidad",
    "metrics": {
     "points": 1,
@@ -41133,22 +40941,6 @@
    "metrics": {
     "points": 13,
     "comments": 2,
-    "views": 0
-   },
-   "query": "agent"
-  },
-  {
-   "id": "hn:50070776",
-   "source": "hn",
-   "url": "https://medium.com/@MirArshadTalpur/how-to-investigate-an-agent-incident-end-to-end-with-zizkadb-28c2f328f05f",
-   "title": "How to Investigate an Agent Incident End to End with ZizkaDB",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-13T12:43:13Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 2,
-    "comments": 0,
     "views": 0
    },
    "query": "agent"
@@ -42450,22 +42242,6 @@
    "query": "agent"
   },
   {
-   "id": "hn:50054914",
-   "source": "hn",
-   "url": "https://medium.com/@MirArshadTalpur/how-to-prepare-your-agentic-ai-system-for-an-eu-ai-act-audit-with-zizkadb-7d7eb9d4c9f0",
-   "title": "How to Prepare Your Agentic AI System for an EU AI Act Audit with ZizkaDB",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-12T11:40:19Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 1,
-    "comments": 0,
-    "views": 0
-   },
-   "query": "agent"
-  },
-  {
    "id": "hn:50054310",
    "source": "hn",
    "url": "https://cyberscoop.com/ai-agent-software-supply-chain-security-op-ed/",
@@ -42845,22 +42621,6 @@
    "metrics": {
     "points": 17,
     "comments": 6,
-    "views": 0
-   },
-   "query": "agent"
-  },
-  {
-   "id": "hn:50047502",
-   "source": "hn",
-   "url": "https://medium.com/@paul_93782/the-ghost-in-the-pipe-e6643e2f08a4",
-   "title": "The Ghost in the Pipe: Giving AI agents direct access to a live Smalltalk image",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-11T20:30:20Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 3,
-    "comments": 0,
     "views": 0
    },
    "query": "agent"
@@ -45762,22 +45522,6 @@
    "query": "agent"
   },
   {
-   "id": "hn:50005601",
-   "source": "hn",
-   "url": "https://medium.com/@MirArshadTalpur/how-to-deploy-agentic-ai-in-banking-with-zizkadb-a-step-by-step-guide-836ede74f8fa",
-   "title": "How to Deploy Agentic AI in Banking with ZizkaDB: A Step by Step Guide",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-08T13:29:27Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 1,
-    "comments": 0,
-    "views": 0
-   },
-   "query": "agent"
-  },
-  {
    "id": "hn:50005516",
    "source": "hn",
    "url": "https://aqtos.com/",
@@ -46444,22 +46188,6 @@
    "author_type": "comunidad",
    "metrics": {
     "points": 25,
-    "comments": 0,
-    "views": 0
-   },
-   "query": "agent"
-  },
-  {
-   "id": "hn:49996093",
-   "source": "hn",
-   "url": "https://medium.com/@majid.fekri/your-agents-dont-need-another-memory-api-they-need-a-memory-agent-2d6ec9427af8",
-   "title": "Agents Don't Need Another Memory API. They Need a Memory Agent",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-07T17:36:08Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 5,
     "comments": 0,
     "views": 0
    },
@@ -49373,22 +49101,6 @@
    "metrics": {
     "points": 6,
     "comments": 1,
-    "views": 0
-   },
-   "query": "OpenAI"
-  },
-  {
-   "id": "hn:50010818",
-   "source": "hn",
-   "url": "https://medium.com/@d02514047/openais-new-math-breakthroughs-put-ai-s-role-in-science-under-the-microscope-cc2304f548f3",
-   "title": "OpenAI's New Math Breakthroughs Put AI's Role in Science Under the Microscope",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-08T19:29:14Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 2,
-    "comments": 0,
     "views": 0
    },
    "query": "OpenAI"
@@ -87701,8 +87413,8 @@
     "comments": 0,
     "views": 320476
    },
-   "query": "Two Minute Papers",
-   "channel": "Two Minute Papers"
+   "query": "canal-8nvctg",
+   "channel": "canal-8nvctg"
   },
   {
    "id": "youtube:4fLVq6HJsKc",
@@ -87718,8 +87430,8 @@
     "comments": 0,
     "views": 321353
    },
-   "query": "Two Minute Papers",
-   "channel": "Two Minute Papers"
+   "query": "canal-8nvctg",
+   "channel": "canal-8nvctg"
   },
   {
    "id": "youtube:Wkaw03p3BrM",
@@ -87735,8 +87447,8 @@
     "comments": 0,
     "views": 149865
    },
-   "query": "Two Minute Papers",
-   "channel": "Two Minute Papers"
+   "query": "canal-8nvctg",
+   "channel": "canal-8nvctg"
   },
   {
    "id": "youtube:ZHVNTTKu9fU",
@@ -87752,8 +87464,8 @@
     "comments": 0,
     "views": 163273
    },
-   "query": "Two Minute Papers",
-   "channel": "Two Minute Papers"
+   "query": "canal-8nvctg",
+   "channel": "canal-8nvctg"
   },
   {
    "id": "youtube:SA9kdAX2Zj0",
@@ -87769,8 +87481,8 @@
     "comments": 0,
     "views": 372420
    },
-   "query": "Two Minute Papers",
-   "channel": "Two Minute Papers"
+   "query": "canal-8nvctg",
+   "channel": "canal-8nvctg"
   },
   {
    "id": "youtube:qBBRRsH0rQc",
@@ -87786,8 +87498,8 @@
     "comments": 0,
     "views": 289484
    },
-   "query": "Two Minute Papers",
-   "channel": "Two Minute Papers"
+   "query": "canal-8nvctg",
+   "channel": "canal-8nvctg"
   },
   {
    "id": "youtube:vIHw_2VjSUw",
@@ -87803,8 +87515,8 @@
     "comments": 0,
     "views": 340426
    },
-   "query": "Two Minute Papers",
-   "channel": "Two Minute Papers"
+   "query": "canal-8nvctg",
+   "channel": "canal-8nvctg"
   },
   {
    "id": "youtube:YoEWjZSwoys",
@@ -87820,8 +87532,8 @@
     "comments": 0,
     "views": 109693
    },
-   "query": "Two Minute Papers",
-   "channel": "Two Minute Papers"
+   "query": "canal-8nvctg",
+   "channel": "canal-8nvctg"
   },
   {
    "id": "youtube:mOvtumfyjCs",
@@ -87837,8 +87549,8 @@
     "comments": 0,
     "views": 390675
    },
-   "query": "Two Minute Papers",
-   "channel": "Two Minute Papers"
+   "query": "canal-8nvctg",
+   "channel": "canal-8nvctg"
   },
   {
    "id": "youtube:eVBJIUxv8N8",
@@ -87854,8 +87566,8 @@
     "comments": 0,
     "views": 579350
    },
-   "query": "Two Minute Papers",
-   "channel": "Two Minute Papers"
+   "query": "canal-8nvctg",
+   "channel": "canal-8nvctg"
   },
   {
    "id": "youtube:B3LXEW4Pc-w",
@@ -87871,8 +87583,8 @@
     "comments": 0,
     "views": 204193
    },
-   "query": "Two Minute Papers",
-   "channel": "Two Minute Papers"
+   "query": "canal-8nvctg",
+   "channel": "canal-8nvctg"
   },
   {
    "id": "youtube:w9RDunJACkc",
@@ -87888,8 +87600,8 @@
     "comments": 0,
     "views": 184660
    },
-   "query": "Two Minute Papers",
-   "channel": "Two Minute Papers"
+   "query": "canal-8nvctg",
+   "channel": "canal-8nvctg"
   },
   {
    "id": "youtube:LBiNcdGNgrg",
@@ -87905,8 +87617,8 @@
     "comments": 0,
     "views": 144245
    },
-   "query": "Two Minute Papers",
-   "channel": "Two Minute Papers"
+   "query": "canal-8nvctg",
+   "channel": "canal-8nvctg"
   },
   {
    "id": "youtube:L9mMfAFwbl4",
@@ -87922,8 +87634,8 @@
     "comments": 0,
     "views": 111594
    },
-   "query": "Two Minute Papers",
-   "channel": "Two Minute Papers"
+   "query": "canal-8nvctg",
+   "channel": "canal-8nvctg"
   },
   {
    "id": "youtube:wMl6c_r0ubw",
@@ -87939,8 +87651,8 @@
     "comments": 0,
     "views": 112810
    },
-   "query": "Two Minute Papers",
-   "channel": "Two Minute Papers"
+   "query": "canal-8nvctg",
+   "channel": "canal-8nvctg"
   },
   {
    "id": "youtube:KGcuuhqmPhI",
@@ -87956,8 +87668,8 @@
     "comments": 0,
     "views": 124086
    },
-   "query": "Matt Wolfe",
-   "channel": "Matt Wolfe"
+   "query": "canal-gti38g",
+   "channel": "canal-gti38g"
   },
   {
    "id": "youtube:WXWFmwfo1JA",
@@ -87973,8 +87685,8 @@
     "comments": 0,
     "views": 165178
    },
-   "query": "Matt Wolfe",
-   "channel": "Matt Wolfe"
+   "query": "canal-gti38g",
+   "channel": "canal-gti38g"
   },
   {
    "id": "youtube:XEl4ZQKKxig",
@@ -87990,8 +87702,8 @@
     "comments": 0,
     "views": 10519
    },
-   "query": "Matt Wolfe",
-   "channel": "Matt Wolfe"
+   "query": "canal-gti38g",
+   "channel": "canal-gti38g"
   },
   {
    "id": "youtube:eBszYxzE2dk",
@@ -88007,8 +87719,8 @@
     "comments": 0,
     "views": 256890
    },
-   "query": "Matt Wolfe",
-   "channel": "Matt Wolfe"
+   "query": "canal-gti38g",
+   "channel": "canal-gti38g"
   },
   {
    "id": "youtube:b0jA6fkGsk8",
@@ -88024,8 +87736,8 @@
     "comments": 0,
     "views": 11212
    },
-   "query": "Matt Wolfe",
-   "channel": "Matt Wolfe"
+   "query": "canal-gti38g",
+   "channel": "canal-gti38g"
   },
   {
    "id": "youtube:NUizyuGj-kE",
@@ -88041,8 +87753,8 @@
     "comments": 0,
     "views": 131735
    },
-   "query": "Matt Wolfe",
-   "channel": "Matt Wolfe"
+   "query": "canal-gti38g",
+   "channel": "canal-gti38g"
   },
   {
    "id": "youtube:grOilk8aCS0",
@@ -88058,8 +87770,8 @@
     "comments": 0,
     "views": 11957
    },
-   "query": "Matt Wolfe",
-   "channel": "Matt Wolfe"
+   "query": "canal-gti38g",
+   "channel": "canal-gti38g"
   },
   {
    "id": "youtube:dDgncbBAA0c",
@@ -88075,8 +87787,8 @@
     "comments": 0,
     "views": 160551
    },
-   "query": "Matt Wolfe",
-   "channel": "Matt Wolfe"
+   "query": "canal-gti38g",
+   "channel": "canal-gti38g"
   },
   {
    "id": "youtube:c7twMUavy5Q",
@@ -88092,8 +87804,8 @@
     "comments": 0,
     "views": 10622
    },
-   "query": "Matt Wolfe",
-   "channel": "Matt Wolfe"
+   "query": "canal-gti38g",
+   "channel": "canal-gti38g"
   },
   {
    "id": "youtube:hx42whM7NsY",
@@ -88109,8 +87821,8 @@
     "comments": 0,
     "views": 2400
    },
-   "query": "Matt Wolfe",
-   "channel": "Matt Wolfe"
+   "query": "canal-gti38g",
+   "channel": "canal-gti38g"
   },
   {
    "id": "youtube:aDpIra7NFuE",
@@ -88126,8 +87838,8 @@
     "comments": 0,
     "views": 201862
    },
-   "query": "Matt Wolfe",
-   "channel": "Matt Wolfe"
+   "query": "canal-gti38g",
+   "channel": "canal-gti38g"
   },
   {
    "id": "youtube:SUtGm-nr4Hk",
@@ -88143,8 +87855,8 @@
     "comments": 0,
     "views": 18966
    },
-   "query": "Matt Wolfe",
-   "channel": "Matt Wolfe"
+   "query": "canal-gti38g",
+   "channel": "canal-gti38g"
   },
   {
    "id": "youtube:nsA_HeY3idE",
@@ -88160,8 +87872,8 @@
     "comments": 0,
     "views": 6043
    },
-   "query": "Matt Wolfe",
-   "channel": "Matt Wolfe"
+   "query": "canal-gti38g",
+   "channel": "canal-gti38g"
   },
   {
    "id": "youtube:0t-eWrGFZyA",
@@ -88177,8 +87889,8 @@
     "comments": 0,
     "views": 223701
    },
-   "query": "Matt Wolfe",
-   "channel": "Matt Wolfe"
+   "query": "canal-gti38g",
+   "channel": "canal-gti38g"
   },
   {
    "id": "youtube:rcUTZysF9s4",
@@ -88194,8 +87906,8 @@
     "comments": 0,
     "views": 15282
    },
-   "query": "Matt Wolfe",
-   "channel": "Matt Wolfe"
+   "query": "canal-gti38g",
+   "channel": "canal-gti38g"
   },
   {
    "id": "youtube:C4Sq3Rot8FU",
@@ -88211,8 +87923,8 @@
     "comments": 0,
     "views": 143907
    },
-   "query": "AI Explained",
-   "channel": "AI Explained"
+   "query": "canal-xtRbbw",
+   "channel": "canal-xtRbbw"
   },
   {
    "id": "youtube:_rtp1XzaP6Q",
@@ -88228,8 +87940,8 @@
     "comments": 0,
     "views": 288044
    },
-   "query": "AI Explained",
-   "channel": "AI Explained"
+   "query": "canal-xtRbbw",
+   "channel": "canal-xtRbbw"
   },
   {
    "id": "youtube:R9momwXV9w4",
@@ -88245,8 +87957,8 @@
     "comments": 0,
     "views": 305562
    },
-   "query": "AI Explained",
-   "channel": "AI Explained"
+   "query": "canal-xtRbbw",
+   "channel": "canal-xtRbbw"
   },
   {
    "id": "youtube:J3ljHm57yU0",
@@ -88262,8 +87974,8 @@
     "comments": 0,
     "views": 235896
    },
-   "query": "AI Explained",
-   "channel": "AI Explained"
+   "query": "canal-xtRbbw",
+   "channel": "canal-xtRbbw"
   },
   {
    "id": "youtube:Spuza-KwTJ4",
@@ -88279,8 +87991,8 @@
     "comments": 0,
     "views": 856232
    },
-   "query": "AI Explained",
-   "channel": "AI Explained"
+   "query": "canal-xtRbbw",
+   "channel": "canal-xtRbbw"
   },
   {
    "id": "youtube:KL9_1GbmCic",
@@ -88296,8 +88008,8 @@
     "comments": 0,
     "views": 209483
    },
-   "query": "AI Explained",
-   "channel": "AI Explained"
+   "query": "canal-xtRbbw",
+   "channel": "canal-xtRbbw"
   },
   {
    "id": "youtube:xGzseSSStnw",
@@ -88313,8 +88025,8 @@
     "comments": 0,
     "views": 110729
    },
-   "query": "AI Explained",
-   "channel": "AI Explained"
+   "query": "canal-xtRbbw",
+   "channel": "canal-xtRbbw"
   },
   {
    "id": "youtube:LVEfFyijQ2c",
@@ -88330,8 +88042,8 @@
     "comments": 0,
     "views": 502018
    },
-   "query": "Google DeepMind",
-   "channel": "Google DeepMind"
+   "query": "canal-0MHQ-A",
+   "channel": "canal-0MHQ-A"
   },
   {
    "id": "youtube:ftkic7Tdpcg",
@@ -88347,8 +88059,8 @@
     "comments": 0,
     "views": 192362
    },
-   "query": "Google DeepMind",
-   "channel": "Google DeepMind"
+   "query": "canal-0MHQ-A",
+   "channel": "canal-0MHQ-A"
   },
   {
    "id": "youtube:9PICEmtfpWU",
@@ -88364,8 +88076,8 @@
     "comments": 0,
     "views": 694896
    },
-   "query": "Google DeepMind",
-   "channel": "Google DeepMind"
+   "query": "canal-0MHQ-A",
+   "channel": "canal-0MHQ-A"
   },
   {
    "id": "youtube:9jQA7IgPhBE",
@@ -88381,8 +88093,8 @@
     "comments": 0,
     "views": 88324
    },
-   "query": "Google DeepMind",
-   "channel": "Google DeepMind"
+   "query": "canal-0MHQ-A",
+   "channel": "canal-0MHQ-A"
   },
   {
    "id": "youtube:HIUzrxQxTtw",
@@ -88398,8 +88110,8 @@
     "comments": 0,
     "views": 191409
    },
-   "query": "Google DeepMind",
-   "channel": "Google DeepMind"
+   "query": "canal-0MHQ-A",
+   "channel": "canal-0MHQ-A"
   },
   {
    "id": "youtube:FL6mI_Br-mc",
@@ -88415,8 +88127,8 @@
     "comments": 0,
     "views": 5117747
    },
-   "query": "Google DeepMind",
-   "channel": "Google DeepMind"
+   "query": "canal-0MHQ-A",
+   "channel": "canal-0MHQ-A"
   },
   {
    "id": "youtube:O_EWbnkjXdk",
@@ -88432,8 +88144,8 @@
     "comments": 0,
     "views": 239576
    },
-   "query": "Google DeepMind",
-   "channel": "Google DeepMind"
+   "query": "canal-0MHQ-A",
+   "channel": "canal-0MHQ-A"
   },
   {
    "id": "youtube:ya04CpsRJH0",
@@ -88449,8 +88161,8 @@
     "comments": 0,
     "views": 7404
    },
-   "query": "Google DeepMind",
-   "channel": "Google DeepMind"
+   "query": "canal-0MHQ-A",
+   "channel": "canal-0MHQ-A"
   },
   {
    "id": "youtube:U0aToL5C-bQ",
@@ -88466,8 +88178,8 @@
     "comments": 0,
     "views": 4534002
    },
-   "query": "Google DeepMind",
-   "channel": "Google DeepMind"
+   "query": "canal-0MHQ-A",
+   "channel": "canal-0MHQ-A"
   },
   {
    "id": "youtube:_6jZlnRsXXQ",
@@ -88483,8 +88195,8 @@
     "comments": 0,
     "views": 393032
    },
-   "query": "Google DeepMind",
-   "channel": "Google DeepMind"
+   "query": "canal-0MHQ-A",
+   "channel": "canal-0MHQ-A"
   },
   {
    "id": "youtube:tBjgCj_dGZM",
@@ -88500,8 +88212,8 @@
     "comments": 0,
     "views": 397671
    },
-   "query": "Google DeepMind",
-   "channel": "Google DeepMind"
+   "query": "canal-0MHQ-A",
+   "channel": "canal-0MHQ-A"
   },
   {
    "id": "youtube:zlveLhFb64M",
@@ -88517,8 +88229,8 @@
     "comments": 0,
     "views": 15466
    },
-   "query": "Google DeepMind",
-   "channel": "Google DeepMind"
+   "query": "canal-0MHQ-A",
+   "channel": "canal-0MHQ-A"
   },
   {
    "id": "youtube:GBOZIRK1ujw",
@@ -88534,8 +88246,8 @@
     "comments": 0,
     "views": 110915
    },
-   "query": "OpenAI",
-   "channel": "OpenAI"
+   "query": "canal-cdrc6A",
+   "channel": "canal-cdrc6A"
   },
   {
    "id": "youtube:OMxEUdIgsQc",
@@ -88551,8 +88263,8 @@
     "comments": 0,
     "views": 21586
    },
-   "query": "OpenAI",
-   "channel": "OpenAI"
+   "query": "canal-cdrc6A",
+   "channel": "canal-cdrc6A"
   },
   {
    "id": "youtube:KJ_7KPKlO_Q",
@@ -88568,8 +88280,8 @@
     "comments": 0,
     "views": 89206
    },
-   "query": "OpenAI",
-   "channel": "OpenAI"
+   "query": "canal-cdrc6A",
+   "channel": "canal-cdrc6A"
   },
   {
    "id": "youtube:GyO8Ao7yKJc",
@@ -88585,8 +88297,8 @@
     "comments": 0,
     "views": 162993
    },
-   "query": "OpenAI",
-   "channel": "OpenAI"
+   "query": "canal-cdrc6A",
+   "channel": "canal-cdrc6A"
   },
   {
    "id": "youtube:3IVo-MNwk2I",
@@ -88602,8 +88314,8 @@
     "comments": 0,
     "views": 6536
    },
-   "query": "OpenAI",
-   "channel": "OpenAI"
+   "query": "canal-cdrc6A",
+   "channel": "canal-cdrc6A"
   },
   {
    "id": "youtube:BOTAeAU5ExQ",
@@ -88619,8 +88331,8 @@
     "comments": 0,
     "views": 20646
    },
-   "query": "OpenAI",
-   "channel": "OpenAI"
+   "query": "canal-cdrc6A",
+   "channel": "canal-cdrc6A"
   },
   {
    "id": "youtube:PZxbaIp8PzE",
@@ -88636,8 +88348,8 @@
     "comments": 0,
     "views": 9682
    },
-   "query": "OpenAI",
-   "channel": "OpenAI"
+   "query": "canal-cdrc6A",
+   "channel": "canal-cdrc6A"
   },
   {
    "id": "youtube:DTcK95TAZ-k",
@@ -88653,8 +88365,8 @@
     "comments": 0,
     "views": 6530
    },
-   "query": "OpenAI",
-   "channel": "OpenAI"
+   "query": "canal-cdrc6A",
+   "channel": "canal-cdrc6A"
   },
   {
    "id": "youtube:G-9Y2xNiDKQ",
@@ -88670,8 +88382,8 @@
     "comments": 0,
     "views": 66365
    },
-   "query": "OpenAI",
-   "channel": "OpenAI"
+   "query": "canal-cdrc6A",
+   "channel": "canal-cdrc6A"
   },
   {
    "id": "youtube:9aDuSpVoB-Y",
@@ -88687,8 +88399,8 @@
     "comments": 0,
     "views": 6946
    },
-   "query": "OpenAI",
-   "channel": "OpenAI"
+   "query": "canal-cdrc6A",
+   "channel": "canal-cdrc6A"
   },
   {
    "id": "youtube:N6K_pxaAh0w",
@@ -88704,8 +88416,8 @@
     "comments": 0,
     "views": 24249
    },
-   "query": "OpenAI",
-   "channel": "OpenAI"
+   "query": "canal-cdrc6A",
+   "channel": "canal-cdrc6A"
   },
   {
    "id": "youtube:TD0bImyg_IM",
@@ -88721,8 +88433,8 @@
     "comments": 0,
     "views": 9488
    },
-   "query": "OpenAI",
-   "channel": "OpenAI"
+   "query": "canal-cdrc6A",
+   "channel": "canal-cdrc6A"
   },
   {
    "id": "youtube:IZXv6a78NDw",
@@ -88738,8 +88450,8 @@
     "comments": 0,
     "views": 88189
    },
-   "query": "OpenAI",
-   "channel": "OpenAI"
+   "query": "canal-cdrc6A",
+   "channel": "canal-cdrc6A"
   },
   {
    "id": "youtube:Ju-JyxDgV7g",
@@ -88755,8 +88467,8 @@
     "comments": 0,
     "views": 30530
    },
-   "query": "OpenAI",
-   "channel": "OpenAI"
+   "query": "canal-cdrc6A",
+   "channel": "canal-cdrc6A"
   },
   {
    "id": "youtube:p5KxBTUncoE",
@@ -88772,8 +88484,8 @@
     "comments": 0,
     "views": 131996
    },
-   "query": "OpenAI",
-   "channel": "OpenAI"
+   "query": "canal-cdrc6A",
+   "channel": "canal-cdrc6A"
   },
   {
    "id": "youtube:DdCEmlAydcw",
@@ -88789,8 +88501,8 @@
     "comments": 0,
     "views": 161317
    },
-   "query": "Anthropic",
-   "channel": "Anthropic"
+   "query": "canal-IpBDOA",
+   "channel": "canal-IpBDOA"
   },
   {
    "id": "youtube:uVS88gnaxcg",
@@ -88806,8 +88518,8 @@
     "comments": 0,
     "views": 147869
    },
-   "query": "Anthropic",
-   "channel": "Anthropic"
+   "query": "canal-IpBDOA",
+   "channel": "canal-IpBDOA"
   },
   {
    "id": "youtube:ROF2Nv_KjOM",
@@ -88823,8 +88535,8 @@
     "comments": 0,
     "views": 708468
    },
-   "query": "Anthropic",
-   "channel": "Anthropic"
+   "query": "canal-IpBDOA",
+   "channel": "canal-IpBDOA"
   },
   {
    "id": "youtube:UxJZrCFzTHY",
@@ -88840,8 +88552,8 @@
     "comments": 0,
     "views": 73511
    },
-   "query": "Anthropic",
-   "channel": "Anthropic"
+   "query": "canal-IpBDOA",
+   "channel": "canal-IpBDOA"
   },
   {
    "id": "youtube:djVUCj5i4sw",
@@ -88857,8 +88569,8 @@
     "comments": 0,
     "views": 100197
    },
-   "query": "Anthropic",
-   "channel": "Anthropic"
+   "query": "canal-IpBDOA",
+   "channel": "canal-IpBDOA"
   },
   {
    "id": "youtube:P1zBiAQU1IA",
@@ -88874,8 +88586,8 @@
     "comments": 0,
     "views": 426502
    },
-   "query": "Anthropic",
-   "channel": "Anthropic"
+   "query": "canal-IpBDOA",
+   "channel": "canal-IpBDOA"
   },
   {
    "id": "youtube:iF5IWjOWcA4",
@@ -88891,8 +88603,8 @@
     "comments": 0,
     "views": 105140
    },
-   "query": "Anthropic",
-   "channel": "Anthropic"
+   "query": "canal-IpBDOA",
+   "channel": "canal-IpBDOA"
   },
   {
    "id": "youtube:yZUzeYLaIME",
@@ -88908,8 +88620,8 @@
     "comments": 0,
     "views": 3509
    },
-   "query": "IBM Technology",
-   "channel": "IBM Technology"
+   "query": "canal-2do_vQ",
+   "channel": "canal-2do_vQ"
   },
   {
    "id": "youtube:0FBdWvkgNQE",
@@ -88925,8 +88637,8 @@
     "comments": 0,
     "views": 14943
    },
-   "query": "IBM Technology",
-   "channel": "IBM Technology"
+   "query": "canal-2do_vQ",
+   "channel": "canal-2do_vQ"
   },
   {
    "id": "youtube:BwXremQ-i6I",
@@ -88942,8 +88654,8 @@
     "comments": 0,
     "views": 155218
    },
-   "query": "IBM Technology",
-   "channel": "IBM Technology"
+   "query": "canal-2do_vQ",
+   "channel": "canal-2do_vQ"
   },
   {
    "id": "youtube:zKvaoG5Jlh0",
@@ -88959,8 +88671,8 @@
     "comments": 0,
     "views": 13033
    },
-   "query": "IBM Technology",
-   "channel": "IBM Technology"
+   "query": "canal-2do_vQ",
+   "channel": "canal-2do_vQ"
   },
   {
    "id": "youtube:W6F4QZlknkc",
@@ -88976,8 +88688,8 @@
     "comments": 0,
     "views": 19134
    },
-   "query": "IBM Technology",
-   "channel": "IBM Technology"
+   "query": "canal-2do_vQ",
+   "channel": "canal-2do_vQ"
   },
   {
    "id": "youtube:wSuWuPUTC10",
@@ -88993,8 +88705,8 @@
     "comments": 0,
     "views": 80765
    },
-   "query": "IBM Technology",
-   "channel": "IBM Technology"
+   "query": "canal-2do_vQ",
+   "channel": "canal-2do_vQ"
   },
   {
    "id": "youtube:hTAWHgQI4xg",
@@ -89010,8 +88722,8 @@
     "comments": 0,
     "views": 136630
    },
-   "query": "IBM Technology",
-   "channel": "IBM Technology"
+   "query": "canal-2do_vQ",
+   "channel": "canal-2do_vQ"
   },
   {
    "id": "youtube:zRMAvMSSSII",
@@ -89027,8 +88739,8 @@
     "comments": 0,
     "views": 70861
    },
-   "query": "IBM Technology",
-   "channel": "IBM Technology"
+   "query": "canal-2do_vQ",
+   "channel": "canal-2do_vQ"
   },
   {
    "id": "youtube:3Tk0sFoFYvM",
@@ -89044,8 +88756,8 @@
     "comments": 0,
     "views": 8016
    },
-   "query": "IBM Technology",
-   "channel": "IBM Technology"
+   "query": "canal-2do_vQ",
+   "channel": "canal-2do_vQ"
   },
   {
    "id": "youtube:IO6Bhs2iNfk",
@@ -89061,8 +88773,8 @@
     "comments": 0,
     "views": 16515
    },
-   "query": "IBM Technology",
-   "channel": "IBM Technology"
+   "query": "canal-2do_vQ",
+   "channel": "canal-2do_vQ"
   },
   {
    "id": "youtube:gebskF8HP7g",
@@ -89078,8 +88790,8 @@
     "comments": 0,
     "views": 9402
    },
-   "query": "IBM Technology",
-   "channel": "IBM Technology"
+   "query": "canal-2do_vQ",
+   "channel": "canal-2do_vQ"
   },
   {
    "id": "youtube:wZFseoVpSTM",
@@ -89095,8 +88807,8 @@
     "comments": 0,
     "views": 17354
    },
-   "query": "IBM Technology",
-   "channel": "IBM Technology"
+   "query": "canal-2do_vQ",
+   "channel": "canal-2do_vQ"
   },
   {
    "id": "youtube:qZBibWYcKH4",
@@ -89112,8 +88824,8 @@
     "comments": 0,
     "views": 122842
    },
-   "query": "IBM Technology",
-   "channel": "IBM Technology"
+   "query": "canal-2do_vQ",
+   "channel": "canal-2do_vQ"
   },
   {
    "id": "youtube:5RtmQSKKQo8",
@@ -89129,8 +88841,8 @@
     "comments": 0,
     "views": 49254
    },
-   "query": "IBM Technology",
-   "channel": "IBM Technology"
+   "query": "canal-2do_vQ",
+   "channel": "canal-2do_vQ"
   },
   {
    "id": "youtube:83HMZrhL_Uw",
@@ -89146,8 +88858,8 @@
     "comments": 0,
     "views": 41937
    },
-   "query": "IBM Technology",
-   "channel": "IBM Technology"
+   "query": "canal-2do_vQ",
+   "channel": "canal-2do_vQ"
   },
   {
    "id": "instagram:Dem68nPFFee",

@@ -12,7 +12,7 @@ def run(now=None) -> dict:
     signals, vistos = [], set()
     for fn in (sources.fetch_hn, sources.fetch_gnews, sources.fetch_linkedin, sources.fetch_youtube, sources.fetch_instagram, sources.fetch_tiktok):
         for s in fn(now):
-            if s["url"] not in vistos:
+            if s["url"] not in vistos and not (sources.con_handle(s["url"]) and not s.get("channel") in sources.OFICIALES):
                 vistos.add(s["url"])
                 signals.append(s)
     snap = {"collected_at": sources._iso(now), "signals": signals, "wiki": sources.fetch_wiki(now)}
