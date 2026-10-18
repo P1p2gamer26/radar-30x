@@ -1,5 +1,5 @@
 // EstelarIA — frontend. Sin innerHTML con datos externos: solo textContent/createElement.
-import { mountScene } from "./scene.js";
+import { mountScene, sourceCounts } from "./scene.js";
 
 const STATIC_SAMPLE_URL = (() => {
   // index.js vive junto a sample.json; funciona en Django (static) y en preview.html (relativo).
@@ -305,7 +305,10 @@ function renderBench(data) {
 
 let lastFocused = null;
 
+let onPanelClose = null; // la escena borra los rayos y vuelve a la vista general
+
 function closePanel() {
+  if (onPanelClose) onPanelClose();
   const overlay = document.getElementById("panel-overlay");
   const panel = document.getElementById("panel");
   overlay.classList.remove("open");
@@ -330,17 +333,94 @@ function renderThreshold(p) {
   return track;
 }
 
-function renderSignal(sig) {
-  const item = el("div", { class: "signal-item" });
-  const link = el("a", { href: sig.url, target: "_blank", rel: "noopener noreferrer", text: sig.title });
-  item.appendChild(link);
-  item.appendChild(
-    el("div", {
-      class: "signal-meta",
-      text: `${sig.source} · ${sig.format} · ${sig.hook}`,
-    })
+// --- De dónde viene la info ---
+const SRC_ORDER = ["linkedin", "instagram", "tiktok", "youtube", "hn", "gnews", "wiki"];
+const SRC_NAME = { linkedin: "LinkedIn", instagram: "Instagram", tiktok: "TikTok", youtube: "YouTube", hn: "Hacker News", gnews: "Google News", wiki: "Wikipedia" };
+const SRC_HOW = {
+  linkedin: "Titulares de Google News sobre publicaciones de LinkedIn (no se entra a LinkedIn).",
+  instagram: "Contenido público de Instagram recogido con Apify.",
+  tiktok: "Contenido público de TikTok recogido con Apify.",
+  youtube: "API pública de YouTube: videos recientes por tema.",
+  hn: "API pública de Hacker News: historias con puntos y comentarios.",
+  gnews: "Titulares de Google News vía RSS.",
+  wiki: "API pública de Wikipedia: visitas diarias de los artículos del tema.",
+};
+const nf = (n) => Number(n).toLocaleString("es-CO");
+
+function metricText(sig) {
+  const m = sig.metrics || {};
+  const out = [];
+  if (m.views > 0) out.push(`${nf(m.views)} vistas`);
+  if (m.points > 0) out.push(`${nf(m.points)} ${sig.source === "hn" ? "puntos" : "me gusta"}`);
+  if (m.comments > 0) out.push(`${nf(m.comments)} comentarios`);
+  return out.join(" · ");
+}
+
+function renderOrigin(topic) {
+  const sec = el("div", { class: "panel-section" }, [el("h3", { text: "De dónde viene" })]);
+  const counts = sourceCounts(topic);
+  const sigs = topic.top_signals || [];
+  const keys = [...SRC_ORDER, ...Object.keys(counts).filter((k) => !SRC_ORDER.includes(k))].filter((k) => counts[k] > 0);
+  if (!keys.length) {
+    sec.appendChild(el("p", { class: "guion-meta", text: "Sin piezas registradas esta semana." }));
+    return sec;
+  }
+  const max = Math.max(...keys.map((k) => counts[k]));
+  for (const k of keys) {
+    const bar = el("div", { class: "origin-bar" }, [el("i")]);
+    bar.firstChild.style.width = `${(counts[k] / max) * 100}%`;
+    const group = el("div", { class: "origin-group" }, [
+      el("div", { class: "origin-head" }, [
+        el("b", { text: SRC_NAME[k] || k }),
+        el("span", { class: "nums", text: `${counts[k]} ${counts[k] === 1 ? "pieza" : "piezas"}` }),
+      ]),
+      bar,
+    ]);
+    for (const sig of sigs.filter((x) => x.source === k)) {
+      const mt = metricText(sig);
+      group.appendChild(
+        el("div", { class: "signal-item" }, [
+          el("a", { href: sig.url, target: "_blank", rel: "noopener noreferrer", text: sig.title }),
+          el("div", { class: "signal-meta", text: [mt, sig.format, sig.hook].filter(Boolean).join(" · ") }),
+        ])
+      );
+    }
+    sec.appendChild(group);
+  }
+  return sec;
+}
+
+// Planeta tocado: qué trae esa red y sus 3 temas principales.
+function openSourcePanel(data, name, onOpen) {
+  const info = (data.sources || []).find((x) => x.name === name) || {};
+  const ranked = (data.topics || [])
+    .map((t) => ({ t, c: sourceCounts(t)[name] || 0 }))
+    .filter((x) => x.c > 0)
+    .sort((a, b) => b.c - a.c || (b.t.p || 0) - (a.t.p || 0))
+    .slice(0, 3);
+  const list = el("div", { class: "panel-section" }, [el("h3", { text: "Sus 3 temas principales" })]);
+  if (!ranked.length) list.appendChild(el("p", { class: "guion-meta", text: "Sin temas con piezas de esta red." }));
+  for (const { t, c } of ranked) {
+    list.appendChild(
+      el("button", { type: "button", class: "origin-topic", onclick: () => onOpen(t.slug) }, [
+        el("b", { text: t.name }),
+        el("span", { class: "nums", text: `${c} ${c === 1 ? "pieza" : "piezas"}` }),
+      ])
+    );
+  }
+  showPanel(
+    SRC_NAME[name] || name,
+    [el("span", { class: "stage-chip", text: "Red" })],
+    [
+      el("div", { class: "panel-section" }, [
+        el("h3", { text: "Qué trae esta red" }),
+        el("p", { class: "nums", text: `${nf(info.signals || 0)} piezas esta semana.` }),
+      ]),
+      el("div", { class: "panel-section" }, [el("h3", { text: "Cómo se obtiene" }), el("p", { text: SRC_HOW[name] || "Fuente pública." })]),
+      list,
+    ],
+    document.activeElement
   );
-  return item;
 }
 
 // Guiones del tema en pestañas: LinkedIn/YouTube y Reel IG/TikTok, cada uno con "Copiar".
@@ -410,42 +490,41 @@ function renderGuiones(topic) {
   return sec;
 }
 
-function openPanel(topic, triggerEl) {
+function showPanel(titleText, metaNodes, bodyNodes, triggerEl) {
   lastFocused = triggerEl || document.activeElement;
   const overlay = document.getElementById("panel-overlay");
   const panel = document.getElementById("panel");
-  const title = document.getElementById("panel-title");
+  document.getElementById("panel-title").textContent = titleText;
   const meta = document.getElementById("panel-meta");
   const body = document.getElementById("panel-body");
-
-  title.textContent = topic.name;
   meta.textContent = "";
-  meta.appendChild(el("span", { class: "stage-chip", text: etapa(topic) }));
-  meta.appendChild(el("span", { class: "growth nums", text: fmtGrowth(topic.growth) }));
-  meta.appendChild(el("span", { class: `decision-label decision-${topic.decision}`, text: topic.decision }));
-
+  metaNodes.forEach((n) => meta.appendChild(n));
   body.textContent = "";
+  bodyNodes.forEach((n) => body.appendChild(n));
+  body.scrollTop = 0;
+  overlay.classList.add("open");
+  panel.classList.add("open");
+  panel.setAttribute("aria-hidden", "false");
+  document.getElementById("panel-close").focus();
+}
 
+function openPanel(topic, triggerEl) {
   const resumen = el("div", { class: "panel-section" }, [
     el("h3", { text: "Resumen" }),
     el("p", { text: topic.reason, title: topic.reason }),
     renderThreshold(topic.p),
     el("p", { class: "nums", text: `Qué tan listo está para publicar: ${Math.round(topic.p * 100)} de 100 · le sirve a tu audiencia: ${Math.round(topic.exec_fit * 100)} de 100` }),
   ]);
-  body.appendChild(resumen);
-
-  body.appendChild(renderGuiones(topic));
-
-  const signalsSection = el("div", { class: "panel-section" }, [el("h3", { text: "Señales principales" })]);
-  for (const sig of topic.top_signals || []) {
-    signalsSection.appendChild(renderSignal(sig));
-  }
-  body.appendChild(signalsSection);
-
-  overlay.classList.add("open");
-  panel.classList.add("open");
-  panel.setAttribute("aria-hidden", "false");
-  document.getElementById("panel-close").focus();
+  showPanel(
+    topic.name,
+    [
+      el("span", { class: "stage-chip", text: etapa(topic) }),
+      el("span", { class: "growth nums", text: fmtGrowth(topic.growth) }),
+      el("span", { class: `decision-label decision-${topic.decision}`, text: topic.decision }),
+    ],
+    [resumen, renderOrigin(topic), renderGuiones(topic)],
+    triggerEl
+  );
 }
 
 function setupPanelClosers() {
@@ -572,7 +651,7 @@ function setupDiscovery(hero, data, scene, onOpen) {
   let current = null; // { node, slug }
   let hover = false;
   const panelOpen = () => document.getElementById("panel").classList.contains("open");
-  const paused = () => hover || document.hidden || panelOpen();
+  const paused = () => hover || document.hidden || panelOpen() || document.getElementById("hero").classList.contains("exploring");
 
   function drawLine() {
     requestAnimationFrame(drawLine);
@@ -672,6 +751,34 @@ function setupDiscovery(hero, data, scene, onOpen) {
   })();
 }
 
+// Modo explorar: cámara libre (OrbitControls), sin textos del hero; Esc o "Volver" salen.
+function setupExplore(hero, scene) {
+  const btn = document.getElementById("explore-btn");
+  const back = document.getElementById("explore-back");
+  if (!btn || !back) return;
+  if (!scene) {
+    btn.hidden = true;
+    return;
+  }
+  const set = (on) => {
+    if (on) closePanel();
+    scene.setExplore(on);
+    hero.classList.toggle("exploring", on);
+    if (on) hero.scrollIntoView({ block: "start", behavior: "auto" });
+    (on ? back : btn).focus();
+  };
+  btn.addEventListener("click", () => set(true));
+  back.addEventListener("click", () => set(false));
+  document.addEventListener(
+    "keydown",
+    (e) => {
+      const panelOpen = document.getElementById("panel").classList.contains("open");
+      if (e.key === "Escape" && scene.isExplore() && !panelOpen) set(false);
+    },
+    true
+  );
+}
+
 async function loadData() {
   try {
     const res = await fetch("/api/radar.json");
@@ -695,6 +802,8 @@ async function main() {
 
   setupPanelClosers();
 
+  let scene = null;
+  // Desde la escena (ya vuela y dibuja rayos) o desde listas (vuela además a la estrella).
   const onOpen = (slug) => {
     const topic = data.topics.find((t) => t.slug === slug);
     if (topic) {
@@ -702,22 +811,30 @@ async function main() {
       openPanel(topic, document.activeElement);
     }
   };
+  const onOpenList = (slug) => {
+    if (scene) scene.focus(slug);
+    onOpen(slug);
+  };
 
-  renderProduce(data, onOpen);
-  renderRanking(data, onOpen);
+  renderProduce(data, onOpenList);
+  renderRanking(data, onOpenList);
   renderWhy(data);
   renderBench(data);
   renderCost(data);
 
   const canvas = document.getElementById("scene-canvas");
   if (canvas) {
-    let scene = null;
+    const hero = document.getElementById("hero");
     try {
-      scene = mountScene(canvas, data.topics || [], onOpen, data.sources);
+      scene = mountScene(canvas, data.topics || [], onOpen, data.sources, {
+        onPlanet: (name) => openSourcePanel(data, name, onOpenList),
+      });
+      onPanelClose = () => scene.release();
     } catch (e) {
       renderFallback2D(canvas, data.topics || []);
     }
-    setupDiscovery(document.getElementById("hero"), data, scene, onOpen);
+    setupExplore(hero, scene);
+    setupDiscovery(hero, data, scene, onOpenList);
   }
 }
 

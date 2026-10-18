@@ -716,3 +716,32 @@ pre.guion-oculto { display: none; }
 .hero-legend, .hero-legend span { font-size: 1rem !important; color: var(--hueso); }
 .plan-acciones { display: flex; gap: 12px; flex-wrap: wrap; }
 .plan-acciones a.produce-btn { text-decoration: none; }
+
+/* --- Modo explorar y "de dónde viene" --- */
+.explore-btn { background: transparent; color: var(--lima); border: 1px solid var(--lima); margin-left: 8px; }
+.explore-btn:hover { background: var(--lima); color: var(--noche); }
+.explore-ui { display: none; position: absolute; top: 16px; left: 16px; right: 16px; z-index: 3; align-items: center; gap: 14px; pointer-events: none; }
+.explore-ui .produce-btn { pointer-events: auto; }
+.explore-hint { color: var(--gris); font-size: 0.78rem; text-shadow: 0 1px 6px #000; }
+.hero.exploring .explore-ui { display: flex; }
+.hero.exploring .hero-content,
+.hero.exploring .hero-guide,
+.hero.exploring .disc,
+.hero.exploring .disc-line,
+.hero.exploring::before { display: none; }
+.hero.exploring .hero-legend { background: rgba(5, 5, 6, 0.6); padding: 6px 10px; border-radius: 8px; }
+
+.origin-group { margin-bottom: 18px; }
+.origin-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+.origin-head b { color: var(--hueso); font-weight: 600; }
+.origin-head span { color: var(--gris); font-size: 0.82rem; }
+.origin-bar { height: 5px; background: var(--linea); border-radius: 999px; overflow: hidden; margin-bottom: 8px; }
+.origin-bar i { display: block; height: 100%; background: var(--lima); border-radius: 999px; }
+.origin-topic { display: flex; justify-content: space-between; width: 100%; padding: 10px 12px; margin-bottom: 6px; background: transparent; color: var(--hueso); border: var(--borde); border-radius: 8px; font: inherit; cursor: pointer; text-align: left; }
+.origin-topic:hover, .origin-topic:focus-visible { border-color: var(--lima); }
+.origin-topic span { color: var(--gris); font-size: 0.82rem; }
+@media (max-width: 720px) {
+  .explore-btn { margin: 8px 0 0; }
+  .explore-ui { flex-direction: column; align-items: flex-start; gap: 6px; top: 10px; left: 12px; }
+  .hero.exploring .hero-legend { position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 6px 10px; }
+}
