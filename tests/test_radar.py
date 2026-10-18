@@ -374,3 +374,18 @@ def test_veredicto_accion_y_guion_por_formato(settings, db):
     assert li["adapt_reel"] is None
     tt = analyze.analizar("POV: tu jefe pide el informe y le dices que lo hizo ChatGPT\nÉl: ¿y lo revisaste?\nTú: ...", "TikTok")
     assert [t["seg"] for t in tt["tu_version"]["tomas"]][:1] == ["3-10 s"]
+
+
+def test_backtest_sin_fuga_y_detecta_tema_que_arranca():
+    from radar import backtest
+    fin = datetime(2026, 10, 17, 12, tzinfo=timezone.utc)
+    ds = trend.dias(fin, 14)
+    sig, topic_of = [], {}
+    for i, d in enumerate(ds):
+        for j in range(12):  # tema 'plano': 12 piezas por día; 'sube': 1 por día y luego 3 desde el día 5 (visible antes del corte)
+            sig.append({"id": f"p{i}{j}", "published_at": d + "T10:00:00Z", "metrics": {}}); topic_of[f"p{i}{j}"] = "plano"
+        for j in range(1 if i < 4 else 3 if i < 7 else 8):
+            sig.append({"id": f"s{i}{j}", "published_at": d + "T10:00:00Z", "metrics": {}}); topic_of[f"s{i}{j}"] = "sube"
+    r = backtest.correr(sig, topic_of, ["plano", "sube"], fin)
+    assert r["crecieron"] == ["sube"] and r["senales_hasta_corte"] == sum(1 for s in sig if s["published_at"][:10] in ds[:7])
+    assert r["marcados"] == ["sube"] and r["radar"]["precision"] == 1.0 and r["popularidad"]["precision"] == 0.0

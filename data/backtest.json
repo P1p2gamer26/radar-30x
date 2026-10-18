@@ -1,0 +1,36 @@
+{
+ "corte_dia": 7,
+ "umbral_crece": 1.3,
+ "min_piezas": 5,
+ "senales_hasta_corte": 1785,
+ "temas": 20,
+ "crecieron": [
+  "educacion-ia",
+  "empleo-futuro",
+  "ia-finanzas",
+  "ia-marketing",
+  "roi-casos",
+  "startups-inversion"
+ ],
+ "base_azar": 0.3,
+ "marcados": [
+  "agentes-ia",
+  "copilotos",
+  "datos-rag",
+  "ia-finanzas",
+  "seguridad-riesgos",
+  "startups-inversion"
+ ],
+ "k": 6,
+ "radar": {
+  "precision": 0.333,
+  "recall": 0.333,
+  "aciertos": 2
+ },
+ "popularidad": {
+  "precision": 0.0,
+  "recall": 0.0,
+  "aciertos": 0
+ },
+ "lead_time": "no medible: la ventana es de 14 días y la verdad se juzga por semanas, no por día"
+}
