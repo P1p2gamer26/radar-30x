@@ -25,6 +25,15 @@ Estelar + IA: encuentra las estrellas nacientes del contenido de IA (los temas q
 - **Costo operativo medido: USD 0,55 por semana.**
 - **Backtest honesto:** ordenar por crecimiento acierta 12,3 % en el top-5 frente a 1,5 % de ordenar por popularidad, pero no supera al azar (13,5 %); no lo vendemos como predicción.
 
+## Por qué un universo
+
+Un radar barre el cielo buscando lo que aparece; por eso el producto se llama EstelarIA y se ve como una galaxia. La metáfora no es decoración: cada elemento codifica un dato real, para que el equipo de contenido lea la semana de un vistazo en lugar de una tabla de 20 filas.
+
+- **Estrellas = temas de IA.** El **brillo** es el crecimiento: un tema que despega brilla más. Una estrella nueva es un tema que empieza.
+- **Planetas = fuentes** (LinkedIn, Instagram, TikTok, YouTube, X, Hacker News…). Al tocar un planeta ves qué trae esa red; al tocar una estrella ves de qué redes viene.
+- **Distancia al centro = decisión.** Cuanto más cerca del centro, más urgente producirlo (Recomendar); en los anillos exteriores, Aprender o vigilar.
+- **Por qué es más fácil:** las tres preguntas del reto (¿por qué funcionó?, ¿empieza o ya pasó?, ¿le sirve a 30X?) se responden en el mismo lugar: la posición dice la decisión, el brillo dice la tendencia y el panel de la estrella da el porqué, la evidencia y el guion. Un ejecutivo no técnico lo entiende sin leer métricas, y el que quiere el detalle hace clic.
+
 ## Demo en 30 segundos
 1. Abre la demo: https://p1p2gamer26.pythonanywhere.com/ y toca una estrella (un tema): verás su etapa, por qué funciona y sus guiones.
 2. Pega una pieza pública de Instagram, TikTok o LinkedIn en [`/analizar/`](https://p1p2gamer26.pythonanywhere.com/analizar/) y el escáner la clasifica al instante.
@@ -71,10 +80,9 @@ Cada etapa tiene su archivo: `radar/sources.py`, `radar/label.py`, `radar/studen
 <!-- RESULTADOS -->
 Corrida 2026-W42 (generada 2026-10-17; datos en `data/`, reproducible sin red). Generado por `python manage.py readme_resultados`.
 
-- **X:** entra como evidencia (ejemplos, formato, gancho, por qué funcionó, encaje), no en la serie de crecimiento ni en la etapa, porque su muestreo es por tope de resultados y se amontona en los últimos días (148 de 385 tweets el último día, 8 el primero), lo que fabricaría crecimiento. Es una corrección de medición; los umbrales no se tocaron.
 - **Señales:** 6.581 (Hacker News 3.240, Google News 2.018, X (vía Apify) 385, arXiv 300, LinkedIn (vía Google News) 180, Reddit 178, Instagram (vía Apify) 127, YouTube 108, TikTok (vía Apify) 45; más páginas vistas de 20 artículos de Wikipedia como termómetro de interés).
-- **Temas:** 20 analizados; 0 Recomendar (ninguno), 8 Aprender, 12 Descartar.
-- **Costo:** USD 0.55 por semana (scraping de Instagram/TikTok vía Apify) y USD 0.81 una sola vez por etiquetar 5.687 señales con el LLM (USD 0.000123 por señal); el estudiante clasifica a USD 0.00.
+- **Temas:** 20 analizados; 2 Recomendar (Estrategia y adopción de IA, IA en finanzas), 7 Aprender, 11 Descartar.
+- **Costo:** USD 0.91 por semana (scraping de Instagram/TikTok vía Apify) y USD 0.81 una sola vez por etiquetar 5.687 señales con el LLM (USD 0.000123 por señal); el estudiante clasifica a USD 0.00.
 - **Modelo propio, tema** (hold-out fijo del 20 %, 153 piezas con consenso de tema): top-1 **87 %**, top-3 99 %, cuando está seguro acierta 91 % y cubre el 82 % de las piezas; contra todas las etiquetas (incluidas las dudosas) 71 %; adivinar da 25 %.
 
 | Tarea | Top-1 | Top-3 | Cuando está seguro (cobertura) | Contra todas | Base |
