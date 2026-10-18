@@ -422,7 +422,7 @@ def run(signals: list, labels: dict, k: int = 5) -> dict:
     modelo["offline_best"] = {t: ("lr" if elegido[t][1].startswith("lr@") else elegido[t][1]) for t in TAREAS}
     modelo["eval"] = {"method": f"consenso de dos LLM; método y umbral elegidos con validación cruzada {k} pliegues sobre el 80 %; "
                                 "cifra final en hold-out del 20 % fijo",
-                      "n_train": len(dat), "n_test": max(n_cv.values()), "n_holdout": len(hold),
+                      "n_train": len(dat), "n_cv": max(n_cv.values()), "n_holdout": len(hold),
                       "n_labels": len(filas), "target_precision": OBJ_SEGURO, **acc}
     ruta().write_text(json.dumps(modelo, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     return modelo["eval"]

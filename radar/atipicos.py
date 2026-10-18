@@ -1,4 +1,5 @@
 """Piezas atípicas por tema: las que rinden >= 3x la mediana de su fuente, comparadas con el resto (gancho, formato, día, autor)."""
+import re
 from collections import Counter, defaultdict
 from datetime import datetime
 from statistics import median
@@ -10,6 +11,9 @@ UMBRAL, MIN_TEMA, MIN_OUT, MIN_LIFT = 3, 5, 3, 1.5
 
 
 PISO = {"hn": 10, "youtube": 1000, "instagram": 500, "tiktok": 1000}  # mínimo razonable de la mediana (puntos o vistas)
+
+
+CJK = re.compile(r"[぀-ヿ㐀-鿿가-힯]")
 
 
 def _score(s):
@@ -69,7 +73,7 @@ def analizar(signals, topic_of, fmt_of, hook_of) -> dict:
             r["frase"] = "sin datos suficientes"
         else:
             r["ejemplos"] = [{"title": s["title"][:140], "url": s["url"], "source": s["source"], "ratio": round(ratio[s["id"]], 1)}
-                             for s in out[:2]]
+                             for s in [s for s in out if not CJK.search(s["title"])][:2]]  # ponytail: ejemplos legibles para la audiencia hispana
         if len(out) >= MIN_OUT and rest:
             lh = _lift(out, rest, lambda s: hook_of.get(s["id"]), HOOKS)
             lf = _lift(out, rest, lambda s: fmt_of.get(s["id"]), FORMATS)

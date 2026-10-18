@@ -58,7 +58,7 @@
  "student": {
   "method": "consenso de dos LLM; método y umbral elegidos con validación cruzada 5 pliegues sobre el 80 %; cifra final en hold-out del 20 % fijo",
   "n_train": 5453,
-  "n_test": 5453,
+  "n_cv": 5453,
   "n_holdout": 234,
   "n_labels": 5687,
   "target_precision": 0.9,
@@ -4575,16 +4575,16 @@
     },
     "ejemplos": [
      {
-      "title": "中国禁用ChatGPT 的真实原因",
-      "url": "https://www.tiktok.com/@_/video/7459873749945388330",
-      "source": "tiktok",
-      "ratio": 186.2
-     },
-     {
       "title": "Anthropic reported diary entry to police, woman faces felony charge",
       "url": "https://www.techspot.com/news/114091-florida-woman-used-claude-diary-anthropic-reported-shoot.html",
       "source": "hn",
       "ratio": 84.0
+     },
+     {
+      "title": "QGIS enacts moratorium on AI contributions",
+      "url": "https://github.com/qgis/QGIS-Enhancement-Proposals/pull/387",
+      "source": "hn",
+      "ratio": 39.2
      }
     ],
     "frase": "Las piezas que más rinden usan el gancho «Contrarian / rompe un mito» 2,2x más que el resto y el formato reel/short con cara hablando a cámara 4,2x."

@@ -61,7 +61,7 @@ Serie diaria de 14 días por tema = suma de pesos de señales (peso = 1 + log1p(
  "sources": [{"name": "hn", "label": "Hacker News", "signals": 120}],
  "totals": {"signals": 900, "labeled": 900, "teacher_cost_usd": 0.41, "student_cost_usd": 0.0,
             "cost_per_signal_usd": 0.00045, "paid_alternative_usd_year": 12000},
- "student": {"accuracy_topic": 0.86, "accuracy_format": 0.7, "n_train": 700, "n_test": 200},
+ "student": {"accuracy_topic": 0.86, "accuracy_format": 0.7, "n_train": 700, "n_cv": 700, "n_holdout": 200},
  "topics": [{
    "slug": "agentes-ia", "name": "Agentes de IA", "rank": 1,
    "stage": "temprana|creciendo|saturada|bajando|estable",

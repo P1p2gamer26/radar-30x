@@ -89,7 +89,7 @@ def etapas(radar, modelo, llm_vs) -> list:
         {"id": "modelo", "nombre": "Modelo propio", "valor": f"{round(off.get('holdout_accuracy', 0) * 100)} % acierto", "archivo": "radar/student.py",
          "texto": f"Aprende de esas etiquetas. Versión completa (embeddings + regresión logística): {round(off.get('holdout_accuracy', 0) * 100)} % top-1 y {round(off.get('holdout_top3', 0) * 100)} % top-3 en {ev.get('n_holdout', 0)} piezas que nunca vio. "
                   f"En el servidor corre una versión liviana sin embeddings. Tarda ~0,1 ms por pieza y cuesta USD 0."},
-        {"id": "seguro", "nombre": "¿Seguro?", "valor": f"τ = {c(tau_srv)}", "archivo": "radar/analyze.py",
+        {"id": "seguro", "nombre": "¿Seguro?", "valor": f"τ servidor = {c(tau_srv)}", "archivo": "radar/analyze.py",
          "texto": f"Si la probabilidad del tema es ≥ τ, responde el modelo propio. Si no, la pieza escala a un LLM grande gratis. τ se eligió para acertar ≥ 90 % cuando responde solo "
                   f"(versión completa: {c(tau_off)}; en el servidor: {c(tau_srv)}). {cas_txt}"},
         {"id": "tendencia", "nombre": "Tendencia", "valor": "14 días", "archivo": "radar/trend.py",
