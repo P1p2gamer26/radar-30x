@@ -703,6 +703,8 @@ pre.guion-oculto { display: none; }
 .hero-guide { position: absolute; z-index: 2; top: 18px; left: 50%; transform: translateX(-50%); margin: 0; padding: 8px 18px; border: 1px solid var(--lima);
   border-radius: 999px; color: var(--lima); background: rgba(5, 4, 13, 0.7); font-size: 0.95rem; pointer-events: none; text-align: center; }
 .hero-guide[hidden] { display: none; }
+.hero-guide:not([hidden]) { display: flex; align-items: center; gap: 6px; padding: 4px 18px 4px 4px; }
+.hero-guide img { width: 58px; height: auto; margin: -16px 0 -12px; flex: none; }
 .produce-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
 .produce-card { border: 1px solid var(--lima); border-radius: var(--radio); background: var(--polvo); padding: 22px; display: flex; flex-direction: column; gap: 10px; }
 .produce-card h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; color: var(--hueso); }
@@ -784,4 +786,24 @@ pre.guion-oculto { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-label.hero-in { animation: none; opacity: 1; letter-spacing: 0.04em; }
+}
+
+/* --- Las 3 preguntas --- */
+.tp-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 14px; }
+.tp-card { display: flex; flex-direction: column; gap: 8px; border: var(--borde); border-radius: var(--radio); background: var(--polvo); padding: 20px; min-width: 0; overflow-wrap: anywhere; }
+.tp-card h3 { margin: 0; font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--lima); }
+.tp-card p { margin: 0; color: var(--gris); }
+.tp-tema { font-family: var(--font-display); font-size: 1.4rem; color: var(--hueso); text-decoration: none; }
+.tp-tema:hover { color: var(--lima); }
+.tp-card .tp-dato { color: var(--ambar); font-size: 1.05rem; }
+.tp-ev { margin-top: auto; color: var(--lima); font-size: 0.9rem; }
+@media (min-width: 900px) { .tp-grid { grid-template-columns: repeat(3, 1fr); } }
+.form-hint code { overflow-wrap: anywhere; }
+
+/* Móvil: el universo queda detrás del titular; un velo oscuro bajo el texto lo mantiene legible. */
+@media (max-width: 720px) {
+  .hero-content { position: relative; z-index: 2; padding: 14px 14px 16px; border-radius: 16px;
+    background: linear-gradient(180deg, rgba(5, 4, 13, 0.55), rgba(5, 4, 13, 0.88)); backdrop-filter: blur(3px); }
+  .hero { padding-top: 300px; }  /* reserva el alto de la tarjeta "Nueva estrella" para que no tape el titular */
+  .disc-line, .disc-count { display: none; }  /* la línea guía y el contador cruzaban el titular */
 }

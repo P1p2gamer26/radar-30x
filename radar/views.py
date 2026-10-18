@@ -30,10 +30,35 @@ def cargar_radar() -> dict:
     return radar
 
 
+FUENTES = {"hn": "Hacker News", "gnews": "Google News", "wiki": "Wikipedia", "youtube": "YouTube",
+           "instagram": "Instagram", "tiktok": "TikTok", "linkedin": "LinkedIn"}
+
+
+def tres_preguntas(topics) -> list:
+    """Las 3 preguntas del brief con ejemplos reales; temas sin evidencia (top_signals) se omiten."""
+    ok = [t for t in topics if t.get("top_signals") and t["top_signals"][0].get("url")]
+    despega = (max((t for t in ok if t["stage"] == "temprana"), key=lambda t: t["growth"], default=None)
+               or max((t for t in ok if t["stage"] == "creciendo"), key=lambda t: t["growth"], default=None))
+    vivos = [t for t in ok if t["decision"] != "Descartar"] or ok  # el ejemplo de encaje no puede ser un tema que el radar descarta
+    sirve = max(vivos, key=lambda t: t["exec_fit"], default=None)
+    if not despega or not sirve:
+        return []
+    w = despega["why"]
+    fuentes = ", ".join(FUENTES.get(f, f) for f in w.get("sources_growing", [])) or "varias fuentes"
+    cartas = [
+        ("¿Qué tema está empezando a despegar?", despega, despega["reason"].split(";")[0] + ".", f"{despega['growth']:.1f}x de crecimiento"),
+        ("¿Por qué funciona?", despega, f"Formato: {w['format_label']}. Gancho: {w['hook_label']}. Mejor día: {w['best_day']}.", f"al alza en {fuentes}"),
+        ("¿Le sirve a mi audiencia?", sirve, f"De los temas que el radar no descarta, es el que más encaja con ejecutivos LatAm aprendiendo IA. Decisión: {sirve['decision']}.", f"{round(sirve['exec_fit'] * 100)} de 100 de encaje con 30X"),
+    ]
+    return [{"pregunta": q, "tema": t["name"], "slug": t["slug"], "respuesta": r, "dato": d, "evidencia_url": t["top_signals"][0]["url"]}
+            for q, t, r, d in cartas]
+
+
 def index(request):
     radar = cargar_radar()
     rows = plan.filas(radar)
-    return render(request, "radar/index.html", {"radar": radar, "ejemplos": _ejemplos(radar)[:2], "plan_chat": plan.texto_chat(radar, rows),
+    return render(request, "radar/index.html", {"radar": radar, "preguntas": tres_preguntas(radar["topics"]),
+                                                "semana": radar.get("week", "").split("-")[-1], "ejemplos": _ejemplos(radar)[:2], "plan_chat": plan.texto_chat(radar, rows),
                                                 "m": plan.metricas(radar.get("student"))})
 
 

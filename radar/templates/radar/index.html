@@ -17,7 +17,7 @@
     <button type="button" class="produce-btn" id="explore-back">&larr; Volver</button>
     <p class="explore-hint">Arrastra para girar · rueda o pellizco para acercar · doble clic en un planeta o estrella para volar hasta él · Esc para salir</p>
   </div>
-  <p class="hero-guide" id="hero-guide" hidden>Toca una estrella para ver por qué y el guion.</p>
+  <p class="hero-guide" id="hero-guide" hidden><img src="{% static 'radar/mascota.svg' %}" alt="" width="58" height="52"><span>Toca una estrella para ver por qué y el guion.</span></p>
   <p class="hero-legend" aria-label="Cómo leer el universo">
     <span><i class="lg lg-planet"></i>Planetas = redes sociales</span>
     <span><i class="lg lg-star"></i>Estrellas = temas de IA</span>
@@ -26,6 +26,24 @@
 </section>
 
 <div class="wrap">
+
+{% if preguntas %}
+<section class="block" id="tres-preguntas">
+  <h2>Las 3 preguntas, contestadas</h2>
+  <div class="tp-grid">
+    {% for c in preguntas %}
+    <article class="tp-card">
+      <h3>{{ c.pregunta }}</h3>
+      <a class="tp-tema" href="{% url 'tema' c.slug %}">{{ c.tema }}</a>
+      <p>{{ c.respuesta }}</p>
+      <p class="tp-dato nums">{{ c.dato }}</p>
+      <a class="tp-ev" href="{{ c.evidencia_url }}" target="_blank" rel="noopener noreferrer">Ver evidencia &#8599;</a>
+    </article>
+    {% endfor %}
+  </div>
+  <p class="form-hint">Una semana de datos ({{ semana }}) · hold-out de {{ radar.student.n_holdout }} piezas · LinkedIn solo por titulares de Google News</p>
+</section>
+{% endif %}
 
 <section class="block" id="produce" hidden>
   <h2>Esta semana produce:</h2>

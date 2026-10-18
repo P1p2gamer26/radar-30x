@@ -389,3 +389,18 @@ def test_backtest_sin_fuga_y_detecta_tema_que_arranca():
     r = backtest.correr(sig, topic_of, ["plano", "sube"], fin)
     assert r["crecieron"] == ["sube"] and r["senales_hasta_corte"] == sum(1 for s in sig if s["published_at"][:10] in ds[:7])
     assert r["marcados"] == ["sube"] and r["radar"]["precision"] == 1.0 and r["popularidad"]["precision"] == 0.0
+
+
+def test_tres_preguntas():
+    from django.conf import settings
+    from radar.views import tres_preguntas
+    topics = json.loads((settings.DATA_DIR / "radar.json").read_text(encoding="utf-8"))["topics"]
+    c = tres_preguntas(topics)
+    assert len(c) == 3 and all(x["evidencia_url"] for x in c)
+    assert c[0]["slug"] == max((t for t in topics if t["stage"] == "temprana"), key=lambda t: t["growth"])["slug"]
+    assert c[1]["slug"] == c[0]["slug"]
+    assert c[2]["slug"] == max((t for t in topics if t["decision"] != "Descartar"), key=lambda t: t["exec_fit"])["slug"]
+    # el de mayor exec_fit sin top_signals se salta
+    mejor = next(t for t in topics if t["slug"] == c[2]["slug"])
+    resto = [dict(t, top_signals=[]) if t is mejor else t for t in topics]
+    assert tres_preguntas(resto)[2]["slug"] != mejor["slug"]
