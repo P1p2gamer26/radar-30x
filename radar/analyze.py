@@ -152,17 +152,46 @@ def _corta(f: str, n: int) -> str:
     return f if len(f) <= n else f[:n].rsplit(" ", 1)[0].rstrip(",;:") + "…"
 
 
-def tu_version(texto: str, plataforma: str) -> dict:
-    """Guion hecho SOLO con la pieza pegada: gancho = 1.ª frase, tomas = siguientes frases/viñetas. Nada inventado."""
+def tu_version(texto: str, plataforma: str, fmt: str = "") -> dict:
+    """Guion hecho SOLO con la pieza pegada. Carrusel = slides (portada, 3-5 puntos, cierre); POV/reel = tomas 0-3, 3-10, 10-20 s. Nada inventado."""
     fr = _frases(texto)
     lista = es_lista(texto)
+    gancho = _corta(fr[0], 90) if fr else "(la pieza no trae texto suficiente)"
+    cta = "Comenta QUIERO y te mando la guía paso a paso (CTA genérico de 30X)."
+    if fmt == "carrusel":
+        if len(fr) > 2 and normalizar(fr[-1]).startswith("comenta"):  # el CTA de su propia pieza es el cierre
+            cta, fr = _corta(fr[-1], 120), fr[:-1]
+        tomas = [{"seg": f"Slide {i}", "texto": _corta(f, 120)} for i, f in enumerate(fr[1:6], 2)]
+        return {"gancho": gancho, "formato": "Carrusel: portada, una lámina por punto y cierre", "tomas": tomas, "cta": cta,
+                "gancho_label": "Portada", "cta_label": "Cierre (CTA)"}
+    if fmt in ("humor-pov", "reel-cara", "herramienta-60s", "caso-paso-a-paso") and plataforma in ("Instagram", "TikTok"):
+        segs = ("3-10 s", "10-20 s")
+        tomas = [{"seg": sg, "texto": _corta(f, 120)} for sg, f in zip(segs, fr[1:3])]
+        return {"gancho": gancho, "formato": "Sketch POV de 3 tomas" if fmt == "humor-pov" else "Reel vertical de 20 s", "tomas": tomas, "cta": cta,
+                "gancho_label": "Toma 0-3 s", "cta_label": "CTA"}
     formato = {"Instagram": "Carrusel de láminas, una por punto" if lista else "Reel vertical de 30-45 s",
                "TikTok": "Video vertical de 20-30 s", "LinkedIn": "Carrusel PDF" if lista else "Post de texto",
                "YouTube": "Video de 3-5 min con capítulos"}.get(plataforma, "Post de texto o reel corto")
     segs = ("3-12", "12-25", "25-40")
-    tomas = [{"seg": sg, "texto": _corta(f, 120)} for sg, f in zip(segs, fr[1:4])]
-    return {"gancho": _corta(fr[0], 90) if fr else "(la pieza no trae texto suficiente)", "formato": formato, "tomas": tomas,
-            "cta": "Comenta QUIERO y te mando la guía paso a paso (CTA genérico de 30X)."}
+    tomas = [{"seg": f"{sg} s", "texto": _corta(f, 120)} for sg, f in zip(segs, fr[1:4])]
+    return {"gancho": gancho, "formato": formato, "tomas": tomas, "cta": cta, "gancho_label": "Gancho", "cta_label": "CTA"}
+
+
+def veredicto(r: dict, tema: dict | None) -> dict:
+    """Veredicto en lenguaje de acción + el porqué en una frase."""
+    fit = r["fit_pct"]
+    if tema is None:
+        return {"accion": "Descártalo", "porque": "No encaja con ningún tema del radar, así que no es para tu audiencia."}
+    if r["no_audiencia"]:
+        return {"accion": "Descártalo", "porque": f"Roza {r['topic_name']}, pero le sirve poco a un ejecutivo que aprende IA (encaje {fit}%)."}
+    if r["decision"] == "Recomendar":
+        return {"accion": "Publícalo esta semana", "porque": f"{r['topic_name']} está en {r['early_label'].lower()} y le sirve a tu audiencia (encaje {fit}%)."}
+    if r["exec_fit"] >= 0.6 and tema["stage"] in ("bajando", "estable"):  # buen tema, mal momento
+        return {"accion": "Guárdalo para después", "porque": "Guárdalo: le sirve a tu audiencia, pero este tema no está creciendo ahora."}
+    if r["decision"] == "Aprender":
+        return {"accion": "Guárdalo para después", "porque": f"Tiene potencial (encaje {fit}%), pero no es la prioridad de esta semana."}
+    motivo = "el tema está cayendo" if r["cayendo"] else "el encaje con tu audiencia es bajo" if r["exec_fit"] < 0.5 else "hay temas mejores esta semana"
+    return {"accion": "Descártalo", "porque": f"Por ahora no vale la pena: {motivo}."}
 
 
 def decision_pieza(tema: dict | None, fit: float) -> str:
@@ -206,13 +235,17 @@ def analizar(texto: str, plataforma: str = "Otro") -> dict:
     if tema and tema["why"].get("format_winner") and tema["why"]["format_winner"] != r["format"]:
         r["reason"] += f" En este tema funciona mejor: {FORMATS.get(tema['why']['format_winner'])}."
     r["adapt"], r["adapt_reel"] = (tema["adapt"], tema["adapt_reel"]) if tema else (None, None)
-    # Un guion distinto por red: IG/TikTok -> reel; LinkedIn/YouTube -> el normal; "Otro" -> ambos. Se rotula con la red elegida.
+    # Un guion por formato: IG/TikTok -> reel; LinkedIn/YouTube -> el normal; "Otro" -> ambos. Si falta, NO se usa el de otro formato.
     r["modo_guion"] = "reel" if plataforma in ("Instagram", "TikTok") else "normal" if plataforma in ("LinkedIn", "YouTube") else ""
     if r["adapt"] and plataforma in ("LinkedIn", "YouTube"):
         r["adapt"] = {**r["adapt"], "platform": plataforma}
     if r["adapt_reel"] and plataforma in ("Instagram", "TikTok"):
         r["adapt_reel"] = {**r["adapt_reel"], "platform": plataforma}
-    r["tu_version"] = tu_version(limpio, plataforma)
+    if plataforma in ("Instagram", "TikTok"):
+        r["adapt"] = None
+    elif plataforma in ("LinkedIn", "YouTube"):
+        r["adapt_reel"] = None
+    r["tu_version"] = tu_version(limpio, plataforma, r["format"])
     r["stage"], r["growth"] = etapa, (tema["growth"] if tema else None)
     r["early_label"] = tema["early_label"] if tema else "Sin datos"
     r["slug_ok"] = tema is not None
@@ -223,4 +256,6 @@ def analizar(texto: str, plataforma: str = "Otro") -> dict:
     r["benchmark"] = next((b for b in bench if b["format"] == r["format"]), None) or next((b for b in bench if b["hook"] == r["hook"]), None) or (bench[0] if bench else None)
     r["momento_pct"] = round(min(1.0, (tema["growth"] if tema else 0) / 2) * 100)
     r["fit_pct"], r["conf_pct"] = round(r["exec_fit"] * 100), round(r["confidence"] * 100)
+    r["veredicto"] = veredicto(r, tema)
+    r["p_pct"] = round(p * 100)
     return r

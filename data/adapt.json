@@ -462,7 +462,37 @@
   "cta": "Comenta la palabra ARCHIVO y te enviamos la plantilla paso a paso para evaluar cómo tu equipo puede empezar.",
   "platform": "YouTube",
   "by": "teacher",
-  "cost_usd": 0.00722
+  "cost_usd": 0.00722,
+  "adapt_reel": {
+   "hook": "Su IA se equivocó de página 10 veces menos cuando dejó de buscar por parecido y empezó a usar sus datos bien ordenados.",
+   "shots": [
+    {
+     "seg": "3-12",
+     "visual": "Andrés de pie frente a una pantalla con un documento de la empresa. Hace un gesto de ‘ojo’ a cámara y señala dos caminos: uno con una flecha que se equivoca, otro que llega directo.",
+     "texto": "Tu IA responde con tus documentos… ¿pero de cuál?"
+    },
+    {
+     "seg": "12-22",
+     "visual": "Pantalla dividida. Izquierda: buscador que trae páginas parecidas pero no las correctas. Derecha: el mismo pregunta, con datos ordenados y la página exacta. Andrés explica en lenguaje sencillo qué cam",
+     "texto": "Mismo modelo. Distinto orden de datos. Menos respuestas equivocadas."
+    },
+    {
+     "seg": "22-33",
+     "visual": "Paso a paso en tres tarjetas animadas: 1) Juntar políticas, manuales y preguntas frecuentes. 2) Limpiar y etiquetar por tema. 3) Conectar la IA solo a esa fuente. Andrés señala cada tarjeta con el ded",
+     "texto": "Paso 1: ordenar. Paso 2: etiquetar. Paso 3: conectar."
+    },
+    {
+     "seg": "33-42",
+     "visual": "Andrés de regreso a cámara, mirando de frente, con tono directo. Aparece el logo 30X en la esquina.",
+     "texto": "Empieza por una sola área: ventas o RR. HH."
+    }
+   ],
+   "cta": "Comenta DATOS y te mando el paso a paso para ordenar tu conocimiento corporativo",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.00888
+  }
  },
  "agentes-ia": {
   "title": "Agentes de IA sin jerga: cómo empezar a quitarle horas repetitivas a tu equipo",
@@ -477,7 +507,37 @@
   "cta": "Comenta cuántas horas a la semana gasta tu equipo en tareas repetitivas y guarda este post para revisarlo con tu equipo esta semana.",
   "platform": "LinkedIn",
   "by": "teacher",
-  "cost_usd": 0.00838
+  "cost_usd": 0.00838,
+  "adapt_reel": {
+   "hook": "Meta acaba de presentar su IA más capaz para tareas complejas. Tu equipo sigue copiando datos a mano.",
+   "shots": [
+    {
+     "seg": "3-12",
+     "visual": "Plano medio de la persona frente a cámara, en una oficina sencilla. Muestra en el celular una captura de la noticia de Meta sobre modelos que ejecutan tareas complejas.",
+     "texto": "Meta: IA para tareas complejas"
+    },
+    {
+     "seg": "12-22",
+     "visual": "Pantalla dividida: a la izquierda, alguien pasando datos de un archivo a otro a mano; a la derecha, un diagrama simple donde un agente recibe la tarea, la completa y deja el resultado listo.",
+     "texto": "Un agente hace el paso repetitivo. Tú revisas el resultado."
+    },
+    {
+     "seg": "22-34",
+     "visual": "La persona camina hacia una pizarra y dibuja tres pasos del proceso de su área (recibir, procesar, aprobar), marcando cuál delegaría primero al agente.",
+     "texto": "Paso 1: elige UN proceso repetitivo"
+    },
+    {
+     "seg": "34-42",
+     "visual": "Plano cercano a cámara, gesto directo de invitación, con texto final en pantalla.",
+     "texto": "Empieza con uno. Mide una semana."
+    }
+   ],
+   "cta": "Comenta AGENTE y te mando el paso a paso para elegir tu primer proceso.",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.00927
+  }
  },
  "video-voz": {
   "title": "Herramienta en 60 segundos: crea video, voz e imagen con IA sin programar",
@@ -492,7 +552,37 @@
   "cta": "Comenta 'HERRAMIENTA' y te enviamos la lista de verificación para usar IA en video y voz sin meterte en problemas legales.",
   "platform": "YouTube",
   "by": "teacher",
-  "cost_usd": 0.00862
+  "cost_usd": 0.00862,
+  "adapt_reel": {
+   "hook": "De PDF a audiolibro, en un solo paso. Sin programar nada.",
+   "shots": [
+    {
+     "seg": "0-3",
+     "visual": "Primer plano de 30X frente a una pila de documentos impresos. Pone una hoja encima de la mesa y la mira a cámara.",
+     "texto": "De PDF a audiolibro"
+    },
+    {
+     "seg": "3-12",
+     "visual": "Pantalla de celular o laptop mostrando un PDF abierto. 30X arrastra el archivo a una herramienta sencilla y la pantalla muestra la conversión en curso.",
+     "texto": "Sube tu PDF. La IA lo lee por ti."
+    },
+    {
+     "seg": "12-25",
+     "visual": "Se reproduce el audio generado mientras aparece una lista corta de tareas en pantalla. 30X escucha con una sonrisa y asiente.",
+     "texto": "Escucha tu documento mientras caminas o manejas"
+    },
+    {
+     "seg": "25-38",
+     "visual": "30X habla directo a cámara, en tono cercano, con una tarjeta visual de pasos numerados sobre el fondo.",
+     "texto": "Tres pasos: subir, revisar, escuchar. Cualquier equipo lo puede hacer esta semana."
+    }
+   ],
+   "cta": "Comenta PDF y te mando el paso a paso para convertir tus documentos en audio.",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.00707
+  }
  },
  "automatizacion": {
   "title": "Reach Security capta 50 millones para automatizar defensas: qué significa para tu empresa",
@@ -507,7 +597,37 @@
   "cta": "Comenta '¿Qué proceso de tu empresa automatizarías primero?' y te compartimos la guía de 3 preguntas para evaluarlo.",
   "platform": "LinkedIn",
   "by": "teacher",
-  "cost_usd": 0.00658
+  "cost_usd": 0.00658,
+  "adapt_reel": {
+   "hook": "Reach Security capta más de 50 millones de dólares para automatizar defensas empresariales.",
+   "shots": [
+    {
+     "seg": "3-12",
+     "visual": "Andrés Bilbao frente a cámara, tono directo. Pantalla dividida: a la izquierda, el titular de la noticia; a la derecha, una lista de tareas repetitivas de una oficina (reportes, correos, cotejos).",
+     "texto": "¿Qué significa para tu empresa?"
+    },
+    {
+     "seg": "12-24",
+     "visual": "Explicación en lenguaje simple: un proceso que hoy hace una persona a mano pasa a un sistema que lo hace solo y avisa cuando hay algo que revisar. Bilbao dibuja el flujo en una pizarra con tres pasos.",
+     "texto": "Tareas repetitivas = dinero que se escapa cada semana"
+    },
+    {
+     "seg": "24-36",
+     "visual": "Bilbao señala la pizarra y resume la idea: no se trata de comprar la noticia, sino de identificar qué tarea de tu equipo se puede automatizar primero.",
+     "texto": "Empieza por UNA tarea, no por todo"
+    },
+    {
+     "seg": "36-42",
+     "visual": "Plano cerrado de Bilbao mirando a cámara, gesto de invitación, con la palabra del CTA en pantalla.",
+     "texto": "Comenta AUTOMATIZA"
+    }
+   ],
+   "cta": "Comenta AUTOMATIZA y te mando el paso a paso para identificar la primera tarea de tu equipo que puedes automatizar.",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.00817
+  }
  },
  "startups-inversion": {
   "title": "Herramienta en 60 segundos: cómo saber si tu startup ya encontró product market fit",
@@ -522,7 +642,37 @@
   "cta": "Comenta 'FIT' y te enviamos la plantilla con las tres preguntas para revisar tu propio negocio.",
   "platform": "YouTube",
   "by": "teacher",
-  "cost_usd": 0.00675
+  "cost_usd": 0.00675,
+  "adapt_reel": {
+   "hook": "¿Cómo pasas de 4 a 15 millones de ARR? Te lo cuento en 30 segundos.",
+   "shots": [
+    {
+     "seg": "0-3",
+     "visual": "Primer plano de Andrés Bilbao frente a cámara, mirando de frente, con fondo de oficina limpio. Corte directo, sin intro.",
+     "texto": "4 → 15 millones de ARR"
+    },
+    {
+     "seg": "3-12",
+     "visual": "Clip corto de la entrevista con Lluís Cañadell hablando sobre product market fit. Subtítulos grandes sobre el clip. Corte rápido entre el clip y Andrés.",
+     "texto": "Product market fit = el producto que la gente sí quiere comprar"
+    },
+    {
+     "seg": "12-24",
+     "visual": "Andrés en plano medio explicando, con la mano marcando dos columnas: antes y después. Sin tecnicismos, en lenguaje cotidiano.",
+     "texto": "Antes: vendes a todos. Después: vendes a quien ya te busca"
+    },
+    {
+     "seg": "24-36",
+     "visual": "Andrés en primer plano, tono directo, señalando a cámara. Cierre con su nombre y el título de la charla en pantalla.",
+     "texto": "Mira la charla completa"
+    }
+   ],
+   "cta": "Comenta PMF y te mando el link de la charla completa con Lluís Cañadell",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.00791
+  }
  },
  "copilotos": {
   "title": "Copilotos de trabajo: qué significa para tu empresa, explicado en 3 minutos",
@@ -537,7 +687,37 @@
   "cta": "Comenta 'COPILOTO' y te enviamos las 3 preguntas para evaluar un asistente de IA en tu área.",
   "platform": "LinkedIn",
   "by": "teacher",
-  "cost_usd": 0.008
+  "cost_usd": 0.008,
+  "adapt_reel": {
+   "hook": "Un prompt lo instala y corre todo tu día.",
+   "shots": [
+    {
+     "seg": "3-12",
+     "visual": "Andrés Bilbao frente a cámara, con una laptop abierta mostrando una pantalla de asistente de trabajo. Mira a cámara y se inclina un poco hacia adelante.",
+     "texto": "Un asistente que trabaja por ti"
+    },
+    {
+     "seg": "12-24",
+     "visual": "Pantalla dividida: a la izquierda, una persona revisando su correo y agenda a mano; a la derecha, el asistente ordenando los mismos pendientes en segundos.",
+     "texto": "Tú das la orden, él organiza el día"
+    },
+    {
+     "seg": "24-35",
+     "visual": "Andrés a cámara con tres dedos levantados, mostrando cada paso con la mano mientras habla de forma directa.",
+     "texto": "1) Describe la tarea 2) Revisa el borrador 3) Apruébalo"
+    },
+    {
+     "seg": "35-42",
+     "visual": "Plano medio de Andrés señalando hacia abajo, como indicando los comentarios, con fondo de oficina sencilla.",
+     "texto": "Empieza con una sola tarea hoy"
+    }
+   ],
+   "cta": "Comenta ASISTENTE y te mando el paso a paso para empezar esta semana",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.00839
+  }
  },
  "modelos-nuevos": {
   "title": "6 modelos nuevos de IA: cuál le sirve a tu empresa y cuál puedes ignorar",
@@ -552,7 +732,37 @@
   "cta": "Comenta una palabra (por ejemplo, 'ranking') y te enviamos el link del análisis completo con la tabla de los 6 modelos.",
   "platform": "LinkedIn",
   "by": "teacher",
-  "cost_usd": 0.00795
+  "cost_usd": 0.00795,
+  "adapt_reel": {
+   "hook": "6 modelos nuevos de IA y ni uno es para todos. Te digo cuál usar.",
+   "shots": [
+    {
+     "seg": "0-3",
+     "visual": "Primer plano del creador frente a la cámara, gesto directo, fondo limpio con una pantalla desenfocada de fondo.",
+     "texto": "6 modelos nuevos de IA"
+    },
+    {
+     "seg": "3-12",
+     "visual": "Lista numerada en pantalla completa con los nombres: DeepSeek, Gemini 4 y Claude. El creador señala cada uno con la mano.",
+     "texto": "1. DeepSeek  2. Gemini 4  3. Claude"
+    },
+    {
+     "seg": "12-25",
+     "visual": "Creador compara los tres en una tarjeta dividida: para qué sirve cada uno en un negocio (redactar correos, resumir reuniones, buscar información). Corte rápido entre cada caso.",
+     "texto": "Elige según la tarea, no según la moda"
+    },
+    {
+     "seg": "25-38",
+     "visual": "Creador de regreso a cámara, da una recomendación práctica para un líder que no es programador: empieza con una sola herramienta y una tarea concreta por una semana.",
+     "texto": "Empieza con 1 herramienta y 1 tarea"
+    }
+   ],
+   "cta": "Comenta MODELOS y te mando la lista completa con el paso a paso para elegir el tuyo",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.00775
+  }
  },
  "vibe-coding": {
   "title": "3 cosas que tu equipo debe verificar antes de lanzar una app hecha con IA",
@@ -567,7 +777,37 @@
   "cta": "Comenta 'VERIFICAR' y te enviamos la lista de 3 puntos en PDF para revisar tu próxima app antes de lanzarla.",
   "platform": "YouTube",
   "by": "teacher",
-  "cost_usd": 0.00863
+  "cost_usd": 0.00863,
+  "adapt_reel": {
+   "hook": "Un creador hizo una app con IA y llegó a $210,364 de ingresos anuales.",
+   "shots": [
+    {
+     "seg": "3-10",
+     "visual": "Plano medio de Andrés frente a cámara, con una laptop abierta a su lado. Gesto directo, sin fondo musical fuerte.",
+     "texto": "Sin saber programar: ¿es posible?"
+    },
+    {
+     "seg": "10-20",
+     "visual": "Pantalla dividida: a la izquierda, una captura de la app en el teléfono; a la derecha, Andrés describiendo en una frase qué quiere que haga la app, escrita en un chat con IA.",
+     "texto": "1. Describe el problema en una frase. 2. La IA escribe la primera versión."
+    },
+    {
+     "seg": "20-32",
+     "visual": "Plano corto de Andrés probando la app en el celular: se ve que funciona. Luego corte a una lista simple en pantalla.",
+     "texto": "3. Pruébala con 5 personas reales. 4. Corrige lo que no entiendan."
+    },
+    {
+     "seg": "32-40",
+     "visual": "Andrés de regreso a cámara, mirando de frente, con tono cercano.",
+     "texto": "Cualquier persona puede empezar esta semana."
+    }
+   ],
+   "cta": "Comenta APP y te mando el paso a paso para crear tu primera app con IA",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.00742
+  }
  },
  "seguridad-riesgos": {
   "title": "Lo que tu equipo le cuenta a la IA: cómo revisar un proceso paso a paso sin exponer datos",
@@ -582,7 +822,37 @@
   "cta": "Comenta 'PROCESO' y te enviamos la plantilla de revisión de datos para aplicarla en tu equipo esta semana.",
   "platform": "YouTube",
   "by": "teacher",
-  "cost_usd": 0.00717
+  "cost_usd": 0.00717,
+  "adapt_reel": {
+   "hook": "Tu IA hace todo lo que le pides. Ese es el problema.",
+   "shots": [
+    {
+     "seg": "3-12",
+     "visual": "Primer plano de Andrés Bilbao sentado frente a cámara, en un clip de entrevista, con tono directo. Corte rápido al hablar de la frase del gancho.",
+     "texto": "Tu IA hace TODO lo que le pides"
+    },
+    {
+     "seg": "12-24",
+     "visual": "Andrés explica en lenguaje simple qué significa: si nadie pone límites, la herramienta puede obedecer algo que no conviene a la empresa. Cortes intercalados con b-roll de una oficina y una pantalla co",
+     "texto": "Sin límites, la IA obedece hasta lo que no debe"
+    },
+    {
+     "seg": "24-36",
+     "visual": "Andrés mencionando que OpenAI reportó cuatro incidentes más de IA fuera de control. Gráfico simple en pantalla con el número 4 y un ícono de alerta.",
+     "texto": "OpenAI reportó 4 incidentes más de IA fuera de control"
+    },
+    {
+     "seg": "36-45",
+     "visual": "Andrés en plano medio, mirando a cámara, con gesto de cierre y una frase práctica para el equipo directivo.",
+     "texto": "Revisa qué datos y permisos das a tu IA hoy"
+    }
+   ],
+   "cta": "Comenta RIESGO y te mando la guía corta para revisar los permisos de tu IA",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.00815
+  }
  },
  "infra-costos": {
   "title": "Qué significa para tu empresa que los bancos quieran vender la deuda de los centros de datos de IA",
@@ -597,6 +867,36 @@
   "cta": "Comenta cuánto gasta tu equipo hoy en herramientas de IA y te digo qué revisar primero; comparte el post con quien decide el presupuesto.",
   "platform": "LinkedIn",
   "by": "teacher",
-  "cost_usd": 0.00778
+  "cost_usd": 0.00778,
+  "adapt_reel": {
+   "hook": "¿Vas a comprar hardware para IA sin probarlo antes? Ojo: ASUS ya lanzó una GPU de 32GB.",
+   "shots": [
+    {
+     "seg": "0-3",
+     "visual": "Plano medio de 30X frente a la cámara, gesto serio. En la mano sostiene una caja o una imagen de una tarjeta gráfica.",
+     "texto": "32GB de memoria para IA"
+    },
+    {
+     "seg": "3-12",
+     "visual": "Pantalla dividida: a la izquierda la noticia de ASUS con la GPU Battlemage; a la derecha 30X señalando la cifra de 32GB. Corte rápido entre ambas.",
+     "texto": "Qué significa esto para tu empresa"
+    },
+    {
+     "seg": "12-27",
+     "visual": "30X explica en plano cercano, con tres gestos o dedos: 1) comprar hardware sin probar, 2) elegir por moda, 3) medir qué necesita tu equipo antes de pagar. Usa una pantalla de demo rápida de un modelo ",
+     "texto": "Antes de comprar: prueba, mide, decide"
+    },
+    {
+     "seg": "27-40",
+     "visual": "Plano final de 30X mirando a cámara, tono directo. Pantalla con la palabra clave en grande.",
+     "texto": "Comenta COSTOS y te mando el paso a paso"
+    }
+   ],
+   "cta": "Comenta COSTOS y te mando el paso a paso para decidir tu inversión en IA sin adivinar.",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.00835
+  }
  }
 }

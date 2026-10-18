@@ -1,11 +1,11 @@
 {# Guiones de un tema en pestañas. Variables: adapt, reel, decision, uid. Sin |safe: autoescape. #}
-{% if adapt %}
+{% if adapt or reel %}
 <div class="tabs" data-tabs>
   <div class="tab-bar" role="tablist">
-    {% if modo != "reel" %}<button type="button" class="tab on" role="tab" data-tab="{{ uid }}-li">LinkedIn / YouTube</button>{% endif %}
+    {% if adapt and modo != "reel" %}<button type="button" class="tab on" role="tab" data-tab="{{ uid }}-li">LinkedIn / YouTube</button>{% endif %}
     {% if modo == "reel" or modo != "normal" and reel or modo != "normal" and decision != "Descartar" %}<button type="button" class="tab{% if modo == 'reel' %} on{% endif %}" role="tab" data-tab="{{ uid }}-reel">Reel IG / TikTok</button>{% endif %}
   </div>
-  <div class="tab-pane" id="{{ uid }}-li" role="tabpanel"{% if modo == "reel" %} hidden{% endif %}>
+  {% if adapt %}<div class="tab-pane" id="{{ uid }}-li" role="tabpanel"{% if modo == "reel" %} hidden{% endif %}>
     <p class="guion-titulo">{{ adapt.title }}</p>
     <p class="guion-meta">{{ adapt.platform }} · {{ adapt.format }}</p>
     <p><strong class="acento">Gancho de 3 segundos:</strong> {{ adapt.hook }}</p>
@@ -17,7 +17,7 @@ Gancho: {{ adapt.hook }}
 {% for beat in adapt.beats %}- {{ beat }}
 {% endfor %}CTA: {{ adapt.cta }}</pre>
     <button type="button" class="copy-btn" data-copy="{{ uid }}-li-txt">Copiar guion</button>
-  </div>
+  </div>{% endif %}
   {% if modo == "reel" or modo != "normal" and reel or modo != "normal" and decision != "Descartar" %}
   <div class="tab-pane" id="{{ uid }}-reel" role="tabpanel"{% if modo != "reel" %} hidden{% endif %}>
     {% if reel %}

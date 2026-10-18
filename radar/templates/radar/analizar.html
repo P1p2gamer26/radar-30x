@@ -27,7 +27,7 @@
   .submit-btn { background: var(--lima); color: var(--noche); border: none; border-radius: 999px; padding: 13px 30px; font-size: 1rem; font-weight: 600; }
   .submit-btn:hover { opacity: 0.9; }
   .form-hint { color: var(--gris); font-size: 0.85rem; }
-  .aviso-priv { margin: 12px 0 0; font-size: 0.92rem; }
+  .aviso-priv { margin: 8px 0 0; font-size: 0.92rem; }
   .origen { display: inline-block; border: 1px solid var(--lima); color: var(--lima); border-radius: 999px; padding: 1px 10px; font-size: 0.75rem; margin-right: 8px; }
   .origen.prop { border-color: var(--linea); color: var(--gris); }
 
@@ -98,6 +98,7 @@
         {% endfor %}
       </div>
       <textarea id="texto" name="texto" placeholder="Pega el título o el texto de la pieza pública" maxlength="3000">{{ texto }}</textarea>
+      <p class="form-hint aviso-priv"><strong>No guardamos lo que pegas.</strong> Se analiza al momento; quitamos correos y @usuarios antes de procesar.</p>
       {% if ejemplos %}
       <div class="ejemplos"><span class="form-hint">Prueba con…</span>
         {% for e in ejemplos %}<button type="button" class="ej-btn" data-plat="{{ e.plataforma }}" data-texto="{{ e.texto }}"><b>{{ e.plataforma }}</b>{{ e.texto }}</button>{% endfor %}
@@ -106,7 +107,6 @@
       <div class="form-actions">
         <button class="submit-btn" type="submit">Escanear</button>
       </div>
-      <p class="form-hint aviso-priv">Lo que pegas se analiza al momento y no se guarda; quitamos correos y @usuarios antes de procesar.</p>
     </form>
   </section>
 
@@ -126,15 +126,9 @@
   <section class="informe" id="informe">
     <div class="tarjeta veredicto">
       <h3>Veredicto</h3>
-      <div class="dec decision-{{ r.decision }}">{{ r.decision }}</div>
-      {% if r.seguro %}<p class="aviso-conf seguro"><strong>Seguro:</strong> el modelo acierta el tema ≥90% de las veces cuando está así de convencido.</p>{% else %}<p class="aviso-conf" role="alert"><strong>Revisa antes de producir:</strong> el modelo no está lo bastante seguro del tema.</p>{% endif %}
-      <p class="frase">
-        {% if r.no_audiencia %}Esta pieza roza el tema <strong>{{ r.topic_name }}</strong>, pero no es para tu audiencia: le sirve poco a un ejecutivo que aprende IA ({{ r.fit_pct }}% de encaje).
-        {% elif r.slug_ok %}Esta pieza habla de <strong>{{ r.topic_name }}</strong>, un tema en etapa «{{ r.early_label }}»{% if r.growth %} ({{ r.growth|floatformat:1 }}x){% endif %}
-        y con un encaje de {{ r.fit_pct }}% con tu audiencia:
-        {% if r.decision == "Recomendar" %}vale la pena adaptarla esta semana.{% elif r.decision == "Aprender" %}vale la pena mirarla y guardarla como idea, sin correr.{% elif r.cayendo %}el tema existe, pero esta semana está cayendo: guárdalo para después.{% else %}por ahora no vale la pena: mejor invierte el tiempo en otro tema.{% endif %}
-        {% else %}Esta pieza no encaja con ningún tema del radar, así que no es para tu audiencia.{% endif %}
-      </p>
+      <div class="dec decision-{{ r.decision }}">{{ r.veredicto.accion }}</div>
+      <p class="frase">{{ r.veredicto.porque }}</p>
+      {% if r.seguro %}<p class="aviso-conf seguro"><strong>EstelarIA está segura del tema:</strong> acierta ≥90% de las veces cuando está así de convencida.</p>{% else %}<p class="aviso-conf" role="alert"><strong>Revisa antes de producir:</strong> EstelarIA no está del todo segura del tema.</p>{% endif %}
       <div class="meta-chips"><span>{{ plataforma }}</span><span>{{ r.format_name }}</span><span>{{ r.hook_name }}</span></div>
     </div>
 
@@ -144,7 +138,7 @@
       <div class="tarjeta med"><div class="ring" style="--v: {{ r.momento_pct }}"><b class="nums">{{ r.momento_pct }}</b></div>
         <div class="t">Momento del tema<small>{{ r.early_label }}{% if r.growth %} · {{ r.growth|floatformat:1 }}x frente a la semana previa{% endif %}</small></div></div>
       <div class="tarjeta med"><div class="ring" style="--v: {{ r.conf_pct }}"><b class="nums">{{ r.conf_pct }}</b></div>
-        <div class="t">Qué tan seguros estamos<small>del tema que detectamos</small></div></div>
+        <div class="t">Qué tan seguro está EstelarIA<small>del tema que detectó en tu pieza</small></div></div>
     </div>
 
     <div class="cols">
@@ -155,28 +149,27 @@
       </div>
 
       <div class="tarjeta"><h3>Cómo lo decidió</h3>
-        <dl class="kv"><dt>Cómo lo decidió</dt><dd>{% if r.engine == "estudiante" %}modelo propio{% elif r.engine == "regla" %}palabras clave (confianza baja){% else %}{{ r.engine }}{% endif %}</dd>
-          <dt>Costo</dt><dd class="nums">USD {{ r.cost_usd|floatformat:2 }}</dd><dt>Puntaje</dt><dd class="nums">{{ r.p }}</dd></dl>
-        <div class="threshold-track" style="margin-bottom:34px"><div class="threshold-fill" style="width: {% widthratio r.p 1 100 %}%"></div>
-          <div class="threshold-mark" style="left: 80%;"><span class="mark-label">0.80 Recomendar</span></div>
-          <div class="threshold-mark" style="left: 50%;"><span class="mark-label">0.50 Aprender</span></div></div>
+        <dl class="kv"><dt>Con qué</dt><dd>{% if r.engine == "estudiante" %}modelo propio{% elif r.engine == "regla" %}palabras clave (poca seguridad){% else %}{{ r.engine }}{% endif %}</dd>
+          <dt>Costo</dt><dd class="nums">USD {{ r.cost_usd|floatformat:2 }}</dd></dl>
+        <details style="margin-top:12px"><summary class="form-hint">Ver detalle</summary>
+          <p class="form-hint nums">Puntaje {{ r.p_pct }} de 100 (Recomendar desde 80, Aprender desde 50).</p></details>
       </div>
     </div>
 
-    {% if r.adapt %}
-    <div class="tarjeta" style="margin-top:16px"><h3>Así lo haría 30X</h3>
+    {% if r.adapt or r.adapt_reel %}
+    <div class="tarjeta" style="margin-top:16px"><h3>Guion del tema (30X)</h3>
       {% include "radar/_guiones.html" with adapt=r.adapt reel=r.adapt_reel decision=r.decision uid="esc" modo=r.modo_guion %}
     </div>
     {% endif %}
 
     {% with v=r.tu_version %}
-    <div class="tarjeta" style="margin-top:16px"><h3>Tu versión</h3>
+    <div class="tarjeta" style="margin-top:16px"><h3>Tu versión (solo con tu pieza)</h3>
       <p class="form-hint">Construida solo con tu pieza, sin inventar. <span class="origen">de tu pieza</span> viene de tu texto; <span class="origen prop">propuesta 30X</span> es sugerencia nuestra.</p>
-      <p><span class="origen">de tu pieza</span><strong class="acento">Gancho:</strong> {{ v.gancho }}</p>
+      <p><span class="origen">de tu pieza</span><strong class="acento">{{ v.gancho_label }}:</strong> {{ v.gancho }}</p>
       <p><span class="origen prop">propuesta 30X</span><strong class="acento">Formato:</strong> {{ v.formato }}</p>
-      {% if v.tomas %}<ol class="beats-list">{% for t in v.tomas %}<li><span class="origen">de tu pieza</span><strong>{{ t.seg }} s</strong> · {{ t.texto }}</li>{% endfor %}</ol>
+      {% if v.tomas %}<ol class="beats-list">{% for t in v.tomas %}<li><span class="origen">de tu pieza</span><strong>{{ t.seg }}</strong> · {{ t.texto }}</li>{% endfor %}</ol>
       {% else %}<p class="form-hint">La pieza es muy corta para derivar tomas.</p>{% endif %}
-      <p><span class="origen prop">propuesta 30X</span><strong class="acento">CTA:</strong> {{ v.cta }}</p>
+      <p><span class="origen prop">propuesta 30X</span><strong class="acento">{{ v.cta_label }}:</strong> {{ v.cta }}</p>
     </div>
     {% endwith %}
 

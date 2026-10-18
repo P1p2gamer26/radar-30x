@@ -11,6 +11,7 @@
     <h1 id="hero-title">Esta semana, <span class="accent" id="hero-count">0</span> temas de IA piden contenido ya.</h1>
     <p class="hero-valor">Qué publicar el lunes, en 10 segundos.</p>
     <p class="lead">Qué temas crecen, por qué funcionan y cómo los adapta 30X para ejecutivos de LatAm.</p>
+    <p><a class="produce-btn" href="{% url 'analizar' %}">Probar con tu pieza</a></p>
   </div>
   <p class="hero-guide" id="hero-guide" hidden>Toca una estrella para ver por qué y el guion.</p>
   <p class="hero-legend" aria-label="Cómo leer el universo">
@@ -35,6 +36,7 @@
     <button type="button" class="produce-btn" data-copy="plan-chat">Copiar para WhatsApp/Slack</button>
   </div>
   <pre class="guion-oculto" id="plan-chat">{{ plan_chat }}</pre>
+  <p class="form-hint">El CSV trae dia_sugerido y una columna responsable para que tu equipo la llene. En Google Sheets se actualiza solo: <code>=IMPORTDATA("https://p1p2gamer26.pythonanywhere.com/api/semana.csv")</code></p>
 </section>
 
 <section class="block" id="ranking">

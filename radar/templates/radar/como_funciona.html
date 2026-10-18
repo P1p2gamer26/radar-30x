@@ -198,6 +198,8 @@
     <div class="privacidad-grid">
       <div class="privacidad-card"><h3>Finalidad</h3><p>Ayudar al equipo de contenido de 30X a decidir qué publicar cada semana. No se usa para perfilar personas ni para publicidad.</p></div>
       <div class="privacidad-card"><h3>Qué se guarda</h3><p>Títulos y métricas públicas de las piezas (puntos, comentarios, vistas, likes) y el tipo de autor (medio, creador, empresa, comunidad, academia). Nada de usuarios de terceros.</p></div>
+      <div class="privacidad-card"><h3>Tu IP y cookies</h3><p>Tu IP se usa solo un momento para el límite de 20 análisis por hora y no se guarda; la única cookie es la técnica de seguridad del formulario (CSRF).</p></div>
+      <div class="privacidad-card"><h3>Contacto</h3><p>Contacto para quitar un contenido: abrir un issue en github.com/P1p2gamer26/radar-30x/issues</p></div>
       <div class="privacidad-card"><h3>Qué no se guarda</h3><p>El texto que pegas en el escáner (se analiza al momento y se descarta), nombres de personas, correos, teléfonos, @usuarios ni inicios de sesión.</p></div>
       <div class="privacidad-card"><h3>Autorización para APIs de terceros</h3><p>La organización del hackathon autorizó usar APIs de redes sociales y servicios como Apify: soporte del hackathon en el grupo oficial de WhatsApp, 17-oct, 2:11 pm y 2:51 pm («sí pueden usar APIs de redes sociales… Apify es otro ejemplo»).</p></div>
     </div>
@@ -241,6 +243,16 @@
         <span class="cost-label">Lo que costaría un scraping pago al año</span>
       </div>
     </div>
+    <h3>Si 30X sigue 50 cuentas</h3>
+    <p class="form-hint">Supuesto: 20 publicaciones por cuenta y por red (Instagram y TikTok) cada semana = 2.000 resultados. Precios públicos por resultado de los actores de Apify (consultados a su API, plan gratis): Instagram USD 0,0027 y TikTok USD 0,0037. No incluye el etiquetado con IA, que se hace una sola vez (USD 0,81).</p>
+    <table class="fuentes-table">
+      <thead><tr><th>Escenario</th><th>Por semana</th><th>Por año</th><th>Frente a USD 3.000/año</th></tr></thead>
+      <tbody>
+        <tr><td>Hoy: ~170 resultados (costo medido)</td><td class="nums">USD 0,55</td><td class="nums">USD 28,60</td><td>1 %</td></tr>
+        <tr><td>50 cuentas, precio público de Apify</td><td class="nums">USD 6,40</td><td class="nums">USD 332,80</td><td>11 %</td></tr>
+        <tr><td>50 cuentas, tasa medida (0,55 / 170 resultados)</td><td class="nums">USD 6,47</td><td class="nums">USD 336,47</td><td>11 %</td></tr>
+      </tbody>
+    </table>
   </section>
 </div>
 {% endblock %}

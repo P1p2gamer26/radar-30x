@@ -330,7 +330,7 @@ def test_semana_json_y_csv(client):
     r = client.get("/api/semana.csv")
     assert r["Content-Type"].startswith("text/csv") and "attachment" in r["Content-Disposition"]
     lineas = r.content.decode("utf-8-sig").splitlines()
-    assert lineas[0] == "orden,tema,decision,etapa,por_que,plataforma,guion,reel" and len(lineas) >= len(j["temas"]) + 1
+    assert lineas[0] == "orden,tema,decision,etapa,por_que,dia_sugerido,responsable,plataforma,guion,reel" and len(lineas) >= len(j["temas"]) + 1
 
 
 def test_csv_neutraliza_formulas():
@@ -347,7 +347,7 @@ def test_cifras_salen_de_student_json(client):
     m = student.cargar()["eval"]["topic"]["offline"]
     html = client.get("/como-funciona/").content.decode()
     assert f"acierta {round(m['holdout_accuracy'] * 100)}%" in html and "Privacidad" in html and "2:11 pm" in html
-    assert "no se guarda; quitamos correos y @usuarios" in client.get("/analizar/").content.decode()
+    assert "No guardamos lo que pegas" in client.get("/analizar/").content.decode()
 
 
 def test_escaner_por_plataforma(settings, db):
@@ -361,3 +361,14 @@ def test_escaner_por_plataforma(settings, db):
     li = analyze.analizar(lista, "LinkedIn")
     assert li["format"] == "carrusel" and li["modo_guion"] == "normal"
     assert li["tu_version"]["gancho"].startswith("3 prompts") and "Comenta" in li["tu_version"]["cta"]
+
+
+def test_veredicto_accion_y_guion_por_formato(settings, db):
+    settings.DECISION_MODE = "replay"
+    ig = analyze.analizar("3 prompts de ChatGPT para tu informe:\n1. Resume tu correo\n2. Prepara tu reunión\n3. Redacta el informe semanal\nComenta PROMPT", "Instagram")
+    assert ig["adapt"] is None and ig["tu_version"]["gancho_label"] == "Portada" and ig["tu_version"]["cta"]
+    assert ig["veredicto"]["accion"] in ("Publícalo esta semana", "Guárdalo para después", "Descártalo")
+    li = analyze.analizar("Agentes de IA como compañeros de trabajo suben 40% la cotización de una empresa.", "LinkedIn")
+    assert li["adapt_reel"] is None
+    tt = analyze.analizar("POV: tu jefe pide el informe y le dices que lo hizo ChatGPT\nÉl: ¿y lo revisaste?\nTú: ...", "TikTok")
+    assert [t["seg"] for t in tt["tu_version"]["tomas"]][:1] == ["3-10 s"]

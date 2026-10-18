@@ -24,7 +24,7 @@ class Command(BaseCommand):
             a = adapts.get(t["slug"])
             if opts["force"] or not a:
                 a = label.adaptar(t, bench)
-            if a and t["decision"] in ("Recomendar", "Aprender") and (opts["force"] or not a.get("adapt_reel")):
+            if a and (opts["force"] or not a.get("adapt_reel")):  # reel de los 20 temas: el escáner lo necesita para IG/TikTok
                 a["adapt_reel"] = label.adaptar_reel(t, bench) or a.get("adapt_reel")
             if a:
                 adapts[t["slug"]] = a

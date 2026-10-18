@@ -49,7 +49,8 @@ El plan (temas Recomendar + Aprender con etapa, por qué, guion, reel y platafor
 - `GET /api/semana.json`: lo mismo en JSON (`{"week": ..., "temas": [...]}`).
 - Botón "Copiar para WhatsApp/Slack" en la home: resumen corto en texto.
 
-**Notion o Google Sheets:** descarga el CSV e impórtalo (Notion: Importar > CSV; Sheets: Archivo > Importar). Para que se actualice solo en Sheets: `=IMPORTDATA("https://TU-DOMINIO/api/semana.csv")`.
+**Notion o Google Sheets:** descarga el CSV e impórtalo (Notion: Importar > CSV; Sheets: Archivo > Importar). Para que se actualice solo en Sheets: `=IMPORTDATA("https://p1p2gamer26.pythonanywhere.com/api/semana.csv")`.
+El CSV y el JSON traen `dia_sugerido` (mejor día de publicación del tema) y `responsable` (vacía, para que el equipo la llene).
 
 **Webhook (Slack, Make, Zapier, n8n):** un cron semanal que haga GET al JSON y lo reenvíe, por ejemplo cada lunes 7:00:
 ```bash
@@ -58,6 +59,15 @@ El plan (temas Recomendar + Aprender con etapa, por qué, guion, reel y platafor
 
 ## Costo
 Lo que cuesta cada corrida (por señal, profesor y estudiante) se ve en la home y en `data/radar.json` → `totals`. El estudiante clasifica gratis; solo la muestra del profesor tiene costo. La alternativa paga de referencia es de ~USD 3.000 al año (Apify, Exolyt, Sprout); las fuentes están en la página `/como-funciona/`.
+
+### Si 30X sigue 50 cuentas
+Supuesto: 20 publicaciones por cuenta y por red (Instagram y TikTok) por semana = 2.000 resultados. Precios públicos por resultado de los actores de Apify (consultados en `GET /v2/acts/<id>`, plan gratis): `apify~instagram-scraper` USD 0,0027 y `clockworks~tiktok-scraper` USD 0,0037. El etiquetado con IA (USD 0,81) es de una sola vez.
+
+| Escenario | Por semana | Por año | Frente a USD 3.000/año |
+|---|---|---|---|
+| Hoy: ~170 resultados (medido) | USD 0,55 | USD 28,60 | 1 % |
+| 50 cuentas, precio público de Apify | USD 6,40 | USD 332,80 | 11 % |
+| 50 cuentas, tasa medida (0,55 / 170 resultados) | USD 6,47 | USD 336,47 | 11 % |
 
 ## Cómo correrlo
 ```bash

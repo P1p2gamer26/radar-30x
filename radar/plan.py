@@ -2,7 +2,7 @@
 import csv
 import io
 
-CAMPOS = ["orden", "tema", "decision", "etapa", "por_que", "plataforma", "guion", "reel"]
+CAMPOS = ["orden", "tema", "decision", "etapa", "por_que", "dia_sugerido", "responsable", "plataforma", "guion", "reel"]
 
 
 def _pct(x) -> int:
@@ -38,7 +38,7 @@ def filas(radar: dict) -> list:
             continue
         a, r = t.get("adapt"), t.get("adapt_reel")
         out.append({"orden": len(out) + 1, "tema": t["name"], "decision": t["decision"], "etapa": t.get("early_label", t["stage"]),
-                    "por_que": t["reason"], "plataforma": (a or {}).get("platform", ""), "guion": _guion(a), "reel": _reel(r)})
+                    "por_que": t["reason"], "dia_sugerido": t["why"].get("best_day", ""), "responsable": "", "plataforma": (a or {}).get("platform", ""), "guion": _guion(a), "reel": _reel(r)})
     return out
 
 
