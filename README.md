@@ -15,6 +15,16 @@
 
 Estelar + IA: encuentra las estrellas nacientes del contenido de IA (los temas que recién empiezan a brillar) antes de que todos las copien. Hackathon 30X, reto *Radar de contenido*.
 
+<p align="center"><img src="docs/simulacion.gif" alt="Simulación en vivo: piezas de 9 fuentes entran al modelo propio, que responde si está seguro y escala al LLM solo si duda" width="820"></p>
+
+## Por qué EstelarIA
+- **Modelo propio que iguala a un LLM grande:** 87 % top-1 en hold-out (153 piezas) frente a 86,9 % de DeepSeek, a USD 0 y sin depender de un servicio externo.
+- **Cascada: 89,5 %** de acierto llamando al LLM solo en 28 de 153 piezas.
+- **Guiones con cifras verificadas:** 59 de 64 cifras confirmadas contra las piezas reales, sin LLM.
+- **Datos reales de Instagram, TikTok y LinkedIn** (este último solo titulares) junto a Hacker News, Google News, arXiv, Reddit, YouTube y Wikipedia: 6.196 señales.
+- **Costo operativo medido: USD 0,55 por semana.**
+- **Backtest honesto:** ordenar por crecimiento acierta 12,3 % en el top-5 frente a 1,5 % de ordenar por popularidad, pero no supera al azar (13,5 %); no lo vendemos como predicción.
+
 ## Demo en 30 segundos
 1. Abre la demo: https://p1p2gamer26.pythonanywhere.com/ y toca una estrella (un tema): verás su etapa, por qué funciona y sus guiones.
 2. Pega una pieza pública de Instagram, TikTok o LinkedIn en [`/analizar/`](https://p1p2gamer26.pythonanywhere.com/analizar/) y el escáner la clasifica al instante.
@@ -198,6 +208,11 @@ python manage.py readme_resultados  # reescribe el bloque Resultados de este REA
 - Sin datos personales: los autores se guardan solo como tipo (medio, creador, empresa, comunidad, academia). `verify.sh` revisa que `radar.json` y `data/snapshots/*.json` no tengan emails ni handles de terceros.
 - Seguridad web: autoescape de Django, `textContent` en el front para datos externos, CSRF activo, límite por IP en `/analizar/`.
 - Sin secretos en el repo; ver [SECURITY.md](SECURITY.md).
+
+## Preguntas difíciles (respuestas honestas)
+1. **«Su backtest no supera al azar. ¿Para qué sirve?»** Correcto: 12,3 % frente a 13,5 % del azar (IC95 de -0,10 a +0,10), con solo HN y arXiv y 13 cortes solapados; no hay evidencia de anticipar mejor que el azar. Sí supera a ordenar por popularidad (top-5: 12,3 % vs 1,5 %), así que hoy sirve para priorizar por crecimiento y encaje, no para predecir.
+2. **«El 87 %, ¿contra qué etiqueta humana?»** Contra el consenso de dos LLM, no humano, en 153 piezas de hold-out. Contra todas las etiquetas, incluidas las dudosas, baja a 71 %. Validar con etiquetas de 30X es el siguiente paso.
+3. **«¿Funciona con LinkedIn y X?»** LinkedIn son solo titulares indexados en Google News (180 señales), sin posts ni métricas. X está listo en la rama `feat/fuente-x` y no hace parte del radar de esta semana.
 
 ## Limitaciones honestas
 - **Una semana de datos** (2026-W42): crecimiento y etapas salen de una ventana de 14 días.
