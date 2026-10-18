@@ -11,7 +11,7 @@ from .collect import latest
 from .taxonomy import FORMATS, HOOKS, TOPICS, match_topics
 
 DIAS_SEMANA = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
-FUENTES = {"hn": "Hacker News", "gnews": "Google News", "linkedin": "LinkedIn (vía Google News)", "youtube": "YouTube", "instagram": "Instagram (vía Apify)", "tiktok": "TikTok (vía Apify)", "wiki": "Wikipedia"}
+FUENTES = {"hn": "Hacker News", "gnews": "Google News", "linkedin": "LinkedIn (vía Google News)", "youtube": "YouTube", "instagram": "Instagram (vía Apify)", "tiktok": "TikTok (vía Apify)", "reddit": "Reddit", "arxiv": "arXiv", "wiki": "Wikipedia"}
 REDES = ("youtube", "instagram", "tiktok")  # fuentes con outlier vs la mediana de su perfil
 APIFY_USD_POR_CORRIDA = 0.55  # medido 17-oct: IG + TikTok (2 perfiles + 8 hashtags), plan gratis de USD 5/mes
 PAID_ALTERNATIVE_USD_YEAR = 3000  # Apify Scale ~USD 2.388/año, Exolyt ~2.700/año (hackaton x30/radar/investigacion.md)
@@ -193,9 +193,9 @@ def build(snap: dict | None = None) -> dict:
 
         # top piezas: percentil de velocidad dentro de su fuente (Google News no trae engagement: recencia)
         rank = {}
-        for src in ("youtube", "instagram", "tiktok", "hn", "gnews", "linkedin"):
+        for src in ("youtube", "instagram", "tiktok", "hn", "gnews", "linkedin", "reddit", "arxiv"):
             del_src = [s for s in piezas if s["source"] == src]
-            clave = (lambda s: s["published_at"]) if src in ("gnews", "linkedin") else (lambda s: vel[s["id"]])
+            clave = (lambda s: s["published_at"]) if src in ("gnews", "linkedin", "reddit", "arxiv") else (lambda s: vel[s["id"]])
             for i, s in enumerate(sorted(del_src, key=clave)):
                 rank[s["id"]] = (i + 1) / len(del_src) * (0.8 if src == "gnews" else 1.0)
         recientes = [s for s in piezas if s["published_at"][:10] >= hace7]

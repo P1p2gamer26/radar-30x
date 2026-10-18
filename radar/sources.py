@@ -341,3 +341,87 @@ def fetch_tiktok(now: datetime, days: int = 14) -> list:
         crudo = _seguro("tiktok", _apify, "clockworks~tiktok-scraper", {**entrada, "shouldDownloadVideos": False, "shouldDownloadCovers": False})
         out += _seguro("tiktok", parse_tiktok, crudo or [], query) or []
     return out
+
+
+# ------------------------------------------------------------------ Reddit (RSS público) y arXiv (API Atom)
+
+UA_REDDIT = "python:radar30x:v0.1 (by /u/radar30x)"  # www.reddit.com bloquea UAs "de navegador"; este estilo pasa
+PAUSA_REDDIT = 8.0  # s entre subreddits: sin pausa devuelve 429
+# (subreddit, idioma, filtrar por palabras de IA)
+SUBREDDITS = [("artificial", "en", False), ("ChatGPT", "en", False), ("OpenAI", "en", False), ("LocalLLaMA", "en", False),
+              ("marketing", "en", True), ("Entrepreneur", "en", True), ("startups", "en", True),
+              ("es", "es", True), ("colombia", "es", True), ("mexico", "es", True)]
+_IA = re.compile(r"\b(ia|ai|a\.i\.|gpt|chatgpt|llm|claude|gemini|openai|copilot|agentes?|inteligencia artificial|machine learning)\b", re.I)
+ATOM = {"a": "http://www.w3.org/2005/Atom"}
+
+
+def parse_reddit(crudo: bytes, sub: str, lang: str, filtrar: bool = False) -> list:
+    """Atom de Reddit -> Signals. Sin autor ni cuerpo (privacidad); el RSS no trae votos, así que metrics va en 0."""
+    out = []
+    for e in ET.fromstring(crudo).findall("a:entry", ATOM):
+        titulo = sin_pii(e.findtext("a:title", default="", namespaces=ATOM))
+        link = e.find("a:link", ATOM)
+        url = link.get("href", "") if link is not None else ""
+        pub = e.findtext("a:published", namespaces=ATOM) or e.findtext("a:updated", namespaces=ATOM)
+        if not titulo or not url or not pub or (filtrar and not _IA.search(titulo)):
+            continue
+        out.append({"id": f"reddit:{e.findtext('a:id', namespaces=ATOM)}", "source": "reddit", "url": url,
+                    "title": titulo[:300], "text": "", "lang": lang, "published_at": _iso(datetime.fromisoformat(pub)),
+                    "author_type": "comunidad", "metrics": {"points": 0, "comments": 0, "views": 0}, "query": f"r/{sub}"})
+    return out
+
+
+def _get_reddit(url: str) -> bytes:
+    for espera in (0, 25, 60):  # ponytail: reintento simple ante 429
+        time.sleep(espera)
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": UA_REDDIT})
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                return resp.read()
+        except urllib.error.HTTPError as e:
+            if e.code != 429:
+                raise
+    raise RuntimeError("429 persistente")
+
+
+def fetch_reddit(now: datetime, days: int = 14) -> list:
+    out, desde = [], _iso(now - timedelta(days=days))
+    for sub, lang, filtrar in SUBREDDITS:
+        time.sleep(PAUSA_REDDIT)
+        crudo = _seguro("reddit", _get_reddit, f"https://www.reddit.com/r/{sub}/top/.rss?t=month&limit=100")
+        if crudo:
+            out += [s for s in (_seguro("reddit", parse_reddit, crudo, sub, lang, filtrar) or []) if s["published_at"] >= desde]
+    return out
+
+
+ARXIV_Q = "(cat:cs.AI OR cat:cs.CL OR cat:cs.LG) AND (abs:LLM OR abs:\"language model\" OR abs:agents OR abs:GPT OR abs:\"foundation model\")"
+
+
+def parse_arxiv(crudo: bytes) -> list:
+    """Atom de arXiv -> Signals. Autores no se guardan (autor = 'academia')."""
+    out = []
+    for e in ET.fromstring(crudo).findall("a:entry", ATOM):
+        ident = (e.findtext("a:id", namespaces=ATOM) or "").rsplit("/abs/", 1)[-1]
+        pub = e.findtext("a:published", namespaces=ATOM)
+        titulo = sin_pii(e.findtext("a:title", default="", namespaces=ATOM))
+        if not ident or not pub or not titulo:
+            continue
+        out.append({"id": f"arxiv:{ident.split('v')[0]}", "source": "arxiv", "url": f"https://arxiv.org/abs/{ident}",
+                    "title": titulo[:300], "text": sin_pii(e.findtext("a:summary", default="", namespaces=ATOM))[:300], "lang": "en",
+                    "published_at": _iso(datetime.fromisoformat(pub)), "author_type": "academia",
+                    "metrics": {"points": 0, "comments": 0, "views": 0}, "query": "arxiv"})
+    return out
+
+
+def fetch_arxiv(now: datetime, days: int = 14) -> list:
+    out, desde = [], _iso(now - timedelta(days=days))
+    for p in range(3):  # ponytail: 300 papers más recientes que cumplen el filtro; arXiv pide 3 s entre llamadas
+        time.sleep(3)
+        url = ("https://export.arxiv.org/api/query?search_query=" + urllib.parse.quote(ARXIV_Q) +
+               f"&sortBy=submittedDate&sortOrder=descending&max_results=100&start={p * 100}")
+        crudo = _seguro("arxiv", get, url)
+        piezas = (_seguro("arxiv", parse_arxiv, crudo) or []) if crudo else []
+        out += [s for s in piezas if s["published_at"] >= desde]
+        if len(piezas) < 100 or piezas[-1]["published_at"] < desde:
+            break
+    return out
