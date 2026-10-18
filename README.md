@@ -15,14 +15,14 @@
 
 Estelar + IA: encuentra las estrellas nacientes del contenido de IA (los temas que recién empiezan a brillar) antes de que todos las copien. Hackathon 30X, reto *Radar de contenido*.
 
-<p align="center"><img src="docs/simulacion.gif" alt="Simulación en vivo: piezas de 9 fuentes entran al modelo propio, que responde si está seguro y escala al LLM solo si duda" width="820"></p>
+<p align="center"><img src="docs/simulacion.gif" alt="Simulación en vivo: piezas de 10 fuentes entran al modelo propio, que responde si está seguro y escala al LLM solo si duda" width="820"></p>
 
 ## Por qué EstelarIA
 - **Modelo propio que iguala a un LLM grande:** 87 % top-1 en hold-out (153 piezas) frente a 86,9 % de DeepSeek, a USD 0 y sin depender de un servicio externo.
 - **Cascada: 89,5 %** de acierto llamando al LLM solo en 28 de 153 piezas.
 - **Guiones con cifras verificadas:** 59 de 64 cifras confirmadas contra las piezas reales, sin LLM.
-- **Datos reales de Instagram, TikTok y LinkedIn** (este último solo titulares) junto a Hacker News, Google News, arXiv, Reddit, YouTube y Wikipedia: 6.196 señales.
-- **Costo operativo medido: USD 0,55 por semana.**
+- **Datos reales de Instagram, TikTok, X y LinkedIn** (este último solo titulares) junto a Hacker News, Google News, arXiv, Reddit, YouTube y Wikipedia: 6.581 señales de 10 fuentes.
+- **Costo operativo medido: USD 0,91 por semana** (Apify para Instagram, TikTok y X).
 - **Backtest honesto:** ordenar por crecimiento acierta 12,3 % en el top-5 frente a 1,5 % de ordenar por popularidad, pero no supera al azar (13,5 %); no lo vendemos como predicción.
 
 ## Por qué un universo
@@ -82,7 +82,7 @@ Corrida 2026-W42 (generada 2026-10-17; datos en `data/`, reproducible sin red). 
 
 - **Señales:** 6.581 (Hacker News 3.240, Google News 2.018, X (vía Apify) 385, arXiv 300, LinkedIn (vía Google News) 180, Reddit 178, Instagram (vía Apify) 127, YouTube 108, TikTok (vía Apify) 45; más páginas vistas de 20 artículos de Wikipedia como termómetro de interés).
 - **Temas:** 20 analizados; 2 Recomendar (Estrategia y adopción de IA, IA en finanzas), 7 Aprender, 11 Descartar.
-- **Costo:** USD 0.91 por semana (scraping de Instagram/TikTok vía Apify) y USD 0.81 una sola vez por etiquetar 5.687 señales con el LLM (USD 0.000123 por señal); el estudiante clasifica a USD 0.00.
+- **Costo:** USD 0.91 por semana (scraping de Instagram, TikTok y X vía Apify) y USD 0.81 una sola vez por etiquetar 5.687 señales con el LLM (USD 0.000123 por señal); el estudiante clasifica a USD 0.00.
 - **Modelo propio, tema** (hold-out fijo del 20 %, 153 piezas con consenso de tema): top-1 **87 %**, top-3 99 %, cuando está seguro acierta 91 % y cubre el 82 % de las piezas; contra todas las etiquetas (incluidas las dudosas) 71 %; adivinar da 25 %.
 
 | Tarea | Top-1 | Top-3 | Cuando está seguro (cobertura) | Contra todas | Base |
@@ -152,7 +152,8 @@ Solo cifras medidas:
 
 | Concepto | Costo |
 |---|---|
-| Scraping de Instagram y TikTok (Apify, plan gratis) | USD 0,55 por semana ≈ USD 29 al año (medido en la consola de Apify, 17-oct) |
+| Scraping de Instagram y TikTok (Apify, plan gratis) | USD 0,55 por semana (medido en la consola de Apify, 17-oct) |
+| Scraping de X (Apify, 762 tweets) | USD 0,36 por corrida (medido, 18-oct) |
 | Etiquetado con LLM de 5.687 señales | USD 0,81, una sola vez |
 | Guiones con LLM | ~USD 0,27, una sola vez |
 | Modelo propio, hosting (PythonAnywhere free), fuentes públicas | USD 0 |
@@ -221,7 +222,7 @@ python manage.py readme_resultados  # reescribe el bloque Resultados de este REA
 ## Preguntas difíciles (respuestas honestas)
 1. **«Su backtest no supera al azar. ¿Para qué sirve?»** Correcto: 12,3 % frente a 13,5 % del azar (IC95 de -0,10 a +0,10), con solo HN y arXiv y 13 cortes solapados; no hay evidencia de anticipar mejor que el azar. Sí supera a ordenar por popularidad (top-5: 12,3 % vs 1,5 %), así que hoy sirve para priorizar por crecimiento y encaje, no para predecir.
 2. **«El 87 %, ¿contra qué etiqueta humana?»** Contra el consenso de dos LLM, no humano, en 153 piezas de hold-out. Contra todas las etiquetas, incluidas las dudosas, baja a 71 %. Validar con etiquetas de 30X es el siguiente paso.
-3. **«¿Funciona con LinkedIn y X?»** LinkedIn son solo titulares indexados en Google News (180 señales), sin posts ni métricas. X está listo en la rama `feat/fuente-x` y no hace parte del radar de esta semana.
+3. **«¿Funciona con LinkedIn y X?»** LinkedIn son solo titulares indexados en Google News (180 señales), sin posts ni métricas. X entra vía Apify (385 tweets) como evidencia, no en la serie de crecimiento, porque su muestreo se concentra en los últimos días.
 
 ## Limitaciones honestas
 - **Una semana de datos** (2026-W42): crecimiento y etapas salen de una ventana de 14 días.
@@ -232,7 +233,7 @@ python manage.py readme_resultados  # reescribe el bloque Resultados de este REA
 - La cascada a un LLM gratis depende de límites de uso y no tiene garantía de servicio.
 
 ## Roadmap
-- **X/Twitter (listo en la rama `feat/fuente-x`):** colector vía Apify con parser, fixture y test; el 18-oct recolectó 385 tweets nuevos (USD 0,36). Al sumarlo, el encaje con la audiencia LatAm baja (tweets mayoritariamente en inglés) y esta semana ningún tema llegaría a Recomendar sin mover umbrales; preferimos no ajustar el criterio después de ver el resultado. Entra en la próxima corrida con su propio peso por idioma, medido.
+- **X/Twitter:** integrado el 18-oct (385 tweets vía Apify, USD 0,36). Siguiente paso: recolección diaria para que X también entre en la serie de crecimiento con historia comparable.
 - Acumular varias semanas de datos y repetir el backtest con más temas.
 - Medir Jev real (con clave) y Von en preguntas sí/no en el mismo hold-out.
 - Ampliar a más cuentas de 30X (costo estimado arriba).
@@ -244,4 +245,4 @@ Hecho por **Julián Africano**, estudiante de Ingeniería de Sistemas, Pontifici
 ---
 
 ## English summary
-EstelarIA is a Django app that tracks which AI topics are taking off on social media, explains why they work, estimates their stage (early, growing, saturated) and adapts them into scripts for 30X's LatAm executive audience. It collects 6,196 public signals from 9 sources (Hacker News, Google News, arXiv, LinkedIn headlines via Google News, Reddit, Instagram/TikTok via Apify, YouTube, plus Wikipedia pageviews), labels them once with two LLMs (4,176 consensus labels), and trains its own model: an ensemble of TF-IDF and three multilingual embeddings (e5-base, bge-m3, mpnet) with logistic regression, chosen by cross-validation. On a fixed topic hold-out (153 pieces, never seen) it scores 87 % top-1 / 99 % top-3, matching a large free LLM (DeepSeek, 86.9 %) at zero cost; a cascade that asks the LLM only when unsure reaches 89.5 % while calling it on 28 of 153 pieces. Measured cost: about USD 0.55/week for scraping plus USD 0.81 one-time labeling, versus roughly USD 3,000/year for paid alternatives. Run it offline with `pip install -r requirements.txt && DJANGO_DEBUG=1 python manage.py runserver`; tests with `python -m pytest -q`. Limitations: two weeks of data, indicative backtest, Jev (paid) replaced by an open System One model measured honestly.
+EstelarIA is a Django app that tracks which AI topics are taking off on social media, explains why they work, estimates their stage (early, growing, saturated) and adapts them into scripts for 30X's LatAm executive audience. It collects 6,581 public signals from 10 sources (Hacker News, Google News, X, arXiv, LinkedIn headlines via Google News, Reddit, Instagram/TikTok via Apify, YouTube, plus Wikipedia pageviews), labels them once with two LLMs (4,176 consensus labels), and trains its own model: an ensemble of TF-IDF and three multilingual embeddings (e5-base, bge-m3, mpnet) with logistic regression, chosen by cross-validation. On a fixed topic hold-out (153 pieces, never seen) it scores 87 % top-1 / 99 % top-3, matching a large free LLM (DeepSeek, 86.9 %) at zero cost; a cascade that asks the LLM only when unsure reaches 89.5 % while calling it on 28 of 153 pieces. Measured cost: about USD 0.91/week for scraping plus USD 0.81 one-time labeling, versus roughly USD 3,000/year for paid alternatives. Run it offline with `pip install -r requirements.txt && DJANGO_DEBUG=1 python manage.py runserver`; tests with `python -m pytest -q`. Limitations: two weeks of data, indicative backtest, Jev (paid) replaced by an open System One model measured honestly.
