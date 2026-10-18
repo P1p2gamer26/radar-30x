@@ -256,7 +256,7 @@ def test_collect_descarta_urls_con_email_y_guarda_costo_apify(monkeypatch, tmp_p
     settings.DATA_DIR = tmp_path
     mala = {"id": "hn:1", "source": "hn", "url": "https://lore.kernel.org/x/CAHk@mail.gmail.com/", "title": "t", "text": ""}
     buena = {"id": "hn:2", "source": "hn", "url": "https://example.com/a", "title": "t", "text": ""}
-    for nombre in ("fetch_gnews", "fetch_linkedin", "fetch_youtube", "fetch_instagram", "fetch_tiktok"):
+    for nombre in ("fetch_gnews", "fetch_linkedin", "fetch_youtube", "fetch_instagram", "fetch_tiktok", "fetch_reddit", "fetch_arxiv"):
         monkeypatch.setattr(sources, nombre, lambda now: [])
     monkeypatch.setattr(sources, "fetch_hn", lambda now: [mala, buena])
     monkeypatch.setattr(sources, "fetch_wiki", lambda now: {})
@@ -438,3 +438,17 @@ def test_cascada_estudiante_luego_llm():
              {"gold": "a", "student": "b", "llm": "b", "student_conf": 0.2}]   # duda: el LLM falla
     c = cascada(items, 0.5)
     assert c["top1"] == round(2 / 3, 3) and c["llamadas_llm"] == 2 and c["resuelve_estudiante"] == round(1 / 3, 3)
+
+
+def test_reddit_filtra_y_no_guarda_autor():
+    crudo = (FIX / "reddit.xml").read_bytes()
+    out = sources.parse_reddit(crudo, "es", "es", filtrar=True)
+    assert [s["title"] for s in out] == ["Cómo usar IA en mi negocio"]
+    assert out[0]["id"] == "reddit:t3_aaa111" and out[0]["author_type"] == "comunidad" and "alguien" not in str(out)
+    assert len(sources.parse_reddit(crudo, "es", "es")) == 2
+
+
+def test_arxiv_sin_autores_ni_emails():
+    out = sources.parse_arxiv((FIX / "arxiv.xml").read_bytes())
+    assert out[0]["id"] == "arxiv:2610.22372" and out[0]["title"] == "Agentes LLM para ventas"
+    assert "Persona" not in str(out) and "@" not in out[0]["text"] and out[0]["author_type"] == "academia"

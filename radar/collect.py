@@ -11,7 +11,7 @@ def run(now=None) -> dict:
     now = now or datetime.now(timezone.utc)
     signals, vistos = [], set()
     antes = sources.apify_uso_mensual()  # costo real de la corrida = uso mensual después - antes
-    for fn in (sources.fetch_hn, sources.fetch_gnews, sources.fetch_linkedin, sources.fetch_youtube, sources.fetch_instagram, sources.fetch_tiktok):
+    for fn in (sources.fetch_hn, sources.fetch_gnews, sources.fetch_linkedin, sources.fetch_youtube, sources.fetch_instagram, sources.fetch_tiktok, sources.fetch_reddit, sources.fetch_arxiv):
         for s in fn(now):
             if s["url"] not in vistos and not (sources.con_handle(s["url"]) and not s.get("channel") in sources.OFICIALES) and not sources.con_email(s["url"]):
                 vistos.add(s["url"])
