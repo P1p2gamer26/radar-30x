@@ -119,7 +119,9 @@ def build(snap: dict | None = None) -> dict:
     labs = etiquetar_todo(signals)
     topic_of = {sid: lab["topic"] for sid, lab in labs.items() if lab["topic"] in TOPICS}
 
-    shares = trend.share_series(signals, topic_of, ahora)
+    # X se muestrea con tope de resultados (se amontona en los últimos días) → no es serie comparable: solo evidencia
+    serie_sig = [s for s in signals if s["source"] != "x"]
+    shares = trend.share_series(serie_sig, topic_of, ahora)
     por_fuente = {src: trend.share_series([s for s in signals if s["source"] == src], topic_of, ahora)
                   for src in ("hn", "gnews")}
     wiki = snap.get("wiki", {})
@@ -136,7 +138,7 @@ def build(snap: dict | None = None) -> dict:
     for s in signals:
         if s["id"] in topic_of:
             por_tema[topic_of[s["id"]]].append(s)
-    volumen = {slug: sum(1 for s in por_tema.get(slug, []) if s["published_at"][:10] >= hace7) for slug in TOPICS}
+    volumen = {slug: sum(1 for s in por_tema.get(slug, []) if s["source"] != "x" and s["published_at"][:10] >= hace7) for slug in TOPICS}
     p50, p75 = trend.percentil(list(volumen.values()), 0.5), trend.percentil(list(volumen.values()), 0.75)
 
     fmt_of = {sid: lab["format"] for sid, lab in labs.items()}
