@@ -1,0 +1,492 @@
+{
+ "modelo": "von-1.3",
+ "idioma_pregunta": "es",
+ "n": 30,
+ "fecha": "2026-10-18",
+ "abierto_top1": 0.233,
+ "abierto_top3": 0.4,
+ "abierto_seconds_per_item": 4.91,
+ "student_top1": 0.9,
+ "deepseek_top1": 0.967,
+ "cascada_estudiante_abierto": {
+  "tau": 0.576,
+  "top1": 0.867,
+  "resuelve_estudiante": 0.833,
+  "llamadas_llm": 5
+ },
+ "cascada_estudiante_abierto_deepseek": {
+  "tau": 0.576,
+  "tau2": 0.576,
+  "top1": 0.867,
+  "estudiante": 25,
+  "abierto": 5,
+  "deepseek": 0
+ },
+ "barrido_tau2_optimista": [
+  {
+   "tau": 0.576,
+   "tau2": 0.3,
+   "top1": 0.867,
+   "estudiante": 25,
+   "abierto": 5,
+   "deepseek": 0
+  },
+  {
+   "tau": 0.576,
+   "tau2": 0.4,
+   "top1": 0.867,
+   "estudiante": 25,
+   "abierto": 5,
+   "deepseek": 0
+  },
+  {
+   "tau": 0.576,
+   "tau2": 0.5,
+   "top1": 0.867,
+   "estudiante": 25,
+   "abierto": 5,
+   "deepseek": 0
+  },
+  {
+   "tau": 0.576,
+   "tau2": 0.6,
+   "top1": 0.867,
+   "estudiante": 25,
+   "abierto": 5,
+   "deepseek": 0
+  },
+  {
+   "tau": 0.576,
+   "tau2": 0.7,
+   "top1": 0.867,
+   "estudiante": 25,
+   "abierto": 5,
+   "deepseek": 0
+  }
+ ],
+ "solo_abierto_calibracion": {
+  "conf_media": 0.943
+ },
+ "items": [
+  {
+   "id": "youtube:0t-eWrGFZyA",
+   "gold": "modelos-nuevos",
+   "llm": "modelos-nuevos",
+   "student": "modelos-nuevos",
+   "student_conf": 0.6549,
+   "abierto": "otro",
+   "abierto_p": 1.0,
+   "abierto_probs": {
+    "otro": 1.0,
+    "agentes-ia": 0.0,
+    "copilotos": 0.0
+   }
+  },
+  {
+   "id": "youtube:BOTAeAU5ExQ",
+   "gold": "seguridad-riesgos",
+   "llm": "roi-casos",
+   "student": "seguridad-riesgos",
+   "student_conf": 0.9547,
+   "abierto": "otro",
+   "abierto_p": 1.0,
+   "abierto_probs": {
+    "otro": 1.0,
+    "agentes-ia": 0.0,
+    "copilotos": 0.0
+   }
+  },
+  {
+   "id": "youtube:3Tk0sFoFYvM",
+   "gold": "regulacion-etica",
+   "llm": "regulacion-etica",
+   "student": "regulacion-etica",
+   "student_conf": 0.6732,
+   "abierto": "otro",
+   "abierto_p": 0.9936,
+   "abierto_probs": {
+    "otro": 0.994,
+    "ia-marketing": 0.005,
+    "ia-talento": 0.001
+   }
+  },
+  {
+   "id": "youtube:B3LXEW4Pc-w",
+   "gold": "modelos-nuevos",
+   "llm": "modelos-nuevos",
+   "student": "modelos-nuevos",
+   "student_conf": 0.6074,
+   "abierto": "otro",
+   "abierto_p": 0.9953,
+   "abierto_probs": {
+    "otro": 0.995,
+    "ia-marketing": 0.004,
+    "ia-talento": 0.001
+   }
+  },
+  {
+   "id": "gnews:CBMiswFBVV95cUxNTTc2Z2lUZjIzemFoczkxQWJZSXlzS1FRR2VUSEQtUVBsSXRsYXRRbEI1M3VBVWphc0R4eGdJY3VfSHR1eXN0QnZXa2dYeGlmOS1qcTUzeE1VdXB0YWY1cVIzV04tLS1FRlZhd0I0QTVGY3FMNGxTM1hBSllGQ1dsQU1KS1pLOW1UellyaUw1U182YWg1dU1fQThfLUQwWkwzRWotSlB0UmRSa1FIcjVHbWZTMA",
+   "gold": "startups-inversion",
+   "llm": "startups-inversion",
+   "student": "startups-inversion",
+   "student_conf": 0.8752,
+   "abierto": "ia-finanzas",
+   "abierto_p": 0.4215,
+   "abierto_probs": {
+    "ia-finanzas": 0.421,
+    "ia-marketing": 0.203,
+    "seguridad-riesgos": 0.192
+   }
+  },
+  {
+   "id": "hn:50064470",
+   "gold": "otro",
+   "llm": "otro",
+   "student": "otro",
+   "student_conf": 0.9412,
+   "abierto": "otro",
+   "abierto_p": 0.9952,
+   "abierto_probs": {
+    "otro": 0.995,
+    "ia-marketing": 0.005,
+    "agentes-ia": 0.0
+   }
+  },
+  {
+   "id": "hn:50005243",
+   "gold": "otro",
+   "llm": "otro",
+   "student": "copilotos",
+   "student_conf": 0.4481,
+   "abierto": "otro",
+   "abierto_p": 1.0,
+   "abierto_probs": {
+    "otro": 1.0,
+    "agentes-ia": 0.0,
+    "copilotos": 0.0
+   }
+  },
+  {
+   "id": "gnews:CBMihgJBVV95cUxQRVdGd3ZqeEc4MGF2VU12RW1LNldZenNOMFlocnNObHNPUVJsMkZoNUdHaGpwWmEyWkIwTkZBYTdyUndWNWZjbXpNMVpITkZ3aTE0d0RXbUFnVE5uTDNvcVFKaTg5LURKT2N6dHlYSExXSmZqVTlrUzVBMC13T0xNSnEyanlCUG80VDJQQ1gtSzk5TjI2X1d2Z3lhRmdoeXNZemE1LVZsNFBNUzRIN1BwS0lrLTBjV1dLdklFUzFEZnpzTDlFSkN3eksyUE5EN2ZaQXNaVzFoa3VUcWRidGlyZHFmU2w5d1ppbFVseGpub0lnSmZiVEZjQVlwZ00zVWVyalhPXzdR",
+   "gold": "startups-inversion",
+   "llm": "startups-inversion",
+   "student": "startups-inversion",
+   "student_conf": 0.8382,
+   "abierto": "startups-inversion",
+   "abierto_p": 0.7088,
+   "abierto_probs": {
+    "startups-inversion": 0.709,
+    "otro": 0.288,
+    "datos-rag": 0.002
+   }
+  },
+  {
+   "id": "hn:50092215",
+   "gold": "otro",
+   "llm": "otro",
+   "student": "seguridad-riesgos",
+   "student_conf": 0.198,
+   "abierto": "otro",
+   "abierto_p": 1.0,
+   "abierto_probs": {
+    "otro": 1.0,
+    "agentes-ia": 0.0,
+    "copilotos": 0.0
+   }
+  },
+  {
+   "id": "hn:50039633",
+   "gold": "agentes-ia",
+   "llm": "agentes-ia",
+   "student": "agentes-ia",
+   "student_conf": 0.7399,
+   "abierto": "otro",
+   "abierto_p": 1.0,
+   "abierto_probs": {
+    "otro": 1.0,
+    "agentes-ia": 0.0,
+    "copilotos": 0.0
+   }
+  },
+  {
+   "id": "hn:49951137",
+   "gold": "modelos-nuevos",
+   "llm": "modelos-nuevos",
+   "student": "seguridad-riesgos",
+   "student_conf": 0.6582,
+   "abierto": "otro",
+   "abierto_p": 1.0,
+   "abierto_probs": {
+    "otro": 1.0,
+    "agentes-ia": 0.0,
+    "copilotos": 0.0
+   }
+  },
+  {
+   "id": "hn:50074797",
+   "gold": "agentes-ia",
+   "llm": "agentes-ia",
+   "student": "agentes-ia",
+   "student_conf": 0.9456,
+   "abierto": "otro",
+   "abierto_p": 1.0,
+   "abierto_probs": {
+    "otro": 1.0,
+    "agentes-ia": 0.0,
+    "copilotos": 0.0
+   }
+  },
+  {
+   "id": "gnews:CBMiygFBVV95cUxPZU5QU3h2WTg4M1BfNEhVRGpFaXNTVUVTLV95UEVjYk1tM3R0V3NRSXRBNnJKMWdEUmVTRVc5cFRqdE9LY0JkN3lyeDRTSExkWE95REJ0LWRHdTd3YlZINnNIbXJDRTljZTRGb0lpbjVJb1gzT0E4SFBTbTduUmRoNkljWnFRREpmUnd6UWFCck1EVmp5ZnBiZjFGUjFtNjBGU0RGTWVrSmtQcmFIR00xS3AwX0p0VmZEdW1KNTJib05NTDIzTFl1UllR",
+   "gold": "seguridad-riesgos",
+   "llm": "seguridad-riesgos",
+   "student": "seguridad-riesgos",
+   "student_conf": 0.6955,
+   "abierto": "otro",
+   "abierto_p": 1.0,
+   "abierto_probs": {
+    "otro": 1.0,
+    "agentes-ia": 0.0,
+    "copilotos": 0.0
+   }
+  },
+  {
+   "id": "gnews:CBMinAFBVV95cUxNRU5GeUxjbHJFTC1FeUdNcHNjM1g2MnRIMXlWNVNwOUFuTDV4MVNrV1JUaUtXYXRoejFqaUNIQWRyVkE5UEpIM04xLXpJVUFkZlVKeUdUclcxUThwLXpwY3l5X0dmWmZUNzRabDUzUnBoNVVyQ2VQNkE3aENjLUR6SmxDOU1XRnJwbEdlZDNhN2RaS2NmWUZLeklUZGs",
+   "gold": "infra-costos",
+   "llm": "infra-costos",
+   "student": "infra-costos",
+   "student_conf": 0.7487,
+   "abierto": "otro",
+   "abierto_p": 1.0,
+   "abierto_probs": {
+    "otro": 1.0,
+    "agentes-ia": 0.0,
+    "copilotos": 0.0
+   }
+  },
+  {
+   "id": "gnews:CBMinAFBVV95cUxOZ2UteGhxRkRiSlNLeDNFWkRCSkt4dFRlQU5UcjE5NjNfRkh5c1oxblR0U1pGb3F1V1dEVlNwcGl4YkEtekw0cUhVemJxSnMwUnlXWlJ6ZndrNHlyYjBwTG5PZi1CR24tT3pPM3NQYlNubEx6Zkxac2tOQWZSd2pVRVd4LV9CUG9sRXU3R1RWSklleVM1VkRlQ3A4em8",
+   "gold": "estrategia-adopcion",
+   "llm": "estrategia-adopcion",
+   "student": "estrategia-adopcion",
+   "student_conf": 0.211,
+   "abierto": "otro",
+   "abierto_p": 0.9577,
+   "abierto_probs": {
+    "otro": 0.958,
+    "regulacion-etica": 0.016,
+    "ia-marketing": 0.01
+   }
+  },
+  {
+   "id": "hn:50066493",
+   "gold": "agentes-ia",
+   "llm": "agentes-ia",
+   "student": "agentes-ia",
+   "student_conf": 0.6203,
+   "abierto": "otro",
+   "abierto_p": 1.0,
+   "abierto_probs": {
+    "otro": 1.0,
+    "agentes-ia": 0.0,
+    "copilotos": 0.0
+   }
+  },
+  {
+   "id": "gnews:CBMimwFBVV95cUxNQ1RwcTZxUU1yZFpySzVmeEZFRlkza0V6LWY5WFZTczBFOEhrUF9wUXpqZjZRUnEtSll6c1h6OFJyWkpHcm9FemlEbHlXRVpNX0RoSWdXUU93bHVleEc5TnZ5MWlINTgwdHY0M095UURxM3poaWNoc3ljUWltLVZqeVotSWhab1JSYWxHZU5waWRITndNQzRHQWk4Yw",
+   "gold": "startups-inversion",
+   "llm": "startups-inversion",
+   "student": "startups-inversion",
+   "student_conf": 0.9495,
+   "abierto": "startups-inversion",
+   "abierto_p": 0.9561,
+   "abierto_probs": {
+    "startups-inversion": 0.956,
+    "otro": 0.04,
+    "ia-marketing": 0.002
+   }
+  },
+  {
+   "id": "youtube:WXWFmwfo1JA",
+   "gold": "otro",
+   "llm": "otro",
+   "student": "otro",
+   "student_conf": 0.789,
+   "abierto": "otro",
+   "abierto_p": 1.0,
+   "abierto_probs": {
+    "otro": 1.0,
+    "agentes-ia": 0.0,
+    "copilotos": 0.0
+   }
+  },
+  {
+   "id": "youtube:KL9_1GbmCic",
+   "gold": "modelos-nuevos",
+   "llm": "modelos-nuevos",
+   "student": "modelos-nuevos",
+   "student_conf": 0.6712,
+   "abierto": "otro",
+   "abierto_p": 1.0,
+   "abierto_probs": {
+    "otro": 1.0,
+    "agentes-ia": 0.0,
+    "copilotos": 0.0
+   }
+  },
+  {
+   "id": "youtube:wSuWuPUTC10",
+   "gold": "empleo-futuro",
+   "llm": "empleo-futuro",
+   "student": "empleo-futuro",
+   "student_conf": 0.7959,
+   "abierto": "otro",
+   "abierto_p": 0.9952,
+   "abierto_probs": {
+    "otro": 0.995,
+    "ia-marketing": 0.005,
+    "agentes-ia": 0.0
+   }
+  },
+  {
+   "id": "youtube:R9momwXV9w4",
+   "gold": "modelos-nuevos",
+   "llm": "modelos-nuevos",
+   "student": "modelos-nuevos",
+   "student_conf": 0.6578,
+   "abierto": "otro",
+   "abierto_p": 0.9763,
+   "abierto_probs": {
+    "otro": 0.976,
+    "automatizacion": 0.016,
+    "ia-marketing": 0.007
+   }
+  },
+  {
+   "id": "youtube:ftkic7Tdpcg",
+   "gold": "seguridad-riesgos",
+   "llm": "seguridad-riesgos",
+   "student": "seguridad-riesgos",
+   "student_conf": 0.8208,
+   "abierto": "otro",
+   "abierto_p": 1.0,
+   "abierto_probs": {
+    "otro": 1.0,
+    "agentes-ia": 0.0,
+    "copilotos": 0.0
+   }
+  },
+  {
+   "id": "youtube:hTAWHgQI4xg",
+   "gold": "vibe-coding",
+   "llm": "vibe-coding",
+   "student": "vibe-coding",
+   "student_conf": 0.6309,
+   "abierto": "otro",
+   "abierto_p": 1.0,
+   "abierto_probs": {
+    "otro": 1.0,
+    "agentes-ia": 0.0,
+    "copilotos": 0.0
+   }
+  },
+  {
+   "id": "youtube:qZBibWYcKH4",
+   "gold": "infra-costos",
+   "llm": "infra-costos",
+   "student": "infra-costos",
+   "student_conf": 0.9472,
+   "abierto": "otro",
+   "abierto_p": 0.8862,
+   "abierto_probs": {
+    "otro": 0.886,
+    "ia-marketing": 0.112,
+    "ia-talento": 0.001
+   }
+  },
+  {
+   "id": "youtube:N6K_pxaAh0w",
+   "gold": "seguridad-riesgos",
+   "llm": "seguridad-riesgos",
+   "student": "seguridad-riesgos",
+   "student_conf": 0.9816,
+   "abierto": "otro",
+   "abierto_p": 0.9999,
+   "abierto_probs": {
+    "otro": 1.0,
+    "seguridad-riesgos": 0.0,
+    "agentes-ia": 0.0
+   }
+  },
+  {
+   "id": "youtube:G-9Y2xNiDKQ",
+   "gold": "copilotos",
+   "llm": "copilotos",
+   "student": "copilotos",
+   "student_conf": 0.5776,
+   "abierto": "otro",
+   "abierto_p": 0.9999,
+   "abierto_probs": {
+    "otro": 1.0,
+    "copilotos": 0.0,
+    "agentes-ia": 0.0
+   }
+  },
+  {
+   "id": "hn:50111375",
+   "gold": "infra-costos",
+   "llm": "infra-costos",
+   "student": "infra-costos",
+   "student_conf": 0.5557,
+   "abierto": "otro",
+   "abierto_p": 1.0,
+   "abierto_probs": {
+    "otro": 1.0,
+    "agentes-ia": 0.0,
+    "copilotos": 0.0
+   }
+  },
+  {
+   "id": "hn:49966293",
+   "gold": "regulacion-etica",
+   "llm": "regulacion-etica",
+   "student": "regulacion-etica",
+   "student_conf": 0.5607,
+   "abierto": "otro",
+   "abierto_p": 1.0,
+   "abierto_probs": {
+    "otro": 1.0,
+    "agentes-ia": 0.0,
+    "copilotos": 0.0
+   }
+  },
+  {
+   "id": "hn:49954801",
+   "gold": "otro",
+   "llm": "otro",
+   "student": "otro",
+   "student_conf": 0.9661,
+   "abierto": "otro",
+   "abierto_p": 1.0,
+   "abierto_probs": {
+    "otro": 1.0,
+    "agentes-ia": 0.0,
+    "copilotos": 0.0
+   }
+  },
+  {
+   "id": "gnews:CBMivAFBVV95cUxNcFBuUEgzU3pkcWROcEJwQlpacHdNQVpsUFFjdXZrRTVqelhHREtwMm1WWjZjUnY0OU1acElyY3o4YjJTekEtUVZsN3ppVkpWRXpyaTVocnBTeUJEZkR3TDhOSEtLQXU0UjJiZUJLZzVMWGRZYkg4UmpfQXdKMngtckgxZlJNcXBYVm42bllJUFJHUDZMeVpLUDVuWk9NZFpzWkhod2RTMnNPbEt0MnUtMmcybVN5aXF4VkUwZA",
+   "gold": "agentes-ia",
+   "llm": "agentes-ia",
+   "student": "agentes-ia",
+   "student_conf": 0.8805,
+   "abierto": "otro",
+   "abierto_p": 0.4094,
+   "abierto_probs": {
+    "otro": 0.409,
+    "ia-marketing": 0.26,
+    "regulacion-etica": 0.145
+   }
+  }
+ ]
+}

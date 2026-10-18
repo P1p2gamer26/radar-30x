@@ -78,7 +78,24 @@ Corrida 2026-W42 (generada 2026-10-17; datos en `data/`, reproducible sin red). 
 
 **Nuestro modelo propio vs un LLM grande gratis** (mismo hold-out de tema, 153 piezas, etiqueta = consenso de dos LLM; `python manage.py llm_vs_student`): `deepseek-v4.1-flash-free` por el CLI de OpenCode Zen acierta 87 % (0 sin parsear, ~0,68 s por pieza, USD 0 pero con límite de uso y sin garantía de servicio); nuestro estudiante acierta lo mismo, 87 % (~0,0002 s por pieza, USD 0, sin depender de un servicio externo). Con el modelo anterior (un solo embedding) el estudiante acertaba 80 %. **Cascada ('Jev abierto')**: si el estudiante está seguro (umbral τ = 0,58 elegido en validación cruzada, no en este hold-out) responde él; si no, escala al LLM. Resultado: **89,5 %** de acierto (más que el LLM solo, 86,9 %), resolviendo al instante el 82 % de las piezas y llamando al LLM solo en 28 de 153 (antes 60). Las respuestas del LLM son las mismas guardadas (`llm_vs_student --reusar`); solo cambió el estudiante.
 
-**Jev (modelo aliado del reto):** lo intentamos el 18-oct por OpenCode Zen (`jev-1.13-free`): la API pública de Zen solo permite el plan gratis desde la app OpenCode y el cliente `opencode run` no habla el protocolo de Jev (System One), así que no pudimos medirlo a tiempo. Nuestro modelo propio clasifica a USD 0 por pieza y acierta 80 % en el hold-out; comparar Jev en ese mismo hold-out es el siguiente paso.
+### Jev / System One abierto
+
+Jev es el modelo "System One" de TypeSafe: responde preguntas tipadas (Choice, Score, Noul) por `POST /v1/systemone`. No tuvimos clave de Jev, así que usamos **Von 1.3** (Apache-2.0, `pip install von-sdk`, pesos `wfzyx/von` en Hugging Face, 395M, corre en CPU), que expone **el mismo contrato**. `decision/decide.py` ya habla ese contrato (Choice/Score/Noul, con `SYSTEMONE_URL`): **con una clave de TypeSafe apuntas `SYSTEMONE_URL` a `https://api.typesafe.ai/v1/systemone`, pones `SYSTEMONE_API_KEY` y es Jev real**; sin cambiar código.
+
+Medido en el mismo hold-out de tema (153 piezas, etiqueta = consenso de 2 LLM; `python manage.py jev_vs_student`, resultados en `data/jev_abierto_vs_student.json`), pregunta Choice con los 20 temas (preguntas en inglés, CPU, sin GPU):
+
+| Modelo | Acierto top-1 | Seg/pieza | Costo |
+|---|---|---|---|
+| Estudiante propio | 86,9 % | 0,0002 | USD 0 |
+| DeepSeek (OpenCode Zen) | 86,9 % | 0,68 | USD 0, con límite de uso |
+| **Von 1.3 (System One abierto)** | **26,1 %** (top-3: 39,9 %) | 8,5 | USD 0, local |
+| Cascada estudiante -> Von (τ = 0,576) | 77,8 % | | |
+| Cascada estudiante -> Von -> DeepSeek | 77,8 % (Von nunca delega: su confianza media es 0,97 aunque acierta 26 %) | | |
+| Cascada estudiante -> DeepSeek (la buena) | 89,5 % | | |
+
+Con preguntas en español, en un subconjunto de 30 piezas: Von 23,3 % (el estudiante en esas 30: 90,0 %), 4,9 s/pieza; no mejora.
+
+Conclusión honesta: Von es un modelo general de decisión, no clasifica 20 temas de IA en nuestro dominio y es muy sobreconfiado ahí; **no lo usamos para tema**. Queda como motor opcional de System One en `decide.py` (mejor adaptado a preguntas sí/no) con `DECISION_MODE=record` (graba las respuestas en `decision/recordings/`) y `replay` (la demo en PythonAnywhere, sin torch ni servidor, las reproduce). No medimos Von en preguntas sí/no con datos etiquetados; no afirmamos su acierto ahí. Cómo correrlo: `pip install von-sdk && von serve --port 8801`, luego `SYSTEMONE_URL=http://127.0.0.1:8801/v1/systemone python manage.py jev_vs_student`. Se descartaron Laya y OpenJev por tiempo, sin probarlos.
 
 **Backtest (indicativo):** `python manage.py backtest` corta los datos en el día 7 y compara lo marcado como "empezando" con lo que creció en los días 8-14 (`data/backtest.json`). El radar acierta 2 de 6 marcados (precisión 0,33); ordenar por popularidad acierta 0 de 6; la base al azar es 0,30. Es una sola semana y 6 marcados: una señal, no una prueba.
 
@@ -177,12 +194,12 @@ python manage.py readme_resultados  # reescribe el bloque Resultados de este REA
 - **Hold-out de 234 piezas** (153 en la comparación con el LLM): las cifras de acierto tienen un margen de error amplio.
 - **LinkedIn solo por titulares** de Google News, sin métricas de interacción.
 - **Backtest indicativo**: 6 temas marcados y una sola semana; no mide anticipación en días.
-- **Jev no medido**: no tuvimos acceso a tiempo.
+- **Jev real no medido** (sin clave); medimos Von, su equivalente abierto, y rinde mal en tema (26,1 %).
 - La cascada a un LLM gratis depende de límites de uso y no tiene garantía de servicio.
 
 ## Roadmap
 - Acumular varias semanas de datos y repetir el backtest con más temas.
-- Medir Jev en el mismo hold-out.
+- Medir Jev real (con clave) y Von en preguntas sí/no en el mismo hold-out.
 - Ampliar a más cuentas de 30X (costo estimado arriba).
 - Más fuentes con métricas de interacción para LinkedIn.
 
@@ -192,4 +209,4 @@ Hecho por **Julián Africano**, estudiante de Ingeniería de Sistemas, Pontifici
 ---
 
 ## English summary
-EstelarIA is a Django app that tracks which AI topics are taking off on social media, explains why they work, estimates their stage (early, growing, saturated) and adapts them into scripts for 30X's LatAm executive audience. It collects public signals (Hacker News, Google News, YouTube, Wikipedia, LinkedIn headlines via Google News, Instagram/TikTok via Apify), labels a sample with two LLMs, and trains its own lightweight model (80 % top-1 / 98 % top-3 on a fixed 234-piece hold-out) that runs in pure Python at zero cost. A cascade to a free LLM reaches 88.9 % vs 86.9 % for the LLM alone. Measured cost: about USD 0.55/week for scraping plus USD 0.81 one-time labeling, versus roughly USD 3,000/year for paid alternatives. Run it offline with `pip install -r requirements.txt && DJANGO_DEBUG=1 python manage.py runserver`; tests with `python -m pytest -q`. Limitations: one week of data, indicative backtest, Jev not measured.
+EstelarIA is a Django app that tracks which AI topics are taking off on social media, explains why they work, estimates their stage (early, growing, saturated) and adapts them into scripts for 30X's LatAm executive audience. It collects public signals (Hacker News, Google News, YouTube, Wikipedia, LinkedIn headlines via Google News, Instagram/TikTok via Apify), labels a sample with two LLMs, and trains its own lightweight model (80 % top-1 / 98 % top-3 on a fixed 234-piece hold-out) that runs in pure Python at zero cost. A cascade to a free LLM reaches 88.9 % vs 86.9 % for the LLM alone. Measured cost: about USD 0.55/week for scraping plus USD 0.81 one-time labeling, versus roughly USD 3,000/year for paid alternatives. Run it offline with `pip install -r requirements.txt && DJANGO_DEBUG=1 python manage.py runserver`; tests with `python -m pytest -q`. Limitations: one week of data, indicative backtest, real Jev not measured (open Von equivalent scores 26.1 % on topic).
