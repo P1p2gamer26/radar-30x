@@ -45,6 +45,7 @@ class Question:
     text: str
     type: str  # "boolean" | "choice" | "score"
     choices: tuple = ()
+    descripciones: tuple = ()  # opcional, una por opcion de choice (la usa System One como criteria)
 
     def __post_init__(self):
         if self.type not in TIPOS_VALIDOS:
@@ -231,19 +232,44 @@ def _prompt_llm(state_texto: str, questions) -> list:
     ]
 
 
+_ESCALA_SCORE = ["Not at all", "Slightly", "Moderately", "Very", "Completely"]
+
+
+def _systemone_preguntas(questions) -> dict:
+    """Contrato System One/Jev (POST /v1/systemone): questions = {id: {type, instructions, criteria}}."""
+    out = {}
+    for q in questions:
+        if q.type == "boolean":
+            out[q.id] = {"type": "noul", "instructions": q.text}
+        elif q.type == "score":
+            out[q.id] = {"type": "score", "instructions": q.text, "criteria": _ESCALA_SCORE}
+        else:
+            desc = q.descripciones or (None,) * len(q.choices)
+            out[q.id] = {"type": "choice", "instructions": q.text, "criteria": dict(zip(q.choices, desc))}
+    return out
+
+
+def _systemone_valores(answers: dict, questions) -> dict:
+    """answers de System One -> {id: valor crudo} que entiende _extraer."""
+    crudas = {}
+    for q in questions:
+        a = answers[q.id]
+        if q.type == "boolean":
+            crudas[q.id] = a["noul"]
+        elif q.type == "score":  # esperanza sobre niveles 1..N -> 0..1
+            n = len(a.get("probabilities") or _ESCALA_SCORE)
+            crudas[q.id] = (a["score"] - 1) / max(n - 1, 1)
+        else:
+            crudas[q.id] = a["probabilities"]
+    return crudas
+
+
 def _intentar_systemone(state_texto, questions, timeout):
-    """(a) SystemOne si esta configurado. Devuelve (crudas, costo)."""
-    payload = {
-        "state": state_texto,
-        "questions": [asdict(q) for q in questions],
-    }
-    data = _post_json(settings.SYSTEMONE_URL, payload, timeout)
-    # ponytail: contrato con SystemOne sin definir; acepta el envoltorio
-    # chat/completions del LLM o el dict de respuestas directo.
-    if isinstance(data, dict) and "choices" in data:
-        contenido = data["choices"][0]["message"]["content"]
-        data = json.loads(contenido)
-    return _extraer(data, questions), _costo(data)
+    """(a) System One (Jev de TypeSafe o uno abierto como Von, mismo contrato). Devuelve (crudas, costo)."""
+    headers = {"Authorization": f"Bearer {settings.SYSTEMONE_API_KEY}"} if settings.SYSTEMONE_API_KEY else None
+    data = _post_json(settings.SYSTEMONE_URL, {"state": state_texto, "questions": _systemone_preguntas(questions)},
+                      timeout, headers)
+    return _extraer(_systemone_valores(data["answers"], questions), questions), 0.0  # ponytail: Von es local (USD 0); con Jev de pago, leer usage
 
 
 def _intentar_llm(state_texto, questions, timeout):
@@ -298,7 +324,7 @@ def _cascada(state_texto: str, questions):
     timeout = settings.LLM_TIMEOUT
     if settings.SYSTEMONE_URL:
         try:
-            crudas, costo = _intentar_systemone(state_texto, questions, timeout)
+            crudas, costo = _intentar_systemone(state_texto, questions, settings.SYSTEMONE_TIMEOUT)
             return "systemone", crudas, costo
         except Exception:
             pass  # ponytail: cualquier error -> siguiente motor

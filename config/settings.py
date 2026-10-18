@@ -99,5 +99,7 @@ LLM_TIMEOUT = float(os.environ.get("LLM_TIMEOUT", "5"))
 LLM_PRICE_IN_PER_1M = float(os.environ.get("LLM_PRICE_IN_PER_1M", "0"))
 LLM_PRICE_OUT_PER_1M = float(os.environ.get("LLM_PRICE_OUT_PER_1M", "0"))
 SYSTEMONE_URL = os.environ.get("SYSTEMONE_URL", "")
+SYSTEMONE_API_KEY = os.environ.get("SYSTEMONE_API_KEY", "")  # vacío con Von local; clave de TypeSafe con Jev real
+SYSTEMONE_TIMEOUT = float(os.environ.get("SYSTEMONE_TIMEOUT", "30"))  # Von en CPU tarda ~7 s por pieza
 DECISION_RECORDINGS_DIR = BASE_DIR / "decision" / "recordings"
 

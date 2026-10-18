@@ -382,3 +382,32 @@ def test_sin_cercas_quita_bloque_json():
     from decision.decide import _sin_cercas
     assert _sin_cercas('```json\n{"a": 0.9}\n```') == '{"a": 0.9}'
     assert _sin_cercas('{"a": 0.9}') == '{"a": 0.9}'
+
+
+# ------------------------------------------- System One (Jev / Von, mismo contrato)
+
+
+def test_systemone_contrato_y_record_replay(tmp_path, monkeypatch):
+    """Habla el contrato real de /v1/systemone y la respuesta grabada se reproduce sin red."""
+    cuerpo = {"model": "von-1.3.0", "usage": {"input_tokens": 3, "output_tokens": 1}, "answers": {
+        "q1": {"type": "noul", "noul": 0.82},
+        "q2": {"type": "choice", "choice": "B", "confidence": 0.7, "probabilities": {"A": 0.2, "B": 0.7, "C": 0.1}},
+        "q3": {"type": "score", "score": 5.0, "confidence": 0.5, "legend": {}, "probabilities": {str(i): 0.2 for i in range(1, 6)}}}}
+    fake, cap = _capturador(lambda req: _RespuestaFalsa(json.dumps(cuerpo).encode()))
+    monkeypatch.setattr(urllib.request, "urlopen", fake)
+    qs = [Question("q1", "¿Urgente?", "boolean"), Question("q2", "Tipo", "choice", ("A", "B", "C"), ("alfa", "beta", "gamma")),
+          Question("q3", "Utilidad", "score")]
+    with override_settings(SYSTEMONE_URL="http://so.test/v1/systemone", SYSTEMONE_API_KEY="k", DECISION_RECORDINGS_DIR=tmp_path):
+        d = decide("texto", qs, mode="record", log=False)
+        assert d.engine == "systemone" and d.answers["q1"].p == pytest.approx(0.82)
+        assert d.answers["q2"].probs["B"] == pytest.approx(0.7) and d.answers["q3"].p == pytest.approx(1.0)
+        assert cap["auth"] == "Bearer k"
+        assert cap["body"]["questions"]["q1"] == {"type": "noul", "instructions": "¿Urgente?"}
+        assert cap["body"]["questions"]["q2"]["criteria"] == {"A": "alfa", "B": "beta", "C": "gamma"}
+
+        def sin_red(req, timeout=None, **kwargs):
+            raise AssertionError("replay no debe usar la red")
+
+        monkeypatch.setattr(urllib.request, "urlopen", sin_red)
+        r = decide("texto", qs, mode="replay", log=False)
+    assert r.engine == "replay" and r.answers["q2"].probs == d.answers["q2"].probs
