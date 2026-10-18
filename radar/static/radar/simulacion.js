@@ -1,8 +1,8 @@
 // EstelarIA — simulación en vivo (canvas 2D, vanilla). Sin innerHTML: solo textContent/createElement.
 // iniciarSim(contenedor, D, {onSenal}) -> {inyectar(x), siguiente(), play(on)}
-const FUENTES = ["hn", "gnews", "linkedin", "youtube", "wiki", "instagram", "tiktok"];
-const NOM = { hn: "Hacker News", gnews: "Google News", linkedin: "LinkedIn", youtube: "YouTube", wiki: "Wikipedia", instagram: "Instagram", tiktok: "TikTok" };
-const CORTO = { hn: "HN", gnews: "GNews", linkedin: "LinkedIn", youtube: "YouTube", wiki: "Wiki", instagram: "IG", tiktok: "TikTok" };
+const FUENTES = ["hn", "gnews", "linkedin", "youtube", "wiki", "instagram", "tiktok", "reddit", "arxiv"];
+const NOM = { hn: "Hacker News", gnews: "Google News", linkedin: "LinkedIn", youtube: "YouTube", wiki: "Wikipedia", instagram: "Instagram", tiktok: "TikTok", reddit: "Reddit", arxiv: "arXiv" };
+const CORTO = { hn: "HN", gnews: "GNews", linkedin: "LinkedIn", youtube: "YouTube", wiki: "Wiki", instagram: "IG", tiktok: "TikTok", reddit: "Reddit", arxiv: "arXiv" };
 const COL = { Recomendar: "#FFC07A", Aprender: "#6f94ff", Descartar: "#8a85c4" };
 const VIOLETA = "#9b6bff", MAGENTA = "#e07bd6", HUESO = "#f1efff", GRIS = "#a09ec4";
 const f2 = (x) => Number(x).toFixed(2).replace(".", ",");
@@ -44,7 +44,7 @@ export function iniciarSim(cont, D, opc = {}) {
     const P = {}, rMax = horiz ? 22 : 14, rMin = horiz ? 8 : 6;
     FUENTES.forEach((f, i) => {
       const r = rMin + (rMax - rMin) * Math.sqrt((cuenta[f] || 0) / maxC);
-      P["src:" + f] = horiz ? { x: 150, y: 50 + i * ((H - 100) / 6), r } : { x: 28 + i * ((W - 56) / 6), y: 62, r };
+      P["src:" + f] = horiz ? { x: 150, y: 50 + i * ((H - 100) / (FUENTES.length - 1)), r } : { x: 28 + i * ((W - 56) / (FUENTES.length - 1)), y: 62, r };
     });
     P.model = horiz ? { x: W * 0.45, y: H * 0.38, r: 38 } : { x: W / 2, y: 235, r: 32 };
     P.llm = horiz ? { x: W * 0.45, y: H - 80, r: 24 } : { x: W * 0.8, y: 350, r: 20 };
@@ -135,13 +135,13 @@ export function iniciarSim(cont, D, opc = {}) {
     slugs.forEach((s) => linea(m, pos("tema:" + s), COL[D.temas[s].decision] + "30", 1));
     linea(m, ll, "rgba(224,123,214,.45)", 1.2, [5, 5]);
     slugs.forEach((s) => linea(ll, pos("tema:" + s), "rgba(224,123,214,.10)", 1));
-    FUENTES.forEach((f) => {
+    FUENTES.forEach((f, i) => {
       const n = pos("src:" + f), c = cuenta[f];
       nodo("src:" + f, VIOLETA, "#17123a");
       if (horiz) {
         texto(NOM[f], n.x - n.r - 10, n.y - (c ? 7 : 0), HUESO, 13, "right", true);
         if (c) texto(c.toLocaleString("es-CO") + " piezas", n.x - n.r - 10, n.y + 8, GRIS, 11, "right");
-      } else texto(CORTO[f], n.x, n.y - n.r - 11, HUESO, 10.5, "center", true);
+      } else texto(CORTO[f], n.x, n.y - n.r - (i % 2 ? 22 : 9), HUESO, 10.5, "center", true);
     });
     const pulso = 1 + 0.04 * Math.sin(reloj * 3);
     ctx.save(); ctx.translate(m.x, m.y); ctx.scale(pulso, pulso); ctx.translate(-m.x, -m.y); nodo("model", "#6f94ff", "#10205a"); ctx.restore();
