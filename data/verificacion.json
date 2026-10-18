@@ -69,26 +69,32 @@
  },
  "ia-ventas": {
   "reel": {
-   "cifras": 1,
-   "verificadas": 1,
+   "cifras": 0,
+   "verificadas": 0,
    "sin_respaldo": [],
-   "ejemplos": [],
+   "ejemplos": [
+    "10 personas"
+   ],
    "quitadas": 0,
    "acciones": []
   },
   "largo": {
-   "cifras": 1,
-   "verificadas": 1,
+   "cifras": 0,
+   "verificadas": 0,
    "sin_respaldo": [],
-   "ejemplos": [],
+   "ejemplos": [
+    "10 personas"
+   ],
    "quitadas": 0,
    "acciones": []
   },
   "linkedin": {
-   "cifras": 1,
-   "verificadas": 1,
+   "cifras": 0,
+   "verificadas": 0,
    "sin_respaldo": [],
-   "ejemplos": [],
+   "ejemplos": [
+    "10 personas"
+   ],
    "quitadas": 0,
    "acciones": []
   },
@@ -208,21 +214,43 @@
  "ia-talento": {
   "reel": {
    "cifras": 1,
-   "verificadas": 1,
-   "sin_respaldo": [],
-   "ejemplos": [],
-   "quitadas": 0,
-   "acciones": []
-  },
-  "largo": {
-   "cifras": 2,
-   "verificadas": 1,
+   "verificadas": 0,
    "sin_respaldo": [
-    "100%"
+    "US$74 mil"
    ],
    "ejemplos": [],
    "quitadas": 1,
    "acciones": [
+    {
+     "accion": "cifra reescrita",
+     "antes": "US$74 mil de ahorro al mes... con IA en RR.HH."
+    },
+    {
+     "accion": "elemento quitado",
+     "antes": "{'texto': 'El resultado', 'voz': 'Ese ajuste llevó a un líder de operativo a líder de equi"
+    }
+   ]
+  },
+  "largo": {
+   "cifras": 2,
+   "verificadas": 0,
+   "sin_respaldo": [
+    "US$74 mil",
+    "100%"
+   ],
+   "ejemplos": [
+    "US$74 mil"
+   ],
+   "quitadas": 2,
+   "acciones": [
+    {
+     "accion": "cifra reescrita",
+     "antes": "Cómo una empresa ahorró US$74 mil al mes con IA en RR.HH. (paso a paso)"
+    },
+    {
+     "accion": "elemento quitado",
+     "antes": "El ahorro mensual llegó a US$74 mil"
+    },
     {
      "accion": "cifra reescrita",
      "antes": "Un equipo de RR.HH. que operaba de forma 100% manual implementó IA en su proceso de selecc"
@@ -231,11 +259,22 @@
   },
   "linkedin": {
    "cifras": 1,
-   "verificadas": 1,
-   "sin_respaldo": [],
+   "verificadas": 0,
+   "sin_respaldo": [
+    "US$74 mil"
+   ],
    "ejemplos": [],
-   "quitadas": 0,
-   "acciones": []
+   "quitadas": 1,
+   "acciones": [
+    {
+     "accion": "frase quitada",
+     "antes": "US$74 mil de ahorro al mes. Así fue como una empresa transformó su RR.HH. con IA."
+    },
+    {
+     "accion": "elemento quitado",
+     "antes": "El ahorro: US$74 mil al mes"
+    }
+   ]
   },
   "recomendacion": {
    "cifras": 0,
@@ -248,26 +287,39 @@
  },
  "automatizacion": {
   "reel": {
-   "cifras": 1,
-   "verificadas": 1,
+   "cifras": 0,
+   "verificadas": 0,
    "sin_respaldo": [],
-   "ejemplos": [],
+   "ejemplos": [
+    "10 personas"
+   ],
    "quitadas": 0,
    "acciones": []
   },
   "largo": {
    "cifras": 2,
-   "verificadas": 2,
-   "sin_respaldo": [],
-   "ejemplos": [],
-   "quitadas": 0,
-   "acciones": []
+   "verificadas": 1,
+   "sin_respaldo": [
+    "10 personas"
+   ],
+   "ejemplos": [
+    "10 personas"
+   ],
+   "quitadas": 1,
+   "acciones": [
+    {
+     "accion": "frase quitada",
+     "antes": "Si tu equipo tiene 10 personas y cada una pierde solo 3 horas semanales en tareas repetiti"
+    }
+   ]
   },
   "linkedin": {
-   "cifras": 1,
-   "verificadas": 1,
+   "cifras": 0,
+   "verificadas": 0,
    "sin_respaldo": [],
-   "ejemplos": [],
+   "ejemplos": [
+    "10 personas"
+   ],
    "quitadas": 0,
    "acciones": []
   },
