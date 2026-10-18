@@ -452,3 +452,10 @@ def test_arxiv_sin_autores_ni_emails():
     out = sources.parse_arxiv((FIX / "arxiv.xml").read_bytes())
     assert out[0]["id"] == "arxiv:2610.22372" and out[0]["title"] == "Agentes LLM para ventas"
     assert "Persona" not in str(out) and "@" not in out[0]["text"] and out[0]["author_type"] == "academia"
+
+
+def test_parse_x():
+    xs = sources.parse_x(json.loads((FIX / "x.json").read_text(encoding="utf-8")), "ia")
+    assert len(xs) == 3 and all(s["source"] == "x" and s["url"].startswith("https://x.com/i/status/") for s in xs)
+    assert "@" not in xs[0]["title"] and "ana@" not in xs[0]["title"] and xs[0]["lang"] == "es"
+    assert xs[0]["author_type"] == "creador" and xs[0]["metrics"]["views"] > 0 and trend.peso(xs[0]) > 1

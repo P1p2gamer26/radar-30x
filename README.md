@@ -33,7 +33,7 @@ El equipo de media de 30X paga scraping («miles de USD al año», brief oficial
 ## Arquitectura
 ```mermaid
 flowchart LR
-  A[Fuentes públicas<br/>HN, Google News, YouTube,<br/>Wikipedia, LinkedIn vía GNews,<br/>Reddit, arXiv, IG y TikTok vía Apify] --> B[Etiquetado<br/>2 LLM: profesor + revisor<br/>= consenso]
+  A[Fuentes públicas<br/>HN, Google News, YouTube,<br/>Wikipedia, LinkedIn vía GNews,<br/>Reddit, arXiv, IG, TikTok y X vía Apify] --> B[Etiquetado<br/>2 LLM: profesor + revisor<br/>= consenso]
   B --> C[Modelo propio<br/>ensamble TF-IDF + 3 embeddings<br/>+ regresión logística]
   C --> D{¿Seguro?}
   D -- sí --> F[Tema, formato, gancho]
@@ -48,7 +48,7 @@ flowchart LR
 Cada etapa tiene su archivo: `radar/sources.py`, `radar/label.py`, `radar/student.py`, `radar/trend.py`, `decision/decide.py`, `radar/build.py` (arma `data/radar.json`, contrato en `SPEC.md`), `radar/verificar.py`, `radar/plan.py`.
 
 ### Qué hace
-1. **Recolecta** señales públicas sin login: Hacker News (Algolia), Google News (es-419 y en), canales públicos de YouTube por RSS (incluidos los de 30X), páginas vistas de Wikipedia, Reddit (RSS público de subreddits de IA y negocio, sin votos), arXiv (API Atom, papers recientes de IA), titulares de LinkedIn indexados en Google News, y posts/reels públicos de Instagram y TikTok (30X, Andrés Bilbao y hashtags de IA) vía Apify.
+1. **Recolecta** señales públicas sin login: Hacker News (Algolia), Google News (es-419 y en), canales públicos de YouTube por RSS (incluidos los de 30X), páginas vistas de Wikipedia, Reddit (RSS público de subreddits de IA y negocio, sin votos), arXiv (API Atom, papers recientes de IA), titulares de LinkedIn indexados en Google News, y posts/reels públicos de Instagram y TikTok (30X, Andrés Bilbao y hashtags de IA) y tweets públicos de X con búsquedas de IA (es/en, mínimo 20 likes) vía Apify.
 2. **Etiqueta** una muestra con un LLM "profesor" barato: tema, formato, gancho, tipo de autor y si le sirve a un ejecutivo.
 3. **Entrena un modelo propio** (`radar/student.py`) con las etiquetas donde un segundo LLM coincide con el profesor (consenso, `python manage.py review_labels`). Offline: un ensamble (TF-IDF + tres modelos de embeddings multilingües: `multilingual-e5-base`, `bge-m3` y `paraphrase-multilingual-mpnet`, cada uno con regresión logística, probabilidades promediadas) clasifica el corpus al armar `radar.json`; el ensamble lo eligió la validación cruzada (tema 71,9 % → 78,6 % en CV) frente a 6 modelos de embeddings y sus combinaciones (`ml/experimento_modelo.py`). En el servidor: regresión logística sobre TF-IDF exportada a JSON e inferida en Python puro (NB/kNN de respaldo), a **costo cero**.
 4. **Mide crecimiento y etapa** por tema y **decide** con umbrales trazables.

@@ -1,8 +1,8 @@
 // EstelarIA — simulación en vivo (canvas 2D, vanilla). Sin innerHTML: solo textContent/createElement.
 // iniciarSim(contenedor, D, {onSenal}) -> {inyectar(x), siguiente(), play(on)}
-const FUENTES = ["hn", "gnews", "linkedin", "youtube", "wiki", "instagram", "tiktok", "reddit", "arxiv"];
-const NOM = { hn: "Hacker News", gnews: "Google News", linkedin: "LinkedIn", youtube: "YouTube", wiki: "Wikipedia", instagram: "Instagram", tiktok: "TikTok", reddit: "Reddit", arxiv: "arXiv" };
-const CORTO = { hn: "HN", gnews: "GNews", linkedin: "LinkedIn", youtube: "YouTube", wiki: "Wiki", instagram: "IG", tiktok: "TikTok", reddit: "Reddit", arxiv: "arXiv" };
+const FUENTES = ["hn", "gnews", "linkedin", "youtube", "wiki", "instagram", "tiktok", "x", "reddit", "arxiv"];
+const NOM = { hn: "Hacker News", gnews: "Google News", linkedin: "LinkedIn", youtube: "YouTube", wiki: "Wikipedia", instagram: "Instagram", tiktok: "TikTok", x: "X (Apify)", reddit: "Reddit", arxiv: "arXiv" };
+const CORTO = { hn: "HN", gnews: "GNews", linkedin: "LinkedIn", youtube: "YouTube", wiki: "Wiki", instagram: "IG", tiktok: "TikTok", x: "X", reddit: "Reddit", arxiv: "arXiv" };
 const COL = { Recomendar: "#FFC07A", Aprender: "#6f94ff", Descartar: "#8a85c4" };
 const VIOLETA = "#9b6bff", MAGENTA = "#e07bd6", HUESO = "#f1efff", GRIS = "#a09ec4";
 const f2 = (x) => Number(x).toFixed(2).replace(".", ",");
