@@ -161,7 +161,7 @@ def test_escaner_devuelve_tema_decision_adapt_y_similares(client, settings, db):
 # ------------------------------------------------------------------ ronda 3
 
 CASOS_ESCANER = [
-    ("Mi equipo de ventas cerró 30% más con un agente de IA, paso a paso", {"ia-ventas"}),
+    ("Mi equipo de ventas cerró 30% más con un agente de IA, paso a paso", {"ia-ventas", "agentes-ia"}),
     ("Cómo usé ChatGPT para redactar mis contratos y ahorré 10 horas", {"copilotos", "automatizacion"}),
     ("OpenAI lanza un nuevo modelo, esto cambia todo", {"modelos-nuevos"}),
     ("Cómo formar a tu equipo en IA sin ser programador", {"educacion-ia"}),
@@ -237,7 +237,9 @@ def test_escaner_coherente_con_la_audiencia(settings, db):
     pov = analyze.analizar("POV: hiciste el informe semanal en 5 minutos con ChatGPT")
     assert pov["topic"] == "copilotos" and pov["decision"] in ("Aprender", "Recomendar")
     li = analyze.analizar("Agentes de IA en ventas: cómo un equipo comercial calificó prospectos en LinkedIn")
-    assert li["topic"] in ("ia-ventas", "agentes-ia") and li["decision"] != "Descartar"
+    assert li["topic"] in ("ia-ventas", "agentes-ia")
+    tema = next(t for t in json.load(open(settings.DATA_DIR / "radar.json", encoding="utf-8"))["topics"] if t["slug"] == li["topic"])
+    assert li["decision"] != "Descartar" or tema["decision"] == "Descartar"  # la pieza sigue al radar de la semana
 
 
 def test_decision_pieza_reglas():

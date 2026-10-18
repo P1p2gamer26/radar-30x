@@ -165,6 +165,47 @@ def revisar(signals: list, max_llamadas: int = 600, log=print) -> dict:
     return lab
 
 
+def ampliar(signals: list, max_llamadas: int = 380, hilos: int = 4, log=print) -> dict:
+    """Etiqueta con los dos LLM (profesor y revisor) TODA señal sin etiqueta, por lotes. Las nuevas llevan ext=True:
+    solo entrenan, nunca entran al hold-out fijo. Cada lote cuesta 2 llamadas; se guarda tras cada lote."""
+    from concurrent.futures import ThreadPoolExecutor
+    lab = cargar()
+    pend = [s for s in sorted(signals, key=lambda s: hashlib.md5(s["id"].encode()).hexdigest()) if s["id"] not in lab["labels"]]
+    lotes = [pend[k:k + LOTE] for k in range(0, len(pend), LOTE)][: max_llamadas // 2]
+
+    def dos(lote):
+        try:
+            a, _ = llamar(lote, (settings.LLM_MODEL,))
+            b, _ = llamar(lote, MODELOS_REVISOR[:1])
+            return lote, a, b
+        except Exception as e:
+            log(f"[aviso] lote: {e}")
+            return None
+
+    hechos = 0
+    with ThreadPoolExecutor(hilos) as ex:
+        for r in ex.map(dos, lotes):
+            if not r:
+                continue
+            lote, a, b = r
+            va = {f["i"]: validar(f) for f in a if isinstance(f, dict) and isinstance(f.get("i"), int)}
+            vb = {f["i"]: validar(f) for f in b if isinstance(f, dict) and isinstance(f.get("i"), int)}
+            for i, x in va.items():
+                y = vb.get(i)
+                if not x or not y or not 0 <= i < len(lote):
+                    continue
+                lab["labels"][lote[i]["id"]] = {**x, "by": "teacher", "ext": True,
+                                                "t2": {"topic": y["topic"], "format": y["format"], "hook": y["hook"]},
+                                                "agree": y["topic"] == x["topic"], "agree_format": y["format"] == x["format"],
+                                                "agree_hook": y["hook"] == x["hook"]}
+            hechos += 1
+            lab["meta"]["review_calls"] = lab["meta"].get("review_calls", 0) + 1
+            lab["meta"]["batches"] += 1
+            ruta().write_text(json.dumps(lab, ensure_ascii=False, indent=0), encoding="utf-8")
+            log(f"lote {hechos}/{len(lotes)}: {len(lab['labels'])} etiquetas")
+    return lab
+
+
 # ------------------------------------------------------------------ adaptación (idea de pieza para 30X)
 
 ESTILO_30X = ("Estilo 30X (Andrés Bilbao): español neutro latino, directo, sin tecnicismos, casos concretos con cifras, "

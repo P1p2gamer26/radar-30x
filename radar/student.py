@@ -338,8 +338,9 @@ def run(signals: list, labels: dict, k: int = 5) -> dict:
     except ImportError:
         E = None
     cands = OFFLINE if E is not None else SERVIDOR
-    hold = [i for i, f in enumerate(filas) if es_test(f[0])]
-    dat = [i for i, f in enumerate(filas) if not es_test(f[0])]
+    en_hold = lambda sid: es_test(sid) and not labels[sid].get("ext")  # noqa: E731  (etiquetas ampliadas "ext": solo entrenan, el hold-out sigue fijo)
+    hold = [i for i, f in enumerate(filas) if en_hold(f[0])]
+    dat = [i for i, f in enumerate(filas) if not en_hold(f[0])]
     pliegue = lambda i: int(hashlib.md5(filas[i][0].encode()).hexdigest(), 16) % k  # noqa: E731
     ej = lambda idx: [(filas[i][1], filas[i][2]) for i in idx]  # noqa: E731
     con = lambda idx, t: [i for i in idx if filas[i][2][t] is not None]  # noqa: E731

@@ -1,0 +1,48 @@
+{
+ "task": "topic",
+ "chosen": "intfloat/multilingual-e5-small",
+ "baseline_majority": 0.296,
+ "n_train": 932,
+ "n_val": 146,
+ "n_holdout": 153,
+ "classes": [
+  "agentes-ia",
+  "automatizacion",
+  "copilotos",
+  "datos-rag",
+  "educacion-ia",
+  "empleo-futuro",
+  "estrategia-adopcion",
+  "ia-finanzas",
+  "ia-marketing",
+  "ia-servicio",
+  "ia-talento",
+  "ia-ventas",
+  "infra-costos",
+  "modelos-nuevos",
+  "otro",
+  "regulacion-etica",
+  "roi-casos",
+  "seguridad-riesgos",
+  "startups-inversion",
+  "vibe-coding",
+  "video-voz"
+ ],
+ "candidates": {
+  "intfloat/multilingual-e5-small": {
+   "val_accuracy": 0.3562,
+   "val_hist": [
+    0.3562,
+    0.3562
+   ],
+   "tau": null,
+   "seconds": 101,
+   "holdout": {
+    "accuracy": 0.24836601307189543,
+    "top3": 0.39869281045751637,
+    "n": 153
+   }
+  }
+ },
+ "device": "NVIDIA GeForce GTX 1650"
+}

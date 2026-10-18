@@ -365,6 +365,7 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
   const camStart = new THREE.Vector3();
   camera.lookAt(lookAt);
   scene.add(camera);
+  canvas.__cam = camera; // inspección en pruebas
   const warp = buildWarp(520);
   camera.add(warp);
   const FOV_REST = 50;

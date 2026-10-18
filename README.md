@@ -30,16 +30,16 @@ Cada semana responde: *¿cuáles son los 10 temas de IA que más crecen, por qu�
 Corrida 2026-W42 (generada 2026-10-17; datos en `data/`, reproducible sin red). Generado por `python manage.py readme_resultados`.
 
 - **Señales:** 5.718 (Hacker News 3.240, Google News 2.018, LinkedIn (vía Google News) 180, Instagram (vía Apify) 127, YouTube 108, TikTok (vía Apify) 45, Wikipedia 20).
-- **Temas:** 20 analizados; 1 Recomendar (Educación y formación en IA), 5 Aprender, 14 Descartar.
-- **Costo:** USD 0.55 por semana (scraping de Instagram/TikTok vía Apify) y USD 0.81 una sola vez por etiquetar 1.226 señales con el LLM (USD 0.000141 por señal); el estudiante clasifica a USD 0.00.
-- **Modelo propio, tema** (hold-out fijo del 20 %, 234 piezas): top-1 **74 %**, top-3 95 %, cuando está seguro acierta 92 % y cubre el 62 % de las piezas; contra todas las etiquetas (incluidas las dudosas) 64 %; adivinar da 25 %.
+- **Temas:** 20 analizados; 2 Recomendar (Estrategia y adopción de IA, IA en finanzas), 7 Aprender, 11 Descartar.
+- **Costo:** USD 0.55 por semana (scraping de Instagram/TikTok vía Apify) y USD 0.81 una sola vez por etiquetar 5.687 señales con el LLM (USD 0.000141 por señal); el estudiante clasifica a USD 0.00.
+- **Modelo propio, tema** (hold-out fijo del 20 %, 234 piezas): top-1 **80 %**, top-3 98 %, cuando está seguro acierta 94 % y cubre el 61 % de las piezas; contra todas las etiquetas (incluidas las dudosas) 67 %; adivinar da 25 %.
 
 | Tarea | Top-1 | Top-3 | Cuando está seguro (cobertura) | Contra todas | Base |
 |---|---|---|---|---|---|
-| Tema (radar, offline) | 74 % | 95 % | 92 % (62 %) | 64 % | 25 % |
-| Formato (radar, offline) | 74 % | 93 % | 92 % (56 %) | 62 % | 53 % |
-| Gancho (radar, offline) | 56 % | 85 % | 95 % (14 %) | 43 % | 16 % |
-| Tema (escáner, servidor) | 71 % | 91 % | 93 % (19 %) | 61 % | 25 % |
+| Tema (radar, offline) | 80 % | 98 % | 94 % (61 %) | 67 % | 25 % |
+| Formato (radar, offline) | 74 % | 95 % | 91 % (59 %) | 63 % | 53 % |
+| Gancho (radar, offline) | 68 % | 92 % | 92 % (26 %) | 57 % | 16 % |
+| Tema (escáner, servidor) | 76 % | 97 % | 93 % (37 %) | 63 % | 25 % |
 <!-- /RESULTADOS -->
 
 ## Integraciones: sacar el plan de la semana
