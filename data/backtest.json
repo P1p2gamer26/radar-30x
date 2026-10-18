@@ -1,36 +1,271 @@
 {
- "corte_dia": 7,
+ "protocolo": "rodante",
  "umbral_crece": 1.3,
- "min_piezas": 5,
- "senales_hasta_corte": 1785,
+ "min_piezas_previas": 10,
+ "k_fijo": 5,
+ "ventana_historia": [
+  "2026-06-26",
+  "2026-10-17"
+ ],
+ "n_cortes": 13,
  "temas": 20,
- "crecieron": [
-  "educacion-ia",
-  "empleo-futuro",
-  "ia-finanzas",
-  "ia-marketing",
-  "roi-casos",
-  "startups-inversion"
+ "cortes": [
+  "2026-07-11",
+  "2026-07-18",
+  "2026-07-25",
+  "2026-08-01",
+  "2026-08-08",
+  "2026-08-15",
+  "2026-08-22",
+  "2026-08-29",
+  "2026-09-05",
+  "2026-09-12",
+  "2026-09-19",
+  "2026-09-26",
+  "2026-10-03"
  ],
- "base_azar": 0.3,
- "marcados": [
-  "agentes-ia",
-  "copilotos",
-  "datos-rag",
-  "ia-finanzas",
-  "seguridad-riesgos",
-  "startups-inversion"
+ "senales": 55102,
+ "base_azar": 0.135,
+ "por_corte": [
+  {
+   "corte": "2026-07-11",
+   "k": 2,
+   "crecieron": 2,
+   "aciertos_radar": 0
+  },
+  {
+   "corte": "2026-07-18",
+   "k": 2,
+   "crecieron": 2,
+   "aciertos_radar": 0
+  },
+  {
+   "corte": "2026-07-25",
+   "k": 1,
+   "crecieron": 3,
+   "aciertos_radar": 1
+  },
+  {
+   "corte": "2026-08-01",
+   "k": 3,
+   "crecieron": 1,
+   "aciertos_radar": 0
+  },
+  {
+   "corte": "2026-08-08",
+   "k": 4,
+   "crecieron": 5,
+   "aciertos_radar": 0
+  },
+  {
+   "corte": "2026-08-15",
+   "k": 3,
+   "crecieron": 3,
+   "aciertos_radar": 1
+  },
+  {
+   "corte": "2026-08-22",
+   "k": 0,
+   "crecieron": 2,
+   "aciertos_radar": 0
+  },
+  {
+   "corte": "2026-08-29",
+   "k": 4,
+   "crecieron": 2,
+   "aciertos_radar": 0
+  },
+  {
+   "corte": "2026-09-05",
+   "k": 3,
+   "crecieron": 2,
+   "aciertos_radar": 0
+  },
+  {
+   "corte": "2026-09-12",
+   "k": 1,
+   "crecieron": 1,
+   "aciertos_radar": 0
+  },
+  {
+   "corte": "2026-09-19",
+   "k": 5,
+   "crecieron": 1,
+   "aciertos_radar": 0
+  },
+  {
+   "corte": "2026-09-26",
+   "k": 3,
+   "crecieron": 4,
+   "aciertos_radar": 1
+  },
+  {
+   "corte": "2026-10-03",
+   "k": 2,
+   "crecieron": 7,
+   "aciertos_radar": 1
+  }
  ],
- "k": 6,
- "radar": {
-  "precision": 0.333,
-  "recall": 0.333,
-  "aciertos": 2
+ "resultados": {
+  "regla_del_producto": {
+   "radar": {
+    "precision": 0.121,
+    "recall": 0.114,
+    "aciertos": 4,
+    "marcados": 33,
+    "ic95_precision": [
+     0.027,
+     0.25
+    ]
+   },
+   "popularidad": {
+    "precision": 0.03,
+    "recall": 0.029,
+    "aciertos": 1,
+    "marcados": 33,
+    "ic95_precision": [
+     0.0,
+     0.097
+    ],
+    "radar_menos_este": {
+     "media": 0.091,
+     "ic95": [
+      -0.029,
+      0.24
+     ]
+    }
+   },
+   "persistencia": {
+    "precision": 0.121,
+    "recall": 0.114,
+    "aciertos": 4,
+    "marcados": 33,
+    "ic95_precision": [
+     0.028,
+     0.258
+    ],
+    "radar_menos_este": {
+     "media": -0.0,
+     "ic95": [
+      -0.081,
+      0.083
+     ]
+    }
+   },
+   "azar": {
+    "precision": 0.135,
+    "recall": 0.127,
+    "aciertos": 4.5,
+    "marcados": 33,
+    "radar_menos_este": {
+     "media": -0.014,
+     "ic95": [
+      -0.104,
+      0.097
+     ]
+    }
+   }
+  },
+  "top5_fijo": {
+   "radar": {
+    "precision": 0.123,
+    "recall": 0.229,
+    "aciertos": 8,
+    "marcados": 65,
+    "ic95_precision": [
+     0.062,
+     0.185
+    ]
+   },
+   "popularidad": {
+    "precision": 0.015,
+    "recall": 0.029,
+    "aciertos": 1,
+    "marcados": 65,
+    "ic95_precision": [
+     0.0,
+     0.046
+    ],
+    "radar_menos_este": {
+     "media": 0.108,
+     "ic95": [
+      0.046,
+      0.169
+     ]
+    }
+   },
+   "persistencia": {
+    "precision": 0.108,
+    "recall": 0.2,
+    "aciertos": 7,
+    "marcados": 65,
+    "ic95_precision": [
+     0.031,
+     0.185
+    ],
+    "radar_menos_este": {
+     "media": 0.015,
+     "ic95": [
+      -0.046,
+      0.077
+     ]
+    }
+   },
+   "azar": {
+    "precision": 0.135,
+    "recall": 0.25,
+    "aciertos": 8.8,
+    "marcados": 65,
+    "radar_menos_este": {
+     "media": -0.012,
+     "ic95": [
+      -0.081,
+      0.058
+     ]
+    }
+   }
+  }
  },
- "popularidad": {
-  "precision": 0.0,
-  "recall": 0.0,
-  "aciertos": 0
- },
- "lead_time": "no medible: la ventana es de 14 días y la verdad se juzga por semanas, no por día"
+ "lead_time": {
+  "radar": {
+   "picos": 12,
+   "detectados": 9,
+   "anticipados_1_o_mas": 8,
+   "mediana_semanas": 3,
+   "por_tema": {
+    "ia-ventas": 0,
+    "ia-marketing": null,
+    "ia-servicio": 6,
+    "ia-talento": 1,
+    "automatizacion": 1,
+    "regulacion-etica": 3,
+    "estrategia-adopcion": null,
+    "datos-rag": 5,
+    "empleo-futuro": 1,
+    "startups-inversion": 3,
+    "infra-costos": null,
+    "video-voz": 6
+   },
+   "ic95_mediana_semanas": [
+    1,
+    6
+   ]
+  },
+  "popularidad": {
+   "picos": 12,
+   "detectados": 1,
+   "anticipados_1_o_mas": 0,
+   "mediana_semanas": 0
+  },
+  "persistencia": {
+   "picos": 12,
+   "detectados": 10,
+   "anticipados_1_o_mas": 6,
+   "mediana_semanas": 1
+  },
+  "azar": {
+   "picos": 12,
+   "detectados_media": 6.0
+  }
+ }
 }

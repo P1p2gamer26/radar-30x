@@ -1,5 +1,5 @@
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
@@ -452,3 +452,41 @@ def test_arxiv_sin_autores_ni_emails():
     out = sources.parse_arxiv((FIX / "arxiv.xml").read_bytes())
     assert out[0]["id"] == "arxiv:2610.22372" and out[0]["title"] == "Agentes LLM para ventas"
     assert "Persona" not in str(out) and "@" not in out[0]["text"] and out[0]["author_type"] == "academia"
+
+
+def _historia_sintetica(extra_futuro=0):
+    """70 días: 'plano' 12/día; 'sube' 1/día hasta el día 34 y 10/día después (arranca a mitad)."""
+    ini = datetime(2026, 7, 1, tzinfo=timezone.utc)
+    sig, topic_of = [], {}
+    for i in range(70):
+        d = (ini + timedelta(days=i)).strftime("%Y-%m-%d")
+        for j in range(12):
+            sig.append({"id": f"p{i}-{j}", "source": "hn", "published_at": d + "T10:00:00Z", "metrics": {}}); topic_of[f"p{i}-{j}"] = "plano"
+        for j in range(1 if i < 35 else 10 + (extra_futuro if i > 60 else 0)):
+            sig.append({"id": f"s{i}-{j}", "source": "hn", "published_at": d + "T10:00:00Z", "metrics": {}}); topic_of[f"s{i}-{j}"] = "sube"
+    return sig, topic_of
+
+
+def test_backtest_rodante_cortes_sin_fuga_y_baselines():
+    from radar import rodante
+    sig, topic_of = _historia_sintetica()
+    cs = rodante.cortes("2026-07-01", "2026-09-08")
+    assert len(cs) >= 6 and cs[-1] == "2026-08-25" and all(b > a for a, b in zip(cs, cs[1:]))
+    r = rodante.rodante(sig, topic_of, ["plano", "sube"], {}, "2026-07-01", "2026-09-08")
+    assert r["n_cortes"] == len(cs) and "azar" in r["resultados"]["regla_del_producto"]
+    # el corte que contiene el arranque (día 35 = 2026-08-04) lo marca el radar y la verdad lo confirma
+    c = rodante.un_corte(sig, topic_of, ["plano", "sube"], {}, "2026-08-08")
+    assert c["verdad"] == ["sube"] and "sube" in c["marcados"] and "plano" not in c["marcados"]
+    # sin fuga: cambiar solo datos posteriores al corte no cambia lo que el radar marca ni sus baselines
+    sig2, topic2 = _historia_sintetica(extra_futuro=30)
+    c2 = rodante.un_corte(sig2, topic2, ["plano", "sube"], {}, "2026-08-08")
+    assert c2["metodos"] == c["metodos"] and c2["marcados"] == c["marcados"]
+
+
+def test_historia_cargar_desde_cache(tmp_path):
+    from radar import historia
+    for n, d in (("hn", [{"id": "hn:1"}]), ("arxiv", [{"id": "arxiv:2"}]), ("wiki", {"agentes-ia": {"20260701": 5}}), ("meta", {"inicio": "2026-06-26", "fin": "2026-10-17"})):
+        with historia.gzip.open(tmp_path / f"{n}.json.gz", "wt", encoding="utf-8") as f:
+            json.dump(d, f)
+    h = historia.cargar(tmp_path)
+    assert [s["id"] for s in h["signals"]] == ["hn:1", "arxiv:2"] and h["wiki"]["agentes-ia"]["20260701"] == 5
