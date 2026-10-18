@@ -81,8 +81,8 @@ function sparklineSvg(series, width = 90, height = 28) {
 
 function countEarlyOrRising(topics) {
   return topics.filter(
-    (t) => t.decision === "Recomendar" || t.stage === "temprana" || t.stage === "creciendo"
-  ).length;
+    (t) => t.decision === "Recomendar"
+  ).length; // ponytail: el titular promete solo lo que el radar recomienda producir ya
 }
 
 // Titular con plural correcto; se arma con nodos (el template trae el texto fijo).
@@ -90,12 +90,12 @@ function renderTitle(n) {
   const h1 = document.getElementById("hero-title");
   h1.textContent = "";
   if (n === 0) {
-    h1.textContent = "Esta semana ningún tema de IA despega: esto es lo que se mueve.";
+    h1.textContent = "Esta semana ningún tema de IA pide contenido urgente: esto es lo que se mueve.";
     return;
   }
   h1.appendChild(document.createTextNode("Esta semana, "));
   h1.appendChild(el("span", { class: "accent", id: "hero-count", text: String(n) }));
-  h1.appendChild(document.createTextNode(n === 1 ? " tema de IA está despegando." : " temas de IA están despegando."));
+  h1.appendChild(document.createTextNode(n === 1 ? " tema de IA pide contenido ya." : " temas de IA piden contenido ya."));
 }
 
 function renderHero(data) {

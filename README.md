@@ -6,7 +6,9 @@
 Hackathon 30X · reto *Radar de contenido*.
 
 - Demo: https://p1p2gamer26.pythonanywhere.com/
-- Video (3 min): _pendiente_
+- Video (3 min): se agrega con la entrega
+
+![RadarIA: el radar descubre en vivo qué tema de IA despega y de qué plataforma viene](docs/hero.png)
 
 ## El problema
 El equipo de media de 30X paga scraping (miles de USD al año) que solo trae datos. No dice **por qué** funcionó una pieza, si una tendencia **recién empieza o ya todos la copiaron**, ni si **le sirve a su audiencia**.
@@ -14,13 +16,13 @@ El equipo de media de 30X paga scraping (miles de USD al año) que solo trae dat
 ## Qué hace
 Cada semana responde: *¿cuáles son los 10 temas de IA que más crecen, por qué y cómo los adaptamos?*
 
-1. **Recolecta** señales públicas sin login: Hacker News (Algolia), Google News (es-419 y en), canales públicos de YouTube por RSS (incluidos los de 30X), páginas vistas de Wikipedia y posts públicos de LinkedIn indexados en Google News.
+1. **Recolecta** señales públicas sin login: Hacker News (Algolia), Google News (es-419 y en), canales públicos de YouTube por RSS (incluidos los de 30X), páginas vistas de Wikipedia posts públicos de LinkedIn indexados en Google News, y posts/reels públicos de Instagram y TikTok (30X, Andrés Bilbao y hashtags de IA) vía Apify.
 2. **Etiqueta** una muestra con un LLM "profesor" barato: tema, formato, gancho, tipo de autor y si le sirve a un ejecutivo.
 3. **Entrena un modelo propio** (Naive Bayes en Python puro, `radar/student.py`) con esas etiquetas. Clasifica todo lo demás a **costo cero** y corre en el servidor gratuito.
 4. **Mide crecimiento y etapa** por tema (`radar/trend.py`): crecimiento frente a su base, z-score y etapa (`temprana`, `creciendo`, `saturada`, `bajando`, `estable`). Así contesta si el tema recién empieza o ya todos lo copiaron.
 5. **Decide** con umbrales trazables (`decision/decide.py`): `Recomendar` (≥ 0.80), `Aprender` (≥ 0.50) o `Descartar`. El motivo cita los números.
 6. **Explica y adapta**: formato y gancho ganadores, mejor día y un guion corto para 30X (gancho de 3 s, beats, CTA).
-7. **La comunidad como sensor**: en `/analizar` cualquiera pega una pieza pública de Instagram, TikTok o LinkedIn y el radar la clasifica. Cubre las redes que no se pueden recolectar sin violar sus términos.
+7. **La comunidad como sensor**: en `/analizar` cualquiera pega una pieza pública de Instagram, TikTok o LinkedIn y el radar la clasifica al instante (escáner). Sirve para piezas que el equipo ve en su día a día y aún no están en el radar.
 
 ## Costo
 Lo que cuesta cada corrida (por señal, profesor y estudiante) se ve en la home y en `data/radar.json` → `totals`. El estudiante clasifica gratis; solo la muestra del profesor tiene costo. La alternativa paga de referencia es de ~USD 3.000 al año (Apify, Exolyt, Sprout); las fuentes están en la página `/como-funciona/`.
@@ -59,7 +61,7 @@ python manage.py build_radar      # -> data/radar.json
 | `deploy/` | despliegue en PythonAnywhere |
 
 ## Reglas que cumple
-- Solo contenido público y sin login. No evadimos el login de Instagram, TikTok ni LinkedIn.
+- Solo contenido público y sin login propio: Instagram y TikTok se leen de cuentas y hashtags públicos vía Apify (plan gratis, ~USD 0.55 por semana); LinkedIn, por titulares públicos indexados en Google News. Nunca iniciamos sesión en esas redes.
 - Sin datos personales: los autores se guardan solo como tipo (medio, creador, empresa, comunidad, academia).
 - Sin secretos en el repo. `verify.sh` revisa que `radar.json` no tenga emails.
 
