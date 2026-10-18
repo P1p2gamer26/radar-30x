@@ -47,7 +47,7 @@ def csv_texto(rows: list) -> str:
     w = csv.DictWriter(buf, CAMPOS)
     w.writeheader()
     for f in rows:  # los textos vienen de un LLM: neutraliza fórmulas de Excel/Sheets (=, +, -, @)
-        w.writerow({k: ("'" + v if isinstance(v, str) and v[:1] in "=+-@" else v) for k, v in f.items()})
+        w.writerow({k: ("'" + v if isinstance(v, str) and v and v[0] in "=+-@" else v) for k, v in f.items()})
     return "﻿" + buf.getvalue()
 
 
