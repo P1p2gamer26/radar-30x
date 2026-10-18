@@ -235,14 +235,18 @@ def cargar() -> dict | None:
 
 # ------------------------------------------------------------------ embeddings (solo offline: sentence-transformers + sklearn)
 MODELO_EMB = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-_ST = None
+_ST = {}
+# ensamble "multi" (elegido por CV en ml/experimento_modelo.py): LR de cada modelo con su C, promediada con la LR TF-IDF
+MULTI = {"e5-base": ("intfloat/multilingual-e5-base", "query: ", 100), "bge-m3": ("BAAI/bge-m3", "", 10),
+         "mpnet": ("sentence-transformers/paraphrase-multilingual-mpnet-base-v2", "", 10)}
 
 
-def embeber(textos: list):
-    """Embeddings normalizados (n x 384) con caché en disco por texto; requiere sentence-transformers (no en producción)."""
+def embeber(textos: list, nombre: str | None = None):
+    """Embeddings normalizados con caché en disco por texto (nombre=None: MiniLM; si no, un modelo de MULTI);
+    requiere sentence-transformers (no en producción)."""
     import numpy as np
-    global _ST
-    cache_f = settings.BASE_DIR / ".cache" / "emb.npz"
+    hf, pre = (MODELO_EMB, "") if nombre is None else MULTI[nombre][:2]
+    cache_f = settings.BASE_DIR / ".cache" / ("emb.npz" if nombre is None else f"emb_{nombre}.npz")
     cache = {}
     if cache_f.exists():
         z = np.load(cache_f)
@@ -250,10 +254,11 @@ def embeber(textos: list):
     llaves = [hashlib.md5(t[:600].encode()).hexdigest() for t in textos]
     faltan = sorted({k: t for k, t in zip(llaves, textos) if k not in cache}.items())
     if faltan:
-        if _ST is None:
+        if hf not in _ST:
             from sentence_transformers import SentenceTransformer
-            _ST = SentenceTransformer(MODELO_EMB)
-        vecs = _ST.encode([t[:600] for _, t in faltan], batch_size=64, normalize_embeddings=True, show_progress_bar=False)
+            _ST[hf] = SentenceTransformer(hf)
+            _ST[hf].max_seq_length = 128
+        vecs = _ST[hf].encode([pre + t[:600] for _, t in faltan], batch_size=64, normalize_embeddings=True, show_progress_bar=False)
         for (k, _), v in zip(faltan, vecs):
             cache[k] = v.astype("float32")
         cache_f.parent.mkdir(exist_ok=True)
@@ -279,7 +284,7 @@ CS_LR = (3, 30)
 CS_EMB = (1, 10)
 C_MIX = (30, 10)  # mix = promedio de lr@30 (TF-IDF) y emb@10
 SERVIDOR = ("nb", "knn", "ens", "lr@3", "lr@30", "lrens")  # candidatos que corren en Python puro en producción
-OFFLINE = SERVIDOR + ("emb@1", "emb@10", "mix")
+OFFLINE = SERVIDOR + ("emb@1", "emb@10", "mix", "multi")
 OBJ_SEGURO = 0.90  # precisión que debe alcanzar el umbral "seguro"
 MIN_SEGURO = 30  # piezas mínimas para fijar el umbral (menos sería ruido)
 
@@ -322,6 +327,8 @@ def _dist_cand(cand: str, m: dict, lrs: dict, emb: dict, i: int, toks: list, tar
         return _dist_lr(lrs[int(cand[3:])], toks, tarea)
     if cand.startswith("emb@"):
         return emb[int(cand[4:])][i]
+    if cand == "multi":
+        return _prom(_dist_lr(lrs[C_MIX[0]], toks, tarea), *(emb[n][i] for n in MULTI))
     return _prom(_dist_lr(lrs[C_MIX[0]], toks, tarea), emb[C_MIX[1]][i])  # mix
 
 
@@ -335,6 +342,7 @@ def run(signals: list, labels: dict, k: int = 5) -> dict:
              for sid, lab in labels.items() if sid in por_id]
     try:
         E = embeber([f[4] for f in filas])
+        Ex = {n: embeber([f[4] for f in filas], n) for n in MULTI}
     except ImportError:
         E = None
     cands = OFFLINE if E is not None else SERVIDOR
@@ -356,6 +364,10 @@ def run(signals: list, labels: dict, k: int = 5) -> dict:
                     clf = _ajustar_emb(E, con(tr, t), [filas[i][2][t] for i in con(tr, t)], C)
                     fs = te if todas else con(te, t)  # todas: también las filas sin consenso (para medir contra todas las etiquetas)
                     emb[t][C] = dict(zip(fs, _dists_emb(clf, E, fs)))
+                fs = te if todas else con(te, t)
+                for n, (_, _, C) in MULTI.items():
+                    clf = _ajustar_emb(Ex[n], con(tr, t), [filas[i][2][t] for i in con(tr, t)], C)
+                    emb[t][n] = dict(zip(fs, _dists_emb(clf, Ex[n], fs)))
         return m, lrs, emb
 
     oof = {t: {c: {} for c in cands} for t in TAREAS}
@@ -432,7 +444,7 @@ def clasificar_corpus(modelo: dict, signals: list, labels: dict) -> dict | None:
     """Clasifica TODAS las `signals` (labels = etiquetas para entrenar embeddings). {sid: {tarea: (clase, prob)}} con el mejor modelo OFFLINE de cada tarea (embeddings si ganaron en CV). None si faltan
     las librerías offline: el llamador cae al estudiante de servidor."""
     ob = modelo.get("offline_best") or modelo.get("best", {})
-    emb = {t: m for t, m in ob.items() if m.startswith(("emb@", "mix"))}
+    emb = {t: m for t, m in ob.items() if m.startswith(("emb@", "mix", "multi"))}
     texto = lambda s: s["title"] + " " + s.get("text", "")  # noqa: E731
     por_id = {s["id"]: s for s in signals}
     ent = [sid for sid in labels if sid in por_id]
@@ -440,21 +452,32 @@ def clasificar_corpus(modelo: dict, signals: list, labels: dict) -> dict | None:
     if emb:
         try:
             E_all = embeber([texto(s) for s in signals])
+            Ex_all = {n: embeber([texto(s) for s in signals], n) for n in MULTI} if "multi" in emb.values() else {}
         except ImportError:
             return None
         pos = {s["id"]: j for j, s in enumerate(signals)}
         E_tr = E_all[[pos[sid] for sid in ent]]
         for t, m in emb.items():
             idx = [j for j, sid in enumerate(ent) if consenso(labels[sid], t) is not None]
-            clfs[t] = _ajustar_emb(E_tr, idx, [consenso(labels[ent[j]], t) for j in idx], int(m[4:]) if m.startswith("emb@") else C_MIX[1])
+            ys = [consenso(labels[ent[j]], t) for j in idx]
+            if m == "multi":
+                clfs[t] = {n: _ajustar_emb(Ex_all[n][[pos[sid] for sid in ent]], idx, ys, C) for n, (_, _, C) in MULTI.items()}
+            else:
+                clfs[t] = _ajustar_emb(E_tr, idx, ys, int(m[4:]) if m.startswith("emb@") else C_MIX[1])
     out = {s["id"]: {} for s in signals}
     for t in modelo["tasks"]:
         m = ob.get(t, "nb")
-        ds = _dists_emb(clfs[t], E_all, list(range(len(signals)))) if t in clfs else None
+        todas = list(range(len(signals)))
+        if m == "multi":
+            ds = [list(x) for x in zip(*(_dists_emb(c, Ex_all[n], todas) for n, c in clfs[t].items()))]
+        else:
+            ds = _dists_emb(clfs[t], E_all, todas) if t in clfs else None
         for j, s in enumerate(signals):
             toks = tokens(texto(s), s["source"])
             if ds is None:
                 d = distribucion(modelo, toks, t, m, texto(s))
+            elif m == "multi":
+                d = _prom(distribucion(modelo, toks, t, "lr", texto(s)), *ds[j])
             elif m.startswith("emb@"):
                 d = ds[j]
             else:
