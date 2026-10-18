@@ -1,4 +1,6 @@
-# Radar 30X
+# RadarIA
+
+> Radar + IA: si un tema de IA se está moviendo, RadarIA lo ve venir antes de que todos lo copien.
 
 **Qué temas de IA están despegando en redes, por qué funcionan y cómo los adapta 30X para ejecutivos de LatAm.**
 Hackathon 30X · reto *Radar de contenido*.

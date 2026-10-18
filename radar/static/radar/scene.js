@@ -1,4 +1,4 @@
-// Radar 30X — escena 3D "el cielo de temas". ES module, Three.js vía importmap.
+// RadarIA — escena 3D "el cielo de temas". ES module, Three.js vía importmap.
 // Contrato: export function mountScene(canvas, topics, onOpen) -> { focus(slug), discover(slug), screenPos(slug) }
 // Sin WebGL: lanza Error('no-webgl') y el index.js hace fallback 2D.
 

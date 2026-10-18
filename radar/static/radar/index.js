@@ -1,4 +1,4 @@
-// Radar 30X — frontend. Sin innerHTML con datos externos: solo textContent/createElement.
+// RadarIA — frontend. Sin innerHTML con datos externos: solo textContent/createElement.
 import { mountScene } from "./scene.js";
 
 const STATIC_SAMPLE_URL = (() => {

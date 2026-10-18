@@ -1,4 +1,4 @@
-# SPEC — Radar 30X (contrato para implementadores)
+# SPEC — RadarIA (contrato para implementadores)
 
 Pregunta que responde el producto: **"¿Cuáles son los 10 temas de IA que más están creciendo esta semana, por qué funcionan y cómo los adapta 30X para ejecutivos de LatAm?"**
 

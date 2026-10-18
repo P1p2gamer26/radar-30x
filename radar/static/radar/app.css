@@ -1,4 +1,4 @@
-/* Radar 30X — estilos. Tokens de marca 30X. */
+/* RadarIA — estilos. Tokens de marca 30X. */
 :root {
   --noche: #050506;
   --polvo: #1c1c1c;
@@ -646,3 +646,5 @@ section.block h2 {
   .disc-card, .disc-line { transition: none; }
   .disc-dots i { animation: none; }
 }
+
+.logo-ia { color: var(--lima); }
