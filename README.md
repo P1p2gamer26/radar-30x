@@ -61,9 +61,9 @@ Cada etapa tiene su archivo: `radar/sources.py`, `radar/label.py`, `radar/studen
 <!-- RESULTADOS -->
 Corrida 2026-W42 (generada 2026-10-17; datos en `data/`, reproducible sin red). Generado por `python manage.py readme_resultados`.
 
-- **Señales:** 6.196 (Hacker News 3.240, Google News 2.018, arXiv 300, LinkedIn (vía Google News) 180, Reddit 178, Instagram (vía Apify) 127, YouTube 108, TikTok (vía Apify) 45; más páginas vistas de 20 artículos de Wikipedia como termómetro de interés).
-- **Temas:** 20 analizados; 2 Recomendar (Estrategia y adopción de IA, IA en finanzas), 7 Aprender, 11 Descartar.
-- **Costo:** USD 0.55 por semana (scraping de Instagram/TikTok vía Apify) y USD 0.81 una sola vez por etiquetar 5.687 señales con el LLM (USD 0.000131 por señal); el estudiante clasifica a USD 0.00.
+- **Señales:** 6.581 (Hacker News 3.240, Google News 2.018, X (vía Apify) 385, arXiv 300, LinkedIn (vía Google News) 180, Reddit 178, Instagram (vía Apify) 127, YouTube 108, TikTok (vía Apify) 45; más páginas vistas de 20 artículos de Wikipedia como termómetro de interés).
+- **Temas:** 20 analizados; 0 Recomendar (ninguno), 8 Aprender, 12 Descartar.
+- **Costo:** USD 0.55 por semana (scraping de Instagram/TikTok vía Apify) y USD 0.81 una sola vez por etiquetar 5.687 señales con el LLM (USD 0.000123 por señal); el estudiante clasifica a USD 0.00.
 - **Modelo propio, tema** (hold-out fijo del 20 %, 153 piezas con consenso de tema): top-1 **87 %**, top-3 99 %, cuando está seguro acierta 91 % y cubre el 82 % de las piezas; contra todas las etiquetas (incluidas las dudosas) 71 %; adivinar da 25 %.
 
 | Tarea | Top-1 | Top-3 | Cuando está seguro (cobertura) | Contra todas | Base |
