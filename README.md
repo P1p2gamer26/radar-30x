@@ -208,6 +208,7 @@ python manage.py readme_resultados  # reescribe el bloque Resultados de este REA
 - La cascada a un LLM gratis depende de límites de uso y no tiene garantía de servicio.
 
 ## Roadmap
+- **X/Twitter (listo en la rama `feat/fuente-x`):** colector vía Apify con parser, fixture y test; el 18-oct recolectó 385 tweets nuevos (USD 0,36). Al sumarlo, el encaje con la audiencia LatAm baja (tweets mayoritariamente en inglés) y esta semana ningún tema llegaría a Recomendar sin mover umbrales; preferimos no ajustar el criterio después de ver el resultado. Entra en la próxima corrida con su propio peso por idioma, medido.
 - Acumular varias semanas de datos y repetir el backtest con más temas.
 - Medir Jev real (con clave) y Von en preguntas sí/no en el mismo hold-out.
 - Ampliar a más cuentas de 30X (costo estimado arriba).
