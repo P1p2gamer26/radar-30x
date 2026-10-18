@@ -121,6 +121,10 @@ def como_funciona(request):
     radar = cargar_radar()
     f = settings.DATA_DIR / "llm_vs_student.json"
     llm_vs = json.loads(f.read_text(encoding="utf-8")) if f.exists() else None  # opcional: lo genera `llm_vs_student`
+    if llm_vs and llm_vs.get("items"):
+        from radar.management.commands.llm_vs_student import cascada
+        llm_vs["cascada"] = cascada(llm_vs["items"], radar["student"]["topic"]["offline"]["tau"])
+        llm_vs["cascada"]["pct"] = f"{llm_vs['cascada']['top1'] * 100:.1f}".replace(".", ",")
     return render(request, "radar/como_funciona.html", {"radar": radar, "m": plan.metricas(radar.get("student")), "llm_vs": llm_vs})
 
 

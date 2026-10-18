@@ -429,3 +429,12 @@ def test_validador_de_guiones_rechaza_malformados():
     assert validar_guiones({"reel": {"hook": "h", "beats": [{"texto": "t"}] * 3, "cta": "c"}}) == {}  # beats sin voz
     ok = validar_guiones({"linkedin": {"hook": "h", "slides": list("abcde"), "pregunta": "¿q?"}, "recomendacion": {"postura": "x"}})
     assert list(ok) == ["linkedin"]  # el tipo malformado se omite, el bueno queda
+
+
+def test_cascada_estudiante_luego_llm():
+    from radar.management.commands.llm_vs_student import cascada
+    items = [{"gold": "a", "student": "a", "llm": "b", "student_conf": 0.9},   # seguro y acierta
+             {"gold": "a", "student": "b", "llm": "a", "student_conf": 0.3},   # duda: el LLM acierta
+             {"gold": "a", "student": "b", "llm": "b", "student_conf": 0.2}]   # duda: el LLM falla
+    c = cascada(items, 0.5)
+    assert c["top1"] == round(2 / 3, 3) and c["llamadas_llm"] == 2 and c["resuelve_estudiante"] == round(1 / 3, 3)
