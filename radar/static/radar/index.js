@@ -262,17 +262,17 @@ function renderCost(data) {
   const student = data.student || {};
   const pct = (v) => `${Math.round(v * 100)}%`;
   // ponytail: la home muestra el modelo del radar (offline, el que clasifica todo); el escáner tiene su propia cifra en /como-funciona
-  const t = (student.topic && student.topic.offline) || student.topic || {};
+  const mt = (student.topic && student.topic.offline) || student.topic || {};
   const tarjetas = [
-    [t.holdout_accuracy, "Acierta el tema de una pieza (prueba aparte)"],
-    [t.holdout_top3, "El tema correcto está entre sus 3 primeras opciones"],
-    [t.safe_accuracy, `Acierto cuando está seguro (${typeof t.safe_coverage === "number" ? pct(t.safe_coverage) : "?"} de las piezas)`],
+    [mt.holdout_accuracy, "Acierta el tema de una pieza (prueba aparte)"],
+    [mt.holdout_top3, "El tema correcto está entre sus 3 primeras opciones"],
+    [mt.safe_accuracy, `Acierto cuando está seguro (${typeof mt.safe_coverage === "number" ? pct(mt.safe_coverage) : "?"} de las piezas)`],
   ];
   for (const [v, txt] of tarjetas) {
     if (typeof v !== "number") continue;
     grid.appendChild(el("div", { class: "cost-card" }, [
       el("span", { class: "cost-value nums", text: pct(v) }),
-      el("span", { class: "cost-label", text: `${txt}. Adivinando: ${typeof t.holdout_baseline === "number" ? pct(t.holdout_baseline) : "?"}` }),
+      el("span", { class: "cost-label", text: `${txt}. Adivinando: ${typeof mt.holdout_baseline === "number" ? pct(mt.holdout_baseline) : "?"}` }),
     ]));
   }
 }
