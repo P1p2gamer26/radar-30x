@@ -430,7 +430,7 @@ function openPanel(topic, triggerEl) {
     el("h3", { text: "Resumen" }),
     el("p", { text: topic.reason, title: topic.reason }),
     renderThreshold(topic.p),
-    el("p", { class: "nums", text: `Puntaje ${topic.p.toFixed(2)} · impulso ${topic.momentum.toFixed(2)} · encaje con tu audiencia ${topic.exec_fit.toFixed(2)}` }),
+    el("p", { class: "nums", text: `Qué tan listo está para publicar: ${Math.round(topic.p * 100)} de 100 · le sirve a tu audiencia: ${Math.round(topic.exec_fit * 100)} de 100` }),
   ]);
   body.appendChild(resumen);
 
