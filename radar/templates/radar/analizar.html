@@ -27,6 +27,9 @@
   .submit-btn { background: var(--lima); color: var(--noche); border: none; border-radius: 999px; padding: 13px 30px; font-size: 1rem; font-weight: 600; }
   .submit-btn:hover { opacity: 0.9; }
   .form-hint { color: var(--gris); font-size: 0.85rem; }
+  .aviso-priv { margin: 12px 0 0; font-size: 0.92rem; }
+  .origen { display: inline-block; border: 1px solid var(--lima); color: var(--lima); border-radius: 999px; padding: 1px 10px; font-size: 0.75rem; margin-right: 8px; }
+  .origen.prop { border-color: var(--linea); color: var(--gris); }
 
   .scan { display: none; padding: 48px 0 24px; }
   .scan.on { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 32px; align-items: center; }
@@ -102,8 +105,8 @@
       {% endif %}
       <div class="form-actions">
         <button class="submit-btn" type="submit">Escanear</button>
-        <span class="form-hint">No se guarda el texto ni datos personales.</span>
       </div>
+      <p class="form-hint aviso-priv">Lo que pegas se analiza al momento y no se guarda; quitamos correos y @usuarios antes de procesar.</p>
     </form>
   </section>
 
@@ -129,7 +132,7 @@
         {% if r.no_audiencia %}Esta pieza roza el tema <strong>{{ r.topic_name }}</strong>, pero no es para tu audiencia: le sirve poco a un ejecutivo que aprende IA ({{ r.fit_pct }}% de encaje).
         {% elif r.slug_ok %}Esta pieza habla de <strong>{{ r.topic_name }}</strong>, un tema en etapa «{{ r.early_label }}»{% if r.growth %} ({{ r.growth|floatformat:1 }}x){% endif %}
         y con un encaje de {{ r.fit_pct }}% con tu audiencia:
-        {% if r.decision == "Recomendar" %}vale la pena adaptarla esta semana.{% elif r.decision == "Aprender" %}vale la pena mirarla y guardarla como idea, sin correr.{% else %}por ahora no vale la pena: mejor invierte el tiempo en otro tema.{% endif %}
+        {% if r.decision == "Recomendar" %}vale la pena adaptarla esta semana.{% elif r.decision == "Aprender" %}vale la pena mirarla y guardarla como idea, sin correr.{% elif r.cayendo %}el tema existe, pero esta semana está cayendo: guárdalo para después.{% else %}por ahora no vale la pena: mejor invierte el tiempo en otro tema.{% endif %}
         {% else %}Esta pieza no encaja con ningún tema del radar, así que no es para tu audiencia.{% endif %}
       </p>
       <div class="meta-chips"><span>{{ plataforma }}</span><span>{{ r.format_name }}</span><span>{{ r.hook_name }}</span></div>
@@ -162,9 +165,20 @@
 
     {% if r.adapt %}
     <div class="tarjeta" style="margin-top:16px"><h3>Así lo haría 30X</h3>
-      {% include "radar/_guiones.html" with adapt=r.adapt reel=r.adapt_reel decision=r.decision uid="esc" %}
+      {% include "radar/_guiones.html" with adapt=r.adapt reel=r.adapt_reel decision=r.decision uid="esc" modo=r.modo_guion %}
     </div>
     {% endif %}
+
+    {% with v=r.tu_version %}
+    <div class="tarjeta" style="margin-top:16px"><h3>Tu versión</h3>
+      <p class="form-hint">Construida solo con tu pieza, sin inventar. <span class="origen">de tu pieza</span> viene de tu texto; <span class="origen prop">propuesta 30X</span> es sugerencia nuestra.</p>
+      <p><span class="origen">de tu pieza</span><strong class="acento">Gancho:</strong> {{ v.gancho }}</p>
+      <p><span class="origen prop">propuesta 30X</span><strong class="acento">Formato:</strong> {{ v.formato }}</p>
+      {% if v.tomas %}<ol class="beats-list">{% for t in v.tomas %}<li><span class="origen">de tu pieza</span><strong>{{ t.seg }} s</strong> · {{ t.texto }}</li>{% endfor %}</ol>
+      {% else %}<p class="form-hint">La pieza es muy corta para derivar tomas.</p>{% endif %}
+      <p><span class="origen prop">propuesta 30X</span><strong class="acento">CTA:</strong> {{ v.cta }}</p>
+    </div>
+    {% endwith %}
 
     {% if r.similares or r.benchmark %}
     <div class="tarjeta" style="margin-top:16px"><h3>Piezas parecidas que ya funcionaron</h3>

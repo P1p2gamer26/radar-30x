@@ -2,8 +2,10 @@ import json
 
 from django.conf import settings
 from django.core.cache import cache
-from django.http import Http404, JsonResponse
+from django.http import Http404, HttpResponse, JsonResponse
 from django.shortcuts import render
+
+from . import plan, student
 
 MAX_TEXTO = 3000
 MAX_PRELLENADO = 500
@@ -21,12 +23,18 @@ def cargar_radar() -> dict:
     ruta = settings.DATA_DIR / "radar.json"
     if not ruta.exists():
         return {"topics": [], "sources": [], "totals": {}}
-    return json.loads(ruta.read_text(encoding="utf-8"))
+    radar = json.loads(ruta.read_text(encoding="utf-8"))
+    modelo = student.cargar()
+    if modelo and modelo.get("eval"):  # una sola fuente de verdad: las métricas salen siempre de student.json
+        radar["student"] = modelo["eval"]
+    return radar
 
 
 def index(request):
     radar = cargar_radar()
-    return render(request, "radar/index.html", {"radar": radar, "ejemplos": _ejemplos(radar)[:2]})
+    rows = plan.filas(radar)
+    return render(request, "radar/index.html", {"radar": radar, "ejemplos": _ejemplos(radar)[:2], "plan_chat": plan.texto_chat(radar, rows),
+                                                "m": plan.metricas(radar.get("student"))})
 
 
 def tema(request, slug):
@@ -72,13 +80,26 @@ def analizar(request):
         ctx["plataforma"] = plat if plat in PLATAFORMAS else "Otro"
         if ctx["texto"]:
             from .analyze import analizar as _analizar
-            ctx["resultado"] = _analizar(ctx["texto"])
+            ctx["resultado"] = _analizar(ctx["texto"], ctx["plataforma"])
     return render(request, "radar/analizar.html", ctx)
 
 
 def como_funciona(request):
-    return render(request, "radar/como_funciona.html", {"radar": cargar_radar()})
+    radar = cargar_radar()
+    return render(request, "radar/como_funciona.html", {"radar": radar, "m": plan.metricas(radar.get("student"))})
 
 
 def api_radar(request):
     return JsonResponse(cargar_radar(), json_dumps_params={"ensure_ascii": False})
+
+
+def api_semana_json(request):
+    radar = cargar_radar()
+    return JsonResponse({"week": radar.get("week"), "temas": plan.filas(radar)}, json_dumps_params={"ensure_ascii": False})
+
+
+def api_semana_csv(request):
+    radar = cargar_radar()
+    r = HttpResponse(plan.csv_texto(plan.filas(radar)), content_type="text/csv; charset=utf-8")
+    r["Content-Disposition"] = f'attachment; filename="plan-semana-{radar.get("week", "")}.csv"'
+    return r

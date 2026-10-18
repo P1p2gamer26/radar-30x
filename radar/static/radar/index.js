@@ -261,19 +261,19 @@ function renderCost(data) {
   // Precisión del modelo propio por tarea: solo se presenta como mérito donde supera la base por >= 3 puntos.
   const student = data.student || {};
   const pct = (v) => `${Math.round(v * 100)}%`;
-  const tareas = [["topic", "tema"], ["format", "formato"], ["hook", "gancho"]];
-  for (const [k, nombre] of tareas) {
-    const m = student[k];
-    if (!m || typeof m.accuracy !== "number" || m.usable === false) continue;
-    const ho = typeof m.holdout_accuracy === "number"; // cifra honesta: 20 % apartado que ninguna decisión vio
-    const acc = ho ? m.holdout_accuracy : m.accuracy;
-    const base = ho ? m.holdout_baseline : m.baseline;
-    grid.appendChild(
-      el("div", { class: "cost-card" }, [
-        el("span", { class: "cost-value nums", text: pct(acc) }),
-        el("span", { class: "cost-label", text: `Acierto del modelo propio en ${nombre}${ho ? " (prueba aparte" : ""}${typeof base === "number" ? `${ho ? ", " : " ("}sin modelo: ${pct(base)})` : ho ? ")" : ""}` }),
-      ])
-    );
+  // ponytail: la home muestra el modelo del radar (offline, el que clasifica todo); el escáner tiene su propia cifra en /como-funciona
+  const t = (student.topic && student.topic.offline) || student.topic || {};
+  const tarjetas = [
+    [t.holdout_accuracy, "Acierta el tema de una pieza (prueba aparte)"],
+    [t.holdout_top3, "El tema correcto está entre sus 3 primeras opciones"],
+    [t.safe_accuracy, `Acierto cuando está seguro (${typeof t.safe_coverage === "number" ? pct(t.safe_coverage) : "?"} de las piezas)`],
+  ];
+  for (const [v, txt] of tarjetas) {
+    if (typeof v !== "number") continue;
+    grid.appendChild(el("div", { class: "cost-card" }, [
+      el("span", { class: "cost-value nums", text: pct(v) }),
+      el("span", { class: "cost-label", text: `${txt}. Adivinando: ${typeof t.holdout_baseline === "number" ? pct(t.holdout_baseline) : "?"}` }),
+    ]));
   }
 }
 

@@ -16,7 +16,7 @@ El equipo de media de 30X paga scraping (miles de USD al año) que solo trae dat
 ## Qué hace
 Cada semana responde: *¿cuáles son los 10 temas de IA que más crecen, por qué y cómo los adaptamos?*
 
-1. **Recolecta** señales públicas sin login: Hacker News (Algolia), Google News (es-419 y en), canales públicos de YouTube por RSS (incluidos los de 30X), páginas vistas de Wikipedia posts públicos de LinkedIn indexados en Google News, y posts/reels públicos de Instagram y TikTok (30X, Andrés Bilbao y hashtags de IA) vía Apify.
+1. **Recolecta** señales públicas sin login: Hacker News (Algolia), Google News (es-419 y en), canales públicos de YouTube por RSS (incluidos los de 30X), páginas vistas de Wikipedia, posts públicos de LinkedIn indexados en Google News, y posts/reels públicos de Instagram y TikTok (30X, Andrés Bilbao y hashtags de IA) vía Apify.
 2. **Etiqueta** una muestra con un LLM "profesor" barato: tema, formato, gancho, tipo de autor y si le sirve a un ejecutivo.
 3. **Entrena un modelo propio** (`radar/student.py`) con las etiquetas donde un segundo LLM coincide con el profesor (consenso, `python manage.py review_labels`). Offline: embeddings multilingües + regresión logística clasifican el corpus al armar `radar.json`. En el servidor: regresión logística sobre TF-IDF exportada a JSON e inferida en Python puro (NB/kNN de respaldo), a **costo cero**.
 4. **Mide crecimiento y etapa** por tema (`radar/trend.py`): crecimiento frente a su base, z-score y etapa (`temprana`, `creciendo`, `saturada`, `bajando`, `estable`). Así contesta si el tema recién empieza o ya todos lo copiaron.
@@ -26,24 +26,35 @@ Cada semana responde: *¿cuáles son los 10 temas de IA que más crecen, por qu�
 
 ## Resultados
 
-Corrida del 17-oct-2026 (datos en `data/`, reproducible sin red):
+<!-- RESULTADOS -->
+Corrida 2026-W42 (generada 2026-10-17; datos en `data/`, reproducible sin red). Generado por `python manage.py readme_resultados`.
 
-- **Señales:** 5.718 (Hacker News 3.240, Google News 2.018, LinkedIn 180, Instagram 127, YouTube 108, TikTok 45) más Wikipedia para 20 temas.
-- **Temas:** 20 analizados; 2 Recomendar (ambos Despegando), 8 Aprender, 10 Descartar. Un tema Estable o en su pico nunca pasa de Aprender.
-- **Guiones:** 20 de 20 temas con guion LinkedIn/YouTube generado por LLM; 10 con reel IG/TikTok (los Recomendar y Aprender).
-- **Costo:** USD 0.55 por semana (Apify, Instagram y TikTok; medido en la consola de Apify el 17-oct, y cada corrida nueva lo mide con la API de uso de Apify en `meta.apify_cost_usd` del snapshot) y USD 0.81 una sola vez por etiquetar 1.226 señales con el LLM (USD 0.000141 por señal).
-- **Modelo propio, prueba honesta (hold-out):** se aparta un 20 % fijo de las etiquetas (por hash del id, 234 piezas) que ni el entrenamiento ni la elección del método ven. El método por tarea (Naive Bayes, kNN o ensamble) se elige con validación cruzada de 5 pliegues solo sobre el 80 % restante; la cifra que se reporta es el acierto en el hold-out:
+- **Señales:** 5.718 (Hacker News 3.240, Google News 2.018, LinkedIn (vía Google News) 180, Instagram (vía Apify) 127, YouTube 108, TikTok (vía Apify) 45, Wikipedia 20).
+- **Temas:** 20 analizados; 1 Recomendar (Educación y formación en IA), 5 Aprender, 14 Descartar.
+- **Costo:** USD 0.55 por semana (scraping de Instagram/TikTok vía Apify) y USD 0.81 una sola vez por etiquetar 1.226 señales con el LLM (USD 0.000141 por señal); el estudiante clasifica a USD 0.00.
+- **Modelo propio, tema** (hold-out fijo del 20 %, 234 piezas): top-1 **74 %**, top-3 95 %, cuando está seguro acierta 92 % y cubre el 62 % de las piezas; contra todas las etiquetas (incluidas las dudosas) 64 %; adivinar da 25 %.
 
-| Tarea | Base del hold-out (clase más común) | Acierto en hold-out | Método | CV sobre el 80 % |
-|---|---|---|---|---|
-| Tema | 28% | **61%** | ensamble | 60% |
-| Formato | 46% | **52%** | ensamble | 62% |
-| Gancho | 22% | **35%** | ensamble | 39% |
-| Encaje (alto/bajo) | 86% | 85% | NB | no usable: no supera la base por 3 puntos |
+| Tarea | Top-1 | Top-3 | Cuando está seguro (cobertura) | Contra todas | Base |
+|---|---|---|---|---|---|
+| Tema (radar, offline) | 74 % | 95 % | 92 % (62 %) | 64 % | 25 % |
+| Formato (radar, offline) | 74 % | 93 % | 92 % (56 %) | 62 % | 53 % |
+| Gancho (radar, offline) | 56 % | 85 % | 95 % (14 %) | 43 % | 16 % |
+| Tema (escáner, servidor) | 71 % | 91 % | 93 % (19 %) | 61 % | 25 % |
+<!-- /RESULTADOS -->
 
-  El objetivo de 65% en tema no se alcanzó (61%); las etiquetas del LLM tienen ruido y la clase "otro" pesa casi 30%. El formato casi no mejora la base en el hold-out: la validación cruzada era optimista (62%).
-- **Benchmark 30X, mejor pieza:** un post de Instagram de @crece30x con 20x sus likes normales (541 likes reales). IG/TikTok sin vistas se miden con likes.
-- **Privacidad:** de terceros solo se guardan título y métricas; hay un test y un chequeo en `verify.sh` que fallan si una url del radar trae un handle (`/@usuario`).
+## Integraciones: sacar el plan de la semana
+El plan (temas Recomendar + Aprender con etapa, por qué, guion, reel y plataforma) sale en dos formatos, siempre desde `data/radar.json`:
+
+- `GET /api/semana.csv`: descarga el CSV (también el botón "Descargar plan (CSV)" de la home).
+- `GET /api/semana.json`: lo mismo en JSON (`{"week": ..., "temas": [...]}`).
+- Botón "Copiar para WhatsApp/Slack" en la home: resumen corto en texto.
+
+**Notion o Google Sheets:** descarga el CSV e impórtalo (Notion: Importar > CSV; Sheets: Archivo > Importar). Para que se actualice solo en Sheets: `=IMPORTDATA("https://TU-DOMINIO/api/semana.csv")`.
+
+**Webhook (Slack, Make, Zapier, n8n):** un cron semanal que haga GET al JSON y lo reenvíe, por ejemplo cada lunes 7:00:
+```bash
+0 7 * * 1  curl -s https://TU-DOMINIO/api/semana.json | curl -s -X POST -H "Content-Type: application/json" -d @- "$WEBHOOK_URL"
+```
 
 ## Costo
 Lo que cuesta cada corrida (por señal, profesor y estudiante) se ve en la home y en `data/radar.json` → `totals`. El estudiante clasifica gratis; solo la muestra del profesor tiene costo. La alternativa paga de referencia es de ~USD 3.000 al año (Apify, Exolyt, Sprout); las fuentes están en la página `/como-funciona/`.
@@ -66,6 +77,7 @@ python manage.py label            # profesor LLM (OpenAI-compatible, variables e
 python manage.py review_labels    # segundo LLM -> marca de consenso en labels.json
 python manage.py train_student    # modelo propio -> data/student.json
 python manage.py build_radar      # -> data/radar.json
+python manage.py readme_resultados # reescribe la sección Resultados de este README
 ```
 `.github/workflows/radar.yml` lo hace solo cada día a las 6:00 (Bogotá) con el estudiante, gratis.
 
@@ -89,15 +101,3 @@ python manage.py build_radar      # -> data/radar.json
 
 ## Licencia
 MIT
-
-## Precisión del modelo propio (hold-out fijo del 20 %, jamás usado para entrenar ni para elegir)
-Solo cuentan piezas donde dos LLM coinciden. "Seguro" = probabilidad sobre el umbral con el que el modelo acierta ≥ 90 % en validación cruzada del 80 % de entrenamiento. Cifras en `data/student.json` → `eval`.
-
-| Tarea | Top-1 | Top-3 | Cuando está seguro (cobertura) | Base |
-|---|---|---|---|---|
-| Tema (radar, offline) | 74 % | 95 % | 92 % (62 % de las piezas) | 25 % |
-| Formato (radar, offline) | 74 % | 93 % | 92 % (56 %) | 53 % |
-| Gancho (radar, offline) | 56 % | 85 % | 95 % (14 %) | 16 % |
-| Tema (escáner, servidor) | 71 % | 91 % | 93 % (19 %) | 25 % |
-
-Contra todas las etiquetas del hold-out (incluidas las dudosas) el tema baja a 64 % (radar) y 61 % (escáner).

@@ -9,6 +9,7 @@
   <div class="hero-content">
     <p class="hero-meta nums" id="hero-week">Semana —</p>
     <h1 id="hero-title">Esta semana, <span class="accent" id="hero-count">0</span> temas de IA piden contenido ya.</h1>
+    <p class="hero-valor">Qué publicar el lunes, en 10 segundos.</p>
     <p class="lead">Qué temas crecen, por qué funcionan y cómo los adapta 30X para ejecutivos de LatAm.</p>
   </div>
   <p class="hero-guide" id="hero-guide" hidden>Toca una estrella para ver por qué y el guion.</p>
@@ -24,6 +25,16 @@
 <section class="block" id="produce" hidden>
   <h2>Esta semana produce:</h2>
   <div class="produce-grid" id="produce-grid"></div>
+</section>
+
+<section class="block" id="plan">
+  <h2>Plan de la semana</h2>
+  <p class="sensor-lead">Los temas a producir (Recomendar y Aprender) con su guion y su reel, listos para tu equipo.</p>
+  <div class="plan-acciones">
+    <a class="produce-btn" href="{% url 'api_semana_csv' %}" download>Descargar plan (CSV)</a>
+    <button type="button" class="produce-btn" data-copy="plan-chat">Copiar para WhatsApp/Slack</button>
+  </div>
+  <pre class="guion-oculto" id="plan-chat">{{ plan_chat }}</pre>
 </section>
 
 <section class="block" id="ranking">
@@ -55,7 +66,7 @@
 <section class="block" id="costo">
   <h2>Costo de esta corrida</h2>
   <div class="cost-grid" id="cost-grid"></div>
-  {% with o=radar.student.topic.offline %}{% if o %}<p class="form-hint">Nuestro modelo propio, probado en piezas que nunca vio: acierta el tema en <strong>{% widthratio o.holdout_accuracy 1 100 %}%</strong> (entre sus 3 primeras opciones, {% widthratio o.holdout_top3 1 100 %}%; adivinando sería {% widthratio o.holdout_baseline 1 100 %}%).{% if o.safe_accuracy %} Cuando está seguro acierta {% widthratio o.safe_accuracy 1 100 %}% y eso cubre el {% widthratio o.safe_coverage 1 100 %}% de las piezas.{% endif %} <a href="{% url 'como_funciona' %}">Cómo lo medimos</a></p>{% endif %}{% endwith %}
+  {% if m.top1 %}<p class="form-hint">Nuestro modelo propio, probado en piezas que nunca vio: acierta el tema en <strong>{{ m.top1 }}%</strong> (entre sus 3 primeras opciones, {{ m.top3 }}%; contra todas las etiquetas, {{ m.todas }}%; adivinando sería {{ m.base }}%). Cuando está seguro acierta {{ m.seguro }}% y eso cubre el {{ m.cobertura }}% de las piezas. <a href="{% url 'como_funciona' %}">Cómo lo medimos</a></p>{% endif %}
 </section>
 
 </div>

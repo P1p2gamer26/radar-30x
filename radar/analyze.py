@@ -87,6 +87,84 @@ def palabras_clave(texto: str, topic: str) -> list:
     return sorted({w for k in kws if k in norm for w in k.split() if len(w) > 2})[:6]
 
 
+# --- Plataforma: prior transparente sobre la predicción del modelo (ponytail: reglas simples, sin entrenar nada más)
+VIDEO_CORTO = ("reel-cara", "caso-paso-a-paso", "herramienta-60s")
+FORMATOS_EXTRA = {"humor-pov": "Humor / POV (sketch corto)"}
+HOOKS_EXTRA = {"humor-pov": "Humor: situación reconocible"}
+_LISTA = re.compile(r"(?m)^\s*(\d+[.)\-:]|[-•*▪✅👉➡️])\s+\S")
+_LISTA_N = re.compile(r"\b\d+\s+(prompts?|ideas|herramientas|trucos|formas|pasos|consejos|tips|errores|razones)\b")
+_HUMOR = re.compile(r"\b(pov|jajaj\w*|meme|cuando tu jefe|cuando tu|nadie:)\b|😂|🤣")
+
+
+_OPINION = re.compile(r"\b(no van a|la clave|creo que|opino|mito|error|nadie te|el problema|no es )")
+
+
+def es_lista(texto: str) -> bool:
+    n = normalizar(texto)
+    return len(_LISTA.findall(texto)) >= 3 or bool(_LISTA_N.search(n))
+
+
+def es_humor(texto: str) -> bool:
+    return bool(_HUMOR.search(normalizar(texto)) or _HUMOR.search(texto))
+
+
+def ajustar_plataforma(r: dict, texto: str, plataforma: str) -> None:
+    """Combina la predicción del modelo con lo que se espera en cada red; deja en r['prior'] qué regla pesó."""
+    fmt, lista, humor = r["format"], es_lista(texto), es_humor(texto)
+    nuevo, regla = fmt, ""
+    if humor and plataforma in ("Instagram", "TikTok", "YouTube"):
+        nuevo, regla = "humor-pov", "tono de humor/POV -> sketch corto"
+        r["hook"] = "humor-pov"
+    elif plataforma == "Instagram":
+        if lista:
+            nuevo, regla = "carrusel", "lista en Instagram -> carrusel"
+        elif fmt not in VIDEO_CORTO + ("carrusel",):
+            nuevo, regla = "reel-cara", "en Instagram el modelo no ve formato visual -> reel"
+    elif plataforma == "TikTok":
+        if fmt not in VIDEO_CORTO:
+            nuevo, regla = "reel-cara", "TikTok es video corto -> reel"
+    elif plataforma == "LinkedIn":
+        if lista:
+            nuevo, regla = "carrusel", "lista en LinkedIn -> carrusel/PDF"
+        elif fmt in VIDEO_CORTO and fmt != "caso-paso-a-paso":
+            nuevo, regla = "post-texto", "LinkedIn es texto -> post"
+    elif plataforma == "YouTube":
+        if fmt not in VIDEO_CORTO + ("entrevista-clip", "noticia-explicada", "evento-live"):
+            nuevo, regla = "caso-paso-a-paso", "YouTube es video -> tutorial"
+    if fmt == "noticia-explicada" and nuevo == fmt and _OPINION.search(normalizar(texto)):
+        nuevo, regla = "opinion", "tono de opinión -> opinión/predicción"
+    if lista and not humor and r["hook"] != "lista-numerada" and _LISTA_N.search(normalizar(texto)):
+        r["hook"] = "lista-numerada"
+    r["format"], r["prior"] = nuevo, regla
+
+
+def _frases(texto: str) -> list:
+    partes = re.split(r"(?<=[.!?])\s+|\n+", texto)
+    out = []
+    for f in partes:
+        f = re.sub(r"^\s*(\d+[.)\-:]|[-•*▪✅👉➡️])\s*", "", f).strip()
+        if len(f) >= 8 and not re.fullmatch(r"[\[\]\w\s]*(email|usuario|link|telefono)\]?", f):
+            out.append(f)
+    return out
+
+
+def _corta(f: str, n: int) -> str:
+    return f if len(f) <= n else f[:n].rsplit(" ", 1)[0].rstrip(",;:") + "…"
+
+
+def tu_version(texto: str, plataforma: str) -> dict:
+    """Guion hecho SOLO con la pieza pegada: gancho = 1.ª frase, tomas = siguientes frases/viñetas. Nada inventado."""
+    fr = _frases(texto)
+    lista = es_lista(texto)
+    formato = {"Instagram": "Carrusel de láminas, una por punto" if lista else "Reel vertical de 30-45 s",
+               "TikTok": "Video vertical de 20-30 s", "LinkedIn": "Carrusel PDF" if lista else "Post de texto",
+               "YouTube": "Video de 3-5 min con capítulos"}.get(plataforma, "Post de texto o reel corto")
+    segs = ("3-12", "12-25", "25-40")
+    tomas = [{"seg": sg, "texto": _corta(f, 120)} for sg, f in zip(segs, fr[1:4])]
+    return {"gancho": _corta(fr[0], 90) if fr else "(la pieza no trae texto suficiente)", "formato": formato, "tomas": tomas,
+            "cta": "Comenta QUIERO y te mando la guía paso a paso (CTA genérico de 30X)."}
+
+
 def decision_pieza(tema: dict | None, fit: float) -> str:
     """Combina el tema con el encaje de la PIEZA: lo que no es para la audiencia se descarta aunque el tema suba."""
     if tema is None or fit < 0.2:
@@ -98,11 +176,12 @@ def decision_pieza(tema: dict | None, fit: float) -> str:
     return "Aprender" if fit >= 0.6 and (d == "Aprender" or tema["stage"] != "bajando") else "Descartar"
 
 
-def analizar(texto: str) -> dict:
+def analizar(texto: str, plataforma: str = "Otro") -> dict:
     from .views import cargar_radar
 
     limpio = limpiar(texto)
     r = clasificar(limpio)
+    ajustar_plataforma(r, limpio, plataforma)
     radar = cargar_radar()
     r["texto_limpio"] = limpio
     r["claves"] = palabras_clave(limpio, r["topic"])
@@ -119,16 +198,25 @@ def analizar(texto: str) -> dict:
     r["tau_pct"] = round(((modelo or {}).get("eval", {}).get("topic", {}).get("tau") or 0) * 100)
     r["p"] = p
     r["topic_name"] = TOPICS[r["topic"]]["name"] if r["topic"] in TOPICS else "Fuera del radar"
-    r["format_name"], r["hook_name"] = FORMATS.get(r["format"], r["format"]), HOOKS.get(r["hook"], r["hook"])
+    r["format_name"] = {**FORMATS, **FORMATOS_EXTRA}.get(r["format"], r["format"])
+    r["hook_name"] = {**HOOKS, **HOOKS_EXTRA}.get(r["hook"], r["hook"])
     etapa = tema["stage"] if tema else "sin datos"
     r["reason"] = (f"Tema '{r['topic_name']}': {tema['early_label'].lower() if tema else 'fuera del radar'}, impulso {momentum:.0%}; encaje con tu audiencia {r['exec_fit']:.0%}. "
                    f"Formato: {r['format_name']}; gancho: {r['hook_name']}.")
     if tema and tema["why"].get("format_winner") and tema["why"]["format_winner"] != r["format"]:
         r["reason"] += f" En este tema funciona mejor: {FORMATS.get(tema['why']['format_winner'])}."
     r["adapt"], r["adapt_reel"] = (tema["adapt"], tema["adapt_reel"]) if tema else (None, None)
+    # Un guion distinto por red: IG/TikTok -> reel; LinkedIn/YouTube -> el normal; "Otro" -> ambos. Se rotula con la red elegida.
+    r["modo_guion"] = "reel" if plataforma in ("Instagram", "TikTok") else "normal" if plataforma in ("LinkedIn", "YouTube") else ""
+    if r["adapt"] and plataforma in ("LinkedIn", "YouTube"):
+        r["adapt"] = {**r["adapt"], "platform": plataforma}
+    if r["adapt_reel"] and plataforma in ("Instagram", "TikTok"):
+        r["adapt_reel"] = {**r["adapt_reel"], "platform": plataforma}
+    r["tu_version"] = tu_version(limpio, plataforma)
     r["stage"], r["growth"] = etapa, (tema["growth"] if tema else None)
     r["early_label"] = tema["early_label"] if tema else "Sin datos"
     r["slug_ok"] = tema is not None
+    r["cayendo"] = bool(tema and tema["stage"] == "bajando")
     r["no_audiencia"] = tema is not None and r["exec_fit"] < 0.2
     r["similares"] = sorted(tema["top_signals"], key=lambda s: -s.get("velocity", 0))[:3] if tema else []
     bench = radar.get("benchmark_30x") or []

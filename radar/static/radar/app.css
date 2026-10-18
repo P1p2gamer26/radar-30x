@@ -710,3 +710,9 @@ pre.guion-oculto { display: none; }
   .hero-legend { max-width: none; justify-content: flex-start; font-size: 0.95rem; }
   .hero-guide { position: relative; top: auto; left: auto; transform: none; margin: 0 18px 12px; align-self: flex-start; }
 }
+
+/* --- R7: frase de valor, leyenda legible, plan exportable --- */
+.hero-valor { font-family: var(--font-display); font-size: clamp(1.6rem, 3.6vw, 2.5rem); color: var(--lima); margin: 0 0 14px; line-height: 1.15; }
+.hero-legend, .hero-legend span { font-size: 1rem !important; color: var(--hueso); }
+.plan-acciones { display: flex; gap: 12px; flex-wrap: wrap; }
+.plan-acciones a.produce-btn { text-decoration: none; }

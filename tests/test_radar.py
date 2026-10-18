@@ -319,3 +319,45 @@ def test_lr_exportado_reproduce_sklearn():
             got = student._dist_lr(lr, toks, tarea)
             assert max(ref, key=ref.get) == max(got, key=got.get)
             assert max(abs(ref[c] - got[c]) for c in ref) < 0.02
+
+
+# ------------------------------------------------------------------ ronda 7
+
+def test_semana_json_y_csv(client):
+    j = client.get("/api/semana.json").json()
+    assert j["week"] and j["temas"] and all(t["decision"] in ("Recomendar", "Aprender") for t in j["temas"])
+    assert {"orden", "tema", "etapa", "por_que", "guion", "reel", "plataforma"} <= set(j["temas"][0])
+    r = client.get("/api/semana.csv")
+    assert r["Content-Type"].startswith("text/csv") and "attachment" in r["Content-Disposition"]
+    lineas = r.content.decode("utf-8-sig").splitlines()
+    assert lineas[0] == "orden,tema,decision,etapa,por_que,plataforma,guion,reel" and len(lineas) >= len(j["temas"]) + 1
+
+
+def test_csv_neutraliza_formulas():
+    from radar import plan
+    assert "'=SUMA(1)" in plan.csv_texto([{"orden": 1, "tema": "=SUMA(1)", "decision": "x", "etapa": "x", "por_que": "x", "plataforma": "x", "guion": "", "reel": ""}])
+
+
+def test_home_boton_plan_y_frase(client, db):
+    html = client.get("/").content.decode()
+    assert "Descargar plan (CSV)" in html and "Copiar para WhatsApp/Slack" in html and "Qué publicar el lunes, en 10 segundos." in html
+
+
+def test_cifras_salen_de_student_json(client):
+    m = student.cargar()["eval"]["topic"]["offline"]
+    html = client.get("/como-funciona/").content.decode()
+    assert f"acierta {round(m['holdout_accuracy'] * 100)}%" in html and "Privacidad" in html and "2:11 pm" in html
+    assert "no se guarda; quitamos correos y @usuarios" in client.get("/analizar/").content.decode()
+
+
+def test_escaner_por_plataforma(settings, db):
+    settings.DECISION_MODE = "replay"
+    lista = "3 prompts de ChatGPT para tu informe:\n1. Resume tu correo\n2. Prepara tu reunión\n3. Redacta el informe semanal\nComenta PROMPT"
+    ig = analyze.analizar(lista, "Instagram")
+    assert ig["format"] == "carrusel" and ig["modo_guion"] == "reel" and ig["adapt_reel"] is None or ig["adapt_reel"]["platform"] == "Instagram"
+    assert [t["texto"] for t in ig["tu_version"]["tomas"]] == ["Resume tu correo", "Prepara tu reunión", "Redacta el informe semanal"]
+    tk = analyze.analizar("POV: tu jefe descubre que usaste ChatGPT para todo el informe \U0001F602", "TikTok")
+    assert tk["format"] == "humor-pov" and tk["modo_guion"] == "reel"
+    li = analyze.analizar(lista, "LinkedIn")
+    assert li["format"] == "carrusel" and li["modo_guion"] == "normal"
+    assert li["tu_version"]["gancho"].startswith("3 prompts") and "Comenta" in li["tu_version"]["cta"]
