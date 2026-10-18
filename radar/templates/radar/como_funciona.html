@@ -1,4 +1,5 @@
 {% extends "radar/base.html" %}
+{% load static %}
 {% block title %}Cómo funciona — EstelarIA{% endblock %}
 {% block nav_como %}aria-current="page"{% endblock %}
 
@@ -97,6 +98,13 @@
   <section class="como-hero">
     <h1>Cinco pasos, costo casi cero, nada de datos personales.</h1>
     <p class="lead">El radar lee fuentes públicas. Una IA de entrenamiento las etiqueta una sola vez. Un modelo propio clasifica todo lo nuevo gratis.</p>
+  </section>
+
+  <section class="block">
+    <h2>Míralo pensar en vivo</h2>
+    <p class="sub">Señales reales de la última semana salen de su fuente, pasan por el modelo propio y llegan a su tema. Si el modelo duda, dan un rodeo por un LLM grande.</p>
+    <div id="sim-vivo" class="sim-caja"></div>
+    <p><a class="btn-vivo" href="{% url 'en_vivo' %}">Ver el paso a paso y probar un texto</a></p>
   </section>
 
   <section class="block">
@@ -258,4 +266,6 @@
     </table>
   </section>
 </div>
+{{ datos|json_script:"datos-vivo" }}
 {% endblock %}
+{% block extra_scripts %}<script type="module" src="{% static 'radar/como_sim.js' %}"></script>{% endblock %}

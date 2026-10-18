@@ -1,11 +1,11 @@
-// Estrellita: mascota flotante con comentarios sacados de los datos (sin LLM, sin cifras inventadas). textContent siempre.
+// Nova: mascota flotante con comentarios sacados de los datos (sin LLM, sin cifras inventadas). textContent siempre.
 const KEY = "estrellita-mute";
 let muted = false;
 try { muted = sessionStorage.getItem(KEY) === "1"; } catch (e) { /* sin storage */ }
 
 const root = document.createElement("aside");
 root.className = "estrellita";
-root.setAttribute("aria-label", "Estrellita, la mascota");
+root.setAttribute("aria-label", "Nova, la mascota de EstelarIA");
 const img = document.createElement("img");
 img.className = "estrellita-img";
 img.alt = "";
@@ -13,12 +13,14 @@ const bubble = document.createElement("div");
 bubble.className = "estrellita-bubble";
 bubble.hidden = true;
 bubble.setAttribute("aria-live", "polite");
+const who = document.createElement("b");
+who.className = "estrellita-who"; who.textContent = "Nova";
 const txt = document.createElement("span");
 const x = document.createElement("button");
 x.type = "button"; x.className = "estrellita-x"; x.textContent = "×"; x.setAttribute("aria-label", "Cerrar comentario");
 const mute = document.createElement("button");
-mute.type = "button"; mute.className = "estrellita-mute"; mute.textContent = "🔇"; mute.title = "Silenciar en esta sesión"; mute.setAttribute("aria-label", "Silenciar a Estrellita en esta sesión");
-bubble.append(txt, x, mute);
+mute.type = "button"; mute.className = "estrellita-mute"; mute.textContent = "🔇"; mute.title = "Silenciar en esta sesión"; mute.setAttribute("aria-label", "Silenciar a Nova en esta sesión");
+bubble.append(who, txt, x, mute);
 root.append(img, bubble);
 
 let timer = 0;

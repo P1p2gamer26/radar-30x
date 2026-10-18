@@ -41,3 +41,8 @@ def test_traza_rechaza_vacio_y_largo(client):
     assert client.post("/api/traza/", {"texto": "   "}).status_code == 400
     assert client.post("/api/traza/", {"texto": "a" * 2001}).status_code == 400
     assert client.get("/api/traza/").status_code == 405
+
+
+def test_como_funciona_incluye_simulacion(client):
+    h = client.get("/como-funciona/").content.decode()
+    assert 'id="datos-vivo"' in h and "Míralo pensar en vivo" in h and 'id="sim-vivo"' in h and "/en-vivo/" in h

@@ -111,6 +111,7 @@ def contexto(radar, llm_vs) -> dict:
     modelo = student.cargar()
     topics = {t["slug"]: {"name": t["name"], "stage": t["stage"], "growth": t["growth"], "p": t["p"], "decision": t["decision"]} for t in radar.get("topics", [])}
     return {"tau": tau_servidor(modelo), "etapas": etapas(radar, modelo, llm_vs), "temas": topics, "senales": replay(modelo),
+            "fuentes": {x["name"]: x["signals"] for x in radar.get("sources", [])},
             "umbrales": {"recomendar": settings.AUTO_THRESHOLD, "aprender": settings.REVIEW_THRESHOLD},
             "nombres": {k: v["name"] for k, v in TOPICS.items()}}
 

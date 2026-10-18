@@ -125,7 +125,8 @@ def como_funciona(request):
         from radar.management.commands.llm_vs_student import cascada
         llm_vs["cascada"] = cascada(llm_vs["items"], radar["student"]["topic"]["offline"]["tau"])
         llm_vs["cascada"]["pct"] = f"{llm_vs['cascada']['top1'] * 100:.1f}".replace(".", ",")
-    return render(request, "radar/como_funciona.html", {"radar": radar, "m": plan.metricas(radar.get("student")), "llm_vs": llm_vs})
+    from . import en_vivo as ev
+    return render(request, "radar/como_funciona.html", {"radar": radar, "m": plan.metricas(radar.get("student")), "llm_vs": llm_vs, "datos": ev.contexto(radar, llm_vs)})
 
 
 def api_radar(request):

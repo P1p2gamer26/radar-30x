@@ -808,7 +808,7 @@ pre.guion-oculto { display: none; }
   .disc-line, .disc-count { display: none; }  /* la línea guía y el contador cruzaban el titular */
 }
 
-/* --- Título de vuelo arriba a la izquierda + mascota Estrellita --- */
+/* --- Título de vuelo arriba a la izquierda + mascota Nova --- */
 .hero-label { left: 32px; top: 18%; max-width: 45vw; text-align: left; line-height: 1.05; transform: none; }
 @media (max-width: 700px) {
   .hero-label { left: 14px; top: 64px; max-width: 70vw; font-size: clamp(24px, 8vw, 34px); }
@@ -877,3 +877,16 @@ pre.guion-oculto { display: none; }
 .guion-verif { display: inline-block; margin: 10px 0 6px; padding: 3px 10px; border: 1px solid var(--gris); border-radius: 999px; color: var(--gris); font-size: 0.8rem; }
 .guion-verif.ok { color: var(--lima); border-color: var(--lima); }
 @media (max-width: 600px) { .site-header { flex-wrap: wrap; gap: 8px; } .site-header nav { gap: 14px; flex-wrap: wrap; } }
+
+/* --- simulación en vivo (canvas) --- */
+.sim-caja { margin: 8px 0 12px; }
+.sim { background: radial-gradient(ellipse at 50% 0%, #14103a 0%, var(--noche) 75%); border: var(--borde); border-radius: var(--radio); padding: 12px; min-width: 0; }
+.sim-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; }
+.sim-actual { margin: 10px 0 6px; min-height: 2.8em; color: var(--hueso); font-size: .9rem; overflow-wrap: anywhere; }
+.sim-canvas { display: block; width: 100%; }
+.sim-top { margin: 6px 0 0; color: var(--gris); font-size: .82rem; min-height: 1.2em; }
+.sim-ley { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 6px 0 0; font-size: .8rem; }
+.vivo-paso { font: 500 1.5rem var(--font-display); margin: 28px 0 12px; }
+@media (max-width: 600px) { .sim { padding: 8px; } .sim-bar { gap: 8px 14px; } .sim .vivo-cnt b { font-size: 1.25rem; } .sim .vivo-cnt span { font-size: .7rem; } }
+
+.estrellita-who{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#b48bff;margin-bottom:2px}

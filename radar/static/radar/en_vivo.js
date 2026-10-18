@@ -7,8 +7,10 @@ const pct = (x) => Math.round(x * 100) + " %";
 const FUENTE = { hn: "HN", gnews: "Google News", linkedin: "LinkedIn", youtube: "YouTube", instagram: "Instagram", tiktok: "TikTok", wiki: "Wikipedia" };
 const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
 
+import { iniciarSim } from "./simulacion.js";
+
 // ---- diagrama
-const pipe = $("pipe"), dot = $("pipe-dot"), nodos = {};
+const pipe = $("pipe"), nodos = {};
 D.etapas.forEach((e, i) => {
   const b = el("button", "pnode");
   b.type = "button"; b.setAttribute("role", "listitem"); b.setAttribute("aria-expanded", "false");
@@ -28,12 +30,6 @@ function abrir(e, b) {
 }
 const val = (id, t) => { nodos[id].querySelector(".nv").textContent = t; };
 const limpiar = () => Object.values(nodos).forEach((n) => { n.classList.remove("lit", "esc"); n.querySelector(".nv").textContent = ""; });
-
-function moverPunto(nodo) {
-  const p = pipe.getBoundingClientRect(), r = nodo.getBoundingClientRect();
-  dot.style.opacity = 1;
-  dot.style.transform = `translate(${r.left - p.left + r.width / 2}px, ${r.top - p.top + 12}px)`;
-}
 
 // ---- valores por etapa para una señal (o una traza)
 function valores(x) {
@@ -59,34 +55,20 @@ function iluminar(x, animar) {
   const paso = (i) => {
     const [id, txt, cls] = vs[i];
     nodos[id].classList.add(cls === "esc" ? "esc" : "lit"); val(id, txt);
-    if (animar) moverPunto(nodos[id]);
   };
   if (!animar) { vs.forEach((_, i) => paso(i)); return; }
   vs.forEach((_, i) => setTimeout(() => paso(i), i * 170));
 }
 
-// ---- repetición en vivo
-const cnt = { total: 0, seg: 0, esc: 0 };
-let i = 0, corriendo = !reducido, timer = null;
-function siguiente() {
-  if (!D.senales.length) return;
-  const s = D.senales[i++ % D.senales.length], seg = s.conf >= D.tau;
+// ---- simulación (canvas) + log
+const sim = iniciarSim($("sim-vivo"), D, { onSenal(s) {
+  const seg = s.conf >= D.tau;
   iluminar(s, !reducido);
-  cnt.total++; seg ? cnt.seg++ : cnt.esc++;
-  $("c-total").textContent = cnt.total; $("c-seg").textContent = cnt.seg; $("c-esc").textContent = cnt.esc;
   const t = s.titulo.length > 70 ? s.titulo.slice(0, 70) + "…" : s.titulo;
   const li = el("li", seg ? "" : "esc", `[${(FUENTE[s.fuente] || s.fuente)}] '${t}' → tema: ${s.tema} (${f2(s.conf)}, ${seg ? "seguro" : "escalaría al LLM"}) · formato: ${s.formato} · gancho: ${s.gancho}`);
   $("log").prepend(li);
   while ($("log").children.length > 8) $("log").lastChild.remove();
-}
-function play(on) {
-  corriendo = on; clearInterval(timer);
-  $("vivo-play").textContent = on ? "Pausar" : "Reanudar";
-  if (on) timer = setInterval(siguiente, 1800);
-}
-$("vivo-play").addEventListener("click", () => play(!corriendo));
-$("vivo-step").addEventListener("click", siguiente);
-if (reducido) { $("vivo-play").hidden = true; $("vivo-step").hidden = false; } else { siguiente(); play(true); }
+} });
 
 // ---- prueba la tuya
 $("traza-form").addEventListener("submit", async (ev) => {
@@ -100,10 +82,10 @@ $("traza-form").addEventListener("submit", async (ev) => {
     const r = await fetch("/api/traza/", { method: "POST", headers: { "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value }, body: new URLSearchParams({ texto }) });
     const j = await r.json();
     if (!r.ok) { err.textContent = j.error || "No se pudo analizar."; return; }
-    play(false);
     const x = { fuente: "", tema: j.tema, top3: j.top3, conf: j.conf, formato: j.formato, gancho: j.gancho };
     const tema = D.temas[j.tema];
     iluminar(x, false);
+    sim.inyectar({ ...x, tema_nombre: j.tema_nombre });
     val("tendencia", tema ? `${j.tema_nombre}: ${j.etapa}, ${f2(j.growth)}x` : "fuera del radar");
     val("decision", j.regla.split(";")[0]);
     val("plan", j.decision === "Descartar" ? "fuera del plan" : "entra al plan");
