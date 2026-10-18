@@ -343,6 +343,52 @@ def fetch_tiktok(now: datetime, days: int = 14) -> list:
     return out
 
 
+# ------------------------------------------------------------------ X / Twitter (vía Apify, contenido público)
+
+X_ACTOR = "kaitoeasyapi~twitter-x-data-tweet-scraper-pay-per-result-cheapest"  # USD 0,00025 por tweet; apidojo devolvía noResults el 18-oct
+X_MAX = 600  # tope total de tweets por corrida (~USD 0,24)
+X_BUSQUEDAS = [  # (consulta, idioma): términos de IA alineados a los 20 temas
+    ("agentes de ia OR copiloto OR automatizacion ia", "es"), ("ia ventas OR ia marketing OR chatbot atencion al cliente", "es"),
+    ("inteligencia artificial empresas OR estrategia ia OR roi ia", "es"), ("regulacion ia OR etica ia OR empleo ia", "es"),
+    ("vibe coding OR crear apps con ia OR cursor ia", "es"), ("AI agents OR agentic OR copilot", "en"),
+    ("AI sales OR AI marketing OR AI customer support", "en"), ("AI regulation OR AI safety OR hallucinations", "en"),
+    ("new model OR GPT OR Claude OR Gemini", "en"), ("RAG OR knowledge base OR enterprise AI adoption", "en"),
+    ("AI startup funding OR GPU costs OR inference cost", "en"), ("AI video OR voice clone OR Sora", "en"),
+]
+
+
+def parse_x(items: list, query: str) -> list:
+    """Tweets del actor de Apify -> Signals. Sin @handles ni autor (solo tipo); likes+RT -> points, respuestas -> comments."""
+    out = []
+    for i in items:
+        if not i.get("id") or not i.get("createdAt") or not i.get("text"):
+            continue
+        try:
+            publicado = _iso(parsedate_to_datetime(i["createdAt"]))
+        except Exception:
+            continue
+        s = _senal("x", i["id"], f"https://x.com/i/status/{i['id']}", i["text"], publicado,
+                   {"points": (i.get("likeCount") or 0) + (i.get("retweetCount") or 0), "comments": i.get("replyCount") or 0,
+                    "views": i.get("viewCount") or 0}, "", "tweet", query)
+        if s["title"]:
+            s["lang"] = i.get("lang") if i.get("lang") in ("es", "en") else s["lang"]
+            out.append(s)
+    return out
+
+
+def fetch_x(now: datetime, days: int = 14) -> list:
+    if not os.environ.get("APIFY_TOKEN"):
+        return []
+    desde, hasta = f"{now - timedelta(days=days):%Y-%m-%d}", f"{now + timedelta(days=1):%Y-%m-%d}"
+    n = X_MAX // len(X_BUSQUEDAS)
+    out = []
+    for q, lang in X_BUSQUEDAS:
+        crudo = _seguro("x", _apify, X_ACTOR, {"searchTerms": [f"({q}) lang:{lang} min_faves:20 since:{desde} until:{hasta} -filter:replies"],
+                                              "sort": "Top", "maxItems": n})
+        out += _seguro("x", parse_x, crudo or [], q) or []
+    return out
+
+
 # ------------------------------------------------------------------ Reddit (RSS público) y arXiv (API Atom)
 
 UA_REDDIT = "python:radar30x:v0.1 (by /u/radar30x)"  # www.reddit.com bloquea UAs "de navegador"; este estilo pasa

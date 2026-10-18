@@ -31,7 +31,7 @@ def cargar_radar() -> dict:
 
 
 FUENTES = {"hn": "Hacker News", "gnews": "Google News", "wiki": "Wikipedia", "youtube": "YouTube",
-           "instagram": "Instagram", "tiktok": "TikTok", "linkedin": "LinkedIn", "reddit": "Reddit", "arxiv": "arXiv"}
+           "instagram": "Instagram", "tiktok": "TikTok", "x": "X", "linkedin": "LinkedIn", "reddit": "Reddit", "arxiv": "arXiv"}
 
 
 def tres_preguntas(topics) -> list:

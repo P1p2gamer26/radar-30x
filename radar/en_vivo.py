@@ -10,7 +10,7 @@ from .taxonomy import TOPICS
 
 MAX_TRAZA = 2000
 N_REPLAY = 60
-ORDEN_FUENTES = ("hn", "gnews", "linkedin", "youtube", "instagram", "tiktok", "reddit", "arxiv")
+ORDEN_FUENTES = ("hn", "gnews", "linkedin", "youtube", "instagram", "tiktok", "x", "reddit", "arxiv")
 
 
 def n(x) -> str:
@@ -73,7 +73,7 @@ def etapas(radar, modelo, llm_vs) -> list:
     off = ev.get("offline", {})
     fuentes = {s["name"]: s["signals"] for s in radar.get("sources", [])}
     nom = {"hn": "Hacker News", "gnews": "Google News", "linkedin": "LinkedIn vía Google News", "youtube": "YouTube",
-           "wiki": "Wikipedia", "instagram": "Instagram (Apify)", "tiktok": "TikTok (Apify)", "reddit": "Reddit", "arxiv": "arXiv"}
+           "wiki": "Wikipedia", "instagram": "Instagram (Apify)", "tiktok": "TikTok (Apify)", "x": "X (Apify)", "reddit": "Reddit", "arxiv": "arXiv"}
     lista = "; ".join(f"{nom[k]} {n(v)}" for k, v in fuentes.items() if k in nom)
     meta = _meta_labels()
     prof, rev = t.get("teacher_model", "LLM profesor"), meta.get("reviewer", "LLM revisor")

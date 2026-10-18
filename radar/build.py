@@ -11,7 +11,7 @@ from .collect import latest
 from .taxonomy import FORMATS, HOOKS, TOPICS, match_topics
 
 DIAS_SEMANA = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
-FUENTES = {"hn": "Hacker News", "gnews": "Google News", "linkedin": "LinkedIn (vía Google News)", "youtube": "YouTube", "instagram": "Instagram (vía Apify)", "tiktok": "TikTok (vía Apify)", "reddit": "Reddit", "arxiv": "arXiv", "wiki": "Wikipedia"}
+FUENTES = {"hn": "Hacker News", "gnews": "Google News", "linkedin": "LinkedIn (vía Google News)", "youtube": "YouTube", "instagram": "Instagram (vía Apify)", "tiktok": "TikTok (vía Apify)", "x": "X (vía Apify)", "reddit": "Reddit", "arxiv": "arXiv", "wiki": "Wikipedia"}
 REDES = ("youtube", "instagram", "tiktok")  # fuentes con outlier vs la mediana de su perfil
 APIFY_USD_POR_CORRIDA = 0.55  # medido 17-oct: IG + TikTok (2 perfiles + 8 hashtags), plan gratis de USD 5/mes
 PAID_ALTERNATIVE_USD_YEAR = 3000  # Apify Scale ~USD 2.388/año, Exolyt ~2.700/año (hackaton x30/radar/investigacion.md)
@@ -119,7 +119,9 @@ def build(snap: dict | None = None) -> dict:
     labs = etiquetar_todo(signals)
     topic_of = {sid: lab["topic"] for sid, lab in labs.items() if lab["topic"] in TOPICS}
 
-    shares = trend.share_series(signals, topic_of, ahora)
+    # X se muestrea con tope de resultados (se amontona en los últimos días) → no es serie comparable: solo evidencia
+    serie_sig = [s for s in signals if s["source"] != "x"]
+    shares = trend.share_series(serie_sig, topic_of, ahora)
     por_fuente = {src: trend.share_series([s for s in signals if s["source"] == src], topic_of, ahora)
                   for src in ("hn", "gnews")}
     wiki = snap.get("wiki", {})
@@ -136,7 +138,7 @@ def build(snap: dict | None = None) -> dict:
     for s in signals:
         if s["id"] in topic_of:
             por_tema[topic_of[s["id"]]].append(s)
-    volumen = {slug: sum(1 for s in por_tema.get(slug, []) if s["published_at"][:10] >= hace7) for slug in TOPICS}
+    volumen = {slug: sum(1 for s in por_tema.get(slug, []) if s["source"] != "x" and s["published_at"][:10] >= hace7) for slug in TOPICS}
     p50, p75 = trend.percentil(list(volumen.values()), 0.5), trend.percentil(list(volumen.values()), 0.75)
 
     fmt_of = {sid: lab["format"] for sid, lab in labs.items()}
@@ -193,7 +195,7 @@ def build(snap: dict | None = None) -> dict:
 
         # top piezas: percentil de velocidad dentro de su fuente (Google News no trae engagement: recencia)
         rank = {}
-        for src in ("youtube", "instagram", "tiktok", "hn", "gnews", "linkedin", "reddit", "arxiv"):
+        for src in ("youtube", "instagram", "tiktok", "hn", "gnews", "linkedin", "x", "reddit", "arxiv"):
             del_src = [s for s in piezas if s["source"] == src]
             clave = (lambda s: s["published_at"]) if src in ("gnews", "linkedin", "reddit", "arxiv") else (lambda s: vel[s["id"]])
             for i, s in enumerate(sorted(del_src, key=clave)):

@@ -1,0 +1,36 @@
+[
+ {
+  "id": "2111829416146027008",
+  "text": "Contact me at ana@example.com @ana_dev https://t.co/abc\nAgentes de IA para ventas: lo que aprendí",
+  "createdAt": "Sun Oct 18 14:39:03 +0000 2026",
+  "likeCount": 33,
+  "retweetCount": 2,
+  "replyCount": 8,
+  "viewCount": 4527,
+  "lang": "es"
+ },
+ {
+  "id": "2111827635554635946",
+  "text": "We at @NetLayerLabs built and pitched Atelier onsite in Rome 🇮🇹, at Link Campus University, for the AMD Developer Hackathon: ACT III, hosted by @AIatAMD on @lablabai. \n\nAtelier is an AI agent for independent fashion brands built on one rule: make only what's already sold.\n\nIt reads the trend from a mood board and the designer's own sketch with Gemma 4 from @GoogleDeepMind, running on @AMD GPUs through AMD Token Factory, while a human creative director makes every taste call.\n\nThen the agents do the paperwork: a costed tech pack, RFQs to the mills in each mill's own language, and supplier quotes checked against the brand's rules, with the agent stopping for a person when a quote breaks one.\n\nEvolus orchestrates the business agents that send the RFQs, read the quotes and issue the purchase order.\n\nThe approved design goes live as a real Shopify pre-order, and the purchase order goes to the mill only once pre-orders clear the threshold, so nothing gets made that nobody asked for.\n\nOn 17 Oct, one live run went all the way from mood board to purchase order on real services, and the demo film shows it.\n\nTry it: https://t.co/or1nQt5sxo\n\n.. @LisaSu @jackhuynh",
+  "createdAt": "Sun Oct 18 14:31:58 +0000 2026",
+  "likeCount": 20,
+  "retweetCount": 5,
+  "replyCount": 7,
+  "viewCount": 515,
+  "lang": "en"
+ },
+ {
+  "id": "2111823813147312301",
+  "text": "AI trading sounds exciting, but I think trust is what will decide whether people actually let agents handle real tasks without constant supervision.\n\nCan an agent act reliably, prove what it did, and operate within a system people can verify? These are the questions I want to see answered as autonomous AI develops. The blockchain underneath matters just as much as the agent itself.\n\nCurious to hear the discussion with @HouseofChimera and @0G_Labs about what is already shipping and what still needs to be solved. @0G_Labs has an interesting role to play in this conversation.",
+  "createdAt": "Sun Oct 18 14:16:47 +0000 2026",
+  "likeCount": 36,
+  "retweetCount": 6,
+  "replyCount": 24,
+  "viewCount": 1568,
+  "lang": "en"
+ },
+ {
+  "id": "9",
+  "text": "sin fecha"
+ }
+]

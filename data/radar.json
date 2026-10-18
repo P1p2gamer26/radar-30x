@@ -35,6 +35,11 @@
    "signals": 45
   },
   {
+   "name": "x",
+   "label": "X (vía Apify)",
+   "signals": 385
+  },
+  {
    "name": "reddit",
    "label": "Reddit",
    "signals": 178
@@ -51,8 +56,8 @@
   }
  ],
  "totals": {
-  "signals": 6196,
-  "classified": 6196,
+  "signals": 6581,
+  "classified": 6581,
   "labeled": 5687,
   "teacher_model": "gh/claude-haiku-5.5",
   "teacher_cost_usd": 0.8086,
@@ -60,7 +65,7 @@
   "apify_cost_usd": 0.55,
   "weekly_cost_usd": 0.55,
   "apify_cost_source": "medido en consola Apify 17-oct",
-  "cost_per_signal_usd": 0.000131,
+  "cost_per_signal_usd": 0.000123,
   "paid_alternative_usd_year": 3000,
   "guiones_cifras": 64,
   "guiones_verificadas": 59
@@ -420,11 +425,11 @@
     353
    ],
    "momentum": 0.605,
-   "exec_fit": 0.274,
+   "exec_fit": 0.291,
    "p": 1.0,
-   "p_raw": 0.44,
+   "p_raw": 0.448,
    "decision": "Aprender",
-   "reason": "Crece 1.7x frente a sus 11 días previos; encaje con la audiencia 30X 27%; al alza en Hacker News, Google News, Wikipedia; formato ganador: Reel/short con cara hablando a cámara.",
+   "reason": "Crece 1.7x frente a sus 11 días previos; encaje con la audiencia 30X 29%; al alza en Hacker News, Google News, Wikipedia; formato ganador: Reel/short con cara hablando a cámara.",
    "why": {
     "format_winner": "reel-cara",
     "hook_winner": "urgencia-novedad",
@@ -432,31 +437,31 @@
     "hook_label": "Urgencia / novedad",
     "best_day": "viernes",
     "author_mix": {
-     "comunidad": 0.552,
-     "medio": 0.293,
-     "creador": 0.103,
-     "empresa": 0.034,
-     "academia": 0.017
+     "comunidad": 0.492,
+     "medio": 0.262,
+     "creador": 0.2,
+     "empresa": 0.031,
+     "academia": 0.015
     },
     "formats": {
-     "noticia-explicada": 0.293,
-     "herramienta-60s": 0.207,
-     "post-texto": 0.155,
-     "opinion": 0.138,
-     "caso-paso-a-paso": 0.138,
-     "lista-ranking": 0.034,
-     "reel-cara": 0.034
+     "noticia-explicada": 0.292,
+     "opinion": 0.185,
+     "herramienta-60s": 0.185,
+     "post-texto": 0.154,
+     "caso-paso-a-paso": 0.123,
+     "lista-ranking": 0.031,
+     "reel-cara": 0.031
     },
     "hooks": {
-     "promesa-proceso": 0.276,
-     "pregunta": 0.224,
-     "contrarian": 0.155,
-     "urgencia-novedad": 0.121,
-     "resultado-numero": 0.121,
-     "miedo-riesgo": 0.034,
-     "lista-numerada": 0.034,
-     "autoridad": 0.017,
-     "error-confesion": 0.017
+     "promesa-proceso": 0.246,
+     "contrarian": 0.215,
+     "pregunta": 0.2,
+     "urgencia-novedad": 0.108,
+     "resultado-numero": 0.108,
+     "miedo-riesgo": 0.031,
+     "autoridad": 0.031,
+     "lista-numerada": 0.031,
+     "error-confesion": 0.031
     },
     "sources_growing": [
      "hn",
@@ -480,6 +485,21 @@
      "hook": "pregunta",
      "velocity": 4.85,
      "by": "teacher"
+    },
+    {
+     "title": "El de marketing digital: 1",
+     "url": "https://x.com/i/status/2109815769039286751",
+     "source": "x",
+     "published_at": "2026-10-13T01:17:32Z",
+     "metrics": {
+      "points": 8728,
+      "comments": 33,
+      "views": 91726
+     },
+     "format": "post-texto",
+     "hook": "autoridad",
+     "velocity": 74.47,
+     "by": "student-emb"
     },
     {
      "title": "¡Mentirisss amo la IA pero hoy me tocó la publicidad a mí! 🤭✨",
@@ -540,21 +560,6 @@
      "hook": "miedo-riesgo",
      "velocity": 0.0,
      "by": "student-emb"
-    },
-    {
-     "title": "What Will Change If You Use An AI Chatbot Instead Of Google Search?",
-     "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQMHNMQUc3dHlnVXN1UngyUVh2NmRIRnU0Ujg1cDdNdDVIeGxMajV2YW5WV0haenFqSUVLZ3o0alJROV9oOFRjTlNRdXlsekNQUDVmSThSS0FhcTZma2N4SU8wek5oaVJsLUpya3hITFNZN2cxdzljREdqRnB1TWFldWNmYnk1MkRPMGVLa1VNaXZrQQ?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-17T17:17:00Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "pregunta",
-     "velocity": 0.0,
-     "by": "teacher"
     }
    ],
    "early_label": "Temprano",
@@ -792,45 +797,45 @@
     91
    ],
    "momentum": 0.423,
-   "exec_fit": 0.456,
-   "p": 1.0,
-   "p_raw": 0.44,
+   "exec_fit": 0.412,
+   "p": 0.918,
+   "p_raw": 0.417,
    "decision": "Recomendar",
-   "reason": "Crece 1.4x frente a sus 11 días previos; encaje con la audiencia 30X 46%; al alza en Hacker News, Wikipedia; formato ganador: Reel/short con cara hablando a cámara.",
+   "reason": "Crece 1.4x frente a sus 11 días previos; encaje con la audiencia 30X 41%; al alza en Hacker News, Wikipedia; formato ganador: Reel/short con cara hablando a cámara.",
    "why": {
     "format_winner": "reel-cara",
     "hook_winner": "promesa-proceso",
     "format_label": "Reel/short con cara hablando a cámara",
     "hook_label": "Promesa de proceso (paso a paso)",
-    "best_day": "jueves",
+    "best_day": "viernes",
     "author_mix": {
-     "comunidad": 0.598,
-     "medio": 0.246,
-     "creador": 0.151,
-     "empresa": 0.006
+     "comunidad": 0.575,
+     "medio": 0.237,
+     "creador": 0.183,
+     "empresa": 0.005
     },
     "formats": {
-     "opinion": 0.492,
-     "noticia-explicada": 0.257,
-     "post-texto": 0.056,
-     "entrevista-clip": 0.05,
-     "lista-ranking": 0.034,
-     "caso-paso-a-paso": 0.028,
-     "evento-live": 0.028,
-     "reel-cara": 0.028,
+     "opinion": 0.484,
+     "noticia-explicada": 0.269,
+     "post-texto": 0.059,
+     "entrevista-clip": 0.048,
+     "lista-ranking": 0.032,
+     "caso-paso-a-paso": 0.027,
+     "evento-live": 0.027,
+     "reel-cara": 0.027,
      "herramienta-60s": 0.022,
-     "carrusel": 0.006
+     "carrusel": 0.005
     },
     "hooks": {
-     "contrarian": 0.425,
-     "pregunta": 0.168,
+     "contrarian": 0.43,
+     "pregunta": 0.161,
      "autoridad": 0.151,
-     "urgencia-novedad": 0.095,
-     "promesa-proceso": 0.039,
-     "lista-numerada": 0.039,
-     "resultado-numero": 0.039,
-     "miedo-riesgo": 0.028,
-     "error-confesion": 0.017
+     "urgencia-novedad": 0.091,
+     "promesa-proceso": 0.048,
+     "lista-numerada": 0.038,
+     "resultado-numero": 0.038,
+     "miedo-riesgo": 0.027,
+     "error-confesion": 0.016
     },
     "sources_growing": [
      "hn",
@@ -868,6 +873,21 @@
      "hook": "autoridad",
      "velocity": 5.59,
      "by": "teacher"
+    },
+    {
+     "title": "“Desarrollar tu propia IA”",
+     "url": "https://x.com/i/status/2111196256626217018",
+     "source": "x",
+     "published_at": "2026-10-16T20:43:06Z",
+     "metrics": {
+      "points": 179,
+      "comments": 2,
+      "views": 20843
+     },
+     "format": "post-texto",
+     "hook": "promesa-proceso",
+     "velocity": 6.86,
+     "by": "student-emb"
     },
     {
      "title": "La transformación no fracasa por la estrategia. Fracasa por el liderazgo.",
@@ -913,21 +933,6 @@
      "hook": "contrarian",
      "velocity": 0.0,
      "by": "student-emb"
-    },
-    {
-     "title": "Colombia: 25,9% usa IA y el reto es conectar agentes",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNbUZ3MjdCMTdUWFpoX09yN3h2Mkhjck5VRXYtSzk4dVk1WG1JRktrMkpfM1NSOHVYS2FkLW5sT1lWVDlQSlBDazNYNTAtUUtlal9xSXI5MlRtRXV2clUwc0g2Nzl4UjRTTVdnQWZaS1BTYnllM1FmUkc1c1c0cFYzeFZPV1E3UmM?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-17T14:33:39Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "resultado-numero",
-     "velocity": 0.0,
-     "by": "teacher"
     }
    ],
    "early_label": "Despegando",
@@ -1169,7 +1174,7 @@
    ],
    "momentum": 0.444,
    "exec_fit": 0.341,
-   "p": 0.871,
+   "p": 0.854,
    "p_raw": 0.393,
    "decision": "Recomendar",
    "reason": "Crece 1.4x frente a sus 11 días previos; encaje con la audiencia 30X 34%; al alza en Hacker News, Google News, Wikipedia; formato ganador: Noticia explicada (qué significa para tu empresa).",
@@ -1497,6 +1502,366 @@
    "rank": 3
   },
   {
+   "slug": "ia-servicio",
+   "name": "IA en servicio al cliente",
+   "stage": "creciendo",
+   "growth": 1.239,
+   "z": 1.391,
+   "acceleration": 0.483,
+   "volume": 24,
+   "series": [
+    0.356,
+    0.223,
+    0.158,
+    0.699,
+    1.224,
+    0.292,
+    0.0,
+    0.209,
+    0.267,
+    0.075,
+    0.189,
+    0.425,
+    0.999,
+    0.182
+   ],
+   "wiki_series": [
+    654,
+    577,
+    551,
+    636,
+    660,
+    694,
+    582,
+    593,
+    479,
+    500,
+    586,
+    635,
+    769,
+    800
+   ],
+   "momentum": 0.369,
+   "exec_fit": 0.373,
+   "p": 0.796,
+   "p_raw": 0.371,
+   "decision": "Aprender",
+   "reason": "Crece 1.2x frente a sus 11 días previos; encaje con la audiencia 30X 37%; al alza en Hacker News, Wikipedia; formato ganador: Caso de uso paso a paso / demo de proceso.",
+   "why": {
+    "format_winner": "caso-paso-a-paso",
+    "hook_winner": "resultado-numero",
+    "format_label": "Caso de uso paso a paso / demo de proceso",
+    "hook_label": "Resultado cuantificado",
+    "best_day": "viernes",
+    "author_mix": {
+     "medio": 0.583,
+     "comunidad": 0.306,
+     "creador": 0.083,
+     "academia": 0.028
+    },
+    "formats": {
+     "noticia-explicada": 0.389,
+     "caso-paso-a-paso": 0.25,
+     "herramienta-60s": 0.194,
+     "opinion": 0.083,
+     "evento-live": 0.056,
+     "post-texto": 0.028
+    },
+    "hooks": {
+     "promesa-proceso": 0.25,
+     "resultado-numero": 0.194,
+     "pregunta": 0.167,
+     "urgencia-novedad": 0.139,
+     "autoridad": 0.083,
+     "miedo-riesgo": 0.083,
+     "contrarian": 0.056,
+     "error-confesion": 0.028
+    },
+    "sources_growing": [
+     "hn",
+     "wiki"
+    ],
+    "covered_by_30x": 1
+   },
+   "top_signals": [
+    {
+     "title": "Taco Bell drive-thru AI bot increased employee retention by making jobs easier",
+     "url": "https://fortune.com/2026/10/14/yum-brands-executive-data-center-hate-ai-tools-improvement/",
+     "source": "hn",
+     "published_at": "2026-10-16T19:37:57Z",
+     "metrics": {
+      "points": 16,
+      "comments": 8,
+      "views": 0
+     },
+     "format": "caso-paso-a-paso",
+     "hook": "resultado-numero",
+     "velocity": 1.15,
+     "by": "teacher"
+    },
+    {
+     "title": "Sam Altman dijo en la Reserva Federal que la atencion al cliente iba a desaparecer \"totalmente, totalmente\". Fue en julio del año pasado y los numeros ya le est",
+     "url": "https://x.com/i/status/2109112009400750109",
+     "source": "x",
+     "published_at": "2026-10-11T02:41:03Z",
+     "metrics": {
+      "points": 48,
+      "comments": 2,
+      "views": 11902
+     },
+     "format": "noticia-explicada",
+     "hook": "miedo-riesgo",
+     "velocity": 0.32,
+     "by": "student-emb"
+    },
+    {
+     "title": "Ukraine has hit three Yandex data centres in a week — and Russia's AI giant says it can't predict when its chatbot and smart home services come back",
+     "url": "https://www.reddit.com/r/artificial/comments/1x3t62v/ukraine_has_hit_three_yandex_data_centres_in_a/",
+     "source": "reddit",
+     "published_at": "2026-10-12T05:07:53Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "miedo-riesgo",
+     "velocity": 0.0,
+     "by": "student-emb"
+    },
+    {
+     "title": "MindEval2: Clinically Grounded Patients and Rubrics for Evaluating Language Models in Mental Health Support",
+     "url": "https://arxiv.org/abs/2610.22314v1",
+     "source": "arxiv",
+     "published_at": "2026-10-15T17:51:01Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "pregunta",
+     "velocity": 0.0,
+     "by": "student-emb"
+    },
+    {
+     "title": "Un comentario que pregunta el precio es un cliente esperando respuesta.",
+     "url": "https://www.instagram.com/p/Dem-Vb0mzAw/",
+     "source": "instagram",
+     "published_at": "2026-10-17T20:32:26Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "post-texto",
+     "hook": "pregunta",
+     "velocity": 0.0,
+     "by": "teacher"
+    },
+    {
+     "title": "Zero Policy AI Chatbot",
+     "url": "https://news.google.com/rss/articles/CBMikAJBVV95cUxNVFc0NHFnR1cxMEUwUHpzNjVYMGplbGRXc2VzdU14eGxabG1mbFNkelpsWkZBeXZsOWIyME5DRkJUV3EzejhldWRNOHhxOWU2aWJoYTNURzl2WjIzemF0eGpyVlZmTlp6aE8xaVhrbmNYelV1emhrVExqWVQ3T3pzN2t5bkpwSEFYUDFKTXU4VThRZDdRVTkyUmRJYl9UOTFFNHpJUkNTaU1jakdvTE1yNUJLOXQ5bW10aUhFRHhiNlI0VThxTEJkenptdk5WZ2l0Vmk1dndmR1JER005M3VXaEJjc3AzNFBGWWUzTnc0S01tN2ZmSEJZRlhESy1hUmtYZERITXNTV3NSYkpKNHoxWg?oc=5",
+     "source": "gnews",
+     "published_at": "2026-10-17T09:31:26Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "herramienta-60s",
+     "hook": "promesa-proceso",
+     "velocity": 0.0,
+     "by": "teacher"
+    }
+   ],
+   "early_label": "Despegando",
+   "atipicos": {
+    "n_outliers": 0,
+    "n_piezas": 11,
+    "lift_hook": null,
+    "lift_format": null,
+    "dia": null,
+    "autores": null,
+    "ejemplos": [],
+    "frase": "sin datos suficientes"
+   },
+   "adapt": {
+    "title": "Así se rediseña el servicio al cliente con IA, paso a paso: el caso del chatbot que dio un reembolso y luego lo negó",
+    "hook": "Un chatbot ofreció un reembolso completo. Después, lo negó.",
+    "format": "caso-paso-a-paso",
+    "beats": [
+     "Segundos 0-5: se muestra la conversación real de un cliente con un chatbot que primero aprueba el reembolso y luego lo retira tras cancelar el pedido. El gancho es el contraste entre lo prometido y lo",
+     "Minuto 0:05-1:00: se explica en lenguaje simple qué falló en el proceso (reglas no conectadas con la política de devoluciones) y qué debe revisar un líder antes de dejar que un bot atienda a sus clien",
+     "Minuto 1:00-2:00: paso a paso en pantalla de un flujo de servicio al cliente con IA: definir qué puede resolver el bot, cuándo pasa a una persona, y cómo se registran las decisiones para auditarlas.",
+     "Cierre (últimos 20 segundos): checklist de 3 preguntas que cualquier ejecutivo puede llevar a su equipo esta semana, con el caso de Taco Bell como contraste positivo: la IA bien diseñada también mejor"
+    ],
+    "cta": "Comenta 'PROCESO' y te enviamos la plantilla de 3 preguntas para revisar tu servicio al cliente con IA.",
+    "platform": "YouTube",
+    "by": "teacher",
+    "cost_usd": 0.008
+   },
+   "adapt_reel": {
+    "hook": "14,000 llamadas dicen que los humanos todavía superan a la IA en servicio al cliente.",
+    "shots": [
+     {
+      "seg": "0-3",
+      "visual": "Primer plano de Andrés Bilbao frente a cámara, mirada directa, con una pila de papeles o un audífono de call center sobre la mesa.",
+      "texto": "14,000 llamadas"
+     },
+     {
+      "seg": "3-14",
+      "visual": "Andrés explica en tono directo que el miedo a que la IA reemplace a los agentes de call center crece, pero los datos muestran otra cosa. Corte a B-roll de una persona atendiendo una llamada con audífo",
+      "texto": "¿La IA ya reemplazó al call center? No tan rápido."
+     },
+     {
+      "seg": "14-28",
+      "visual": "Pantalla dividida o gráfico simple: a la izquierda, el flujo de un cliente con un chatbot; a la derecha, el mismo caso con un agente humano apoyado por IA. Andrés señala cada paso con el dedo o un mar",
+      "texto": "Paso 1: la IA atiende lo repetitivo. Paso 2: el caso complejo pasa a una persona."
+     },
+     {
+      "seg": "28-40",
+      "visual": "Andrés de regreso a cámara, cierre cálido, con gesto de conclusión. Se muestra el texto final sobre fondo sencillo.",
+      "texto": "La IA ordena el trabajo. Las personas resuelven lo que importa."
+     }
+    ],
+    "cta": "Comenta SERVICIO y te mando el paso a paso para empezar en tu empresa.",
+    "duration": "30-45 s",
+    "platform": "Instagram",
+    "by": "teacher",
+    "cost_usd": 0.00811
+   },
+   "guiones": {
+    "reel": {
+     "duration": "45 s",
+     "hook": "Taco Bell puso un bot en el drive-thru y pasó algo que nadie esperaba",
+     "beats": [
+      {
+       "texto": "El problema: filas largas, empleados saturados",
+       "voz": "En los drive-thru de comida rápida el cuello de botella siempre fue tomar el pedido rápido y sin errores."
+      },
+      {
+       "texto": "La solución: IA toma el pedido",
+       "voz": "Taco Bell metió un bot de IA para tomar pedidos en el drive-thru."
+      },
+      {
+       "texto": "El resultado real",
+       "voz": "Y el resultado no fue solo velocidad: la retención de empleados subió, porque el trabajo se volvió más fácil para ellos."
+      },
+      {
+       "texto": "La lección para tu negocio",
+       "voz": "Si crees que la IA en servicio al cliente es solo para ahorrar plata, te estás perdiendo la mitad del beneficio: tu propia gente trabaja mejor."
+      }
+     ],
+     "cta": "Síguenos si quieres ver cómo implementar esto paso a paso en tu negocio.",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
+    },
+    "largo": {
+     "duration": "5-8 min",
+     "title": "Así usan IA en servicio al cliente las empresas que van un paso adelante (con ejemplos reales)",
+     "hook": "Taco Bell metió un bot en el drive-thru y lo que mejoró no fue solo la velocidad, fue la retención de sus propios empleados. Hoy te muestro ese caso y tres más que están pasando ahora mismo.",
+     "secciones": [
+      {
+       "titulo": "El error de pensar que la IA en servicio al cliente es solo un chatbot",
+       "puntos": [
+        "La mayoría cree que es reemplazar personas",
+        "En realidad el beneficio más grande está en quitar tareas repetitivas a tu equipo"
+       ]
+      },
+      {
+       "titulo": "Caso 1: Taco Bell y el drive-thru",
+       "puntos": [
+        "El bot toma pedidos en el drive-thru",
+        "Resultado: mejoró la retención de empleados porque el trabajo se volvió más fácil",
+        "Lección: la IA no solo sirve al cliente, también sirve a quien trabaja contigo"
+       ]
+      },
+      {
+       "titulo": "Caso 2: Cresta y el 'después' de la atención",
+       "puntos": [
+        "Cresta lanzó un agente de IA que completa tareas después de que termina la conversación con el cliente",
+        "Eso significa que tu equipo deja de perder tiempo en papeleo post-llamada",
+        "Por ejemplo, un equipo de soporte que atiende 50 casos al día podría ahorrarse horas de cierre administrativo"
+       ]
+      },
+      {
+       "titulo": "Caso 3: respuesta inmediata en redes sociales",
+       "puntos": [
+        "Un comentario preguntando el precio es un cliente esperando respuesta, ahí mismo",
+        "Las empresas que usan IA para responder esos comentarios en minutos capturan ventas que antes se perdían",
+        "Esto aplica sin importar el tamaño de tu negocio"
+       ]
+      },
+      {
+       "titulo": "Caso 4: canales de denuncia y atención ciudadana",
+       "puntos": [
+        "La OIC invita a denunciar malos actos de funcionarios a través de un chatbot",
+        "Muestra que la IA de atención no es solo para vender, también para dar canales de confianza"
+       ]
+      },
+      {
+       "titulo": "Cómo empezar esta semana",
+       "puntos": [
+        "Identifica el punto donde más se demoran en responder a tus clientes",
+        "Busca una herramienta simple para ese paso específico, no trates de automatizar todo de golpe",
+        "Mide retención de equipo y velocidad de respuesta antes y después"
+       ]
+      }
+     ],
+     "ejemplo": "Taco Bell implementó un bot de IA en el drive-thru para tomar pedidos y el resultado inesperado fue que la retención de empleados subió, porque el trabajo se volvió más fácil para ellos.",
+     "cta": "Si quieres que analicemos tu proceso de servicio al cliente paso a paso, escríbenos en los comentarios.",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
+    },
+    "linkedin": {
+     "hook": "Taco Bell puso IA en el drive-thru. Lo que mejoró no fue solo la velocidad.",
+     "slides": [
+      "Mejoró la retención de empleados. Porque el trabajo se volvió más fácil para ellos.",
+      "Casi siempre pensamos en IA de servicio al cliente como 'reemplazar personas'. Pero el valor real está en quitarles tareas que los desgastan.",
+      "Cresta ya lanzó un agente de IA que completa tareas después de que termina la atención al cliente. Tu equipo deja de perder tiempo en cierre administrativo.",
+      "Un comentario preguntando el precio en redes sociales es un cliente esperando respuesta. Las empresas que responden rápido con IA capturan ventas que antes se perdían.",
+      "Incluso instituciones públicas lo están usando: la OIC invita a denunciar malos actos de funcionarios a través de un chatbot.",
+      "El patrón se repite en todos los casos: la IA no quita trabajo, quita fricción. Y la fricción es lo que agota a tu equipo y aleja a tus clientes."
+     ],
+     "pregunta": "¿En qué punto de tu atención al cliente hay más fricción hoy?",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
+    },
+    "recomendacion": {
+     "duration": "60-90 s",
+     "postura": "Recomendamos implementar IA en servicio al cliente, pero empezando por un solo punto de fricción, no por todo el proceso",
+     "argumentos": [
+      "Los casos que funcionan (Taco Bell, Cresta) atacaron un paso específico, no todo el proceso de atención",
+      "El beneficio más grande no siempre es velocidad para el cliente, también es retener a tu equipo al quitarles trabajo repetitivo",
+      "Responder rápido donde el cliente ya está esperando (como un comentario preguntando precio) convierte interés en venta real"
+     ],
+     "semana": "Esta semana identifica el momento donde más se demoran en responder a un cliente (comentario, llamada, post-venta) y evalúa una sola herramienta de IA para ese paso específico.",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
+    },
+    "by": "teacher",
+    "cost_usd": 0.01397
+   },
+   "rank": 4
+  },
+  {
    "slug": "ia-ventas",
    "name": "IA en ventas",
    "stage": "bajando",
@@ -1537,11 +1902,11 @@
     0
    ],
    "momentum": 0.0,
-   "exec_fit": 0.734,
-   "p": 0.799,
-   "p_raw": 0.367,
+   "exec_fit": 0.723,
+   "p": 0.77,
+   "p_raw": 0.361,
    "decision": "Descartar",
-   "reason": "Cae 25% frente a sus 11 días previos; encaje con la audiencia 30X 73%; sin fuentes al alza; formato ganador: Caso de uso paso a paso / demo de proceso.",
+   "reason": "Cae 25% frente a sus 11 días previos; encaje con la audiencia 30X 72%; sin fuentes al alza; formato ganador: Caso de uso paso a paso / demo de proceso.",
    "why": {
     "format_winner": "caso-paso-a-paso",
     "hook_winner": "autoridad",
@@ -1549,28 +1914,28 @@
     "hook_label": "Autoridad / nombre propio",
     "best_day": "miércoles",
     "author_mix": {
-     "medio": 0.444,
-     "comunidad": 0.333,
-     "academia": 0.111,
-     "creador": 0.083,
-     "empresa": 0.028
+     "medio": 0.41,
+     "comunidad": 0.308,
+     "creador": 0.154,
+     "academia": 0.103,
+     "empresa": 0.026
     },
     "formats": {
-     "noticia-explicada": 0.556,
-     "herramienta-60s": 0.222,
-     "caso-paso-a-paso": 0.139,
-     "opinion": 0.056,
-     "carrusel": 0.028
+     "noticia-explicada": 0.59,
+     "herramienta-60s": 0.205,
+     "caso-paso-a-paso": 0.128,
+     "opinion": 0.051,
+     "carrusel": 0.026
     },
     "hooks": {
-     "promesa-proceso": 0.25,
-     "resultado-numero": 0.25,
-     "autoridad": 0.167,
-     "urgencia-novedad": 0.167,
-     "pregunta": 0.083,
-     "contrarian": 0.028,
-     "miedo-riesgo": 0.028,
-     "lista-numerada": 0.028
+     "resultado-numero": 0.308,
+     "promesa-proceso": 0.231,
+     "autoridad": 0.154,
+     "urgencia-novedad": 0.154,
+     "pregunta": 0.077,
+     "contrarian": 0.026,
+     "miedo-riesgo": 0.026,
+     "lista-numerada": 0.026
     },
     "sources_growing": [],
     "covered_by_30x": 20
@@ -1604,6 +1969,21 @@
      "format": "noticia-explicada",
      "hook": "autoridad",
      "velocity": 0.0,
+     "by": "student-emb"
+    },
+    {
+     "title": "$AVGO cayó de $495 a ~$346 justo cuando su negocio de IA crece al 221% y convierte el 46% de sus ventas en flujo de caja libre.",
+     "url": "https://x.com/i/status/2110474218571747518",
+     "source": "x",
+     "published_at": "2026-10-14T20:53:59Z",
+     "metrics": {
+      "points": 61,
+      "comments": 5,
+      "views": 7443
+     },
+     "format": "noticia-explicada",
+     "hook": "resultado-numero",
+     "velocity": 0.95,
      "by": "student-emb"
     },
     {
@@ -1648,21 +2028,6 @@
      },
      "format": "opinion",
      "hook": "pregunta",
-     "velocity": 0.0,
-     "by": "teacher"
-    },
-    {
-     "title": "Coinmo: IA y ventas inmobiliarias en Medellín",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPcGlsbVc3VG16T1dwS3dPbHZ3OTFzTER0cjhYaEdMa01RMWpONVZGOUZLUUJMcERzTDhDdnRid0Z0ckZWMzJkNnozT3lmWmg3dHliLVE2cFdrT0gySlZKWTBZSEppaHVQX0hocTUwNnoxX3dxTl9KNWt5Zl92d1NrTQ?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-17T22:21:49Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "caso-paso-a-paso",
-     "hook": "resultado-numero",
      "velocity": 0.0,
      "by": "teacher"
     }
@@ -1846,7 +2211,7 @@
     "by": "teacher",
     "cost_usd": 0.01888
    },
-   "rank": 4
+   "rank": 5
   },
   {
    "slug": "educacion-ia",
@@ -1889,11 +2254,11 @@
     60
    ],
    "momentum": 0.447,
-   "exec_fit": 0.283,
-   "p": 0.793,
-   "p_raw": 0.365,
+   "exec_fit": 0.261,
+   "p": 0.751,
+   "p_raw": 0.354,
    "decision": "Aprender",
-   "reason": "Crece 1.7x frente a sus 11 días previos; encaje con la audiencia 30X 28%; al alza en Google News, Wikipedia; formato ganador: Live / webinar / evento.",
+   "reason": "Crece 1.7x frente a sus 11 días previos; encaje con la audiencia 30X 26%; al alza en Google News, Wikipedia; formato ganador: Live / webinar / evento.",
    "why": {
     "format_winner": "evento-live",
     "hook_winner": "error-confesion",
@@ -1901,33 +2266,33 @@
     "hook_label": "Error o confesión",
     "best_day": "jueves",
     "author_mix": {
-     "comunidad": 0.497,
-     "medio": 0.179,
-     "creador": 0.152,
-     "academia": 0.131,
-     "empresa": 0.041
+     "comunidad": 0.471,
+     "creador": 0.196,
+     "medio": 0.17,
+     "academia": 0.124,
+     "empresa": 0.039
     },
     "formats": {
-     "noticia-explicada": 0.283,
-     "opinion": 0.193,
-     "herramienta-60s": 0.159,
-     "reel-cara": 0.11,
-     "evento-live": 0.083,
-     "post-texto": 0.076,
-     "caso-paso-a-paso": 0.048,
-     "lista-ranking": 0.041,
+     "noticia-explicada": 0.294,
+     "opinion": 0.196,
+     "herramienta-60s": 0.15,
+     "reel-cara": 0.105,
+     "post-texto": 0.078,
+     "evento-live": 0.078,
+     "caso-paso-a-paso": 0.052,
+     "lista-ranking": 0.039,
      "entrevista-clip": 0.007
     },
     "hooks": {
      "promesa-proceso": 0.255,
-     "pregunta": 0.228,
-     "autoridad": 0.159,
-     "contrarian": 0.124,
-     "urgencia-novedad": 0.103,
-     "resultado-numero": 0.041,
-     "lista-numerada": 0.041,
-     "miedo-riesgo": 0.034,
-     "error-confesion": 0.014
+     "pregunta": 0.216,
+     "autoridad": 0.176,
+     "contrarian": 0.118,
+     "urgencia-novedad": 0.105,
+     "resultado-numero": 0.046,
+     "lista-numerada": 0.039,
+     "miedo-riesgo": 0.033,
+     "error-confesion": 0.013
     },
     "sources_growing": [
      "gnews",
@@ -1982,6 +2347,21 @@
      "by": "teacher"
     },
     {
+     "title": "🚨 Harvard just made its AI course free.",
+     "url": "https://x.com/i/status/2111519335357514077",
+     "source": "x",
+     "published_at": "2026-10-17T18:06:54Z",
+     "metrics": {
+      "points": 279,
+      "comments": 8,
+      "views": 23443
+     },
+     "format": "noticia-explicada",
+     "hook": "urgencia-novedad",
+     "velocity": 56.06,
+     "by": "student-emb"
+    },
+    {
      "title": "Kickoff - Hackathon 30X",
      "url": "https://www.youtube.com/watch?v=WdXQBNzHHIg",
      "source": "youtube",
@@ -2009,21 +2389,6 @@
      "format": "reel-cara",
      "hook": "promesa-proceso",
      "velocity": 1877.34,
-     "by": "teacher"
-    },
-    {
-     "title": "Curso en India fortalece capacidades en analítica de datos para decisiones",
-     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxObHVpSTJZdWR4akpUVm5taVBCdUdITVhQUzFIaWY2X0ZVQjJjNUkyY0dhOVdDLTd6eVY3djZIRU5HMmhHVzhxOVpjYml5dXRkeEF0dEd2SDhrTWxKOFROcE5tSVVMTDNQeVFMVVpfRkJreGgydnVMQTJTZjgxcVJOZFJ5OWQxQ3I2d3lIUzZ0Q2tFVFdFWFB6YUdRMFRYTlNXVFViMU5OVjltQ3pnM1R6eXQ0QlZtbEpBS1M2LUlR?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-17T20:41:35Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "autoridad",
-     "velocity": 0.0,
      "by": "teacher"
     }
    ],
@@ -2231,366 +2596,6 @@
     "by": "teacher",
     "cost_usd": 0.01276
    },
-   "rank": 5
-  },
-  {
-   "slug": "ia-servicio",
-   "name": "IA en servicio al cliente",
-   "stage": "creciendo",
-   "growth": 1.239,
-   "z": 1.391,
-   "acceleration": 0.483,
-   "volume": 24,
-   "series": [
-    0.356,
-    0.223,
-    0.158,
-    0.699,
-    1.224,
-    0.292,
-    0.0,
-    0.209,
-    0.267,
-    0.075,
-    0.189,
-    0.425,
-    0.999,
-    0.182
-   ],
-   "wiki_series": [
-    654,
-    577,
-    551,
-    636,
-    660,
-    694,
-    582,
-    593,
-    479,
-    500,
-    586,
-    635,
-    769,
-    800
-   ],
-   "momentum": 0.369,
-   "exec_fit": 0.339,
-   "p": 0.763,
-   "p_raw": 0.354,
-   "decision": "Aprender",
-   "reason": "Crece 1.2x frente a sus 11 días previos; encaje con la audiencia 30X 34%; al alza en Hacker News, Wikipedia; formato ganador: Caso de uso paso a paso / demo de proceso.",
-   "why": {
-    "format_winner": "caso-paso-a-paso",
-    "hook_winner": "resultado-numero",
-    "format_label": "Caso de uso paso a paso / demo de proceso",
-    "hook_label": "Resultado cuantificado",
-    "best_day": "viernes",
-    "author_mix": {
-     "medio": 0.6,
-     "comunidad": 0.314,
-     "creador": 0.057,
-     "academia": 0.029
-    },
-    "formats": {
-     "noticia-explicada": 0.371,
-     "caso-paso-a-paso": 0.257,
-     "herramienta-60s": 0.2,
-     "opinion": 0.086,
-     "evento-live": 0.057,
-     "post-texto": 0.029
-    },
-    "hooks": {
-     "promesa-proceso": 0.257,
-     "resultado-numero": 0.2,
-     "pregunta": 0.171,
-     "urgencia-novedad": 0.143,
-     "autoridad": 0.086,
-     "contrarian": 0.057,
-     "miedo-riesgo": 0.057,
-     "error-confesion": 0.029
-    },
-    "sources_growing": [
-     "hn",
-     "wiki"
-    ],
-    "covered_by_30x": 1
-   },
-   "top_signals": [
-    {
-     "title": "Taco Bell drive-thru AI bot increased employee retention by making jobs easier",
-     "url": "https://fortune.com/2026/10/14/yum-brands-executive-data-center-hate-ai-tools-improvement/",
-     "source": "hn",
-     "published_at": "2026-10-16T19:37:57Z",
-     "metrics": {
-      "points": 16,
-      "comments": 8,
-      "views": 0
-     },
-     "format": "caso-paso-a-paso",
-     "hook": "resultado-numero",
-     "velocity": 1.15,
-     "by": "teacher"
-    },
-    {
-     "title": "Ukraine has hit three Yandex data centres in a week — and Russia's AI giant says it can't predict when its chatbot and smart home services come back",
-     "url": "https://www.reddit.com/r/artificial/comments/1x3t62v/ukraine_has_hit_three_yandex_data_centres_in_a/",
-     "source": "reddit",
-     "published_at": "2026-10-12T05:07:53Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "miedo-riesgo",
-     "velocity": 0.0,
-     "by": "student-emb"
-    },
-    {
-     "title": "MindEval2: Clinically Grounded Patients and Rubrics for Evaluating Language Models in Mental Health Support",
-     "url": "https://arxiv.org/abs/2610.22314v1",
-     "source": "arxiv",
-     "published_at": "2026-10-15T17:51:01Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "pregunta",
-     "velocity": 0.0,
-     "by": "student-emb"
-    },
-    {
-     "title": "Un comentario que pregunta el precio es un cliente esperando respuesta.",
-     "url": "https://www.instagram.com/p/Dem-Vb0mzAw/",
-     "source": "instagram",
-     "published_at": "2026-10-17T20:32:26Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "post-texto",
-     "hook": "pregunta",
-     "velocity": 0.0,
-     "by": "teacher"
-    },
-    {
-     "title": "Zero Policy AI Chatbot",
-     "url": "https://news.google.com/rss/articles/CBMikAJBVV95cUxNVFc0NHFnR1cxMEUwUHpzNjVYMGplbGRXc2VzdU14eGxabG1mbFNkelpsWkZBeXZsOWIyME5DRkJUV3EzejhldWRNOHhxOWU2aWJoYTNURzl2WjIzemF0eGpyVlZmTlp6aE8xaVhrbmNYelV1emhrVExqWVQ3T3pzN2t5bkpwSEFYUDFKTXU4VThRZDdRVTkyUmRJYl9UOTFFNHpJUkNTaU1jakdvTE1yNUJLOXQ5bW10aUhFRHhiNlI0VThxTEJkenptdk5WZ2l0Vmk1dndmR1JER005M3VXaEJjc3AzNFBGWWUzTnc0S01tN2ZmSEJZRlhESy1hUmtYZERITXNTV3NSYkpKNHoxWg?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-17T09:31:26Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "promesa-proceso",
-     "velocity": 0.0,
-     "by": "teacher"
-    },
-    {
-     "title": "AIVAcare",
-     "url": "https://www.aivacare.ai",
-     "source": "hn",
-     "published_at": "2026-10-15T00:42:28Z",
-     "metrics": {
-      "points": 2,
-      "comments": 1,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "promesa-proceso",
-     "velocity": 0.06,
-     "by": "teacher"
-    }
-   ],
-   "early_label": "Despegando",
-   "atipicos": {
-    "n_outliers": 0,
-    "n_piezas": 11,
-    "lift_hook": null,
-    "lift_format": null,
-    "dia": null,
-    "autores": null,
-    "ejemplos": [],
-    "frase": "sin datos suficientes"
-   },
-   "adapt": {
-    "title": "Así se rediseña el servicio al cliente con IA, paso a paso: el caso del chatbot que dio un reembolso y luego lo negó",
-    "hook": "Un chatbot ofreció un reembolso completo. Después, lo negó.",
-    "format": "caso-paso-a-paso",
-    "beats": [
-     "Segundos 0-5: se muestra la conversación real de un cliente con un chatbot que primero aprueba el reembolso y luego lo retira tras cancelar el pedido. El gancho es el contraste entre lo prometido y lo",
-     "Minuto 0:05-1:00: se explica en lenguaje simple qué falló en el proceso (reglas no conectadas con la política de devoluciones) y qué debe revisar un líder antes de dejar que un bot atienda a sus clien",
-     "Minuto 1:00-2:00: paso a paso en pantalla de un flujo de servicio al cliente con IA: definir qué puede resolver el bot, cuándo pasa a una persona, y cómo se registran las decisiones para auditarlas.",
-     "Cierre (últimos 20 segundos): checklist de 3 preguntas que cualquier ejecutivo puede llevar a su equipo esta semana, con el caso de Taco Bell como contraste positivo: la IA bien diseñada también mejor"
-    ],
-    "cta": "Comenta 'PROCESO' y te enviamos la plantilla de 3 preguntas para revisar tu servicio al cliente con IA.",
-    "platform": "YouTube",
-    "by": "teacher",
-    "cost_usd": 0.008
-   },
-   "adapt_reel": {
-    "hook": "14,000 llamadas dicen que los humanos todavía superan a la IA en servicio al cliente.",
-    "shots": [
-     {
-      "seg": "0-3",
-      "visual": "Primer plano de Andrés Bilbao frente a cámara, mirada directa, con una pila de papeles o un audífono de call center sobre la mesa.",
-      "texto": "14,000 llamadas"
-     },
-     {
-      "seg": "3-14",
-      "visual": "Andrés explica en tono directo que el miedo a que la IA reemplace a los agentes de call center crece, pero los datos muestran otra cosa. Corte a B-roll de una persona atendiendo una llamada con audífo",
-      "texto": "¿La IA ya reemplazó al call center? No tan rápido."
-     },
-     {
-      "seg": "14-28",
-      "visual": "Pantalla dividida o gráfico simple: a la izquierda, el flujo de un cliente con un chatbot; a la derecha, el mismo caso con un agente humano apoyado por IA. Andrés señala cada paso con el dedo o un mar",
-      "texto": "Paso 1: la IA atiende lo repetitivo. Paso 2: el caso complejo pasa a una persona."
-     },
-     {
-      "seg": "28-40",
-      "visual": "Andrés de regreso a cámara, cierre cálido, con gesto de conclusión. Se muestra el texto final sobre fondo sencillo.",
-      "texto": "La IA ordena el trabajo. Las personas resuelven lo que importa."
-     }
-    ],
-    "cta": "Comenta SERVICIO y te mando el paso a paso para empezar en tu empresa.",
-    "duration": "30-45 s",
-    "platform": "Instagram",
-    "by": "teacher",
-    "cost_usd": 0.00811
-   },
-   "guiones": {
-    "reel": {
-     "duration": "45 s",
-     "hook": "Taco Bell puso un bot en el drive-thru y pasó algo que nadie esperaba",
-     "beats": [
-      {
-       "texto": "El problema: filas largas, empleados saturados",
-       "voz": "En los drive-thru de comida rápida el cuello de botella siempre fue tomar el pedido rápido y sin errores."
-      },
-      {
-       "texto": "La solución: IA toma el pedido",
-       "voz": "Taco Bell metió un bot de IA para tomar pedidos en el drive-thru."
-      },
-      {
-       "texto": "El resultado real",
-       "voz": "Y el resultado no fue solo velocidad: la retención de empleados subió, porque el trabajo se volvió más fácil para ellos."
-      },
-      {
-       "texto": "La lección para tu negocio",
-       "voz": "Si crees que la IA en servicio al cliente es solo para ahorrar plata, te estás perdiendo la mitad del beneficio: tu propia gente trabaja mejor."
-      }
-     ],
-     "cta": "Síguenos si quieres ver cómo implementar esto paso a paso en tu negocio.",
-     "verificacion": {
-      "cifras": 0,
-      "verificadas": 0,
-      "quitadas": 0,
-      "ejemplos": []
-     }
-    },
-    "largo": {
-     "duration": "5-8 min",
-     "title": "Así usan IA en servicio al cliente las empresas que van un paso adelante (con ejemplos reales)",
-     "hook": "Taco Bell metió un bot en el drive-thru y lo que mejoró no fue solo la velocidad, fue la retención de sus propios empleados. Hoy te muestro ese caso y tres más que están pasando ahora mismo.",
-     "secciones": [
-      {
-       "titulo": "El error de pensar que la IA en servicio al cliente es solo un chatbot",
-       "puntos": [
-        "La mayoría cree que es reemplazar personas",
-        "En realidad el beneficio más grande está en quitar tareas repetitivas a tu equipo"
-       ]
-      },
-      {
-       "titulo": "Caso 1: Taco Bell y el drive-thru",
-       "puntos": [
-        "El bot toma pedidos en el drive-thru",
-        "Resultado: mejoró la retención de empleados porque el trabajo se volvió más fácil",
-        "Lección: la IA no solo sirve al cliente, también sirve a quien trabaja contigo"
-       ]
-      },
-      {
-       "titulo": "Caso 2: Cresta y el 'después' de la atención",
-       "puntos": [
-        "Cresta lanzó un agente de IA que completa tareas después de que termina la conversación con el cliente",
-        "Eso significa que tu equipo deja de perder tiempo en papeleo post-llamada",
-        "Por ejemplo, un equipo de soporte que atiende 50 casos al día podría ahorrarse horas de cierre administrativo"
-       ]
-      },
-      {
-       "titulo": "Caso 3: respuesta inmediata en redes sociales",
-       "puntos": [
-        "Un comentario preguntando el precio es un cliente esperando respuesta, ahí mismo",
-        "Las empresas que usan IA para responder esos comentarios en minutos capturan ventas que antes se perdían",
-        "Esto aplica sin importar el tamaño de tu negocio"
-       ]
-      },
-      {
-       "titulo": "Caso 4: canales de denuncia y atención ciudadana",
-       "puntos": [
-        "La OIC invita a denunciar malos actos de funcionarios a través de un chatbot",
-        "Muestra que la IA de atención no es solo para vender, también para dar canales de confianza"
-       ]
-      },
-      {
-       "titulo": "Cómo empezar esta semana",
-       "puntos": [
-        "Identifica el punto donde más se demoran en responder a tus clientes",
-        "Busca una herramienta simple para ese paso específico, no trates de automatizar todo de golpe",
-        "Mide retención de equipo y velocidad de respuesta antes y después"
-       ]
-      }
-     ],
-     "ejemplo": "Taco Bell implementó un bot de IA en el drive-thru para tomar pedidos y el resultado inesperado fue que la retención de empleados subió, porque el trabajo se volvió más fácil para ellos.",
-     "cta": "Si quieres que analicemos tu proceso de servicio al cliente paso a paso, escríbenos en los comentarios.",
-     "verificacion": {
-      "cifras": 0,
-      "verificadas": 0,
-      "quitadas": 0,
-      "ejemplos": []
-     }
-    },
-    "linkedin": {
-     "hook": "Taco Bell puso IA en el drive-thru. Lo que mejoró no fue solo la velocidad.",
-     "slides": [
-      "Mejoró la retención de empleados. Porque el trabajo se volvió más fácil para ellos.",
-      "Casi siempre pensamos en IA de servicio al cliente como 'reemplazar personas'. Pero el valor real está en quitarles tareas que los desgastan.",
-      "Cresta ya lanzó un agente de IA que completa tareas después de que termina la atención al cliente. Tu equipo deja de perder tiempo en cierre administrativo.",
-      "Un comentario preguntando el precio en redes sociales es un cliente esperando respuesta. Las empresas que responden rápido con IA capturan ventas que antes se perdían.",
-      "Incluso instituciones públicas lo están usando: la OIC invita a denunciar malos actos de funcionarios a través de un chatbot.",
-      "El patrón se repite en todos los casos: la IA no quita trabajo, quita fricción. Y la fricción es lo que agota a tu equipo y aleja a tus clientes."
-     ],
-     "pregunta": "¿En qué punto de tu atención al cliente hay más fricción hoy?",
-     "verificacion": {
-      "cifras": 0,
-      "verificadas": 0,
-      "quitadas": 0,
-      "ejemplos": []
-     }
-    },
-    "recomendacion": {
-     "duration": "60-90 s",
-     "postura": "Recomendamos implementar IA en servicio al cliente, pero empezando por un solo punto de fricción, no por todo el proceso",
-     "argumentos": [
-      "Los casos que funcionan (Taco Bell, Cresta) atacaron un paso específico, no todo el proceso de atención",
-      "El beneficio más grande no siempre es velocidad para el cliente, también es retener a tu equipo al quitarles trabajo repetitivo",
-      "Responder rápido donde el cliente ya está esperando (como un comentario preguntando precio) convierte interés en venta real"
-     ],
-     "semana": "Esta semana identifica el momento donde más se demoran en responder a un cliente (comentario, llamada, post-venta) y evalúa una sola herramienta de IA para ese paso específico.",
-     "verificacion": {
-      "cifras": 0,
-      "verificadas": 0,
-      "quitadas": 0,
-      "ejemplos": []
-     }
-    },
-    "by": "teacher",
-    "cost_usd": 0.01397
-   },
    "rank": 6
   },
   {
@@ -2634,8 +2639,8 @@
     173
    ],
    "momentum": 0.284,
-   "exec_fit": 0.356,
-   "p": 0.669,
+   "exec_fit": 0.355,
+   "p": 0.661,
    "p_raw": 0.32,
    "decision": "Aprender",
    "reason": "Crece 1.2x frente a sus 11 días previos; encaje con la audiencia 30X 36%; al alza en Hacker News, Wikipedia; formato ganador: Reel/short con cara hablando a cámara.",
@@ -2646,32 +2651,33 @@
     "hook_label": "Resultado cuantificado",
     "best_day": "martes",
     "author_mix": {
-     "comunidad": 0.455,
-     "medio": 0.42,
-     "creador": 0.091,
-     "empresa": 0.023,
-     "academia": 0.011
+     "comunidad": 0.4,
+     "medio": 0.37,
+     "creador": 0.2,
+     "empresa": 0.02,
+     "academia": 0.01
     },
     "formats": {
-     "opinion": 0.409,
+     "opinion": 0.44,
      "noticia-explicada": 0.25,
-     "evento-live": 0.114,
-     "post-texto": 0.091,
-     "lista-ranking": 0.034,
-     "herramienta-60s": 0.034,
-     "entrevista-clip": 0.034,
-     "reel-cara": 0.023,
-     "carrusel": 0.011
+     "evento-live": 0.1,
+     "post-texto": 0.08,
+     "lista-ranking": 0.03,
+     "reel-cara": 0.03,
+     "herramienta-60s": 0.03,
+     "entrevista-clip": 0.03,
+     "carrusel": 0.01
     },
     "hooks": {
-     "pregunta": 0.375,
-     "contrarian": 0.227,
-     "urgencia-novedad": 0.091,
-     "autoridad": 0.091,
+     "pregunta": 0.36,
+     "contrarian": 0.24,
+     "urgencia-novedad": 0.09,
      "resultado-numero": 0.08,
-     "miedo-riesgo": 0.068,
-     "promesa-proceso": 0.045,
-     "lista-numerada": 0.023
+     "miedo-riesgo": 0.08,
+     "autoridad": 0.08,
+     "promesa-proceso": 0.04,
+     "lista-numerada": 0.02,
+     "error-confesion": 0.01
     },
     "sources_growing": [
      "hn",
@@ -2694,6 +2700,21 @@
      "hook": "resultado-numero",
      "velocity": 55.04,
      "by": "teacher"
+    },
+    {
+     "title": "The future of the agent economy may depend on the jobs nobody can afford to do today.",
+     "url": "https://x.com/i/status/2111486437744849215",
+     "source": "x",
+     "published_at": "2026-10-17T15:56:10Z",
+     "metrics": {
+      "points": 34,
+      "comments": 23,
+      "views": 458
+     },
+     "format": "opinion",
+     "hook": "contrarian",
+     "velocity": 10.75,
+     "by": "student-emb"
     },
     {
      "title": "Sabemos que no siempre es fácil. Hay meses en los que las vacantes escasean, las respuestas tardan y cada “gracias, la tendremos en cuenta” pesa más de lo que d",
@@ -2754,21 +2775,6 @@
      "hook": "lista-numerada",
      "velocity": 0.0,
      "by": "teacher"
-    },
-    {
-     "title": "OnBodyAI - Why the Next AI Needs a Body",
-     "url": "https://arxiv.org/abs/2610.21137v1",
-     "source": "arxiv",
-     "published_at": "2026-10-15T02:47:49Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "opinion",
-     "hook": "pregunta",
-     "velocity": 0.0,
-     "by": "student-emb"
     }
    ],
    "early_label": "Estable",
@@ -3008,7 +3014,7 @@
    ],
    "momentum": 0.167,
    "exec_fit": 0.442,
-   "p": 0.625,
+   "p": 0.619,
    "p_raw": 0.304,
    "decision": "Aprender",
    "reason": "Estable frente a sus 11 días previos; encaje con la audiencia 30X 44%; al alza en Google News, Wikipedia; formato ganador: Post de texto largo.",
@@ -3355,7 +3361,7 @@
    ],
    "momentum": 0.21,
    "exec_fit": 0.355,
-   "p": 0.565,
+   "p": 0.561,
    "p_raw": 0.282,
    "decision": "Aprender",
    "reason": "Crece 1.1x frente a sus 11 días previos; encaje con la audiencia 30X 36%; al alza en Google News, Wikipedia; formato ganador: Caso de uso paso a paso / demo de proceso.",
@@ -3712,43 +3718,43 @@
     693
    ],
    "momentum": 0.237,
-   "exec_fit": 0.296,
-   "p": 0.521,
-   "p_raw": 0.266,
+   "exec_fit": 0.281,
+   "p": 0.5,
+   "p_raw": 0.259,
    "decision": "Aprender",
-   "reason": "Crece 1.2x frente a sus 11 días previos; encaje con la audiencia 30X 30%; al alza en Hacker News, Wikipedia; formato ganador: Noticia explicada (qué significa para tu empresa).",
+   "reason": "Crece 1.2x frente a sus 11 días previos; encaje con la audiencia 30X 28%; al alza en Hacker News, Wikipedia; formato ganador: Noticia explicada (qué significa para tu empresa).",
    "why": {
     "format_winner": "noticia-explicada",
     "hook_winner": "urgencia-novedad",
     "format_label": "Noticia explicada (qué significa para tu empresa)",
     "hook_label": "Urgencia / novedad",
-    "best_day": "miércoles",
+    "best_day": "sábado",
     "author_mix": {
-     "medio": 0.535,
-     "comunidad": 0.347,
-     "creador": 0.109,
+     "medio": 0.519,
+     "comunidad": 0.337,
+     "creador": 0.135,
      "empresa": 0.01
     },
     "formats": {
-     "noticia-explicada": 0.317,
-     "caso-paso-a-paso": 0.228,
-     "herramienta-60s": 0.218,
-     "opinion": 0.099,
-     "lista-ranking": 0.03,
-     "evento-live": 0.03,
-     "post-texto": 0.03,
-     "reel-cara": 0.03,
+     "noticia-explicada": 0.327,
+     "caso-paso-a-paso": 0.221,
+     "herramienta-60s": 0.212,
+     "opinion": 0.096,
+     "post-texto": 0.038,
+     "lista-ranking": 0.029,
+     "evento-live": 0.029,
+     "reel-cara": 0.029,
      "carrusel": 0.01,
      "entrevista-clip": 0.01
     },
     "hooks": {
-     "promesa-proceso": 0.386,
-     "urgencia-novedad": 0.228,
-     "resultado-numero": 0.129,
-     "contrarian": 0.109,
-     "pregunta": 0.05,
-     "autoridad": 0.05,
-     "lista-numerada": 0.03,
+     "promesa-proceso": 0.385,
+     "urgencia-novedad": 0.221,
+     "resultado-numero": 0.135,
+     "contrarian": 0.106,
+     "autoridad": 0.058,
+     "pregunta": 0.048,
+     "lista-numerada": 0.029,
      "antes-despues": 0.01,
      "error-confesion": 0.01
     },
@@ -3788,6 +3794,21 @@
      "hook": "promesa-proceso",
      "velocity": 47.64,
      "by": "teacher"
+    },
+    {
+     "title": "hay gente pagando cientos de euros por cursos de automatización con IA",
+     "url": "https://x.com/i/status/2111497336723583165",
+     "source": "x",
+     "published_at": "2026-10-17T16:39:29Z",
+     "metrics": {
+      "points": 2066,
+      "comments": 21,
+      "views": 167844
+     },
+     "format": "noticia-explicada",
+     "hook": "resultado-numero",
+     "velocity": 313.74,
+     "by": "student-emb"
     },
     {
      "title": "El ERP que actúa: la Empresa Autónoma llegará a la pyme",
@@ -3833,21 +3854,6 @@
      "hook": "contrarian",
      "velocity": 0.0,
      "by": "student-emb"
-    },
-    {
-     "title": "🚀 GEMINI 4 ARGON: ¿LA NUEVA ERA DE LA AUTOMATIZACIÓN CON IA? 🤖",
-     "url": "https://www.tiktok.com/@_/video/7697693412350348574",
-     "source": "tiktok",
-     "published_at": "2026-10-17T17:42:09Z",
-     "metrics": {
-      "points": 33,
-      "comments": 0,
-      "views": 440
-     },
-     "format": "reel-cara",
-     "hook": "urgencia-novedad",
-     "velocity": 5.82,
-     "by": "teacher"
     }
    ],
    "early_label": "Despegando",
@@ -4048,9 +4054,9 @@
    "name": "Regulación y ética de IA",
    "stage": "estable",
    "growth": 0.992,
-   "z": 0.442,
-   "acceleration": 0.326,
-   "volume": 259,
+   "z": 0.431,
+   "acceleration": 0.323,
+   "volume": 260,
    "series": [
     8.81,
     12.228,
@@ -4062,7 +4068,7 @@
     7.116,
     5.273,
     3.364,
-    5.461,
+    5.524,
     7.562,
     6.22,
     5.835
@@ -4083,12 +4089,12 @@
     562,
     476
    ],
-   "momentum": 0.189,
-   "exec_fit": 0.253,
-   "p": 0.397,
-   "p_raw": 0.221,
+   "momentum": 0.187,
+   "exec_fit": 0.217,
+   "p": 0.349,
+   "p_raw": 0.202,
    "decision": "Descartar",
-   "reason": "Estable frente a sus 11 días previos; encaje con la audiencia 30X 25%; al alza en Hacker News, Wikipedia; formato ganador: Reel/short con cara hablando a cámara.",
+   "reason": "Estable frente a sus 11 días previos; encaje con la audiencia 30X 22%; al alza en Hacker News, Wikipedia; formato ganador: Reel/short con cara hablando a cámara.",
    "why": {
     "format_winner": "reel-cara",
     "hook_winner": "contrarian",
@@ -4096,33 +4102,33 @@
     "hook_label": "Contrarian / rompe un mito",
     "best_day": "jueves",
     "author_mix": {
-     "comunidad": 0.515,
-     "medio": 0.419,
+     "comunidad": 0.479,
+     "medio": 0.39,
+     "creador": 0.089,
      "academia": 0.032,
-     "creador": 0.024,
-     "empresa": 0.011
+     "empresa": 0.01
     },
     "formats": {
-     "noticia-explicada": 0.715,
-     "opinion": 0.211,
-     "herramienta-60s": 0.024,
-     "post-texto": 0.013,
-     "entrevista-clip": 0.013,
-     "reel-cara": 0.013,
+     "noticia-explicada": 0.71,
+     "opinion": 0.218,
+     "herramienta-60s": 0.022,
+     "post-texto": 0.012,
+     "entrevista-clip": 0.012,
+     "reel-cara": 0.012,
      "evento-live": 0.005,
-     "lista-ranking": 0.003,
-     "caso-paso-a-paso": 0.003
+     "lista-ranking": 0.005,
+     "caso-paso-a-paso": 0.002
     },
     "hooks": {
-     "miedo-riesgo": 0.328,
-     "contrarian": 0.235,
-     "urgencia-novedad": 0.213,
-     "pregunta": 0.096,
-     "autoridad": 0.085,
-     "promesa-proceso": 0.016,
-     "resultado-numero": 0.016,
-     "error-confesion": 0.008,
-     "lista-numerada": 0.003
+     "miedo-riesgo": 0.323,
+     "contrarian": 0.253,
+     "urgencia-novedad": 0.206,
+     "autoridad": 0.089,
+     "pregunta": 0.087,
+     "promesa-proceso": 0.015,
+     "resultado-numero": 0.015,
+     "error-confesion": 0.007,
+     "lista-numerada": 0.005
     },
     "sources_growing": [
      "hn",
@@ -4145,6 +4151,21 @@
      "hook": "miedo-riesgo",
      "velocity": 35.05,
      "by": "teacher"
+    },
+    {
+     "title": "I've said this before: AI companies are definitely afraid of regulation, but that's only their *second* biggest fear.",
+     "url": "https://x.com/i/status/2111595339337617690",
+     "source": "x",
+     "published_at": "2026-10-17T23:08:55Z",
+     "metrics": {
+      "points": 539,
+      "comments": 20,
+      "views": 25123
+     },
+     "format": "opinion",
+     "hook": "contrarian",
+     "velocity": 579.0,
+     "by": "student-emb"
     },
     {
      "title": "Evaluation Awareness Beyond English: Do LLMs Act Differently When Tested in Indic Languages?",
@@ -4204,21 +4225,6 @@
      "format": "opinion",
      "hook": "contrarian",
      "velocity": 2.76,
-     "by": "teacher"
-    },
-    {
-     "title": "🤖 ¿Y si las máquinas del futuro tuvieran que obedecer unas leyes escritas hace más de 80 años?",
-     "url": "https://www.instagram.com/p/Dem-0BNlhrX/",
-     "source": "instagram",
-     "published_at": "2026-10-17T20:36:32Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "reel-cara",
-     "hook": "pregunta",
-     "velocity": 0.0,
      "by": "teacher"
     }
    ],
@@ -4466,11 +4472,11 @@
     1223
    ],
    "momentum": 0.175,
-   "exec_fit": 0.215,
+   "exec_fit": 0.211,
    "p": 0.325,
-   "p_raw": 0.195,
+   "p_raw": 0.193,
    "decision": "Descartar",
-   "reason": "Crece 1.1x frente a sus 11 días previos; encaje con la audiencia 30X 22%; al alza en Hacker News, Wikipedia; formato ganador: Herramienta X en 60 segundos.",
+   "reason": "Crece 1.1x frente a sus 11 días previos; encaje con la audiencia 30X 21%; al alza en Hacker News, Wikipedia; formato ganador: Herramienta X en 60 segundos.",
    "why": {
     "format_winner": "herramienta-60s",
     "hook_winner": "pregunta",
@@ -4478,28 +4484,29 @@
     "hook_label": "Pregunta provocadora",
     "best_day": "jueves",
     "author_mix": {
-     "comunidad": 0.681,
-     "academia": 0.22,
-     "medio": 0.088,
+     "comunidad": 0.667,
+     "academia": 0.215,
+     "medio": 0.086,
+     "creador": 0.022,
      "empresa": 0.011
     },
     "formats": {
-     "herramienta-60s": 0.319,
-     "noticia-explicada": 0.253,
-     "opinion": 0.154,
-     "caso-paso-a-paso": 0.132,
-     "post-texto": 0.121,
+     "herramienta-60s": 0.312,
+     "noticia-explicada": 0.258,
+     "opinion": 0.161,
+     "caso-paso-a-paso": 0.129,
+     "post-texto": 0.118,
      "lista-ranking": 0.011,
      "entrevista-clip": 0.011
     },
     "hooks": {
-     "promesa-proceso": 0.319,
-     "contrarian": 0.209,
-     "autoridad": 0.198,
-     "pregunta": 0.077,
-     "resultado-numero": 0.077,
-     "urgencia-novedad": 0.055,
-     "miedo-riesgo": 0.044,
+     "promesa-proceso": 0.312,
+     "contrarian": 0.204,
+     "autoridad": 0.204,
+     "pregunta": 0.086,
+     "resultado-numero": 0.075,
+     "urgencia-novedad": 0.054,
+     "miedo-riesgo": 0.043,
      "error-confesion": 0.022
     },
     "sources_growing": [
@@ -4538,6 +4545,21 @@
      "hook": "resultado-numero",
      "velocity": 3.77,
      "by": "teacher"
+    },
+    {
+     "title": "Should we put a knowledge graph under our RAG, and what will it cost to keep it true?",
+     "url": "https://x.com/i/status/2111515269638074660",
+     "source": "x",
+     "published_at": "2026-10-17T17:50:44Z",
+     "metrics": {
+      "points": 42,
+      "comments": 15,
+      "views": 2876
+     },
+     "format": "opinion",
+     "hook": "pregunta",
+     "velocity": 13.02,
+     "by": "student-emb"
     },
     {
      "title": "How Oracle Uses Codex to Help Business Users Get Answers",
@@ -4582,21 +4604,6 @@
      "format": "herramienta-60s",
      "hook": "promesa-proceso",
      "velocity": 1.09,
-     "by": "teacher"
-    },
-    {
-     "title": "Show HN: Pay-per-Crawl – make AI crawlers pay per page in USDC, for 10 stacks",
-     "url": "https://forgemesh.io/blog/pay-per-crawl-every-stack",
-     "source": "hn",
-     "published_at": "2026-10-17T18:16:03Z",
-     "metrics": {
-      "points": 5,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "contrarian",
-     "velocity": 0.98,
      "by": "teacher"
     }
    ],
@@ -4781,363 +4788,6 @@
    "rank": 12
   },
   {
-   "slug": "copilotos",
-   "name": "Copilotos y asistentes de trabajo",
-   "stage": "estable",
-   "growth": 0.92,
-   "z": 0.087,
-   "acceleration": -0.189,
-   "volume": 111,
-   "series": [
-    0.356,
-    2.246,
-    1.008,
-    1.638,
-    3.963,
-    3.829,
-    0.898,
-    1.044,
-    2.306,
-    2.791,
-    1.297,
-    2.424,
-    1.571,
-    1.246
-   ],
-   "wiki_series": [
-    40990,
-    32921,
-    32190,
-    48129,
-    63033,
-    58849,
-    51289,
-    51983,
-    36365,
-    29274,
-    41241,
-    46903,
-    57605,
-    56825
-   ],
-   "momentum": 0.078,
-   "exec_fit": 0.279,
-   "p": 0.281,
-   "p_raw": 0.179,
-   "decision": "Descartar",
-   "reason": "Cae 8% frente a sus 11 días previos; encaje con la audiencia 30X 28%; al alza en Wikipedia; formato ganador: Opinión / predicción.",
-   "why": {
-    "format_winner": "opinion",
-    "hook_winner": "pregunta",
-    "format_label": "Opinión / predicción",
-    "hook_label": "Pregunta provocadora",
-    "best_day": "jueves",
-    "author_mix": {
-     "medio": 0.591,
-     "comunidad": 0.314,
-     "academia": 0.057,
-     "empresa": 0.025,
-     "creador": 0.013
-    },
-    "formats": {
-     "noticia-explicada": 0.453,
-     "herramienta-60s": 0.333,
-     "caso-paso-a-paso": 0.069,
-     "post-texto": 0.063,
-     "lista-ranking": 0.044,
-     "opinion": 0.031,
-     "entrevista-clip": 0.006
-    },
-    "hooks": {
-     "urgencia-novedad": 0.428,
-     "promesa-proceso": 0.195,
-     "resultado-numero": 0.094,
-     "pregunta": 0.069,
-     "contrarian": 0.057,
-     "lista-numerada": 0.044,
-     "autoridad": 0.044,
-     "miedo-riesgo": 0.038,
-     "error-confesion": 0.019,
-     "antes-despues": 0.013
-    },
-    "sources_growing": [
-     "wiki"
-    ],
-    "covered_by_30x": 0
-   },
-   "top_signals": [
-    {
-     "title": "Ask HN: CAD for wood working with LLM support?",
-     "url": "https://news.ycombinator.com/item?id=50067325",
-     "source": "hn",
-     "published_at": "2026-10-13T05:54:01Z",
-     "metrics": {
-      "points": 126,
-      "comments": 127,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "pregunta",
-     "velocity": 3.35,
-     "by": "teacher"
-    },
-    {
-     "title": "Language Is a Security Surface for Agent Guards",
-     "url": "https://arxiv.org/abs/2610.22244v1",
-     "source": "arxiv",
-     "published_at": "2026-10-15T17:19:40Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "post-texto",
-     "hook": "pregunta",
-     "velocity": 0.0,
-     "by": "student-emb"
-    },
-    {
-     "title": "I just lost my best paying client to ChatGPT",
-     "url": "https://www.reddit.com/r/ChatGPT/comments/1x6wi8z/i_just_lost_my_best_paying_client_to_chatgpt/",
-     "source": "reddit",
-     "published_at": "2026-10-15T20:21:59Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "error-confesion",
-     "velocity": 0.0,
-     "by": "student-emb"
-    },
-    {
-     "title": "Build more personal sites with Codex",
-     "url": "https://www.youtube.com/watch?v=KJ_7KPKlO_Q",
-     "source": "youtube",
-     "published_at": "2026-10-15T20:48:59Z",
-     "metrics": {
-      "points": 903,
-      "comments": 0,
-      "views": 89206
-     },
-     "format": "herramienta-60s",
-     "hook": "urgencia-novedad",
-     "velocity": 4.89,
-     "by": "teacher"
-    },
-    {
-     "title": "Stop getting walls of text from AI — tell it HOW to format the answer.",
-     "url": "https://www.instagram.com/p/DenK2FXE9oP/",
-     "source": "instagram",
-     "published_at": "2026-10-17T22:21:45Z",
-     "metrics": {
-      "points": 1,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "herramienta-60s",
-     "hook": "promesa-proceso",
-     "velocity": 0.99,
-     "by": "teacher"
-    },
-    {
-     "title": "top ai chatbot apps for android/iOS",
-     "url": "https://news.google.com/rss/articles/CBMikAJBVV95cUxNQzNYX00yenNSUWVWc29PQjU4SFlTUmpLMUJSLUlOZUxMSGZ1bWhTcmJnVDhoZzExWnhWOElERFVtM0tJLUJ0cVFtempGTVBHQldWMWxlaWRHTGdZQ1JuVFQ4X0J5ZlNja3BNb09pVWlVeG9MdnZpTF9ueGhIWjZvX09ua0t2ZTVGbzB5Tzc1MkktUGR1SllVMGhfLXotZEJmdmRXa2s5Q1ZuM3BxZVAwcENzbjE5YThyRG55dEtFVjhWUFA0aXZvemdaTVN0ZWg0U3FpeWpKVXhweV94MXJZc2VtVDJiTEpyb1NxZEhkb1ZGTVJIX1dwZkNvaGw2T0ZUQ1RKWnJzaUEyVVBpSlpxNQ?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-17T09:34:18Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "lista-ranking",
-     "hook": "lista-numerada",
-     "velocity": 0.0,
-     "by": "teacher"
-    }
-   ],
-   "early_label": "Estable",
-   "atipicos": {
-    "n_outliers": 1,
-    "n_piezas": 52,
-    "lift_hook": null,
-    "lift_format": null,
-    "dia": null,
-    "autores": null,
-    "ejemplos": [],
-    "frase": "sin datos suficientes"
-   },
-   "adapt": {
-    "title": "Copilotos de trabajo: qué significa para tu empresa, explicado en 3 minutos",
-    "hook": "Un prompt instala y corre todo tu día. Te explico qué significa eso para tu empresa.",
-    "format": "noticia-explicada",
-    "beats": [
-     "Gancho en pantalla: el texto 'Un prompt instala y corre todo tu día' con un ejemplo de la versión 2 de un asistente personal que organiza agenda, correos y tareas.",
-     "Qué pasó: explicación en lenguaje simple de qué es un copiloto de trabajo y en qué se diferencia de un chat común, sin tecnicismos.",
-     "Qué significa para tu empresa: tres áreas donde un copiloto puede ahorrar tiempo (ventas, operaciones, atención al cliente), con un caso concreto y cifras si la fuente las da.",
-     "Cierre práctico: tres preguntas que todo líder debe hacerse antes de adoptar un asistente de IA en su equipo."
-    ],
-    "cta": "Comenta 'COPILOTO' y te enviamos las 3 preguntas para evaluar un asistente de IA en tu área.",
-    "platform": "LinkedIn",
-    "by": "teacher",
-    "cost_usd": 0.008
-   },
-   "adapt_reel": {
-    "hook": "Un prompt lo instala y corre todo tu día.",
-    "shots": [
-     {
-      "seg": "3-12",
-      "visual": "Andrés Bilbao frente a cámara, con una laptop abierta mostrando una pantalla de asistente de trabajo. Mira a cámara y se inclina un poco hacia adelante.",
-      "texto": "Un asistente que trabaja por ti"
-     },
-     {
-      "seg": "12-24",
-      "visual": "Pantalla dividida: a la izquierda, una persona revisando su correo y agenda a mano; a la derecha, el asistente ordenando los mismos pendientes en segundos.",
-      "texto": "Tú das la orden, él organiza el día"
-     },
-     {
-      "seg": "24-35",
-      "visual": "Andrés a cámara con tres dedos levantados, mostrando cada paso con la mano mientras habla de forma directa.",
-      "texto": "1) Describe la tarea 2) Revisa el borrador 3) Apruébalo"
-     },
-     {
-      "seg": "35-42",
-      "visual": "Plano medio de Andrés señalando hacia abajo, como indicando los comentarios, con fondo de oficina sencilla.",
-      "texto": "Empieza con una sola tarea hoy"
-     }
-    ],
-    "cta": "Comenta ASISTENTE y te mando el paso a paso para empezar esta semana",
-    "duration": "30-45 s",
-    "platform": "Instagram",
-    "by": "teacher",
-    "cost_usd": 0.00839
-   },
-   "guiones": {
-    "reel": {
-     "duration": "45 s",
-     "hook": "¿Tu asistente de IA te responde con un muro de texto que nadie lee?",
-     "beats": [
-      {
-       "texto": "Muro de texto = tiempo perdido",
-       "voz": "Si le pides algo a tu asistente de IA y te regresa párrafos enormes, no es que la herramienta sea mala. Es que no le dijiste cómo quieres la respuesta."
-      },
-      {
-       "texto": "Dile el formato: 'Dame 3 viñetas, máximo 5 líneas'",
-       "voz": "Antes de preguntar, agrega una instrucción corta: cuántos puntos quieres, de qué largo y en qué orden. Por ejemplo, si un equipo de 10 personas pide resúmenes de juntas, con esa sola línea todos reciben lo mismo, listo para leer en un minuto."
-      },
-      {
-       "texto": "Y cuidado con las preguntas de cortesía",
-       "voz": "Lo mismo pasa con los asistentes de voz: a veces terminan con '¿Quieres saber más?' y te obligan a responder algo que no necesitas. Si te molesta, dilo en la instrucción: 'Responde solo lo que pregunté, sin cierre'."
-      },
-      {
-       "texto": "Prueba esto hoy",
-       "voz": "Escribe tu formato favorito una vez, guárdalo y úsalo cada semana. Sigue para más formas prácticas de usar IA en tu negocio."
-      }
-     ],
-     "cta": "Comenta 'FORMATO' y te comparto la lista de instrucciones que usamos para resúmenes y correos.",
-     "verificacion": {
-      "cifras": 1,
-      "verificadas": 1,
-      "quitadas": 0,
-      "ejemplos": []
-     }
-    },
-    "largo": {
-     "duration": "5-8 min",
-     "title": "Tu asistente de IA no es el problema: el problema es cómo le pides las cosas",
-     "hook": "Muchos líderes dicen que la IA 'no sirve'. Casi siempre, el asistente sí sirve; lo que falta es una instrucción clara.",
-     "secciones": [
-      {
-       "titulo": "Qué son los copilotos y asistentes de trabajo",
-       "puntos": [
-        "Son herramientas que te ayudan a redactar, resumir y buscar información dentro de tu trabajo diario.",
-        "No piensan por ti: responden según lo que les pides y cómo lo pides.",
-        "Hoy ya hay apps de chatbot en celulares Android e iPhone, así que el acceso no es el obstáculo."
-       ]
-      },
-      {
-       "titulo": "El error más común: pedir sin formato",
-       "puntos": [
-        "Cuando no defines formato, la IA te entrega un bloque largo de texto.",
-        "Solución simple: indica cantidad de puntos, extensión y tono antes de tu pregunta.",
-        "Ejemplo: 'Resume en 3 viñetas, para un director que tiene 2 minutos'."
-       ]
-      },
-      {
-       "titulo": "Cuando la respuesta suena a conversación sin fin",
-       "puntos": [
-        "Algunos asistentes de voz cierran cada respuesta con preguntas de seguimiento que no aportan.",
-        "Puedes pedir respuestas directas y sin cierre al inicio de la conversación.",
-        "Esto ahorra tiempo sobre todo en reuniones o cuando usas el asistente con prisa."
-       ]
-      },
-      {
-       "titulo": "Cómo crear tus propias instrucciones reutilizables",
-       "puntos": [
-        "Escribe 3 o 4 plantillas para tareas que repites: resumen de junta, correo a cliente, reporte semanal.",
-        "Guárdalas en un documento compartido para que todo el equipo las use igual.",
-        "Revisa cada mes qué salió bien y ajusta."
-       ]
-      },
-      {
-       "titulo": "Cuándo sí conviene algo más avanzado",
-       "puntos": [
-        "Si tu negocio quiere conectar la IA con su propio sitio o sus propios documentos, la pregunta correcta es si ese cambio resuelve un problema real.",
-        "Antes de construir algo, prueba con instrucciones simples durante 2 semanas.",
-        "Si el problema persiste, entonces sí vale la pena invertir en una solución más completa."
-       ]
-      }
-     ],
-     "ejemplo": "Por ejemplo, un equipo de 10 personas de ventas pedía a su asistente 'un resumen de la reunión'. Recibía párrafos de 400 palabras. Al cambiar la instrucción a 'Dame 3 acuerdos y 2 pendientes, máximo 80 palabras', el resumen pasó a ser algo que todos leían en la misma reunión.",
-     "cta": "Descarga la plantilla de instrucciones en la descripción y cuéntanos en comentarios qué tarea te gustaría automatizar primero.",
-     "verificacion": {
-      "cifras": 1,
-      "verificadas": 1,
-      "quitadas": 0,
-      "ejemplos": []
-     }
-    },
-    "linkedin": {
-     "hook": "Tu asistente de IA no te responde mal. Tú le pides mal. Y casi nadie te lo dice.",
-     "slides": [
-      "Muchos directivos prueban un asistente de IA una vez, reciben un texto larguísimo y concluyen que 'no sirve'.",
-      "El problema casi nunca es la herramienta. Es la falta de instrucciones claras sobre formato, extensión y tono.",
-      "Ejemplo: un equipo de 10 personas pedía resúmenes de juntas sin formato. Al agregar 'máximo 3 acuerdos y 2 pendientes', la respuesta se volvió útil en minutos.",
-      "Otro detalle: algunos asistentes de voz terminan cada respuesta con preguntas de seguimiento. Puedes pedir que respondan solo lo que preguntaste.",
-      "Lo que sí funciona: escribe 3 plantillas para tareas que repites y guárdalas para todo el equipo.",
-      "Antes de pensar en soluciones más complejas, prueba durante 2 semanas con instrucciones simples."
-     ],
-     "pregunta": "¿Cuál es la tarea que más tiempo te come hoy y que te gustaría que tu asistente resolviera bien?",
-     "verificacion": {
-      "cifras": 1,
-      "verificadas": 1,
-      "quitadas": 0,
-      "ejemplos": []
-     }
-    },
-    "recomendacion": {
-     "duration": "60-90 s",
-     "postura": "Recomendamos empezar con instrucciones claras en tus asistentes de IA antes de invertir en herramientas más complejas, porque el mayor cambio de productividad hoy viene de pedir mejor, no de comprar más.",
-     "argumentos": [
-      "Muchas frustraciones con la IA vienen de respuestas mal formateadas o demasiado largas, y se corrigen en minutos con una instrucción clara.",
-      "Las plantillas reutilizables hacen que todo el equipo trabaje igual y que los resultados sean predecibles.",
-      "Probar con lo que ya tienes durante 2 semanas te dice si realmente necesitas algo más avanzado, y evita gastar en problemas que no existen."
-     ],
-     "semana": "Esta semana, elige una tarea repetitiva, escribe una instrucción con formato, extensión y tono, úsala 5 veces y anota cuántos minutos ahorraste; luego compártela con tu equipo.",
-     "verificacion": {
-      "cifras": 1,
-      "verificadas": 1,
-      "quitadas": 0,
-      "ejemplos": []
-     }
-    },
-    "by": "teacher",
-    "cost_usd": 0.0186
-   },
-   "rank": 13
-  },
-  {
    "slug": "agentes-ia",
    "name": "Agentes de IA",
    "stage": "bajando",
@@ -5178,11 +4828,11 @@
     2982
    ],
    "momentum": 0.133,
-   "exec_fit": 0.192,
-   "p": 0.237,
-   "p_raw": 0.163,
+   "exec_fit": 0.221,
+   "p": 0.283,
+   "p_raw": 0.177,
    "decision": "Descartar",
-   "reason": "Cae 31% frente a sus 11 días previos; encaje con la audiencia 30X 19%; al alza en Google News, Wikipedia; formato ganador: Lista / ranking.",
+   "reason": "Cae 31% frente a sus 11 días previos; encaje con la audiencia 30X 22%; al alza en Google News, Wikipedia; formato ganador: Lista / ranking.",
    "why": {
     "format_winner": "lista-ranking",
     "hook_winner": "miedo-riesgo",
@@ -5190,34 +4840,34 @@
     "hook_label": "Miedo / riesgo",
     "best_day": "jueves",
     "author_mix": {
-     "comunidad": 0.713,
-     "academia": 0.149,
-     "medio": 0.113,
-     "creador": 0.015,
-     "empresa": 0.01
+     "comunidad": 0.692,
+     "academia": 0.144,
+     "medio": 0.109,
+     "creador": 0.045,
+     "empresa": 0.009
     },
     "formats": {
-     "herramienta-60s": 0.35,
-     "noticia-explicada": 0.31,
-     "opinion": 0.149,
-     "post-texto": 0.086,
-     "caso-paso-a-paso": 0.079,
+     "herramienta-60s": 0.341,
+     "noticia-explicada": 0.321,
+     "opinion": 0.15,
+     "post-texto": 0.085,
+     "caso-paso-a-paso": 0.077,
      "lista-ranking": 0.011,
-     "reel-cara": 0.007,
+     "reel-cara": 0.008,
      "evento-live": 0.003,
      "entrevista-clip": 0.003,
      "carrusel": 0.001
     },
     "hooks": {
-     "promesa-proceso": 0.273,
-     "urgencia-novedad": 0.245,
-     "autoridad": 0.149,
-     "contrarian": 0.117,
-     "pregunta": 0.082,
+     "promesa-proceso": 0.269,
+     "urgencia-novedad": 0.242,
+     "autoridad": 0.146,
+     "contrarian": 0.126,
+     "pregunta": 0.081,
      "resultado-numero": 0.065,
-     "miedo-riesgo": 0.046,
+     "miedo-riesgo": 0.049,
+     "error-confesion": 0.012,
      "lista-numerada": 0.011,
-     "error-confesion": 0.011,
      "antes-despues": 0.001
     },
     "sources_growing": [
@@ -5256,6 +4906,21 @@
      "hook": "autoridad",
      "velocity": 9.99,
      "by": "teacher"
+    },
+    {
+     "title": "Agents already trade with each other. The payment rails are built; escrow works; but no market mechanism exists. This essay explores price discovery mechanism t",
+     "url": "https://x.com/i/status/2111447784318714206",
+     "source": "x",
+     "published_at": "2026-10-17T13:22:35Z",
+     "metrics": {
+      "points": 347,
+      "comments": 42,
+      "views": 32022
+     },
+     "format": "opinion",
+     "hook": "contrarian",
+     "velocity": 43.1,
+     "by": "student-emb"
     },
     {
      "title": "La versión 2 de mi Jarvis OS: un prompt lo instala y corre todo tu día.",
@@ -5301,21 +4966,6 @@
      "hook": "contrarian",
      "velocity": 0.0,
      "by": "student-emb"
-    },
-    {
-     "title": "¿Han cambiado los agentes de IA creados por los propios empleados el discurso de inversión en ServiceNow (NOW)?",
-     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNQzV5TllpTEdGQ3pZMGZyRldPZ3dJdTg1LU1lQ2tPT0ktNVBoMHFRMjNGMzdFLVJBaEFsenBGZGdXVmhRNENQWHR5U096eWxTUEFCVE9uZTlsRVp6LWNOMmhoUTZvbjEza0NCZURsZUQyekpac0dLM3JVWTB0TzZrTmRadVZlQ3UwVjh4M0M1bk9QcVhSUjJOV2pyaHpSY01GVkxVdFNxZGVfZnZZWGtaTmRiUkxCeWJkMjhPQkZ5VGtDYS1jWVNOSdIBzgFBVV95cUxOV1dhMUdpNWFQWWE2aXRQcWJxNU9xdENBby0xTTF2MEoybFplNUFkSUR4VnZaOEFXS0QxQnA5VDA2RDl1VVJjSVoyUkJDb1l2ZHdQbHFCQWQ4Vm1Ba2xsOTRVMHFaSjRPYXlpcTc3NG95NVd4RkUycDFWVkNLMU5nUDVIQlFRN0dCM2gtWko5Ynl4R1J5czdpZkV2MU1seFJDb20xUHl4Mld1dFVENTQ3MklYN2NYczc5ZmVucWN4NU9lWnk4aHhmWXFYUGVjUQ?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-17T20:39:55Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "pregunta",
-     "velocity": 0.0,
-     "by": "teacher"
     }
    ],
    "early_label": "Cayendo",
@@ -5519,6 +5169,363 @@
     "by": "teacher",
     "cost_usd": 0.01285
    },
+   "rank": 13
+  },
+  {
+   "slug": "copilotos",
+   "name": "Copilotos y asistentes de trabajo",
+   "stage": "estable",
+   "growth": 0.92,
+   "z": 0.087,
+   "acceleration": -0.189,
+   "volume": 111,
+   "series": [
+    0.356,
+    2.246,
+    1.008,
+    1.638,
+    3.963,
+    3.829,
+    0.898,
+    1.044,
+    2.306,
+    2.791,
+    1.297,
+    2.424,
+    1.571,
+    1.246
+   ],
+   "wiki_series": [
+    40990,
+    32921,
+    32190,
+    48129,
+    63033,
+    58849,
+    51289,
+    51983,
+    36365,
+    29274,
+    41241,
+    46903,
+    57605,
+    56825
+   ],
+   "momentum": 0.078,
+   "exec_fit": 0.269,
+   "p": 0.275,
+   "p_raw": 0.174,
+   "decision": "Descartar",
+   "reason": "Cae 8% frente a sus 11 días previos; encaje con la audiencia 30X 27%; al alza en Wikipedia; formato ganador: Opinión / predicción.",
+   "why": {
+    "format_winner": "opinion",
+    "hook_winner": "pregunta",
+    "format_label": "Opinión / predicción",
+    "hook_label": "Pregunta provocadora",
+    "best_day": "jueves",
+    "author_mix": {
+     "medio": 0.57,
+     "comunidad": 0.303,
+     "academia": 0.055,
+     "creador": 0.048,
+     "empresa": 0.024
+    },
+    "formats": {
+     "noticia-explicada": 0.448,
+     "herramienta-60s": 0.327,
+     "post-texto": 0.067,
+     "caso-paso-a-paso": 0.067,
+     "opinion": 0.042,
+     "lista-ranking": 0.042,
+     "entrevista-clip": 0.006
+    },
+    "hooks": {
+     "urgencia-novedad": 0.418,
+     "promesa-proceso": 0.2,
+     "resultado-numero": 0.091,
+     "pregunta": 0.067,
+     "contrarian": 0.061,
+     "autoridad": 0.048,
+     "lista-numerada": 0.042,
+     "miedo-riesgo": 0.036,
+     "error-confesion": 0.024,
+     "antes-despues": 0.012
+    },
+    "sources_growing": [
+     "wiki"
+    ],
+    "covered_by_30x": 0
+   },
+   "top_signals": [
+    {
+     "title": "Ask HN: CAD for wood working with LLM support?",
+     "url": "https://news.ycombinator.com/item?id=50067325",
+     "source": "hn",
+     "published_at": "2026-10-13T05:54:01Z",
+     "metrics": {
+      "points": 126,
+      "comments": 127,
+      "views": 0
+     },
+     "format": "herramienta-60s",
+     "hook": "pregunta",
+     "velocity": 3.35,
+     "by": "teacher"
+    },
+    {
+     "title": "Language Is a Security Surface for Agent Guards",
+     "url": "https://arxiv.org/abs/2610.22244v1",
+     "source": "arxiv",
+     "published_at": "2026-10-15T17:19:40Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "post-texto",
+     "hook": "pregunta",
+     "velocity": 0.0,
+     "by": "student-emb"
+    },
+    {
+     "title": "Every harness leverages prompt caching differently. I was skimming through a few to understand what they do, how they do it, and the implications. Here is a qui",
+     "url": "https://x.com/i/status/2111398785012342951",
+     "source": "x",
+     "published_at": "2026-10-17T10:07:52Z",
+     "metrics": {
+      "points": 416,
+      "comments": 58,
+      "views": 21880
+     },
+     "format": "post-texto",
+     "hook": "autoridad",
+     "velocity": 40.16,
+     "by": "student-emb"
+    },
+    {
+     "title": "I just lost my best paying client to ChatGPT",
+     "url": "https://www.reddit.com/r/ChatGPT/comments/1x6wi8z/i_just_lost_my_best_paying_client_to_chatgpt/",
+     "source": "reddit",
+     "published_at": "2026-10-15T20:21:59Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "error-confesion",
+     "velocity": 0.0,
+     "by": "student-emb"
+    },
+    {
+     "title": "Build more personal sites with Codex",
+     "url": "https://www.youtube.com/watch?v=KJ_7KPKlO_Q",
+     "source": "youtube",
+     "published_at": "2026-10-15T20:48:59Z",
+     "metrics": {
+      "points": 903,
+      "comments": 0,
+      "views": 89206
+     },
+     "format": "herramienta-60s",
+     "hook": "urgencia-novedad",
+     "velocity": 4.89,
+     "by": "teacher"
+    },
+    {
+     "title": "Stop getting walls of text from AI — tell it HOW to format the answer.",
+     "url": "https://www.instagram.com/p/DenK2FXE9oP/",
+     "source": "instagram",
+     "published_at": "2026-10-17T22:21:45Z",
+     "metrics": {
+      "points": 1,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "herramienta-60s",
+     "hook": "promesa-proceso",
+     "velocity": 0.99,
+     "by": "teacher"
+    }
+   ],
+   "early_label": "Estable",
+   "atipicos": {
+    "n_outliers": 1,
+    "n_piezas": 52,
+    "lift_hook": null,
+    "lift_format": null,
+    "dia": null,
+    "autores": null,
+    "ejemplos": [],
+    "frase": "sin datos suficientes"
+   },
+   "adapt": {
+    "title": "Copilotos de trabajo: qué significa para tu empresa, explicado en 3 minutos",
+    "hook": "Un prompt instala y corre todo tu día. Te explico qué significa eso para tu empresa.",
+    "format": "noticia-explicada",
+    "beats": [
+     "Gancho en pantalla: el texto 'Un prompt instala y corre todo tu día' con un ejemplo de la versión 2 de un asistente personal que organiza agenda, correos y tareas.",
+     "Qué pasó: explicación en lenguaje simple de qué es un copiloto de trabajo y en qué se diferencia de un chat común, sin tecnicismos.",
+     "Qué significa para tu empresa: tres áreas donde un copiloto puede ahorrar tiempo (ventas, operaciones, atención al cliente), con un caso concreto y cifras si la fuente las da.",
+     "Cierre práctico: tres preguntas que todo líder debe hacerse antes de adoptar un asistente de IA en su equipo."
+    ],
+    "cta": "Comenta 'COPILOTO' y te enviamos las 3 preguntas para evaluar un asistente de IA en tu área.",
+    "platform": "LinkedIn",
+    "by": "teacher",
+    "cost_usd": 0.008
+   },
+   "adapt_reel": {
+    "hook": "Un prompt lo instala y corre todo tu día.",
+    "shots": [
+     {
+      "seg": "3-12",
+      "visual": "Andrés Bilbao frente a cámara, con una laptop abierta mostrando una pantalla de asistente de trabajo. Mira a cámara y se inclina un poco hacia adelante.",
+      "texto": "Un asistente que trabaja por ti"
+     },
+     {
+      "seg": "12-24",
+      "visual": "Pantalla dividida: a la izquierda, una persona revisando su correo y agenda a mano; a la derecha, el asistente ordenando los mismos pendientes en segundos.",
+      "texto": "Tú das la orden, él organiza el día"
+     },
+     {
+      "seg": "24-35",
+      "visual": "Andrés a cámara con tres dedos levantados, mostrando cada paso con la mano mientras habla de forma directa.",
+      "texto": "1) Describe la tarea 2) Revisa el borrador 3) Apruébalo"
+     },
+     {
+      "seg": "35-42",
+      "visual": "Plano medio de Andrés señalando hacia abajo, como indicando los comentarios, con fondo de oficina sencilla.",
+      "texto": "Empieza con una sola tarea hoy"
+     }
+    ],
+    "cta": "Comenta ASISTENTE y te mando el paso a paso para empezar esta semana",
+    "duration": "30-45 s",
+    "platform": "Instagram",
+    "by": "teacher",
+    "cost_usd": 0.00839
+   },
+   "guiones": {
+    "reel": {
+     "duration": "45 s",
+     "hook": "¿Tu asistente de IA te responde con un muro de texto que nadie lee?",
+     "beats": [
+      {
+       "texto": "Muro de texto = tiempo perdido",
+       "voz": "Si le pides algo a tu asistente de IA y te regresa párrafos enormes, no es que la herramienta sea mala. Es que no le dijiste cómo quieres la respuesta."
+      },
+      {
+       "texto": "Dile el formato: 'Dame 3 viñetas, máximo 5 líneas'",
+       "voz": "Antes de preguntar, agrega una instrucción corta: cuántos puntos quieres, de qué largo y en qué orden. Por ejemplo, si un equipo de 10 personas pide resúmenes de juntas, con esa sola línea todos reciben lo mismo, listo para leer en un minuto."
+      },
+      {
+       "texto": "Y cuidado con las preguntas de cortesía",
+       "voz": "Lo mismo pasa con los asistentes de voz: a veces terminan con '¿Quieres saber más?' y te obligan a responder algo que no necesitas. Si te molesta, dilo en la instrucción: 'Responde solo lo que pregunté, sin cierre'."
+      },
+      {
+       "texto": "Prueba esto hoy",
+       "voz": "Escribe tu formato favorito una vez, guárdalo y úsalo cada semana. Sigue para más formas prácticas de usar IA en tu negocio."
+      }
+     ],
+     "cta": "Comenta 'FORMATO' y te comparto la lista de instrucciones que usamos para resúmenes y correos.",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
+    },
+    "largo": {
+     "duration": "5-8 min",
+     "title": "Tu asistente de IA no es el problema: el problema es cómo le pides las cosas",
+     "hook": "Muchos líderes dicen que la IA 'no sirve'. Casi siempre, el asistente sí sirve; lo que falta es una instrucción clara.",
+     "secciones": [
+      {
+       "titulo": "Qué son los copilotos y asistentes de trabajo",
+       "puntos": [
+        "Son herramientas que te ayudan a redactar, resumir y buscar información dentro de tu trabajo diario.",
+        "No piensan por ti: responden según lo que les pides y cómo lo pides.",
+        "Hoy ya hay apps de chatbot en celulares Android e iPhone, así que el acceso no es el obstáculo."
+       ]
+      },
+      {
+       "titulo": "El error más común: pedir sin formato",
+       "puntos": [
+        "Cuando no defines formato, la IA te entrega un bloque largo de texto.",
+        "Solución simple: indica cantidad de puntos, extensión y tono antes de tu pregunta.",
+        "Ejemplo: 'Resume en 3 viñetas, para un director que tiene 2 minutos'."
+       ]
+      },
+      {
+       "titulo": "Cuando la respuesta suena a conversación sin fin",
+       "puntos": [
+        "Algunos asistentes de voz cierran cada respuesta con preguntas de seguimiento que no aportan.",
+        "Puedes pedir respuestas directas y sin cierre al inicio de la conversación.",
+        "Esto ahorra tiempo sobre todo en reuniones o cuando usas el asistente con prisa."
+       ]
+      },
+      {
+       "titulo": "Cómo crear tus propias instrucciones reutilizables",
+       "puntos": [
+        "Escribe 3 o 4 plantillas para tareas que repites: resumen de junta, correo a cliente, reporte semanal.",
+        "Guárdalas en un documento compartido para que todo el equipo las use igual.",
+        "Revisa cada mes qué salió bien y ajusta."
+       ]
+      },
+      {
+       "titulo": "Cuándo sí conviene algo más avanzado",
+       "puntos": [
+        "Si tu negocio quiere conectar la IA con su propio sitio o sus propios documentos, la pregunta correcta es si ese cambio resuelve un problema real.",
+        "Antes de construir algo, prueba con instrucciones simples durante 2 semanas.",
+        "Si el problema persiste, entonces sí vale la pena invertir en una solución más completa."
+       ]
+      }
+     ],
+     "ejemplo": "Por ejemplo, un equipo de 10 personas de ventas pedía a su asistente 'un resumen de la reunión'. Recibía párrafos de 400 palabras. Al cambiar la instrucción a 'Dame 3 acuerdos y 2 pendientes, máximo 80 palabras', el resumen pasó a ser algo que todos leían en la misma reunión.",
+     "cta": "Descarga la plantilla de instrucciones en la descripción y cuéntanos en comentarios qué tarea te gustaría automatizar primero.",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
+    },
+    "linkedin": {
+     "hook": "Tu asistente de IA no te responde mal. Tú le pides mal. Y casi nadie te lo dice.",
+     "slides": [
+      "Muchos directivos prueban un asistente de IA una vez, reciben un texto larguísimo y concluyen que 'no sirve'.",
+      "El problema casi nunca es la herramienta. Es la falta de instrucciones claras sobre formato, extensión y tono.",
+      "Ejemplo: un equipo de 10 personas pedía resúmenes de juntas sin formato. Al agregar 'máximo 3 acuerdos y 2 pendientes', la respuesta se volvió útil en minutos.",
+      "Otro detalle: algunos asistentes de voz terminan cada respuesta con preguntas de seguimiento. Puedes pedir que respondan solo lo que preguntaste.",
+      "Lo que sí funciona: escribe 3 plantillas para tareas que repites y guárdalas para todo el equipo.",
+      "Antes de pensar en soluciones más complejas, prueba durante 2 semanas con instrucciones simples."
+     ],
+     "pregunta": "¿Cuál es la tarea que más tiempo te come hoy y que te gustaría que tu asistente resolviera bien?",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
+    },
+    "recomendacion": {
+     "duration": "60-90 s",
+     "postura": "Recomendamos empezar con instrucciones claras en tus asistentes de IA antes de invertir en herramientas más complejas, porque el mayor cambio de productividad hoy viene de pedir mejor, no de comprar más.",
+     "argumentos": [
+      "Muchas frustraciones con la IA vienen de respuestas mal formateadas o demasiado largas, y se corrigen en minutos con una instrucción clara.",
+      "Las plantillas reutilizables hacen que todo el equipo trabaje igual y que los resultados sean predecibles.",
+      "Probar con lo que ya tienes durante 2 semanas te dice si realmente necesitas algo más avanzado, y evita gastar en problemas que no existen."
+     ],
+     "semana": "Esta semana, elige una tarea repetitiva, escribe una instrucción con formato, extensión y tono, úsala 5 veces y anota cuántos minutos ahorraste; luego compártela con tu equipo.",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
+    },
+    "by": "teacher",
+    "cost_usd": 0.0186
+   },
    "rank": 14
   },
   {
@@ -5562,11 +5569,11 @@
     1114
    ],
    "momentum": 0.008,
-   "exec_fit": 0.26,
-   "p": 0.157,
-   "p_raw": 0.134,
+   "exec_fit": 0.249,
+   "p": 0.156,
+   "p_raw": 0.129,
    "decision": "Descartar",
-   "reason": "Estable frente a sus 11 días previos; encaje con la audiencia 30X 26%; sin fuentes al alza; formato ganador: Entrevista / clip de charla.",
+   "reason": "Estable frente a sus 11 días previos; encaje con la audiencia 30X 25%; sin fuentes al alza; formato ganador: Entrevista / clip de charla.",
    "why": {
     "format_winner": "entrevista-clip",
     "hook_winner": "miedo-riesgo",
@@ -5574,32 +5581,32 @@
     "hook_label": "Miedo / riesgo",
     "best_day": "miércoles",
     "author_mix": {
-     "medio": 0.529,
-     "comunidad": 0.237,
-     "creador": 0.227,
+     "medio": 0.515,
+     "creador": 0.247,
+     "comunidad": 0.231,
      "empresa": 0.007
     },
     "formats": {
-     "noticia-explicada": 0.632,
-     "lista-ranking": 0.151,
+     "noticia-explicada": 0.635,
+     "lista-ranking": 0.147,
      "opinion": 0.11,
-     "post-texto": 0.038,
-     "evento-live": 0.024,
-     "entrevista-clip": 0.021,
+     "post-texto": 0.037,
+     "evento-live": 0.023,
+     "entrevista-clip": 0.02,
+     "herramienta-60s": 0.01,
      "caso-paso-a-paso": 0.01,
-     "herramienta-60s": 0.007,
      "carrusel": 0.003,
      "reel-cara": 0.003
     },
     "hooks": {
-     "resultado-numero": 0.333,
-     "urgencia-novedad": 0.196,
-     "lista-numerada": 0.141,
-     "contrarian": 0.131,
-     "autoridad": 0.065,
-     "pregunta": 0.058,
-     "miedo-riesgo": 0.034,
-     "promesa-proceso": 0.031,
+     "resultado-numero": 0.331,
+     "urgencia-novedad": 0.194,
+     "lista-numerada": 0.137,
+     "contrarian": 0.134,
+     "autoridad": 0.064,
+     "pregunta": 0.057,
+     "miedo-riesgo": 0.04,
+     "promesa-proceso": 0.033,
      "error-confesion": 0.01
     },
     "sources_growing": [],
@@ -5620,6 +5627,21 @@
      "hook": "contrarian",
      "velocity": 4.89,
      "by": "teacher"
+    },
+    {
+     "title": "it makes me sick when ai companies, which have raised millions of dollars across multiple rounds cannot even cross their round-raised worth of arr before anothe",
+     "url": "https://x.com/i/status/2111593252952641897",
+     "source": "x",
+     "published_at": "2026-10-17T23:00:37Z",
+     "metrics": {
+      "points": 23,
+      "comments": 2,
+      "views": 1222
+     },
+     "format": "noticia-explicada",
+     "hook": "contrarian",
+     "velocity": 27.0,
+     "by": "student-emb"
     },
     {
      "title": "Character.AI files for bankruptcy, to sell some assets to Disney for $20 million",
@@ -5679,21 +5701,6 @@
      "format": "entrevista-clip",
      "hook": "resultado-numero",
      "velocity": 0.58,
-     "by": "teacher"
-    },
-    {
-     "title": "Talento o viralidad, a qué le apostamos",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBnNDM2ek92ZXBUV1Y1VWpyRFJ5THI3UFNjSGVySG5xV3ZTc3otRU44U0RRZHFwR0VpWE4tRTM0eEdsUjF2QkpNSVBsZ3hqZVR1QXJobndTbG1wZWUzZHY1ekxkMnFuczVScUE?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-17T21:31:24Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "opinion",
-     "hook": "pregunta",
-     "velocity": 0.0,
      "by": "teacher"
     }
    ],
@@ -5900,13 +5907,769 @@
    "rank": 15
   },
   {
+   "slug": "seguridad-riesgos",
+   "name": "Seguridad y riesgos de IA",
+   "stage": "saturada",
+   "growth": 0.918,
+   "z": -0.352,
+   "acceleration": -0.009,
+   "volume": 344,
+   "series": [
+    8.17,
+    3.515,
+    7.244,
+    9.552,
+    11.295,
+    8.9,
+    14.975,
+    11.124,
+    5.234,
+    10.301,
+    10.338,
+    8.43,
+    8.118,
+    8.535
+   ],
+   "wiki_series": [
+    1256,
+    1010,
+    960,
+    1331,
+    1422,
+    1749,
+    1436,
+    1201,
+    1054,
+    1201,
+    1220,
+    1434,
+    1352,
+    1356
+   ],
+   "momentum": 0.0,
+   "exec_fit": 0.249,
+   "p": 0.143,
+   "p_raw": 0.124,
+   "decision": "Descartar",
+   "reason": "Cae 8% frente a sus 11 días previos; encaje con la audiencia 30X 25%; sin fuentes al alza; formato ganador: Entrevista / clip de charla.",
+   "why": {
+    "format_winner": "entrevista-clip",
+    "hook_winner": "error-confesion",
+    "format_label": "Entrevista / clip de charla",
+    "hook_label": "Error o confesión",
+    "best_day": "jueves",
+    "author_mix": {
+     "comunidad": 0.697,
+     "medio": 0.2,
+     "creador": 0.058,
+     "academia": 0.028,
+     "empresa": 0.016
+    },
+    "formats": {
+     "noticia-explicada": 0.637,
+     "herramienta-60s": 0.138,
+     "opinion": 0.12,
+     "post-texto": 0.032,
+     "caso-paso-a-paso": 0.026,
+     "lista-ranking": 0.018,
+     "reel-cara": 0.012,
+     "entrevista-clip": 0.008,
+     "carrusel": 0.006,
+     "evento-live": 0.002
+    },
+    "hooks": {
+     "miedo-riesgo": 0.663,
+     "autoridad": 0.066,
+     "promesa-proceso": 0.064,
+     "contrarian": 0.06,
+     "urgencia-novedad": 0.054,
+     "pregunta": 0.038,
+     "resultado-numero": 0.024,
+     "error-confesion": 0.02,
+     "lista-numerada": 0.01
+    },
+    "sources_growing": [],
+    "covered_by_30x": 0
+   },
+   "top_signals": [
+    {
+     "title": "Claude reveals ECDSA curve origins",
+     "url": "https://www.anthropic.com/research/ecdsa-curve-origins",
+     "source": "hn",
+     "published_at": "2026-10-16T18:55:59Z",
+     "metrics": {
+      "points": 1018,
+      "comments": 373,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "autoridad",
+     "velocity": 62.02,
+     "by": "teacher"
+    },
+    {
+     "title": "Undeniable fact about AI safety: *existing* models, if they had no guardrails, are able to and have 1) replicated en masse onto remote computers, 2) hid what th",
+     "url": "https://x.com/i/status/2111598150779625482",
+     "source": "x",
+     "published_at": "2026-10-17T23:20:05Z",
+     "metrics": {
+      "points": 25,
+      "comments": 7,
+      "views": 3047
+     },
+     "format": "noticia-explicada",
+     "hook": "miedo-riesgo",
+     "velocity": 39.0,
+     "by": "student-emb"
+    },
+    {
+     "title": "OmniVerifier-C1: Decomposed Graded Verifier for Rule-Governed Generative World Modeling",
+     "url": "https://arxiv.org/abs/2610.22355v1",
+     "source": "arxiv",
+     "published_at": "2026-10-15T17:58:04Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "autoridad",
+     "velocity": 0.0,
+     "by": "student-emb"
+    },
+    {
+     "title": "Using Gemini 4 Argon to protect against Cyber attackers",
+     "url": "https://www.youtube.com/watch?v=ftkic7Tdpcg",
+     "source": "youtube",
+     "published_at": "2026-10-13T16:38:14Z",
+     "metrics": {
+      "points": 311,
+      "comments": 0,
+      "views": 192362
+     },
+     "format": "caso-paso-a-paso",
+     "hook": "resultado-numero",
+     "velocity": 2.79,
+     "by": "teacher"
+    },
+    {
+     "title": "Quantos destes 8 itens de segurança funcionam na sua empresa?",
+     "url": "https://www.instagram.com/p/DenPQqrm64O/",
+     "source": "instagram",
+     "published_at": "2026-10-17T23:00:15Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "carrusel",
+     "hook": "lista-numerada",
+     "velocity": 0.0,
+     "by": "teacher"
+    },
+    {
+     "title": "Researchers discovered a Chinese swarm: \"This is the first time researchers have ever made contact with a rogue agent fleet in the wild.\" The agents escaped from Tencent and claim to be Claudes.",
+     "url": "https://www.reddit.com/r/OpenAI/comments/1x6xkya/researchers_discovered_a_chinese_swarm_this_is/",
+     "source": "reddit",
+     "published_at": "2026-10-15T21:04:35Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "miedo-riesgo",
+     "velocity": 0.0,
+     "by": "student-emb"
+    }
+   ],
+   "early_label": "Pico/saturado",
+   "atipicos": {
+    "n_outliers": 34,
+    "n_piezas": 354,
+    "lift_hook": {
+     "hook": "error-confesion",
+     "x": 9.4
+    },
+    "lift_format": {
+     "format": "noticia-explicada",
+     "x": 1.5
+    },
+    "dia": "martes",
+    "autores": {
+     "tipo": "comunidad",
+     "share": 0.76
+    },
+    "ejemplos": [
+     {
+      "title": "#Loret. Durante años, científicos y expertos han advertido que la inteligencia artificial podría generar riesgos catastróficos. #Latinus #In",
+      "url": "https://www.tiktok.com/@_/video/7685623070438083857",
+      "source": "tiktok",
+      "ratio": 1044.7
+     },
+     {
+      "title": "#Loret. Anthropic advierte que la inteligencia artificial podría replicarse sola en dispositivos conectados a internet.",
+      "url": "https://www.tiktok.com/@_/video/7696508582057135367",
+      "source": "tiktok",
+      "ratio": 444.5
+     }
+    ],
+    "frase": "Las piezas que más rinden usan el gancho «Error o confesión» 9,4x más que el resto y el formato noticia explicada (qué significa para tu empresa) 1,5x."
+   },
+   "adapt": {
+    "title": "Lo que tu equipo le cuenta a la IA: cómo revisar un proceso paso a paso sin exponer datos",
+    "hook": "Tu chatbot no es tu diario: por qué lo que le cuentas a la IA nunca es del todo privado",
+    "format": "caso-paso-a-paso",
+    "beats": [
+     "Mostrar un proceso real de una empresa (por ejemplo, atención a clientes o reportes internos) con los datos que el equipo suele pegar en el chatbot, marcando en pantalla cuáles son sensibles.",
+     "Paso a paso: separar qué información puede usarse tal cual, qué debe anonimizarse (nombres, montos, clientes) y qué no debe salir de la empresa, con una regla simple que el ejecutivo pueda copiar.",
+     "Mostrar el mismo proceso ya protegido: cómo se le pide a la IA el resultado en un formato concreto (lista, tabla, resumen de una página) y el tiempo que se ahorra, con una cifra medida en el caso.",
+     "Cierre con una lista de verificación de 3 preguntas que todo líder puede aplicar esta semana antes de usar IA con información de su empresa."
+    ],
+    "cta": "Comenta 'PROCESO' y te enviamos la plantilla de revisión de datos para aplicarla en tu equipo esta semana.",
+    "platform": "YouTube",
+    "by": "teacher",
+    "cost_usd": 0.00717
+   },
+   "adapt_reel": {
+    "hook": "Tu IA hace todo lo que le pides. Ese es el problema.",
+    "shots": [
+     {
+      "seg": "3-12",
+      "visual": "Primer plano de Andrés Bilbao sentado frente a cámara, en un clip de entrevista, con tono directo. Corte rápido al hablar de la frase del gancho.",
+      "texto": "Tu IA hace TODO lo que le pides"
+     },
+     {
+      "seg": "12-24",
+      "visual": "Andrés explica en lenguaje simple qué significa: si nadie pone límites, la herramienta puede obedecer algo que no conviene a la empresa. Cortes intercalados con b-roll de una oficina y una pantalla co",
+      "texto": "Sin límites, la IA obedece hasta lo que no debe"
+     },
+     {
+      "seg": "24-36",
+      "visual": "Andrés mencionando que OpenAI reportó cuatro incidentes más de IA fuera de control. Gráfico simple en pantalla con el número 4 y un ícono de alerta.",
+      "texto": "OpenAI reportó 4 incidentes más de IA fuera de control"
+     },
+     {
+      "seg": "36-45",
+      "visual": "Andrés en plano medio, mirando a cámara, con gesto de cierre y una frase práctica para el equipo directivo.",
+      "texto": "Revisa qué datos y permisos das a tu IA hoy"
+     }
+    ],
+    "cta": "Comenta RIESGO y te mando la guía corta para revisar los permisos de tu IA",
+    "duration": "30-45 s",
+    "platform": "Instagram",
+    "by": "teacher",
+    "cost_usd": 0.00815
+   },
+   "guiones": {
+    "reel": {
+     "duration": "45 s",
+     "hook": "Anthropic dijo que su IA podría replicarse sola en dispositivos conectados a internet",
+     "beats": [
+      {
+       "texto": "El riesgo real",
+       "voz": "Anthropic advirtió que modelos de IA podrían copiarse solos en dispositivos conectados a internet"
+      },
+      {
+       "texto": "No es ciencia ficción",
+       "voz": "Esto ya preocupa a empresas de seguridad como Reach Security, que levantó más de 50 millones de dólares para automatizar defensas"
+      },
+      {
+       "texto": "Qué significa para tu empresa",
+       "voz": "Si usas IA sin control de accesos ni monitoreo, estás expuesto a que se use en tu contra, no solo a favor"
+      },
+      {
+       "texto": "La pregunta que debes hacerte",
+       "voz": "¿Sabes qué datos tiene acceso tu IA y quién puede usarla hoy en tu empresa?"
+      }
+     ],
+     "cta": "Síguenos para la serie completa sobre seguridad en IA para empresas",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
+    },
+    "largo": {
+     "duration": "5-8 min",
+     "title": "La IA ya es un riesgo de seguridad: lo que todo ejecutivo debe saber",
+     "hook": "Anthropic advirtió que su propia IA podría replicarse sola. Si una empresa que la crea lo dice, tú deberías preocuparte más",
+     "secciones": [
+      {
+       "titulo": "El riesgo que nadie te está contando",
+       "puntos": [
+        "Anthropic alertó sobre auto-replicación de modelos en dispositivos conectados",
+        "No es teoría: ya hay startups que facturan por defender empresas de esto",
+        "El error típico: tratar la IA como un software más, sin controles"
+       ]
+      },
+      {
+       "titulo": "Por qué esto te afecta aunque no seas tech",
+       "puntos": [
+        "Si tu equipo usa ChatGPT o Claude sin reglas, ya hay un riesgo activo",
+        "LLMs pueden ser 'armados' por actores maliciosos para ataques dirigidos",
+        "Startups en India y otros mercados emergentes ya están siendo blanco de esto"
+       ]
+      },
+      {
+       "titulo": "Los 8 puntos de seguridad que toda empresa debería revisar",
+       "puntos": [
+        "Control de acceso a modelos de IA",
+        "Monitoreo de qué datos entran y salen",
+        "Políticas claras de uso para empleados",
+        "Revisión periódica de proveedores de IA"
+       ]
+      },
+      {
+       "titulo": "El dinero habla: la seguridad en IA ya es un negocio serio",
+       "puntos": [
+        "Reach Security captó más de 50 millones de dólares para automatizar defensas empresariales",
+        "Esto confirma que el riesgo es real y las grandes empresas ya están invirtiendo en protegerse"
+       ]
+      },
+      {
+       "titulo": "Qué hacer esta semana en tu empresa",
+       "puntos": [
+        "Audita qué herramientas de IA usa tu equipo",
+        "Define quién tiene acceso y a qué información",
+        "Pregunta a tu proveedor de IA qué medidas de seguridad tiene"
+       ]
+      }
+     ],
+     "ejemplo": "Por ejemplo, un equipo de 10 personas que usa IA para atención al cliente sin revisar permisos, expone datos de clientes sin saberlo",
+     "cta": "Suscríbete para la serie completa de seguridad en IA para líderes",
+     "verificacion": {
+      "cifras": 2,
+      "verificadas": 2,
+      "quitadas": 0,
+      "ejemplos": []
+     }
+    },
+    "linkedin": {
+     "hook": "Anthropic dijo que su IA podría replicarse sola en dispositivos conectados a internet. Léelo dos veces.",
+     "slides": [
+      "La empresa que crea la IA más avanzada del mundo está advirtiendo sobre sus propios riesgos",
+      "Reach Security levantó más de 50 millones de dólares para automatizar defensas empresariales contra IA",
+      "En India ya se habla de la 'weaponización' de modelos de lenguaje contra startups",
+      "Si tu empresa usa IA sin control de accesos, ya tienes un riesgo activo, aunque no lo veas",
+      "La seguridad en IA dejó de ser un tema de 'después'. Ya es un tema de ahora",
+      "Pregúntate: ¿quién en tu empresa puede acceder a tu IA y qué datos puede ver?"
+     ],
+     "pregunta": "¿Tu empresa ya tiene reglas claras de seguridad para el uso de IA, o todavía no es prioridad?",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 1,
+      "ejemplos": []
+     }
+    },
+    "recomendacion": {
+     "duration": "60-90 s",
+     "postura": "Recomendamos que toda empresa que use IA haga una auditoría de seguridad esta semana, porque el riesgo ya no es hipotético",
+     "argumentos": [
+      "Anthropic, el creador de uno de los modelos más avanzados, ya advirtió sobre riesgos de auto-replicación",
+      "Startups de seguridad como Reach Security ya captan millones de dólares porque las empresas están pagando por protegerse",
+      "En mercados como India ya se reporta el uso malicioso de modelos de lenguaje contra negocios"
+     ],
+     "semana": "Haz un inventario simple: qué herramientas de IA usa tu equipo, quién tiene acceso y qué datos pueden ver o mover",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
+    },
+    "by": "teacher",
+    "cost_usd": 0.01207
+   },
+   "rank": 16
+  },
+  {
+   "slug": "modelos-nuevos",
+   "name": "Modelos y lanzamientos",
+   "stage": "saturada",
+   "growth": 0.949,
+   "z": -0.184,
+   "acceleration": 0.053,
+   "volume": 286,
+   "series": [
+    10.53,
+    5.741,
+    11.966,
+    13.496,
+    8.822,
+    9.38,
+    4.188,
+    3.841,
+    5.147,
+    10.096,
+    7.449,
+    8.568,
+    7.049,
+    7.778
+   ],
+   "wiki_series": [
+    4900,
+    4056,
+    3906,
+    5034,
+    5357,
+    7571,
+    5990,
+    5001,
+    4151,
+    4167,
+    5069,
+    5722,
+    5496,
+    5546
+   ],
+   "momentum": 0.067,
+   "exec_fit": 0.154,
+   "p": 0.108,
+   "p_raw": 0.111,
+   "decision": "Descartar",
+   "reason": "Cae 5% frente a sus 11 días previos; encaje con la audiencia 30X 15%; al alza en Wikipedia; formato ganador: Entrevista / clip de charla.",
+   "why": {
+    "format_winner": "entrevista-clip",
+    "hook_winner": "miedo-riesgo",
+    "format_label": "Entrevista / clip de charla",
+    "hook_label": "Miedo / riesgo",
+    "best_day": "martes",
+    "author_mix": {
+     "comunidad": 0.736,
+     "academia": 0.12,
+     "creador": 0.071,
+     "medio": 0.058,
+     "empresa": 0.016
+    },
+    "formats": {
+     "noticia-explicada": 0.665,
+     "opinion": 0.115,
+     "herramienta-60s": 0.093,
+     "post-texto": 0.047,
+     "lista-ranking": 0.038,
+     "caso-paso-a-paso": 0.027,
+     "reel-cara": 0.009,
+     "entrevista-clip": 0.004,
+     "evento-live": 0.002
+    },
+    "hooks": {
+     "urgencia-novedad": 0.308,
+     "autoridad": 0.191,
+     "resultado-numero": 0.173,
+     "contrarian": 0.14,
+     "pregunta": 0.12,
+     "lista-numerada": 0.022,
+     "miedo-riesgo": 0.022,
+     "promesa-proceso": 0.018,
+     "error-confesion": 0.007
+    },
+    "sources_growing": [
+     "wiki"
+    ],
+    "covered_by_30x": 0
+   },
+   "top_signals": [
+    {
+     "title": "LIBERO-PeRM: Benchmarking Personalized Robotic Manipulation",
+     "url": "https://arxiv.org/abs/2610.22372v1",
+     "source": "arxiv",
+     "published_at": "2026-10-15T17:59:59Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "autoridad",
+     "velocity": 0.0,
+     "by": "student-emb"
+    },
+    {
+     "title": "DeepSeek-v4.1-Flash-1017",
+     "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+     "source": "hn",
+     "published_at": "2026-10-17T08:21:25Z",
+     "metrics": {
+      "points": 646,
+      "comments": 547,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "urgencia-novedad",
+     "velocity": 115.85,
+     "by": "teacher"
+    },
+    {
+     "title": "If I was head of product for Grok Bot, these are the next 5 things I’d build.",
+     "url": "https://x.com/i/status/2111527161869828239",
+     "source": "x",
+     "published_at": "2026-10-17T18:38:00Z",
+     "metrics": {
+      "points": 57,
+      "comments": 34,
+      "views": 7783
+     },
+     "format": "lista-ranking",
+     "hook": "lista-numerada",
+     "velocity": 26.35,
+     "by": "student-emb"
+    },
+    {
+     "title": "🤖 Meta presentó sus modelos de IA más capaces hasta ahora para ejecutar tareas complejas.",
+     "url": "https://www.instagram.com/p/DenFAAeFMCu/",
+     "source": "instagram",
+     "published_at": "2026-10-17T21:30:39Z",
+     "metrics": {
+      "points": 3,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "urgencia-novedad",
+     "velocity": 1.61,
+     "by": "teacher"
+    },
+    {
+     "title": "DeepSeek V4.1 Flash (1017) Now Leads Open-Weight Models",
+     "url": "https://www.reddit.com/r/LocalLLaMA/comments/1x8bb6b/deepseek_v41_flash_1017_now_leads_openweight/",
+     "source": "reddit",
+     "published_at": "2026-10-17T14:15:01Z",
+     "metrics": {
+      "points": 0,
+      "comments": 0,
+      "views": 0
+     },
+     "format": "noticia-explicada",
+     "hook": "urgencia-novedad",
+     "velocity": 0.0,
+     "by": "student-emb"
+    },
+    {
+     "title": "AI News: 6 New Models & A Nano Banana Killer",
+     "url": "https://www.youtube.com/watch?v=KGcuuhqmPhI",
+     "source": "youtube",
+     "published_at": "2026-10-16T16:20:28Z",
+     "metrics": {
+      "points": 2330,
+      "comments": 0,
+      "views": 124086
+     },
+     "format": "lista-ranking",
+     "hook": "lista-numerada",
+     "velocity": 30.67,
+     "by": "teacher"
+    }
+   ],
+   "early_label": "Pico/saturado",
+   "atipicos": {
+    "n_outliers": 35,
+    "n_piezas": 330,
+    "lift_hook": {
+     "hook": "autoridad",
+     "x": 1.6
+    },
+    "lift_format": null,
+    "dia": "martes",
+    "autores": {
+     "tipo": "comunidad",
+     "share": 0.91
+    },
+    "ejemplos": [
+     {
+      "title": "Gemini 4 Argon",
+      "url": "https://deepmind.google/models/gemini/",
+      "source": "hn",
+      "ratio": 146.4
+     },
+     {
+      "title": "Sharing AI progress in mathematics",
+      "url": "https://openai.com/index/sharing-ai-progress-in-mathematics/",
+      "source": "hn",
+      "ratio": 136.2
+     }
+    ],
+    "frase": "Las piezas que más rinden usan el gancho «Autoridad / nombre propio» 1,6x más que el resto."
+   },
+   "adapt": {
+    "title": "6 modelos nuevos de IA: cuál le sirve a tu empresa y cuál puedes ignorar",
+    "hook": "6 modelos nuevos de IA en pocos días. ¿Cuál le sirve a tu empresa?",
+    "format": "lista-ranking",
+    "beats": [
+     "Pantalla con el titular de 6 modelos nuevos de IA y un contador que los numera uno por uno, sin jerga técnica.",
+     "Para cada modelo, una sola línea en lenguaje de negocio: qué hace, para qué área sirve y qué problema resuelve, con un ejemplo concreto de un proceso comercial o administrativo.",
+     "Ranking final de 3 criterios sencillos para decidir: costo, facilidad de uso y riesgo de datos. Se muestra cómo aplicarlos en 2 minutos.",
+     "Cierre: el ejecutivo elige un solo modelo para probar esta semana en una tarea real del equipo, y se le invita a comentar la palabra que quiere ver en el próximo ranking."
+    ],
+    "cta": "Comenta una palabra (por ejemplo, 'ranking') y te enviamos el link del análisis completo con la tabla de los 6 modelos.",
+    "platform": "LinkedIn",
+    "by": "teacher",
+    "cost_usd": 0.00795
+   },
+   "adapt_reel": {
+    "hook": "6 modelos nuevos de IA y ni uno es para todos. Te digo cuál usar.",
+    "shots": [
+     {
+      "seg": "0-3",
+      "visual": "Primer plano del creador frente a la cámara, gesto directo, fondo limpio con una pantalla desenfocada de fondo.",
+      "texto": "6 modelos nuevos de IA"
+     },
+     {
+      "seg": "3-12",
+      "visual": "Lista numerada en pantalla completa con los nombres: DeepSeek, Gemini 4 y Claude. El creador señala cada uno con la mano.",
+      "texto": "1. DeepSeek  2. Gemini 4  3. Claude"
+     },
+     {
+      "seg": "12-25",
+      "visual": "Creador compara los tres en una tarjeta dividida: para qué sirve cada uno en un negocio (redactar correos, resumir reuniones, buscar información). Corte rápido entre cada caso.",
+      "texto": "Elige según la tarea, no según la moda"
+     },
+     {
+      "seg": "25-38",
+      "visual": "Creador de regreso a cámara, da una recomendación práctica para un líder que no es programador: empieza con una sola herramienta y una tarea concreta por una semana.",
+      "texto": "Empieza con 1 herramienta y 1 tarea"
+     }
+    ],
+    "cta": "Comenta MODELOS y te mando la lista completa con el paso a paso para elegir el tuyo",
+    "duration": "30-45 s",
+    "platform": "Instagram",
+    "by": "teacher",
+    "cost_usd": 0.00775
+   },
+   "guiones": {
+    "reel": {
+     "duration": "45 s",
+     "hook": "Esta semana salieron 6 modelos de IA nuevos y casi nadie en tu empresa se dio cuenta",
+     "beats": [
+      {
+       "texto": "Meta lanzó sus modelos más capaces hasta ahora",
+       "voz": "Meta presentó modelos que pueden ejecutar tareas complejas, no solo responder preguntas"
+      },
+      {
+       "texto": "DeepSeek también actualizó su modelo Flash",
+       "voz": "Y DeepSeek sacó una versión más rápida y más barata que compite directo con los gigantes"
+      },
+      {
+       "texto": "¿Y tu equipo sigue usando el mismo de hace 6 meses?",
+       "voz": "El riesgo no es elegir mal un modelo, es no revisar nunca si el que usas sigue siendo el mejor"
+      },
+      {
+       "texto": "Compara antes de que te comparen",
+       "voz": "Por ejemplo, un equipo de 10 personas puede perder horas cada semana usando un modelo viejo cuando ya existe uno más rápido y barato"
+      }
+     ],
+     "cta": "Guarda este video y compártelo con quien decide qué IA usa tu empresa",
+     "verificacion": {
+      "cifras": 2,
+      "verificadas": 2,
+      "quitadas": 0,
+      "ejemplos": []
+     }
+    },
+    "largo": {
+     "duration": "5-8 min",
+     "title": "6 modelos de IA nuevos: cuál le conviene a tu empresa (y cuál no)",
+     "hook": "Si tu empresa sigue usando el mismo modelo de IA de hace meses, probablemente estás pagando de más o perdiendo tiempo",
+     "secciones": [
+      {
+       "titulo": "Qué pasó esta semana",
+       "puntos": [
+        "Meta lanzó sus modelos más capaces hasta ahora para tareas complejas",
+        "DeepSeek actualizó su modelo Flash con mejor velocidad y costo",
+        "Salieron en total 6 modelos nuevos en pocos días"
+       ]
+      },
+      {
+       "titulo": "Por qué esto le importa a un ejecutivo, no solo a un programador",
+       "puntos": [
+        "Cada modelo nuevo puede significar menos costo por el mismo trabajo",
+        "Algunos son mejores para tareas largas y complejas, no solo para chatear",
+        "Elegir el modelo correcto es decisión de negocio, no solo técnica"
+       ]
+      },
+      {
+       "titulo": "El error más común",
+       "puntos": [
+        "Las empresas eligen un modelo una vez y nunca más lo revisan",
+        "Se quedan pagando de más por costumbre, no por necesidad",
+        "El miedo a 'romper algo' frena la actualización"
+       ]
+      },
+      {
+       "titulo": "Cómo comparar sin ser programador",
+       "puntos": [
+        "Usa el mismo prompt en ChatGPT, Gemini, Claude y el nuevo modelo",
+        "Compara tiempo de respuesta y calidad del resultado final",
+        "Pide a tu equipo técnico un reporte simple cada trimestre"
+       ]
+      },
+      {
+       "titulo": "Caso concreto",
+       "puntos": [
+        "Un equipo de 10 personas que automatiza reportes puede pasar de un modelo lento a uno tipo Flash y recortar el tiempo de espera por tarea a la mitad",
+        "Eso no cambia la calidad del resultado, pero sí la velocidad del equipo"
+       ]
+      }
+     ],
+     "ejemplo": "Un equipo de 10 personas que usa IA para generar reportes internos prueba el mismo prompt en el modelo viejo y en el nuevo Flash de DeepSeek, y nota que el nuevo responde más rápido sin perder calidad",
+     "cta": "Si quieres saber qué modelo le conviene a tu equipo, suscríbete, cada semana reviso esto por ti",
+     "verificacion": {
+      "cifras": 2,
+      "verificadas": 2,
+      "quitadas": 0,
+      "ejemplos": []
+     }
+    },
+    "linkedin": {
+     "hook": "Esta semana lanzaron 6 modelos de IA nuevos. Tu empresa probablemente sigue usando el de hace 6 meses.",
+     "slides": [
+      "Meta presentó sus modelos más capaces hasta ahora, pensados para tareas complejas, no solo respuestas simples",
+      "DeepSeek actualizó su modelo Flash: más rápido, más barato",
+      "En total, 6 modelos nuevos salieron en pocos días",
+      "El problema no es la tecnología, es que las empresas eligen un modelo una vez y nunca lo vuelven a revisar",
+      "Eso significa pagar de más por costumbre, no por necesidad",
+      "Por ejemplo, un equipo de 10 personas que usa IA para reportes puede recortar a la mitad el tiempo de espera solo cambiando de modelo",
+      "No necesitas ser programador para comparar: el mismo prompt, distintos modelos, y mira la diferencia"
+     ],
+     "pregunta": "¿Cuándo fue la última vez que tu empresa revisó si sigue usando el mejor modelo de IA disponible?",
+     "verificacion": {
+      "cifras": 2,
+      "verificadas": 2,
+      "quitadas": 0,
+      "ejemplos": []
+     }
+    },
+    "recomendacion": {
+     "duration": "60-90 s",
+     "postura": "Recomendamos revisar cada trimestre qué modelo de IA usa tu equipo, porque el panorama cambia cada pocas semanas y quedarte con el mismo modelo por costumbre te cuesta tiempo y dinero",
+     "argumentos": [
+      "Meta y DeepSeek lanzaron modelos nuevos esta misma semana, más capaces y algunos más baratos",
+      "El riesgo no es cambiar de modelo, es no revisar nunca si el que usas sigue siendo el adecuado",
+      "No se necesita ser programador para comparar: el mismo prompt en distintas herramientas te muestra la diferencia"
+     ],
+     "semana": "Esta semana, pide a tu equipo que corra la misma tarea en dos o tres modelos distintos (el que ya usan y uno nuevo) y comparen tiempo y calidad del resultado",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
+    },
+    "by": "teacher",
+    "cost_usd": 0.01248
+   },
+   "rank": 17
+  },
+  {
    "slug": "infra-costos",
    "name": "Infraestructura y costos (chips, nube, tokens)",
    "stage": "saturada",
-   "growth": 0.811,
-   "z": -0.507,
-   "acceleration": -0.281,
-   "volume": 304,
+   "growth": 0.808,
+   "z": -0.517,
+   "acceleration": -0.284,
+   "volume": 303,
    "series": [
     3.805,
     7.157,
@@ -5919,7 +6682,7 @@
     7.965,
     5.573,
     6.846,
-    6.558,
+    6.504,
     5.084,
     3.519
    ],
@@ -5940,44 +6703,44 @@
     6892
    ],
    "momentum": 0.067,
-   "exec_fit": 0.179,
-   "p": 0.127,
-   "p_raw": 0.123,
+   "exec_fit": 0.148,
+   "p": 0.098,
+   "p_raw": 0.107,
    "decision": "Descartar",
-   "reason": "Cae 19% frente a sus 11 días previos; encaje con la audiencia 30X 18%; al alza en Wikipedia; formato ganador: Entrevista / clip de charla.",
+   "reason": "Cae 19% frente a sus 11 días previos; encaje con la audiencia 30X 15%; al alza en Wikipedia; formato ganador: Entrevista / clip de charla.",
    "why": {
     "format_winner": "entrevista-clip",
     "hook_winner": "miedo-riesgo",
     "format_label": "Entrevista / clip de charla",
     "hook_label": "Miedo / riesgo",
-    "best_day": "jueves",
+    "best_day": "miércoles",
     "author_mix": {
-     "comunidad": 0.562,
-     "medio": 0.37,
-     "academia": 0.056,
-     "creador": 0.007,
+     "comunidad": 0.537,
+     "medio": 0.354,
+     "creador": 0.053,
+     "academia": 0.051,
      "empresa": 0.005
     },
     "formats": {
-     "noticia-explicada": 0.591,
-     "herramienta-60s": 0.186,
-     "opinion": 0.073,
-     "post-texto": 0.068,
+     "noticia-explicada": 0.602,
+     "herramienta-60s": 0.178,
+     "opinion": 0.074,
+     "post-texto": 0.065,
      "caso-paso-a-paso": 0.044,
-     "lista-ranking": 0.029,
+     "lista-ranking": 0.028,
      "entrevista-clip": 0.005,
      "carrusel": 0.002,
      "evento-live": 0.002
     },
     "hooks": {
-     "urgencia-novedad": 0.274,
-     "resultado-numero": 0.274,
+     "resultado-numero": 0.28,
+     "urgencia-novedad": 0.269,
      "autoridad": 0.148,
-     "promesa-proceso": 0.114,
-     "contrarian": 0.077,
-     "pregunta": 0.046,
+     "promesa-proceso": 0.109,
+     "contrarian": 0.083,
+     "pregunta": 0.044,
      "miedo-riesgo": 0.039,
-     "lista-numerada": 0.022,
+     "lista-numerada": 0.021,
      "error-confesion": 0.007
     },
     "sources_growing": [
@@ -5999,6 +6762,21 @@
      "format": "noticia-explicada",
      "hook": "autoridad",
      "velocity": 0.0,
+     "by": "student-emb"
+    },
+    {
+     "title": "This machine is generating around 50B tokens a month for me, either in compute hours (quantising/etc.) or in DS/GLM inference.",
+     "url": "https://x.com/i/status/2111587388371656980",
+     "source": "x",
+     "published_at": "2026-10-17T22:37:19Z",
+     "metrics": {
+      "points": 328,
+      "comments": 35,
+      "views": 16376
+     },
+     "format": "caso-paso-a-paso",
+     "hook": "resultado-numero",
+     "velocity": 398.0,
      "by": "student-emb"
     },
     {
@@ -6059,21 +6837,6 @@
      "format": "evento-live",
      "hook": "promesa-proceso",
      "velocity": 2.02,
-     "by": "teacher"
-    },
-    {
-     "title": "Banks are now trying to offload the AI data center debt they just underwrote",
-     "url": "https://startupfortune.com/banks-are-now-trying-to-offload-the-ai-data-center-debt-they-just-underwrote/",
-     "source": "hn",
-     "published_at": "2026-10-14T18:32:52Z",
-     "metrics": {
-      "points": 384,
-      "comments": 277,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "miedo-riesgo",
-     "velocity": 12.21,
      "by": "teacher"
     }
    ],
@@ -6272,7 +7035,7 @@
     "by": "teacher",
     "cost_usd": 0.01264
    },
-   "rank": 16
+   "rank": 18
   },
   {
    "slug": "vibe-coding",
@@ -6280,8 +7043,8 @@
    "stage": "bajando",
    "growth": 0.708,
    "z": -0.904,
-   "acceleration": -0.345,
-   "volume": 307,
+   "acceleration": -0.343,
+   "volume": 306,
    "series": [
     9.471,
     14.153,
@@ -6293,7 +7056,7 @@
     9.552,
     13.088,
     8.98,
-    6.954,
+    6.891,
     5.852,
     6.81,
     6.651
@@ -6315,30 +7078,30 @@
     3500
    ],
    "momentum": 0.067,
-   "exec_fit": 0.173,
-   "p": 0.118,
-   "p_raw": 0.12,
+   "exec_fit": 0.119,
+   "p": 0.061,
+   "p_raw": 0.093,
    "decision": "Descartar",
-   "reason": "Cae 29% frente a sus 11 días previos; encaje con la audiencia 30X 17%; al alza en Wikipedia; formato ganador: Reel/short con cara hablando a cámara.",
+   "reason": "Cae 29% frente a sus 11 días previos; encaje con la audiencia 30X 12%; al alza en Wikipedia; formato ganador: Reel/short con cara hablando a cámara.",
    "why": {
     "format_winner": "reel-cara",
     "hook_winner": "pregunta",
     "format_label": "Reel/short con cara hablando a cámara",
     "hook_label": "Pregunta provocadora",
-    "best_day": "martes",
+    "best_day": "viernes",
     "author_mix": {
-     "comunidad": 0.781,
-     "medio": 0.177,
-     "academia": 0.022,
-     "empresa": 0.016,
-     "creador": 0.004
+     "comunidad": 0.736,
+     "medio": 0.167,
+     "creador": 0.063,
+     "academia": 0.019,
+     "empresa": 0.015
     },
     "formats": {
-     "herramienta-60s": 0.494,
-     "noticia-explicada": 0.168,
-     "opinion": 0.163,
-     "caso-paso-a-paso": 0.072,
-     "post-texto": 0.063,
+     "herramienta-60s": 0.481,
+     "noticia-explicada": 0.181,
+     "opinion": 0.171,
+     "caso-paso-a-paso": 0.068,
+     "post-texto": 0.061,
      "reel-cara": 0.013,
      "lista-ranking": 0.013,
      "entrevista-clip": 0.004,
@@ -6346,15 +7109,15 @@
      "carrusel": 0.004
     },
     "hooks": {
-     "promesa-proceso": 0.289,
+     "promesa-proceso": 0.278,
      "urgencia-novedad": 0.268,
-     "contrarian": 0.174,
+     "contrarian": 0.181,
      "resultado-numero": 0.076,
-     "pregunta": 0.069,
-     "autoridad": 0.058,
-     "error-confesion": 0.031,
-     "lista-numerada": 0.018,
-     "miedo-riesgo": 0.011,
+     "pregunta": 0.072,
+     "autoridad": 0.057,
+     "error-confesion": 0.03,
+     "lista-numerada": 0.017,
+     "miedo-riesgo": 0.017,
      "antes-despues": 0.004
     },
     "sources_growing": [
@@ -6363,6 +7126,21 @@
     "covered_by_30x": 0
    },
    "top_signals": [
+    {
+     "title": "AI “vibe coding” is starting to create a serious problem for the video game industry.",
+     "url": "https://x.com/i/status/2111593348293128535",
+     "source": "x",
+     "published_at": "2026-10-17T23:01:00Z",
+     "metrics": {
+      "points": 5567,
+      "comments": 468,
+      "views": 288640
+     },
+     "format": "opinion",
+     "hook": "miedo-riesgo",
+     "velocity": 6503.0,
+     "by": "student-emb"
+    },
     {
      "title": "3DCodeVerse: Exploring 3D Worlds as Code",
      "url": "https://arxiv.org/abs/2610.22341v1",
@@ -6436,21 +7214,6 @@
      "format": "reel-cara",
      "hook": "autoridad",
      "velocity": 1.78,
-     "by": "teacher"
-    },
-    {
-     "title": "Day 225 – Vibe Coding An App Until I Make $1,000,000 | ARR: $210,364 Paris Jackson (aUxOVsFZeK)",
-     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1uazItSzU1RUlHcnBWWlVxSnh5Yy01ZU9fY21ZUzhDbEo5ajVyU0lQcGhfMTBTbnlNeVowUlRtRGdfN2tidGdWYnREOGNOWHlubU96ejdEck5razZXbWNyUF8xVWc5U05Pc3FZ?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-17T03:51:08Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "caso-paso-a-paso",
-     "hook": "resultado-numero",
-     "velocity": 0.0,
      "by": "teacher"
     }
    ],
@@ -6655,762 +7418,6 @@
     "by": "teacher",
     "cost_usd": 0.01345
    },
-   "rank": 17
-  },
-  {
-   "slug": "seguridad-riesgos",
-   "name": "Seguridad y riesgos de IA",
-   "stage": "saturada",
-   "growth": 0.918,
-   "z": -0.352,
-   "acceleration": -0.009,
-   "volume": 344,
-   "series": [
-    8.17,
-    3.515,
-    7.244,
-    9.552,
-    11.295,
-    8.9,
-    14.975,
-    11.124,
-    5.234,
-    10.301,
-    10.338,
-    8.43,
-    8.118,
-    8.535
-   ],
-   "wiki_series": [
-    1256,
-    1010,
-    960,
-    1331,
-    1422,
-    1749,
-    1436,
-    1201,
-    1054,
-    1201,
-    1220,
-    1434,
-    1352,
-    1356
-   ],
-   "momentum": 0.0,
-   "exec_fit": 0.24,
-   "p": 0.118,
-   "p_raw": 0.12,
-   "decision": "Descartar",
-   "reason": "Cae 8% frente a sus 11 días previos; encaje con la audiencia 30X 24%; sin fuentes al alza; formato ganador: Entrevista / clip de charla.",
-   "why": {
-    "format_winner": "entrevista-clip",
-    "hook_winner": "error-confesion",
-    "format_label": "Entrevista / clip de charla",
-    "hook_label": "Error o confesión",
-    "best_day": "jueves",
-    "author_mix": {
-     "comunidad": 0.72,
-     "medio": 0.207,
-     "academia": 0.029,
-     "creador": 0.027,
-     "empresa": 0.017
-    },
-    "formats": {
-     "noticia-explicada": 0.636,
-     "herramienta-60s": 0.141,
-     "opinion": 0.116,
-     "post-texto": 0.033,
-     "caso-paso-a-paso": 0.027,
-     "lista-ranking": 0.019,
-     "reel-cara": 0.012,
-     "entrevista-clip": 0.008,
-     "carrusel": 0.006,
-     "evento-live": 0.002
-    },
-    "hooks": {
-     "miedo-riesgo": 0.66,
-     "autoridad": 0.068,
-     "promesa-proceso": 0.064,
-     "contrarian": 0.058,
-     "urgencia-novedad": 0.054,
-     "pregunta": 0.039,
-     "resultado-numero": 0.025,
-     "error-confesion": 0.021,
-     "lista-numerada": 0.01
-    },
-    "sources_growing": [],
-    "covered_by_30x": 0
-   },
-   "top_signals": [
-    {
-     "title": "Claude reveals ECDSA curve origins",
-     "url": "https://www.anthropic.com/research/ecdsa-curve-origins",
-     "source": "hn",
-     "published_at": "2026-10-16T18:55:59Z",
-     "metrics": {
-      "points": 1018,
-      "comments": 373,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "autoridad",
-     "velocity": 62.02,
-     "by": "teacher"
-    },
-    {
-     "title": "OmniVerifier-C1: Decomposed Graded Verifier for Rule-Governed Generative World Modeling",
-     "url": "https://arxiv.org/abs/2610.22355v1",
-     "source": "arxiv",
-     "published_at": "2026-10-15T17:58:04Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "autoridad",
-     "velocity": 0.0,
-     "by": "student-emb"
-    },
-    {
-     "title": "Using Gemini 4 Argon to protect against Cyber attackers",
-     "url": "https://www.youtube.com/watch?v=ftkic7Tdpcg",
-     "source": "youtube",
-     "published_at": "2026-10-13T16:38:14Z",
-     "metrics": {
-      "points": 311,
-      "comments": 0,
-      "views": 192362
-     },
-     "format": "caso-paso-a-paso",
-     "hook": "resultado-numero",
-     "velocity": 2.79,
-     "by": "teacher"
-    },
-    {
-     "title": "Quantos destes 8 itens de segurança funcionam na sua empresa?",
-     "url": "https://www.instagram.com/p/DenPQqrm64O/",
-     "source": "instagram",
-     "published_at": "2026-10-17T23:00:15Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "carrusel",
-     "hook": "lista-numerada",
-     "velocity": 0.0,
-     "by": "teacher"
-    },
-    {
-     "title": "Researchers discovered a Chinese swarm: \"This is the first time researchers have ever made contact with a rogue agent fleet in the wild.\" The agents escaped from Tencent and claim to be Claudes.",
-     "url": "https://www.reddit.com/r/OpenAI/comments/1x6xkya/researchers_discovered_a_chinese_swarm_this_is/",
-     "source": "reddit",
-     "published_at": "2026-10-15T21:04:35Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "miedo-riesgo",
-     "velocity": 0.0,
-     "by": "student-emb"
-    },
-    {
-     "title": "#Loret. Anthropic advierte que la inteligencia artificial podría replicarse sola en dispositivos conectados a internet.",
-     "url": "https://www.tiktok.com/@_/video/7696508582057135367",
-     "source": "tiktok",
-     "published_at": "2026-10-14T13:04:10Z",
-     "metrics": {
-      "points": 209400,
-      "comments": 4488,
-      "views": 2000000
-     },
-     "format": "noticia-explicada",
-     "hook": "miedo-riesgo",
-     "velocity": 2653.17,
-     "by": "teacher"
-    }
-   ],
-   "early_label": "Pico/saturado",
-   "atipicos": {
-    "n_outliers": 34,
-    "n_piezas": 354,
-    "lift_hook": {
-     "hook": "error-confesion",
-     "x": 9.4
-    },
-    "lift_format": {
-     "format": "noticia-explicada",
-     "x": 1.5
-    },
-    "dia": "martes",
-    "autores": {
-     "tipo": "comunidad",
-     "share": 0.76
-    },
-    "ejemplos": [
-     {
-      "title": "#Loret. Durante años, científicos y expertos han advertido que la inteligencia artificial podría generar riesgos catastróficos. #Latinus #In",
-      "url": "https://www.tiktok.com/@_/video/7685623070438083857",
-      "source": "tiktok",
-      "ratio": 1044.7
-     },
-     {
-      "title": "#Loret. Anthropic advierte que la inteligencia artificial podría replicarse sola en dispositivos conectados a internet.",
-      "url": "https://www.tiktok.com/@_/video/7696508582057135367",
-      "source": "tiktok",
-      "ratio": 444.5
-     }
-    ],
-    "frase": "Las piezas que más rinden usan el gancho «Error o confesión» 9,4x más que el resto y el formato noticia explicada (qué significa para tu empresa) 1,5x."
-   },
-   "adapt": {
-    "title": "Lo que tu equipo le cuenta a la IA: cómo revisar un proceso paso a paso sin exponer datos",
-    "hook": "Tu chatbot no es tu diario: por qué lo que le cuentas a la IA nunca es del todo privado",
-    "format": "caso-paso-a-paso",
-    "beats": [
-     "Mostrar un proceso real de una empresa (por ejemplo, atención a clientes o reportes internos) con los datos que el equipo suele pegar en el chatbot, marcando en pantalla cuáles son sensibles.",
-     "Paso a paso: separar qué información puede usarse tal cual, qué debe anonimizarse (nombres, montos, clientes) y qué no debe salir de la empresa, con una regla simple que el ejecutivo pueda copiar.",
-     "Mostrar el mismo proceso ya protegido: cómo se le pide a la IA el resultado en un formato concreto (lista, tabla, resumen de una página) y el tiempo que se ahorra, con una cifra medida en el caso.",
-     "Cierre con una lista de verificación de 3 preguntas que todo líder puede aplicar esta semana antes de usar IA con información de su empresa."
-    ],
-    "cta": "Comenta 'PROCESO' y te enviamos la plantilla de revisión de datos para aplicarla en tu equipo esta semana.",
-    "platform": "YouTube",
-    "by": "teacher",
-    "cost_usd": 0.00717
-   },
-   "adapt_reel": {
-    "hook": "Tu IA hace todo lo que le pides. Ese es el problema.",
-    "shots": [
-     {
-      "seg": "3-12",
-      "visual": "Primer plano de Andrés Bilbao sentado frente a cámara, en un clip de entrevista, con tono directo. Corte rápido al hablar de la frase del gancho.",
-      "texto": "Tu IA hace TODO lo que le pides"
-     },
-     {
-      "seg": "12-24",
-      "visual": "Andrés explica en lenguaje simple qué significa: si nadie pone límites, la herramienta puede obedecer algo que no conviene a la empresa. Cortes intercalados con b-roll de una oficina y una pantalla co",
-      "texto": "Sin límites, la IA obedece hasta lo que no debe"
-     },
-     {
-      "seg": "24-36",
-      "visual": "Andrés mencionando que OpenAI reportó cuatro incidentes más de IA fuera de control. Gráfico simple en pantalla con el número 4 y un ícono de alerta.",
-      "texto": "OpenAI reportó 4 incidentes más de IA fuera de control"
-     },
-     {
-      "seg": "36-45",
-      "visual": "Andrés en plano medio, mirando a cámara, con gesto de cierre y una frase práctica para el equipo directivo.",
-      "texto": "Revisa qué datos y permisos das a tu IA hoy"
-     }
-    ],
-    "cta": "Comenta RIESGO y te mando la guía corta para revisar los permisos de tu IA",
-    "duration": "30-45 s",
-    "platform": "Instagram",
-    "by": "teacher",
-    "cost_usd": 0.00815
-   },
-   "guiones": {
-    "reel": {
-     "duration": "45 s",
-     "hook": "Anthropic dijo que su IA podría replicarse sola en dispositivos conectados a internet",
-     "beats": [
-      {
-       "texto": "El riesgo real",
-       "voz": "Anthropic advirtió que modelos de IA podrían copiarse solos en dispositivos conectados a internet"
-      },
-      {
-       "texto": "No es ciencia ficción",
-       "voz": "Esto ya preocupa a empresas de seguridad como Reach Security, que levantó más de 50 millones de dólares para automatizar defensas"
-      },
-      {
-       "texto": "Qué significa para tu empresa",
-       "voz": "Si usas IA sin control de accesos ni monitoreo, estás expuesto a que se use en tu contra, no solo a favor"
-      },
-      {
-       "texto": "La pregunta que debes hacerte",
-       "voz": "¿Sabes qué datos tiene acceso tu IA y quién puede usarla hoy en tu empresa?"
-      }
-     ],
-     "cta": "Síguenos para la serie completa sobre seguridad en IA para empresas",
-     "verificacion": {
-      "cifras": 1,
-      "verificadas": 1,
-      "quitadas": 0,
-      "ejemplos": []
-     }
-    },
-    "largo": {
-     "duration": "5-8 min",
-     "title": "La IA ya es un riesgo de seguridad: lo que todo ejecutivo debe saber",
-     "hook": "Anthropic advirtió que su propia IA podría replicarse sola. Si una empresa que la crea lo dice, tú deberías preocuparte más",
-     "secciones": [
-      {
-       "titulo": "El riesgo que nadie te está contando",
-       "puntos": [
-        "Anthropic alertó sobre auto-replicación de modelos en dispositivos conectados",
-        "No es teoría: ya hay startups que facturan por defender empresas de esto",
-        "El error típico: tratar la IA como un software más, sin controles"
-       ]
-      },
-      {
-       "titulo": "Por qué esto te afecta aunque no seas tech",
-       "puntos": [
-        "Si tu equipo usa ChatGPT o Claude sin reglas, ya hay un riesgo activo",
-        "LLMs pueden ser 'armados' por actores maliciosos para ataques dirigidos",
-        "Startups en India y otros mercados emergentes ya están siendo blanco de esto"
-       ]
-      },
-      {
-       "titulo": "Los 8 puntos de seguridad que toda empresa debería revisar",
-       "puntos": [
-        "Control de acceso a modelos de IA",
-        "Monitoreo de qué datos entran y salen",
-        "Políticas claras de uso para empleados",
-        "Revisión periódica de proveedores de IA"
-       ]
-      },
-      {
-       "titulo": "El dinero habla: la seguridad en IA ya es un negocio serio",
-       "puntos": [
-        "Reach Security captó más de 50 millones de dólares para automatizar defensas empresariales",
-        "Esto confirma que el riesgo es real y las grandes empresas ya están invirtiendo en protegerse"
-       ]
-      },
-      {
-       "titulo": "Qué hacer esta semana en tu empresa",
-       "puntos": [
-        "Audita qué herramientas de IA usa tu equipo",
-        "Define quién tiene acceso y a qué información",
-        "Pregunta a tu proveedor de IA qué medidas de seguridad tiene"
-       ]
-      }
-     ],
-     "ejemplo": "Por ejemplo, un equipo de 10 personas que usa IA para atención al cliente sin revisar permisos, expone datos de clientes sin saberlo",
-     "cta": "Suscríbete para la serie completa de seguridad en IA para líderes",
-     "verificacion": {
-      "cifras": 2,
-      "verificadas": 2,
-      "quitadas": 0,
-      "ejemplos": []
-     }
-    },
-    "linkedin": {
-     "hook": "Anthropic dijo que su IA podría replicarse sola en dispositivos conectados a internet. Léelo dos veces.",
-     "slides": [
-      "La empresa que crea la IA más avanzada del mundo está advirtiendo sobre sus propios riesgos",
-      "Reach Security levantó más de 50 millones de dólares para automatizar defensas empresariales contra IA",
-      "En India ya se habla de la 'weaponización' de modelos de lenguaje contra startups",
-      "Si tu empresa usa IA sin control de accesos, ya tienes un riesgo activo, aunque no lo veas",
-      "La seguridad en IA dejó de ser un tema de 'después'. Ya es un tema de ahora",
-      "Pregúntate: ¿quién en tu empresa puede acceder a tu IA y qué datos puede ver?"
-     ],
-     "pregunta": "¿Tu empresa ya tiene reglas claras de seguridad para el uso de IA, o todavía no es prioridad?",
-     "verificacion": {
-      "cifras": 1,
-      "verificadas": 1,
-      "quitadas": 1,
-      "ejemplos": []
-     }
-    },
-    "recomendacion": {
-     "duration": "60-90 s",
-     "postura": "Recomendamos que toda empresa que use IA haga una auditoría de seguridad esta semana, porque el riesgo ya no es hipotético",
-     "argumentos": [
-      "Anthropic, el creador de uno de los modelos más avanzados, ya advirtió sobre riesgos de auto-replicación",
-      "Startups de seguridad como Reach Security ya captan millones de dólares porque las empresas están pagando por protegerse",
-      "En mercados como India ya se reporta el uso malicioso de modelos de lenguaje contra negocios"
-     ],
-     "semana": "Haz un inventario simple: qué herramientas de IA usa tu equipo, quién tiene acceso y qué datos pueden ver o mover",
-     "verificacion": {
-      "cifras": 0,
-      "verificadas": 0,
-      "quitadas": 0,
-      "ejemplos": []
-     }
-    },
-    "by": "teacher",
-    "cost_usd": 0.01207
-   },
-   "rank": 18
-  },
-  {
-   "slug": "modelos-nuevos",
-   "name": "Modelos y lanzamientos",
-   "stage": "saturada",
-   "growth": 0.949,
-   "z": -0.184,
-   "acceleration": 0.053,
-   "volume": 286,
-   "series": [
-    10.53,
-    5.741,
-    11.966,
-    13.496,
-    8.822,
-    9.38,
-    4.188,
-    3.841,
-    5.147,
-    10.096,
-    7.449,
-    8.568,
-    7.049,
-    7.778
-   ],
-   "wiki_series": [
-    4900,
-    4056,
-    3906,
-    5034,
-    5357,
-    7571,
-    5990,
-    5001,
-    4151,
-    4167,
-    5069,
-    5722,
-    5496,
-    5546
-   ],
-   "momentum": 0.067,
-   "exec_fit": 0.155,
-   "p": 0.094,
-   "p_raw": 0.111,
-   "decision": "Descartar",
-   "reason": "Cae 5% frente a sus 11 días previos; encaje con la audiencia 30X 16%; al alza en Wikipedia; formato ganador: Entrevista / clip de charla.",
-   "why": {
-    "format_winner": "entrevista-clip",
-    "hook_winner": "miedo-riesgo",
-    "format_label": "Entrevista / clip de charla",
-    "hook_label": "Miedo / riesgo",
-    "best_day": "martes",
-    "author_mix": {
-     "comunidad": 0.751,
-     "academia": 0.122,
-     "medio": 0.059,
-     "creador": 0.052,
-     "empresa": 0.016
-    },
-    "formats": {
-     "noticia-explicada": 0.663,
-     "opinion": 0.118,
-     "herramienta-60s": 0.095,
-     "post-texto": 0.045,
-     "lista-ranking": 0.036,
-     "caso-paso-a-paso": 0.027,
-     "reel-cara": 0.009,
-     "entrevista-clip": 0.005,
-     "evento-live": 0.002
-    },
-    "hooks": {
-     "urgencia-novedad": 0.31,
-     "autoridad": 0.192,
-     "resultado-numero": 0.176,
-     "contrarian": 0.14,
-     "pregunta": 0.12,
-     "lista-numerada": 0.02,
-     "promesa-proceso": 0.018,
-     "miedo-riesgo": 0.016,
-     "error-confesion": 0.007
-    },
-    "sources_growing": [
-     "wiki"
-    ],
-    "covered_by_30x": 0
-   },
-   "top_signals": [
-    {
-     "title": "LIBERO-PeRM: Benchmarking Personalized Robotic Manipulation",
-     "url": "https://arxiv.org/abs/2610.22372v1",
-     "source": "arxiv",
-     "published_at": "2026-10-15T17:59:59Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "autoridad",
-     "velocity": 0.0,
-     "by": "student-emb"
-    },
-    {
-     "title": "DeepSeek-v4.1-Flash-1017",
-     "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
-     "source": "hn",
-     "published_at": "2026-10-17T08:21:25Z",
-     "metrics": {
-      "points": 646,
-      "comments": 547,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "urgencia-novedad",
-     "velocity": 115.85,
-     "by": "teacher"
-    },
-    {
-     "title": "🤖 Meta presentó sus modelos de IA más capaces hasta ahora para ejecutar tareas complejas.",
-     "url": "https://www.instagram.com/p/DenFAAeFMCu/",
-     "source": "instagram",
-     "published_at": "2026-10-17T21:30:39Z",
-     "metrics": {
-      "points": 3,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "urgencia-novedad",
-     "velocity": 1.61,
-     "by": "teacher"
-    },
-    {
-     "title": "DeepSeek V4.1 Flash (1017) Now Leads Open-Weight Models",
-     "url": "https://www.reddit.com/r/LocalLLaMA/comments/1x8bb6b/deepseek_v41_flash_1017_now_leads_openweight/",
-     "source": "reddit",
-     "published_at": "2026-10-17T14:15:01Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "noticia-explicada",
-     "hook": "urgencia-novedad",
-     "velocity": 0.0,
-     "by": "student-emb"
-    },
-    {
-     "title": "AI News: 6 New Models & A Nano Banana Killer",
-     "url": "https://www.youtube.com/watch?v=KGcuuhqmPhI",
-     "source": "youtube",
-     "published_at": "2026-10-16T16:20:28Z",
-     "metrics": {
-      "points": 2330,
-      "comments": 0,
-      "views": 124086
-     },
-     "format": "lista-ranking",
-     "hook": "lista-numerada",
-     "velocity": 30.67,
-     "by": "teacher"
-    },
-    {
-     "title": "Free AI Chatbot Compared: ChatGPT vs Gemini vs Claude",
-     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9aTjRpb0UzUUJDU0FuM1FtZ2tobVdwVGVmZEVGcTdZMGd3RTJMQUxqQnR2ZjV5YjdCbTZSV2ZDWDBULVA1ZlNQUlpsUlgwdEZLSDRHTHhsc1BDYjkxMWhSNkVtZjkwRkNGTjM1UHhWak5YSUNvcDBNMG1tREs?oc=5",
-     "source": "gnews",
-     "published_at": "2026-10-17T19:50:06Z",
-     "metrics": {
-      "points": 0,
-      "comments": 0,
-      "views": 0
-     },
-     "format": "lista-ranking",
-     "hook": "lista-numerada",
-     "velocity": 0.0,
-     "by": "teacher"
-    }
-   ],
-   "early_label": "Pico/saturado",
-   "atipicos": {
-    "n_outliers": 35,
-    "n_piezas": 330,
-    "lift_hook": {
-     "hook": "autoridad",
-     "x": 1.6
-    },
-    "lift_format": null,
-    "dia": "martes",
-    "autores": {
-     "tipo": "comunidad",
-     "share": 0.91
-    },
-    "ejemplos": [
-     {
-      "title": "Gemini 4 Argon",
-      "url": "https://deepmind.google/models/gemini/",
-      "source": "hn",
-      "ratio": 146.4
-     },
-     {
-      "title": "Sharing AI progress in mathematics",
-      "url": "https://openai.com/index/sharing-ai-progress-in-mathematics/",
-      "source": "hn",
-      "ratio": 136.2
-     }
-    ],
-    "frase": "Las piezas que más rinden usan el gancho «Autoridad / nombre propio» 1,6x más que el resto."
-   },
-   "adapt": {
-    "title": "6 modelos nuevos de IA: cuál le sirve a tu empresa y cuál puedes ignorar",
-    "hook": "6 modelos nuevos de IA en pocos días. ¿Cuál le sirve a tu empresa?",
-    "format": "lista-ranking",
-    "beats": [
-     "Pantalla con el titular de 6 modelos nuevos de IA y un contador que los numera uno por uno, sin jerga técnica.",
-     "Para cada modelo, una sola línea en lenguaje de negocio: qué hace, para qué área sirve y qué problema resuelve, con un ejemplo concreto de un proceso comercial o administrativo.",
-     "Ranking final de 3 criterios sencillos para decidir: costo, facilidad de uso y riesgo de datos. Se muestra cómo aplicarlos en 2 minutos.",
-     "Cierre: el ejecutivo elige un solo modelo para probar esta semana en una tarea real del equipo, y se le invita a comentar la palabra que quiere ver en el próximo ranking."
-    ],
-    "cta": "Comenta una palabra (por ejemplo, 'ranking') y te enviamos el link del análisis completo con la tabla de los 6 modelos.",
-    "platform": "LinkedIn",
-    "by": "teacher",
-    "cost_usd": 0.00795
-   },
-   "adapt_reel": {
-    "hook": "6 modelos nuevos de IA y ni uno es para todos. Te digo cuál usar.",
-    "shots": [
-     {
-      "seg": "0-3",
-      "visual": "Primer plano del creador frente a la cámara, gesto directo, fondo limpio con una pantalla desenfocada de fondo.",
-      "texto": "6 modelos nuevos de IA"
-     },
-     {
-      "seg": "3-12",
-      "visual": "Lista numerada en pantalla completa con los nombres: DeepSeek, Gemini 4 y Claude. El creador señala cada uno con la mano.",
-      "texto": "1. DeepSeek  2. Gemini 4  3. Claude"
-     },
-     {
-      "seg": "12-25",
-      "visual": "Creador compara los tres en una tarjeta dividida: para qué sirve cada uno en un negocio (redactar correos, resumir reuniones, buscar información). Corte rápido entre cada caso.",
-      "texto": "Elige según la tarea, no según la moda"
-     },
-     {
-      "seg": "25-38",
-      "visual": "Creador de regreso a cámara, da una recomendación práctica para un líder que no es programador: empieza con una sola herramienta y una tarea concreta por una semana.",
-      "texto": "Empieza con 1 herramienta y 1 tarea"
-     }
-    ],
-    "cta": "Comenta MODELOS y te mando la lista completa con el paso a paso para elegir el tuyo",
-    "duration": "30-45 s",
-    "platform": "Instagram",
-    "by": "teacher",
-    "cost_usd": 0.00775
-   },
-   "guiones": {
-    "reel": {
-     "duration": "45 s",
-     "hook": "Esta semana salieron 6 modelos de IA nuevos y casi nadie en tu empresa se dio cuenta",
-     "beats": [
-      {
-       "texto": "Meta lanzó sus modelos más capaces hasta ahora",
-       "voz": "Meta presentó modelos que pueden ejecutar tareas complejas, no solo responder preguntas"
-      },
-      {
-       "texto": "DeepSeek también actualizó su modelo Flash",
-       "voz": "Y DeepSeek sacó una versión más rápida y más barata que compite directo con los gigantes"
-      },
-      {
-       "texto": "¿Y tu equipo sigue usando el mismo de hace 6 meses?",
-       "voz": "El riesgo no es elegir mal un modelo, es no revisar nunca si el que usas sigue siendo el mejor"
-      },
-      {
-       "texto": "Compara antes de que te comparen",
-       "voz": "Por ejemplo, un equipo de 10 personas puede perder horas cada semana usando un modelo viejo cuando ya existe uno más rápido y barato"
-      }
-     ],
-     "cta": "Guarda este video y compártelo con quien decide qué IA usa tu empresa",
-     "verificacion": {
-      "cifras": 2,
-      "verificadas": 2,
-      "quitadas": 0,
-      "ejemplos": []
-     }
-    },
-    "largo": {
-     "duration": "5-8 min",
-     "title": "6 modelos de IA nuevos: cuál le conviene a tu empresa (y cuál no)",
-     "hook": "Si tu empresa sigue usando el mismo modelo de IA de hace meses, probablemente estás pagando de más o perdiendo tiempo",
-     "secciones": [
-      {
-       "titulo": "Qué pasó esta semana",
-       "puntos": [
-        "Meta lanzó sus modelos más capaces hasta ahora para tareas complejas",
-        "DeepSeek actualizó su modelo Flash con mejor velocidad y costo",
-        "Salieron en total 6 modelos nuevos en pocos días"
-       ]
-      },
-      {
-       "titulo": "Por qué esto le importa a un ejecutivo, no solo a un programador",
-       "puntos": [
-        "Cada modelo nuevo puede significar menos costo por el mismo trabajo",
-        "Algunos son mejores para tareas largas y complejas, no solo para chatear",
-        "Elegir el modelo correcto es decisión de negocio, no solo técnica"
-       ]
-      },
-      {
-       "titulo": "El error más común",
-       "puntos": [
-        "Las empresas eligen un modelo una vez y nunca más lo revisan",
-        "Se quedan pagando de más por costumbre, no por necesidad",
-        "El miedo a 'romper algo' frena la actualización"
-       ]
-      },
-      {
-       "titulo": "Cómo comparar sin ser programador",
-       "puntos": [
-        "Usa el mismo prompt en ChatGPT, Gemini, Claude y el nuevo modelo",
-        "Compara tiempo de respuesta y calidad del resultado final",
-        "Pide a tu equipo técnico un reporte simple cada trimestre"
-       ]
-      },
-      {
-       "titulo": "Caso concreto",
-       "puntos": [
-        "Un equipo de 10 personas que automatiza reportes puede pasar de un modelo lento a uno tipo Flash y recortar el tiempo de espera por tarea a la mitad",
-        "Eso no cambia la calidad del resultado, pero sí la velocidad del equipo"
-       ]
-      }
-     ],
-     "ejemplo": "Un equipo de 10 personas que usa IA para generar reportes internos prueba el mismo prompt en el modelo viejo y en el nuevo Flash de DeepSeek, y nota que el nuevo responde más rápido sin perder calidad",
-     "cta": "Si quieres saber qué modelo le conviene a tu equipo, suscríbete, cada semana reviso esto por ti",
-     "verificacion": {
-      "cifras": 2,
-      "verificadas": 2,
-      "quitadas": 0,
-      "ejemplos": []
-     }
-    },
-    "linkedin": {
-     "hook": "Esta semana lanzaron 6 modelos de IA nuevos. Tu empresa probablemente sigue usando el de hace 6 meses.",
-     "slides": [
-      "Meta presentó sus modelos más capaces hasta ahora, pensados para tareas complejas, no solo respuestas simples",
-      "DeepSeek actualizó su modelo Flash: más rápido, más barato",
-      "En total, 6 modelos nuevos salieron en pocos días",
-      "El problema no es la tecnología, es que las empresas eligen un modelo una vez y nunca lo vuelven a revisar",
-      "Eso significa pagar de más por costumbre, no por necesidad",
-      "Por ejemplo, un equipo de 10 personas que usa IA para reportes puede recortar a la mitad el tiempo de espera solo cambiando de modelo",
-      "No necesitas ser programador para comparar: el mismo prompt, distintos modelos, y mira la diferencia"
-     ],
-     "pregunta": "¿Cuándo fue la última vez que tu empresa revisó si sigue usando el mejor modelo de IA disponible?",
-     "verificacion": {
-      "cifras": 2,
-      "verificadas": 2,
-      "quitadas": 0,
-      "ejemplos": []
-     }
-    },
-    "recomendacion": {
-     "duration": "60-90 s",
-     "postura": "Recomendamos revisar cada trimestre qué modelo de IA usa tu equipo, porque el panorama cambia cada pocas semanas y quedarte con el mismo modelo por costumbre te cuesta tiempo y dinero",
-     "argumentos": [
-      "Meta y DeepSeek lanzaron modelos nuevos esta misma semana, más capaces y algunos más baratos",
-      "El riesgo no es cambiar de modelo, es no revisar nunca si el que usas sigue siendo el adecuado",
-      "No se necesita ser programador para comparar: el mismo prompt en distintas herramientas te muestra la diferencia"
-     ],
-     "semana": "Esta semana, pide a tu equipo que corra la misma tarea en dos o tres modelos distintos (el que ya usan y uno nuevo) y comparen tiempo y calidad del resultado",
-     "verificacion": {
-      "cifras": 0,
-      "verificadas": 0,
-      "quitadas": 0,
-      "ejemplos": []
-     }
-    },
-    "by": "teacher",
-    "cost_usd": 0.01248
-   },
    "rank": 19
   },
   {
@@ -7454,11 +7461,11 @@
     666
    ],
    "momentum": 0.0,
-   "exec_fit": 0.155,
+   "exec_fit": 0.14,
    "p": 0.0,
-   "p_raw": 0.077,
+   "p_raw": 0.07,
    "decision": "Descartar",
-   "reason": "Estable frente a sus 11 días previos; encaje con la audiencia 30X 16%; sin fuentes al alza; formato ganador: Opinión / predicción.",
+   "reason": "Estable frente a sus 11 días previos; encaje con la audiencia 30X 14%; sin fuentes al alza; formato ganador: Opinión / predicción.",
    "why": {
     "format_winner": "opinion",
     "hook_winner": "resultado-numero",
@@ -7466,29 +7473,29 @@
     "hook_label": "Resultado cuantificado",
     "best_day": "viernes",
     "author_mix": {
-     "comunidad": 0.667,
-     "medio": 0.186,
-     "academia": 0.078,
-     "creador": 0.039,
+     "comunidad": 0.648,
+     "medio": 0.181,
+     "academia": 0.076,
+     "creador": 0.067,
      "empresa": 0.029
     },
     "formats": {
-     "herramienta-60s": 0.608,
-     "noticia-explicada": 0.216,
-     "reel-cara": 0.098,
+     "herramienta-60s": 0.6,
+     "noticia-explicada": 0.21,
+     "reel-cara": 0.105,
      "opinion": 0.029,
      "lista-ranking": 0.029,
-     "post-texto": 0.01,
+     "post-texto": 0.019,
      "caso-paso-a-paso": 0.01
     },
     "hooks": {
-     "promesa-proceso": 0.324,
-     "urgencia-novedad": 0.304,
-     "pregunta": 0.118,
-     "autoridad": 0.078,
-     "resultado-numero": 0.059,
-     "contrarian": 0.059,
-     "miedo-riesgo": 0.049,
+     "promesa-proceso": 0.314,
+     "urgencia-novedad": 0.295,
+     "pregunta": 0.124,
+     "autoridad": 0.086,
+     "resultado-numero": 0.067,
+     "contrarian": 0.057,
+     "miedo-riesgo": 0.048,
      "lista-numerada": 0.01
     },
     "sources_growing": [],
@@ -7523,6 +7530,21 @@
      "format": "noticia-explicada",
      "hook": "autoridad",
      "velocity": 0.0,
+     "by": "student-emb"
+    },
+    {
+     "title": "I created this video at the AI Ecosystem class tonight",
+     "url": "https://x.com/i/status/2111597025384923242",
+     "source": "x",
+     "published_at": "2026-10-17T23:15:37Z",
+     "metrics": {
+      "points": 47,
+      "comments": 9,
+      "views": 575
+     },
+     "format": "reel-cara",
+     "hook": "autoridad",
+     "velocity": 65.0,
      "by": "student-emb"
     },
     {
@@ -7568,21 +7590,6 @@
      "format": "noticia-explicada",
      "hook": "urgencia-novedad",
      "velocity": 0.0,
-     "by": "teacher"
-    },
-    {
-     "title": "GPT-Live-1.1 has new voices and better accents.",
-     "url": "https://www.youtube.com/watch?v=GyO8Ao7yKJc",
-     "source": "youtube",
-     "published_at": "2026-10-15T18:24:44Z",
-     "metrics": {
-      "points": 2554,
-      "comments": 0,
-      "views": 162993
-     },
-     "format": "herramienta-60s",
-     "hook": "urgencia-novedad",
-     "velocity": 8.52,
      "by": "teacher"
     }
    ],
