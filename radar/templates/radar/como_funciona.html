@@ -120,7 +120,8 @@
         <span class="step-n nums">3</span>
         <div>
           <h3>Entrenar un modelo propio (costo 0)</h3>
-          <p>Con esas notas aprende un modelo pequeño, nuestro. Así clasifica lo nuevo sin pagar. Lo medimos con una prueba honesta: 5 rondas, cada una con datos que no vio.</p>
+          <p>Con esas notas aprende un modelo pequeño, nuestro. Así clasifica lo nuevo sin pagar. Lo medimos con una prueba honesta: apartamos un 20 % fijo de las notas, el método se elige sin tocarlo y solo al final se mide ahí.</p>
+          {% with s=radar.student %}{% if s.topic.holdout_accuracy %}<p>Resultado en esa prueba aparte ({{ s.n_holdout }} piezas): acierta el tema en <strong>{% widthratio s.topic.holdout_accuracy 1 100 %}%</strong> (sin modelo: {% widthratio s.topic.holdout_baseline 1 100 %}%), el formato en {% widthratio s.format.holdout_accuracy 1 100 %}% (sin modelo: {% widthratio s.format.holdout_baseline 1 100 %}%) y el gancho en {% widthratio s.hook.holdout_accuracy 1 100 %}% (sin modelo: {% widthratio s.hook.holdout_baseline 1 100 %}%).</p>{% endif %}{% endwith %}
         </div>
       </div>
       <div class="pipeline-step">
@@ -197,7 +198,7 @@
     <div class="privacidad-grid">
       <div class="privacidad-card">
         <h3>Solo contenido público</h3>
-        <p>Cada fuente se consulta a través de sus APIs o feeds públicos y oficiales (Algolia de Hacker News, RSS de Google News y YouTube, pageviews de Wikimedia), respetando sus límites de uso.</p>
+        <p>Hacker News, Google News, YouTube y Wikipedia se leen por APIs o feeds públicos y oficiales. LinkedIn se ve solo por titulares públicos indexados en Google News. Instagram y TikTok se leen por scraping de contenido público vía Apify (autorizado por la organización del hackathon), sin iniciar sesión y sin guardar usuarios ni texto de terceros.</p>
       </div>
       <div class="privacidad-card">
         <h3>Sin datos personales</h3>

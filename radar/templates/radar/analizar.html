@@ -125,10 +125,11 @@
       <div class="dec decision-{{ r.decision }}">{{ r.decision }}</div>
       {% if r.baja_confianza %}<p class="aviso-conf" role="alert"><strong>Confianza baja: revisa antes de producir.</strong></p>{% endif %}
       <p class="frase">
-        {% if r.slug_ok %}Esta pieza habla de <strong>{{ r.topic_name }}</strong>, un tema en etapa «{{ r.early_label }}»{% if r.growth %} ({{ r.growth|floatformat:1 }}x){% endif %}
+        {% if r.no_audiencia %}Esta pieza roza el tema <strong>{{ r.topic_name }}</strong>, pero no es para tu audiencia: le sirve poco a un ejecutivo que aprende IA ({{ r.fit_pct }}% de encaje).
+        {% elif r.slug_ok %}Esta pieza habla de <strong>{{ r.topic_name }}</strong>, un tema en etapa «{{ r.early_label }}»{% if r.growth %} ({{ r.growth|floatformat:1 }}x){% endif %}
         y con un encaje de {{ r.fit_pct }}% con tu audiencia:
         {% if r.decision == "Recomendar" %}vale la pena adaptarla esta semana.{% elif r.decision == "Aprender" %}vale la pena mirarla y guardarla como idea, sin correr.{% else %}por ahora no vale la pena: mejor invierte el tiempo en otro tema.{% endif %}
-        {% else %}Esta pieza no encaja con ningún tema del radar, así que no la recomendamos para la audiencia 30X.{% endif %}
+        {% else %}Esta pieza no encaja con ningún tema del radar, así que no es para tu audiencia.{% endif %}
       </p>
       <div class="meta-chips"><span>{{ plataforma }}</span><span>{{ r.format_name }}</span><span>{{ r.hook_name }}</span></div>
     </div>

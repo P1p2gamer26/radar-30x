@@ -28,20 +28,20 @@ Cada semana responde: *¿cuáles son los 10 temas de IA que más crecen, por qu�
 
 Corrida del 17-oct-2026 (datos en `data/`, reproducible sin red):
 
-- **Señales:** 5.719 (Hacker News 3.241, Google News 2.018, LinkedIn 180, Instagram 127, YouTube 108, TikTok 45) más Wikipedia para 20 temas.
-- **Temas:** 20 analizados; 5 Recomendar (todos Temprano o Despegando), 5 Aprender, 10 Descartar. Un tema Estable o en su pico nunca pasa de Aprender.
+- **Señales:** 5.718 (Hacker News 3.240, Google News 2.018, LinkedIn 180, Instagram 127, YouTube 108, TikTok 45) más Wikipedia para 20 temas.
+- **Temas:** 20 analizados; 2 Recomendar (ambos Despegando), 8 Aprender, 10 Descartar. Un tema Estable o en su pico nunca pasa de Aprender.
 - **Guiones:** 20 de 20 temas con guion LinkedIn/YouTube generado por LLM; 10 con reel IG/TikTok (los Recomendar y Aprender).
-- **Costo:** USD 0.55 por semana (Apify, Instagram y TikTok) y USD 0.81 una sola vez por etiquetar 1.226 señales con el LLM (USD 0.000141 por señal).
-- **Modelo propio** (validación cruzada de 5 pliegues, mejor método por tarea entre Naive Bayes, kNN y ensamble; el método se elige con la misma validación, así que el número es algo optimista):
+- **Costo:** USD 0.55 por semana (Apify, Instagram y TikTok; medido en la consola de Apify el 17-oct, y cada corrida nueva lo mide con la API de uso de Apify en `meta.apify_cost_usd` del snapshot) y USD 0.81 una sola vez por etiquetar 1.226 señales con el LLM (USD 0.000141 por señal).
+- **Modelo propio, prueba honesta (hold-out):** se aparta un 20 % fijo de las etiquetas (por hash del id, 234 piezas) que ni el entrenamiento ni la elección del método ven. El método por tarea (Naive Bayes, kNN o ensamble) se elige con validación cruzada de 5 pliegues solo sobre el 80 % restante; la cifra que se reporta es el acierto en el hold-out:
 
-| Tarea | Base (clase más común) | Naive Bayes | kNN | Ensamble | Usado |
-|---|---|---|---|---|---|
-| Tema | 29% | 56% | 58% | **61%** | ensamble |
-| Formato | 51% | **61%** | 59% | 60% | NB |
-| Gancho | 25% | 37% | 37% | 38% | ensamble |
-| Encaje (alto/bajo) | 85% | 86% | 87% | 87% | no usable: no supera la base por 3 puntos |
+| Tarea | Base del hold-out (clase más común) | Acierto en hold-out | Método | CV sobre el 80 % |
+|---|---|---|---|---|
+| Tema | 28% | **61%** | ensamble | 60% |
+| Formato | 46% | **52%** | ensamble | 62% |
+| Gancho | 22% | **35%** | ensamble | 39% |
+| Encaje (alto/bajo) | 86% | 85% | NB | no usable: no supera la base por 3 puntos |
 
-  El objetivo de 65% en tema no se alcanzó (61%); las etiquetas del LLM tienen ruido y la clase "otro" pesa 30%.
+  El objetivo de 65% en tema no se alcanzó (61%); las etiquetas del LLM tienen ruido y la clase "otro" pesa casi 30%. El formato casi no mejora la base en el hold-out: la validación cruzada era optimista (62%).
 - **Benchmark 30X, mejor pieza:** un post de Instagram de @crece30x con 20x sus likes normales (541 likes reales). IG/TikTok sin vistas se miden con likes.
 - **Privacidad:** de terceros solo se guardan título y métricas; hay un test y un chequeo en `verify.sh` que fallan si una url del radar trae un handle (`/@usuario`).
 
@@ -82,9 +82,9 @@ python manage.py build_radar      # -> data/radar.json
 | `deploy/` | despliegue en PythonAnywhere |
 
 ## Reglas que cumple
-- Solo contenido público y sin login propio: Instagram y TikTok se leen de cuentas y hashtags públicos vía Apify (plan gratis, ~USD 0.55 por semana); LinkedIn, por titulares públicos indexados en Google News. Nunca iniciamos sesión en esas redes.
+- Solo contenido público y sin login propio: Hacker News, Google News, YouTube y Wikipedia se leen por APIs o feeds públicos; Instagram y TikTok, por scraping de contenido público vía Apify (autorizado por la organización, plan gratis, ~USD 0.55 por semana), sin login y sin guardar usuarios ni texto de terceros; LinkedIn, por titulares públicos indexados en Google News. Nunca iniciamos sesión en esas redes.
 - Sin datos personales: los autores se guardan solo como tipo (medio, creador, empresa, comunidad, academia).
-- Sin secretos en el repo. `verify.sh` revisa que `radar.json` no tenga emails.
+- Sin secretos en el repo. `verify.sh` revisa que `radar.json` y `data/snapshots/*.json` no tengan emails ni handles de terceros (las URL con forma de email, como los message-id de listas de correo, se descartan al recolectar).
 
 ## Licencia
 MIT

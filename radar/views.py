@@ -6,6 +6,7 @@ from django.http import Http404, JsonResponse
 from django.shortcuts import render
 
 MAX_TEXTO = 3000
+MAX_PRELLENADO = 500
 LIMITE_HORA = 20  # ponytail: contador en LocMem por proceso; en varios workers se multiplica, usar caché compartida si hace falta
 
 
@@ -24,7 +25,8 @@ def cargar_radar() -> dict:
 
 
 def index(request):
-    return render(request, "radar/index.html", {"radar": cargar_radar()})
+    radar = cargar_radar()
+    return render(request, "radar/index.html", {"radar": radar, "ejemplos": _ejemplos(radar)[:2]})
 
 
 def tema(request, slug):
@@ -57,6 +59,10 @@ def analizar(request):
     radar = cargar_radar()
     ctx = {"radar": radar, "texto": "", "resultado": None, "plataformas": PLATAFORMAS, "plataforma": "Otro",
            "ejemplos": _ejemplos(radar)}
+    if request.method == "GET":  # enlaces de la home: ?texto=...&red=... solo prellenan el formulario (la plantilla autoescapa)
+        ctx["texto"] = request.GET.get("texto", "")[:MAX_PRELLENADO].strip()
+        red = request.GET.get("red", "Otro")
+        ctx["plataforma"] = red if red in PLATAFORMAS else "Otro"
     if request.method == "POST":
         if _excede_limite(request):
             ctx["error"] = "Llegaste al límite de 20 análisis por hora. Vuelve en un rato."

@@ -112,6 +112,43 @@ function renderHero(data) {
   weekEl.textContent = `Semana ${data.week || ""} · ${dateStr}`;
 }
 
+// Microguía "toca una estrella": se muestra hasta el primer clic (localStorage opcional).
+const CLAVE_GUIA = "radar_guia_vista";
+function guiaVista() {
+  try { return localStorage.getItem(CLAVE_GUIA) === "1"; } catch (e) { return false; }
+}
+function setupGuide() {
+  const guide = document.getElementById("hero-guide");
+  if (guide && !guiaVista()) guide.hidden = false;
+}
+function hideGuide() {
+  const guide = document.getElementById("hero-guide");
+  if (guide) guide.hidden = true;
+  try { localStorage.setItem(CLAVE_GUIA, "1"); } catch (e) { /* sin almacenamiento: se oculta solo esta visita */ }
+}
+
+// "Esta semana produce:" las 2-3 tarjetas Recomendar, todo desde radar.json.
+function renderProduce(data, onOpen) {
+  const sec = document.getElementById("produce");
+  const grid = document.getElementById("produce-grid");
+  const recs = (data.topics || []).filter((t) => t.decision === "Recomendar").slice(0, 3);
+  if (!sec || !grid || !recs.length) return;
+  for (const t of recs) {
+    const src = (t.top_signals || [])[0];
+    const plat = (t.adapt && t.adapt.platform) || (src && (PLATFORM_NAME[src.source] || src.source)) || "";
+    const porQue = String(t.reason || "").split(";")[0];
+    grid.appendChild(
+      el("article", { class: "produce-card" }, [
+        el("span", { class: "produce-plat", text: plat }),
+        el("h3", { text: t.name }),
+        el("p", { text: `${porQue}.` }),
+        el("button", { class: "produce-btn", type: "button", text: "Ver guion", "aria-label": `Ver guion de ${t.name}`, onclick: () => onOpen(t.slug) }),
+      ])
+    );
+  }
+  sec.hidden = false;
+}
+
 function renderRankingRow(topic, onOpen) {
   const pct = Math.max(0, Math.min(1, topic.p)) * 100;
   const color = DECISION_COLOR[topic.decision] || "var(--gris)";
@@ -216,7 +253,7 @@ function renderCost(data) {
   const semanal = t.weekly_cost_usd ?? 0;
   highlight.appendChild(document.createTextNode("Cada semana cuesta "));
   highlight.appendChild(el("strong", { text: fmtUsd(semanal) }));
-  highlight.appendChild(document.createTextNode(` (Instagram y TikTok vía Apify; el modelo propio clasifica gratis), unos ${fmtUsd(semanal * 52)} al año. El entrenamiento inicial con el LLM costó ${fmtUsd(t.teacher_cost_usd || 0)} una sola vez. El scraping pago cuesta `));
+  highlight.appendChild(document.createTextNode(` (Instagram y TikTok vía Apify, ${t.apify_cost_source && t.apify_cost_source !== "estimado" ? "medido" : "estimado"}; el modelo propio clasifica gratis), unos ${fmtUsd(semanal * 52)} al año. El entrenamiento inicial con el LLM costó ${fmtUsd(t.teacher_cost_usd || 0)} una sola vez. El scraping pago cuesta `));
   highlight.appendChild(el("strong", { text: fmtUsd(t.paid_alternative_usd_year || 0) }));
   highlight.appendChild(document.createTextNode(" al año."));
   grid.appendChild(highlight);
@@ -228,10 +265,13 @@ function renderCost(data) {
   for (const [k, nombre] of tareas) {
     const m = student[k];
     if (!m || typeof m.accuracy !== "number" || m.usable === false) continue;
+    const ho = typeof m.holdout_accuracy === "number"; // cifra honesta: 20 % apartado que ninguna decisión vio
+    const acc = ho ? m.holdout_accuracy : m.accuracy;
+    const base = ho ? m.holdout_baseline : m.baseline;
     grid.appendChild(
       el("div", { class: "cost-card" }, [
-        el("span", { class: "cost-value nums", text: pct(m.accuracy) }),
-        el("span", { class: "cost-label", text: `Acierto del modelo propio en ${nombre}${typeof m.baseline === "number" ? ` (sin modelo: ${pct(m.baseline)})` : ""}` }),
+        el("span", { class: "cost-value nums", text: pct(acc) }),
+        el("span", { class: "cost-label", text: `Acierto del modelo propio en ${nombre}${ho ? " (prueba aparte" : ""}${typeof base === "number" ? `${ho ? ", " : " ("}sin modelo: ${pct(base)})` : ho ? ")" : ""}` }),
       ])
     );
   }
@@ -274,12 +314,14 @@ function closePanel() {
   if (lastFocused) lastFocused.focus();
 }
 
+let UMBRALES = [0.8, 0.5]; // se reemplaza con data.calibration.thresholds
+
 function renderThreshold(p) {
   const track = el("div", { class: "threshold-track" });
   const fill = el("div", { class: "threshold-fill" });
   fill.style.width = `${Math.max(0, Math.min(1, p)) * 100}%`;
   track.appendChild(fill);
-  for (const [value, label] of [[0.8, "0.80 Recomendar"], [0.5, "0.50 Aprender"]]) {
+  for (const [value, label] of [[UMBRALES[0], `${UMBRALES[0].toFixed(2)} Recomendar`], [UMBRALES[1], `${UMBRALES[1].toFixed(2)} Aprender`]]) {
     const mark = el("div", { class: "threshold-mark" });
     mark.style.left = `${value * 100}%`;
     mark.appendChild(el("span", { class: "mark-label", text: label }));
@@ -646,15 +688,22 @@ async function loadData() {
 
 async function main() {
   const data = await loadData();
+  const th = data.calibration && data.calibration.thresholds;
+  if (Array.isArray(th) && th.length === 2) UMBRALES = th;
   renderHero(data);
+  setupGuide();
 
   setupPanelClosers();
 
   const onOpen = (slug) => {
     const topic = data.topics.find((t) => t.slug === slug);
-    if (topic) openPanel(topic, document.activeElement);
+    if (topic) {
+      hideGuide();
+      openPanel(topic, document.activeElement);
+    }
   };
 
+  renderProduce(data, onOpen);
   renderRanking(data, onOpen);
   renderWhy(data);
   renderBench(data);

@@ -226,3 +226,68 @@ def test_build_guiones_sin_plantilla(datos):
     assert t["agentes-ia"]["adapt"]["title"] == "t" and t["agentes-ia"]["adapt_reel"] == {"hook": "x"}
     assert t["ia-ventas"]["adapt"] is None and t["ia-ventas"]["adapt_reel"] is None  # sin plantilla genérica
     assert t["agentes-ia"]["early_label"] in ("Temprano", "Despegando", "Estable", "Pico/saturado", "Cayendo")
+
+
+# ------------------------------------------------------------------ ronda 5: escáner coherente
+
+def test_escaner_coherente_con_la_audiencia(settings, db):
+    settings.DECISION_MODE = "replay"
+    empanadas = analyze.analizar("Receta de empanadas colombianas para el domingo")
+    assert empanadas["decision"] == "Descartar"
+    pov = analyze.analizar("POV: hiciste el informe semanal en 5 minutos con ChatGPT")
+    assert pov["topic"] == "copilotos" and pov["decision"] in ("Aprender", "Recomendar")
+    li = analyze.analizar("Agentes de IA en ventas: cómo un equipo comercial calificó prospectos en LinkedIn")
+    assert li["topic"] in ("ia-ventas", "agentes-ia") and li["decision"] != "Descartar"
+
+
+def test_decision_pieza_reglas():
+    t = {"decision": "Recomendar", "stage": "creciendo"}
+    assert analyze.decision_pieza(None, 0.9) == "Descartar"
+    assert analyze.decision_pieza(t, 0.1) == "Descartar"
+    assert analyze.decision_pieza(t, 0.4) == "Aprender" and analyze.decision_pieza(t, 0.5) == "Recomendar"
+    assert analyze.decision_pieza({"decision": "Aprender", "stage": "estable"}, 0.7) == "Aprender"
+    assert analyze.decision_pieza({"decision": "Descartar", "stage": "bajando"}, 0.9) == "Descartar"
+
+
+def test_collect_descarta_urls_con_email_y_guarda_costo_apify(monkeypatch, tmp_path, settings):
+    from radar import collect
+    settings.DATA_DIR = tmp_path
+    mala = {"id": "hn:1", "source": "hn", "url": "https://lore.kernel.org/x/CAHk@mail.gmail.com/", "title": "t", "text": ""}
+    buena = {"id": "hn:2", "source": "hn", "url": "https://example.com/a", "title": "t", "text": ""}
+    for nombre in ("fetch_gnews", "fetch_linkedin", "fetch_youtube", "fetch_instagram", "fetch_tiktok"):
+        monkeypatch.setattr(sources, nombre, lambda now: [])
+    monkeypatch.setattr(sources, "fetch_hn", lambda now: [mala, buena])
+    monkeypatch.setattr(sources, "fetch_wiki", lambda now: {})
+    usos = iter([1.0, 1.6])
+    monkeypatch.setattr(sources, "apify_uso_mensual", lambda: next(usos))
+    snap = collect.run(AHORA)
+    assert [s["id"] for s in snap["signals"]] == ["hn:2"]
+    assert snap["meta"]["apify_cost_usd"] == 0.6
+
+
+def test_build_usa_costo_apify_medido(datos):
+    snap = _snap()
+    assert build.build(snap)["totals"]["apify_cost_source"] == "estimado"
+    snap["meta"] = {"apify_cost_usd": 0.42, "apify_cost_source": "medido"}
+    t = build.build(snap)["totals"]
+    assert t["apify_cost_usd"] == t["weekly_cost_usd"] == 0.42 and t["apify_cost_source"] == "medido"
+
+
+def test_apify_uso_mensual_sin_token(monkeypatch):
+    monkeypatch.delenv("APIFY_TOKEN", raising=False)
+    assert sources.apify_uso_mensual() is None
+
+
+def test_home_sensor_y_prellenado_get(client, db):
+    html = client.get("/").content.decode()
+    assert "Escanéalo" in html and "/analizar/?texto=" in html
+    r = client.get("/analizar/", {"texto": "<script>x</script>" + "a" * 600, "red": "TikTok"})
+    assert len(r.context["texto"]) == 500 and r.context["plataforma"] == "TikTok"
+    assert "<script>x</script>" not in r.content.decode()  # autoescapado
+    assert client.get("/analizar/", {"red": "Otra"}).context["plataforma"] == "Otro"
+
+
+def test_como_funciona_muestra_holdout_y_cumplimiento(client):
+    html = client.get("/como-funciona/").content.decode()
+    assert "prueba aparte" in html.lower() or "prueba" in html and "Apify" in html
+    assert "titulares públicos indexados en Google News" in html

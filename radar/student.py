@@ -145,12 +145,19 @@ def cargar() -> dict | None:
     return json.loads(ruta().read_text(encoding="utf-8")) if ruta().exists() else None
 
 
+def _acierto(modelo: dict, test: list, tarea: str, met: str) -> int:
+    return sum(max(d, key=lambda c: d[c]) == y[tarea] for toks, y, x in test for d in [distribucion(modelo, toks, tarea, met, x)])
+
+
 def run(signals: list, labels: dict, k: int = 5) -> dict:
-    """Validación cruzada de k pliegues (determinista por hash del id): mide NB, kNN y ensamble y usa el mejor por tarea."""
+    """Separa un 20 % fijo (es_test) como hold-out; elige método por tarea con validación cruzada SOLO sobre el 80 %
+    (NB, kNN o ensamble); la cifra honesta es el acierto en el hold-out, que ninguna decisión vio."""
     por_id = {s["id"]: s for s in signals}
-    datos = [(sid, tokens(por_id[sid]["title"] + " " + por_id[sid].get("text", ""), por_id[sid]["source"]),
+    todos = [(sid, tokens(por_id[sid]["title"] + " " + por_id[sid].get("text", ""), por_id[sid]["source"]),
               {t: objetivo(lab, t) for t in TAREAS}, por_id[sid]["title"] + " " + por_id[sid].get("text", ""))
              for sid, lab in labels.items() if sid in por_id]
+    holdout = [d for d in todos if es_test(d[0])]
+    datos = [d for d in todos if not es_test(d[0])]
     pliegue = lambda sid: int(hashlib.md5(sid.encode()).hexdigest(), 16) % k  # noqa: E731
     metodos = ("nb", "knn", "ens")
     ok, base_ok, n = {m: Counter() for m in metodos}, Counter(), 0
@@ -163,9 +170,7 @@ def run(signals: list, labels: dict, k: int = 5) -> dict:
             mayor = Counter(y[tarea] for _, y in train).most_common(1)[0][0]
             base_ok[tarea] += sum(y[tarea] == mayor for _, y, _ in test)
             for met in metodos:
-                for toks, y, x in test:
-                    d = distribucion(m, toks, tarea, met, x)
-                    ok[met][tarea] += max(d, key=lambda c: d[c]) == y[tarea]
+                ok[met][tarea] += _acierto(m, test, tarea, met)
     acc, best = {}, {}
     for tarea in TAREAS:
         por_met = {met: round(ok[met][tarea] / max(n, 1), 3) for met in metodos}
@@ -177,9 +182,17 @@ def run(signals: list, labels: dict, k: int = 5) -> dict:
         if not acc[tarea]["usable"]:
             best[tarea] = "nb"  # sin mejora real sobre la base, nos quedamos con el modelo simple de siempre
             acc[tarea]["method"] = "nb"
-    modelo = entrenar([(t, y) for _, t, y, _ in datos])
+    # hold-out: modelo entrenado solo con el 80 %, evaluado una vez con el método ya elegido
+    m80 = entrenar([(t, y) for _, t, y, _ in datos])
+    prueba = [(t, y, x) for _, t, y, x in holdout]
+    for tarea in TAREAS:
+        mayor = Counter(y[tarea] for _, _, y, _ in datos).most_common(1)[0][0]
+        acc[tarea]["holdout_accuracy"] = round(_acierto(m80, prueba, tarea, best[tarea]) / max(len(prueba), 1), 3)
+        acc[tarea]["holdout_baseline"] = round(sum(y[tarea] == mayor for _, y, _ in prueba) / max(len(prueba), 1), 3)
+    modelo = entrenar([(t, y) for _, t, y, _ in todos])  # el modelo publicado aprende de todo; la cifra honesta es la del hold-out
     modelo["best"] = best
-    modelo["eval"] = {"method": f"validación cruzada {k} pliegues", "n_train": n - n // k, "n_test": n, **acc}
+    modelo["eval"] = {"method": f"método elegido con validación cruzada {k} pliegues sobre el 80 %; cifra final en hold-out del 20 % fijo",
+                      "n_train": len(datos), "n_test": n, "n_holdout": len(prueba), **acc}
     ruta().write_text(json.dumps(modelo, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     return modelo["eval"]
 

@@ -11,14 +11,20 @@
     <h1 id="hero-title">Esta semana, <span class="accent" id="hero-count">0</span> temas de IA piden contenido ya.</h1>
     <p class="lead">Qué temas crecen, por qué funcionan y cómo los adapta 30X para ejecutivos de LatAm.</p>
   </div>
+  <p class="hero-guide" id="hero-guide" hidden>Toca una estrella para ver por qué y el guion.</p>
   <p class="hero-legend" aria-label="Cómo leer el universo">
-    <span><i class="lg lg-planet"></i>Planetas = redes</span>
-    <span><i class="lg lg-star"></i>Estrellas = temas</span>
-    <span><i class="lg lg-ring"></i>Más cerca del centro = producir ya</span>
+    <span><i class="lg lg-planet"></i>Planetas = redes sociales</span>
+    <span><i class="lg lg-star"></i>Estrellas = temas de IA</span>
+    <span><i class="lg lg-ring"></i>Más cerca del centro = produce ya</span>
   </p>
 </section>
 
 <div class="wrap">
+
+<section class="block" id="produce" hidden>
+  <h2>Esta semana produce:</h2>
+  <div class="produce-grid" id="produce-grid"></div>
+</section>
 
 <section class="block" id="ranking">
   <h2>Ranking de la semana</h2>
@@ -33,6 +39,17 @@
 <section class="block" id="bench-30x">
   <h2>Lo que mejor le funcionó a 30X</h2>
   <div class="bench-grid" id="bench-grid"></div>
+</section>
+
+<section class="block" id="sensor">
+  <h2>¿Viste algo en LinkedIn, Instagram o TikTok? Escanéalo</h2>
+  <p class="sensor-lead">Pega una pieza que te llamó la atención y el radar te dice si es para tu audiencia y qué haría 30X con ella.</p>
+  <div class="sensor-ej">
+    {% for e in ejemplos %}
+    <a class="sensor-card" href="{% url 'analizar' %}?texto={{ e.texto|urlencode }}&amp;red={{ e.plataforma|urlencode }}"><b>{{ e.plataforma }}</b><span>{{ e.texto }}</span><em>Escanear esta pieza</em></a>
+    {% endfor %}
+    <a class="sensor-card sensor-own" href="{% url 'analizar' %}"><b>Tu pieza</b><span>Pega el texto de lo que viste.</span><em>Abrir el escáner</em></a>
+  </div>
 </section>
 
 <section class="block" id="costo">

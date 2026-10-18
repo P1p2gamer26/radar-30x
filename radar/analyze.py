@@ -10,12 +10,14 @@ from django.conf import settings
 from decision.decide import Question, decide
 
 from . import student
-from .build import decision
 from .taxonomy import FORMATS, HOOKS, TOPICS, match_topics, normalizar
 
 _PII = [(re.compile(r"[\w.+-]+@[\w-]+\.[\w.]+"), "[email]"), (re.compile(r"(?<!\w)@\w{2,}"), "[usuario]"),
         (re.compile(r"\+?\d[\d\s().-]{7,}\d"), "[telefono]"), (re.compile(r"https?://\S+"), "[link]")]
 UMBRAL_ESTUDIANTE = 0.5
+# ponytail: el encaje del estudiante no supera la base (usable=False); palabras de trabajo/ejecutivo suben el piso a 0.6
+TRABAJO = re.compile(r"\b(informes?|reportes?|excel|presentacion(es)?|reunion(es)?|equipos?|empresas?|negocios?|trabajo|gerentes?|"
+                     r"ejecutivos?|ventas|comercial(es)?|clientes|en 5 minutos|correos?)\b")
 
 PREGUNTAS = [
     Question("topic", "¿De qué tema de IA trata la pieza? ('otro' si no es de IA)", "choice", tuple(TOPICS) + ("otro",)),
@@ -59,6 +61,8 @@ def clasificar(texto: str) -> dict:
             r = {"topic": topic, "format": _top(d.answers["format"].probs)[0], "hook": _top(d.answers["hook"].probs)[0],
                  "exec_fit": round(d.answers["exec_fit"].p, 2), "engine": f"profesor ({d.engine})", "confidence": conf,
                  "cost_usd": round(d.cost_usd, 6)}
+    if r["topic"] != "otro" and TRABAJO.search(normalizar(texto)):
+        r["exec_fit"] = max(r["exec_fit"], 0.6)
     if "paso a paso" in normalizar(texto):
         r["format"] = "caso-paso-a-paso"
     return r
@@ -83,6 +87,17 @@ def palabras_clave(texto: str, topic: str) -> list:
     return sorted({w for k in kws if k in norm for w in k.split() if len(w) > 2})[:6]
 
 
+def decision_pieza(tema: dict | None, fit: float) -> str:
+    """Combina el tema con el encaje de la PIEZA: lo que no es para la audiencia se descarta aunque el tema suba."""
+    if tema is None or fit < 0.2:
+        return "Descartar"
+    d = tema["decision"]
+    if d == "Recomendar":
+        return "Recomendar" if fit >= 0.5 else "Aprender"
+    # ponytail: pieza con buen encaje en tema plano (no cayendo) vale al menos como aprendizaje; así "POV con ChatGPT" no se castiga por el tema
+    return "Aprender" if fit >= 0.6 and (d == "Aprender" or tema["stage"] != "bajando") else "Descartar"
+
+
 def analizar(texto: str) -> dict:
     from .views import cargar_radar
 
@@ -97,7 +112,7 @@ def analizar(texto: str) -> dict:
     crudos = [t["p_raw"] for t in cargar_radar().get("topics", []) if "p_raw" in t]  # mismo min-max semanal del radar
     lo, hi = (min(crudos), max(crudos)) if crudos else (0.0, 1.0)
     p = round(min(1.0, max(0.0, (p_raw - lo) / (hi - lo))), 3) if hi > lo else p_raw
-    r["decision"] = decision(p, tema["stage"] if tema else None, tema.get("exec_fit") if tema else None)
+    r["decision"] = decision_pieza(tema, r["exec_fit"])
     r["baja_confianza"] = r["engine"] == "regla" or r["confidence"] < 0.5
     r["p"] = p
     r["topic_name"] = TOPICS[r["topic"]]["name"] if r["topic"] in TOPICS else "Fuera del radar"
@@ -111,6 +126,7 @@ def analizar(texto: str) -> dict:
     r["stage"], r["growth"] = etapa, (tema["growth"] if tema else None)
     r["early_label"] = tema["early_label"] if tema else "Sin datos"
     r["slug_ok"] = tema is not None
+    r["no_audiencia"] = tema is not None and r["exec_fit"] < 0.2
     r["similares"] = sorted(tema["top_signals"], key=lambda s: -s.get("velocity", 0))[:3] if tema else []
     bench = radar.get("benchmark_30x") or []
     r["benchmark"] = next((b for b in bench if b["format"] == r["format"]), None) or next((b for b in bench if b["hook"] == r["hook"]), None) or (bench[0] if bench else None)

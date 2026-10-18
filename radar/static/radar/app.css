@@ -684,3 +684,29 @@ pre.guion-oculto { display: none; }
 .bench-x { font-family: var(--font-display); font-size: 2rem; color: var(--lima); }
 .bench-card a { color: var(--hueso); }
 .bench-meta { color: var(--gris); font-size: 0.85rem; }
+
+/* --- Ronda 5: home que se entiende en 10 s --- */
+.hero-legend { font-size: 1rem; gap: 10px 22px; color: var(--hueso); flex-wrap: wrap; justify-content: flex-end; max-width: 52%; background: rgba(5, 5, 6, 0.55); padding: 10px 14px; border-radius: var(--radio); }
+.hero-legend span { gap: 8px; }
+.lg { width: 13px; height: 13px; }
+.hero-guide { position: absolute; z-index: 2; top: 18px; left: 50%; transform: translateX(-50%); margin: 0; padding: 8px 18px; border: 1px solid var(--lima);
+  border-radius: 999px; color: var(--lima); background: rgba(5, 5, 6, 0.7); font-size: 0.95rem; pointer-events: none; text-align: center; }
+.hero-guide[hidden] { display: none; }
+.produce-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.produce-card { border: 1px solid var(--lima); border-radius: var(--radio); background: var(--polvo); padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+.produce-card h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; color: var(--hueso); }
+.produce-card p { color: var(--gris); margin: 0; }
+.produce-card .produce-plat { color: var(--lima); font-size: 0.85rem; letter-spacing: .06em; text-transform: uppercase; }
+.produce-btn { align-self: flex-start; margin-top: auto; background: var(--lima); color: var(--noche); border: none; border-radius: 999px; padding: 10px 22px; font-weight: 600; cursor: pointer; font-family: var(--font-body); }
+.produce-btn:hover { opacity: 0.9; }
+.sensor-lead { color: var(--gris); max-width: 620px; margin: 0 0 20px; }
+.sensor-ej { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.sensor-card { display: flex; flex-direction: column; gap: 8px; border: var(--borde); border-radius: var(--radio); background: var(--polvo); padding: 20px; text-decoration: none; color: var(--hueso); }
+.sensor-card:hover { border-color: var(--lima); }
+.sensor-card b { color: var(--lima); font-weight: 500; font-size: 0.85rem; letter-spacing: .06em; text-transform: uppercase; }
+.sensor-card span { color: var(--hueso); }
+.sensor-card em { margin-top: auto; color: var(--lima); font-style: normal; font-size: 0.9rem; }
+@media (max-width: 900px) {
+  .hero-legend { max-width: none; justify-content: flex-start; font-size: 0.95rem; }
+  .hero-guide { position: relative; top: auto; left: auto; transform: none; margin: 0 18px 12px; align-self: flex-start; }
+}

@@ -19,5 +19,10 @@ txt = open("data/radar.json", encoding="utf-8").read()
 assert not re.search(r"[\w.+-]+@[\w-]+\.(com|co|net|org)\b", txt), "hay emails en radar.json"
 bad = [u for u in re.findall(r'"url": "([^"]+)"', txt) if "/@" in u and "tiktok.com/@_" not in u]
 assert not bad, f"urls con handle de terceros: {bad[:3]}"
+import glob
+for f in glob.glob("data/snapshots/*.json"):  # snapshots: sin emails ni handles de terceros
+    t = open(f, encoding="utf-8").read()
+    assert not re.search(r"[\w.+-]+@[\w-]+\.[\w.]+", t), f"emails en {f}"
+    assert not re.search(r"/@(?!_/)[\w.-]+", t), f"handles de terceros en {f}"
 print(f"verify OK: {r['totals']['signals']} señales, {len(r['topics'])} temas, top: {r['topics'][0]['name']}")
 PY

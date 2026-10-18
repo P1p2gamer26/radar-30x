@@ -5202,22 +5202,6 @@
    "query": "AI"
   },
   {
-   "id": "hn:50113790",
-   "source": "hn",
-   "url": "https://lore.kernel.org/lkml/CAHk-=whTs09_ozN+e09GU68N1wPP56MUzDjrg9rnKxQUa0A_4Q@mail.gmail.com/",
-   "title": "Linus Torvalds on \"don't use AI for X\"",
-   "text": "",
-   "lang": "en",
-   "published_at": "2026-10-16T03:41:52Z",
-   "author_type": "comunidad",
-   "metrics": {
-    "points": 18,
-    "comments": 7,
-    "views": 0
-   },
-   "query": "AI"
-  },
-  {
    "id": "hn:50113708",
    "source": "hn",
    "url": "https://kitaphone.com",
@@ -92157,5 +92141,9 @@
    40,
    60
   ]
+ },
+ "meta": {
+  "apify_cost_usd": 0.55,
+  "apify_cost_source": "medido en consola Apify 17-oct"
  }
 }

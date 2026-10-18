@@ -394,9 +394,10 @@ export function mountScene(canvas, topics, onOpen, sources) {
       position: "absolute",
       transform: "translateX(-50%)",
       fontFamily: "'EB Garamond', Georgia, serif",
-      color: "var(--hueso)",
+      color: topic.decision === "Recomendar" ? "var(--lima)" : "var(--hueso)",
       textShadow: "0 1px 6px rgba(0,0,0,0.85), 0 0 14px rgba(0,0,0,0.6)",
-      fontSize: top3.has(topic.slug) ? "13px" : "16px",
+      fontSize: topic.decision === "Recomendar" ? "17px" : top3.has(topic.slug) ? "13px" : "16px",
+      fontWeight: topic.decision === "Recomendar" ? "500" : "400",
       letterSpacing: "0.01em",
       whiteSpace: "nowrap",
       opacity: "0",
@@ -416,6 +417,7 @@ export function mountScene(canvas, topics, onOpen, sources) {
       phase: Math.random() * 6.28,
       azimuth: ((azimuth % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2),
       top3: top3.has(topic.slug),
+      rec: topic.decision === "Recomendar", // las estrellas Recomendar siempre llevan su nombre
       flashUntil: 0,
       flashing: false,
       hoverLabel: false,
@@ -437,7 +439,7 @@ export function mountScene(canvas, topics, onOpen, sources) {
     const edge = 12;
     const cand = [];
     stars.forEach((star) => {
-      if (!(star.hoverLabel || star.flashing || star.top3)) {
+      if (!(star.hoverLabel || star.flashing || star.top3 || star.rec)) {
         star.label.style.opacity = "0";
         return;
       }
@@ -452,7 +454,7 @@ export function mountScene(canvas, topics, onOpen, sources) {
       cand.push({
         star,
         lw,
-        prio: star.hoverLabel ? 2 : star.top3 ? 1 : 0,
+        prio: star.hoverLabel ? 3 : star.rec ? 2 : star.top3 ? 1 : 0,
         x: Math.max(edge + lw / 2, Math.min(w - edge - lw / 2, v.x)),
         y: Math.max(edge, Math.min(h - edge - lh, sy - lh)),
       });

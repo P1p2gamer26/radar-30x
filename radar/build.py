@@ -226,6 +226,8 @@ def build(snap: dict | None = None) -> dict:
     propios |= {"crece30x", "andresbilbao"}
     bench = sorted([s for s in signals if s.get("channel") in propios],
                    key=lambda s: -trend.velocidad(s, ahora, medianas.get((s["source"], s["channel"]))))[:8]
+    meta_snap = snap.get("meta", {})
+    apify_usd = meta_snap.get("apify_cost_usd", APIFY_USD_POR_CORRIDA)  # sin medición: constante, marcada "estimado"
     radar = {
         "generated_at": snap["collected_at"],
         "week": ahora.strftime("%G-W%V"), "window_days": 14,
@@ -235,7 +237,8 @@ def build(snap: dict | None = None) -> dict:
         "totals": {"signals": len(signals), "classified": clasificadas, "labeled": n_teacher,
                    "teacher_model": meta.get("model", ""), "teacher_cost_usd": meta.get("cost_usd", 0.0),
                    "student_cost_usd": 0.0,
-                   "apify_cost_usd": APIFY_USD_POR_CORRIDA, "weekly_cost_usd": APIFY_USD_POR_CORRIDA,
+                   "apify_cost_usd": apify_usd, "weekly_cost_usd": apify_usd,
+                   "apify_cost_source": meta_snap.get("apify_cost_source", "estimado"),
                    "cost_per_signal_usd": round(meta.get("cost_usd", 0.0) / max(clasificadas, 1), 6),
                    "paid_alternative_usd_year": PAID_ALTERNATIVE_USD_YEAR},
         "student": modelo.get("eval", {}),

@@ -157,6 +157,14 @@ def con_handle(url: str) -> bool:
     return bool(_HANDLE_URL.search(url or ""))
 
 
+_EMAIL_URL = re.compile(r"[\w.+-]+@[\w-]+\.[\w.]+")
+
+
+def con_email(url: str) -> bool:
+    """URLs con forma de email (message-id de listas de correo): se descartan, pueden identificar a una persona."""
+    return bool(_EMAIL_URL.search(url or ""))
+
+
 def sin_pii(texto: str) -> str:
     return re.sub(r"\s+", " ", _PII.sub("", texto or "")).strip()
 
@@ -248,6 +256,21 @@ def _apify(actor: str, entrada: dict) -> list:
                                  headers={"Content-Type": "application/json", "User-Agent": UA})
     with urllib.request.urlopen(req, timeout=260) as resp:
         return json.loads(resp.read())
+
+
+def apify_uso_mensual() -> float | None:
+    """USD acumulados en el mes según Apify (GET /v2/users/me/usage/monthly); None sin token o si falla. El token va en cabecera."""
+    token = os.environ.get("APIFY_TOKEN", "")
+    if not token:
+        return None
+
+    def pedir():
+        req = urllib.request.Request("https://api.apify.com/v2/users/me/usage/monthly",
+                                     headers={"Authorization": f"Bearer {token}", "User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            d = json.loads(resp.read())["data"]
+        return float(d.get("totalUsageCreditsUsdAfterVolumeDiscount", d.get("totalUsageCreditsUsd")))
+    return _seguro("apify-costo", pedir)
 
 
 def _lang(texto: str) -> str:
