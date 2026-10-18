@@ -78,7 +78,7 @@ def evaluar(items: list, verdad: list, llamar=opencode) -> dict:
 
 
 def estudiante_offline(signals: list, labels: dict, items: list) -> tuple:
-    """Reentrena como student.run (80 % sin hold-out) y devuelve el 'mix' offline (lr + embeddings) en los items:
+    """Reentrena como student.run (80 % sin hold-out) y devuelve el 'multi' offline (lr + 3 modelos de embeddings) en los items:
     ({sid: (slug, prob)}, segundos por item de predicción)."""
     por_id = {s["id"]: s for s in signals}
     tx = lambda s: s["title"] + " " + s.get("text", "")  # noqa: E731
@@ -88,16 +88,17 @@ def estudiante_offline(signals: list, labels: dict, items: list) -> tuple:
     pos = {f[0]: i for i, f in enumerate(filas)}
     ev = student.cargar()["eval"]
     c_lr = {t: int(ev[t]["method"][3:]) if ev[t]["method"].startswith("lr@") else 30 for t in student.TAREAS}
-    E = student.embeber([f[3] for f in filas])
     lr = student.entrenar_lr([(filas[i][1], filas[i][2]) for i in dat], c_lr)
     idx = [i for i in dat if filas[i][2]["topic"] is not None]
-    clf = student._ajustar_emb(E, idx, [filas[i][2]["topic"] for i in idx], student.C_MIX[1])
+    ys = [filas[i][2]["topic"] for i in idx]
+    Ex = {n: student.embeber([f[3] for f in filas], n) for n in student.MULTI}
+    clfs = {n: student._ajustar_emb(Ex[n], idx, ys, C) for n, (_, _, C) in student.MULTI.items()}
     sids = [s["id"] for s in items]
     t0 = time.perf_counter()
-    de = student._dists_emb(clf, E, [pos[x] for x in sids])
+    de = [student._dists_emb(clfs[n], Ex[n], [pos[x] for x in sids]) for n in clfs]
     out = {}
-    for sid, d_e in zip(sids, de):
-        d = student._prom(student._dist_lr(lr, filas[pos[sid]][1], "topic"), d_e)
+    for j, sid in enumerate(sids):
+        d = student._prom(student._dist_lr(lr, filas[pos[sid]][1], "topic"), *(x[j] for x in de))
         c = max(d, key=lambda k: d[k])
         out[sid] = (c, round(float(d[c]), 4))
     return out, (time.perf_counter() - t0) / max(len(sids), 1)
@@ -106,10 +107,19 @@ def estudiante_offline(signals: list, labels: dict, items: list) -> tuple:
 class Command(BaseCommand):
     help = "Mide un LLM gratis (OpenCode Zen) contra el estudiante en el hold-out de tema -> data/llm_vs_student.json"
 
+    def add_arguments(self, parser):
+        parser.add_argument("--reusar", action="store_true", help="reusa las respuestas guardadas del LLM; solo recalcula el estudiante")
+
     def handle(self, *args, **opts):
         pares = holdout_tema(latest()["signals"], label.cargar()["labels"])
         items, verdad = [p[0] for p in pares], [p[1] for p in pares]
-        res = evaluar(items, verdad)
+        if opts["reusar"]:  # ponytail: mismo hold-out y mismas respuestas del LLM; así la comparación no depende de que el LLM gratis responda igual
+            viejo = json.loads((settings.DATA_DIR / "llm_vs_student.json").read_text(encoding="utf-8"))
+            q = {x["id"]: x["llm"] for x in viejo["items"]}
+            assert set(q) == {s["id"] for s in items}, "el hold-out cambió; corre sin --reusar"
+            res = {k: viejo[k] for k in ("n", "llm_top1", "llm_unparsed", "llm_seconds_per_item")} | {"llm": [q[s["id"]] for s in items]}
+        else:
+            res = evaluar(items, verdad)
         est, seg_est = estudiante_offline(latest()["signals"], label.cargar()["labels"], items)
         llm = res.pop("llm")
         top1 = round(sum(est[s["id"]][0] == v for s, v in zip(items, verdad)) / len(items), 3)
