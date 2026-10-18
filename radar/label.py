@@ -135,34 +135,71 @@ ESTILO_30X = ("Estilo 30X (Andrés Bilbao): español neutro latino, directo, sin
 PLATAFORMAS = ("LinkedIn", "Instagram", "TikTok", "YouTube")
 
 
+RESPALDO_ADAPT = "gh/claude-sonnet-5"  # ponytail: si el modelo principal falla o devuelve algo inválido
+
+
+def _datos_tema(topic: dict, benchmark: list) -> dict:
+    return {"tema": topic["name"], "etapa": topic.get("early_label") or topic["stage"], "razon": topic["reason"],
+            "formato_ganador": topic["why"].get("format_winner"), "gancho_ganador": topic["why"].get("hook_winner"),
+            "top_signals": [_sanitizar(s["title"])[:160] for s in topic["top_signals"][:6]],
+            "lo_que_mejor_le_funciona_a_30x": [_sanitizar(b["title"])[:120] for b in benchmark[:4]]}
+
+
+def _pedir(usuario: str, validar_fn) -> dict | None:
+    """Pide JSON al LLM local (modelo principal, luego respaldo) y devuelve validar_fn(json) o None."""
+    headers = {"Authorization": f"Bearer {settings.LLM_API_KEY}"} if settings.LLM_API_KEY else {}
+    for modelo in (settings.LLM_MODEL, RESPALDO_ADAPT):
+        payload = {"model": modelo, "temperature": 0.4, "stream": False,
+                   "messages": [{"role": "system", "content": SISTEMA}, {"role": "user", "content": usuario}]}
+        try:
+            data = _post_json(settings.LLM_BASE_URL.rstrip("/") + "/chat/completions", payload, settings.LLM_TIMEOUT, headers)
+            out = validar_fn(_json(data["choices"][0]["message"]["content"]))
+            if out:
+                uso = data.get("usage") or {}
+                out["by"] = "teacher"
+                out["cost_usd"] = round((int(uso.get("prompt_tokens") or 0) * settings.LLM_PRICE_IN_PER_1M
+                                         + int(uso.get("completion_tokens") or 0) * settings.LLM_PRICE_OUT_PER_1M) / 1e6, 5)
+                return out
+        except Exception as e:
+            print(f"[aviso] adaptar ({modelo}): {e}")
+    return None
+
+
 def adaptar(topic: dict, benchmark: list) -> dict | None:
-    datos = {"tema": topic["name"], "etapa": topic["stage"], "razon": topic["reason"],
-             "formato_ganador": topic["why"].get("format_winner"), "gancho_ganador": topic["why"].get("hook_winner"),
-             "top_signals": [_sanitizar(s["title"])[:160] for s in topic["top_signals"][:6]],
-             "lo_que_mejor_le_funciona_a_30x": [_sanitizar(b["title"])[:120] for b in benchmark[:4]]}
     usuario = (f"Audiencia: {AUDIENCIA}. {ESTILO_30X}\nPropón UNA pieza para que 30X publique esta semana sobre el tema. "
                "Escribe en español de Latinoamérica, para ejecutivos, sin tecnicismos. "
                "hook = la frase LITERAL de los primeros 3 segundos y debe contener una cifra o un contraste concreto "
                "sacado de las top_signals (no inventes datos que no estén ahí). "
                f"format debe ser uno de {sorted(FORMATS)}. beats = 3 o 4 pasos concretos de la pieza (qué se muestra o dice en cada uno). "
-               f"cta = llamado a la acción. platform = una de {list(PLATAFORMAS)} (la mejor para este formato). "
+               f"cta = llamado a la acción. platform = una de {['LinkedIn', 'YouTube']} (la mejor para este formato). "
                'Esquema: {"title": "...", "hook": "...", "format": "...", "beats": ["...", "...", "..."], '
                '"cta": "...", "platform": "..."}\n'
-               f"<items>{json.dumps(datos, ensure_ascii=False)}</items>")
-    payload = {"model": settings.LLM_MODEL, "temperature": 0.4, "stream": False,
-               "messages": [{"role": "system", "content": SISTEMA}, {"role": "user", "content": usuario}]}
-    headers = {"Authorization": f"Bearer {settings.LLM_API_KEY}"} if settings.LLM_API_KEY else {}
-    try:
-        data = _post_json(settings.LLM_BASE_URL.rstrip("/") + "/chat/completions", payload, settings.LLM_TIMEOUT, headers)
-        a = _json(data["choices"][0]["message"]["content"])
+               f"<items>{json.dumps(_datos_tema(topic, benchmark), ensure_ascii=False)}</items>")
+
+    def validar_fn(a):
         beats = [str(b)[:200] for b in a["beats"]][:4]
         if a["format"] not in FORMATS or len(beats) < 3:
             return None
-        uso = data.get("usage") or {}
-        costo = (int(uso.get("prompt_tokens") or 0) * settings.LLM_PRICE_IN_PER_1M
-                 + int(uso.get("completion_tokens") or 0) * settings.LLM_PRICE_OUT_PER_1M) / 1e6
         return {"title": str(a["title"])[:160], "hook": str(a["hook"])[:200], "format": a["format"], "beats": beats,
-                "cta": str(a["cta"])[:160], "platform": a.get("platform") if a.get("platform") in PLATAFORMAS else "LinkedIn", "by": "teacher", "cost_usd": round(costo, 5)}
-    except Exception as e:
-        print(f"[aviso] adaptar {topic['slug']}: {e}")
-        return None
+                "cta": str(a["cta"])[:160], "platform": a.get("platform") if a.get("platform") in PLATAFORMAS else "LinkedIn"}
+    return _pedir(usuario, validar_fn)
+
+
+def adaptar_reel(topic: dict, benchmark: list) -> dict | None:
+    """Segundo guion: reel vertical de 30-45 s para Instagram/TikTok."""
+    usuario = (f"Audiencia: {AUDIENCIA}. {ESTILO_30X}\nEscribe UN guion de reel vertical (Instagram/TikTok) de 30 a 45 segundos "
+               "sobre el tema, para que lo grabe 30X esta semana. Español de Latinoamérica, sin tecnicismos. "
+               "hook = frase LITERAL de los segundos 0-3, con una cifra o un contraste concreto sacado de las top_signals (no inventes datos). "
+               "shots = 3 o 4 tomas; cada una con seg (rango, ej. '3-12'), visual (qué se ve) y texto (texto corto en pantalla). "
+               'cta = empieza por "Comenta" y una palabra clave en mayúsculas (ej. "Comenta VENTAS y te mando el paso a paso"). '
+               'Esquema: {"hook": "...", "shots": [{"seg": "3-12", "visual": "...", "texto": "..."}], "cta": "...", "platform": "Instagram|TikTok"}\n'
+               f"<items>{json.dumps(_datos_tema(topic, benchmark), ensure_ascii=False)}</items>")
+
+    def validar_fn(a):
+        shots = [{"seg": str(x["seg"])[:12], "visual": str(x["visual"])[:200], "texto": str(x["texto"])[:90]} for x in a["shots"]][:4]
+        cta = str(a["cta"])[:160]
+        if len(shots) < 3 or not cta.lower().startswith("comenta"):
+            return None
+        return {"hook": str(a["hook"])[:200], "shots": shots, "cta": cta, "duration": "30-45 s",
+                "platform": a.get("platform") if a.get("platform") in ("Instagram", "TikTok") else "Instagram"}
+    return _pedir(usuario, validar_fn)

@@ -82,7 +82,7 @@
   <section class="tema-hero">
     <a class="back-link" href="{% url 'index' %}">Volver al radar</a>
     <div class="stage-row">
-      <span class="stage-chip">{{ topic.stage }}</span>
+      <span class="stage-chip">{{ topic.early_label }}</span>
       <span class="decision-label decision-{{ topic.decision }}">{{ topic.decision }}</span>
       <span class="nums" style="color: var(--gris); font-size: 0.9rem;">crece x{{ topic.growth }}</span>
     </div>
@@ -92,15 +92,15 @@
     <div class="tema-nums">
       <div class="tema-num">
         <span class="v nums">{{ topic.p }}</span>
-        <span class="l">Puntaje p</span>
+        <span class="l">Puntaje de la semana (0 a 1)</span>
       </div>
       <div class="tema-num">
         <span class="v nums">{{ topic.momentum }}</span>
-        <span class="l">Momentum</span>
+        <span class="l">Impulso</span>
       </div>
       <div class="tema-num">
         <span class="v nums">{{ topic.exec_fit }}</span>
-        <span class="l">Encaje ejecutivo</span>
+        <span class="l">Encaje con tu audiencia</span>
       </div>
       <div class="tema-num">
         <span class="v nums">{{ topic.volume }}</span>
@@ -116,7 +116,7 @@
         <div class="why-grid">
           <div class="why-card">
             <h3>Resumen</h3>
-            <p>Formato ganador: {{ topic.why.format_winner }}. Gancho ganador: {{ topic.why.hook_winner }}. Mejor día: {{ topic.why.best_day }}.</p>
+            <p>Formato que mejor funciona: {{ topic.why.format_winner }}. Gancho que mejor funciona: {{ topic.why.hook_winner }}. Mejor día: {{ topic.why.best_day }}.</p>
           </div>
           <div class="why-card">
             <h3>Formatos (agregado)</h3>
@@ -162,20 +162,9 @@
       </div>
 
       <div>
-        <h2>Cómo adaptarlo</h2>
+        <h2>Así lo haría 30X</h2>
         <div class="adapt-card">
-          <h3 class="titulo">{{ topic.adapt.title }}</h3>
-          <div class="adapt-meta">
-            <span>{{ topic.adapt.hook }}</span>
-            <span>·</span>
-            <span>{{ topic.adapt.format }}</span>
-          </div>
-          <ol class="beats-list">
-            {% for beat in topic.adapt.beats %}
-            <li>{{ beat }}</li>
-            {% endfor %}
-          </ol>
-          <p class="cta">{{ topic.adapt.cta }}</p>
+          {% include "radar/_guiones.html" with adapt=topic.adapt reel=topic.adapt_reel decision=topic.decision uid="tema" %}
         </div>
       </div>
     </div>

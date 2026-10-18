@@ -161,6 +161,11 @@ def sin_pii(texto: str) -> str:
     return re.sub(r"\s+", " ", _PII.sub("", texto or "")).strip()
 
 
+def es_propia(s: dict) -> bool:
+    """Señal de una cuenta oficial 30X/Bilbao (la única cuyo texto saneado se conserva)."""
+    return bool(s.get("channel")) and not s["channel"].startswith("canal-")
+
+
 def _alias(canal: dict) -> str:
     """Solo los canales propios de 30X guardan su nombre; los demás, un alias estable (privacidad)."""
     return canal.get("name", "") if canal.get("own") else "canal-" + canal.get("id", "")[-6:]
@@ -176,7 +181,7 @@ def parse_youtube(crudo: bytes, canal: dict) -> list:
         rating = e.find(".//media:starRating", YT)
         out.append({
             "id": f"youtube:{vid}", "source": "youtube", "url": f"https://www.youtube.com/watch?v={vid}",
-            "title": e.findtext("a:title", default="", namespaces=YT), "text": sin_pii(desc)[:500], "lang": canal.get("lang", "en"),
+            "title": e.findtext("a:title", default="", namespaces=YT), "text": sin_pii(desc)[:500] if canal.get("own") else "", "lang": canal.get("lang", "en"),
             "published_at": _iso(datetime.fromisoformat(e.findtext("a:published", namespaces=YT))),
             "author_type": canal.get("author_type", "creador"),
             "metrics": {"points": int(rating.get("count", 0)) if rating is not None else 0, "comments": 0,
@@ -253,7 +258,7 @@ def _senal(source, ident, url, caption, publicado, metricas, dueno, formato, que
     """Item crudo -> Signal. Solo las cuentas oficiales conservan nombre ('channel'); el resto queda anónimo."""
     texto = sin_pii(caption)
     linea = sin_pii((caption or "").strip().split("\n")[0])
-    s = {"id": f"{source}:{ident}", "source": source, "url": url, "title": linea[:160] or texto[:160], "text": texto[:500],
+    s = {"id": f"{source}:{ident}", "source": source, "url": url, "title": linea[:160] or texto[:160], "text": texto[:500] if dueno in OFICIALES else "",  # terceros: solo título y métricas
          "lang": _lang(texto), "published_at": publicado,
          "author_type": OFICIALES.get(dueno, "creador"), "metrics": metricas, "format": formato, "query": query}
     if dueno in OFICIALES:

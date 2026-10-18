@@ -156,3 +156,73 @@ def test_escaner_devuelve_tema_decision_adapt_y_similares(client, settings, db):
     html = r.content.decode()
     assert "Copiar guion" in html and "Ver el tema en el radar" in html and "Escanear" in html
     cache.clear()
+
+
+# ------------------------------------------------------------------ ronda 3
+
+CASOS_ESCANER = [
+    ("Mi equipo de ventas cerró 30% más con un agente de IA, paso a paso", {"ia-ventas"}),
+    ("Cómo usé ChatGPT para redactar mis contratos y ahorré 10 horas", {"copilotos", "automatizacion"}),
+    ("OpenAI lanza un nuevo modelo, esto cambia todo", {"modelos-nuevos"}),
+    ("Cómo formar a tu equipo en IA sin ser programador", {"educacion-ia"}),
+]
+
+
+@pytest.mark.parametrize("texto,temas", CASOS_ESCANER)
+def test_escaner_acierta_el_tema(texto, temas, settings, db):
+    settings.DECISION_MODE = "replay"  # data/ real, sin LLM
+    assert analyze.analizar(texto)["topic"] in temas
+
+
+def test_escaner_paso_a_paso_y_confianza_baja(client, settings, db):
+    from django.core.cache import cache
+    cache.clear()
+    settings.DECISION_MODE = "replay"
+    r = client.post("/analizar/", {"texto": CASOS_ESCANER[0][0], "plataforma": "Instagram"})
+    res = r.context["resultado"]
+    assert res["format"] == "caso-paso-a-paso"
+    assert res["baja_confianza"] == (res["engine"] == "regla" or res["confidence"] < 0.5)
+    if res["baja_confianza"]:
+        assert "Confianza baja: revisa antes de producir" in r.content.decode()
+    cache.clear()
+
+
+def test_decision_honesta():
+    assert build.decision(0.95, "estable") == "Aprender"  # estable no es temprano
+    assert build.decision(0.95, "saturada") == "Aprender"
+    assert build.decision(0.95, "bajando") == "Descartar"
+    assert build.decision(0.95, "temprana") == build.decision(0.95, "creciendo") == "Recomendar"
+    assert build.decision(0.1, "temprana") == "Descartar"
+
+
+def test_student_ensamble_y_usable():
+    ev = student.cargar()["eval"]
+    for tarea in student.TAREAS:
+        e = ev[tarea]
+        assert {"accuracy", "baseline", "nb", "knn", "ensemble", "usable"} <= set(e)
+        assert e["usable"] == (e["accuracy"] - e["baseline"] >= student.MARGEN_USABLE - 1e-9)
+    assert ev["topic"]["accuracy"] > ev["topic"]["baseline"] + 0.2
+
+
+def test_terceros_sin_texto():
+    ig = sources.parse_instagram(json.loads((FIX / "apify_instagram.json").read_text(encoding="utf-8")), "perfil-30x")
+    assert ig[0]["text"] and ig[1]["text"] == ""  # oficial conserva texto saneado, tercero no
+    yt = sources.parse_youtube((FIX / "youtube.xml").read_bytes(), {"name": "X", "lang": "es"})
+    assert all(s["text"] == "" for s in yt)
+
+
+def test_radar_json_sin_handles_de_terceros():
+    import re
+    txt = (Path(__file__).parent.parent / "data" / "radar.json").read_text(encoding="utf-8")
+    urls = re.findall(r'"url": "([^"]+)"', txt)
+    assert urls and not [u for u in urls if "/@" in u and "tiktok.com/@_" not in u]
+
+
+def test_build_guiones_sin_plantilla(datos):
+    (datos / "adapt.json").write_text(json.dumps({"agentes-ia": {"title": "t", "hook": "h", "format": "opinion", "beats": ["a", "b", "c"],
+                                                                  "cta": "c", "platform": "LinkedIn", "adapt_reel": {"hook": "x"}}}), encoding="utf-8")
+    r = build.build(_snap())
+    t = {x["slug"]: x for x in r["topics"]}
+    assert t["agentes-ia"]["adapt"]["title"] == "t" and t["agentes-ia"]["adapt_reel"] == {"hook": "x"}
+    assert t["ia-ventas"]["adapt"] is None and t["ia-ventas"]["adapt_reel"] is None  # sin plantilla genérica
+    assert t["agentes-ia"]["early_label"] in ("Temprano", "Despegando", "Estable", "Pico/saturado", "Cayendo")

@@ -12,7 +12,37 @@
   "cta": "Comenta 'VENTAS' y te enviamos la plantilla del flujo para revisarlo con tu equipo.",
   "platform": "YouTube",
   "by": "teacher",
-  "cost_usd": 0.00815
+  "cost_usd": 0.00815,
+  "adapt_reel": {
+   "hook": "Una startup levantó 50 mil dólares para vender con IA. ¿Y tu equipo de ventas?",
+   "shots": [
+    {
+     "seg": "3-12",
+     "visual": "Plano medio de Andrés frente a cámara, en oficina sencilla. Mira a lente, tono directo. Al decir '50 mil dólares' aparece un gráfico simple en la pantalla de fondo.",
+     "texto": "50 mil USD para un copiloto de ventas con IA"
+    },
+    {
+     "seg": "12-22",
+     "visual": "Pantalla dividida: a la izquierda, un vendedor revisando correos y llamadas a mano; a la derecha, el mismo proceso con un asistente de IA que prepara el seguimiento de cada cliente. Andrés señala el p",
+     "texto": "Paso 1: la IA revisa al prospecto. Paso 2: redacta el seguimiento."
+    },
+    {
+     "seg": "22-35",
+     "visual": "Andrés en plano medio explicando un caso concreto de un negocio que usa IA para ventas. Cambia a un celular mostrando una conversación de WhatsApp con un cliente atendido por IA y un vendedor que cier",
+     "texto": "Mismo equipo, menos tiempo perdido en tareas repetidas"
+    },
+    {
+     "seg": "35-42",
+     "visual": "Cierre a cámara, Andrés con gesto de invitación, mira directo a lente y señala hacia el texto de comentarios.",
+     "texto": "Empieza por un proceso chico. Eso basta para probar."
+    }
+   ],
+   "cta": "Comenta VENTAS y te mando el paso a paso",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.00778
+  }
  },
  "ia-finanzas": {
   "title": "IA en finanzas: qué significa para tu empresa esta semana",
@@ -27,7 +57,37 @@
   "cta": "Comenta 'FINANZAS' y te enviamos la guía con las 3 preguntas para tu equipo.",
   "platform": "LinkedIn",
   "by": "teacher",
-  "cost_usd": 0.00787
+  "cost_usd": 0.00787,
+  "adapt_reel": {
+   "hook": "En junio, a Anthropic le pusieron calificación de 'bono basura'. ¿Y si tu empresa depende de esa misma IA?",
+   "shots": [
+    {
+     "seg": "0-3",
+     "visual": "Primer plano de 30X mirando a cámara, tono serio, fondo de oficina sobria.",
+     "texto": "Calificación 'basura' en junio"
+    },
+    {
+     "seg": "3-12",
+     "visual": "Noticia explicada: 30X señala una pantalla con un titular sobre Anthropic y deuda. Usa una analogía simple: 'Es como pedirle un préstamo a alguien que los bancos ven con riesgo alto'.",
+     "texto": "¿Qué significa para ti?"
+    },
+    {
+     "seg": "12-27",
+     "visual": "30X camina por una oficina y se detiene en un escritorio. Explica con sus manos tres riesgos prácticos: qué pasa si el proveedor de IA sube precios, si se endeuda o si deja de dar servicio.",
+     "texto": "3 riesgos para tu empresa"
+    },
+    {
+     "seg": "27-40",
+     "visual": "Plano medio, 30X de pie frente a una pizarra con tres pasos: revisar a tus proveedores, tener un plan B y medir cuánto dependes de la IA.",
+     "texto": "Qué hacer esta semana"
+    }
+   ],
+   "cta": "Comenta RIESGO y te mando el paso a paso para revisar a tu proveedor de IA",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.00835
+  }
  },
  "estrategia-adopcion": {
   "title": "Colombia ya usa IA: el reto ahora es que los agentes trabajen juntos",
@@ -42,7 +102,37 @@
   "cta": "Comenta el proceso de tu empresa que más tiempo consume entre áreas y te digo, en el próximo video, por dónde empezar a conectarlo.",
   "platform": "LinkedIn",
   "by": "teacher",
-  "cost_usd": 0.00655
+  "cost_usd": 0.00655,
+  "adapt_reel": {
+   "hook": "Colombia: 25,9% usa IA y el reto es conectar agentes",
+   "shots": [
+    {
+     "seg": "3-12",
+     "visual": "Andrés Bilbao frente a cámara, en un escritorio sencillo. Mira a lente y señala la pantalla con la cifra del 25,9%. Corte rápido a un gerente revisando un informe en su oficina.",
+     "texto": "25,9% ya usa IA. ¿Y tu equipo?"
+    },
+    {
+     "seg": "12-22",
+     "visual": "Pantalla dividida: a la izquierda, una persona trabajando con varias herramientas sueltas; a la derecha, esas mismas herramientas conectadas por una flecha que lleva al resultado final. Andrés explica",
+     "texto": "Tener herramientas no es lo mismo que hacer que trabajen juntas."
+    },
+    {
+     "seg": "22-34",
+     "visual": "Andrés en plano medio, con tono directo: la estrategia suele estar bien escrita, pero el proceso se frena cuando el líder no decide ni acompaña el cambio. Corte a un equipo reunido alrededor de una me",
+     "texto": "La transformación no fracasa por la estrategia. Fracasa por el liderazgo."
+    },
+    {
+     "seg": "34-42",
+     "visual": "Cierre en plano corto. Andrés pide al espectador pensar en una sola decisión que su empresa puede tomar esta semana para conectar sus herramientas. Pantalla final con el logo de 30X.",
+     "texto": "Empieza por una decisión esta semana."
+    }
+   ],
+   "cta": "Comenta LIDERAZGO y te mando el paso a paso para conectar tu equipo con IA",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.00903
+  }
  },
  "ia-servicio": {
   "title": "Así se rediseña el servicio al cliente con IA, paso a paso: el caso del chatbot que dio un reembolso y luego lo negó",
@@ -57,7 +147,37 @@
   "cta": "Comenta 'PROCESO' y te enviamos la plantilla de 3 preguntas para revisar tu servicio al cliente con IA.",
   "platform": "YouTube",
   "by": "teacher",
-  "cost_usd": 0.008
+  "cost_usd": 0.008,
+  "adapt_reel": {
+   "hook": "14,000 llamadas dicen que los humanos todavía superan a la IA en servicio al cliente.",
+   "shots": [
+    {
+     "seg": "0-3",
+     "visual": "Primer plano de Andrés Bilbao frente a cámara, mirada directa, con una pila de papeles o un audífono de call center sobre la mesa.",
+     "texto": "14,000 llamadas"
+    },
+    {
+     "seg": "3-14",
+     "visual": "Andrés explica en tono directo que el miedo a que la IA reemplace a los agentes de call center crece, pero los datos muestran otra cosa. Corte a B-roll de una persona atendiendo una llamada con audífo",
+     "texto": "¿La IA ya reemplazó al call center? No tan rápido."
+    },
+    {
+     "seg": "14-28",
+     "visual": "Pantalla dividida o gráfico simple: a la izquierda, el flujo de un cliente con un chatbot; a la derecha, el mismo caso con un agente humano apoyado por IA. Andrés señala cada paso con el dedo o un mar",
+     "texto": "Paso 1: la IA atiende lo repetitivo. Paso 2: el caso complejo pasa a una persona."
+    },
+    {
+     "seg": "28-40",
+     "visual": "Andrés de regreso a cámara, cierre cálido, con gesto de conclusión. Se muestra el texto final sobre fondo sencillo.",
+     "texto": "La IA ordena el trabajo. Las personas resuelven lo que importa."
+    }
+   ],
+   "cta": "Comenta SERVICIO y te mando el paso a paso para empezar en tu empresa.",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.00811
+  }
  },
  "educacion-ia": {
   "title": "Entrevista corta: cómo un líder empieza a formarse en IA sin ser programador",
@@ -72,7 +192,37 @@
   "cta": "Comentá 'IA' y te mando la guía con los 3 primeros pasos para formar a tu equipo.",
   "platform": "LinkedIn",
   "by": "teacher",
-  "cost_usd": 0.00917
+  "cost_usd": 0.00917,
+  "adapt_reel": {
+   "hook": "Y en 36 horas ya había vendido $10,000 USD.",
+   "shots": [
+    {
+     "seg": "0-3",
+     "visual": "Primer plano de Andrés Bilbao mirando a cámara, gesto serio. Un fondo sencillo con una laptop abierta.",
+     "texto": "36 horas. $10,000 USD."
+    },
+    {
+     "seg": "3-14",
+     "visual": "Bilbao explica en tono directo que aprender IA no es tomar cursos largos, sino resolver un problema real de tu negocio. Corte rápido a una pantalla con un proceso sencillo dibujado en tres pasos.",
+     "texto": "No necesitas un curso de 6 meses."
+    },
+    {
+     "seg": "14-30",
+     "visual": "Clip de entrevista: un líder de empresa en Latinoamérica cuenta en 2 frases cómo usó una herramienta de IA para ahorrar tiempo en una tarea repetida. Bilbao aparece en pantalla dividida con el testimo",
+     "texto": "Un proceso. Una herramienta. Menos horas perdidas."
+    },
+    {
+     "seg": "30-42",
+     "visual": "Bilbao de nuevo a cámara, señalando hacia abajo, con tono de invitación. Aparece el texto del llamado a la acción en pantalla.",
+     "texto": "Empieza por un proceso, no por un curso."
+    }
+   ],
+   "cta": "Comenta IA y te mando el paso a paso para aplicarlo en tu equipo",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.00954
+  }
  },
  "empleo-futuro": {
   "title": "Si tu equipo produjera diez veces más, ¿qué cambiaría en tu empresa?",
@@ -87,7 +237,37 @@
   "cta": "Comenta qué proceso de tu área te gustaría que se rediseñe con IA y te respondo con el primer paso.",
   "platform": "LinkedIn",
   "by": "teacher",
-  "cost_usd": 0.00632
+  "cost_usd": 0.00632,
+  "adapt_reel": {
+   "hook": "85.000 empleos tecnológicos esperan por los jóvenes. ¿Tu equipo está listo para ellos?",
+   "shots": [
+    {
+     "seg": "3-10",
+     "visual": "Plano medio de Andrés frente a cámara, en oficina sencilla. Gesto directo, sin música fuerte. Al decir la cifra, aparece sobreimpreso un número grande.",
+     "texto": "85.000 empleos tech"
+    },
+    {
+     "seg": "10-22",
+     "visual": "Andrés señala un papel o pantalla con tres pasos simples de un proceso de reclutamiento o capacitación de su equipo. Corte rápido entre cada paso.",
+     "texto": "No es si la IA quita empleos. Es qué habilidades vas a necesitar."
+    },
+    {
+     "seg": "22-35",
+     "visual": "Plano cerrado, tono cercano. Andrés explica con un caso concreto de una empresa que empezó a capacitar a sus jóvenes en herramientas de IA y qué cambió en sus contrataciones.",
+     "texto": "Empieza por capacitar, no por despedir."
+    },
+    {
+     "seg": "35-42",
+     "visual": "Andrés mira a cámara, apunta hacia abajo al texto de llamada a la acción y sonríe.",
+     "texto": "Comenta TALENTO"
+    }
+   ],
+   "cta": "Comenta TALENTO y te envío el paso a paso para preparar a tu equipo para el futuro del trabajo.",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.00806
+  }
  },
  "ia-marketing": {
   "title": "¿Y si el marketing con IA no es para expertos? Lo que enseña Elevator Boys con 48M de seguidores",
@@ -102,7 +282,37 @@
   "cta": "Comenta '48M' y te compartimos la guía de 3 procesos de marketing que puedes automatizar esta semana.",
   "platform": "LinkedIn",
   "by": "teacher",
-  "cost_usd": 0.00692
+  "cost_usd": 0.00692,
+  "adapt_reel": {
+   "hook": "3 claves de marketing digital que una pyme puede aplicar hoy con IA, sin contratar a nadie más.",
+   "shots": [
+    {
+     "seg": "3-12",
+     "visual": "Andrés frente a cámara, plano medio, fondo de oficina sencilla. Explica la noticia: la IA ya está entrando al marketing de las pymes y cambia qué se hace primero.",
+     "texto": "IA + marketing: qué cambia para tu empresa"
+    },
+    {
+     "seg": "12-24",
+     "visual": "Pantalla dividida con tres tarjetas numeradas que aparecen una por una: 1) entender qué automatizar, 2) calcular cuánto cuesta, 3) empezar con un proceso pequeño. Andrés señala cada tarjeta.",
+     "texto": "1) Qué automatizar 2) Cuánto cuesta 3) Por dónde empezar"
+    },
+    {
+     "seg": "24-35",
+     "visual": "Corte a un ejemplo concreto: un director de marketing revisando su calendario de contenido en una laptop. Andrés lo comenta en voz en off: la IA le ayuda a preparar borradores, pero la decisión sigue ",
+     "texto": "La IA prepara, tú decides"
+    },
+    {
+     "seg": "35-42",
+     "visual": "Andrés de regreso a cámara, mirando directo al lente, con gesto de cierre. Pausa breve antes del CTA.",
+     "texto": "Empieza por un solo proceso esta semana"
+    }
+   ],
+   "cta": "Comenta MARKETING y te mando el paso a paso para empezar en tu empresa",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.00865
+  }
  },
  "ia-talento": {
   "title": "IA en RR.HH.: el caso de US$74 mil al mes y lo que significa para tu equipo",
@@ -117,7 +327,37 @@
   "cta": "Comenta qué proceso de tu área de personas te gustaría revisar con IA primero y te compartimos la ruta paso a paso.",
   "platform": "LinkedIn",
   "by": "teacher",
-  "cost_usd": 0.00673
+  "cost_usd": 0.00673,
+  "adapt_reel": {
+   "hook": "¿Sabes cuánto ahorró una empresa al mes con IA? US$74 mil.",
+   "shots": [
+    {
+     "seg": "3-12",
+     "visual": "Andrés de frente, a cuadro medio, en un escritorio sencillo. Mira a cámara, hace una pausa breve antes de hablar y señala la pantalla con la mano.",
+     "texto": "US$74 mil al mes con IA"
+    },
+    {
+     "seg": "12-22",
+     "visual": "Corte a una pantalla con el antes y el después de un proceso de gestión de talento: muestra tareas manuales repetitivas y, al lado, el mismo proceso con IA ocupándose de ellas. Andrés habla sobre cómo",
+     "texto": "De tareas manuales a decisiones estratégicas"
+    },
+    {
+     "seg": "22-35",
+     "visual": "Andrés de pie frente a un tablero o pantalla, explicando en tres pasos sencillos cómo se transforma un proceso con IA. Va marcando cada paso con el dedo.",
+     "texto": "1. Identifica la tarea repetitiva 2. Automatízala 3. Usa el tiempo libre para talento"
+    },
+    {
+     "seg": "35-42",
+     "visual": "Plano cerrado de Andrés hablando directo a cámara, con tono de invitación. Termina con una sonrisa breve.",
+     "texto": "Tu equipo también puede hacerlo"
+    }
+   ],
+   "cta": "Comenta TALENTO y te mando el paso a paso",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.00789
+  }
  },
  "regulacion-etica": {
   "title": "Regulación de IA sin tecnicismos: qué significa para tu empresa esta semana",
@@ -132,7 +372,37 @@
   "cta": "Comenta 'Regulación' y te enviamos el link del evento en vivo con la guía de preguntas para tu equipo.",
   "platform": "LinkedIn",
   "by": "teacher",
-  "cost_usd": 0.00884
+  "cost_usd": 0.00884,
+  "adapt_reel": {
+   "hook": "Amazon uses AI to monitor union risk in UK warehouses",
+   "shots": [
+    {
+     "seg": "0-3",
+     "visual": "Primer plano de Andrés frente a cámara, gesto serio. Cuando dice el gancho, aparece en pantalla un titular de noticia con la frase original en inglés y una flecha que lo señala.",
+     "texto": "Amazon usa IA para vigilar riesgo sindical"
+    },
+    {
+     "seg": "3-14",
+     "visual": "Andrés explica en lenguaje simple qué pasó: una empresa grande usa un sistema de IA para anticipar qué bodegas podrían organizarse en sindicato. Usa un esquema sencillo con dos cajas: 'lo que se dice'",
+     "texto": "IA para anticipar sindicatos en bodegas. ¿Qué significa?"
+    },
+    {
+     "seg": "14-30",
+     "visual": "Corte a un mapa o ilustración simple de una cadena de suministro con tres puntos marcados. Andrés explica las preguntas que todo líder debe hacerse antes de usar IA con personas: ¿qué datos usa?, ¿qui",
+     "texto": "3 preguntas antes de usar IA con tu equipo: datos, revisión humana, derechos"
+    },
+    {
+     "seg": "30-45",
+     "visual": "Andrés de regreso a cámara, con tono directo. Cierra con una frase de acción y muestra en pantalla la palabra clave.",
+     "texto": "Regula tu IA antes de que te regulen"
+    }
+   ],
+   "cta": "Comenta REGULACIÓN y te mando la lista de 3 preguntas para revisar tu IA",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.0087
+  }
  },
  "roi-casos": {
   "title": "¿Más de $4.000 millones por un chatbot? Las 3 preguntas de ROI que todo líder debe hacer antes de aprobar un proyecto de IA",
@@ -147,6 +417,186 @@
   "cta": "Pregunta en los comentarios cuál fue el último proyecto de IA que aprobaste y qué cifra usaste para justificarlo, y comparte el post con el director financiero ",
   "platform": "LinkedIn",
   "by": "teacher",
-  "cost_usd": 0.00701
+  "cost_usd": 0.00701,
+  "adapt_reel": {
+   "hook": "Más de $4.000 millones y nos presentan un chatbot.",
+   "shots": [
+    {
+     "seg": "0-3",
+     "visual": "Primer plano de Andrés Bilbao mirando a cámara, tono serio, fondo de oficina sencilla. Entra con la frase del hook sin introducción.",
+     "texto": "$4.000 millones = un chatbot"
+    },
+    {
+     "seg": "3-12",
+     "visual": "Bilbao explica la trampa del ROI en IA: comprar tecnología no es lo mismo que resolver un problema del negocio. Usa una frase de la cita de Delgado Sempé sobre Modernización de Río Negro como ejemplo ",
+     "texto": "¿Qué problema resuelve la IA?"
+    },
+    {
+     "seg": "12-27",
+     "visual": "Caso concreto: un proceso real de la empresa (por ejemplo, atención o aprobaciones) dibujado en tres pasos sobre pantalla: antes, primer piloto pequeño, medición. Bilbao señala cada paso con la mano.",
+     "texto": "Empieza pequeño. Mide antes de escalar."
+    },
+    {
+     "seg": "27-40",
+     "visual": "Bilbao cierra con una opinión directa: antes de aprobar otro presupuesto de IA, pregunten qué tiempo o dinero se recupera y en cuánto tiempo. Plano medio, tono firme.",
+     "texto": "Antes de aprobar: ¿cuánto recupero y en cuánto tiempo?"
+    }
+   ],
+   "cta": "Comenta ROI y te mando el paso a paso para medir un caso de IA en tu empresa",
+   "duration": "30-45 s",
+   "platform": "Instagram",
+   "by": "teacher",
+   "cost_usd": 0.0074
+  }
+ },
+ "datos-rag": {
+  "title": "Así se le enseña a una IA a responder con los documentos de tu empresa, paso a paso | AI for Executives",
+  "hook": "Jev le dio a nuestro LLM la página equivocada una décima parte de las veces que nuestros embeddings.",
+  "format": "caso-paso-a-paso",
+  "beats": [
+   "Problema en pantalla: un gerente hace una pregunta real sobre políticas internas y la IA responde con datos de otro documento. Se muestra el error con una cifra simple: cuántas veces falló cada método",
+   "Paso 1 en lenguaje de negocio: tomamos los manuales, contratos y reportes de la empresa y los ordenamos en fragmentos cortos, como si fueran fichas de un archivero.",
+   "Paso 2: la IA busca primero las fichas correctas y luego responde citando de dónde sacó cada dato. Se compara con la versión anterior, mostrando la diferencia lado a lado.",
+   "Cierre con riesgos y decisiones: qué datos no deben entrar, quién revisa las respuestas y cómo medir si el sistema realmente ahorra tiempo al equipo."
+  ],
+  "cta": "Comenta la palabra ARCHIVO y te enviamos la plantilla paso a paso para evaluar cómo tu equipo puede empezar.",
+  "platform": "YouTube",
+  "by": "teacher",
+  "cost_usd": 0.00722
+ },
+ "agentes-ia": {
+  "title": "Agentes de IA sin jerga: cómo empezar a quitarle horas repetitivas a tu equipo",
+  "hook": "¿Cuántas horas dedica tu equipo cada semana a tareas que podrían automatizarse?",
+  "format": "post-texto",
+  "beats": [
+   "Arranque con la pregunta de las horas semanales, escrita en primera línea y sin introducción, para que el lector se reconozca en su propio equipo.",
+   "Describir un proceso repetitivo común (por ejemplo, armar el reporte semanal o responder las mismas consultas de clientes) y estimar en texto cuántas horas consume, con el paso a paso de qué hace la p",
+   "Explicar qué es un agente de IA en palabras simples: un asistente que ejecuta pasos por ti siguiendo reglas, con supervisión humana. Aclarar el riesgo principal (qué puede salir mal si no hay revisión",
+   "Cerrar con tres pasos concretos para empezar esta semana: elegir un solo proceso, medir cuánto tiempo toma y probar un agente en un caso pequeño antes de escalarlo."
+  ],
+  "cta": "Comenta cuántas horas a la semana gasta tu equipo en tareas repetitivas y guarda este post para revisarlo con tu equipo esta semana.",
+  "platform": "LinkedIn",
+  "by": "teacher",
+  "cost_usd": 0.00838
+ },
+ "video-voz": {
+  "title": "Herramienta en 60 segundos: crea video, voz e imagen con IA sin programar",
+  "hook": "Hoy un video hecho con IA de una persona real circula sin su consentimiento.",
+  "format": "herramienta-60s",
+  "beats": [
+   "Segundos 0-3: el gancho. Aparece el caso de un video generado con IA de una persona real, publicado sin su permiso, y se plantea la pregunta: ¿qué puede hacer tu empresa con esta tecnología y qué no?",
+   "Segundos 3-25: demostración en pantalla de una herramienta de voz o video generativo. Se muestra un flujo simple de tres pasos: escribir el guion, elegir la voz o el avatar y exportar. Se menciona la ",
+   "Segundos 25-45: qué cambia para tu negocio. Se explican dos usos concretos (un anuncio o un video de capacitación) y el costo de producirlos sin equipo de grabación. Se aclara el riesgo: siempre pedir",
+   "Segundos 45-60: checklist de 3 puntos para decidir si conviene usarla hoy y cierre con la regla de oro: probar primero con contenido interno antes de publicar algo al público."
+  ],
+  "cta": "Comenta 'HERRAMIENTA' y te enviamos la lista de verificación para usar IA en video y voz sin meterte en problemas legales.",
+  "platform": "YouTube",
+  "by": "teacher",
+  "cost_usd": 0.00862
+ },
+ "automatizacion": {
+  "title": "Reach Security capta 50 millones para automatizar defensas: qué significa para tu empresa",
+  "hook": "Reach Security capta más de 50 millones de dólares para automatizar defensas empresariales",
+  "format": "noticia-explicada",
+  "beats": [
+   "Segundos 0-5: el titular con la cifra de 50 millones de dólares sobre pantalla, sin introducción.",
+   "Explicamos en lenguaje simple qué significa 'automatizar defensas': software que detecta y responde a amenazas sin que una persona revise cada alerta.",
+   "Traducimos a tu empresa: qué procesos de seguridad o administrativos podrías automatizar primero y qué preguntas hacerle a tu equipo de TI.",
+   "Cierre con un resumen de una frase: la automatización ya llega también a las áreas de riesgo, no solo a la operación."
+  ],
+  "cta": "Comenta '¿Qué proceso de tu empresa automatizarías primero?' y te compartimos la guía de 3 preguntas para evaluarlo.",
+  "platform": "LinkedIn",
+  "by": "teacher",
+  "cost_usd": 0.00658
+ },
+ "startups-inversion": {
+  "title": "Herramienta en 60 segundos: cómo saber si tu startup ya encontró product market fit",
+  "hook": "De 4 a 15 millones de ARR: así cambia todo con product market fit",
+  "format": "herramienta-60s",
+  "beats": [
+   "0-5 s: Se muestra la cifra del gancho, de 4 a 15 millones de ARR, y se explica en una frase qué significa ARR para alguien que no es financiero.",
+   "5-25 s: Se presenta una sola herramienta sencilla de IA que el ejecutivo puede usar hoy para revisar si sus clientes repiten, recomiendan o se quedan, con un ejemplo de pantalla.",
+   "25-45 s: Se muestra un caso concreto de cómo pasar de un producto que algunos usan a uno que la gente no puede dejar, con la diferencia de ingresos como contraste.",
+   "45-60 s: Se cierra con tres preguntas para que el líder revise su propio negocio esta semana."
+  ],
+  "cta": "Comenta 'FIT' y te enviamos la plantilla con las tres preguntas para revisar tu propio negocio.",
+  "platform": "YouTube",
+  "by": "teacher",
+  "cost_usd": 0.00675
+ },
+ "copilotos": {
+  "title": "Copilotos de trabajo: qué significa para tu empresa, explicado en 3 minutos",
+  "hook": "Un prompt instala y corre todo tu día. Te explico qué significa eso para tu empresa.",
+  "format": "noticia-explicada",
+  "beats": [
+   "Gancho en pantalla: el texto 'Un prompt instala y corre todo tu día' con un ejemplo de la versión 2 de un asistente personal que organiza agenda, correos y tareas.",
+   "Qué pasó: explicación en lenguaje simple de qué es un copiloto de trabajo y en qué se diferencia de un chat común, sin tecnicismos.",
+   "Qué significa para tu empresa: tres áreas donde un copiloto puede ahorrar tiempo (ventas, operaciones, atención al cliente), con un caso concreto y cifras si la fuente las da.",
+   "Cierre práctico: tres preguntas que todo líder debe hacerse antes de adoptar un asistente de IA en su equipo."
+  ],
+  "cta": "Comenta 'COPILOTO' y te enviamos las 3 preguntas para evaluar un asistente de IA en tu área.",
+  "platform": "LinkedIn",
+  "by": "teacher",
+  "cost_usd": 0.008
+ },
+ "modelos-nuevos": {
+  "title": "6 modelos nuevos de IA: cuál le sirve a tu empresa y cuál puedes ignorar",
+  "hook": "6 modelos nuevos de IA en pocos días. ¿Cuál le sirve a tu empresa?",
+  "format": "lista-ranking",
+  "beats": [
+   "Pantalla con el titular de 6 modelos nuevos de IA y un contador que los numera uno por uno, sin jerga técnica.",
+   "Para cada modelo, una sola línea en lenguaje de negocio: qué hace, para qué área sirve y qué problema resuelve, con un ejemplo concreto de un proceso comercial o administrativo.",
+   "Ranking final de 3 criterios sencillos para decidir: costo, facilidad de uso y riesgo de datos. Se muestra cómo aplicarlos en 2 minutos.",
+   "Cierre: el ejecutivo elige un solo modelo para probar esta semana en una tarea real del equipo, y se le invita a comentar la palabra que quiere ver en el próximo ranking."
+  ],
+  "cta": "Comenta una palabra (por ejemplo, 'ranking') y te enviamos el link del análisis completo con la tabla de los 6 modelos.",
+  "platform": "LinkedIn",
+  "by": "teacher",
+  "cost_usd": 0.00795
+ },
+ "vibe-coding": {
+  "title": "3 cosas que tu equipo debe verificar antes de lanzar una app hecha con IA",
+  "hook": "La IA escribe el código. ¿Quién lo verifica? Hoy te digo los 3 puntos que nadie revisa.",
+  "format": "lista-ranking",
+  "beats": [
+   "Segundos 0-3: en pantalla, el contraste 'La IA escribe el código / ¿Quién lo verifica?' con una app generada por IA en vivo.",
+   "Lugar 3: cómo revisar que la app hace lo que el negocio necesita, con un ejemplo de un flujo real de cobro o pedidos.",
+   "Lugar 2 y 1: los errores más caros al crear apps con IA (datos de clientes expuestos y nadie responsable del código), con cifras de costo de cada uno.",
+   "Cierre: ejemplo de un caso de app que llegó a $210,364 de ingresos anuales recurrentes en 225 días, y qué revisó su creador antes de cobrar."
+  ],
+  "cta": "Comenta 'VERIFICAR' y te enviamos la lista de 3 puntos en PDF para revisar tu próxima app antes de lanzarla.",
+  "platform": "YouTube",
+  "by": "teacher",
+  "cost_usd": 0.00863
+ },
+ "seguridad-riesgos": {
+  "title": "Lo que tu equipo le cuenta a la IA: cómo revisar un proceso paso a paso sin exponer datos",
+  "hook": "Tu chatbot no es tu diario: por qué lo que le cuentas a la IA nunca es del todo privado",
+  "format": "caso-paso-a-paso",
+  "beats": [
+   "Mostrar un proceso real de una empresa (por ejemplo, atención a clientes o reportes internos) con los datos que el equipo suele pegar en el chatbot, marcando en pantalla cuáles son sensibles.",
+   "Paso a paso: separar qué información puede usarse tal cual, qué debe anonimizarse (nombres, montos, clientes) y qué no debe salir de la empresa, con una regla simple que el ejecutivo pueda copiar.",
+   "Mostrar el mismo proceso ya protegido: cómo se le pide a la IA el resultado en un formato concreto (lista, tabla, resumen de una página) y el tiempo que se ahorra, con una cifra medida en el caso.",
+   "Cierre con una lista de verificación de 3 preguntas que todo líder puede aplicar esta semana antes de usar IA con información de su empresa."
+  ],
+  "cta": "Comenta 'PROCESO' y te enviamos la plantilla de revisión de datos para aplicarla en tu equipo esta semana.",
+  "platform": "YouTube",
+  "by": "teacher",
+  "cost_usd": 0.00717
+ },
+ "infra-costos": {
+  "title": "Qué significa para tu empresa que los bancos quieran vender la deuda de los centros de datos de IA",
+  "hook": "Los bancos ya quieren deshacerse de la deuda de los centros de datos de IA que acaban de financiar.",
+  "format": "noticia-explicada",
+  "beats": [
+   "Pantalla con el titular: los bancos intentan vender la deuda de centros de datos de IA que acaban de suscribir. Se dice en una frase qué es un centro de datos y por qué cuesta tanto.",
+   "Explicación sencilla de la cadena: alguien pone el dinero para construir la infraestructura, y ahora buscan pasar ese riesgo a otros. Se usa una analogía cotidiana, como una hipoteca que el banco reve",
+   "Qué significa para un ejecutivo no técnico: costos de nube y de IA pueden subir o cambiar de proveedor, y conviene revisar contratos y presupuesto de uso de tokens antes de comprometer inversiones gra",
+   "Cierre con la conclusión en una frase y la pregunta: ¿tu empresa sabe cuánto le cuesta hoy cada uso de IA?"
+  ],
+  "cta": "Comenta cuánto gasta tu equipo hoy en herramientas de IA y te digo qué revisar primero; comparte el post con quien decide el presupuesto.",
+  "platform": "LinkedIn",
+  "by": "teacher",
+  "cost_usd": 0.00778
  }
 }

@@ -73,6 +73,30 @@ TOPICS = {
                                   "educacion", "education", "universidad", "bootcamp"]},
 }
 
+# Keywords extra (es+en) sacadas de data/audiencia/30x.json y de casos reales del escáner (ronda 3).
+_EXTRA = {
+    "ia-ventas": ["equipo de ventas", "equipos de ventas", "cerrar", "cerro", "cerrar ventas", "comercial", "comerciales",
+                  "habilidades comerciales", "prospectos", "prospecto", "cold email", "correos en frio", "sales", "sales team",
+                  "pipeline", "closing", "vendedor", "ventas b2b", "agente de ventas", "agentes de ventas"],
+    "copilotos": ["prompts", "prompt", "redactar", "contratos", "chatgpt para", "gpt para", "notebooklm", "asistente",
+                  "asistentes", "ia en el trabajo", "productividad personal", "copilots"],
+    "roi-casos": ["ahorre", "ahorramos", "ahorro de tiempo", "retorno de inversion", "rentabilidad", "caso de exito",
+                  "casos de exito", "resultados medibles", "eficiencia", "return on investment", "cost savings"],
+    "empleo-futuro": ["empleos", "puestos de trabajo", "mercado laboral", "desempleo", "trabajadores", "reemplazar",
+                      "reemplazados", "carrera profesional", "profesiones", "laboral", "workforce", "job market", "replace jobs"],
+    "educacion-ia": ["formar", "formacion", "capacitar", "capacitacion", "ensenar", "aprender", "clases", "masterclass",
+                     "alfabetizacion", "talleres", "mentoria", "formar a tu equipo", "equipo en ia", "aprende ia", "upskill",
+                     "training", "course", "courses", "learn ai", "students"],
+    "ia-servicio": ["servicio al cliente", "soporte al cliente", "atencion", "asistente virtual", "postventa", "chatbots",
+                    "help desk", "customer experience"],
+    "ia-marketing": ["marketing", "contenido", "publicidad", "campanas", "redes sociales", "community manager", "branding",
+                     "anuncios", "advertising", "content creation", "social media"],
+    "modelos-nuevos": ["lanza", "lanzo", "lanzan", "nuevo modelo", "nuevos modelos", "nueva version", "launches", "unveils",
+                       "announces", "model release", "gpt-6", "claude 5"],
+}
+for _slug, _kws in _EXTRA.items():
+    TOPICS[_slug]["keywords"] = TOPICS[_slug]["keywords"] + [k for k in _kws if k not in TOPICS[_slug]["keywords"]]
+
 FORMATS = {
     "reel-cara": "Reel/short con cara hablando a cámara",
     "carrusel": "Carrusel / PDF documento",

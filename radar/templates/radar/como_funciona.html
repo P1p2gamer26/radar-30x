@@ -96,7 +96,7 @@
 <div class="wrap">
   <section class="como-hero">
     <h1>Cinco pasos, costo casi cero, nada de datos personales.</h1>
-    <p class="lead">El radar lee fuentes públicas toda la semana, las etiqueta con un modelo grande una sola vez, y entrena uno propio que clasifica todo lo nuevo sin gastar un centavo.</p>
+    <p class="lead">El radar lee fuentes públicas. Una IA de entrenamiento las etiqueta una sola vez. Un modelo propio clasifica todo lo nuevo gratis.</p>
   </section>
 
   <section class="block">
@@ -106,35 +106,35 @@
         <span class="step-n nums">1</span>
         <div>
           <h3>Recolectar fuentes públicas</h3>
-          <p>Todos los días el radar junta señales de Hacker News, Google News, canales de YouTube y Wikipedia: solo títulos, textos cortos y métricas que ya son públicas.</p>
+          <p>Cada día el radar junta publicaciones de Hacker News, Google News, YouTube, LinkedIn, Instagram, TikTok y Wikipedia. Solo guarda títulos y números públicos.</p>
         </div>
       </div>
       <div class="pipeline-step">
         <span class="step-n nums">2</span>
         <div>
-          <h3>Etiquetar con profesor LLM</h3>
-          <p>Un modelo de lenguaje grande revisa cada señal una vez: a qué tema de IA pertenece, qué formato es, qué gancho usa y si le sirve a un ejecutivo de LatAm.</p>
+          <h3>Etiquetar con una IA de entrenamiento</h3>
+          <p>Una IA grande lee una muestra de publicaciones. Anota el tema, el formato y el gancho. También anota si le sirve a un ejecutivo de LatAm.</p>
         </div>
       </div>
       <div class="pipeline-step">
         <span class="step-n nums">3</span>
         <div>
-          <h3>Entrenar estudiante propio (costo 0)</h3>
-          <p>Con esas etiquetas se entrena un modelo propio, simple y liviano, que aprende a clasificar señales nuevas sin volver a llamar al profesor.</p>
+          <h3>Entrenar un modelo propio (costo 0)</h3>
+          <p>Con esas notas aprende un modelo pequeño, nuestro. Así clasifica lo nuevo sin pagar. Lo medimos con una prueba honesta: 5 rondas, cada una con datos que no vio.</p>
         </div>
       </div>
       <div class="pipeline-step">
         <span class="step-n nums">4</span>
         <div>
           <h3>Medir crecimiento y etapa</h3>
-          <p>Cada tema tiene una serie diaria de 14 días. De ahí se calcula si crece, si está temprano, saturado o bajando, y qué tan rápido se mueve frente a su propia base.</p>
+          <p>Cada tema tiene una serie diaria de 14 días. De ahí sale si el tema está temprano, despegando, estable, en su pico o cayendo. También sale qué tan rápido se mueve.</p>
         </div>
       </div>
       <div class="pipeline-step">
         <span class="step-n nums">5</span>
         <div>
           <h3>Decidir con umbrales 0.80/0.50</h3>
-          <p>Se mezcla el momentum del tema con qué tan bien le sirve a un ejecutivo. Por encima de 0.80 se recomienda producir esta semana; por encima de 0.50, aprender y monitorear; el resto se descarta.</p>
+          <p>Se mezcla el impulso del tema con su encaje con tu audiencia. Sobre 0.80 y solo si es Temprano o Despegando: Recomendar. Un tema estable o en su pico, como máximo Aprender. Sobre 0.50: Aprender. El resto, Descartar.</p>
           <div class="umbrales-wrap">
             <div class="threshold-track">
               <div class="threshold-fill" style="width: 65%;"></div>
@@ -215,11 +215,11 @@
     <div class="cost-grid">
       <div class="cost-card">
         <span class="cost-value nums">USD {{ radar.totals.teacher_cost_usd|default:"0.00" }}</span>
-        <span class="cost-label">Costo del profesor (LLM) esta corrida</span>
+        <span class="cost-label">Costo de la IA de entrenamiento</span>
       </div>
       <div class="cost-card">
         <span class="cost-value nums">USD {{ radar.totals.student_cost_usd|default:"0.00" }}</span>
-        <span class="cost-label">Costo del estudiante por clasificación</span>
+        <span class="cost-label">Costo del modelo propio por clasificación</span>
       </div>
       <div class="cost-card">
         <span class="cost-value nums">USD {{ radar.totals.cost_per_signal_usd|default:"0.00" }}</span>

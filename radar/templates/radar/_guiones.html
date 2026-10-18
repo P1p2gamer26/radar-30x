@@ -1,0 +1,37 @@
+{# Guiones de un tema en pestañas. Variables: adapt, reel, decision, uid. Sin |safe: autoescape. #}
+{% if adapt %}
+<div class="tabs" data-tabs>
+  <div class="tab-bar" role="tablist">
+    <button type="button" class="tab on" role="tab" data-tab="{{ uid }}-li">LinkedIn / YouTube</button>
+    {% if reel or decision != "Descartar" %}<button type="button" class="tab" role="tab" data-tab="{{ uid }}-reel">Reel IG / TikTok</button>{% endif %}
+  </div>
+  <div class="tab-pane" id="{{ uid }}-li" role="tabpanel">
+    <p class="guion-titulo">{{ adapt.title }}</p>
+    <p class="guion-meta">{{ adapt.platform }} · {{ adapt.format }}</p>
+    <p><strong class="acento">Gancho de 3 segundos:</strong> {{ adapt.hook }}</p>
+    <ol class="beats-list">{% for beat in adapt.beats %}<li>{{ beat }}</li>{% endfor %}</ol>
+    <p class="acento">{{ adapt.cta }}</p>
+    <pre class="guion-oculto" id="{{ uid }}-li-txt">{{ adapt.title }}
+Plataforma: {{ adapt.platform }} · {{ adapt.format }}
+Gancho: {{ adapt.hook }}
+{% for beat in adapt.beats %}- {{ beat }}
+{% endfor %}CTA: {{ adapt.cta }}</pre>
+    <button type="button" class="copy-btn" data-copy="{{ uid }}-li-txt">Copiar guion</button>
+  </div>
+  {% if reel or decision != "Descartar" %}
+  <div class="tab-pane" id="{{ uid }}-reel" role="tabpanel" hidden>
+    {% if reel %}
+    <p class="guion-meta">{{ reel.platform }} · reel vertical de {{ reel.duration }}</p>
+    <p><strong class="acento">Gancho (0-3 s):</strong> {{ reel.hook }}</p>
+    <ol class="beats-list">{% for s in reel.shots %}<li><strong>{{ s.seg }} s</strong> · {{ s.visual }}<br><span class="guion-meta">En pantalla: {{ s.texto }}</span></li>{% endfor %}</ol>
+    <p class="acento">{{ reel.cta }}</p>
+    <pre class="guion-oculto" id="{{ uid }}-reel-txt">Reel {{ reel.platform }} · {{ reel.duration }}
+Gancho (0-3 s): {{ reel.hook }}
+{% for s in reel.shots %}{{ s.seg }} s: {{ s.visual }} | Texto: {{ s.texto }}
+{% endfor %}CTA: {{ reel.cta }}</pre>
+    <button type="button" class="copy-btn" data-copy="{{ uid }}-reel-txt">Copiar guion</button>
+    {% else %}<p class="guion-meta">Guion en preparación.</p>{% endif %}
+  </div>
+  {% endif %}
+</div>
+{% else %}<p class="guion-meta">Guion en preparación.</p>{% endif %}

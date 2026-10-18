@@ -31,6 +31,23 @@
   <a href="https://github.com/P1p2gamer26/radar-30x" target="_blank" rel="noopener noreferrer">Ver el repositorio</a>
 </footer>
 
+<script>
+// pestañas de guiones y botones "Copiar" (sin innerHTML)
+document.addEventListener('click', function (e) {
+  var t = e.target.closest('[data-tab]');
+  if (t) {
+    var box = t.closest('[data-tabs]');
+    box.querySelectorAll('.tab').forEach(function (b) { b.classList.toggle('on', b === t); });
+    box.querySelectorAll('.tab-pane').forEach(function (p) { p.hidden = p.id !== t.dataset.tab; });
+    return;
+  }
+  var c = e.target.closest('[data-copy]');
+  if (c) {
+    var txt = document.getElementById(c.dataset.copy).textContent;
+    (navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject()).then(function () { c.textContent = 'Copiado'; }, function () { c.textContent = 'No se pudo copiar'; });
+  }
+});
+</script>
 {% block extra_scripts %}{% endblock %}
 </body>
 </html>

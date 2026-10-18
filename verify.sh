@@ -17,5 +17,7 @@ for t in r["topics"][:10]:
 assert r["totals"]["signals"] > 0 and "cost_per_signal_usd" in r["totals"]
 txt = open("data/radar.json", encoding="utf-8").read()
 assert not re.search(r"[\w.+-]+@[\w-]+\.(com|co|net|org)\b", txt), "hay emails en radar.json"
+bad = [u for u in re.findall(r'"url": "([^"]+)"', txt) if "/@" in u and "tiktok.com/@_" not in u]
+assert not bad, f"urls con handle de terceros: {bad[:3]}"
 print(f"verify OK: {r['totals']['signals']} señales, {len(r['topics'])} temas, top: {r['topics'][0]['name']}")
 PY

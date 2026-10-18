@@ -32,7 +32,8 @@ def etiquetar_todo(signals: list) -> dict:
                 out[s["id"]] = {"topic": kw[0], "format": "noticia-explicada", "hook": "urgencia-novedad",
                                 "exec_fit": 0.5, "by": "regla"}
             continue
-        pred = student.predecir(modelo, student.tokens(s["title"] + " " + s.get("text", ""), s["source"]))
+        x = s["title"] + " " + s.get("text", "")
+        pred = student.predecir(modelo, student.tokens(x, s["source"]), x)
         topic, conf = pred["topic"]
         if conf < 0.4 and kw:
             topic = kw[0]
@@ -64,14 +65,34 @@ def cobertura_30x() -> dict:
     return Counter(slug for it in items for slug in match_topics(it.get("text", ""))[:1])
 
 
-def adapt_por_defecto(slug: str, why: dict) -> dict:
-    nombre = TOPICS[slug]["name"]
-    fmt = why.get("format_winner") or "caso-paso-a-paso"
-    return {"title": f"{nombre}: qué significa para tu empresa esta semana",
-            "hook": f"{HOOKS.get(why.get('hook_winner') or '', 'Dato concreto')} en los primeros 3 segundos",
-            "format": fmt,
-            "beats": ["Qué pasó (1 dato, 1 fuente)", "Un caso real en una empresa de LatAm", "Qué hacer el lunes"],
-            "cta": "Comenta qué área de tu empresa probaría esto primero", "by": "plantilla"}
+ETIQUETA_TEMPRANA = {"temprana": "Temprano", "creciendo": "Despegando", "estable": "Estable", "saturada": "Pico/saturado", "bajando": "Cayendo"}
+PLATAFORMA = {"youtube": "YouTube", "instagram": "Instagram", "tiktok": "TikTok"}
+
+
+ENCAJE_MINIMO = 0.3  # ponytail: piso de encaje para recomendar producir; calibrado a ojo con los evaluadores
+
+
+def decision(p: float, etapa: str | None, fit: float | None = None) -> str:
+    """Honesta: solo se recomienda lo que está empezando (temprana/creciendo); estable o saturado, como mucho Aprender; cayendo, Descartar."""
+    d = "Recomendar" if p >= settings.AUTO_THRESHOLD else "Aprender" if p >= settings.REVIEW_THRESHOLD else "Descartar"
+    if etapa == "bajando":
+        return "Descartar"
+    if d == "Recomendar" and fit is not None and fit < ENCAJE_MINIMO:
+        return "Aprender"  # crece, pero a la audiencia ejecutiva de 30X le sirve poco
+    return "Aprender" if d == "Recomendar" and etapa not in ("temprana", "creciendo") else d
+
+
+def _fila_bench(s: dict, ahora: datetime, medianas: dict, labs: dict) -> dict:
+    """Pieza de 30X con su múltiplo; IG/TikTok sin vistas miden con likes (metric_label lo dice)."""
+    m = s["metrics"]
+    usa_vistas = bool(m.get("views")) or s["source"] == "youtube"
+    f, h = labs.get(s["id"], {}).get("format"), labs.get(s["id"], {}).get("hook")
+    return {"title": s["title"], "url": s["url"], "channel": s["channel"], "source": s["source"],
+            "platform": PLATAFORMA.get(s["source"], s["source"]),
+            "views": m.get("views", 0), "metric_label": "vistas" if usa_vistas else "likes",
+            "metric_value": m.get("views", 0) if usa_vistas else m.get("points", 0),
+            "outlier": trend.velocidad(s, ahora, medianas.get((s["source"], s["channel"]))),
+            "format": f, "hook": h, "format_name": FORMATS.get(f, ""), "hook_name": HOOKS.get(h, "")}
 
 
 def build(snap: dict | None = None) -> dict:
@@ -171,6 +192,9 @@ def build(snap: dict | None = None) -> dict:
         razon = (f"{tendencia}; encaje con la audiencia 30X {fit:.0%}; "
                  f"{'al alza en ' + ', '.join(nombres_src) if nombres_src else 'sin fuentes al alza'}; "
                  f"formato ganador: {FORMATS.get(why['format_winner'], 'sin datos')}.")
+        adapt = dict(adapts.get(slug) or {})
+        reel = adapt.pop("adapt_reel", None)
+        adapt = adapt or None
         topics.append({
             "slug": slug, "name": t["name"], "stage": etapa,
             "growth": g, "z": z, "acceleration": acc, "volume": volumen[slug], "series": serie,
@@ -179,19 +203,15 @@ def build(snap: dict | None = None) -> dict:
             "top_signals": [{"title": s["title"], "url": s["url"], "source": s["source"], "published_at": s["published_at"],
                              "metrics": s["metrics"], "format": labs[s["id"]]["format"], "hook": labs[s["id"]]["hook"],
                              "velocity": vel[s["id"]], "by": labs[s["id"]].get("by")} for s in top],
-            "adapt": adapts.get(slug) or adapt_por_defecto(slug, why),
+            "early_label": ETIQUETA_TEMPRANA[etapa],
+            "adapt": adapt, "adapt_reel": reel,  # None = "guion en preparación" (sin plantillas genéricas)
         })
 
     # p = puntaje relativo de la semana (min-max entre temas); la decisión usa los umbrales sobre p
     lo, hi = min(x["p_raw"] for x in topics), max(x["p_raw"] for x in topics)
     for x in topics:
         x["p"] = round((x["p_raw"] - lo) / (hi - lo), 3) if hi > lo else 0.5
-        d = "Recomendar" if x["p"] >= settings.AUTO_THRESHOLD else "Aprender" if x["p"] >= settings.REVIEW_THRESHOLD else "Descartar"
-        if x["stage"] == "bajando":
-            d = "Descartar"
-        elif x["stage"] == "saturada" and d == "Recomendar":
-            d = "Aprender"
-        x["decision"] = d
+        x["decision"] = decision(x["p"], x["stage"], x["exec_fit"])
     topics.sort(key=lambda x: -x["p"])
     for i, x in enumerate(topics, 1):
         x["rank"] = i
@@ -218,10 +238,7 @@ def build(snap: dict | None = None) -> dict:
                    "cost_per_signal_usd": round(meta.get("cost_usd", 0.0) / max(clasificadas, 1), 6),
                    "paid_alternative_usd_year": PAID_ALTERNATIVE_USD_YEAR},
         "student": modelo.get("eval", {}),
-        "benchmark_30x": [{"title": s["title"], "url": s["url"], "channel": s["channel"], "source": s["source"], "views": s["metrics"]["views"],
-                           "outlier": trend.velocidad(s, ahora, medianas.get((s["source"], s["channel"]))),
-                           "format": labs.get(s["id"], {}).get("format"), "hook": labs.get(s["id"], {}).get("hook")}
-                          for s in bench],
+        "benchmark_30x": [_fila_bench(s, ahora, medianas, labs) for s in bench],
         "calibration": {"method": "min-max semanal", "thresholds": [settings.AUTO_THRESHOLD, settings.REVIEW_THRESHOLD]},
         "topics": topics,
     }

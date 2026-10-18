@@ -68,6 +68,7 @@
   .kv dt { color: var(--gris); } .kv dd { margin: 0; }
   .sim { border-top: var(--borde); padding: 12px 0; } .sim:first-of-type { border-top: none; padding-top: 0; }
   .sim a { display: block; margin-bottom: 4px; } .sim small { color: var(--gris); }
+  .aviso-conf { color: var(--ambar); margin: 8px 0 0; }
   .outlier { color: var(--lima); font-weight: 600; }
   .acciones { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
   .ghost-btn { border: 1px solid var(--lima); border-radius: 999px; padding: 10px 20px; font-size: 0.92rem; color: var(--lima); display: inline-block; }
@@ -122,8 +123,9 @@
     <div class="tarjeta veredicto">
       <h3>Veredicto</h3>
       <div class="dec decision-{{ r.decision }}">{{ r.decision }}</div>
+      {% if r.baja_confianza %}<p class="aviso-conf" role="alert"><strong>Confianza baja: revisa antes de producir.</strong></p>{% endif %}
       <p class="frase">
-        {% if r.slug_ok %}Esta pieza habla de <strong>{{ r.topic_name }}</strong>, un tema que está {{ r.stage }}{% if r.growth %} ({{ r.growth|floatformat:1 }}x){% endif %}
+        {% if r.slug_ok %}Esta pieza habla de <strong>{{ r.topic_name }}</strong>, un tema en etapa «{{ r.early_label }}»{% if r.growth %} ({{ r.growth|floatformat:1 }}x){% endif %}
         y con un encaje de {{ r.fit_pct }}% con tu audiencia:
         {% if r.decision == "Recomendar" %}vale la pena adaptarla esta semana.{% elif r.decision == "Aprender" %}vale la pena mirarla y guardarla como idea, sin correr.{% else %}por ahora no vale la pena: mejor invierte el tiempo en otro tema.{% endif %}
         {% else %}Esta pieza no encaja con ningún tema del radar, así que no la recomendamos para la audiencia 30X.{% endif %}
@@ -135,9 +137,9 @@
       <div class="tarjeta med"><div class="ring" style="--v: {{ r.fit_pct }}"><b class="nums">{{ r.fit_pct }}</b></div>
         <div class="t">Encaje con la audiencia 30X<small>0 a 100: qué tanto le sirve a un ejecutivo que aprende IA</small></div></div>
       <div class="tarjeta med"><div class="ring" style="--v: {{ r.momento_pct }}"><b class="nums">{{ r.momento_pct }}</b></div>
-        <div class="t">Momento del tema<small>{{ r.stage }}{% if r.growth %} · {{ r.growth|floatformat:1 }}x vs. la semana previa{% endif %}</small></div></div>
+        <div class="t">Momento del tema<small>{{ r.early_label }}{% if r.growth %} · {{ r.growth|floatformat:1 }}x frente a la semana previa{% endif %}</small></div></div>
       <div class="tarjeta med"><div class="ring" style="--v: {{ r.conf_pct }}"><b class="nums">{{ r.conf_pct }}</b></div>
-        <div class="t">Confianza del modelo<small>qué tan seguro está del tema</small></div></div>
+        <div class="t">Qué tan seguros estamos<small>del tema que detectamos</small></div></div>
     </div>
 
     <div class="cols">
@@ -147,8 +149,8 @@
         <ul class="lista-claves">{% for c in r.claves %}<li>{{ c }}</li>{% endfor %}</ul>{% endif %}
       </div>
 
-      <div class="tarjeta"><h3>Cómo se decidió</h3>
-        <dl class="kv"><dt>Motor</dt><dd>{% if r.engine == "estudiante" %}modelo propio (estudiante){% elif r.engine == "regla" %}regla por palabras clave{% else %}{{ r.engine }}{% endif %}</dd>
+      <div class="tarjeta"><h3>Cómo lo decidió</h3>
+        <dl class="kv"><dt>Cómo lo decidió</dt><dd>{% if r.engine == "estudiante" %}modelo propio{% elif r.engine == "regla" %}palabras clave (confianza baja){% else %}{{ r.engine }}{% endif %}</dd>
           <dt>Costo</dt><dd class="nums">USD {{ r.cost_usd|floatformat:2 }}</dd><dt>Puntaje</dt><dd class="nums">{{ r.p }}</dd></dl>
         <div class="threshold-track" style="margin-bottom:34px"><div class="threshold-fill" style="width: {% widthratio r.p 1 100 %}%"></div>
           <div class="threshold-mark" style="left: 80%;"><span class="mark-label">0.80 Recomendar</span></div>
@@ -158,17 +160,7 @@
 
     {% if r.adapt %}
     <div class="tarjeta" style="margin-top:16px"><h3>Así lo haría 30X</h3>
-      <p style="font-family: var(--font-display); font-size:1.5rem; margin:0 0 8px">{{ r.adapt.title }}</p>
-      <p style="color:var(--gris); margin:0 0 14px">{{ r.adapt.platform }} · {{ r.adapt.format }}</p>
-      <p><strong style="color:var(--lima)">Gancho de 3 segundos:</strong> {{ r.adapt.hook }}</p>
-      <ol class="beats-list">{% for beat in r.adapt.beats %}<li>{{ beat }}</li>{% endfor %}</ol>
-      <p style="color:var(--lima)">{{ r.adapt.cta }}</p>
-      <pre class="guion-oculto" id="guion">{{ r.adapt.title }}
-Plataforma: {{ r.adapt.platform }} · {{ r.adapt.format }}
-Gancho: {{ r.adapt.hook }}
-{% for beat in r.adapt.beats %}- {{ beat }}
-{% endfor %}CTA: {{ r.adapt.cta }}</pre>
-      <div class="acciones"><button type="button" class="copy-btn" id="copiar">Copiar guion</button></div>
+      {% include "radar/_guiones.html" with adapt=r.adapt reel=r.adapt_reel decision=r.decision uid="esc" %}
     </div>
     {% endif %}
 
@@ -178,7 +170,7 @@ Gancho: {{ r.adapt.hook }}
         <small>{{ s.source }} · {% if s.metrics.views %}{{ s.metrics.views }} vistas{% else %}{{ s.metrics.points }} puntos{% endif %}</small></div>{% endfor %}
       {% if r.benchmark %}<div class="sim"><small>Del propio canal 30X, la más cercana</small>
         <a href="{{ r.benchmark.url }}" target="_blank" rel="noopener noreferrer">{{ r.benchmark.title }}</a>
-        <small>{{ r.benchmark.source }} · <span class="outlier">{{ r.benchmark.outlier }}x</span> lo normal</small></div>{% endif %}
+        <small>{{ r.benchmark.source }} · <span class="outlier">{{ r.benchmark.outlier }} veces</span> su alcance normal</small></div>{% endif %}
     </div>
     {% endif %}
 
@@ -202,11 +194,6 @@ Gancho: {{ r.adapt.hook }}
       document.querySelectorAll('input[name=plataforma]').forEach(function (i) { i.checked = i.value === b.dataset.plat; });
       ta.focus();
     });
-  });
-  var cp = document.getElementById('copiar');
-  if (cp) cp.addEventListener('click', function () {
-    var t = document.getElementById('guion').textContent;
-    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { cp.textContent = 'Copiado'; }, function () { cp.textContent = 'No se pudo copiar'; });
   });
 
   var scan = document.getElementById('scan'), inf = document.getElementById('informe');
