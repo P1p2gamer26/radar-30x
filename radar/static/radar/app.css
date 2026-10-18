@@ -180,6 +180,24 @@ button {
   max-width: 560px;
 }
 
+/* Leyenda del universo: discreta, abajo-derecha (debajo del titular en móvil). */
+.hero-legend {
+  position: absolute;
+  right: 24px;
+  bottom: 20px;
+  z-index: 2;
+  display: flex;
+  gap: 16px;
+  font-size: 0.75rem;
+  color: var(--gris);
+  pointer-events: none;
+}
+.hero-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.lg { display: inline-block; width: 9px; height: 9px; border-radius: 50%; }
+.lg-planet { background: #5e9bd0; }
+.lg-star { background: var(--lima); box-shadow: 0 0 6px var(--lima); }
+.lg-ring { border: 1px solid var(--ambar); }
+
 /* --- Secciones --- */
 section.block {
   padding: 56px 0;
@@ -527,8 +545,10 @@ section.block h2 {
 
 /* --- Responsive --- */
 @media (max-width: 720px) {
-  .hero { min-height: 100vh; }
-  .hero-content { padding: 28px 18px 40px; }
+  .hero { min-height: calc(100vh - 68px); }
+  .hero-content { padding: 28px 18px 8px; }
+  .hero { flex-direction: column; justify-content: flex-end; align-items: stretch; }
+  .hero-legend { position: relative; z-index: 2; right: auto; bottom: auto; flex-wrap: wrap; gap: 6px 14px; padding: 0 18px 22px; }
 
   .ranking-row {
     grid-template-columns: 1fr;
@@ -648,3 +668,19 @@ section.block h2 {
 }
 
 .logo-ia { color: var(--lima); }
+
+/* guiones en pestañas (LinkedIn/YouTube y Reel) */
+.tab-bar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.tab { background: none; border: 1px solid var(--linea); color: var(--gris); border-radius: 999px; padding: 6px 14px; font-size: 0.85rem; cursor: pointer; }
+.tab.on { border-color: var(--lima); color: var(--lima); }
+.guion-titulo { font-family: var(--font-display); font-size: 1.4rem; margin: 0 0 8px; }
+.guion-meta { color: var(--gris); font-size: 0.9rem; margin: 0 0 12px; }
+.acento { color: var(--lima); }
+pre.guion-oculto { display: none; }
+
+/* "Lo que mejor le funcionó a 30X" en la home */
+.bench-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.bench-card { border: var(--borde); border-radius: var(--radio); padding: 20px; background: var(--polvo); display: flex; flex-direction: column; gap: 8px; }
+.bench-x { font-family: var(--font-display); font-size: 2rem; color: var(--lima); }
+.bench-card a { color: var(--hueso); }
+.bench-meta { color: var(--gris); font-size: 0.85rem; }

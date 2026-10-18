@@ -116,7 +116,7 @@
         <div class="why-grid">
           <div class="why-card">
             <h3>Resumen</h3>
-            <p>Formato que mejor funciona: {{ topic.why.format_winner }}. Gancho que mejor funciona: {{ topic.why.hook_winner }}. Mejor día: {{ topic.why.best_day }}.</p>
+            <p>Formato que mejor funciona: {{ topic.why.format_label|default:topic.why.format_winner }}. Gancho que mejor funciona: {{ topic.why.hook_label|default:topic.why.hook_winner }}. Mejor día: {{ topic.why.best_day }}.</p>
           </div>
           <div class="why-card">
             <h3>Formatos (agregado)</h3>

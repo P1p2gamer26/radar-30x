@@ -164,6 +164,7 @@ def build(snap: dict | None = None) -> dict:
         for s, w in zip(piezas, pesos):
             dias[DIAS_SEMANA[datetime.fromisoformat(s["published_at"].replace("Z", "+00:00")).weekday()]] += w
         why = {"format_winner": ganador("format"), "hook_winner": ganador("hook"),
+               "format_label": FORMATS.get(ganador("format"), "sin datos"), "hook_label": HOOKS.get(ganador("hook"), "sin datos"),
                "best_day": dias.most_common(1)[0][0] if dias else None,
                "author_mix": _reparto(Counter(s["author_type"] for s in piezas)),
                "formats": _reparto(formatos), "hooks": _reparto(ganchos),

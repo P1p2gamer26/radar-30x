@@ -35,6 +35,11 @@ function fmtGrowth(g) {
   return `x${g.toFixed(1)}`;
 }
 
+// Etapa en lenguaje simple (Temprano, Despegando, Estable, Pico/saturado, Cayendo).
+function etapa(topic) {
+  return topic.early_label || cap(topic.stage);
+}
+
 function cap(str) {
   const x = String(str || "");
   return x.charAt(0).toUpperCase() + x.slice(1);
@@ -133,7 +138,7 @@ function renderRankingRow(topic, onOpen) {
     [
       el("span", { class: "rank nums", text: `#${topic.rank}` }),
       el("span", { class: "name", text: topic.name }),
-      el("span", { class: "stage-chip", text: cap(topic.stage) }),
+      el("span", { class: "stage-chip", text: etapa(topic) }),
       el("span", { class: "growth nums", text: fmtGrowth(topic.growth) }),
       sparklineSvg(topic.series),
       pBar,
@@ -176,7 +181,7 @@ function renderWhy(data) {
 
   const summary = el("div", { class: "why-card" }, [
     el("h3", { text: `Tema #1: ${top.name}` }),
-    el("p", { text: `Formato ganador: ${top.why.format_winner}. Gancho ganador: ${top.why.hook_winner}. Mejor día: ${top.why.best_day}.` }),
+    el("p", { text: `Formato ganador: ${legible(top.why.format_winner)}. Gancho ganador: ${legible(top.why.hook_winner)}. Mejor día: ${top.why.best_day}.` }),
   ]);
   grid.appendChild(summary);
 
@@ -185,6 +190,9 @@ function renderWhy(data) {
   renderBarList(grid, "Mezcla de autores", top.why.author_mix);
 }
 
+const NOMBRE_LEGIBLE = {"reel-cara": "Reel/short con cara hablando a cámara", "carrusel": "Carrusel / PDF documento", "post-texto": "Post de texto largo", "caso-paso-a-paso": "Caso de uso paso a paso / demo de proceso", "herramienta-60s": "Herramienta X en 60 segundos", "noticia-explicada": "Noticia explicada (qué significa para tu empresa)", "entrevista-clip": "Entrevista / clip de charla", "lista-ranking": "Lista / ranking", "opinion": "Opinión / predicción", "evento-live": "Live / webinar / evento", "resultado-numero": "Resultado cuantificado", "error-confesion": "Error o confesión", "pregunta": "Pregunta provocadora", "contrarian": "Contrarian / rompe un mito", "promesa-proceso": "Promesa de proceso (paso a paso)", "autoridad": "Autoridad / nombre propio", "urgencia-novedad": "Urgencia / novedad", "miedo-riesgo": "Miedo / riesgo", "lista-numerada": "Lista numerada", "antes-despues": "Antes / después"};
+const legible = (k) => NOMBRE_LEGIBLE[k] || k || "sin datos";
+
 function renderCost(data) {
   const grid = document.getElementById("cost-grid");
   const t = data.totals || {};
@@ -192,8 +200,8 @@ function renderCost(data) {
   const items = [
     { label: "Costo por señal", value: fmtUsdSmall(perSignal) },
     { label: "USD por 1.000 señales", value: fmtUsdSmall(perSignal * 1000) },
-    { label: `Costo del profesor (${t.teacher_model || "LLM"})`, value: fmtUsd(t.teacher_cost_usd || 0) },
-    { label: "Costo del estudiante", value: fmtUsd(t.student_cost_usd || 0) },
+    { label: `Costo de la IA de entrenamiento (${t.teacher_model || "LLM"})`, value: fmtUsd(t.teacher_cost_usd || 0) },
+    { label: "Costo del modelo propio", value: fmtUsd(t.student_cost_usd || 0) },
     { label: "Señales procesadas", value: (t.signals || 0).toLocaleString("es-CO") },
   ];
   for (const item of items) {
@@ -213,27 +221,43 @@ function renderCost(data) {
   highlight.appendChild(document.createTextNode(" al año."));
   grid.appendChild(highlight);
 
-  // Precisión del estudiante: student.accuracy_topic o student.topic.accuracy; sin dato, no hay tarjeta.
+  // Precisión del modelo propio por tarea: solo se presenta como mérito donde supera la base por >= 3 puntos.
   const student = data.student || {};
   const pct = (v) => `${Math.round(v * 100)}%`;
-  const acc = typeof student.accuracy_topic === "number" ? student.accuracy_topic : student.topic && student.topic.accuracy;
-  const base = student.topic && student.topic.baseline;
-  if (typeof acc === "number") {
+  const tareas = [["topic", "tema"], ["format", "formato"], ["hook", "gancho"]];
+  for (const [k, nombre] of tareas) {
+    const m = student[k];
+    if (!m || typeof m.accuracy !== "number" || m.usable === false) continue;
     grid.appendChild(
       el("div", { class: "cost-card" }, [
-        el("span", { class: "cost-value nums", text: pct(acc) }),
-        el("span", { class: "cost-label", text: `Precisión del modelo propio: ${pct(acc)}${typeof base === "number" ? ` (base ${pct(base)})` : ""}` }),
+        el("span", { class: "cost-value nums", text: pct(m.accuracy) }),
+        el("span", { class: "cost-label", text: `Acierto del modelo propio en ${nombre}${typeof m.baseline === "number" ? ` (sin modelo: ${pct(m.baseline)})` : ""}` }),
       ])
     );
-    const fmt = student.format;
-    if (fmt && typeof fmt.accuracy === "number") {
-      grid.appendChild(
-        el("div", { class: "cost-card" }, [
-          el("span", { class: "cost-value nums", text: pct(fmt.accuracy) }),
-          el("span", { class: "cost-label", text: `Precisión en formato: ${pct(fmt.accuracy)}${typeof fmt.baseline === "number" ? ` (base ${pct(fmt.baseline)})` : ""}` }),
-        ])
-      );
-    }
+  }
+}
+
+// --- Lo que mejor le funcionó a 30X (top 3 del benchmark) ---
+function renderBench(data) {
+  const grid = document.getElementById("bench-grid");
+  const items = (data.benchmark_30x || []).slice(0, 3);
+  if (!grid || !items.length) {
+    const sec = document.getElementById("bench-30x");
+    if (sec) sec.hidden = true;
+    return;
+  }
+  for (const b of items) {
+    const real = typeof b.metric_value === "number" ? b.metric_value : b.views;
+    const label = b.metric_label || "vistas";
+    grid.appendChild(
+      el("div", { class: "bench-card" }, [
+        el("span", { class: "bench-x nums", text: `${b.outlier}x` }),
+        el("span", { class: "bench-meta", text: `sus ${label} normales · ${real.toLocaleString("es-CO")} ${label} reales` }),
+        el("a", { href: b.url, target: "_blank", rel: "noopener noreferrer", text: b.title }),
+        el("span", { class: "bench-meta", text: `${b.platform || b.source} · ${b.format_name || b.format || ""}` }),
+        el("span", { class: "bench-meta", text: `Gancho: ${b.hook_name || b.hook || ""}` }),
+      ])
+    );
   }
 }
 
@@ -277,6 +301,73 @@ function renderSignal(sig) {
   return item;
 }
 
+// Guiones del tema en pestañas: LinkedIn/YouTube y Reel IG/TikTok, cada uno con "Copiar".
+function copyBtn(getText) {
+  const btn = el("button", {
+    class: "copy-btn",
+    text: "Copiar guion",
+    onclick: async () => {
+      try {
+        await navigator.clipboard.writeText(getText());
+        btn.textContent = "Copiado";
+        setTimeout(() => (btn.textContent = "Copiar guion"), 1600);
+      } catch (e) {
+        btn.textContent = "No se pudo copiar";
+      }
+    },
+  });
+  return btn;
+}
+
+function guionLinkedin(a) {
+  const text = [a.title, `Plataforma: ${a.platform} · ${a.format}`, `Gancho: ${a.hook}`, ...a.beats.map((b) => `- ${b}`), `CTA: ${a.cta}`].join("\n");
+  const beats = el("ol", { class: "beats-list" }, a.beats.map((b) => el("li", { text: b })));
+  return el("div", {}, [
+    el("p", { class: "guion-titulo", text: a.title }),
+    el("p", { class: "guion-meta", text: `${a.platform} · ${a.format}` }),
+    el("p", { text: `Gancho de 3 segundos: ${a.hook}` }),
+    beats,
+    el("p", { class: "acento", text: a.cta }),
+    copyBtn(() => text),
+  ]);
+}
+
+function guionReel(r) {
+  const text = [`Reel ${r.platform} · ${r.duration}`, `Gancho (0-3 s): ${r.hook}`, ...r.shots.map((s) => `${s.seg} s: ${s.visual} | Texto: ${s.texto}`), `CTA: ${r.cta}`].join("\n");
+  const shots = el("ol", { class: "beats-list" }, r.shots.map((s) => el("li", {}, [el("strong", { text: `${s.seg} s` }), ` · ${s.visual}`, el("br"), el("span", { class: "guion-meta", text: `En pantalla: ${s.texto}` })])));
+  return el("div", {}, [
+    el("p", { class: "guion-meta", text: `${r.platform} · reel vertical de ${r.duration}` }),
+    el("p", { text: `Gancho (0-3 s): ${r.hook}` }),
+    shots,
+    el("p", { class: "acento", text: r.cta }),
+    copyBtn(() => text),
+  ]);
+}
+
+function renderGuiones(topic) {
+  const sec = el("div", { class: "panel-section" }, [el("h3", { text: "Así lo haría 30X" })]);
+  if (!topic.adapt) {
+    sec.appendChild(el("p", { class: "guion-meta", text: "Guion en preparación." }));
+    return sec;
+  }
+  const panes = [["LinkedIn / YouTube", guionLinkedin(topic.adapt)]];
+  if (topic.adapt_reel) panes.push(["Reel IG / TikTok", guionReel(topic.adapt_reel)]);
+  else if (topic.decision !== "Descartar") panes.push(["Reel IG / TikTok", el("p", { class: "guion-meta", text: "Guion en preparación." })]);
+  const bar = el("div", { class: "tab-bar", role: "tablist" });
+  const tabs = panes.map(([name, node], i) => {
+    node.hidden = i !== 0;
+    const t = el("button", {
+      type: "button", class: i === 0 ? "tab on" : "tab", role: "tab", text: name,
+      onclick: () => panes.forEach(([, n], j) => { n.hidden = j !== i; tabs[j].classList.toggle("on", j === i); }),
+    });
+    return t;
+  });
+  tabs.forEach((t) => bar.appendChild(t));
+  sec.appendChild(bar);
+  panes.forEach(([, n]) => sec.appendChild(n));
+  return sec;
+}
+
 function openPanel(topic, triggerEl) {
   lastFocused = triggerEl || document.activeElement;
   const overlay = document.getElementById("panel-overlay");
@@ -287,7 +378,7 @@ function openPanel(topic, triggerEl) {
 
   title.textContent = topic.name;
   meta.textContent = "";
-  meta.appendChild(el("span", { class: "stage-chip", text: cap(topic.stage) }));
+  meta.appendChild(el("span", { class: "stage-chip", text: etapa(topic) }));
   meta.appendChild(el("span", { class: "growth nums", text: fmtGrowth(topic.growth) }));
   meta.appendChild(el("span", { class: `decision-label decision-${topic.decision}`, text: topic.decision }));
 
@@ -297,46 +388,11 @@ function openPanel(topic, triggerEl) {
     el("h3", { text: "Resumen" }),
     el("p", { text: topic.reason, title: topic.reason }),
     renderThreshold(topic.p),
-    el("p", { class: "nums", text: `p = ${topic.p.toFixed(2)} · momentum ${topic.momentum.toFixed(2)} · exec_fit ${topic.exec_fit.toFixed(2)} · z ${topic.z.toFixed(2)}` }),
+    el("p", { class: "nums", text: `Puntaje ${topic.p.toFixed(2)} · impulso ${topic.momentum.toFixed(2)} · encaje con tu audiencia ${topic.exec_fit.toFixed(2)}` }),
   ]);
   body.appendChild(resumen);
 
-  const adapt = topic.adapt || {};
-  const beats = el("ol", { class: "beats-list" });
-  for (const beat of adapt.beats || []) {
-    beats.appendChild(el("li", { text: beat }));
-  }
-  const guionText = [
-    adapt.title,
-    `Gancho: ${adapt.hook}`,
-    `Formato: ${adapt.format}`,
-    ...(adapt.beats || []).map((b, i) => `${i + 1}. ${b}`),
-    `CTA: ${adapt.cta}`,
-  ].join("\n");
-
-  const copyBtn = el("button", {
-    class: "copy-btn",
-    text: "Copiar guion",
-    onclick: async () => {
-      try {
-        await navigator.clipboard.writeText(guionText);
-        copyBtn.textContent = "Copiado";
-        setTimeout(() => (copyBtn.textContent = "Copiar guion"), 1600);
-      } catch (e) {
-        copyBtn.textContent = "No se pudo copiar";
-      }
-    },
-  });
-
-  const adaptSection = el("div", { class: "panel-section" }, [
-    el("h3", { text: "Cómo adaptarlo" }),
-    el("p", { text: adapt.title }),
-    el("p", { class: "signal-meta", text: `${adapt.hook} · ${adapt.format}` }),
-    beats,
-    el("p", { text: adapt.cta }),
-    copyBtn,
-  ]);
-  body.appendChild(adaptSection);
+  body.appendChild(renderGuiones(topic));
 
   const signalsSection = el("div", { class: "panel-section" }, [el("h3", { text: "Señales principales" })]);
   for (const sig of topic.top_signals || []) {
@@ -457,7 +513,7 @@ function setupDiscovery(hero, data, scene, onOpen) {
   svg.append(line, dot);
 
   const status = el("p", { class: "disc-status" });
-  status.append("Escaneando YouTube, LinkedIn, Hacker News, Google News y Wikipedia");
+  status.append("Escaneando LinkedIn, Instagram, TikTok, YouTube, Hacker News y Google News");
   status.appendChild(el("span", { class: "disc-dots" }, [el("i"), el("i"), el("i")]));
   const stack = el("div", { class: "disc-stack" });
   const counter = el("p", { class: "disc-count nums" });
@@ -508,10 +564,10 @@ function setupDiscovery(hero, data, scene, onOpen) {
           el("b", { text: PLATFORM_NAME[signal.source] || signal.source }),
           ago(signal.published_at),
         ]),
-        el("span", { class: "disc-title", text: `Descubrimos: ${topic.name}` }),
+        el("span", { class: "disc-title", text: `Nueva estrella descubierta: ${topic.name}` }),
         el("span", { class: "disc-sig", text: signal.title }),
         el("span", { class: "disc-chips" }, [
-          el("span", { class: "disc-chip", text: cap(topic.stage) }),
+          el("span", { class: "disc-chip", text: etapa(topic) }),
           el("span", { class: "disc-chip", text: growthText(topic.growth || 1) }),
           dec,
         ]),
@@ -568,7 +624,7 @@ function setupDiscovery(hero, data, scene, onOpen) {
     });
     for (let i = 0; ; i = (i + 1) % queue.length) {
       if (current) await wait(3000);
-      if (scene) await scene.discover(queue[i].topic.slug);
+      if (scene) await scene.discover(queue[i].topic.slug, queue[i].signal.source);
       showCard(queue[i]);
     }
   })();
@@ -601,13 +657,14 @@ async function main() {
 
   renderRanking(data, onOpen);
   renderWhy(data);
+  renderBench(data);
   renderCost(data);
 
   const canvas = document.getElementById("scene-canvas");
   if (canvas) {
     let scene = null;
     try {
-      scene = mountScene(canvas, data.topics || [], onOpen);
+      scene = mountScene(canvas, data.topics || [], onOpen, data.sources);
     } catch (e) {
       renderFallback2D(canvas, data.topics || []);
     }

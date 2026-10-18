@@ -272,6 +272,8 @@
    "why": {
     "format_winner": "noticia-explicada",
     "hook_winner": "miedo-riesgo",
+    "format_label": "Noticia explicada (qué significa para tu empresa)",
+    "hook_label": "Miedo / riesgo",
     "best_day": "jueves",
     "author_mix": {
      "medio": 0.647,
@@ -493,6 +495,8 @@
    "why": {
     "format_winner": "evento-live",
     "hook_winner": "pregunta",
+    "format_label": "Live / webinar / evento",
+    "hook_label": "Pregunta provocadora",
     "best_day": "martes",
     "author_mix": {
      "medio": 0.732,
@@ -714,6 +718,8 @@
    "why": {
     "format_winner": "entrevista-clip",
     "hook_winner": "contrarian",
+    "format_label": "Entrevista / clip de charla",
+    "hook_label": "Contrarian / rompe un mito",
     "best_day": "jueves",
     "author_mix": {
      "comunidad": 0.449,
@@ -936,6 +942,8 @@
    "why": {
     "format_winner": "caso-paso-a-paso",
     "hook_winner": "miedo-riesgo",
+    "format_label": "Caso de uso paso a paso / demo de proceso",
+    "hook_label": "Miedo / riesgo",
     "best_day": "miércoles",
     "author_mix": {
      "medio": 0.708,
@@ -1148,6 +1156,8 @@
    "why": {
     "format_winner": "noticia-explicada",
     "hook_winner": "urgencia-novedad",
+    "format_label": "Noticia explicada (qué significa para tu empresa)",
+    "hook_label": "Urgencia / novedad",
     "best_day": "jueves",
     "author_mix": {
      "medio": 0.585,
@@ -1369,6 +1379,8 @@
    "why": {
     "format_winner": "caso-paso-a-paso",
     "hook_winner": "resultado-numero",
+    "format_label": "Caso de uso paso a paso / demo de proceso",
+    "hook_label": "Resultado cuantificado",
     "best_day": "viernes",
     "author_mix": {
      "medio": 0.859,
@@ -1586,6 +1598,8 @@
    "why": {
     "format_winner": "opinion",
     "hook_winner": "pregunta",
+    "format_label": "Opinión / predicción",
+    "hook_label": "Pregunta provocadora",
     "best_day": "miércoles",
     "author_mix": {
      "medio": 0.769,
@@ -1803,6 +1817,8 @@
    "why": {
     "format_winner": "opinion",
     "hook_winner": "contrarian",
+    "format_label": "Opinión / predicción",
+    "hook_label": "Contrarian / rompe un mito",
     "best_day": "lunes",
     "author_mix": {
      "medio": 0.5,
@@ -2000,6 +2016,8 @@
    "why": {
     "format_winner": "noticia-explicada",
     "hook_winner": "resultado-numero",
+    "format_label": "Noticia explicada (qué significa para tu empresa)",
+    "hook_label": "Resultado cuantificado",
     "best_day": "martes",
     "author_mix": {
      "medio": 0.583,
@@ -2215,6 +2233,8 @@
    "why": {
     "format_winner": "noticia-explicada",
     "hook_winner": "error-confesion",
+    "format_label": "Noticia explicada (qué significa para tu empresa)",
+    "hook_label": "Error o confesión",
     "best_day": "lunes",
     "author_mix": {
      "medio": 0.66,
@@ -2433,6 +2453,8 @@
    "why": {
     "format_winner": "caso-paso-a-paso",
     "hook_winner": "miedo-riesgo",
+    "format_label": "Caso de uso paso a paso / demo de proceso",
+    "hook_label": "Miedo / riesgo",
     "best_day": "martes",
     "author_mix": {
      "comunidad": 0.654,
@@ -2622,6 +2644,8 @@
    "why": {
     "format_winner": "post-texto",
     "hook_winner": "miedo-riesgo",
+    "format_label": "Post de texto largo",
+    "hook_label": "Miedo / riesgo",
     "best_day": "jueves",
     "author_mix": {
      "comunidad": 0.853,
@@ -2817,6 +2841,8 @@
    "why": {
     "format_winner": "herramienta-60s",
     "hook_winner": "promesa-proceso",
+    "format_label": "Herramienta X en 60 segundos",
+    "hook_label": "Promesa de proceso (paso a paso)",
     "best_day": "miércoles",
     "author_mix": {
      "medio": 0.469,
@@ -3003,6 +3029,8 @@
    "why": {
     "format_winner": "noticia-explicada",
     "hook_winner": "urgencia-novedad",
+    "format_label": "Noticia explicada (qué significa para tu empresa)",
+    "hook_label": "Urgencia / novedad",
     "best_day": "miércoles",
     "author_mix": {
      "medio": 0.776,
@@ -3195,6 +3223,8 @@
    "why": {
     "format_winner": "herramienta-60s",
     "hook_winner": "lista-numerada",
+    "format_label": "Herramienta X en 60 segundos",
+    "hook_label": "Lista numerada",
     "best_day": "miércoles",
     "author_mix": {
      "medio": 0.552,
@@ -3388,6 +3418,8 @@
    "why": {
     "format_winner": "noticia-explicada",
     "hook_winner": "autoridad",
+    "format_label": "Noticia explicada (qué significa para tu empresa)",
+    "hook_label": "Autoridad / nombre propio",
     "best_day": "jueves",
     "author_mix": {
      "medio": 0.503,
@@ -3581,6 +3613,8 @@
    "why": {
     "format_winner": "lista-ranking",
     "hook_winner": "lista-numerada",
+    "format_label": "Lista / ranking",
+    "hook_label": "Lista numerada",
     "best_day": "martes",
     "author_mix": {
      "comunidad": 0.856,
@@ -3773,6 +3807,8 @@
    "why": {
     "format_winner": "lista-ranking",
     "hook_winner": "lista-numerada",
+    "format_label": "Lista / ranking",
+    "hook_label": "Lista numerada",
     "best_day": "miércoles",
     "author_mix": {
      "comunidad": 0.881,
@@ -3967,6 +4003,8 @@
    "why": {
     "format_winner": "caso-paso-a-paso",
     "hook_winner": "resultado-numero",
+    "format_label": "Caso de uso paso a paso / demo de proceso",
+    "hook_label": "Resultado cuantificado",
     "best_day": "jueves",
     "author_mix": {
      "comunidad": 0.796,
@@ -4159,6 +4197,8 @@
    "why": {
     "format_winner": "noticia-explicada",
     "hook_winner": "pregunta",
+    "format_label": "Noticia explicada (qué significa para tu empresa)",
+    "hook_label": "Pregunta provocadora",
     "best_day": "miércoles",
     "author_mix": {
      "medio": 0.54,
