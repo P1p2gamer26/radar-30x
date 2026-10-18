@@ -1,13 +1,16 @@
 /* EstelarIA — estilos. Tokens de marca 30X. */
 :root {
-  --noche: #050506;
-  --polvo: #1c1c1c;
-  --linea: #2a2a2a;
-  --hueso: #f7f5f2;
-  --gris: #8a8a8a;
-  --lima: #EBFF6F;
-  --ambar: #FFCC6E;
-  --apagado: #525252;
+  /* Galaxia: --lima ahora es el acento azul eléctrico (nombre histórico). */
+  --noche: #05040d;
+  --polvo: #0e0c26;
+  --linea: #2a2552;
+  --hueso: #f1efff;
+  --gris: #a09ec4;
+  --lima: #6f94ff;
+  --violeta: #9b6bff;
+  --magenta: #e07bd6;
+  --ambar: #FFC07A;
+  --apagado: #6e6a9e;
 
   --font-display: "EB Garamond", Georgia, serif;
   --font-body: "Geist", "Inter", system-ui, -apple-system, sans-serif;
@@ -29,7 +32,15 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
-body { overflow-x: hidden; }
+body {
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse 70% 50% at 85% 0%, rgba(47, 85, 255, 0.16), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 0% 40%, rgba(122, 60, 255, 0.14), transparent 70%),
+    radial-gradient(ellipse 70% 50% at 70% 100%, rgba(60, 26, 154, 0.2), transparent 70%),
+    var(--noche);
+  background-attachment: fixed;
+}
 
 h1, h2, h3, .font-display {
   font-family: var(--font-display);
@@ -74,7 +85,7 @@ button {
   align-items: center;
   justify-content: space-between;
   padding: 18px 24px;
-  background: rgba(5, 5, 6, 0.82);
+  background: rgba(5, 4, 13, 0.82);
   backdrop-filter: blur(10px);
   border-bottom: var(--borde);
 }
@@ -134,7 +145,7 @@ button {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: radial-gradient(ellipse 75% 70% at 0% 100%, rgba(5, 5, 6, 0.92), rgba(5, 5, 6, 0.55) 55%, rgba(5, 5, 6, 0) 100%);
+  background: radial-gradient(ellipse 75% 70% at 0% 100%, rgba(5, 4, 13, 0.92), rgba(5, 4, 13, 0.55) 55%, rgba(5, 4, 13, 0) 100%);
 }
 
 .hero canvas {
@@ -406,7 +417,7 @@ section.block h2 {
 .panel-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(5, 5, 6, 0.6);
+  background: rgba(5, 4, 13, 0.6);
   z-index: 50;
   display: none;
 }
@@ -615,7 +626,7 @@ section.block h2 {
   gap: 6px;
   text-align: left;
   padding: 14px 16px;
-  background: rgba(20, 20, 20, 0.72);
+  background: rgba(14, 12, 38, 0.72);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border: 1px solid var(--linea);
@@ -638,7 +649,7 @@ section.block h2 {
   line-height: 1.12;
 }
 .disc-sig {
-  color: #b9b9b4;
+  color: #b9b6d6;
   font-size: 0.88rem;
   line-height: 1.35;
   display: -webkit-box;
@@ -686,11 +697,11 @@ pre.guion-oculto { display: none; }
 .bench-meta { color: var(--gris); font-size: 0.85rem; }
 
 /* --- Ronda 5: home que se entiende en 10 s --- */
-.hero-legend { font-size: 1rem; gap: 10px 22px; color: var(--hueso); flex-wrap: wrap; justify-content: flex-end; max-width: 52%; background: rgba(5, 5, 6, 0.55); padding: 10px 14px; border-radius: var(--radio); }
+.hero-legend { font-size: 1rem; gap: 10px 22px; color: var(--hueso); flex-wrap: wrap; justify-content: flex-end; max-width: 52%; background: rgba(5, 4, 13, 0.55); padding: 10px 14px; border-radius: var(--radio); }
 .hero-legend span { gap: 8px; }
 .lg { width: 13px; height: 13px; }
 .hero-guide { position: absolute; z-index: 2; top: 18px; left: 50%; transform: translateX(-50%); margin: 0; padding: 8px 18px; border: 1px solid var(--lima);
-  border-radius: 999px; color: var(--lima); background: rgba(5, 5, 6, 0.7); font-size: 0.95rem; pointer-events: none; text-align: center; }
+  border-radius: 999px; color: var(--lima); background: rgba(5, 4, 13, 0.7); font-size: 0.95rem; pointer-events: none; text-align: center; }
 .hero-guide[hidden] { display: none; }
 .produce-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
 .produce-card { border: 1px solid var(--lima); border-radius: var(--radio); background: var(--polvo); padding: 22px; display: flex; flex-direction: column; gap: 10px; }
@@ -729,7 +740,7 @@ pre.guion-oculto { display: none; }
 .hero.exploring .disc,
 .hero.exploring .disc-line,
 .hero.exploring::before { display: none; }
-.hero.exploring .hero-legend { background: rgba(5, 5, 6, 0.6); padding: 6px 10px; border-radius: 8px; }
+.hero.exploring .hero-legend { background: rgba(5, 4, 13, 0.6); padding: 6px 10px; border-radius: 8px; }
 
 .origin-group { margin-bottom: 18px; }
 .origin-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
@@ -756,7 +767,7 @@ pre.guion-oculto { display: none; }
   white-space: nowrap;
   pointer-events: none;
   opacity: 0;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9), 0 0 30px rgba(235, 255, 111, 0.35);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9), 0 0 30px rgba(111, 148, 255, 0.35);
 }
 .hero-label.hero-in { animation: hero-in 1.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
 @keyframes hero-in {
@@ -769,7 +780,7 @@ pre.guion-oculto { display: none; }
   inset: 0;
   pointer-events: none;
   opacity: 0;
-  background: radial-gradient(ellipse at center, rgba(235, 255, 111, 0) 35%, rgba(235, 255, 111, 0.55) 100%);
+  background: radial-gradient(ellipse at center, rgba(111, 148, 255, 0) 35%, rgba(111, 148, 255, 0.55) 100%);
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-label.hero-in { animation: none; opacity: 1; letter-spacing: 0.04em; }

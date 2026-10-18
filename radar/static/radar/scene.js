@@ -8,7 +8,8 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
-const COLORS = { lima: 0xebff6f, despegando: 0xd4f06a, hueso: 0xf7f5f2, ambar: 0xffcc6e, apagado: 0x6b6b6b };
+// Paleta galaxia: lima = acento azul eléctrico, despegando = violeta.
+const COLORS = { lima: 0x6f94ff, despegando: 0xa77dff, hueso: 0xe9e6ff, ambar: 0xffc07a, apagado: 0x6b68a0 };
 // Por early_label (lenguaje simple); si falta, por stage.
 const KIND_BY_LABEL = { temprano: "early", despegando: "rising", estable: "stable", pico: "peak", saturado: "peak", cayendo: "fading" };
 const KIND_BY_STAGE = { temprana: "early", creciendo: "rising", estable: "stable", saturada: "peak", bajando: "fading" };
@@ -22,7 +23,7 @@ const PLATFORMS = {
   tiktok: ["TikTok", 0x5fcfc8],
   hn: ["Hacker News", 0xe58a44],
   gnews: ["Google News", 0x9fb4c8],
-  wiki: ["Wikipedia", 0xb9b9b2],
+  wiki: ["Wikipedia", 0xb9b6d6],
 };
 const DEFAULT_SOURCES = ["youtube", "linkedin", "instagram", "tiktok", "hn", "gnews"].map((name) => ({ name, signals: 100 }));
 
@@ -82,15 +83,24 @@ function ringTexture() {
 }
 
 function nebulaTexture(hex, alpha) {
+  // Nube irregular: varias manchas radiales superpuestas.
   const [r, g, b] = rgb(hex);
-  return radialTexture(
-    [
-      [0, `rgba(${r},${g},${b},${alpha})`],
-      [0.5, `rgba(${r},${g},${b},${alpha * 0.35})`],
-      [1, `rgba(${r},${g},${b},0)`],
-    ],
-    256
-  );
+  const size = 256;
+  const cv = document.createElement("canvas");
+  cv.width = cv.height = size;
+  const ctx = cv.getContext("2d");
+  for (let i = 0; i < 7; i++) {
+    const x = size / 2 + (Math.random() - 0.5) * size * 0.4;
+    const y = size / 2 + (Math.random() - 0.5) * size * 0.4;
+    const rad = size * (0.18 + Math.random() * 0.22);
+    const g2 = ctx.createRadialGradient(x, y, 0, x, y, rad);
+    g2.addColorStop(0, `rgba(${r},${g},${b},${alpha * 0.55})`);
+    g2.addColorStop(0.5, `rgba(${r},${g},${b},${alpha * 0.2})`);
+    g2.addColorStop(1, `rgba(${r},${g},${b},0)`);
+    ctx.fillStyle = g2;
+    ctx.fillRect(0, 0, size, size);
+  }
+  return new THREE.CanvasTexture(cv);
 }
 
 function makeTextSprite(text, color) {
@@ -124,7 +134,7 @@ function buildPoints(count, size, posFn, tint) {
     vertexShader: `
       attribute float aOpacity; varying float vO; uniform float uTime; uniform float uSize;
       void main() {
-        vO = aOpacity * (0.55 + 0.45 * sin(uTime * 0.6 + aOpacity * 40.0));
+        vO = aOpacity * (0.4 + 0.6 * sin(uTime * (0.5 + aOpacity * 1.6) + aOpacity * 40.0));
         vec4 mv = modelViewMatrix * vec4(position, 1.0);
         gl_PointSize = uSize * (160.0 / -mv.z);
         gl_Position = projectionMatrix * mv;
@@ -158,19 +168,24 @@ function milkyPos() {
   return [along * Math.cos(a) - across * Math.sin(a), along * Math.sin(a) * 0.6 + across * Math.cos(a) + 10, -170 + across * 0.3];
 }
 
+// Nebulosa volumétrica falsa: nubes aditivas grandes azul/violeta que derivan y rotan despacio (ver animate).
 function buildNebula() {
   const g = new THREE.Group();
   [
-    [COLORS.lima, 0.1, -60, 36, -190, 230],
-    [COLORS.ambar, 0.09, 90, -20, -200, 260],
-    [COLORS.lima, 0.06, 20, -50, -170, 180],
-    [COLORS.ambar, 0.05, -130, -30, -210, 200],
-  ].forEach(([c, a, x, y, z, s]) => {
+    [0x2f55ff, 0.34, -70, 30, -190, 300],
+    [0x7a3cff, 0.3, 100, -20, -200, 320],
+    [0x1a0f6a, 0.4, 10, -60, -170, 260],
+    [0xb04bff, 0.16, -140, -30, -210, 240],
+    [0x2a7bff, 0.18, 150, 60, -230, 280],
+    [0x3b1a9a, 0.34, -30, 90, -180, 260],
+    [0xff5fd2, 0.07, 40, 10, -220, 200],
+  ].forEach(([c, a, x, y, z, s], i) => {
     const sp = new THREE.Sprite(
-      new THREE.SpriteMaterial({ map: nebulaTexture(c, a), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, fog: false })
+      new THREE.SpriteMaterial({ map: nebulaTexture(c, Math.min(1, a * 1.5)), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, fog: false })
     );
     sp.position.set(x, y, z);
     sp.scale.set(s, s * 0.7, 1);
+    sp.userData = { x, y, ph: i * 1.7, rot: (i % 2 ? 1 : -1) * (0.004 + 0.003 * i) };
     g.add(sp);
   });
   return g;
@@ -179,7 +194,7 @@ function buildNebula() {
 // Planeta: esfera iluminada desde el núcleo (shader simple) + borde atmosférico.
 function planetMaterial(hex) {
   return new THREE.ShaderMaterial({
-    uniforms: { uColor: { value: new THREE.Color(hex).lerp(new THREE.Color(0x777777), 0.25) } },
+    uniforms: { uColor: { value: new THREE.Color(hex).lerp(new THREE.Color(0x7a78a8), 0.25) } },
     vertexShader: `
       varying vec3 vN; varying vec3 vW; varying vec3 vV;
       void main() {
@@ -193,7 +208,7 @@ function planetMaterial(hex) {
       void main() {
         float l = max(dot(vN, normalize(-vW)), 0.0);
         float rim = pow(1.0 - max(dot(vN, vV), 0.0), 3.0);
-        vec3 c = uColor * (0.14 + 0.9 * l) + vec3(0.92, 1.0, 0.43) * 0.1 * l + uColor * rim * 0.35;
+        vec3 c = uColor * (0.14 + 0.9 * l) + vec3(0.45, 0.55, 1.0) * 0.12 * l + uColor * rim * 0.35;
         gl_FragColor = vec4(c, 1.0);
       }`,
   });
@@ -247,7 +262,7 @@ function buildWarp(count) {
         vA = (1.0 - aEnd * 0.8) * uAmt;
         gl_Position = projectionMatrix * modelViewMatrix * vec4(q, 1.0);
       }`,
-    fragmentShader: "varying float vA; void main() { gl_FragColor = vec4(0.93, 1.0, 0.7, vA * 0.85); }",
+    fragmentShader: "varying float vA; void main() { gl_FragColor = vec4(0.62, 0.7, 1.0, vA * 0.85); }",
     transparent: true,
     depthWrite: false,
     blending: THREE.AdditiveBlending,
@@ -273,7 +288,7 @@ function buildSweep(radius) {
           vA = 1.0 - clamp(atan(position.y, position.x) / uSpan, 0.0, 1.0);
           gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
         }`,
-      fragmentShader: `varying float vA; void main() { gl_FragColor = vec4(0.92, 1.0, 0.43, vA * vA * 0.4); }`,
+      fragmentShader: `varying float vA; void main() { gl_FragColor = vec4(0.45, 0.58, 1.0, vA * vA * 0.4); }`,
       transparent: true,
       depthWrite: false,
       side: THREE.DoubleSide,
@@ -295,9 +310,9 @@ function buildRings() {
   const group = new THREE.Group();
   // Producir ya = Recomendar p>=0.80; Vigilar = Aprender p>=0.50; borde = p 0.
   [
-    [ringRadius(0.8), COLORS.lima, 0.6, "Producir ya", "rgba(235,255,111,0.8)"],
-    [ringRadius(0.5), COLORS.ambar, 0.45, "Vigilar", "rgba(255,204,110,0.75)"],
-    [R_MAX, 0x8a8a8a, 0.22, null, null],
+    [ringRadius(0.8), COLORS.lima, 0.6, "Producir ya", "rgba(143,171,255,0.9)"],
+    [ringRadius(0.5), COLORS.ambar, 0.45, "Vigilar", "rgba(255,192,122,0.8)"],
+    [R_MAX, 0x8a86c8, 0.22, null, null],
   ].forEach(([r, color, opacity, label, textColor]) => {
     const ring = new THREE.Mesh(
       new THREE.RingGeometry(r - 0.045, r + 0.045, 160),
@@ -355,7 +370,7 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-  renderer.setClearColor(0x030304, 1);
+  renderer.setClearColor(0x05040d, 1);
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(50, (canvas.clientWidth || 1) / (canvas.clientHeight || 1), 0.1, 900);
@@ -376,10 +391,11 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
   // --- Fondo: estrellas en capas (parallax), vía láctea y nebulosa (~7000 puntos) ---
   const bg = new THREE.Group();
   scene.add(bg);
-  const farStars = buildPoints(2600, 1.3, () => onSphere(300, 480), 0xf7f5f2);
+  const farStars = buildPoints(2600, 1.3, () => onSphere(300, 480), 0xcfd6ff);
   const nearStars = buildPoints(1300, 2.0, () => onSphere(140, 260), 0xffffff);
-  const milky = buildPoints(3000, 1.4, milkyPos, 0xf0e6d2);
-  bg.add(farStars, nearStars, milky, buildNebula());
+  const milky = buildPoints(3000, 1.4, milkyPos, 0xb9a8ff);
+  const nebula = buildNebula();
+  bg.add(farStars, nearStars, milky, nebula);
   const bgPoints = [farStars, nearStars, milky];
 
   // --- Observatorio: núcleo, órbitas-umbral y haz ---
@@ -421,7 +437,7 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
       fontFamily: "Geist, 'Helvetica Neue', Arial, sans-serif",
       fontSize: "11px",
       letterSpacing: "0.04em",
-      color: "rgba(200,200,195,0.8)",
+      color: "rgba(200,198,235,0.85)",
       whiteSpace: "nowrap",
       pointerEvents: "none",
       textShadow: "0 1px 6px rgba(0,0,0,0.9)",
@@ -694,6 +710,7 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
   const easeExpo = (k) => (k <= 0 ? 0 : k >= 1 ? 1 : k < 0.5 ? Math.pow(2, 20 * k - 10) / 2 : (2 - Math.pow(2, -20 * k + 10)) / 2);
   let hold = null; // órbita lenta tras llegar
   let flyEnd = 0;
+  let idle = false; // deriva automática solo sin interacción ni vuelo
   let heroOn = false;
   let warpAmt = 0;
   let frameDt = 0;
@@ -781,15 +798,28 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
       dolly = null;
       held = true;
       controls = new OrbitControls(camera, canvas);
+      // Órbita esférica: arrastre horizontal = azimut, vertical = elevación (polar acotado para no voltearse).
       controls.enableDamping = true;
-      controls.dampingFactor = 0.08;
+      controls.dampingFactor = 0.04;
+      controls.rotateSpeed = 0.7;
+      controls.zoomSpeed = 0.8;
+      controls.minPolarAngle = 0.1;
+      controls.maxPolarAngle = Math.PI - 0.1;
       controls.minDistance = 2.5;
       controls.maxDistance = 90;
+      controls.autoRotateSpeed = 0.25; // deriva muy lenta en reposo
       controls.target.copy(lookAt);
+      let idleTimer = 0;
       controls.addEventListener("start", () => {
         dolly = null;
         hold = null;
+        idle = false;
+        clearTimeout(idleTimer);
       });
+      controls.addEventListener("end", () => {
+        idleTimer = setTimeout(() => (idle = !reducedMotion), 3000);
+      });
+      idle = !reducedMotion;
       controls.addEventListener("change", requestDraw);
       resize();
     } else {
@@ -1172,10 +1202,24 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
     // Parallax con el mouse (capas) y vaivén suave de cámara.
     bg.rotation.y += (mouse.x * 0.05 - bg.rotation.y) * 0.04;
     bg.rotation.x += (-mouse.y * 0.03 - bg.rotation.x) * 0.04;
+    if (!reducedMotion) {
+      // Galaxia viva: capas giran lento, nubes derivan.
+      farStars.rotation.y += dt * 0.004;
+      nearStars.rotation.y -= dt * 0.006;
+      milky.rotation.z += dt * 0.008;
+      nebula.children.forEach((sp) => {
+        const u = sp.userData;
+        sp.material.rotation += dt * u.rot;
+        sp.position.x = u.x + Math.sin(t * 0.03 + u.ph) * 14;
+        sp.position.y = u.y + Math.cos(t * 0.025 + u.ph) * 8;
+        sp.material.opacity = 0.8 + 0.2 * Math.sin(t * 0.2 + u.ph);
+      });
+    }
     nearStars.position.x += (mouse.x * -4 - nearStars.position.x) * 0.04;
     const nowP = performance.now();
     const place = () => {
       if (controls) {
+        controls.autoRotate = false;
         controls.target.copy(lookAt);
         controls.update();
       } else camera.lookAt(lookAt);
@@ -1206,6 +1250,7 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
     } else {
       setFov(THREE.MathUtils.lerp(camera.fov, FOV_REST, Math.min(1, dt * 3)));
       if (controls) {
+        controls.autoRotate = idle;
         controls.update();
         if (controls.target.length() > MAX_TARGET) controls.target.setLength(MAX_TARGET);
         lookAt.copy(controls.target);

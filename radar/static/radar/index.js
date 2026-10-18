@@ -563,7 +563,7 @@ function renderFallback2D(canvas, topics) {
     const cx = 400 + Math.cos(angle) * r;
     const cy = 225 + Math.sin(angle) * r * 0.6;
     const radius = 6 + (t.volume || 10) / 10;
-    const color = t.decision === "Recomendar" ? "#EBFF6F" : t.decision === "Aprender" ? "#FFCC6E" : "#525252";
+    const color = t.decision === "Recomendar" ? "#6f94ff" : t.decision === "Aprender" ? "#FFCC6E" : "#6e6a9e";
     const circle = document.createElementNS(svgNs, "circle");
     circle.setAttribute("cx", cx.toFixed(1));
     circle.setAttribute("cy", cy.toFixed(1));
