@@ -107,10 +107,19 @@ def estudiante_offline(signals: list, labels: dict, items: list) -> tuple:
 class Command(BaseCommand):
     help = "Mide un LLM gratis (OpenCode Zen) contra el estudiante en el hold-out de tema -> data/llm_vs_student.json"
 
+    def add_arguments(self, parser):
+        parser.add_argument("--reusar", action="store_true", help="reusa las respuestas guardadas del LLM; solo recalcula el estudiante")
+
     def handle(self, *args, **opts):
         pares = holdout_tema(latest()["signals"], label.cargar()["labels"])
         items, verdad = [p[0] for p in pares], [p[1] for p in pares]
-        res = evaluar(items, verdad)
+        if opts["reusar"]:  # ponytail: mismo hold-out y mismas respuestas del LLM; así la comparación no depende de que el LLM gratis responda igual
+            viejo = json.loads((settings.DATA_DIR / "llm_vs_student.json").read_text(encoding="utf-8"))
+            q = {x["id"]: x["llm"] for x in viejo["items"]}
+            assert set(q) == {s["id"] for s in items}, "el hold-out cambió; corre sin --reusar"
+            res = {k: viejo[k] for k in ("n", "llm_top1", "llm_unparsed", "llm_seconds_per_item")} | {"llm": [q[s["id"]] for s in items]}
+        else:
+            res = evaluar(items, verdad)
         est, seg_est = estudiante_offline(latest()["signals"], label.cargar()["labels"], items)
         llm = res.pop("llm")
         top1 = round(sum(est[s["id"]][0] == v for s, v in zip(items, verdad)) / len(items), 3)
