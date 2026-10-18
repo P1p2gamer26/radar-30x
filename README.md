@@ -29,7 +29,7 @@ Estelar + IA: encuentra las estrellas nacientes del contenido de IA (los temas q
 1. Abre la demo: https://p1p2gamer26.pythonanywhere.com/ y toca una estrella (un tema): verás su etapa, por qué funciona y sus guiones.
 2. Pega una pieza pública de Instagram, TikTok o LinkedIn en [`/analizar/`](https://p1p2gamer26.pythonanywhere.com/analizar/) y el escáner la clasifica al instante.
 3. Mira el pipeline con cifras reales en [`/en-vivo/`](https://p1p2gamer26.pythonanywhere.com/en-vivo/) ("Cómo piensa EstelarIA").
-4. Video (3 min): VIDEO_URL <!-- TODO(autor): reemplazar VIDEO_URL por el enlace del video antes de entregar -->
+4. Video (3 min): https://youtu.be/rBvXU4wpsws
 
 ## El problema y las 3 preguntas del brief
 El equipo de media de 30X paga scraping («miles de USD al año», brief oficial) que solo trae datos. Cada semana, EstelarIA responde las tres preguntas del reto:
