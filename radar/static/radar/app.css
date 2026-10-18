@@ -745,3 +745,32 @@ pre.guion-oculto { display: none; }
   .explore-ui { flex-direction: column; align-items: flex-start; gap: 6px; top: 10px; left: 12px; }
   .hero.exploring .hero-legend { position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 6px 10px; }
 }
+
+/* Vuelo cinematográfico: título de llegada y flash lima */
+.hero-label {
+  position: absolute;
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: clamp(30px, 5vw, 58px);
+  font-weight: 500;
+  color: var(--lima);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9), 0 0 30px rgba(235, 255, 111, 0.35);
+}
+.hero-label.hero-in { animation: hero-in 1.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes hero-in {
+  from { opacity: 0; letter-spacing: 0.6em; }
+  35% { opacity: 1; }
+  to { opacity: 1; letter-spacing: 0.04em; }
+}
+.fly-flash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(ellipse at center, rgba(235, 255, 111, 0) 35%, rgba(235, 255, 111, 0.55) 100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-label.hero-in { animation: none; opacity: 1; letter-spacing: 0.04em; }
+}

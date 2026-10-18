@@ -199,6 +199,65 @@ function planetMaterial(hex) {
   });
 }
 
+// Atmósfera: fresnel aditivo del color del planeta (uAmt la enciende al seleccionarlo).
+function atmosphereMaterial(hex) {
+  return new THREE.ShaderMaterial({
+    uniforms: { uColor: { value: new THREE.Color(hex) }, uAmt: { value: 0 } },
+    vertexShader: `
+      varying vec3 vN; varying vec3 vV;
+      void main() {
+        vec4 w = modelMatrix * vec4(position, 1.0);
+        vN = normalize(mat3(modelMatrix) * normal); vV = normalize(cameraPosition - w.xyz);
+        gl_Position = projectionMatrix * viewMatrix * w;
+      }`,
+    fragmentShader: `
+      varying vec3 vN; varying vec3 vV; uniform vec3 uColor; uniform float uAmt;
+      void main() {
+        float f = pow(1.0 - max(dot(vN, vV), 0.0), 2.2);
+        gl_FragColor = vec4(uColor * 1.4, f * uAmt);
+      }`,
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+  });
+}
+
+// Estelas de velocidad: líneas radiales pegadas a la cámara; uAmt (0..1) las estira desde el punto de fuga.
+function buildWarp(count) {
+  const p = new Float32Array(count * 6);
+  const e = new Float32Array(count * 2);
+  for (let i = 0; i < count; i++) {
+    const a = Math.random() * Math.PI * 2;
+    const r = 1.5 + Math.random() * 14;
+    const z = -(6 + Math.random() * 60);
+    p.set([Math.cos(a) * r, Math.sin(a) * r, z, Math.cos(a) * r, Math.sin(a) * r, z], i * 6);
+    e[i * 2 + 1] = 1;
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute("position", new THREE.BufferAttribute(p, 3));
+  geo.setAttribute("aEnd", new THREE.BufferAttribute(e, 1));
+  const mat = new THREE.ShaderMaterial({
+    uniforms: { uAmt: { value: 0 } },
+    vertexShader: `
+      attribute float aEnd; uniform float uAmt; varying float vA;
+      void main() {
+        vec3 q = position;
+        q.xy *= 1.0 + aEnd * uAmt * 1.6;
+        q.z *= 1.0 - aEnd * uAmt * 0.55;
+        vA = (1.0 - aEnd * 0.8) * uAmt;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(q, 1.0);
+      }`,
+    fragmentShader: "varying float vA; void main() { gl_FragColor = vec4(0.93, 1.0, 0.7, vA * 0.85); }",
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+  });
+  const lines = new THREE.LineSegments(geo, mat);
+  lines.frustumCulled = false;
+  lines.visible = false;
+  return lines;
+}
+
 // Haz del faro: cuña lima con degradado hacia atrás + línea brillante en el borde de ataque.
 // Con rotation.y = -s, el borde de ataque apunta al azimut s (x=cos, z=sin).
 function buildSweep(radius) {
@@ -268,13 +327,15 @@ export function sourceCounts(topic) {
 // Rayo de luz: cilindro fino (eje Y, de la estrella al planeta) con pulsos que fluyen y se desvanecen.
 function makeRay(color, weight) {
   const mat = new THREE.ShaderMaterial({
-    uniforms: { uTime: { value: 0 }, uColor: { value: new THREE.Color(color) }, uW: { value: weight }, uFade: { value: 0 } },
+    uniforms: { uTime: { value: 0 }, uColor: { value: new THREE.Color(color) }, uW: { value: weight }, uFade: { value: 0 }, uHead: { value: 1 } },
     vertexShader: "varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }",
-    fragmentShader: `varying vec2 vUv; uniform float uTime; uniform float uW; uniform float uFade; uniform vec3 uColor;
+    fragmentShader: `varying vec2 vUv; uniform float uTime; uniform float uW; uniform float uFade; uniform float uHead; uniform vec3 uColor;
       void main(){
         float flow = 0.5 + 0.5 * sin(vUv.y * 40.0 - uTime * 4.0);
         float a = (0.28 + 0.72 * flow) * (0.35 + 0.65 * uW) * uFade;
-        gl_FragColor = vec4(mix(uColor, vec3(1.0), 0.25 * flow), a);
+        a *= step(vUv.y, uHead);
+        float hd = exp(-abs(vUv.y - uHead) * 28.0) * step(uHead, 0.999) * uFade;
+        gl_FragColor = vec4(mix(uColor, vec3(1.0), 0.25 * flow + hd), a + hd * 0.9);
       }`,
     transparent: true,
     depthWrite: false,
@@ -303,6 +364,13 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
   const lookAt = new THREE.Vector3(0, 0, 0);
   const camStart = new THREE.Vector3();
   camera.lookAt(lookAt);
+  scene.add(camera);
+  const warp = buildWarp(520);
+  camera.add(warp);
+  const FOV_REST = 50;
+  const flash = document.createElement("div");
+  flash.className = "fly-flash";
+  parent.appendChild(flash);
 
   // --- Fondo: estrellas en capas (parallax), vía láctea y nebulosa (~7000 puntos) ---
   const bg = new THREE.Group();
@@ -358,9 +426,23 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
       textShadow: "0 1px 6px rgba(0,0,0,0.9)",
     });
     labelLayer.appendChild(el);
+    const atmo = new THREE.Mesh(new THREE.SphereGeometry(radius * 1.16, 32, 20), atmosphereMaterial(color));
+    atmo.visible = false;
+    mesh.add(atmo);
+    const orbitRing = new THREE.Mesh(
+      new THREE.RingGeometry(radius * 2.1, radius * 2.14, 96),
+      new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false, blending: THREE.AdditiveBlending })
+    );
+    orbitRing.rotation.set(Math.PI / 2 - 0.35, 0, 0.3);
+    orbitRing.visible = false;
+    scene.add(orbitRing);
     planets.push({
       name: s.name,
       mesh,
+      atmo,
+      orbitRing,
+      sel: 0,
+      rot: 0,
       el,
       radius,
       angle: (i / list.length) * Math.PI * 2 + 0.4,
@@ -452,6 +534,7 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
       rec: topic.decision === "Recomendar", // las estrellas Recomendar siempre llevan su nombre
       flashUntil: 0,
       flashing: false,
+      sel: 0,
       hoverLabel: false,
       burstStart: null,
     });
@@ -471,6 +554,10 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
     const edge = 12;
     const cand = [];
     stars.forEach((star) => {
+      if (star === selected && heroOn) {
+        star.label.style.opacity = "0";
+        return;
+      }
       const near = exploring && camera.position.distanceTo(star.sprite.position) < 16;
       if (!(star.hoverLabel || star.flashing || star.top3 || star.rec || near || star === selected)) {
         star.label.style.opacity = "0";
@@ -508,7 +595,7 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
     planets.forEach((p) => {
       const v = project(p.mesh.position);
       const hide = v.z >= 1 || (!exploring && ((v.x < w * 0.5 && v.y > h * 0.55) || (w < 800 && v.y > h * 0.6))) || v.x < 20 || v.x > w - 20 || v.y > h - 70 || v.y < 20;
-      p.el.style.opacity = hide ? "0" : "1";
+      p.el.style.opacity = hide || (p === selectedPlanet && heroOn) ? "0" : "1";
       p.el.style.left = `${v.x}px`;
       p.el.style.top = `${v.y + 8 + p.radius * 9}px`;
     });
@@ -555,13 +642,13 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
   }
   function select(hit, fly) {
     if (hit.star) {
-      showRays(hit.star.topic);
       if (fly) flyToStar(hit.star);
+      showRays(hit.star.topic);
       canvas.dispatchEvent(new CustomEvent("topic:open", { detail: hit.star.topic.slug, bubbles: true }));
       if (typeof onOpen === "function") onOpen(hit.star.topic.slug);
     } else {
-      showPlanetRays(hit.planet);
       if (fly) flyToPlanet(hit.planet);
+      showPlanetRays(hit.planet);
       if (typeof opts.onPlanet === "function") opts.onPlanet(hit.planet.name);
     }
   }
@@ -573,8 +660,13 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
   canvas.addEventListener("dblclick", (ev) => {
     const hit = exploring && pick(ev);
     if (!hit) return;
-    if (hit.star) flyToStar(hit.star);
-    else flyToPlanet(hit.planet);
+    if (hit.star) {
+      flyToStar(hit.star);
+      showRays(hit.star.topic);
+    } else {
+      flyToPlanet(hit.planet);
+      showPlanetRays(hit.planet);
+    }
   });
 
   // --- Cámara: auto (vaivén) | held (fija sobre lo tocado) | explore (OrbitControls) ---
@@ -596,16 +688,41 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
     if (reducedMotion) draw();
   }
 
+  // Vuelo cinematográfico: arco Bézier que rodea el objetivo, expo in-out, FOV 50→70→40 y estelas por velocidad.
   // toFn/lookFn se evalúan cada cuadro (los planetas se mueven). Con movimiento reducido: salto directo.
-  function flyTo(toFn, lookFn) {
+  const easeExpo = (k) => (k <= 0 ? 0 : k >= 1 ? 1 : k < 0.5 ? Math.pow(2, 20 * k - 10) / 2 : (2 - Math.pow(2, -20 * k + 10)) / 2);
+  let hold = null; // órbita lenta tras llegar
+  let flyEnd = 0;
+  let heroOn = false;
+  let warpAmt = 0;
+  let frameDt = 0;
+  const lastPos = camera.position.clone();
+  const setFov = (v) => {
+    if (Math.abs(camera.fov - v) > 0.01) {
+      camera.fov = v;
+      camera.updateProjectionMatrix();
+    }
+  };
+  function flyTo(toFn, lookFn, o = {}) {
     held = true;
+    hold = null;
     if (reducedMotion) {
       camera.position.copy(toFn());
       lookAt.copy(lookFn());
+      setFov(FOV_REST);
+      flyEnd = 0;
       applyCamera();
       return;
     }
-    dolly = { from: camera.position.clone(), lookFrom: lookAt.clone(), toFn, lookFn, start: performance.now(), duration: 1100 };
+    const from = camera.position.clone();
+    const to0 = toFn();
+    const dir = to0.clone().sub(from);
+    const len = dir.length();
+    const side = new THREE.Vector3().crossVectors(dir, new THREE.Vector3(0, 1, 0)).normalize();
+    const ctrl = from.clone().lerp(to0, 0.5).addScaledVector(side, len * (o.arc ?? 0.38)).add(new THREE.Vector3(0, len * 0.12, 0));
+    const duration = o.duration || 1900;
+    dolly = { from, ctrl, lookFrom: lookAt.clone(), toFn, lookFn, start: performance.now(), duration, len, o };
+    flyEnd = dolly.start + duration;
   }
   function applyCamera() {
     if (controls) {
@@ -616,39 +733,45 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
   }
   function flyToStar(star) {
     const p = star.sprite.position;
-    const to = p.clone().add(p.clone().normalize().multiplyScalar(6)).add(new THREE.Vector3(0, 3, 0));
+    const to = p.clone().add(p.clone().normalize().multiplyScalar(7)).add(new THREE.Vector3(0, 3, 0));
     flyTo(() => to, () => p);
   }
   function flyToPlanet(pl) {
-    flyTo(
-      () => {
-        const p = pl.mesh.position;
-        const tan = new THREE.Vector3(-p.z, 0, p.x).normalize().multiplyScalar(5 + pl.radius * 3);
-        return p.clone().add(tan).add(new THREE.Vector3(0, 2.5, 0));
-      },
-      () => pl.mesh.position
-    );
+    // ~35% de la altura de pantalla (FOV ~43). Elige el lado (adentro/afuera, ±tangente) con más aire hasta otros planetas.
+    const d = pl.radius * 7.7;
+    const offs = (sIn, sTan) => {
+      const p = pl.mesh.position;
+      const out = new THREE.Vector3(p.x, 0, p.z).normalize();
+      const tan = new THREE.Vector3(-p.z, 0, p.x).normalize();
+      return p.clone().addScaledVector(out, -sIn * d * 0.78).addScaledVector(tan, sTan * d * 0.5).add(new THREE.Vector3(0, d * 0.18, 0));
+    };
+    let best = [1, 1];
+    let bs = -1;
+    [[1, 1], [1, -1], [-1, 1], [-1, -1]].forEach(([i, t]) => {
+      const c = offs(i, t);
+      const sc = Math.min(...planets.filter((o) => o !== pl).map((o) => c.distanceTo(o.mesh.position)));
+      if (sc > bs) {
+        bs = sc;
+        best = [i, t];
+      }
+    });
+    flyTo(() => offs(best[0], best[1]), () => pl.mesh.position);
   }
   function focus(slug) {
     const star = findStar(slug);
     if (!star) return;
-    showRays(star.topic);
     flyToStar(star);
+    showRays(star.topic);
   }
   // Vuelve a la vista general y borra los rayos (en explorar, solo borra rayos).
   function release() {
     clearRays();
     if (exploring || !held) return;
-    held = false;
+    hold = null;
     const zero = new THREE.Vector3();
-    const to = () => swayPos(clock.elapsedTime + 1, new THREE.Vector3());
-    if (reducedMotion) {
-      camera.position.copy(to());
-      lookAt.copy(zero);
-      applyCamera();
-      return;
-    }
-    dolly = { from: camera.position.clone(), lookFrom: lookAt.clone(), toFn: to, lookFn: () => zero, start: performance.now(), duration: 1000 };
+    flyTo(() => swayPos(clock.elapsedTime + 1, new THREE.Vector3()), () => zero, { duration: 1200, arc: 0.22, release: true });
+    held = false;
+    flyEnd = 0;
   }
   function setExplore(on) {
     if (on === exploring) return;
@@ -662,7 +785,10 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
       controls.minDistance = 2.5;
       controls.maxDistance = 90;
       controls.target.copy(lookAt);
-      controls.addEventListener("start", () => (dolly = null));
+      controls.addEventListener("start", () => {
+        dolly = null;
+        hold = null;
+      });
       controls.addEventListener("change", requestDraw);
       resize();
     } else {
@@ -673,6 +799,53 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
       release();
     }
     requestDraw();
+  }
+
+  // --- Llegada: corona + anillos concéntricos (estrella) y título grande ---
+  const glowTex = radialTexture([[0, "rgba(255,255,255,0.8)"], [0.3, "rgba(255,255,255,0.25)"], [1, "rgba(255,255,255,0)"]]);
+  const fxSprite = (map) => {
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
+    sp.visible = false;
+    scene.add(sp);
+    return sp;
+  };
+  const corona = fxSprite(glowTex);
+  const fxRings = [fxSprite(ringTex), fxSprite(ringTex), fxSprite(ringTex)];
+  let selectedPlanet = null;
+  const hero = document.createElement("div");
+  hero.className = "hero-label";
+  labelLayer.appendChild(hero);
+  let heroAnchor = null;
+  function showHero(text, anchorFn, planetRadius) {
+    hero.textContent = text;
+    hero.classList.remove("hero-in");
+    void hero.offsetWidth;
+    hero.style.animationDelay = reducedMotion ? "0ms" : `${Math.max(0, flyEnd - performance.now() - 250)}ms`;
+    hero.classList.add("hero-in");
+    heroOn = true;
+    heroAnchor = { fn: anchorFn, planetRadius };
+  }
+  function hideHero() {
+    hero.classList.remove("hero-in");
+    heroOn = false;
+    heroAnchor = null;
+  }
+  function layoutHero() {
+    if (!heroOn) return;
+    const w = canvas.clientWidth || 1;
+    const h = canvas.clientHeight || 1;
+    const pos = heroAnchor.fn();
+    const v = project(pos);
+    let y = v.y - 64;
+    let tf = "translate(-50%,-100%)";
+    if (heroAnchor.planetRadius) {
+      const R = (h / (2 * Math.tan((camera.fov * Math.PI) / 360))) * (heroAnchor.planetRadius / Math.max(0.1, camera.position.distanceTo(pos)));
+      y = v.y - R - 14;
+    }
+    hero.style.visibility = v.z < 1 ? "visible" : "hidden";
+    hero.style.left = `${Math.max(140, Math.min(w - 140, v.x))}px`;
+    hero.style.top = `${Math.max(70, Math.min(h - 80, y))}px`;
+    hero.style.transform = tf;
   }
 
   // --- Rayos de luz: de una estrella a las redes de donde vienen sus piezas (o de un planeta a sus temas) ---
@@ -686,17 +859,20 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
     });
     rays.length = 0;
     selected = null;
+    selectedPlanet = null;
+    hideHero();
     requestDraw();
   }
   function addRays(origin, targets, color) {
     clearRays();
     const max = Math.max(1, ...targets.map((t) => t.count));
-    targets.forEach((t) => {
+    const base = Math.max(performance.now(), flyEnd);
+    targets.forEach((t, i) => {
       const w = t.count / max;
       const mesh = makeRay(color(t), w);
       mesh.userData.radius = 0.025 + 0.07 * w;
       scene.add(mesh);
-      rays.push({ mesh, origin, target: t.pos, t0: performance.now() });
+      rays.push({ mesh, origin, target: t.pos, t0: base + i * 120 });
     });
     updateRays(0);
   }
@@ -706,6 +882,7 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
     const star = findStar(topic.slug);
     addRays(star.sprite.position, targets, (t) => t.hex);
     selected = star;
+    showHero(star.topic.name || star.topic.slug || "", () => star.sprite.position, 0);
   }
   function showPlanetRays(pl) {
     const ranked = stars
@@ -715,6 +892,8 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
       .slice(0, 3);
     const hex = PLATFORMS[pl.name][1];
     addRays(pl.mesh.position, ranked.map((x) => ({ pos: x.s.sprite.position, count: x.c })), () => hex);
+    selectedPlanet = pl;
+    showHero(PLATFORMS[pl.name][0], () => pl.mesh.position, pl.radius);
   }
   function updateRays(t) {
     const now = performance.now();
@@ -726,10 +905,13 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
       const rad = r.mesh.userData.radius;
       r.mesh.scale.set(rad, a.distanceTo(b), rad);
       r.mesh.material.uniforms.uTime.value = t;
-      r.mesh.material.uniforms.uFade.value = reducedMotion ? 1 : Math.min(1, (now - r.t0) / 600);
+      const u = clamp01((now - r.t0) / 700);
+      r.mesh.material.uniforms.uFade.value = reducedMotion ? 1 : Math.min(1, Math.max(0, now - r.t0) / 400);
+      r.mesh.material.uniforms.uHead.value = reducedMotion ? 1 : 1 - Math.pow(1 - u, 3);
     });
   }
 
+  let vx = -0.1; // desplazamiento horizontal de la vista (fracción del ancho); con panel abierto centra el objetivo a la izquierda
   function resize() {
     const w = parent.clientWidth || window.innerWidth;
     const h = parent.clientHeight || window.innerHeight || 1;
@@ -739,7 +921,7 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
     camStart.set(0, 18, 34).multiplyScalar(w > 800 ? 1.3 : 2.1);
     baseCamPos.copy(camStart);
     if (exploring) camera.clearViewOffset();
-    else if (w > 800) camera.setViewOffset(w, h, -w * 0.1, h * 0.03, w, h);
+    else if (w > 800) camera.setViewOffset(w, h, w * vx, h * 0.03, w, h);
     else camera.setViewOffset(w, h, 0, h * 0.03, w, h);
     camera.updateProjectionMatrix();
   }
@@ -882,6 +1064,8 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
       }
     }
 
+    const nowP = performance.now();
+    const arrived = reducedMotion ? 1 : clamp01((nowP - flyEnd) / 700);
     let active = stars.filter((s) => nowMs < s.flashUntil).length;
     stars.forEach((star) => {
       const diff = Math.abs(Math.atan2(Math.sin(normSweep - star.azimuth), Math.cos(normSweep - star.azimuth)));
@@ -899,7 +1083,8 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
         const bk = (nowMs - star.burstStart) / BURST_MS;
         if (bk < 1) flashScale = Math.max(flashScale, 1 + 1.5 * Math.pow(1 - bk, 2));
       }
-      const s = star.baseScale * tw * flashScale;
+      star.sel = reducedMotion ? (star === selected ? 1 : 0) : star.sel + ((star === selected ? arrived : 0) - star.sel) * Math.min(1, frameDt * 6);
+      const s = star.baseScale * tw * flashScale * (1 + 0.9 * star.sel + 0.08 * star.sel * Math.sin(t * 3));
       star.sprite.scale.set(s, s, 1);
       star.sprite.material.opacity = flashing ? 1 : star.kind === "fading" ? 0.4 + 0.15 * Math.sin(t * 0.9 + star.phase) : 0.92;
 
@@ -919,11 +1104,41 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
       }
     });
 
+    const ss = selected && selected.sel > 0.01 ? selected : null;
+    corona.visible = !!ss;
+    fxRings.forEach((r) => (r.visible = !!ss));
+    if (ss) {
+      const col = KIND_COLOR[ss.kind];
+      corona.position.copy(ss.sprite.position);
+      corona.material.color.setHex(col);
+      const cs = ss.baseScale * (5 + 0.7 * Math.sin(t * 3)) * ss.sel;
+      corona.scale.set(cs, cs, 1);
+      corona.material.opacity = 0.6 * ss.sel;
+      fxRings.forEach((r, i) => {
+        const u = (t * 0.55 + i / 3) % 1;
+        const sc = ss.baseScale * (2 + 11 * u);
+        r.position.copy(ss.sprite.position);
+        r.material.color.setHex(col);
+        r.scale.set(sc, sc, 1);
+        r.material.opacity = 0.75 * (1 - u) * (1 - u) * ss.sel;
+      });
+    }
     planets.forEach((p) => {
-      p.mesh.rotation.y = t * 0.1;
+      p.sel = reducedMotion ? (p === selectedPlanet ? 1 : 0) : p.sel + ((p === selectedPlanet ? arrived : 0) - p.sel) * Math.min(1, frameDt * 5);
+      p.rot += frameDt * (0.1 + 0.6 * p.sel);
+      p.mesh.rotation.y = reducedMotion ? t * 0.1 : p.rot;
+      const on = p.sel > 0.01;
+      p.atmo.visible = p.orbitRing.visible = on;
+      if (on) {
+        p.atmo.material.uniforms.uAmt.value = p.sel * (0.95 + 0.15 * Math.sin(t * 2));
+        p.orbitRing.position.copy(p.mesh.position);
+        p.orbitRing.rotation.z += frameDt * 0.4;
+        p.orbitRing.material.opacity = 0.55 * p.sel;
+      }
     });
     coreGlow.scale.setScalar(3.2 + 0.25 * Math.sin(t * 1.5));
     layoutLabels();
+    layoutHero();
 
     raycaster.setFromCamera(pointerNdc, camera);
     const hits = raycaster.intersectObjects(stars.map((s) => s.sprite), false);
@@ -944,6 +1159,7 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
     if (!visible) return;
     const dt = Math.min(0.1, clock.getDelta());
     const t = clock.elapsedTime;
+    frameDt = dt;
     speedMul += ((pending ? 3.2 : 1) - speedMul) * Math.min(1, dt * 4);
     sweepAngle += (dt / 7) * TAU * speedMul;
     sweep.rotation.y = -sweepAngle;
@@ -956,26 +1172,70 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
     bg.rotation.y += (mouse.x * 0.05 - bg.rotation.y) * 0.04;
     bg.rotation.x += (-mouse.y * 0.03 - bg.rotation.x) * 0.04;
     nearStars.position.x += (mouse.x * -4 - nearStars.position.x) * 0.04;
-    if (dolly) {
-      const k = Math.min(1, (performance.now() - dolly.start) / dolly.duration);
-      const e = 1 - Math.pow(1 - k, 3);
-      camera.position.lerpVectors(dolly.from, dolly.toFn(), e);
-      lookAt.lerpVectors(dolly.lookFrom, dolly.lookFn(), e);
-      if (k >= 1) dolly = null;
+    const nowP = performance.now();
+    const place = () => {
       if (controls) {
         controls.target.copy(lookAt);
         controls.update();
       } else camera.lookAt(lookAt);
-    } else if (controls) {
-      controls.update();
-      if (controls.target.length() > MAX_TARGET) controls.target.setLength(MAX_TARGET);
-      lookAt.copy(controls.target);
-    } else if (held) {
-      camera.lookAt(lookAt);
+    };
+    if (dolly) {
+      const k = Math.min(1, (nowP - dolly.start) / dolly.duration);
+      const e = easeExpo(k);
+      const u = 1 - e;
+      const to = dolly.toFn();
+      camera.position.set(0, 0, 0).addScaledVector(dolly.from, u * u).addScaledVector(dolly.ctrl, 2 * u * e).addScaledVector(to, e * e);
+      lookAt.lerpVectors(dolly.lookFrom, dolly.lookFn(), e);
+      const rel = !!dolly.o.release;
+      const peak = rel ? 62 : 70;
+      const end = rel ? FOV_REST : 40;
+      setFov(k < 0.5 ? THREE.MathUtils.lerp(FOV_REST, peak, Math.sin(k * Math.PI)) : THREE.MathUtils.lerp(peak, end, 0.5 - 0.5 * Math.cos((k - 0.5) * 2 * Math.PI)));
+      if (k >= 1) {
+        if (!rel) hold = { lookFn: dolly.lookFn, off: camera.position.clone().sub(lookAt), t0: nowP };
+        dolly = null;
+      }
+      place();
+    } else if (hold) {
+      // Llegada: órbita lenta de ~9° y el FOV se relaja 40→43.
+      const th = Math.min(1, (nowP - hold.t0) / 9000);
+      lookAt.copy(hold.lookFn());
+      camera.position.copy(lookAt).add(hold.off.clone().applyAxisAngle(new THREE.Vector3(0, 1, 0), THREE.MathUtils.degToRad(9) * (1 - (1 - th) * (1 - th))));
+      setFov(THREE.MathUtils.lerp(40, 43, clamp01((nowP - hold.t0) / 2000)));
+      place();
     } else {
-      camera.position.copy(swayPos(t, new THREE.Vector3()));
-      camera.lookAt(lookAt);
+      setFov(THREE.MathUtils.lerp(camera.fov, FOV_REST, Math.min(1, dt * 3)));
+      if (controls) {
+        controls.update();
+        if (controls.target.length() > MAX_TARGET) controls.target.setLength(MAX_TARGET);
+        lookAt.copy(controls.target);
+      } else if (held) camera.lookAt(lookAt);
+      else {
+        camera.position.copy(swayPos(t, new THREE.Vector3()));
+        camera.lookAt(lookAt);
+      }
     }
+
+    if (!exploring && (parent.clientWidth || 0) > 800) {
+      const tx = selected || selectedPlanet ? 0.15 : -0.1;
+      if (Math.abs(tx - vx) > 0.0005) {
+        vx += (tx - vx) * Math.min(1, dt * 3);
+        resize();
+      }
+    }
+
+    // Estelas proporcionales a la velocidad de la cámara durante el vuelo; flash lima al llegar.
+    let target = 0;
+    if (dolly && dt > 0) {
+      const mean = dolly.len / (dolly.duration / 1000);
+      target = clamp01(camera.position.distanceTo(lastPos) / dt / (mean * 5)) * clamp01(dolly.len / 12 + 0.3);
+    }
+    lastPos.copy(camera.position);
+    warpAmt += (target - warpAmt) * Math.min(1, dt * 14);
+    warp.visible = warpAmt > 0.01;
+    warp.material.uniforms.uAmt.value = warpAmt;
+    const d = nowP - (flyEnd - 120);
+    const f = flyEnd && d > 0 ? 0.6 * (d < 120 ? d / 120 : Math.exp(-(d - 120) / 350)) : 0;
+    flash.style.opacity = f > 0.004 ? f.toFixed(3) : "0";
     draw();
   }
 
