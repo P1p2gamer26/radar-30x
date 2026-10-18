@@ -52,6 +52,10 @@ El plan (temas Recomendar + Aprender con etapa, por qué, guion, reel y platafor
 **Notion o Google Sheets:** descarga el CSV e impórtalo (Notion: Importar > CSV; Sheets: Archivo > Importar). Para que se actualice solo en Sheets: `=IMPORTDATA("https://p1p2gamer26.pythonanywhere.com/api/semana.csv")`.
 El CSV y el JSON traen `dia_sugerido` (mejor día de publicación del tema) y `responsable` (vacía, para que el equipo la llene).
 
+**Servidor MCP (Claude Desktop / Claude Code):** `mcp_radar.py` expone el radar como herramientas `top_temas`, `tema` y `analizar` (stdio, solo stdlib, sin red).
+Claude Code: `claude mcp add estelaria -- python mcp_radar.py` (desde la raíz del repo). Claude Desktop, en `claude_desktop_config.json`:
+`{"mcpServers": {"estelaria": {"command": "python", "args": ["C:/ruta/radar-30x/mcp_radar.py"]}}}`
+
 **Webhook (Slack, Make, Zapier, n8n):** un cron semanal que haga GET al JSON y lo reenvíe, por ejemplo cada lunes 7:00:
 ```bash
 0 7 * * 1  curl -s https://TU-DOMINIO/api/semana.json | curl -s -X POST -H "Content-Type: application/json" -d @- "$WEBHOOK_URL"
