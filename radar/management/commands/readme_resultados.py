@@ -15,7 +15,10 @@ def _n(x) -> str:
 def bloque(radar: dict, ev: dict) -> str:
     c = {d: [t for t in radar["topics"] if t["decision"] == d] for d in ("Recomendar", "Aprender", "Descartar")}
     tot = radar["totals"]
-    fuentes = ", ".join(f"{s['label']} {_n(s['signals'])}" for s in sorted(radar["sources"], key=lambda s: -s["signals"]))
+    fuentes = ", ".join(f"{s['label']} {_n(s['signals'])}" for s in sorted(radar["sources"], key=lambda s: -s["signals"]) if s["name"] != "wiki")
+    wiki = next((s for s in radar["sources"] if s["name"] == "wiki"), None)
+    if wiki:  # ponytail: Wikipedia son páginas vistas de artículos, no señales; no suman al total
+        fuentes += f"; más páginas vistas de {_n(wiki['signals'])} artículos de Wikipedia como termómetro de interés"
     m = plan.metricas(ev)
     L = [f"Corrida {radar['week']} (generada {radar['generated_at'][:10]}; datos en `data/`, reproducible sin red). Generado por `python manage.py readme_resultados`.", "",
          f"- **Señales:** {_n(tot['signals'])} ({fuentes}).",
