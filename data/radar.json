@@ -51,7 +51,9 @@
   "weekly_cost_usd": 0.55,
   "apify_cost_source": "medido en consola Apify 17-oct",
   "cost_per_signal_usd": 0.000141,
-  "paid_alternative_usd_year": 3000
+  "paid_alternative_usd_year": 3000,
+  "guiones_cifras": 64,
+  "guiones_verificadas": 59
  },
  "student": {
   "method": "consenso de dos LLM; método y umbral elegidos con validación cruzada 5 pliegues sobre el 80 %; cifra final en hold-out del 20 % fijo",
@@ -541,6 +543,29 @@
     }
    ],
    "early_label": "Temprano",
+   "atipicos": {
+    "n_outliers": 2,
+    "n_piezas": 38,
+    "lift_hook": null,
+    "lift_format": null,
+    "dia": null,
+    "autores": null,
+    "ejemplos": [
+     {
+      "title": "Influencers AI",
+      "url": "https://www.tiktok.com/@_/video/7697322618063555861",
+      "source": "tiktok",
+      "ratio": 19.5
+     },
+     {
+      "title": "Has AI tells",
+      "url": "https://theconsensus.dev/blog/2026/10/14/has-ai-tells.html?focus=1",
+      "source": "hn",
+      "ratio": 13.7
+     }
+    ],
+    "frase": "Hay piezas que rinden 3x o más, pero sin un patrón claro de gancho o formato."
+   },
    "adapt": {
     "title": "¿Y si el marketing con IA no es para expertos? Lo que enseña Elevator Boys con 48M de seguidores",
     "hook": "Elevator Boys tiene 48M de seguidores, ¿y sabes qué? Su marketing ya usa IA.",
@@ -608,7 +633,13 @@
        "voz": "Si tu equipo de marketing todavía hace todo manual, ya estás atrasado un paso."
       }
      ],
-     "cta": "Comenta 'IA' y te mando el caso completo paso a paso."
+     "cta": "Comenta 'IA' y te mando el caso completo paso a paso.",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -657,7 +688,13 @@
       }
      ],
      "ejemplo": "Por ejemplo, una empresa pequeña con un equipo de 3 personas en marketing podría usar una IA para probar en un día 10 versiones de un anuncio, algo que antes le tomaba dos semanas de reuniones.",
-     "cta": "Si quieres ver cómo aplicar esto en tu negocio esta semana, suscríbete y mira el siguiente video."
+     "cta": "Si quieres ver cómo aplicar esto en tu negocio esta semana, suscríbete y mira el siguiente video.",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "linkedin": {
      "hook": "Le dieron a una IA el sitio web y el presupuesto de publicidad. Sin supervisión. Esto es lo que aprendimos.",
@@ -670,7 +707,13 @@
       "6. La ventaja no es reemplazar al equipo de marketing, es darle superpoderes de velocidad.",
       "7. El riesgo más grande no es que la IA se equivoque, es que pierdas tu voz de marca por ir rápido."
      ],
-     "pregunta": "¿Tu equipo de marketing ya está usando IA, o todavía lo está evitando?"
+     "pregunta": "¿Tu equipo de marketing ya está usando IA, o todavía lo está evitando?",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -680,7 +723,13 @@
       "Experimentos reales muestran que una IA puede tomar decisiones de campaña y presupuesto más rápido que un equipo humano probando manualmente.",
       "La audiencia ya detecta contenido 'con cara de IA' y eso puede jugar en contra si no cuidas la autenticidad de tu marca."
      ],
-     "semana": "Esta semana, toma una sola campaña pequeña y pruébala con apoyo de IA: generación de variantes de mensaje y análisis de qué funciona, mientras una persona de tu equipo supervisa el tono de marca."
+     "semana": "Esta semana, toma una sola campaña pequeña y pruébala con apoyo de IA: generación de variantes de mensaje y análisis de qué funciona, mientras una persona de tu equipo supervisa el tono de marca.",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.01251
@@ -867,6 +916,35 @@
     }
    ],
    "early_label": "Despegando",
+   "atipicos": {
+    "n_outliers": 10,
+    "n_piezas": 119,
+    "lift_hook": {
+     "hook": "contrarian",
+     "x": 1.7
+    },
+    "lift_format": null,
+    "dia": "miércoles",
+    "autores": {
+     "tipo": "comunidad",
+     "share": 0.9
+    },
+    "ejemplos": [
+     {
+      "title": "The gap in shared understanding of LLM capability is widening",
+      "url": "https://twitter.com/karpathy/status/2109361546505966046",
+      "source": "hn",
+      "ratio": 72.7
+     },
+     {
+      "title": "Meta and Microsoft take steps to reduce employee usage of Claude AI",
+      "url": "https://www.rswebsols.com/news/meta-and-microsoft-take-steps-to-reduce-employee-usage-of-claude-ai/",
+      "source": "hn",
+      "ratio": 37.8
+     }
+    ],
+    "frase": "Las piezas que más rinden usan el gancho «Contrarian / rompe un mito» 1,7x más que el resto."
+   },
    "adapt": {
     "title": "Colombia ya usa IA: el reto ahora es que los agentes trabajen juntos",
     "hook": "Colombia: 25,9% usa IA y el reto es conectar agentes",
@@ -934,7 +1012,13 @@
        "voz": "Antes de comprar otra licencia, pregúntate: ¿tú ya entiendes cómo piensa esta tecnología?"
       }
      ],
-     "cta": "Comenta 'LIDERAZGO' y te enviamos la guía para liderar la adopción de IA en tu equipo."
+     "cta": "Comenta 'LIDERAZGO' y te enviamos la guía para liderar la adopción de IA en tu equipo.",
+     "verificacion": {
+      "cifras": 2,
+      "verificadas": 2,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -980,7 +1064,13 @@
       }
      ],
      "ejemplo": "Un equipo de 10 personas que automatiza su proceso de reporte semanal con IA, y el líder es el primero en usarlo antes de pedírselo a su equipo.",
-     "cta": "Si quieres el paso a paso para liderar esto en tu empresa, suscríbete y activa la campana."
+     "cta": "Si quieres el paso a paso para liderar esto en tu empresa, suscríbete y activa la campana.",
+     "verificacion": {
+      "cifras": 2,
+      "verificadas": 2,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "linkedin": {
      "hook": "25,9% de las empresas en Colombia usa IA. El problema no es la tecnología.",
@@ -993,7 +1083,13 @@
       "Por ejemplo, un equipo de 10 personas puede empezar con un solo proceso piloto y medir resultados antes de escalar.",
       "Nadie nace sabiendo liderar con IA. Pero sí puedes empezar a cerrar esa brecha hoy."
      ],
-     "pregunta": "¿Tu equipo tiene la herramienta de IA... o solo la licencia?"
+     "pregunta": "¿Tu equipo tiene la herramienta de IA... o solo la licencia?",
+     "verificacion": {
+      "cifras": 2,
+      "verificadas": 2,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -1003,7 +1099,13 @@
       "La brecha entre lo que los líderes creen que la IA puede hacer y lo real sigue creciendo",
       "La transformación falla por liderazgo, no por estrategia: un equipo no adopta lo que su líder no modela"
      ],
-     "semana": "Elige un solo proceso repetitivo de tu equipo, pruébalo tú mismo con una herramienta de IA esta semana, y comparte el resultado con tu equipo antes de pedirles que lo usen."
+     "semana": "Elige un solo proceso repetitivo de tu equipo, pruébalo tú mismo con una herramienta de IA esta semana, y comparte el resultado con tu equipo antes de pedirles que lo usen.",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.01145
@@ -1188,6 +1290,29 @@
     }
    ],
    "early_label": "Despegando",
+   "atipicos": {
+    "n_outliers": 2,
+    "n_piezas": 27,
+    "lift_hook": null,
+    "lift_format": null,
+    "dia": null,
+    "autores": null,
+    "ejemplos": [
+     {
+      "title": "Anthropic assigned highest junk credit rating in June",
+      "url": "https://www.ft.com/content/5a310aee-f555-4266-874c-b1b4db20186d",
+      "source": "hn",
+      "ratio": 28.3
+     },
+     {
+      "title": "Show HN: Pulse Local, a Mac budgeting app whose AI models run on your machine",
+      "url": "https://pulseos.finance",
+      "source": "hn",
+      "ratio": 12.1
+     }
+    ],
+    "frase": "Hay piezas que rinden 3x o más, pero sin un patrón claro de gancho o formato."
+   },
    "adapt": {
     "title": "IA en finanzas: qué significa para tu empresa esta semana",
     "hook": "Crece 1.5x en 11 días: si tu empresa maneja finanzas y no usa IA, ya va atrasada.",
@@ -1255,7 +1380,13 @@
        "voz": "No se trata de automatizar todo de golpe, sino de empezar por la tarea más repetitiva de tu equipo financiero."
       }
      ],
-     "cta": "Guarda este video y mándaselo a quien lleva las finanzas en tu empresa."
+     "cta": "Guarda este video y mándaselo a quien lleva las finanzas en tu empresa.",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -1301,7 +1432,15 @@
       }
      ],
      "ejemplo": "Por ejemplo, un equipo de finanzas de 10 personas que dedica dos días completos al mes solo a cuadrar el banco contra facturas podría reducir esa tarea a horas si automatiza el cruce de datos con IA, dejando la decisión final en manos humanas.",
-     "cta": "Suscríbete si quieres entender cómo usar IA en tu empresa sin caer en los errores que ya están cometiendo otros."
+     "cta": "Suscríbete si quieres entender cómo usar IA en tu empresa sin caer en los errores que ya están cometiendo otros.",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": [
+       "10 personas"
+      ]
+     }
     },
     "linkedin": {
      "hook": "¿Cuántas horas se van cada mes en tu empresa solo cuadrando el banco contra las facturas?",
@@ -1313,7 +1452,13 @@
       "Y hasta Anthropic recibió la calificación crediticia más baja en junio, señal de que el riesgo financiero también toca a quienes crean la IA.",
       "La lección para tu empresa: automatiza lo repetitivo (conciliaciones, reportes), pero mantén supervisión humana en las decisiones de dinero."
      ],
-     "pregunta": "¿Ya identificaste qué tarea financiera repetitiva de tu equipo podría automatizarse primero?"
+     "pregunta": "¿Ya identificaste qué tarea financiera repetitiva de tu equipo podría automatizarse primero?",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -1323,7 +1468,13 @@
       "Empresas serias como Oracle ya muestran que la IA puede dar respuestas financieras a usuarios de negocio sin ser técnicos",
       "Pero bancos como Schwab y JPMorgan ya bloquearon agentes de IA por riesgos de control, y empiezan a verse fallas en crédito otorgado por IA"
      ],
-     "semana": "Esta semana, identifica en tu equipo financiero una tarea repetitiva (como conciliaciones) y pregúntate si una herramienta de IA podría hacerla más rápido, dejando la decisión final en manos humanas."
+     "semana": "Esta semana, identifica en tu equipo financiero una tarea repetitiva (como conciliaciones) y pregúntate si una herramienta de IA podría hacerla más rápido, dejando la decisión final en manos humanas.",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.01285
@@ -1501,6 +1652,16 @@
     }
    ],
    "early_label": "Cayendo",
+   "atipicos": {
+    "n_outliers": 0,
+    "n_piezas": 14,
+    "lift_hook": null,
+    "lift_format": null,
+    "dia": null,
+    "autores": null,
+    "ejemplos": [],
+    "frase": "sin datos suficientes"
+   },
    "adapt": {
     "title": "Cómo un agente de IA atiende a un cliente que pregunta el precio, paso a paso",
     "hook": "Una startup colombiana de IA en ventas acaba de levantar US$6M. Te muestro, en 3 pasos, qué hace por dentro.",
@@ -1568,7 +1729,13 @@
        "voz": "No cambies todo. Elige un lugar donde se escapa la venta y prueba la IA ahí durante una semana."
       }
      ],
-     "cta": "Comenta 'RUTA' y te enviamos la lista de los 5 lugares para revisar en tu equipo."
+     "cta": "Comenta 'RUTA' y te enviamos la lista de los 5 lugares para revisar en tu equipo.",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -1617,7 +1784,13 @@
       }
      ],
      "ejemplo": "Por ejemplo, un equipo de 10 personas de una inmobiliaria mapea su proceso y descubre que las consultas nocturnas esperan hasta la mañana. Usa IA para dar una primera respuesta con información clara y agendar la visita. Después de una semana, revisa el tiempo de respuesta y decide si expande la prueba a otro punto del embudo.",
-     "cta": "Si quieres la plantilla de mapeo del proceso de ventas, déjala en los comentarios y te la compartimos."
+     "cta": "Si quieres la plantilla de mapeo del proceso de ventas, déjala en los comentarios y te la compartimos.",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "linkedin": {
      "hook": "Tu equipo de ventas no pierde clientes por el precio. Pierde clientes en el camino.",
@@ -1630,7 +1803,13 @@
       "Revisaron cada respuesta antes de enviarla y ajustaron las instrucciones según las preguntas más frecuentes.",
       "Como vimos con Coinmo en el sector inmobiliario, la IA aporta más cuando se usa en un proceso concreto, no como un experimento general."
      ],
-     "pregunta": "¿En cuál de esos 5 lugares crees que tu equipo está perdiendo más ventas hoy?"
+     "pregunta": "¿En cuál de esos 5 lugares crees que tu equipo está perdiendo más ventas hoy?",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -1640,7 +1819,13 @@
       "Empezar por tareas repetitivas y de bajo riesgo, como responder preguntas frecuentes, reduce el riesgo de errores frente al cliente y da confianza al equipo.",
       "Casos como Coinmo muestran que la IA aporta valor cuando se integra al proceso comercial real, no cuando se usa como herramienta aislada."
      ],
-     "semana": "Esta semana, reúne a tu equipo de ventas, dibuja el recorrido del cliente, marca el punto donde más tardan en responder y elige una sola tarea para probar la IA durante siete días. Define antes cómo vas a medir el resultado."
+     "semana": "Esta semana, reúne a tu equipo de ventas, dibuja el recorrido del cliente, marca el punto donde más tardan en responder y elige una sola tarea para probar la IA durante siete días. Define antes cómo vas a medir el resultado.",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.01888
@@ -1821,6 +2006,16 @@
     }
    ],
    "early_label": "Despegando",
+   "atipicos": {
+    "n_outliers": 0,
+    "n_piezas": 11,
+    "lift_hook": null,
+    "lift_format": null,
+    "dia": null,
+    "autores": null,
+    "ejemplos": [],
+    "frase": "sin datos suficientes"
+   },
    "adapt": {
     "title": "Así se rediseña el servicio al cliente con IA, paso a paso: el caso del chatbot que dio un reembolso y luego lo negó",
     "hook": "Un chatbot ofreció un reembolso completo. Después, lo negó.",
@@ -1888,7 +2083,13 @@
        "voz": "Si crees que la IA en servicio al cliente es solo para ahorrar plata, te estás perdiendo la mitad del beneficio: tu propia gente trabaja mejor."
       }
      ],
-     "cta": "Síguenos si quieres ver cómo implementar esto paso a paso en tu negocio."
+     "cta": "Síguenos si quieres ver cómo implementar esto paso a paso en tu negocio.",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -1943,7 +2144,13 @@
       }
      ],
      "ejemplo": "Taco Bell implementó un bot de IA en el drive-thru para tomar pedidos y el resultado inesperado fue que la retención de empleados subió, porque el trabajo se volvió más fácil para ellos.",
-     "cta": "Si quieres que analicemos tu proceso de servicio al cliente paso a paso, escríbenos en los comentarios."
+     "cta": "Si quieres que analicemos tu proceso de servicio al cliente paso a paso, escríbenos en los comentarios.",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "linkedin": {
      "hook": "Taco Bell puso IA en el drive-thru. Lo que mejoró no fue solo la velocidad.",
@@ -1955,7 +2162,13 @@
       "Incluso instituciones públicas lo están usando: la OIC invita a denunciar malos actos de funcionarios a través de un chatbot.",
       "El patrón se repite en todos los casos: la IA no quita trabajo, quita fricción. Y la fricción es lo que agota a tu equipo y aleja a tus clientes."
      ],
-     "pregunta": "¿En qué punto de tu atención al cliente hay más fricción hoy?"
+     "pregunta": "¿En qué punto de tu atención al cliente hay más fricción hoy?",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -1965,7 +2178,13 @@
       "El beneficio más grande no siempre es velocidad para el cliente, también es retener a tu equipo al quitarles trabajo repetitivo",
       "Responder rápido donde el cliente ya está esperando (como un comentario preguntando precio) convierte interés en venta real"
      ],
-     "semana": "Esta semana identifica el momento donde más se demoran en responder a un cliente (comentario, llamada, post-venta) y evalúa una sola herramienta de IA para ese paso específico."
+     "semana": "Esta semana identifica el momento donde más se demoran en responder a un cliente (comentario, llamada, post-venta) y evalúa una sola herramienta de IA para ese paso específico.",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.01397
@@ -2151,6 +2370,38 @@
     }
    ],
    "early_label": "Temprano",
+   "atipicos": {
+    "n_outliers": 14,
+    "n_piezas": 100,
+    "lift_hook": {
+     "hook": "autoridad",
+     "x": 2.6
+    },
+    "lift_format": {
+     "format": "reel-cara",
+     "x": 3.7
+    },
+    "dia": "jueves",
+    "autores": {
+     "tipo": "creador",
+     "share": 0.5
+    },
+    "ejemplos": [
+     {
+      "title": "La mayoría prueba una IA para crear imágenes 🤖✨ No obtiene el resultado que vio en redes… y dice que “no funciona” ❌",
+      "url": "https://www.tiktok.com/@_/video/7611024948215205138",
+      "source": "tiktok",
+      "ratio": 244.1
+     },
+     {
+      "title": "How Icelanders are thinking about AI",
+      "url": "https://www.youtube.com/watch?v=iF5IWjOWcA4",
+      "source": "youtube",
+      "ratio": 73.6
+     }
+    ],
+    "frase": "Las piezas que más rinden usan el gancho «Autoridad / nombre propio» 2,6x más que el resto y el formato reel/short con cara hablando a cámara 3,7x."
+   },
    "adapt": {
     "title": "Entrevista corta: cómo un líder empieza a formarse en IA sin ser programador",
     "hook": "Walden de Thoreau, pero convertido en juego 3D con un guía de IA.",
@@ -2218,7 +2469,13 @@
        "voz": "Un equipo que insiste y refina sus instrucciones obtiene resultados 10 veces mejores que el que se rinde en el primer intento."
       }
      ],
-     "cta": "Comenta 'Prompt' y te envío la guía completa con los 5 errores y cómo corregirlos."
+     "cta": "Comenta 'Prompt' y te envío la guía completa con los 5 errores y cómo corregirlos.",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -2270,7 +2527,13 @@
       }
      ],
      "ejemplo": "Por ejemplo, un área comercial que antes tardaba un día entero preparando propuestas, al aprender a darle contexto y rol correcto a la IA, reduce ese tiempo a minutos y dedica el resto del día a cerrar negocios.",
-     "cta": "Si quieres que tu equipo aprenda esto a fondo, déjanos un comentario y te contamos cómo unirte a nuestro próximo evento en vivo."
+     "cta": "Si quieres que tu equipo aprenda esto a fondo, déjanos un comentario y te contamos cómo unirte a nuestro próximo evento en vivo.",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "linkedin": {
      "hook": "¿Usas IA en tu empresa y sientes que no estás sacando todo el provecho?",
@@ -2283,7 +2546,13 @@
       "Error típico: no revisar ni corregir, esperando que la primera respuesta sea perfecta.",
       "Las empresas que están formando a sus equipos en esto, con sesiones en vivo y práctica real, están moviéndose más rápido que el resto."
      ],
-     "pregunta": "¿Tu equipo ya recibió formación real en IA, o todavía están improvisando con prompts sueltos?"
+     "pregunta": "¿Tu equipo ya recibió formación real en IA, o todavía están improvisando con prompts sueltos?",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -2293,7 +2562,13 @@
       "El formato que mejor funciona no es un curso grabado, es un espacio en vivo donde la gente puede preguntar casos reales de su negocio",
       "Los errores más comunes al usar IA son simples de corregir: contexto, rol y revisión, pero nadie los corrige si nadie los enseña"
      ],
-     "semana": "Agenda una sesión de 60 minutos con tu equipo esta semana para revisar juntos cómo están usando la IA hoy y corregir los 5 errores más comunes."
+     "semana": "Agenda una sesión de 60 minutos con tu equipo esta semana para revisar juntos cómo están usando la IA hoy y corregir los 5 errores más comunes.",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.01276
@@ -2478,6 +2753,38 @@
     }
    ],
    "early_label": "Despegando",
+   "atipicos": {
+    "n_outliers": 5,
+    "n_piezas": 42,
+    "lift_hook": {
+     "hook": "resultado-numero",
+     "x": 7.4
+    },
+    "lift_format": {
+     "format": "noticia-explicada",
+     "x": 2.1
+    },
+    "dia": "jueves",
+    "autores": {
+     "tipo": "comunidad",
+     "share": 0.8
+    },
+    "ejemplos": [
+     {
+      "title": "90% of US working hours are spent on tasks not covered well by AI benchmarks",
+      "url": "https://www.mercor.com/research/labor-index/benchmark-map/",
+      "source": "hn",
+      "ratio": 59.2
+     },
+     {
+      "title": "Sabemos que no siempre es fácil. Hay meses en los que las vacantes escasean, las respuestas tardan y cada “gracias, la tendremos en cuenta” ",
+      "url": "https://www.instagram.com/p/DehSY3YAiqx/",
+      "source": "instagram",
+      "ratio": 37.7
+     }
+    ],
+    "frase": "Las piezas que más rinden usan el gancho «Resultado cuantificado» 7,4x más que el resto y el formato noticia explicada (qué significa para tu empresa) 2,1x."
+   },
    "adapt": {
     "title": "Si tu equipo produjera diez veces más, ¿qué cambiaría en tu empresa?",
     "hook": "¿Qué cambiaría en tu empresa si cada persona de tu organigrama pudiera producir diez veces más?",
@@ -2533,10 +2840,6 @@
        "voz": "Un estudio reciente encontró que el 90% de las horas de trabajo en EE.UU. se van en tareas que la IA no está evaluando bien todavía"
       },
       {
-       "texto": "Entonces, ¿la IA te va a quitar el trabajo?",
-       "voz": "La pregunta no es si la IA reemplaza tu trabajo completo, sino qué parte del 10% restante ya puede hacer por ti"
-      },
-      {
        "texto": "Cada generación cree que esta vez es diferente",
        "voz": "Con cada ola tecnológica la gente ha dicho lo mismo: esta vez sí se acaban los empleos. Y la historia muestra otra cosa"
       },
@@ -2545,7 +2848,13 @@
        "voz": "La ventaja no es resistirte al cambio, es identificar qué tareas puedes delegar a la IA esta semana para enfocarte en lo que de verdad importa"
       }
      ],
-     "cta": "Comenta 'TRABAJO' y te cuento cómo empezar a delegar tareas con IA en tu equipo"
+     "cta": "Comenta 'TRABAJO' y te cuento cómo empezar a delegar tareas con IA en tu equipo",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 1,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -2576,8 +2885,7 @@
       {
        "titulo": "Lo que esto significa para tu equipo",
        "puntos": [
-        "No se trata de reemplazar personas, sino de redefinir en qué tareas se enfocan",
-        "Los equipos que identifican su 10% automatizable ganan tiempo para el 90% que la IA no puede hacer bien"
+        "No se trata de reemplazar personas, sino de redefinir en qué tareas se enfocan"
        ]
       },
       {
@@ -2590,7 +2898,15 @@
       }
      ],
      "ejemplo": "Por ejemplo, un equipo de soporte al cliente de 10 personas puede delegar las respuestas repetitivas a un asistente de IA y liberar horas para atender los casos complejos que realmente requieren criterio humano",
-     "cta": "Suscríbete y en el próximo video te muestro paso a paso cómo hacer ese inventario de tareas en tu equipo"
+     "cta": "Suscríbete y en el próximo video te muestro paso a paso cómo hacer ese inventario de tareas en tu equipo",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 1,
+      "ejemplos": [
+       "10 personas"
+      ]
+     }
     },
     "linkedin": {
      "hook": "El 90% de las horas de trabajo en EE.UU. se van en tareas que la IA todavía no mide bien.",
@@ -2600,10 +2916,15 @@
       "La historia se repite: cada generación cree que su momento tecnológico es diferente y que esta vez sí se acaban los empleos.",
       "Lo que realmente está cambiando no es la cantidad de empleos, sino el tipo de roles que las empresas buscan.",
       "Incluso compañías de IA como Anthropic siguen contratando personas para roles humanos específicos.",
-      "La pregunta para tu empresa no es '¿nos reemplaza la IA?' sino '¿qué parte del trabajo de mi equipo puedo delegar hoy?'",
-      "El liderazgo que gana en esta etapa es el que identifica ese 10% de tareas automatizables y libera tiempo para lo que de verdad importa."
+      "La pregunta para tu empresa no es '¿nos reemplaza la IA?' sino '¿qué parte del trabajo de mi equipo puedo delegar hoy?'"
      ],
-     "pregunta": "¿Ya identificaste qué parte del trabajo de tu equipo puede delegarse a la IA esta semana?"
+     "pregunta": "¿Ya identificaste qué parte del trabajo de tu equipo puede delegarse a la IA esta semana?",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 1,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -2613,7 +2934,13 @@
       "La historia muestra que cada ola tecnológica genera el mismo miedo, y el empleo se transforma, no desaparece",
       "Las empresas, incluidas las de IA, siguen contratando personas para roles específicos que requieren juicio humano"
      ],
-     "semana": "Haz una lista de las 5 tareas más repetitivas de tu equipo y marca cuáles podrían delegarse a una herramienta de IA sin perder calidad"
+     "semana": "Haz una lista de las 5 tareas más repetitivas de tu equipo y marca cuáles podrían delegarse a una herramienta de IA sin perder calidad",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.01334
@@ -2791,6 +3118,16 @@
     }
    ],
    "early_label": "Estable",
+   "atipicos": {
+    "n_outliers": 0,
+    "n_piezas": 12,
+    "lift_hook": null,
+    "lift_format": null,
+    "dia": null,
+    "autores": null,
+    "ejemplos": [],
+    "frase": "sin datos suficientes"
+   },
    "adapt": {
     "title": "¿Más de $4.000 millones por un chatbot? Las 3 preguntas de ROI que todo líder debe hacer antes de aprobar un proyecto de IA",
     "hook": "Más de $4.000 millones y nos presentan un chatbot",
@@ -2858,7 +3195,13 @@
        "voz": "Antes de meter IA en tu proceso, pregúntate: ¿esto me ahorra tiempo o solo me suma otra factura?"
       }
      ],
-     "cta": "Guarda este video antes de aprobar tu próximo proyecto de IA."
+     "cta": "Guarda este video antes de aprobar tu próximo proyecto de IA.",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -2903,7 +3246,13 @@
       }
      ],
      "ejemplo": "El caso del experimento de 24,000 dólares para portar un compilador con IA muestra que la tecnología puede funcionar, pero el costo real debe compararse siempre contra el valor que genera.",
-     "cta": "Si estás evaluando un proyecto de IA en tu empresa, suscríbete porque la próxima semana te muestro cómo calcular el ROI paso a paso."
+     "cta": "Si estás evaluando un proyecto de IA en tu empresa, suscríbete porque la próxima semana te muestro cómo calcular el ROI paso a paso.",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "linkedin": {
      "hook": "¿Tu proyecto de IA te está ahorrando plata o solo sumando otra factura de la nube?",
@@ -2916,7 +3265,13 @@
       "La diferencia entre un buen y un mal proyecto de IA no es la tecnología, es si mediste el ROI antes de empezar.",
       "Antes de tu próximo proyecto: define el proceso, calcula el costo mensual real, y compáralo con tu forma actual de trabajar."
      ],
-     "pregunta": "¿Tu empresa ya calculó cuánto le cuesta realmente mantener su proyecto de IA corriendo?"
+     "pregunta": "¿Tu empresa ya calculó cuánto le cuesta realmente mantener su proyecto de IA corriendo?",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -2926,7 +3281,13 @@
       "Hay casos donde la IA sí genera valor claro y rápido, como ordenar ayuda humanitaria en una crisis, pero son casos con un objetivo muy específico.",
       "Otros casos, como experimentos de migración de código, muestran que la IA puede funcionar pero a un costo que hay que comparar con la alternativa de hacerlo distinto."
      ],
-     "semana": "Esta semana, antes de aprobar cualquier proyecto nuevo de IA en tu empresa, pide que te muestren el costo mensual estimado de infraestructura y compáralo con el costo actual del proceso sin IA."
+     "semana": "Esta semana, antes de aprobar cualquier proyecto nuevo de IA en tu empresa, pide que te muestren el costo mensual estimado de infraestructura y compáralo con el costo actual del proceso sin IA.",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.01298
@@ -3111,6 +3472,16 @@
     }
    ],
    "early_label": "Estable",
+   "atipicos": {
+    "n_outliers": 0,
+    "n_piezas": 21,
+    "lift_hook": null,
+    "lift_format": null,
+    "dia": null,
+    "autores": null,
+    "ejemplos": [],
+    "frase": "sin datos suficientes"
+   },
    "adapt": {
     "title": "IA en RR.HH.: el caso de US$74 mil al mes y lo que significa para tu equipo",
     "hook": "US$74 mil de ahorro al mes con IA: de operativo a líder en 3 meses",
@@ -3178,7 +3549,13 @@
        "voz": "Tu empresa ya tiene el talento. Lo que falta es darle IA para que rinda al máximo"
       }
      ],
-     "cta": "Síguenos para ver cómo transformar tu equipo de RR.HH. con IA, paso a paso"
+     "cta": "Síguenos para ver cómo transformar tu equipo de RR.HH. con IA, paso a paso",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -3226,8 +3603,14 @@
        ]
       }
      ],
-     "ejemplo": "Un equipo de RR.HH. que operaba de forma 100% manual implementó IA en su proceso de selección; en 3 meses, el responsable pasó de rol operativo a liderazgo, y la empresa ahorró US$74 mil mensuales",
-     "cta": "Si quieres ver más casos de transformación con IA, suscríbete al canal"
+     "ejemplo": "Un equipo de RR.HH. que operaba de forma manual implementó IA en su proceso de selección; en 3 meses, el responsable pasó de rol operativo a liderazgo, y la empresa ahorró US$74 mil mensuales",
+     "cta": "Si quieres ver más casos de transformación con IA, suscríbete al canal",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 1,
+      "ejemplos": []
+     }
     },
     "linkedin": {
      "hook": "US$74 mil de ahorro al mes. Así fue como una empresa transformó su RR.HH. con IA.",
@@ -3240,7 +3623,13 @@
       "Pero cuidado: también están apareciendo candidatos que usan IA para falsificar entrevistas",
       "La integridad en el reclutamiento ahora es tan importante como la eficiencia"
      ],
-     "pregunta": "¿Tu empresa ya le dio IA al talento que tiene, o sigue buscando talento nuevo?"
+     "pregunta": "¿Tu empresa ya le dio IA al talento que tiene, o sigue buscando talento nuevo?",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -3250,7 +3639,13 @@
       "El talento que ya tienes puede asumir roles de mayor valor si le das las herramientas correctas",
       "La escasez de talento especializado (como en agroindustria) se mitiga optimizando procesos, no solo contratando más"
      ],
-     "semana": "Elige un proceso de RR.HH. (selección, validación o entrevistas) y define con tu equipo qué tarea manual se puede automatizar con IA esta semana"
+     "semana": "Elige un proceso de RR.HH. (selección, validación o entrevistas) y define con tu equipo qué tarea manual se puede automatizar con IA esta semana",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.01099
@@ -3437,6 +3832,29 @@
     }
    ],
    "early_label": "Despegando",
+   "atipicos": {
+    "n_outliers": 2,
+    "n_piezas": 44,
+    "lift_hook": null,
+    "lift_format": null,
+    "dia": null,
+    "autores": null,
+    "ejemplos": [
+     {
+      "title": "How the Claude Code team does code review",
+      "url": "https://claude.dev/blog/solving-code-review-at-anthropic/",
+      "source": "hn",
+      "ratio": 45.4
+     },
+     {
+      "title": "Postgres 19 delayed after AI reviewers find more bugs than humans can fix",
+      "url": "https://www.theregister.com/databases/2026/10/16/postgres-19-delayed-after-ai-reviewers-find-more-bugs-than-humans-can-fix/5303471",
+      "source": "hn",
+      "ratio": 20.8
+     }
+    ],
+    "frase": "Hay piezas que rinden 3x o más, pero sin un patrón claro de gancho o formato."
+   },
    "adapt": {
     "title": "Reach Security capta 50 millones para automatizar defensas: qué significa para tu empresa",
     "hook": "Reach Security capta más de 50 millones de dólares para automatizar defensas empresariales",
@@ -3504,7 +3922,13 @@
        "voz": "Elige una sola tarea repetitiva, mídela una semana y automatízala. Si te devuelve tiempo, sigues con la siguiente."
       }
      ],
-     "cta": "Comenta cuántas horas calculas que pierde tu equipo y te digo por dónde empezar."
+     "cta": "Comenta cuántas horas calculas que pierde tu equipo y te digo por dónde empezar.",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -3553,7 +3977,13 @@
       }
      ],
      "ejemplo": "Por ejemplo, un equipo de 10 personas que dedica 3 horas semanales cada una a reportes de ventas. Automatizar la extracción y el envío del reporte libera 30 horas a la semana para vender y atender clientes.",
-     "cta": "Descarga la plantilla para medir tus horas, y cuéntanos en comentarios qué proceso vas a automatizar primero."
+     "cta": "Descarga la plantilla para medir tus horas, y cuéntanos en comentarios qué proceso vas a automatizar primero.",
+     "verificacion": {
+      "cifras": 2,
+      "verificadas": 2,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "linkedin": {
      "hook": "Muchos líderes creen que automatizar es un proyecto de TI de meses. Muchas veces empieza con una sola tarea.",
@@ -3565,7 +3995,13 @@
       "Mi recomendación: elige un solo proceso, mídelo una semana, automatízalo y revisa resultados al mes.",
       "No busques el sistema perfecto. Busca la tarea que más se repite y empieza hoy."
      ],
-     "pregunta": "¿Cuál es la tarea repetitiva que más tiempo le quita a tu equipo cada semana?"
+     "pregunta": "¿Cuál es la tarea repetitiva que más tiempo le quita a tu equipo cada semana?",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -3575,7 +4011,13 @@
       "Empezar con un proceso de bajo riesgo, como gastos o reportes, permite aprender sin poner en juego la operación completa.",
       "Las soluciones que ya existen, como las de automatización de gastos presentadas en Latam, muestran que el beneficio es práctico y no depende de una transformación total."
      ],
-     "semana": "Esta semana, pide a tu equipo que anote durante cinco días las tareas repetitivas y cuántas horas le toman. Elige la que más se repite y define una meta medible para la próxima semana."
+     "semana": "Esta semana, pide a tu equipo que anote durante cinco días las tareas repetitivas y cuántas horas le toman. Elige la que más se repite y define una meta medible para la próxima semana.",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.01759
@@ -3757,6 +4199,16 @@
     }
    ],
    "early_label": "Estable",
+   "atipicos": {
+    "n_outliers": 1,
+    "n_piezas": 63,
+    "lift_hook": null,
+    "lift_format": null,
+    "dia": null,
+    "autores": null,
+    "ejemplos": [],
+    "frase": "sin datos suficientes"
+   },
    "adapt": {
     "title": "Así se le enseña a una IA a responder con los documentos de tu empresa, paso a paso | AI for Executives",
     "hook": "Jev le dio a nuestro LLM la página equivocada una décima parte de las veces que nuestros embeddings.",
@@ -3824,7 +4276,13 @@
        "voz": "No necesitas ser programador para tener esto en tu empresa, solo saber qué información quieres que la IA entienda."
       }
      ],
-     "cta": "Guarda este video y compártelo con quien maneja el conocimiento en tu equipo."
+     "cta": "Guarda este video y compártelo con quien maneja el conocimiento en tu equipo.",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -3872,7 +4330,13 @@
       }
      ],
      "ejemplo": "El caso de La Silla Vacía: construyeron un chatbot sobre su archivo de noticias para que los periodistas pudieran buscar contexto histórico sin perder horas revisando archivos manualmente.",
-     "cta": "Si quieres ver cómo se arma esto paso a paso, el video fijado te muestra el proceso completo."
+     "cta": "Si quieres ver cómo se arma esto paso a paso, el video fijado te muestra el proceso completo.",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "linkedin": {
      "hook": "Tu empresa no tiene un problema de información. Tiene un problema de acceso a la información.",
@@ -3885,7 +4349,13 @@
       "No necesitas un equipo de ingenieros gigante para empezar: necesitas identificar qué información es valiosa y empezar con un piloto pequeño.",
       "El conocimiento que ya tienes es un activo. La pregunta es si lo estás usando o dejando enterrado."
      ],
-     "pregunta": "¿Cuánto tiempo pierde tu equipo buscando información que ya existe en algún lado?"
+     "pregunta": "¿Cuánto tiempo pierde tu equipo buscando información que ya existe en algún lado?",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -3895,7 +4365,13 @@
       "Casos reales como medios de noticias ya lo están usando para reducir tiempo de búsqueda",
       "Empresas grandes como Oracle lo usan para que usuarios de negocio resuelvan dudas sin depender de TI"
      ],
-     "semana": "Esta semana, identifica un solo repositorio de información (manual, políticas, histórico de clientes) y pregúntate: ¿qué pasaría si mi equipo pudiera 'preguntarle' a ese documento en vez de buscarlo manualmente?"
+     "semana": "Esta semana, identifica un solo repositorio de información (manual, políticas, histórico de clientes) y pregúntate: ¿qué pasaría si mi equipo pudiera 'preguntarle' a ese documento en vez de buscarlo manualmente?",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.01213
@@ -4081,6 +4557,38 @@
     }
    ],
    "early_label": "Pico/saturado",
+   "atipicos": {
+    "n_outliers": 25,
+    "n_piezas": 182,
+    "lift_hook": {
+     "hook": "contrarian",
+     "x": 2.2
+    },
+    "lift_format": {
+     "format": "reel-cara",
+     "x": 4.2
+    },
+    "dia": "lunes",
+    "autores": {
+     "tipo": "comunidad",
+     "share": 0.88
+    },
+    "ejemplos": [
+     {
+      "title": "中国禁用ChatGPT 的真实原因",
+      "url": "https://www.tiktok.com/@_/video/7459873749945388330",
+      "source": "tiktok",
+      "ratio": 186.2
+     },
+     {
+      "title": "Anthropic reported diary entry to police, woman faces felony charge",
+      "url": "https://www.techspot.com/news/114091-florida-woman-used-claude-diary-anthropic-reported-shoot.html",
+      "source": "hn",
+      "ratio": 84.0
+     }
+    ],
+    "frase": "Las piezas que más rinden usan el gancho «Contrarian / rompe un mito» 2,2x más que el resto y el formato reel/short con cara hablando a cámara 4,2x."
+   },
    "adapt": {
     "title": "Regulación de IA sin tecnicismos: qué significa para tu empresa esta semana",
     "hook": "Torvalds calls AI disclosure rules 'utterly stupid'",
@@ -4148,7 +4656,13 @@
        "voz": "Si tu negocio usa IA para decisiones sobre personas, necesitas una estrategia real de gobernanza, no un checkbox"
       }
      ],
-     "cta": "Sígueme para aprender a implementar IA con cabeza, no con miedo"
+     "cta": "Sígueme para aprender a implementar IA con cabeza, no con miedo",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -4197,7 +4711,13 @@
       }
      ],
      "ejemplo": "Un equipo de RRHH que usa IA para filtrar candidatos debe poder explicar exactamente por qué un algoritmo descartó a alguien, no solo decir 'así lo decidió el sistema'",
-     "cta": "Si tu empresa está automatizando decisiones con IA, el próximo paso es tener un proceso claro de gobernanza. Te cuento cómo en el próximo video"
+     "cta": "Si tu empresa está automatizando decisiones con IA, el próximo paso es tener un proceso claro de gobernanza. Te cuento cómo en el próximo video",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "linkedin": {
      "hook": "Amazon usa IA para predecir si sus trabajadores van a formar un sindicato.",
@@ -4210,7 +4730,13 @@
       "Latinoamérica va a seguir esa ruta tarde o temprano. Las empresas que se preparen ahora van a tener ventaja.",
       "La pregunta no es si vas a tener que regular el uso de IA en tu empresa. Es cuándo."
      ],
-     "pregunta": "¿Tu empresa ya tiene un proceso claro para explicar decisiones tomadas con IA, o todavía confía en que 'alguien lo está revisando'?"
+     "pregunta": "¿Tu empresa ya tiene un proceso claro para explicar decisiones tomadas con IA, o todavía confía en que 'alguien lo está revisando'?",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -4220,7 +4746,13 @@
       "'Humano en el loop' ya no es suficiente defensa legal ni ética cuando usas IA agéntica",
       "La Unión Europea está marcando el camino regulatorio que tarde o temprano va a llegar a Latinoamérica"
      ],
-     "semana": "Esta semana, identifica en tu empresa todos los procesos donde la IA toma o influye en decisiones sobre personas (contratación, evaluación, atención al cliente) y documenta quién es responsable de cada uno"
+     "semana": "Esta semana, identifica en tu empresa todos los procesos donde la IA toma o influye en decisiones sobre personas (contratación, evaluación, atención al cliente) y documenta quién es responsable de cada uno",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.0127
@@ -4408,6 +4940,38 @@
     }
    ],
    "early_label": "Cayendo",
+   "atipicos": {
+    "n_outliers": 25,
+    "n_piezas": 519,
+    "lift_hook": {
+     "hook": "miedo-riesgo",
+     "x": 2.8
+    },
+    "lift_format": {
+     "format": "reel-cara",
+     "x": 13.2
+    },
+    "dia": "miércoles",
+    "autores": {
+     "tipo": "comunidad",
+     "share": 0.96
+    },
+    "ejemplos": [
+     {
+      "title": "Anthropic's Scion is heavily inspired by Mononoke",
+      "url": "https://sunshowers.io/posts/anthropic-mononoke/",
+      "source": "hn",
+      "ratio": 42.6
+     },
+     {
+      "title": "Show HN: Let your AI agents paint big arrows, boxes and text on your screen",
+      "url": "https://github.com/franzenzenhofer/big-arrow-on-the-screen",
+      "source": "hn",
+      "ratio": 42.1
+     }
+    ],
+    "frase": "Las piezas que más rinden usan el gancho «Miedo / riesgo» 2,8x más que el resto y el formato reel/short con cara hablando a cámara 13,2x."
+   },
    "adapt": {
     "title": "Agentes de IA sin jerga: cómo empezar a quitarle horas repetitivas a tu equipo",
     "hook": "¿Cuántas horas dedica tu equipo cada semana a tareas que podrían automatizarse?",
@@ -4475,7 +5039,13 @@
        "voz": "Antes de automatizar, mapea el proceso. Si no, solo automatizas el caos"
       }
      ],
-     "cta": "Síguenos para ver cómo implementar agentes de IA sin caer en estos errores"
+     "cta": "Síguenos para ver cómo implementar agentes de IA sin caer en estos errores",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -4524,7 +5094,13 @@
       }
      ],
      "ejemplo": "Un equipo de soporte que automatizó solo el proceso de clasificación de tickets (no todo el flujo) y redujo el tiempo de primera respuesta sin perder calidad",
-     "cta": "Si quieres que evaluemos tu proceso antes de meter un agente de IA, escríbenos"
+     "cta": "Si quieres que evaluemos tu proceso antes de meter un agente de IA, escríbenos",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "linkedin": {
      "hook": "Los agentes de IA están cayendo en tendencia, pero eso no significa que debas ignorarlos",
@@ -4537,7 +5113,13 @@
       "La pregunta que toda empresa grande se está haciendo ahora: ¿este agente realmente cambia nuestros números, o solo se ve bien en una demo?",
       "Antes de sumarte a la ola de agentes, define qué vas a medir: tiempo, errores, costos"
      ],
-     "pregunta": "¿Tu empresa ya probó un agente de IA, o sigues esperando el 'prompt mágico'?"
+     "pregunta": "¿Tu empresa ya probó un agente de IA, o sigues esperando el 'prompt mágico'?",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -4547,7 +5129,13 @@
       "Las búsquedas técnicas (Google News, Wikipedia) siguen subiendo, señal de que los equipos serios siguen investigando cómo hacerlo bien",
       "El riesgo real no es usar agentes, es usarlos sin definir contexto, control y métricas claras"
      ],
-     "semana": "Esta semana, elige UN proceso repetitivo de tu equipo, documenta sus pasos exactos, y solo después evalúa si un agente de IA puede ejecutarlo"
+     "semana": "Esta semana, elige UN proceso repetitivo de tu equipo, documenta sus pasos exactos, y solo después evalúa si un agente de IA puede ejecutarlo",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.01285
@@ -4731,6 +5319,16 @@
     }
    ],
    "early_label": "Estable",
+   "atipicos": {
+    "n_outliers": 1,
+    "n_piezas": 52,
+    "lift_hook": null,
+    "lift_format": null,
+    "dia": null,
+    "autores": null,
+    "ejemplos": [],
+    "frase": "sin datos suficientes"
+   },
    "adapt": {
     "title": "Copilotos de trabajo: qué significa para tu empresa, explicado en 3 minutos",
     "hook": "Un prompt instala y corre todo tu día. Te explico qué significa eso para tu empresa.",
@@ -4798,7 +5396,13 @@
        "voz": "Escribe tu formato favorito una vez, guárdalo y úsalo cada semana. Sigue para más formas prácticas de usar IA en tu negocio."
       }
      ],
-     "cta": "Comenta 'FORMATO' y te comparto la lista de instrucciones que usamos para resúmenes y correos."
+     "cta": "Comenta 'FORMATO' y te comparto la lista de instrucciones que usamos para resúmenes y correos.",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -4847,7 +5451,13 @@
       }
      ],
      "ejemplo": "Por ejemplo, un equipo de 10 personas de ventas pedía a su asistente 'un resumen de la reunión'. Recibía párrafos de 400 palabras. Al cambiar la instrucción a 'Dame 3 acuerdos y 2 pendientes, máximo 80 palabras', el resumen pasó a ser algo que todos leían en la misma reunión.",
-     "cta": "Descarga la plantilla de instrucciones en la descripción y cuéntanos en comentarios qué tarea te gustaría automatizar primero."
+     "cta": "Descarga la plantilla de instrucciones en la descripción y cuéntanos en comentarios qué tarea te gustaría automatizar primero.",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "linkedin": {
      "hook": "Tu asistente de IA no te responde mal. Tú le pides mal. Y casi nadie te lo dice.",
@@ -4859,7 +5469,13 @@
       "Lo que sí funciona: escribe 3 plantillas para tareas que repites y guárdalas para todo el equipo.",
       "Antes de pensar en soluciones más complejas, prueba durante 2 semanas con instrucciones simples."
      ],
-     "pregunta": "¿Cuál es la tarea que más tiempo te come hoy y que te gustaría que tu asistente resolviera bien?"
+     "pregunta": "¿Cuál es la tarea que más tiempo te come hoy y que te gustaría que tu asistente resolviera bien?",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -4869,7 +5485,13 @@
       "Las plantillas reutilizables hacen que todo el equipo trabaje igual y que los resultados sean predecibles.",
       "Probar con lo que ya tienes durante 2 semanas te dice si realmente necesitas algo más avanzado, y evita gastar en problemas que no existen."
      ],
-     "semana": "Esta semana, elige una tarea repetitiva, escribe una instrucción con formato, extensión y tono, úsala 5 veces y anota cuántos minutos ahorraste; luego compártela con tu equipo."
+     "semana": "Esta semana, elige una tarea repetitiva, escribe una instrucción con formato, extensión y tono, úsala 5 veces y anota cuántos minutos ahorraste; luego compártela con tu equipo.",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.0186
@@ -5053,6 +5675,38 @@
     }
    ],
    "early_label": "Estable",
+   "atipicos": {
+    "n_outliers": 4,
+    "n_piezas": 67,
+    "lift_hook": {
+     "hook": "contrarian",
+     "x": 2.4
+    },
+    "lift_format": {
+     "format": "noticia-explicada",
+     "x": 1.6
+    },
+    "dia": "miércoles",
+    "autores": {
+     "tipo": "comunidad",
+     "share": 1.0
+    },
+    "ejemplos": [
+     {
+      "title": "OpenAI annualised revenues $20B less than previously signalled",
+      "url": "https://www.cnbc.com/2026/10/08/open-ai-revenue-nvidia-oracle-coreweave.html",
+      "source": "hn",
+      "ratio": 43.2
+     },
+     {
+      "title": "Research Firm Calls Anthropic's IPO 'Unprecedented Test of Investor Gullibity'",
+      "url": "https://www.cnbc.com/2026/10/07/anthropic-will-be-most-ridiculous-ipo-of-year-analyst-says.html",
+      "source": "hn",
+      "ratio": 24.3
+     }
+    ],
+    "frase": "Las piezas que más rinden usan el gancho «Contrarian / rompe un mito» 2,4x más que el resto y el formato noticia explicada (qué significa para tu empresa) 1,6x."
+   },
    "adapt": {
     "title": "Herramienta en 60 segundos: cómo saber si tu startup ya encontró product market fit",
     "hook": "De 4 a 15 millones de ARR: así cambia todo con product market fit",
@@ -5120,7 +5774,13 @@
        "voz": "Si estás evaluando una startup de IA, pregunta: ¿quién paga hoy, y por qué? Si la respuesta es 'algún día', cuidado."
       }
      ],
-     "cta": "Comenta 'RIESGO' y te digo qué preguntas hacerle a cualquier startup antes de invertir."
+     "cta": "Comenta 'RIESGO' y te digo qué preguntas hacerle a cualquier startup antes de invertir.",
+     "verificacion": {
+      "cifras": 2,
+      "verificadas": 2,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -5169,7 +5829,13 @@
       }
      ],
      "ejemplo": "Imagina a un director de operaciones que recibe una propuesta para invertir en una startup de IA de atención al cliente. En vez de fijarse en la demo, pide tres clientes que paguen, su tasa de renovación y el tiempo que tardan en implementarla. Si las respuestas son claras, sigue; si no, pasa al siguiente proyecto.",
-     "cta": "Si quieres la lista completa de preguntas para evaluar startups, suscríbete y déjame tu comentario con el sector que te interesa."
+     "cta": "Si quieres la lista completa de preguntas para evaluar startups, suscríbete y déjame tu comentario con el sector que te interesa.",
+     "verificacion": {
+      "cifras": 2,
+      "verificadas": 2,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "linkedin": {
      "hook": "Un titular dice que una startup de IA recaudó millones. Yo me pregunto otra cosa: ¿quién le paga hoy?",
@@ -5181,7 +5847,13 @@
       "La viralidad trae atención, pero no garantiza clientes. El talento y el problema bien definido aguantan más tiempo.",
       "Si evalúas una startup de IA para invertir o para hacer negocio, pregunta: ¿quién paga hoy, qué tan dependiente es de una plataforma y qué pasa si la tecnología cambia mañana?"
      ],
-     "pregunta": "En tu empresa, ¿qué prueba pedirías antes de invertir en una startup de IA: clientes que paguen, resultados medibles o el equipo?"
+     "pregunta": "En tu empresa, ¿qué prueba pedirías antes de invertir en una startup de IA: clientes que paguen, resultados medibles o el equipo?",
+     "verificacion": {
+      "cifras": 2,
+      "verificadas": 2,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -5191,7 +5863,13 @@
       "Los titulares sobre rondas millonarias y viralidad pueden inflar expectativas y distraer de la pregunta clave: ¿quién paga hoy?",
       "Un proceso simple de tres preguntas le permite a un líder decidir con criterio aunque no sea experto en tecnología."
      ],
-     "semana": "Esta semana elige una startup o proveedor de IA que te hayan propuesto, y pide tres cosas: clientes actuales que paguen, tasa de renovación y un caso medible. Anota las respuestas y compáralas antes de decidir."
+     "semana": "Esta semana elige una startup o proveedor de IA que te hayan propuesto, y pide tres cosas: clientes actuales que paguen, tasa de renovación y un caso medible. Anota las respuestas y compáralas antes de decidir.",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.01775
@@ -5376,6 +6054,38 @@
     }
    ],
    "early_label": "Pico/saturado",
+   "atipicos": {
+    "n_outliers": 17,
+    "n_piezas": 219,
+    "lift_hook": {
+     "hook": "miedo-riesgo",
+     "x": 8.5
+    },
+    "lift_format": {
+     "format": "noticia-explicada",
+     "x": 2.3
+    },
+    "dia": "lunes",
+    "autores": {
+     "tipo": "comunidad",
+     "share": 1.0
+    },
+    "ejemplos": [
+     {
+      "title": "Banks are now trying to offload the AI data center debt they just underwrote",
+      "url": "https://startupfortune.com/banks-are-now-trying-to-offload-the-ai-data-center-debt-they-just-underwrote/",
+      "source": "hn",
+      "ratio": 38.4
+     },
+     {
+      "title": "OpenTPU – An open-source AI accelerator, developed by AI",
+      "url": "https://github.com/FeSens/openTPU",
+      "source": "hn",
+      "ratio": 34.8
+     }
+    ],
+    "frase": "Las piezas que más rinden usan el gancho «Miedo / riesgo» 8,5x más que el resto y el formato noticia explicada (qué significa para tu empresa) 2,3x."
+   },
    "adapt": {
     "title": "Qué significa para tu empresa que los bancos quieran vender la deuda de los centros de datos de IA",
     "hook": "Los bancos ya quieren deshacerse de la deuda de los centros de datos de IA que acaban de financiar.",
@@ -5443,7 +6153,13 @@
        "voz": "El problema no es adoptar IA, es adoptarla sin medir el gasto real detrás"
       }
      ],
-     "cta": "Síguenos para que aprendas a usar IA sin quemar tu presupuesto"
+     "cta": "Síguenos para que aprendas a usar IA sin quemar tu presupuesto",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -5487,7 +6203,13 @@
       }
      ],
      "ejemplo": "Un equipo en un hackathon de 30X mostró una demo donde, ajustando cómo construían con IA, lograban usar menos tokens sin perder calidad en el resultado final",
-     "cta": "Antes de tu próxima inversión en IA, mide. Suscríbete para la siguiente parte de esta serie sobre costos reales de IA"
+     "cta": "Antes de tu próxima inversión en IA, mide. Suscríbete para la siguiente parte de esta serie sobre costos reales de IA",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "linkedin": {
      "hook": "Los bancos que financiaron la fiebre de los centros de datos de IA ahora quieren deshacerse de esa deuda.",
@@ -5499,7 +6221,13 @@
       "No se trata de dejar de invertir en IA. Se trata de invertir con datos, no con moda.",
       "La infraestructura de IA sigue creciendo (hay nuevos chips y GPUs más accesibles saliendo al mercado), pero la eficiencia ya es tan importante como la potencia."
      ],
-     "pregunta": "¿Tu empresa ha medido cuánto le cuesta realmente usar IA, o solo contrató 'lo mejor del mercado'?"
+     "pregunta": "¿Tu empresa ha medido cuánto le cuesta realmente usar IA, o solo contrató 'lo mejor del mercado'?",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -5509,7 +6237,13 @@
       "Existen herramientas para probar el rendimiento de un modelo antes de comprar hardware, úsalas antes de decidir",
       "Un equipo en un hackathon de 30X demostró que optimizando el uso de tokens se puede lograr el mismo resultado gastando menos"
      ],
-     "semana": "Esta semana, pide a tu equipo técnico o proveedor que te muestre cuánto están gastando en tokens o nube por proyecto, antes de aprobar el próximo contrato"
+     "semana": "Esta semana, pide a tu equipo técnico o proveedor que te muestre cuánto están gastando en tokens o nube por proyecto, antes de aprobar el próximo contrato",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.01264
@@ -5693,6 +6427,38 @@
     }
    ],
    "early_label": "Pico/saturado",
+   "atipicos": {
+    "n_outliers": 34,
+    "n_piezas": 353,
+    "lift_hook": {
+     "hook": "error-confesion",
+     "x": 9.4
+    },
+    "lift_format": {
+     "format": "noticia-explicada",
+     "x": 1.5
+    },
+    "dia": "martes",
+    "autores": {
+     "tipo": "comunidad",
+     "share": 0.76
+    },
+    "ejemplos": [
+     {
+      "title": "#Loret. Durante años, científicos y expertos han advertido que la inteligencia artificial podría generar riesgos catastróficos. #Latinus #In",
+      "url": "https://www.tiktok.com/@_/video/7685623070438083857",
+      "source": "tiktok",
+      "ratio": 1044.7
+     },
+     {
+      "title": "#Loret. Anthropic advierte que la inteligencia artificial podría replicarse sola en dispositivos conectados a internet.",
+      "url": "https://www.tiktok.com/@_/video/7696508582057135367",
+      "source": "tiktok",
+      "ratio": 444.5
+     }
+    ],
+    "frase": "Las piezas que más rinden usan el gancho «Error o confesión» 9,4x más que el resto y el formato noticia explicada (qué significa para tu empresa) 1,5x."
+   },
    "adapt": {
     "title": "Lo que tu equipo le cuenta a la IA: cómo revisar un proceso paso a paso sin exponer datos",
     "hook": "Tu chatbot no es tu diario: por qué lo que le cuentas a la IA nunca es del todo privado",
@@ -5760,7 +6526,13 @@
        "voz": "¿Sabes qué datos tiene acceso tu IA y quién puede usarla hoy en tu empresa?"
       }
      ],
-     "cta": "Síguenos para la serie completa sobre seguridad en IA para empresas"
+     "cta": "Síguenos para la serie completa sobre seguridad en IA para empresas",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -5809,20 +6581,31 @@
       }
      ],
      "ejemplo": "Por ejemplo, un equipo de 10 personas que usa IA para atención al cliente sin revisar permisos, expone datos de clientes sin saberlo",
-     "cta": "Suscríbete para la serie completa de seguridad en IA para líderes"
+     "cta": "Suscríbete para la serie completa de seguridad en IA para líderes",
+     "verificacion": {
+      "cifras": 2,
+      "verificadas": 2,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "linkedin": {
      "hook": "Anthropic dijo que su IA podría replicarse sola en dispositivos conectados a internet. Léelo dos veces.",
      "slides": [
       "La empresa que crea la IA más avanzada del mundo está advirtiendo sobre sus propios riesgos",
-      "Esto no es alarmismo: ya existen startups dedicadas 100% a defender empresas de esto",
       "Reach Security levantó más de 50 millones de dólares para automatizar defensas empresariales contra IA",
       "En India ya se habla de la 'weaponización' de modelos de lenguaje contra startups",
       "Si tu empresa usa IA sin control de accesos, ya tienes un riesgo activo, aunque no lo veas",
       "La seguridad en IA dejó de ser un tema de 'después'. Ya es un tema de ahora",
       "Pregúntate: ¿quién en tu empresa puede acceder a tu IA y qué datos puede ver?"
      ],
-     "pregunta": "¿Tu empresa ya tiene reglas claras de seguridad para el uso de IA, o todavía no es prioridad?"
+     "pregunta": "¿Tu empresa ya tiene reglas claras de seguridad para el uso de IA, o todavía no es prioridad?",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 1,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -5832,7 +6615,13 @@
       "Startups de seguridad como Reach Security ya captan millones de dólares porque las empresas están pagando por protegerse",
       "En mercados como India ya se reporta el uso malicioso de modelos de lenguaje contra negocios"
      ],
-     "semana": "Haz un inventario simple: qué herramientas de IA usa tu equipo, quién tiene acceso y qué datos pueden ver o mover"
+     "semana": "Haz un inventario simple: qué herramientas de IA usa tu equipo, quién tiene acceso y qué datos pueden ver o mover",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.01207
@@ -6019,6 +6808,38 @@
     }
    ],
    "early_label": "Cayendo",
+   "atipicos": {
+    "n_outliers": 25,
+    "n_piezas": 354,
+    "lift_hook": {
+     "hook": "error-confesion",
+     "x": 4.4
+    },
+    "lift_format": {
+     "format": "reel-cara",
+     "x": 8.8
+    },
+    "dia": "miércoles",
+    "autores": {
+     "tipo": "comunidad",
+     "share": 0.92
+    },
+    "ejemplos": [
+     {
+      "title": "Redesigning source control at Anthropic",
+      "url": "https://www.anthropic.com/engineering/redesigning-source-control",
+      "source": "hn",
+      "ratio": 89.2
+     },
+     {
+      "title": "Codex CLI installs a persistent, self-updating background daemon by default",
+      "url": "https://github.com/openai/codex/issues/48195",
+      "source": "hn",
+      "ratio": 60.9
+     }
+    ],
+    "frase": "Las piezas que más rinden usan el gancho «Error o confesión» 4,4x más que el resto y el formato reel/short con cara hablando a cámara 8,8x."
+   },
    "adapt": {
     "title": "3 cosas que tu equipo debe verificar antes de lanzar una app hecha con IA",
     "hook": "La IA escribe el código. ¿Quién lo verifica? Hoy te digo los 3 puntos que nadie revisa.",
@@ -6086,7 +6907,13 @@
        "voz": "Si tu equipo pierde horas en una tarea repetitiva, ahí está tu primera app con IA."
       }
      ],
-     "cta": "Síguenos para ver cómo transformar procesos de tu empresa con IA paso a paso."
+     "cta": "Síguenos para ver cómo transformar procesos de tu empresa con IA paso a paso.",
+     "verificacion": {
+      "cifras": 2,
+      "verificadas": 2,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -6135,7 +6962,13 @@
       }
      ],
      "ejemplo": "Un equipo de 10 personas en una empresa de servicios usó IA para crear una herramienta interna que ordenaba solicitudes de clientes, algo que antes hacían a mano en una hoja de cálculo.",
-     "cta": "Si quieres ver el proceso completo de cómo una empresa transforma un proceso con IA, mira el video que tenemos fijado en nuestro canal."
+     "cta": "Si quieres ver el proceso completo de cómo una empresa transforma un proceso con IA, mira el video que tenemos fijado en nuestro canal.",
+     "verificacion": {
+      "cifras": 4,
+      "verificadas": 4,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "linkedin": {
      "hook": "Vibe coding no es magia: es describirle a una IA lo que necesitas y dejar que construya contigo.",
@@ -6148,7 +6981,13 @@
       "La clave no está en la herramienta, está en definir bien el problema de negocio antes de pedirle algo a la IA.",
       "Empieza pequeño: un proceso manual, una conversación con la IA, y una primera versión que pruebes con tu equipo."
      ],
-     "pregunta": "¿Tu equipo ya probó crear algo con IA sin depender de un programador?"
+     "pregunta": "¿Tu equipo ya probó crear algo con IA sin depender de un programador?",
+     "verificacion": {
+      "cifras": 2,
+      "verificadas": 2,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -6158,7 +6997,13 @@
       "El caso público de un creador que lleva 225 días documentando su intento de llegar a un millón de dólares con una app hecha con IA muestra que construir rápido no significa vender rápido",
       "El formato que mejor funciona para explicar esto es alguien hablando directo a cámara, mostrando el proceso paso a paso, no solo el resultado final"
      ],
-     "semana": "Elige un proceso manual de tu negocio, descríbeselo a una IA como si fuera un empleado nuevo, y pide una primera versión simple para probar con tu equipo antes de invertir más tiempo."
+     "semana": "Elige un proceso manual de tu negocio, descríbeselo a una IA como si fuera un empleado nuevo, y pide una primera versión simple para probar con tu equipo antes de invertir más tiempo.",
+     "verificacion": {
+      "cifras": 1,
+      "verificadas": 1,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.01345
@@ -6343,6 +7188,35 @@
     }
    ],
    "early_label": "Estable",
+   "atipicos": {
+    "n_outliers": 35,
+    "n_piezas": 332,
+    "lift_hook": {
+     "hook": "autoridad",
+     "x": 1.7
+    },
+    "lift_format": null,
+    "dia": "martes",
+    "autores": {
+     "tipo": "comunidad",
+     "share": 0.91
+    },
+    "ejemplos": [
+     {
+      "title": "Gemini 4 Argon",
+      "url": "https://deepmind.google/models/gemini/",
+      "source": "hn",
+      "ratio": 146.4
+     },
+     {
+      "title": "Sharing AI progress in mathematics",
+      "url": "https://openai.com/index/sharing-ai-progress-in-mathematics/",
+      "source": "hn",
+      "ratio": 136.2
+     }
+    ],
+    "frase": "Las piezas que más rinden usan el gancho «Autoridad / nombre propio» 1,7x más que el resto."
+   },
    "adapt": {
     "title": "6 modelos nuevos de IA: cuál le sirve a tu empresa y cuál puedes ignorar",
     "hook": "6 modelos nuevos de IA en pocos días. ¿Cuál le sirve a tu empresa?",
@@ -6410,7 +7284,13 @@
        "voz": "Por ejemplo, un equipo de 10 personas puede perder horas cada semana usando un modelo viejo cuando ya existe uno más rápido y barato"
       }
      ],
-     "cta": "Guarda este video y compártelo con quien decide qué IA usa tu empresa"
+     "cta": "Guarda este video y compártelo con quien decide qué IA usa tu empresa",
+     "verificacion": {
+      "cifras": 2,
+      "verificadas": 2,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -6458,7 +7338,13 @@
       }
      ],
      "ejemplo": "Un equipo de 10 personas que usa IA para generar reportes internos prueba el mismo prompt en el modelo viejo y en el nuevo Flash de DeepSeek, y nota que el nuevo responde más rápido sin perder calidad",
-     "cta": "Si quieres saber qué modelo le conviene a tu equipo, suscríbete, cada semana reviso esto por ti"
+     "cta": "Si quieres saber qué modelo le conviene a tu equipo, suscríbete, cada semana reviso esto por ti",
+     "verificacion": {
+      "cifras": 2,
+      "verificadas": 2,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "linkedin": {
      "hook": "Esta semana lanzaron 6 modelos de IA nuevos. Tu empresa probablemente sigue usando el de hace 6 meses.",
@@ -6471,7 +7357,13 @@
       "Por ejemplo, un equipo de 10 personas que usa IA para reportes puede recortar a la mitad el tiempo de espera solo cambiando de modelo",
       "No necesitas ser programador para comparar: el mismo prompt, distintos modelos, y mira la diferencia"
      ],
-     "pregunta": "¿Cuándo fue la última vez que tu empresa revisó si sigue usando el mejor modelo de IA disponible?"
+     "pregunta": "¿Cuándo fue la última vez que tu empresa revisó si sigue usando el mejor modelo de IA disponible?",
+     "verificacion": {
+      "cifras": 2,
+      "verificadas": 2,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -6481,7 +7373,13 @@
       "El riesgo no es cambiar de modelo, es no revisar nunca si el que usas sigue siendo el adecuado",
       "No se necesita ser programador para comparar: el mismo prompt en distintas herramientas te muestra la diferencia"
      ],
-     "semana": "Esta semana, pide a tu equipo que corra la misma tarea en dos o tres modelos distintos (el que ya usan y uno nuevo) y comparen tiempo y calidad del resultado"
+     "semana": "Esta semana, pide a tu equipo que corra la misma tarea en dos o tres modelos distintos (el que ya usan y uno nuevo) y comparen tiempo y calidad del resultado",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.01248
@@ -6661,6 +7559,35 @@
     }
    ],
    "early_label": "Estable",
+   "atipicos": {
+    "n_outliers": 8,
+    "n_piezas": 74,
+    "lift_hook": {
+     "hook": "pregunta",
+     "x": 2.8
+    },
+    "lift_format": null,
+    "dia": "viernes",
+    "autores": {
+     "tipo": "comunidad",
+     "share": 0.62
+    },
+    "ejemplos": [
+     {
+      "title": "Tutorial para crear un video divertido de baile con IA 🤖🕺 Usa tecnología de inteligencia artificial para transformar una sola foto en un vid",
+      "url": "https://www.tiktok.com/@_/video/7640095032535534861",
+      "source": "tiktok",
+      "ratio": 311.2
+     },
+     {
+      "title": "Create your own voices with Gemini 3.8 text-to-speech",
+      "url": "https://www.youtube.com/watch?v=FL6mI_Br-mc",
+      "source": "youtube",
+      "ratio": 66.3
+     }
+    ],
+    "frase": "Las piezas que más rinden usan el gancho «Pregunta provocadora» 2,8x más que el resto."
+   },
    "adapt": {
     "title": "Herramienta en 60 segundos: crea video, voz e imagen con IA sin programar",
     "hook": "Hoy un video hecho con IA de una persona real circula sin su consentimiento.",
@@ -6728,7 +7655,15 @@
        "voz": "La pregunta es si tu empresa ya está aprovechando esto o se está quedando atrás"
       }
      ],
-     "cta": "Síguenos para ver cómo implementarlo paso a paso en tu negocio"
+     "cta": "Síguenos para ver cómo implementarlo paso a paso en tu negocio",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": [
+       "5 personas"
+      ]
+     }
     },
     "largo": {
      "duration": "5-8 min",
@@ -6777,7 +7712,15 @@
       }
      ],
      "ejemplo": "Por ejemplo, un equipo de 5 personas en una empresa mediana puede generar en un día lo que antes tomaba una semana con productora externa: video, voz e imagen, todo desde una misma plataforma",
-     "cta": "Si quieres ver el paso a paso completo de cómo implementar esto en tu empresa, el link está en la descripción"
+     "cta": "Si quieres ver el paso a paso completo de cómo implementar esto en tu empresa, el link está en la descripción",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": [
+       "5 personas"
+      ]
+     }
     },
     "linkedin": {
      "hook": "Esa escena que viste en redes no la grabó ninguna cámara profesional.",
@@ -6790,7 +7733,13 @@
       "El riesgo no es usar mal la tecnología, es no usarla mientras tu competencia sí.",
       "La clave es empezar con un caso simple y medir el tiempo que te ahorra."
      ],
-     "pregunta": "¿Tu empresa ya probó crear contenido con video, voz o imagen generada por IA?"
+     "pregunta": "¿Tu empresa ya probó crear contenido con video, voz o imagen generada por IA?",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "recomendacion": {
      "duration": "60-90 s",
@@ -6800,7 +7749,13 @@
       "Ya hay adopción real en productos grandes, como lanzamientos de autos que integran voz generada por IA",
       "Herramientas como Claude ahora permiten crear imagen y video desde varios modelos sin saber programar"
      ],
-     "semana": "Esta semana, elige una pieza simple de tu empresa (un video interno, una locución, una imagen de marketing) y pruébala con una herramienta de IA generativa antes de pedirla a una productora externa"
+     "semana": "Esta semana, elige una pieza simple de tu empresa (un video interno, una locución, una imagen de marketing) y pruébala con una herramienta de IA generativa antes de pedirla a una productora externa",
+     "verificacion": {
+      "cifras": 0,
+      "verificadas": 0,
+      "quitadas": 0,
+      "ejemplos": []
+     }
     },
     "by": "teacher",
     "cost_usd": 0.01207

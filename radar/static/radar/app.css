@@ -837,3 +837,43 @@ pre.guion-oculto { display: none; }
 /* El bloque de texto del hero no debe tapar los clics a las estrellas de atrás; solo sus botones y enlaces los reciben. */
 .hero-content { pointer-events: none; }
 .hero-content a, .hero-content button { pointer-events: auto; }
+
+/* Por qué funcionó: piezas atípicas (radar/atipicos.py) */
+.atipicos { margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.12); }
+.atipicos h4 { margin: 0 0 6px; font-size: .95rem; }
+.atipicos p { margin: 4px 0; }
+.atipico-ej { font-size: .9rem; opacity: .9; }
+
+/* --- /en-vivo/: Cómo piensa EstelarIA --- */
+.vivo-hero { padding: 40px 0 16px; } .vivo-hero h1 { font-size: clamp(2rem, 4.5vw, 2.9rem); margin-bottom: 10px; } .vivo-hero .lead { color: var(--gris); max-width: 640px; }
+.vivo-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; padding: 14px 0; border-top: var(--borde); border-bottom: var(--borde); margin-bottom: 20px; }
+.btn-vivo { background: var(--lima); color: var(--noche); border: 0; border-radius: var(--radio); padding: 9px 16px; font: 600 .9rem var(--font-body); cursor: pointer; }
+.btn-vivo:focus-visible { outline: 2px solid var(--hueso); outline-offset: 2px; } .btn-vivo[hidden] { display: none; }
+.vivo-cnt b { display: block; font: 500 1.7rem var(--font-display); color: var(--hueso); } .vivo-cnt span { color: var(--gris); font-size: .8rem; }
+.vivo-nota { flex-basis: 100%; color: var(--apagado); font-size: .8rem; }
+.vivo-grid { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 28px; align-items: start; }
+.pipe { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.pipe-dot { position: absolute; left: 0; top: 0; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: var(--ambar); box-shadow: 0 0 14px 4px var(--ambar); opacity: 0; transition: transform .16s linear, opacity .2s; z-index: 2; pointer-events: none; }
+.pnode { text-align: left; background: var(--polvo); border: var(--borde); border-radius: var(--radio); padding: 12px 12px 10px; color: var(--hueso); font: inherit; cursor: pointer; min-height: 112px; display: flex; flex-direction: column; gap: 3px; transition: border-color .2s, box-shadow .2s; }
+.pnode:hover { border-color: var(--violeta); } .pnode:focus-visible { outline: 2px solid var(--lima); outline-offset: 2px; }
+.pnode .pn { color: var(--violeta); font-size: .75rem; letter-spacing: .06em; } .pnode .pt { font: 500 1.05rem var(--font-display); } .pnode .pv { color: var(--lima); font-size: .9rem; font-weight: 600; }
+.pnode .nv { color: var(--gris); font-size: .78rem; min-height: 1.2em; overflow-wrap: anywhere; }
+.pnode.lit { border-color: var(--ambar); box-shadow: 0 0 12px rgba(255, 192, 122, .45); } .pnode.esc { border-color: var(--magenta); box-shadow: 0 0 12px rgba(224, 123, 214, .5); }
+.pnode[aria-expanded="true"] { border-color: var(--lima); }
+.vivo-detalle { margin-top: 14px; padding: 16px; background: var(--polvo); border: var(--borde); border-left: 3px solid var(--lima); border-radius: var(--radio); }
+.vivo-detalle h3 { margin: 0 0 6px; font: 500 1.2rem var(--font-display); } .vivo-detalle p { margin: 6px 0; color: var(--gris); } .vivo-detalle code { color: var(--ambar); }
+.vivo-log-box { background: var(--polvo); border: var(--borde); border-radius: var(--radio); padding: 14px; min-width: 0; } .vivo-log-box h2 { font: 500 1.15rem var(--font-display); margin: 0 0 8px; }
+.vivo-log { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; max-height: 470px; overflow: hidden; }
+.vivo-log li { font: .8rem/1.4 ui-monospace, Consolas, monospace; color: var(--gris); overflow-wrap: anywhere; border-bottom: 1px dashed var(--linea); padding-bottom: 6px; } .vivo-log li:first-child { color: var(--hueso); } .vivo-log li.esc { color: var(--magenta); }
+.vivo-prueba { margin: 36px 0; } .vivo-prueba h2 { font: 500 1.5rem var(--font-display); margin: 0 0 4px; } .vivo-prueba .sub { color: var(--gris); margin: 0 0 12px; }
+.vivo-prueba textarea { width: 100%; background: var(--polvo); color: var(--hueso); border: var(--borde); border-radius: var(--radio); padding: 12px; font: .95rem var(--font-body); margin-bottom: 10px; }
+.traza-err { color: var(--magenta); min-height: 1.2em; margin: 8px 0 0; } .traza-res { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 6px; }
+.traza-res li { background: var(--polvo); border: var(--borde); border-left: 3px solid var(--violeta); border-radius: 8px; padding: 8px 12px; color: var(--gris); overflow-wrap: anywhere; } .traza-res li b { color: var(--hueso); }
+@media (max-width: 900px) { .vivo-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 600px) { .pipe { grid-template-columns: minmax(0, 1fr); } .pnode { min-height: 0; } }
+@media (prefers-reduced-motion: reduce) { .pipe-dot { display: none; } .pnode { transition: none; } }
+
+/* Verificación de cifras en guiones */
+.guion-verif { display: inline-block; margin: 10px 0 6px; padding: 3px 10px; border: 1px solid var(--gris); border-radius: 999px; color: var(--gris); font-size: 0.8rem; }
+.guion-verif.ok { color: var(--lima); border-color: var(--lima); }
+@media (max-width: 600px) { .site-header { flex-wrap: wrap; gap: 8px; } .site-header nav { gap: 14px; flex-wrap: wrap; } }

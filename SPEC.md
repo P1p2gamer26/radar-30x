@@ -70,6 +70,9 @@ Serie diaria de 14 días por tema = suma de pesos de señales (peso = 1 + log1p(
    "reason": "...",
    "why": {"format_winner": "caso-de-uso", "hook_winner": "numero-dato", "best_day": "martes",
            "author_mix": {"medio": 0.5, "creador": 0.3}, "formats": {"caso-de-uso": 0.4}, "hooks": {"numero-dato": 0.3}},
+   "atipicos": {"n_outliers": 5, "n_piezas": 40, "lift_hook": {"hook": "pregunta", "x": 2.4} | null, "lift_format": {"format": "reel-cara", "x": 1.8} | null,
+                "dia": "martes" | null, "autores": {"tipo": "creador", "share": 0.6} | null, "frase": "..." | null,
+                "ejemplos": [{"title": "...", "url": "...", "source": "hn", "ratio": 5.2}]},  // radar/atipicos.py: ratio = métrica / mediana de su fuente en el tema (o global si <5 piezas); outlier >= 3; lift solo con >=3 outliers y x >= 1,5; fuentes sin métricas se omiten; null si el tema no tiene piezas puntuables
    "top_signals": [{"title": "...", "url": "...", "source": "hn", "published_at": "...",
                     "metrics": {}, "format": "...", "hook": "...", "velocity": 12.5}],
    "adapt": {"title": "...", "hook": "primeros 3 s", "format": "reel-cara", "beats": ["...", "...", "..."], "cta": "..."},

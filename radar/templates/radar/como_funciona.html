@@ -138,6 +138,7 @@
         <div>
           <h3>Decidir con umbrales 0.80/0.50</h3>
           <p>Se mezcla el impulso del tema con su encaje con tu audiencia. Sobre 0.80 y solo si es Temprano o Despegando: Recomendar. Un tema estable o en su pico, como máximo Aprender. Sobre 0.50: Aprender. El resto, Descartar.</p>
+          {% if radar.totals.guiones_cifras %}<p class="guion-verif ok">De {{ radar.totals.guiones_cifras }} cifras en los guiones, {{ radar.totals.guiones_verificadas }} verificadas contra las piezas reales; las que no tenían respaldo se quitaron.</p>{% endif %}
           <div class="umbrales-wrap">
             <div class="threshold-track">
               <div class="threshold-fill" style="width: 65%;"></div>

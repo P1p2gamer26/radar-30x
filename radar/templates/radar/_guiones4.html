@@ -15,6 +15,7 @@
 Gancho (0-3 s): {{ g.reel.hook }}
 {% for b in g.reel.beats %}{{ forloop.counter }}. En pantalla: {{ b.texto }} | Voz: {{ b.voz }}
 {% endfor %}CTA: {{ g.reel.cta }}</pre>
+    {% with n=g.reel.verificacion.verificadas|default:0 %}<p class="guion-verif{% if n %} ok{% endif %}">{% if n %}✓ {{ n }} cifra{{ n|pluralize }} verificada{{ n|pluralize }} contra la evidencia{% else %}Sin cifras: solo ideas{% endif %}</p>{% endwith %}
     <button type="button" class="copy-btn" data-copy="g-reel-txt">Copiar guion</button>
   </div>{% endif %}
   {% if g.largo %}<div class="tab-pane" id="g-largo" role="tabpanel" hidden>
@@ -31,6 +32,7 @@ Gancho: {{ g.largo.hook }}
 {% for x in s.puntos %}   - {{ x }}
 {% endfor %}{% endfor %}Ejemplo: {{ g.largo.ejemplo }}
 CTA: {{ g.largo.cta }}</pre>
+    {% with n=g.largo.verificacion.verificadas|default:0 %}<p class="guion-verif{% if n %} ok{% endif %}">{% if n %}✓ {{ n }} cifra{{ n|pluralize }} verificada{{ n|pluralize }} contra la evidencia{% else %}Sin cifras: solo ideas{% endif %}</p>{% endwith %}
     <button type="button" class="copy-btn" data-copy="g-largo-txt">Copiar guion</button>
   </div>{% endif %}
   {% if g.linkedin %}<div class="tab-pane" id="g-linkedin" role="tabpanel" hidden>
@@ -43,6 +45,7 @@ CTA: {{ g.largo.cta }}</pre>
 {% for x in g.linkedin.slides %}{{ x }}
 {% endfor %}
 {{ g.linkedin.pregunta }}</pre>
+    {% with n=g.linkedin.verificacion.verificadas|default:0 %}<p class="guion-verif{% if n %} ok{% endif %}">{% if n %}✓ {{ n }} cifra{{ n|pluralize }} verificada{{ n|pluralize }} contra la evidencia{% else %}Sin cifras: solo ideas{% endif %}</p>{% endwith %}
     <button type="button" class="copy-btn" data-copy="g-linkedin-txt">Copiar guion</button>
   </div>{% endif %}
   {% if g.recomendacion %}<div class="tab-pane" id="g-recomendacion" role="tabpanel" hidden>
@@ -54,6 +57,7 @@ CTA: {{ g.largo.cta }}</pre>
 {{ g.recomendacion.postura }}
 {% for x in g.recomendacion.argumentos %}{{ forloop.counter }}. {{ x }}
 {% endfor %}Esta semana: {{ g.recomendacion.semana }}</pre>
+    {% with n=g.recomendacion.verificacion.verificadas|default:0 %}<p class="guion-verif{% if n %} ok{% endif %}">{% if n %}✓ {{ n }} cifra{{ n|pluralize }} verificada{{ n|pluralize }} contra la evidencia{% else %}Sin cifras: solo ideas{% endif %}</p>{% endwith %}
     <button type="button" class="copy-btn" data-copy="g-recomendacion-txt">Copiar guion</button>
   </div>{% endif %}
 </div>

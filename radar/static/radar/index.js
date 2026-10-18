@@ -500,6 +500,12 @@ function guionNodos(tipo, g, extra) {
   return [copy, [p(`Opinión · ${g.duration}`, "guion-meta"), p(g.postura, "guion-titulo"), li(g.argumentos), p(`Esta semana: ${g.semana}`, "acento")]];
 }
 
+function badgeVerif(v) {
+  const n = v && v.verificadas ? v.verificadas : 0;
+  const txt = n ? `✓ ${n} cifra${n > 1 ? "s" : ""} verificada${n > 1 ? "s" : ""} contra la evidencia` : "Sin cifras: solo ideas";
+  return el("p", { class: "guion-verif" + (n ? " ok" : ""), text: txt });
+}
+
 const TIPOS_GUION = [["reel", "Reel / Short"], ["largo", "Video largo"], ["linkedin", "Post LinkedIn"], ["recomendacion", "Recomendación"]];
 
 function renderGuiones(topic) {
@@ -512,7 +518,7 @@ function renderGuiones(topic) {
   }
   const panes = tipos.map(([k]) => {
     const [txt, nodes] = guionNodos(k, gs[k], topic.adapt_reel);
-    return el("div", { class: "tab-pane", role: "tabpanel" }, [...nodes, copyBtn(() => txt)]);
+    return el("div", { class: "tab-pane", role: "tabpanel" }, [...nodes, badgeVerif(gs[k].verificacion), copyBtn(() => txt)]);
   });
   const bar = el("div", { class: "tab-bar", role: "tablist" });
   const pick = (i) => panes.forEach((n, j) => { n.hidden = j !== i; tabs[j].classList.toggle("on", j === i); tabs[j].setAttribute("aria-selected", String(j === i)); tabs[j].tabIndex = j === i ? 0 : -1; });
@@ -549,12 +555,28 @@ function showPanel(titleText, metaNodes, bodyNodes, triggerEl) {
   document.getElementById("panel-close").focus();
 }
 
+function renderAtipicos(topic) {
+  const a = topic.atipicos;
+  const box = el("div", { class: "atipicos" });
+  if (!a) return box;
+  box.appendChild(el("h4", { text: "Por qué funcionó (piezas que rindieron 3x o más)" }));
+  box.appendChild(el("p", { text: a.frase || "sin datos suficientes" }));
+  (a.ejemplos || []).forEach((x) => {
+    const li = el("p", { class: "atipico-ej" });
+    li.appendChild(el("a", { href: x.url, target: "_blank", rel: "noopener noreferrer", text: x.title }));
+    li.appendChild(el("span", { class: "nums", text: ` · ${x.source} · ${x.ratio > 100 ? "más de 100×" : "×" + String(x.ratio).replace(".", ",")} sobre la mediana` }));
+    box.appendChild(li);
+  });
+  return box;
+}
+
 function openPanel(topic, triggerEl) {
   const resumen = el("div", { class: "panel-section" }, [
     el("h3", { text: "Resumen" }),
     el("p", { text: topic.reason, title: topic.reason }),
     renderThreshold(topic.p),
     el("p", { class: "nums", text: `Qué tan listo está para publicar: ${Math.round(topic.p * 100)} de 100 · le sirve a tu audiencia: ${Math.round(topic.exec_fit * 100)} de 100` }),
+    renderAtipicos(topic),
   ]);
   showPanel(
     topic.name,

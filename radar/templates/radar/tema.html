@@ -117,6 +117,15 @@
           <div class="why-card">
             <h3>Resumen</h3>
             <p>Formato que mejor funciona: {{ topic.why.format_label|default:topic.why.format_winner }}. Gancho que mejor funciona: {{ topic.why.hook_label|default:topic.why.hook_winner }}. Mejor día: {{ topic.why.best_day }}.</p>
+            {% if topic.atipicos %}
+            <div class="atipicos">
+              <h4>Por qué funcionó (piezas que rindieron 3x o más)</h4>
+              <p>{{ topic.atipicos.frase }}</p>
+              {% for x in topic.atipicos.ejemplos %}
+              <p class="atipico-ej"><a href="{{ x.url }}" target="_blank" rel="noopener noreferrer">{{ x.title }}</a> <span class="nums">· {{ x.source }} · {% if x.ratio > 100 %}más de 100×{% else %}×{{ x.ratio }}{% endif %} sobre la mediana</span></p>
+              {% endfor %}
+            </div>
+            {% endif %}
           </div>
           <div class="why-card">
             <h3>Formatos (agregado)</h3>

@@ -1,0 +1,53 @@
+{% extends "radar/base.html" %}
+{% load static %}
+{% block title %}Cómo piensa EstelarIA{% endblock %}
+{% block nav_vivo %}aria-current="page"{% endblock %}
+
+{% block content %}
+<div class="wrap">
+<section class="vivo-hero">
+  <h1>Cómo piensa EstelarIA</h1>
+  <p class="lead">Por qué modelos pasa cada pieza, qué hace con ella y por qué salen esos números. Toca una etapa para ver el detalle, mira señales reales de esta semana viajar por el flujo o prueba tu propio texto.</p>
+</section>
+
+<section class="vivo-bar" aria-label="Contadores en vivo">
+  <button type="button" id="vivo-play" class="btn-vivo">Pausar</button>
+  <button type="button" id="vivo-step" class="btn-vivo" hidden>Siguiente señal</button>
+  <div class="vivo-cnt"><b id="c-total">0</b><span>piezas procesadas</span></div>
+  <div class="vivo-cnt"><b id="c-seg">0</b><span>seguras (responde el modelo propio)</span></div>
+  <div class="vivo-cnt"><b id="c-esc">0</b><span>escalaría al LLM</span></div>
+  <span class="vivo-nota">Repetición de señales reales de la última semana; la escalada es simulada con la regla real: confianza &lt; τ.</span>
+</section>
+
+<section class="vivo-grid">
+  <div>
+    <div class="pipe" id="pipe" role="list" aria-label="Flujo de EstelarIA"><span class="pipe-dot" id="pipe-dot" aria-hidden="true"></span></div>
+    <div class="vivo-detalle" id="detalle" aria-live="polite" hidden>
+      <h3 id="det-t"></h3>
+      <p id="det-p"></p>
+      <p class="det-file">Lo hace: <code id="det-f"></code></p>
+    </div>
+  </div>
+  <aside class="vivo-log-box">
+    <h2>Qué está haciendo ahora</h2>
+    <ol class="vivo-log" id="log" aria-live="off"></ol>
+  </aside>
+</section>
+
+<section class="vivo-prueba">
+  <h2>Prueba la tuya</h2>
+  <p class="sub">Pega un texto (hasta 2000 caracteres). No se guarda; se quitan emails, @usuarios, teléfonos y links antes de analizarlo.</p>
+  <form id="traza-form">
+    {% csrf_token %}
+    <textarea id="traza-texto" name="texto" maxlength="2000" rows="4" placeholder="Ej.: 5 prompts de ChatGPT para armar el informe de ventas en 5 minutos" required></textarea>
+    <button type="submit" class="btn-vivo" id="traza-btn">Ver cómo lo piensa</button>
+  </form>
+  <p class="traza-err" id="traza-err" role="alert"></p>
+  <ul class="traza-res" id="traza-res"></ul>
+</section>
+
+{{ datos|json_script:"datos-vivo" }}
+</div>
+{% endblock %}
+
+{% block extra_scripts %}<script type="module" src="{% static 'radar/en_vivo.js' %}"></script>{% endblock %}

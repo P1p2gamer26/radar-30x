@@ -142,3 +142,28 @@ def api_semana_csv(request):
     r = HttpResponse(plan.csv_texto(plan.filas(radar)), content_type="text/csv; charset=utf-8")
     r["Content-Disposition"] = f'attachment; filename="plan-semana-{radar.get("week", "")}.csv"'
     return r
+
+
+def en_vivo(request):
+    from . import en_vivo as ev
+
+    radar = cargar_radar()
+    f = settings.DATA_DIR / "llm_vs_student.json"
+    llm_vs = json.loads(f.read_text(encoding="utf-8")) if f.exists() else None
+    if llm_vs and llm_vs.get("items"):
+        from radar.management.commands.llm_vs_student import cascada
+        llm_vs["cascada"] = cascada(llm_vs["items"], radar["student"]["topic"]["offline"]["tau"])
+    return render(request, "radar/en_vivo.html", {"datos": ev.contexto(radar, llm_vs)})
+
+
+def api_traza(request):
+    from . import en_vivo as ev
+
+    if request.method != "POST":
+        return JsonResponse({"error": "Usa POST."}, status=405)
+    if _excede_limite(request):
+        return JsonResponse({"error": "Llegaste al límite de 20 análisis por hora."}, status=429)
+    texto = request.POST.get("texto", "").strip()
+    if not texto or len(texto) > ev.MAX_TRAZA:
+        return JsonResponse({"error": f"El texto debe tener entre 1 y {ev.MAX_TRAZA} caracteres."}, status=400)
+    return JsonResponse(ev.traza(texto), json_dumps_params={"ensure_ascii": False})

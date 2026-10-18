@@ -6,7 +6,7 @@ from statistics import median
 
 from django.conf import settings
 
-from . import label, student, trend
+from . import atipicos, label, student, trend, verificar
 from .collect import latest
 from .taxonomy import FORMATS, HOOKS, TOPICS, match_topics
 
@@ -97,6 +97,21 @@ def _fila_bench(s: dict, ahora: datetime, medianas: dict, labs: dict) -> dict:
             "format": f, "hook": h, "format_name": FORMATS.get(f, ""), "hook_name": HOOKS.get(h, "")}
 
 
+def _verificar_guiones(guiones: dict, evid: list) -> tuple:
+    out, log = {}, {}
+    for tipo, g in guiones.items():
+        if not isinstance(g, dict):
+            out[tipo] = g
+            continue
+        v = verificar.verificar_guion(g, evid)
+        limpio, acciones = verificar.limpiar_guion(g, evid)
+        v["quitadas"] = len(v["sin_respaldo"])
+        log[tipo] = {**v, "acciones": acciones}
+        out[tipo] = {**limpio, "verificacion": {"cifras": v["verificadas"], "verificadas": v["verificadas"],
+                                                "quitadas": v["quitadas"], "ejemplos": v["ejemplos"]}}
+    return out, log
+
+
 def build(snap: dict | None = None) -> dict:
     snap = snap or latest()
     signals = snap["signals"]
@@ -124,7 +139,11 @@ def build(snap: dict | None = None) -> dict:
     volumen = {slug: sum(1 for s in por_tema.get(slug, []) if s["published_at"][:10] >= hace7) for slug in TOPICS}
     p50, p75 = trend.percentil(list(volumen.values()), 0.5), trend.percentil(list(volumen.values()), 0.75)
 
-    topics = []
+    fmt_of = {sid: lab["format"] for sid, lab in labs.items()}
+    hook_of = {sid: lab["hook"] for sid, lab in labs.items()}
+    por_atipicos = atipicos.analizar(signals, topic_of, fmt_of, hook_of)
+
+    topics, log_verif = [], {}
     for slug, t in TOPICS.items():
         serie = shares.get(slug, [0.0] * 14)
         g, z, acc = trend.growth(serie), trend.robust_z(serie), trend.aceleracion(serie)
@@ -198,6 +217,9 @@ def build(snap: dict | None = None) -> dict:
         adapt = dict(adapts.get(slug) or {})
         reel = adapt.pop("adapt_reel", None)
         guiones = adapt.pop("guiones", None)  # 4 tipos: reel, largo, linkedin, recomendacion
+        if guiones:  # cada cifra se contrasta con TODAS las piezas del tema; sin respaldo = se quita
+            evid = [x for s in piezas for x in (s["title"], s.get("text") or "")]
+            guiones, log_verif[slug] = _verificar_guiones(guiones, evid)
         adapt = adapt or None
         topics.append({
             "slug": slug, "name": t["name"], "stage": etapa,
@@ -207,7 +229,7 @@ def build(snap: dict | None = None) -> dict:
             "top_signals": [{"title": s["title"], "url": s["url"], "source": s["source"], "published_at": s["published_at"],
                              "metrics": s["metrics"], "format": labs[s["id"]]["format"], "hook": labs[s["id"]]["hook"],
                              "velocity": vel[s["id"]], "by": labs[s["id"]].get("by")} for s in top],
-            "early_label": ETIQUETA_TEMPRANA[etapa],
+            "early_label": ETIQUETA_TEMPRANA[etapa], "atipicos": por_atipicos.get(slug),
             "adapt": adapt, "adapt_reel": reel, "guiones": guiones,  # None = "guion en preparación" (sin plantillas genéricas)
         })
 
@@ -243,12 +265,15 @@ def build(snap: dict | None = None) -> dict:
                    "apify_cost_usd": apify_usd, "weekly_cost_usd": apify_usd,
                    "apify_cost_source": meta_snap.get("apify_cost_source", "estimado"),
                    "cost_per_signal_usd": round(meta.get("cost_usd", 0.0) / max(clasificadas, 1), 6),
-                   "paid_alternative_usd_year": PAID_ALTERNATIVE_USD_YEAR},
+                   "paid_alternative_usd_year": PAID_ALTERNATIVE_USD_YEAR,
+                   "guiones_cifras": sum(v["cifras"] for l in log_verif.values() for v in l.values()),
+                   "guiones_verificadas": sum(v["verificadas"] for l in log_verif.values() for v in l.values())},
         "student": modelo.get("eval", {}),
         "benchmark_30x": [_fila_bench(s, ahora, medianas, labs) for s in bench],
         "calibration": {"method": "min-max semanal", "thresholds": [settings.AUTO_THRESHOLD, settings.REVIEW_THRESHOLD]},
         "topics": topics,
     }
+    (settings.DATA_DIR / "verificacion.json").write_text(json.dumps(log_verif, ensure_ascii=False, indent=1), encoding="utf-8")
     (settings.DATA_DIR / "radar.json").write_text(json.dumps(radar, ensure_ascii=False, indent=1), encoding="utf-8")
     return radar
 

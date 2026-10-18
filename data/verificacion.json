@@ -1,0 +1,725 @@
+{
+ "agentes-ia": {
+  "reel": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "linkedin": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "recomendacion": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "copilotos": {
+  "reel": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "linkedin": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "recomendacion": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "ia-ventas": {
+  "reel": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "linkedin": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "recomendacion": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "ia-marketing": {
+  "reel": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "linkedin": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "recomendacion": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "ia-servicio": {
+  "reel": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "linkedin": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "recomendacion": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "ia-finanzas": {
+  "reel": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [
+    "10 personas"
+   ],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "linkedin": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "recomendacion": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "ia-talento": {
+  "reel": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 2,
+   "verificadas": 1,
+   "sin_respaldo": [
+    "100%"
+   ],
+   "ejemplos": [],
+   "quitadas": 1,
+   "acciones": [
+    {
+     "accion": "cifra reescrita",
+     "antes": "Un equipo de RR.HH. que operaba de forma 100% manual implementó IA en su proceso de selecc"
+    }
+   ]
+  },
+  "linkedin": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "recomendacion": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "automatizacion": {
+  "reel": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 2,
+   "verificadas": 2,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "linkedin": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "recomendacion": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "regulacion-etica": {
+  "reel": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "linkedin": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "recomendacion": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "estrategia-adopcion": {
+  "reel": {
+   "cifras": 2,
+   "verificadas": 2,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 2,
+   "verificadas": 2,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "linkedin": {
+   "cifras": 2,
+   "verificadas": 2,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "recomendacion": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "roi-casos": {
+  "reel": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "linkedin": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "recomendacion": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "modelos-nuevos": {
+  "reel": {
+   "cifras": 2,
+   "verificadas": 2,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 2,
+   "verificadas": 2,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "linkedin": {
+   "cifras": 2,
+   "verificadas": 2,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "recomendacion": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "vibe-coding": {
+  "reel": {
+   "cifras": 2,
+   "verificadas": 2,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 4,
+   "verificadas": 4,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "linkedin": {
+   "cifras": 2,
+   "verificadas": 2,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "recomendacion": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "datos-rag": {
+  "reel": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "linkedin": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "recomendacion": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "seguridad-riesgos": {
+  "reel": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 2,
+   "verificadas": 2,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "linkedin": {
+   "cifras": 2,
+   "verificadas": 1,
+   "sin_respaldo": [
+    "100%"
+   ],
+   "ejemplos": [],
+   "quitadas": 1,
+   "acciones": [
+    {
+     "accion": "elemento quitado",
+     "antes": "Esto no es alarmismo: ya existen startups dedicadas 100% a defender empresas de esto"
+    }
+   ]
+  },
+  "recomendacion": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "empleo-futuro": {
+  "reel": {
+   "cifras": 2,
+   "verificadas": 1,
+   "sin_respaldo": [
+    "10%"
+   ],
+   "ejemplos": [],
+   "quitadas": 1,
+   "acciones": [
+    {
+     "accion": "elemento quitado",
+     "antes": "{'texto': 'Entonces, ¿la IA te va a quitar el trabajo?', 'voz': 'La pregunta no es si la I"
+    }
+   ]
+  },
+  "largo": {
+   "cifras": 2,
+   "verificadas": 1,
+   "sin_respaldo": [
+    "10%"
+   ],
+   "ejemplos": [
+    "10 personas"
+   ],
+   "quitadas": 1,
+   "acciones": [
+    {
+     "accion": "elemento quitado",
+     "antes": "Los equipos que identifican su 10% automatizable ganan tiempo para el 90% que la IA no pue"
+    }
+   ]
+  },
+  "linkedin": {
+   "cifras": 2,
+   "verificadas": 1,
+   "sin_respaldo": [
+    "10%"
+   ],
+   "ejemplos": [],
+   "quitadas": 1,
+   "acciones": [
+    {
+     "accion": "elemento quitado",
+     "antes": "El liderazgo que gana en esta etapa es el que identifica ese 10% de tareas automatizables "
+    }
+   ]
+  },
+  "recomendacion": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "startups-inversion": {
+  "reel": {
+   "cifras": 2,
+   "verificadas": 2,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 2,
+   "verificadas": 2,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "linkedin": {
+   "cifras": 2,
+   "verificadas": 2,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "recomendacion": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "infra-costos": {
+  "reel": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "linkedin": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "recomendacion": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "video-voz": {
+  "reel": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [
+    "5 personas"
+   ],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [
+    "5 personas"
+   ],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "linkedin": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "recomendacion": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ },
+ "educacion-ia": {
+  "reel": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "largo": {
+   "cifras": 1,
+   "verificadas": 1,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "linkedin": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  },
+  "recomendacion": {
+   "cifras": 0,
+   "verificadas": 0,
+   "sin_respaldo": [],
+   "ejemplos": [],
+   "quitadas": 0,
+   "acciones": []
+  }
+ }
+}
