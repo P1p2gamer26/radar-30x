@@ -37,7 +37,7 @@ document.addEventListener('click', function (e) {
   var t = e.target.closest('[data-tab]');
   if (t) {
     var box = t.closest('[data-tabs]');
-    box.querySelectorAll('.tab').forEach(function (b) { b.classList.toggle('on', b === t); });
+    box.querySelectorAll('.tab').forEach(function (b) { b.classList.toggle('on', b === t); b.setAttribute('aria-selected', b === t); b.tabIndex = b === t ? 0 : -1; });
     box.querySelectorAll('.tab-pane').forEach(function (p) { p.hidden = p.id !== t.dataset.tab; });
     return;
   }
@@ -46,6 +46,13 @@ document.addEventListener('click', function (e) {
     var txt = document.getElementById(c.dataset.copy).textContent;
     (navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject()).then(function () { c.textContent = 'Copiado'; }, function () { c.textContent = 'No se pudo copiar'; });
   }
+});
+document.addEventListener('keydown', function (e) {
+  var t = e.target.closest && e.target.closest('[data-tab]');
+  if (!t || (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft')) return;
+  var tabs = t.parentNode.querySelectorAll('[data-tab]'), i = Array.prototype.indexOf.call(tabs, t);
+  var n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+  n.click(); n.focus(); e.preventDefault();
 });
 </script>
 <script type="module" src="{% static 'radar/mascota.js' %}"></script>

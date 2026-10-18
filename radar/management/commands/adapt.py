@@ -13,6 +13,7 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("--all", action="store_true", help="todos los temas (si no, solo los 10 primeros)")
+        parser.add_argument("--guiones", action="store_true", help="solo los 4 tipos de guion (reel/largo/linkedin/recomendacion)")
         parser.add_argument("--force", action="store_true", help="regenerar aunque ya exista")
 
     def handle(self, *args, **opts):
@@ -22,6 +23,12 @@ class Command(BaseCommand):
         bench = radar.get("benchmark_30x", [])
         for t in radar["topics"] if opts["all"] else radar["topics"][:10]:
             a = adapts.get(t["slug"])
+            if opts["guiones"]:
+                if a and (opts["force"] or len(a.get("guiones", {}).keys() & set(label.TIPOS_GUION)) < 4):
+                    a["guiones"] = label.guiones(t, bench) or a.get("guiones")
+                    self.stdout.write(f"{t['slug']}: guiones {sorted((a.get('guiones') or {}).keys() & set(label.TIPOS_GUION))}")
+                    ruta.write_text(json.dumps(adapts, ensure_ascii=False, indent=1), encoding="utf-8")
+                continue
             if opts["force"] or not a:
                 a = label.adaptar(t, bench)
             if a and (opts["force"] or not a.get("adapt_reel")):  # reel de los 20 temas: el escáner lo necesita para IG/TikTok

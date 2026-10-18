@@ -9,6 +9,7 @@
   <div class="hero-content">
     <p class="hero-meta nums" id="hero-week">Semana —</p>
     <h1 id="hero-title">Esta semana, <span class="accent" id="hero-count">0</span> temas de IA piden contenido ya.</h1>
+    <p class="hero-sub" id="hero-sub" data-redes="{{ n_redes }}"></p>
     <p class="hero-valor">Qué publicar el lunes, en 10 segundos.</p>
     <p class="lead">Qué temas crecen, por qué funcionan y cómo los adapta 30X para ejecutivos de LatAm.</p>
     <p><a class="produce-btn" href="{% url 'analizar' %}">Probar con tu pieza</a> <button type="button" class="produce-btn explore-btn" id="explore-btn">Explorar el universo</button></p>
@@ -42,6 +43,22 @@
     {% endfor %}
   </div>
   <p class="form-hint">Una semana de datos ({{ semana }}) · hold-out de {{ radar.student.n_holdout }} piezas · LinkedIn solo por titulares de Google News</p>
+</section>
+{% endif %}
+
+{% if redes %}
+<section class="block" id="despega-red">
+  <h2>Despega en una red</h2>
+  <div class="tp-grid">
+    {% for o in redes %}
+    <article class="tp-card">
+      <a class="tp-tema" href="{% url 'tema' o.slug %}">{{ o.tema }}</a>
+      <p>despega en {{ o.red_nombre }} ({{ o.growth }}x, {{ o.piezas }} piezas)</p>
+      <p class="tp-dato">en general: {{ o.decision_global }}</p>
+      {% if o.evidencia_url %}<a class="tp-ev" href="{{ o.evidencia_url }}" target="_blank" rel="noopener noreferrer">Ver evidencia &#8599;</a>{% endif %}
+    </article>
+    {% endfor %}
+  </div>
 </section>
 {% endif %}
 

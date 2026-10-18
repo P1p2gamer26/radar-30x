@@ -283,3 +283,84 @@ def adaptar_reel(topic: dict, benchmark: list) -> dict | None:
         return {"hook": str(a["hook"])[:200], "shots": shots, "cta": cta, "duration": "30-45 s",
                 "platform": a.get("platform") if a.get("platform") in ("Instagram", "TikTok") else "Instagram"}
     return _pedir(usuario, validar_fn)
+
+
+# ------------------------------------------------------------------ 4 tipos de guion por tema
+
+TIPOS_GUION = ("reel", "largo", "linkedin", "recomendacion")
+
+
+def _s(v, n=300) -> str:
+    return str(v).strip()[:n]
+
+
+def _lista(v, minimo, maximo, n=300) -> list:
+    if not isinstance(v, list):
+        raise ValueError("no es lista")
+    out = [_s(x, n) for x in v if str(x).strip()]
+    if len(out) < minimo:
+        raise ValueError("lista corta")
+    return out[:maximo]
+
+
+def validar_guiones(a) -> dict:
+    """Valida la salida del LLM tipo por tipo; un tipo malformado se OMITE (nunca se guarda basura)."""
+    out = {}
+    if not isinstance(a, dict):
+        return out
+    def v_reel(x):
+        beats = [{"texto": _s(b["texto"], 120), "voz": _s(b["voz"])} for b in x["beats"] if str(b.get("voz", "")).strip() and str(b.get("texto", "")).strip()][:4]
+        if len(beats) < 3 or not _s(x["hook"]):
+            raise ValueError
+        return {"duration": _s(x.get("duration") or "30-60 s", 20), "hook": _s(x["hook"]), "beats": beats, "cta": _s(x["cta"])}
+    def v_largo(x):
+        sec = [{"titulo": _s(s["titulo"], 120), "puntos": _lista(s["puntos"], 1, 4)} for s in x["secciones"]][:6]
+        if len(sec) < 4 or not _s(x["title"]) or not _s(x["hook"]):
+            raise ValueError
+        return {"duration": _s(x.get("duration") or "5-8 min", 20), "title": _s(x["title"], 160), "hook": _s(x["hook"]),
+                "secciones": sec, "ejemplo": _s(x["ejemplo"], 500), "cta": _s(x["cta"])}
+    def v_li(x):
+        sl = _lista(x["slides"], 5, 7, 400)
+        if not _s(x["hook"]) or not _s(x["pregunta"]):
+            raise ValueError
+        return {"hook": _s(x["hook"]), "slides": sl, "pregunta": _s(x["pregunta"])}
+    def v_rec(x):
+        if not _s(x["postura"]):
+            raise ValueError
+        return {"duration": _s(x.get("duration") or "60-90 s", 20), "postura": _s(x["postura"], 400),
+                "argumentos": _lista(x["argumentos"], 3, 3, 400), "semana": _s(x["semana"], 400)}
+    for k, f in (("reel", v_reel), ("largo", v_largo), ("linkedin", v_li), ("recomendacion", v_rec)):
+        try:
+            out[k] = f(a[k])
+        except (KeyError, TypeError, ValueError, AttributeError):
+            pass
+    return out
+
+
+def guiones(topic: dict, benchmark: list) -> dict | None:
+    """Un solo pedido al LLM con los 4 tipos; si falta alguno, un reintento solo para los que faltan."""
+    usuario = (
+        f"Audiencia: {AUDIENCIA}. {ESTILO_30X}\nEscribe 4 guiones DISTINTOS de 30X sobre el tema, en español de Latinoamérica, "
+        "directo, sin tecnicismos, con casos concretos. Basa todo en las top_signals; NO inventes estadísticas: "
+        "si usas una cifra debe estar en las top_signals o presentarse como ejemplo ('por ejemplo, un equipo de 10 personas...').\n"
+        "Esquema EXACTO (solo JSON):\n"
+        '{"reel": {"duration": "45 s", "hook": "frase literal de los primeros 3 s", "beats": [{"texto": "texto en pantalla", "voz": "lo que se dice"}] (3 o 4), "cta": "..."},\n'
+        ' "largo": {"duration": "5-8 min", "title": "título de YouTube", "hook": "...", "secciones": [{"titulo": "...", "puntos": ["..."]}] (4 a 6), "ejemplo": "caso concreto", "cta": "..."},\n'
+        ' "linkedin": {"hook": "primera línea", "slides": ["..."] (5 a 7 slides o párrafos), "pregunta": "pregunta de cierre"},\n'
+        ' "recomendacion": {"duration": "60-90 s", "postura": "Recomendamos / No recomendamos ... porque ...", "argumentos": ["...", "...", "..."], "semana": "qué hacer esta semana"}}\n'
+        f"<items>{json.dumps(_datos_tema(topic, benchmark), ensure_ascii=False)}</items>")
+    res, coste = {}, 0.0
+    for _ in range(2):
+        r = _pedir(usuario, lambda a: ({**validar_guiones(a), "_": 1} if validar_guiones(a) else None))
+        if r:
+            coste += r.get("cost_usd", 0)
+            for k, v in r.items():
+                if k in TIPOS_GUION and k not in res:
+                    res[k] = v
+        if len(res) == len(TIPOS_GUION):
+            break
+    if not res:
+        return None
+    res["by"] = "teacher"
+    res["cost_usd"] = round(coste, 5)
+    return res

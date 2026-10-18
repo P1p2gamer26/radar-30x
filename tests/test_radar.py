@@ -404,3 +404,28 @@ def test_tres_preguntas():
     mejor = next(t for t in topics if t["slug"] == c[2]["slug"])
     resto = [dict(t, top_signals=[]) if t is mejor else t for t in topics]
     assert tres_preguntas(resto)[2]["slug"] != mejor["slug"]
+
+
+def test_llm_vs_student_parseo_y_acierto():
+    from radar.management.commands import llm_vs_student as lv
+    assert lv.parsear('ok ```json\n[{"i":0,"topic":"a"},{"i":1,"topic":"b"}]\n```') == {0: "a", 1: "b"}
+    assert lv.parsear("sin json") == {}
+    items = [{"title": f"t{i}", "text": ""} for i in range(3)]
+    salidas = iter(['[{"i":0,"topic":"a"},{"i":1,"topic":"x"}]'])  # item 2 sin parsear; el reintento ya no devuelve nada
+    r = lv.evaluar(items, ["a", "b", "c"], llamar=lambda p: next(salidas, ""))
+    assert (r["n"], r["llm_top1"], r["llm_unparsed"], r["llm"]) == (3, 0.333, 1, ["a", "x", None])
+
+
+def test_radar_json_trae_los_4_guiones():
+    r = json.loads((Path(__file__).resolve().parent.parent / "data" / "radar.json").read_text(encoding="utf-8"))
+    g = r["topics"][0]["guiones"]
+    assert g["reel"]["hook"] and g["largo"]["title"] and g["largo"]["hook"] and g["linkedin"]["hook"] and g["recomendacion"]["postura"]
+    assert len(g["reel"]["beats"]) >= 3 and len(g["largo"]["secciones"]) >= 4 and len(g["recomendacion"]["argumentos"]) == 3
+
+
+def test_validador_de_guiones_rechaza_malformados():
+    from radar.label import validar_guiones
+    assert validar_guiones("basura") == {} and validar_guiones({"reel": {"hook": "", "beats": []}}) == {}
+    assert validar_guiones({"reel": {"hook": "h", "beats": [{"texto": "t"}] * 3, "cta": "c"}}) == {}  # beats sin voz
+    ok = validar_guiones({"linkedin": {"hook": "h", "slides": list("abcde"), "pregunta": "¿q?"}, "recomendacion": {"postura": "x"}})
+    assert list(ok) == ["linkedin"]  # el tipo malformado se omite, el bueno queda

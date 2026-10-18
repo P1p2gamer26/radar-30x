@@ -42,6 +42,105 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.00778
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "¿Tu equipo de ventas pierde clientes en el precio? Casi nunca.",
+    "beats": [
+     {
+      "texto": "Tu venta no se pierde en el precio",
+      "voz": "Cuando un cliente se va, casi nunca es por el precio. Se va en el camino, y ahí es donde casi nadie mira."
+     },
+     {
+      "texto": "5 lugares donde se escapa la venta",
+      "voz": "Respuestas lentas, seguimientos olvidados, propuestas genéricas, dudas sin resolver y un cierre que nadie revisa."
+     },
+     {
+      "texto": "Un caso paso a paso: una inmobiliaria",
+      "voz": "Por ejemplo, una inmobiliaria con un equipo de 10 personas puede usar IA para responder consultas en minutos y ordenar cada lead por prioridad."
+     },
+     {
+      "texto": "Empieza con un solo punto",
+      "voz": "No cambies todo. Elige un lugar donde se escapa la venta y prueba la IA ahí durante una semana."
+     }
+    ],
+    "cta": "Comenta 'RUTA' y te enviamos la lista de los 5 lugares para revisar en tu equipo."
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "Cómo usar IA en ventas, paso a paso (sin ser programador)",
+    "hook": "Si tu equipo vende bien pero no sabe por qué pierde algunas oportunidades, este video es para ti. Te muestro cómo revisar tu proceso de ventas con IA, paso a paso, en menos de una semana.",
+    "secciones": [
+     {
+      "titulo": "Por qué se pierden las ventas (y no es el precio)",
+      "puntos": [
+       "La venta se pierde en el camino: respuestas tardías, seguimientos olvidados y propuestas poco claras.",
+       "Hay 5 lugares típicos donde el cliente se enfría antes del cierre.",
+       "Antes de comprar ninguna herramienta, necesitas saber dónde estás perdiendo."
+      ]
+     },
+     {
+      "titulo": "Paso 1: mapea tu proceso actual",
+      "puntos": [
+       "Dibuja en una hoja el recorrido del cliente, desde la primera consulta hasta el cierre.",
+       "Marca cada punto donde alguien tarda más de un día en responder.",
+       "Pregunta a tu equipo qué tareas repiten todos los días."
+      ]
+     },
+     {
+      "titulo": "Paso 2: elige una tarea para la IA",
+      "puntos": [
+       "Escoge una sola tarea repetitiva y de bajo riesgo, por ejemplo, responder preguntas frecuentes o redactar un primer borrador de propuesta.",
+       "Define cómo sabrás que funcionó: tiempo de respuesta, número de citas o seguimientos hechos.",
+       "Evita empezar con decisiones de precio o contratos."
+      ]
+     },
+     {
+      "titulo": "Paso 3: prueba y revisa con tu equipo",
+      "puntos": [
+       "Corre la prueba una semana con un grupo pequeño.",
+       "Revisa cada respuesta de la IA antes de enviarla al cliente.",
+       "Anota lo que el cliente pregunta más y ajusta las instrucciones."
+      ]
+     },
+     {
+      "titulo": "Lo que aprendimos de casos reales",
+      "puntos": [
+       "Coinmo muestra cómo la IA puede apoyar la venta inmobiliaria en Medellín, con foco en responder rápido y ordenar prospectos.",
+       "Un cliente que recibe respuesta en minutos tiene más probabilidad de seguir la conversación que uno que espera días.",
+       "La clave es el proceso, no la herramienta."
+      ]
+     }
+    ],
+    "ejemplo": "Por ejemplo, un equipo de 10 personas de una inmobiliaria mapea su proceso y descubre que las consultas nocturnas esperan hasta la mañana. Usa IA para dar una primera respuesta con información clara y agendar la visita. Después de una semana, revisa el tiempo de respuesta y decide si expande la prueba a otro punto del embudo.",
+    "cta": "Si quieres la plantilla de mapeo del proceso de ventas, déjala en los comentarios y te la compartimos."
+   },
+   "linkedin": {
+    "hook": "Tu equipo de ventas no pierde clientes por el precio. Pierde clientes en el camino.",
+    "slides": [
+     "Cuando una venta se cae, casi siempre buscamos la culpa en el precio. Pero la mayoría de las veces el problema está en el camino.",
+     "Hay al menos 5 lugares donde el cliente se enfría: respuestas lentas, seguimientos olvidados, propuestas genéricas, dudas sin resolver y cierres sin revisión.",
+     "Un ejemplo: un equipo de 10 personas en una inmobiliaria descubre que las consultas nocturnas esperan hasta el día siguiente.",
+     "Su paso siguiente no fue comprar una herramienta compleja. Eligieron una sola tarea repetitiva, respuestas iniciales a consultas, y la pusieron a prueba una semana.",
+     "Antes de medir resultados, definieron qué querían ver: tiempo de respuesta y número de citas agendadas.",
+     "Revisaron cada respuesta antes de enviarla y ajustaron las instrucciones según las preguntas más frecuentes.",
+     "Como vimos con Coinmo en el sector inmobiliario, la IA aporta más cuando se usa en un proceso concreto, no como un experimento general."
+    ],
+    "pregunta": "¿En cuál de esos 5 lugares crees que tu equipo está perdiendo más ventas hoy?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos empezar a usar IA en ventas por un solo proceso concreto y medible, porque la mayoría de las ventas no se pierden en el precio sino en el camino, y un cambio pequeño y controlado da resultados más claros que un cambio grande.",
+    "argumentos": [
+     "Un solo proceso permite medir antes y después sin confundir los resultados: tiempo de respuesta, citas agendadas o seguimientos hechos.",
+     "Empezar por tareas repetitivas y de bajo riesgo, como responder preguntas frecuentes, reduce el riesgo de errores frente al cliente y da confianza al equipo.",
+     "Casos como Coinmo muestran que la IA aporta valor cuando se integra al proceso comercial real, no cuando se usa como herramienta aislada."
+    ],
+    "semana": "Esta semana, reúne a tu equipo de ventas, dibuja el recorrido del cliente, marca el punto donde más tardan en responder y elige una sola tarea para probar la IA durante siete días. Define antes cómo vas a medir el resultado."
+   },
+   "by": "teacher",
+   "cost_usd": 0.01888
   }
  },
  "ia-finanzas": {
@@ -87,6 +186,101 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.00835
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "¿Cuántas horas se van cada mes en cuadrar el banco contra las facturas?",
+    "beats": [
+     {
+      "texto": "El problema",
+      "voz": "Cada cierre de mes, alguien en tu equipo pierde días conciliando el banco contra las facturas a mano."
+     },
+     {
+      "texto": "Lo que está pasando",
+      "voz": "Hoy las áreas de FP&A están usando IA para cruzar esos datos en minutos, no en días, y detectar errores antes de que lleguen a la gerencia."
+     },
+     {
+      "texto": "Pero cuidado",
+      "voz": "Bancos como Schwab y JPMorgan ya están bloqueando agentes de IA que no controlan bien, porque el riesgo de un error financiero automatizado es alto."
+     },
+     {
+      "texto": "La clave",
+      "voz": "No se trata de automatizar todo de golpe, sino de empezar por la tarea más repetitiva de tu equipo financiero."
+     }
+    ],
+    "cta": "Guarda este video y mándaselo a quien lleva las finanzas en tu empresa."
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "IA en finanzas: qué está cambiando de verdad (y qué riesgos nadie te cuenta)",
+    "hook": "Si tu equipo de finanzas todavía cuadra el banco a mano, este video te va a ahorrar horas de trabajo al mes.",
+    "secciones": [
+     {
+      "titulo": "El dolor real en finanzas",
+      "puntos": [
+       "Conciliar banco contra facturas es una de las tareas que más tiempo consume cada mes",
+       "Es repetitiva, propensa a errores humanos y nadie quiere hacerla"
+      ]
+     },
+     {
+      "titulo": "Qué está haciendo la IA en FP&A",
+      "puntos": [
+       "Transformar el control de gestión cruzando datos financieros automáticamente",
+       "Dar respuestas rápidas a usuarios del negocio, no solo a analistas técnicos",
+       "Oracle ya usa herramientas como Codex para que usuarios de negocio obtengan respuestas sin depender de TI"
+      ]
+     },
+     {
+      "titulo": "La otra cara: riesgos reales",
+      "puntos": [
+       "Schwab y JPMorgan bloquearon agentes de IA de Muse por riesgos de control",
+       "Empiezan a verse 'eslabones débiles' en el crédito otorgado vía IA",
+       "Anthropic recibió la calificación crediticia más baja (junk) en junio, señal de que ni las empresas de IA están exentas de riesgo financiero"
+      ]
+     },
+     {
+      "titulo": "Qué significa esto para tu empresa",
+      "puntos": [
+       "No es momento de automatizar sin supervisión humana en temas de dinero",
+       "Sí es momento de automatizar lo repetitivo: conciliaciones, reportes, cruces de datos"
+      ]
+     },
+     {
+      "titulo": "Cómo empezar sin arriesgar de más",
+      "puntos": [
+       "Elige un proceso financiero manual y repetitivo, no uno crítico de decisión",
+       "Mide cuánto tiempo te ahorra antes de escalarlo a otras áreas"
+      ]
+     }
+    ],
+    "ejemplo": "Por ejemplo, un equipo de finanzas de 10 personas que dedica dos días completos al mes solo a cuadrar el banco contra facturas podría reducir esa tarea a horas si automatiza el cruce de datos con IA, dejando la decisión final en manos humanas.",
+    "cta": "Suscríbete si quieres entender cómo usar IA en tu empresa sin caer en los errores que ya están cometiendo otros."
+   },
+   "linkedin": {
+    "hook": "¿Cuántas horas se van cada mes en tu empresa solo cuadrando el banco contra las facturas?",
+    "slides": [
+     "La IA en finanzas no es una promesa futura, ya está en marcha.",
+     "FP&A está usando IA para transformar el control de gestión y las decisiones empresariales.",
+     "Oracle ya permite que usuarios de negocio (no técnicos) obtengan respuestas financieras usando IA, sin depender de TI.",
+     "Pero no todo es avance: Schwab y JPMorgan acaban de bloquear agentes de IA de Muse por falta de control.",
+     "Y hasta Anthropic recibió la calificación crediticia más baja en junio, señal de que el riesgo financiero también toca a quienes crean la IA.",
+     "La lección para tu empresa: automatiza lo repetitivo (conciliaciones, reportes), pero mantén supervisión humana en las decisiones de dinero."
+    ],
+    "pregunta": "¿Ya identificaste qué tarea financiera repetitiva de tu equipo podría automatizarse primero?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos usar IA en finanzas para tareas repetitivas como conciliaciones y reportes, pero no recomendamos delegarle decisiones de crédito o control sin supervisión humana",
+    "argumentos": [
+     "Hay dolor real y medible: equipos enteros pierden días cada mes cuadrando banco contra facturas",
+     "Empresas serias como Oracle ya muestran que la IA puede dar respuestas financieras a usuarios de negocio sin ser técnicos",
+     "Pero bancos como Schwab y JPMorgan ya bloquearon agentes de IA por riesgos de control, y empiezan a verse fallas en crédito otorgado por IA"
+    ],
+    "semana": "Esta semana, identifica en tu equipo financiero una tarea repetitiva (como conciliaciones) y pregúntate si una herramienta de IA podría hacerla más rápido, dejando la decisión final en manos humanas."
+   },
+   "by": "teacher",
+   "cost_usd": 0.01285
   }
  },
  "estrategia-adopcion": {
@@ -132,6 +326,102 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.00903
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "La transformación no fracasa por la estrategia. Fracasa por el liderazgo.",
+    "beats": [
+     {
+      "texto": "Colombia: 25,9% usa IA",
+      "voz": "En Colombia solo el 25,9% de las empresas usa IA. El problema no es la tecnología."
+     },
+     {
+      "texto": "El reto: conectar agentes",
+      "voz": "El reto real es conectar esos agentes de IA con los procesos del día a día."
+     },
+     {
+      "texto": "Liderazgo, no herramientas",
+      "voz": "Por ejemplo, un equipo de 10 personas puede tener la mejor herramienta y no usarla si el líder no da el ejemplo."
+     },
+     {
+      "texto": "Empieza por ti, no por el software",
+      "voz": "Antes de comprar otra licencia, pregúntate: ¿tú ya entiendes cómo piensa esta tecnología?"
+     }
+    ],
+    "cta": "Comenta 'LIDERAZGO' y te enviamos la guía para liderar la adopción de IA en tu equipo."
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "Por qué tu empresa no está adoptando IA (y no es un problema técnico)",
+    "hook": "Nadie nace sabiendo construir una empresa, y nadie nace sabiendo liderar con IA. Pero hay una brecha que está creciendo rápido.",
+    "secciones": [
+     {
+      "titulo": "La brecha que nadie ve",
+      "puntos": [
+       "Hay una diferencia cada vez más grande entre lo que los líderes creen que la IA puede hacer y lo que realmente puede hacer",
+       "Esa brecha frena decisiones o las acelera mal"
+      ]
+     },
+     {
+      "titulo": "El dato de Colombia",
+      "puntos": [
+       "25,9% de las empresas en Colombia usa IA",
+       "El reto no es adoptarla, es conectar los agentes con los procesos existentes"
+      ]
+     },
+     {
+      "titulo": "Por qué falla la transformación",
+      "puntos": [
+       "No falla por la estrategia en el papel",
+       "Falla porque el liderazgo no acompaña el cambio",
+       "Un equipo puede tener la mejor herramienta y no usarla si nadie la modela desde arriba"
+      ]
+     },
+     {
+      "titulo": "El caso Perú",
+      "puntos": [
+       "Así como la red dorsal de telecomunicaciones tuvo tropiezos en su implementación",
+       "la IA puede repetir el mismo error: infraestructura sin adopción real"
+      ]
+     },
+     {
+      "titulo": "Qué hacer distinto",
+      "puntos": [
+       "Por ejemplo, un equipo de 10 personas puede empezar con un solo proceso piloto",
+       "Medir el antes y el después",
+       "Que el líder use la herramienta primero, no solo la autorice"
+      ]
+     }
+    ],
+    "ejemplo": "Un equipo de 10 personas que automatiza su proceso de reporte semanal con IA, y el líder es el primero en usarlo antes de pedírselo a su equipo.",
+    "cta": "Si quieres el paso a paso para liderar esto en tu empresa, suscríbete y activa la campana."
+   },
+   "linkedin": {
+    "hook": "25,9% de las empresas en Colombia usa IA. El problema no es la tecnología.",
+    "slides": [
+     "Hay una brecha creciente entre lo que los líderes creen que la IA puede hacer y lo que realmente puede hacer.",
+     "Esa brecha widening está costando decisiones mal tomadas en toda la región.",
+     "En Colombia, 25,9% de las empresas usa IA. El reto no es adoptarla: es conectar los agentes con los procesos reales.",
+     "La transformación no fracasa por la estrategia. Fracasa por el liderazgo.",
+     "Un equipo puede tener la mejor herramienta del mercado y no usarla si el líder no la modela primero.",
+     "Por ejemplo, un equipo de 10 personas puede empezar con un solo proceso piloto y medir resultados antes de escalar.",
+     "Nadie nace sabiendo liderar con IA. Pero sí puedes empezar a cerrar esa brecha hoy."
+    ],
+    "pregunta": "¿Tu equipo tiene la herramienta de IA... o solo la licencia?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos empezar la adopción de IA por el liderazgo, no por la herramienta, porque los datos muestran que el problema no es acceso a tecnología sino uso real",
+    "argumentos": [
+     "Solo 25,9% de empresas en Colombia usa IA, pese a que las herramientas están disponibles",
+     "La brecha entre lo que los líderes creen que la IA puede hacer y lo real sigue creciendo",
+     "La transformación falla por liderazgo, no por estrategia: un equipo no adopta lo que su líder no modela"
+    ],
+    "semana": "Elige un solo proceso repetitivo de tu equipo, pruébalo tú mismo con una herramienta de IA esta semana, y comparte el resultado con tu equipo antes de pedirles que lo usen."
+   },
+   "by": "teacher",
+   "cost_usd": 0.01145
   }
  },
  "ia-servicio": {
@@ -177,6 +467,110 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.00811
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "Taco Bell puso un bot en el drive-thru y pasó algo que nadie esperaba",
+    "beats": [
+     {
+      "texto": "El problema: filas largas, empleados saturados",
+      "voz": "En los drive-thru de comida rápida el cuello de botella siempre fue tomar el pedido rápido y sin errores."
+     },
+     {
+      "texto": "La solución: IA toma el pedido",
+      "voz": "Taco Bell metió un bot de IA para tomar pedidos en el drive-thru."
+     },
+     {
+      "texto": "El resultado real",
+      "voz": "Y el resultado no fue solo velocidad: la retención de empleados subió, porque el trabajo se volvió más fácil para ellos."
+     },
+     {
+      "texto": "La lección para tu negocio",
+      "voz": "Si crees que la IA en servicio al cliente es solo para ahorrar plata, te estás perdiendo la mitad del beneficio: tu propia gente trabaja mejor."
+     }
+    ],
+    "cta": "Síguenos si quieres ver cómo implementar esto paso a paso en tu negocio."
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "Así usan IA en servicio al cliente las empresas que van un paso adelante (con ejemplos reales)",
+    "hook": "Taco Bell metió un bot en el drive-thru y lo que mejoró no fue solo la velocidad, fue la retención de sus propios empleados. Hoy te muestro ese caso y tres más que están pasando ahora mismo.",
+    "secciones": [
+     {
+      "titulo": "El error de pensar que la IA en servicio al cliente es solo un chatbot",
+      "puntos": [
+       "La mayoría cree que es reemplazar personas",
+       "En realidad el beneficio más grande está en quitar tareas repetitivas a tu equipo"
+      ]
+     },
+     {
+      "titulo": "Caso 1: Taco Bell y el drive-thru",
+      "puntos": [
+       "El bot toma pedidos en el drive-thru",
+       "Resultado: mejoró la retención de empleados porque el trabajo se volvió más fácil",
+       "Lección: la IA no solo sirve al cliente, también sirve a quien trabaja contigo"
+      ]
+     },
+     {
+      "titulo": "Caso 2: Cresta y el 'después' de la atención",
+      "puntos": [
+       "Cresta lanzó un agente de IA que completa tareas después de que termina la conversación con el cliente",
+       "Eso significa que tu equipo deja de perder tiempo en papeleo post-llamada",
+       "Por ejemplo, un equipo de soporte que atiende 50 casos al día podría ahorrarse horas de cierre administrativo"
+      ]
+     },
+     {
+      "titulo": "Caso 3: respuesta inmediata en redes sociales",
+      "puntos": [
+       "Un comentario preguntando el precio es un cliente esperando respuesta, ahí mismo",
+       "Las empresas que usan IA para responder esos comentarios en minutos capturan ventas que antes se perdían",
+       "Esto aplica sin importar el tamaño de tu negocio"
+      ]
+     },
+     {
+      "titulo": "Caso 4: canales de denuncia y atención ciudadana",
+      "puntos": [
+       "La OIC invita a denunciar malos actos de funcionarios a través de un chatbot",
+       "Muestra que la IA de atención no es solo para vender, también para dar canales de confianza"
+      ]
+     },
+     {
+      "titulo": "Cómo empezar esta semana",
+      "puntos": [
+       "Identifica el punto donde más se demoran en responder a tus clientes",
+       "Busca una herramienta simple para ese paso específico, no trates de automatizar todo de golpe",
+       "Mide retención de equipo y velocidad de respuesta antes y después"
+      ]
+     }
+    ],
+    "ejemplo": "Taco Bell implementó un bot de IA en el drive-thru para tomar pedidos y el resultado inesperado fue que la retención de empleados subió, porque el trabajo se volvió más fácil para ellos.",
+    "cta": "Si quieres que analicemos tu proceso de servicio al cliente paso a paso, escríbenos en los comentarios."
+   },
+   "linkedin": {
+    "hook": "Taco Bell puso IA en el drive-thru. Lo que mejoró no fue solo la velocidad.",
+    "slides": [
+     "Mejoró la retención de empleados. Porque el trabajo se volvió más fácil para ellos.",
+     "Casi siempre pensamos en IA de servicio al cliente como 'reemplazar personas'. Pero el valor real está en quitarles tareas que los desgastan.",
+     "Cresta ya lanzó un agente de IA que completa tareas después de que termina la atención al cliente. Tu equipo deja de perder tiempo en cierre administrativo.",
+     "Un comentario preguntando el precio en redes sociales es un cliente esperando respuesta. Las empresas que responden rápido con IA capturan ventas que antes se perdían.",
+     "Incluso instituciones públicas lo están usando: la OIC invita a denunciar malos actos de funcionarios a través de un chatbot.",
+     "El patrón se repite en todos los casos: la IA no quita trabajo, quita fricción. Y la fricción es lo que agota a tu equipo y aleja a tus clientes."
+    ],
+    "pregunta": "¿En qué punto de tu atención al cliente hay más fricción hoy?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos implementar IA en servicio al cliente, pero empezando por un solo punto de fricción, no por todo el proceso",
+    "argumentos": [
+     "Los casos que funcionan (Taco Bell, Cresta) atacaron un paso específico, no todo el proceso de atención",
+     "El beneficio más grande no siempre es velocidad para el cliente, también es retener a tu equipo al quitarles trabajo repetitivo",
+     "Responder rápido donde el cliente ya está esperando (como un comentario preguntando precio) convierte interés en venta real"
+    ],
+    "semana": "Esta semana identifica el momento donde más se demoran en responder a un cliente (comentario, llamada, post-venta) y evalúa una sola herramienta de IA para ese paso específico."
+   },
+   "by": "teacher",
+   "cost_usd": 0.01397
   }
  },
  "educacion-ia": {
@@ -222,6 +616,108 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.00954
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "¿Usas ChatGPT y no obtienes las respuestas que esperas?",
+    "beats": [
+     {
+      "texto": "Error 1: preguntas vagas",
+      "voz": "Si le escribes 'ayúdame con marketing', vas a recibir algo genérico. Dale contexto: quién eres, qué vendes, a quién le vendes."
+     },
+     {
+      "texto": "Error 2: no le das un rol",
+      "voz": "Dile 'actúa como director financiero' o 'como gerente de ventas'. Cambia completamente la calidad de la respuesta."
+     },
+     {
+      "texto": "Error 3: no revisas ni corriges",
+      "voz": "La IA no es un oráculo. Es un asistente junior: necesita que lo corrijas y le des feedback para mejorar."
+     },
+     {
+      "texto": "Error 4: te rindes rápido",
+      "voz": "Un equipo que insiste y refina sus instrucciones obtiene resultados 10 veces mejores que el que se rinde en el primer intento."
+     }
+    ],
+    "cta": "Comenta 'Prompt' y te envío la guía completa con los 5 errores y cómo corregirlos."
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "5 errores que cometen los ejecutivos al usar ChatGPT (y cómo corregirlos)",
+    "hook": "Si sientes que ChatGPT no te está dando valor real para tu negocio, probablemente estás cometiendo alguno de estos errores.",
+    "secciones": [
+     {
+      "titulo": "Por qué la formación en IA está creciendo tan rápido",
+      "puntos": [
+       "Cada vez más empresas en Latinoamérica están formando a sus equipos en IA",
+       "No se trata de aprender a programar, sino de aprender a dirigir la herramienta",
+       "Los eventos en vivo y webinars son el formato que más está funcionando para esto"
+      ]
+     },
+     {
+      "titulo": "Error 1: preguntas sin contexto",
+      "puntos": [
+       "Le preguntas algo genérico y esperas una respuesta específica",
+       "Solución: dale contexto de tu empresa, tu industria y tu objetivo concreto"
+      ]
+     },
+     {
+      "titulo": "Error 2: no asignarle un rol",
+      "puntos": [
+       "No es lo mismo pedir 'dame ideas' que 'actúa como director comercial y dame ideas'",
+       "El rol cambia el enfoque, el vocabulario y la profundidad de la respuesta"
+      ]
+     },
+     {
+      "titulo": "Error 3: tratarla como buscador y no como asistente",
+      "puntos": [
+       "No se trata de una sola pregunta y listo",
+       "Funciona como una conversación: pides, revisas, corriges, vuelves a pedir"
+      ]
+     },
+     {
+      "titulo": "Error 4: no verificar la información",
+      "puntos": [
+       "La IA puede equivocarse con datos y cifras",
+       "Siempre valida antes de tomar decisiones de negocio con esa información"
+      ]
+     },
+     {
+      "titulo": "Error 5: no invertir tiempo en aprender a usarla bien",
+      "puntos": [
+       "Los equipos que dedican tiempo a formación en IA avanzan más rápido que los que improvisan",
+       "Por ejemplo, un equipo de 10 personas que capacita a todos en prompts básicos ahorra horas cada semana en tareas repetitivas"
+      ]
+     }
+    ],
+    "ejemplo": "Por ejemplo, un área comercial que antes tardaba un día entero preparando propuestas, al aprender a darle contexto y rol correcto a la IA, reduce ese tiempo a minutos y dedica el resto del día a cerrar negocios.",
+    "cta": "Si quieres que tu equipo aprenda esto a fondo, déjanos un comentario y te contamos cómo unirte a nuestro próximo evento en vivo."
+   },
+   "linkedin": {
+    "hook": "¿Usas IA en tu empresa y sientes que no estás sacando todo el provecho?",
+    "slides": [
+     "La mayoría de los equipos en Latinoamérica ya probó ChatGPT u otra IA.",
+     "Pero pocos están sacándole provecho real al negocio.",
+     "El problema no es la herramienta. Es cómo la están usando.",
+     "Error típico: preguntas vagas, sin contexto de la empresa ni del objetivo.",
+     "Error típico: no asignarle un rol claro, tratarla como buscador y no como asistente.",
+     "Error típico: no revisar ni corregir, esperando que la primera respuesta sea perfecta.",
+     "Las empresas que están formando a sus equipos en esto, con sesiones en vivo y práctica real, están moviéndose más rápido que el resto."
+    ],
+    "pregunta": "¿Tu equipo ya recibió formación real en IA, o todavía están improvisando con prompts sueltos?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos invertir en formación práctica de IA para tu equipo ahora mismo porque la curva de aprendizaje se está volviendo una ventaja competitiva real.",
+    "argumentos": [
+     "El interés y la demanda por formación en IA está creciendo rápido, y las empresas que empiezan ahora le sacan ventaja a las que esperan",
+     "El formato que mejor funciona no es un curso grabado, es un espacio en vivo donde la gente puede preguntar casos reales de su negocio",
+     "Los errores más comunes al usar IA son simples de corregir: contexto, rol y revisión, pero nadie los corrige si nadie los enseña"
+    ],
+    "semana": "Agenda una sesión de 60 minutos con tu equipo esta semana para revisar juntos cómo están usando la IA hoy y corregir los 5 errores más comunes."
+   },
+   "by": "teacher",
+   "cost_usd": 0.01276
   }
  },
  "empleo-futuro": {
@@ -267,6 +763,101 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.00806
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "El 90% de las horas de trabajo en EE.UU. no las puede medir bien la IA",
+    "beats": [
+     {
+      "texto": "90% de las tareas laborales no están cubiertas por benchmarks de IA",
+      "voz": "Un estudio reciente encontró que el 90% de las horas de trabajo en EE.UU. se van en tareas que la IA no está evaluando bien todavía"
+     },
+     {
+      "texto": "Entonces, ¿la IA te va a quitar el trabajo?",
+      "voz": "La pregunta no es si la IA reemplaza tu trabajo completo, sino qué parte del 10% restante ya puede hacer por ti"
+     },
+     {
+      "texto": "Cada generación cree que esta vez es diferente",
+      "voz": "Con cada ola tecnológica la gente ha dicho lo mismo: esta vez sí se acaban los empleos. Y la historia muestra otra cosa"
+     },
+     {
+      "texto": "La pregunta real: ¿qué tareas delegas hoy?",
+      "voz": "La ventaja no es resistirte al cambio, es identificar qué tareas puedes delegar a la IA esta semana para enfocarte en lo que de verdad importa"
+     }
+    ],
+    "cta": "Comenta 'TRABAJO' y te cuento cómo empezar a delegar tareas con IA en tu equipo"
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "¿La IA te va a quitar el trabajo? Esto dicen los datos (no los memes)",
+    "hook": "Todo el mundo habla de que la IA va a reemplazar empleos, pero casi nadie mira los datos reales",
+    "secciones": [
+     {
+      "titulo": "El dato que nadie menciona",
+      "puntos": [
+       "90% de las horas de trabajo en EE.UU. se dedican a tareas que los benchmarks de IA aún no evalúan bien",
+       "Esto significa que la mayoría del trabajo real no se parece a lo que miden los tests de IA"
+      ]
+     },
+     {
+      "titulo": "El mito de 'esta vez es diferente'",
+      "puntos": [
+       "Cada avance tecnológico generó el mismo miedo: la imprenta, la electricidad, las computadoras",
+       "La narrativa de 'esta vez sí se acaban los empleos' se repite generación tras generación"
+      ]
+     },
+     {
+      "titulo": "Lo que sí está cambiando: cómo contratan las empresas",
+      "puntos": [
+       "Empresas de IA como Anthropic están contratando roles nuevos que antes no existían, incluso asistentes humanos",
+       "Las vacantes para nuevos graduados y pasantías en startups siguen abiertas, pero el perfil que buscan cambió"
+      ]
+     },
+     {
+      "titulo": "Lo que esto significa para tu equipo",
+      "puntos": [
+       "No se trata de reemplazar personas, sino de redefinir en qué tareas se enfocan",
+       "Los equipos que identifican su 10% automatizable ganan tiempo para el 90% que la IA no puede hacer bien"
+      ]
+     },
+     {
+      "titulo": "Cómo empezar sin pánico",
+      "puntos": [
+       "Haz un inventario simple de las tareas de tu equipo esta semana",
+       "Clasifica cuáles son repetitivas (candidatas a IA) y cuáles requieren juicio humano",
+       "Empieza por automatizar una sola tarea repetitiva, no todo el proceso"
+      ]
+     }
+    ],
+    "ejemplo": "Por ejemplo, un equipo de soporte al cliente de 10 personas puede delegar las respuestas repetitivas a un asistente de IA y liberar horas para atender los casos complejos que realmente requieren criterio humano",
+    "cta": "Suscríbete y en el próximo video te muestro paso a paso cómo hacer ese inventario de tareas en tu equipo"
+   },
+   "linkedin": {
+    "hook": "El 90% de las horas de trabajo en EE.UU. se van en tareas que la IA todavía no mide bien.",
+    "slides": [
+     "Un dato que cambia la conversación sobre IA y empleo: 90% de las horas laborales están en tareas que los benchmarks de IA no cubren bien.",
+     "Esto contradice el miedo generalizado de 'la IA ya reemplaza todo'.",
+     "La historia se repite: cada generación cree que su momento tecnológico es diferente y que esta vez sí se acaban los empleos.",
+     "Lo que realmente está cambiando no es la cantidad de empleos, sino el tipo de roles que las empresas buscan.",
+     "Incluso compañías de IA como Anthropic siguen contratando personas para roles humanos específicos.",
+     "La pregunta para tu empresa no es '¿nos reemplaza la IA?' sino '¿qué parte del trabajo de mi equipo puedo delegar hoy?'",
+     "El liderazgo que gana en esta etapa es el que identifica ese 10% de tareas automatizables y libera tiempo para lo que de verdad importa."
+    ],
+    "pregunta": "¿Ya identificaste qué parte del trabajo de tu equipo puede delegarse a la IA esta semana?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos empezar a mapear tareas delegables a IA en tu equipo esta semana, porque los datos muestran que el miedo al reemplazo masivo no coincide con la realidad del trabajo actual",
+    "argumentos": [
+     "El 90% de las horas laborales están en tareas que los benchmarks de IA aún no cubren bien, así que el reemplazo total no es inminente",
+     "La historia muestra que cada ola tecnológica genera el mismo miedo, y el empleo se transforma, no desaparece",
+     "Las empresas, incluidas las de IA, siguen contratando personas para roles específicos que requieren juicio humano"
+    ],
+    "semana": "Haz una lista de las 5 tareas más repetitivas de tu equipo y marca cuáles podrían delegarse a una herramienta de IA sin perder calidad"
+   },
+   "by": "teacher",
+   "cost_usd": 0.01334
   }
  },
  "ia-marketing": {
@@ -312,6 +903,105 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.00865
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "Le dimos el presupuesto de publicidad a una IA. Esto pasó.",
+    "beats": [
+     {
+      "texto": "El experimento",
+      "voz": "Un equipo le dio acceso total a una IA: la web, el presupuesto de ads y la orden de vender."
+     },
+     {
+      "texto": "Lo que hizo sola",
+      "voz": "Creó campañas, ajustó mensajes y tomó decisiones que antes tomaba una persona de marketing."
+     },
+     {
+      "texto": "La lección real",
+      "voz": "No reemplazó al equipo, lo hizo rápido: lo que antes tardaba una semana, lo hizo en horas."
+     },
+     {
+      "texto": "Tu turno",
+      "voz": "Si tu equipo de marketing todavía hace todo manual, ya estás atrasado un paso."
+     }
+    ],
+    "cta": "Comenta 'IA' y te mando el caso completo paso a paso."
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "Le dimos el presupuesto de marketing a una IA: así reaccionó (caso real)",
+    "hook": "¿Qué pasa si una IA maneja tu publicidad sin que nadie la supervise? Lo probaron y esto fue lo que pasó.",
+    "secciones": [
+     {
+      "titulo": "El punto de partida",
+      "puntos": [
+       "Un equipo técnico le dio a una IA acceso al sitio web y al presupuesto de ads",
+       "La instrucción fue simple: generar ventas",
+       "Nadie revisó cada decisión en tiempo real"
+      ]
+     },
+     {
+      "titulo": "Cómo decide una IA de marketing",
+      "puntos": [
+       "Analiza el contenido del sitio como lo haría un comprador real",
+       "Prueba mensajes distintos sin el ego de 'esto siempre funcionó'",
+       "Ajusta rápido cuando algo no convierte"
+      ]
+     },
+     {
+      "titulo": "Lo que esto cambia para tu negocio",
+      "puntos": [
+       "Ya no necesitas un equipo gigante para probar 10 ideas de campaña",
+       "La IA detecta patrones de lo que funciona antes que una persona",
+       "El riesgo: perder el criterio humano sobre la marca"
+      ]
+     },
+     {
+      "titulo": "Dónde la gente ya nota la diferencia",
+      "puntos": [
+       "Usuarios identifican cuando un contenido 'tiene cara de IA'",
+       "La confianza baja si se siente genérico o forzado",
+       "Ganan las marcas que mezclan velocidad de IA con voz humana real"
+      ]
+     },
+     {
+      "titulo": "El cambio de fondo: buscar ya no es como antes",
+      "puntos": [
+       "Cada vez más gente le pregunta a un chatbot en vez de buscar en Google",
+       "Eso cambia cómo debe presentarse tu marca",
+       "El SEO tradicional ya no es el único camino para que te encuentren"
+      ]
+     }
+    ],
+    "ejemplo": "Por ejemplo, una empresa pequeña con un equipo de 3 personas en marketing podría usar una IA para probar en un día 10 versiones de un anuncio, algo que antes le tomaba dos semanas de reuniones.",
+    "cta": "Si quieres ver cómo aplicar esto en tu negocio esta semana, suscríbete y mira el siguiente video."
+   },
+   "linkedin": {
+    "hook": "Le dieron a una IA el sitio web y el presupuesto de publicidad. Sin supervisión. Esto es lo que aprendimos.",
+    "slides": [
+     "1. El experimento: acceso total a una IA, una sola instrucción, vender.",
+     "2. La IA no 'copia' publicidad, analiza el sitio como lo haría un cliente real y ajusta el mensaje.",
+     "3. La gente ya nota cuando un contenido 'tiene cara de IA'. Y eso le resta confianza a la marca.",
+     "4. Cada vez más personas le preguntan a un chatbot en vez de buscar en Google. Tu estrategia de contenido tiene que adaptarse a eso.",
+     "5. El SEO como lo conocías está cambiando: ya no basta con 'aparecer primero', hay que ser la respuesta que da la IA.",
+     "6. La ventaja no es reemplazar al equipo de marketing, es darle superpoderes de velocidad.",
+     "7. El riesgo más grande no es que la IA se equivoque, es que pierdas tu voz de marca por ir rápido."
+    ],
+    "pregunta": "¿Tu equipo de marketing ya está usando IA, o todavía lo está evitando?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos que tu equipo empiece a usar IA en marketing esta semana, no el próximo trimestre, porque la forma en que la gente busca y consume contenido ya está cambiando.",
+    "argumentos": [
+     "La gente cada vez más le pregunta a un chatbot en vez de buscar en Google, así que tu contenido debe pensarse para eso, no solo para el buscador tradicional.",
+     "Experimentos reales muestran que una IA puede tomar decisiones de campaña y presupuesto más rápido que un equipo humano probando manualmente.",
+     "La audiencia ya detecta contenido 'con cara de IA' y eso puede jugar en contra si no cuidas la autenticidad de tu marca."
+    ],
+    "semana": "Esta semana, toma una sola campaña pequeña y pruébala con apoyo de IA: generación de variantes de mensaje y análisis de qué funciona, mientras una persona de tu equipo supervisa el tono de marca."
+   },
+   "by": "teacher",
+   "cost_usd": 0.01251
   }
  },
  "ia-talento": {
@@ -357,6 +1047,105 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.00789
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "US$74 mil de ahorro al mes... con IA en RR.HH.",
+    "beats": [
+     {
+      "texto": "El problema",
+      "voz": "Un equipo de RR.HH. pasaba semanas filtrando candidaturas falsas y procesos manuales"
+     },
+     {
+      "texto": "El cambio",
+      "voz": "Aplicaron IA para revisar, validar y priorizar talento en minutos, no semanas"
+     },
+     {
+      "texto": "El resultado",
+      "voz": "Ese ajuste llevó a un líder de operativo a líder de equipo en 3 meses, con US$74 mil de ahorro mensual"
+     },
+     {
+      "texto": "La lección",
+      "voz": "Tu empresa ya tiene el talento. Lo que falta es darle IA para que rinda al máximo"
+     }
+    ],
+    "cta": "Síguenos para ver cómo transformar tu equipo de RR.HH. con IA, paso a paso"
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "Cómo una empresa ahorró US$74 mil al mes con IA en RR.HH. (paso a paso)",
+    "hook": "¿Qué pasa cuando le das IA al talento que ya tienes? Te cuento el caso real",
+    "secciones": [
+     {
+      "titulo": "El problema inicial",
+      "puntos": [
+       "Procesos de reclutamiento lentos y manuales",
+       "Falsificación de candidaturas, un riesgo real y creciente",
+       "Escasez de talento especializado, como en la agroindustria"
+      ]
+     },
+     {
+      "titulo": "La decisión de usar IA",
+      "puntos": [
+       "No reemplazar personas, sino darles mejores herramientas",
+       "Empezar con un proceso específico: filtrado de candidatos",
+       "Medir resultados desde el primer mes"
+      ]
+     },
+     {
+      "titulo": "El caso concreto",
+      "puntos": [
+       "Un responsable operativo usó IA para automatizar validación de candidatos",
+       "En 3 meses pasó de tarea operativa a liderar el proceso completo",
+       "El ahorro mensual llegó a US$74 mil"
+      ]
+     },
+     {
+      "titulo": "Los riesgos que hay que vigilar",
+      "puntos": [
+       "Candidatos usando IA para falsificar entrevistas ('chaos' cuando IA entrevista a IA)",
+       "Jefes y equipos todavía no saben cómo manejar output generado por IA",
+       "Necesitas reglas claras de integridad, no solo tecnología"
+      ]
+     },
+     {
+      "titulo": "Cómo empezar en tu empresa",
+      "puntos": [
+       "Elige un solo proceso de RR.HH. para pilotear",
+       "Da herramientas de IA a quien ya conoce el proceso",
+       "Mide tiempo y costo antes y después"
+      ]
+     }
+    ],
+    "ejemplo": "Un equipo de RR.HH. que operaba de forma 100% manual implementó IA en su proceso de selección; en 3 meses, el responsable pasó de rol operativo a liderazgo, y la empresa ahorró US$74 mil mensuales",
+    "cta": "Si quieres ver más casos de transformación con IA, suscríbete al canal"
+   },
+   "linkedin": {
+    "hook": "US$74 mil de ahorro al mes. Así fue como una empresa transformó su RR.HH. con IA.",
+    "slides": [
+     "El problema: procesos de selección lentos, manuales y vulnerables a fraude",
+     "La escasez de talento no se resuelve con más gente, se resuelve con mejores procesos",
+     "Una empresa decidió dar IA al responsable de su proceso de selección",
+     "Resultado: en 3 meses, ese responsable pasó de tarea operativa a liderar el área",
+     "El ahorro: US$74 mil al mes",
+     "Pero cuidado: también están apareciendo candidatos que usan IA para falsificar entrevistas",
+     "La integridad en el reclutamiento ahora es tan importante como la eficiencia"
+    ],
+    "pregunta": "¿Tu empresa ya le dio IA al talento que tiene, o sigue buscando talento nuevo?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos implementar IA en procesos de RR.HH. empezando por selección y validación de candidatos, porque el impacto es medible y rápido",
+    "argumentos": [
+     "Hay casos reales de ahorro de decenas de miles de dólares al mes en pocos meses",
+     "El talento que ya tienes puede asumir roles de mayor valor si le das las herramientas correctas",
+     "La escasez de talento especializado (como en agroindustria) se mitiga optimizando procesos, no solo contratando más"
+    ],
+    "semana": "Elige un proceso de RR.HH. (selección, validación o entrevistas) y define con tu equipo qué tarea manual se puede automatizar con IA esta semana"
+   },
+   "by": "teacher",
+   "cost_usd": 0.01099
   }
  },
  "regulacion-etica": {
@@ -402,6 +1191,105 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.0087
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "ChatGPT podría saber cosas sobre ti que nunca le dijiste",
+    "beats": [
+     {
+      "texto": "Amazon monitorea riesgo de sindicalización con IA",
+      "voz": "En Reino Unido, Amazon ya usa IA para detectar riesgo de que sus empleados se organicen en sindicatos"
+     },
+     {
+      "texto": "'Human in the loop' no es suficiente",
+      "voz": "Muchas empresas creen que con tener una persona supervisando ya están cubiertas, pero eso ya no alcanza con IA agéntica"
+     },
+     {
+      "texto": "La UE ya tiene reglas claras",
+      "voz": "La Ley de IA de la Unión Europea ya está definiendo qué se puede y qué no se puede hacer con estos sistemas"
+     },
+     {
+      "texto": "Tu empresa necesita gobernanza, no solo supervisión",
+      "voz": "Si tu negocio usa IA para decisiones sobre personas, necesitas una estrategia real de gobernanza, no un checkbox"
+     }
+    ],
+    "cta": "Sígueme para aprender a implementar IA con cabeza, no con miedo"
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "La IA ya te está vigilando (y probablemente ni lo sabías) | AI for Executives",
+    "hook": "Amazon usa IA para predecir si sus empleados van a formar un sindicato. Esto no es ciencia ficción, es hoy",
+    "secciones": [
+     {
+      "titulo": "El caso Amazon",
+      "puntos": [
+       "Usan IA para monitorear riesgo de organización sindical en almacenes del Reino Unido",
+       "No es un caso aislado, es tendencia en empresas grandes",
+       "Plantea preguntas serias sobre vigilancia laboral con IA"
+      ]
+     },
+     {
+      "titulo": "Por qué 'humano en el loop' ya no basta",
+      "puntos": [
+       "Tener una persona revisando decisiones de IA no es gobernanza real",
+       "La IA agéntica toma decisiones en cadena, más rápido de lo que un humano puede supervisar",
+       "Se necesitan políticas claras, no solo revisión manual"
+      ]
+     },
+     {
+      "titulo": "Lo que está haciendo la Unión Europea",
+      "puntos": [
+       "La Ley de IA europea ya regula estos casos",
+       "Empresas que operan en Europa deben cumplir estándares específicos",
+       "Esto va a influir en regulaciones de otros países, incluyendo Latinoamérica"
+      ]
+     },
+     {
+      "titulo": "Qué significa esto para tu negocio",
+      "puntos": [
+       "Si usas IA para evaluar empleados, clientes o proveedores, necesitas trazabilidad",
+       "La gobernanza debe evolucionar al mismo ritmo que la adopción de IA",
+       "No se trata de frenar la innovación, sino de implementarla con responsabilidad"
+      ]
+     },
+     {
+      "titulo": "Cómo empezar",
+      "puntos": [
+       "Mapea dónde tu empresa ya usa IA para decisiones sobre personas",
+       "Define quién es responsable de cada decisión automatizada",
+       "Documenta el proceso, no improvises"
+      ]
+     }
+    ],
+    "ejemplo": "Un equipo de RRHH que usa IA para filtrar candidatos debe poder explicar exactamente por qué un algoritmo descartó a alguien, no solo decir 'así lo decidió el sistema'",
+    "cta": "Si tu empresa está automatizando decisiones con IA, el próximo paso es tener un proceso claro de gobernanza. Te cuento cómo en el próximo video"
+   },
+   "linkedin": {
+    "hook": "Amazon usa IA para predecir si sus trabajadores van a formar un sindicato.",
+    "slides": [
+     "Esto no es una teoría. Es un caso real documentado en almacenes del Reino Unido.",
+     "Y no es el único: cada vez más empresas usan IA para tomar decisiones sensibles sobre personas.",
+     "El problema es que muchas creen que con 'un humano supervisando' ya están cubiertas legal y éticamente.",
+     "Pero con IA agéntica, las decisiones se encadenan tan rápido que la supervisión humana real se vuelve simbólica.",
+     "La Unión Europea ya está un paso adelante con su Ley de IA, que exige trazabilidad y responsabilidad clara.",
+     "Latinoamérica va a seguir esa ruta tarde o temprano. Las empresas que se preparen ahora van a tener ventaja.",
+     "La pregunta no es si vas a tener que regular el uso de IA en tu empresa. Es cuándo."
+    ],
+    "pregunta": "¿Tu empresa ya tiene un proceso claro para explicar decisiones tomadas con IA, o todavía confía en que 'alguien lo está revisando'?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos construir gobernanza de IA ahora, antes de que te obliguen por ley",
+    "argumentos": [
+     "Casos como el de Amazon muestran que el uso de IA en decisiones sensibles ya genera escrutinio público y riesgo reputacional",
+     "'Humano en el loop' ya no es suficiente defensa legal ni ética cuando usas IA agéntica",
+     "La Unión Europea está marcando el camino regulatorio que tarde o temprano va a llegar a Latinoamérica"
+    ],
+    "semana": "Esta semana, identifica en tu empresa todos los procesos donde la IA toma o influye en decisiones sobre personas (contratación, evaluación, atención al cliente) y documenta quién es responsable de cada uno"
+   },
+   "by": "teacher",
+   "cost_usd": 0.0127
   }
  },
  "roi-casos": {
@@ -447,6 +1335,101 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.0074
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "¿La IA te está ahorrando plata o te está costando más en la nube?",
+    "beats": [
+     {
+      "texto": "La trampa del ROI en IA",
+      "voz": "Muchas empresas meten IA pensando que van a ahorrar, y terminan con una factura de nube más alta que antes."
+     },
+     {
+      "texto": "El error más común",
+      "voz": "Lanzan el proyecto sin medir el costo real de cómputo contra el beneficio que esperan."
+     },
+     {
+      "texto": "Caso real",
+      "voz": "Por ejemplo, un equipo que migró un proceso completo a IA gastó 24,000 dólares en un solo experimento, solo para probar si funcionaba."
+     },
+     {
+      "texto": "La pregunta correcta",
+      "voz": "Antes de meter IA en tu proceso, pregúntate: ¿esto me ahorra tiempo o solo me suma otra factura?"
+     }
+    ],
+    "cta": "Guarda este video antes de aprobar tu próximo proyecto de IA."
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "La trampa del ROI en IA: por qué tu proyecto puede salir más caro de lo que crees",
+    "hook": "Todos quieren meter IA en su empresa, pero casi nadie calcula lo que realmente cuesta mantenerla corriendo.",
+    "secciones": [
+     {
+      "titulo": "El espejismo del ahorro",
+      "puntos": [
+       "La IA promete reducir horas de trabajo, pero el costo de la nube y el procesamiento se dispara si no se controla.",
+       "Muchos líderes aprueban proyectos de IA solo por moda, sin medir el retorno real."
+      ]
+     },
+     {
+      "titulo": "Caso: migrar código con IA",
+      "puntos": [
+       "Un experimento documentado gastó 24,000 dólares en usar IA para convertir un compilador de TypeScript a Rust.",
+       "El resultado funcionó, pero el costo fue altísimo comparado con hacerlo con un equipo humano más chico."
+      ]
+     },
+     {
+      "titulo": "Cuando sí funciona",
+      "puntos": [
+       "Durante el sismo en Colombia, una IA ayudó a ordenar la ayuda humanitaria de forma rápida y efectiva.",
+       "Ahí el valor fue claro: tiempo salvado y mejor organización en una crisis real."
+      ]
+     },
+     {
+      "titulo": "Cómo medir el ROI antes de empezar",
+      "puntos": [
+       "Define qué proceso específico vas a mejorar, no 'meter IA' en general.",
+       "Calcula el costo de infraestructura mensual, no solo el costo de desarrollo inicial.",
+       "Compara contra la alternativa actual: ¿cuánto te cuesta hoy hacerlo sin IA?"
+      ]
+     },
+     {
+      "titulo": "La pregunta que nadie hace",
+      "puntos": [
+       "¿Qué pasa si el proyecto de IA no reduce costos pero sí mejora la calidad o velocidad de decisión?",
+       "A veces el ROI no es solo plata, es evitar errores costosos o reaccionar más rápido."
+      ]
+     }
+    ],
+    "ejemplo": "El caso del experimento de 24,000 dólares para portar un compilador con IA muestra que la tecnología puede funcionar, pero el costo real debe compararse siempre contra el valor que genera.",
+    "cta": "Si estás evaluando un proyecto de IA en tu empresa, suscríbete porque la próxima semana te muestro cómo calcular el ROI paso a paso."
+   },
+   "linkedin": {
+    "hook": "¿Tu proyecto de IA te está ahorrando plata o solo sumando otra factura de la nube?",
+    "slides": [
+     "La IA no es gratis. Cada consulta, cada proceso automatizado, tiene un costo de cómputo detrás.",
+     "Muchas empresas en Latinoamérica están aprobando proyectos de IA sin calcular el costo real de mantenerlos.",
+     "Por ejemplo, un experimento documentado gastó 24,000 dólares solo para migrar un compilador de código con IA.",
+     "Funcionó, pero ¿valía la pena ese gasto comparado con hacerlo de otra forma?",
+     "En cambio, durante el sismo en Colombia, una IA ayudó a ordenar la ayuda humanitaria en tiempo récord. Ahí el valor fue evidente.",
+     "La diferencia entre un buen y un mal proyecto de IA no es la tecnología, es si mediste el ROI antes de empezar.",
+     "Antes de tu próximo proyecto: define el proceso, calcula el costo mensual real, y compáralo con tu forma actual de trabajar."
+    ],
+    "pregunta": "¿Tu empresa ya calculó cuánto le cuesta realmente mantener su proyecto de IA corriendo?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos medir el ROI antes de aprobar cualquier proyecto de IA porque el costo de la nube puede comerse el ahorro que prometía.",
+    "argumentos": [
+     "El costo de cómputo y nube no siempre se calcula antes de aprobar un proyecto, y eso genera sorpresas en la factura.",
+     "Hay casos donde la IA sí genera valor claro y rápido, como ordenar ayuda humanitaria en una crisis, pero son casos con un objetivo muy específico.",
+     "Otros casos, como experimentos de migración de código, muestran que la IA puede funcionar pero a un costo que hay que comparar con la alternativa de hacerlo distinto."
+    ],
+    "semana": "Esta semana, antes de aprobar cualquier proyecto nuevo de IA en tu empresa, pide que te muestren el costo mensual estimado de infraestructura y compáralo con el costo actual del proceso sin IA."
+   },
+   "by": "teacher",
+   "cost_usd": 0.01298
   }
  },
  "datos-rag": {
@@ -492,6 +1475,104 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.00888
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "¿Tu empresa tiene toda su información en PDFs que nadie encuentra?",
+    "beats": [
+     {
+      "texto": "El problema: el conocimiento está perdido",
+      "voz": "La mayoría de empresas tiene años de información en carpetas, PDFs y correos que nadie vuelve a consultar."
+     },
+     {
+      "texto": "La solución: RAG, no magia",
+      "voz": "RAG significa que la IA busca en tus documentos reales antes de responder, en vez de inventar."
+     },
+     {
+      "texto": "Caso real: un newsroom",
+      "voz": "Por ejemplo, un equipo de periodistas construyó un chatbot para buscar en su archivo histórico y encontrar notas en segundos."
+     },
+     {
+      "texto": "Lo que esto significa para ti",
+      "voz": "No necesitas ser programador para tener esto en tu empresa, solo saber qué información quieres que la IA entienda."
+     }
+    ],
+    "cta": "Guarda este video y compártelo con quien maneja el conocimiento en tu equipo."
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "Así puede tu empresa 'hablar' con sus propios documentos (sin ser programador)",
+    "hook": "Tu empresa tiene todo el conocimiento que necesita, pero está enterrado. Te muestro cómo sacarlo.",
+    "secciones": [
+     {
+      "titulo": "El problema del conocimiento perdido",
+      "puntos": [
+       "Información dispersa en PDFs, correos, wikis internas",
+       "Nadie tiene tiempo de buscar manualmente",
+       "El conocimiento se va cuando la gente se va"
+      ]
+     },
+     {
+      "titulo": "Qué es RAG explicado sin tecnicismos",
+      "puntos": [
+       "Es darle a la IA acceso a tus documentos reales",
+       "La IA responde basada en lo que tú le diste, no inventa",
+       "Funciona como un buscador inteligente conectado a un asistente"
+      ]
+     },
+     {
+      "titulo": "Caso concreto: La Silla Vacía",
+      "puntos": [
+       "Un medio periodístico construyó un chatbot para su archivo histórico",
+       "Los periodistas encuentran notas antiguas en segundos",
+       "Aprendieron que la calidad de los datos importa más que la tecnología"
+      ]
+     },
+     {
+      "titulo": "Otro ejemplo: empresas grandes usando esto para sus equipos",
+      "puntos": [
+       "Oracle usa este tipo de herramientas para que usuarios de negocio obtengan respuestas sin pedirle ayuda a TI",
+       "Reduce dependencia de equipos técnicos para preguntas simples"
+      ]
+     },
+     {
+      "titulo": "Cómo empezar en tu empresa",
+      "puntos": [
+       "Identifica un repositorio clave (manuales, políticas, histórico de clientes)",
+       "Empieza con un caso pequeño, no con toda la empresa",
+       "Mide si realmente ahorra tiempo antes de escalar"
+      ]
+     }
+    ],
+    "ejemplo": "El caso de La Silla Vacía: construyeron un chatbot sobre su archivo de noticias para que los periodistas pudieran buscar contexto histórico sin perder horas revisando archivos manualmente.",
+    "cta": "Si quieres ver cómo se arma esto paso a paso, el video fijado te muestra el proceso completo."
+   },
+   "linkedin": {
+    "hook": "Tu empresa no tiene un problema de información. Tiene un problema de acceso a la información.",
+    "slides": [
+     "Años de conocimiento acumulado en PDFs, correos y carpetas que nadie vuelve a abrir.",
+     "Esto tiene nombre: conocimiento corporativo atrapado.",
+     "La solución que están usando empresas y medios no es contratar más gente para buscar.",
+     "Es darle a una IA acceso a esos documentos para que responda con base en ellos (esto se llama RAG).",
+     "Ejemplo real: un medio de noticias construyó un chatbot sobre su archivo histórico para que sus periodistas encontraran contexto en segundos, no horas.",
+     "No necesitas un equipo de ingenieros gigante para empezar: necesitas identificar qué información es valiosa y empezar con un piloto pequeño.",
+     "El conocimiento que ya tienes es un activo. La pregunta es si lo estás usando o dejando enterrado."
+    ],
+    "pregunta": "¿Cuánto tiempo pierde tu equipo buscando información que ya existe en algún lado?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos empezar a explorar RAG en tu empresa porque es de las aplicaciones de IA con retorno más claro y rápido",
+    "argumentos": [
+     "No requiere entrenar un modelo nuevo, solo conectar tus documentos existentes",
+     "Casos reales como medios de noticias ya lo están usando para reducir tiempo de búsqueda",
+     "Empresas grandes como Oracle lo usan para que usuarios de negocio resuelvan dudas sin depender de TI"
+    ],
+    "semana": "Esta semana, identifica un solo repositorio de información (manual, políticas, histórico de clientes) y pregúntate: ¿qué pasaría si mi equipo pudiera 'preguntarle' a ese documento en vez de buscarlo manualmente?"
+   },
+   "by": "teacher",
+   "cost_usd": 0.01213
   }
  },
  "agentes-ia": {
@@ -537,6 +1618,105 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.00927
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "Los agentes de IA están cayendo en popularidad, pero el error que todos cometen sigue igual",
+    "beats": [
+     {
+      "texto": "Agentes de IA: tema en caída, pero el problema de fondo no se resuelve solo",
+      "voz": "Se habla menos de agentes de IA, pero las empresas siguen cometiendo el mismo error"
+     },
+     {
+      "texto": "Error #1: instalar un agente sin darle contexto de tu negocio",
+      "voz": "Un agente sin contexto claro falla, aunque sea el modelo más caro del mercado"
+     },
+     {
+      "texto": "Error #2: pensar que un prompt 'instala y corre todo'",
+      "voz": "No existe un prompt mágico que resuelva tu operación completa, por más que lo vendan así"
+     },
+     {
+      "texto": "La clave: definir primero el proceso, luego el agente",
+      "voz": "Antes de automatizar, mapea el proceso. Si no, solo automatizas el caos"
+     }
+    ],
+    "cta": "Síguenos para ver cómo implementar agentes de IA sin caer en estos errores"
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "Por qué los agentes de IA están 'cayendo' (y lo que nadie te dice)",
+    "hook": "Si estás pensando en meter un agente de IA en tu empresa, primero mira estos 4 errores que están matando los proyectos",
+    "secciones": [
+     {
+      "titulo": "¿Qué está pasando con los agentes de IA?",
+      "puntos": [
+       "El interés en redes bajó, pero en búsquedas técnicas (Google News, Wikipedia) sigue subiendo",
+       "Esto indica que pasamos de la moda a la implementación real",
+       "Las empresas ya no preguntan 'qué es un agente', preguntan 'cómo no fallar con uno'"
+      ]
+     },
+     {
+      "titulo": "Error 1: Falta de contexto de negocio",
+      "puntos": [
+       "Un agente sin reglas claras de tu proceso improvisa",
+       "Ejemplo: un equipo de atención al cliente que delega todo a un agente sin reglas termina respondiendo mal a clientes VIP",
+       "Solución: documenta el proceso antes de automatizarlo"
+      ]
+     },
+     {
+      "titulo": "Error 2: Creer en el 'prompt mágico'",
+      "puntos": [
+       "La idea de 'un prompt que instala y corre todo tu día' suena bien pero no existe en la práctica",
+       "Los agentes necesitan configuración, pruebas y ajustes constantes",
+       "Ejemplo: configurar un asistente para agendar reuniones toma semanas de ajuste, no minutos"
+      ]
+     },
+     {
+      "titulo": "Error 3: No tener control sobre dónde corre el agente",
+      "puntos": [
+       "Hay una tendencia creciente a preferir agentes que corres tú mismo, no los que 'rentas' de un tercero",
+       "Esto da más control sobre tus datos y costos",
+       "Pregunta clave: ¿quién es dueño de la información que procesa tu agente?"
+      ]
+     },
+     {
+      "titulo": "Error 4: No medir el impacto real",
+      "puntos": [
+       "Empresas grandes como ServiceNow están evaluando si los agentes creados por sus propios empleados cambian su discurso de inversión",
+       "Si no mides ahorro de tiempo o dinero, no sabes si el agente sirve",
+       "Define desde el día uno qué vas a medir: horas ahorradas, errores reducidos, costos bajados"
+      ]
+     }
+    ],
+    "ejemplo": "Un equipo de soporte que automatizó solo el proceso de clasificación de tickets (no todo el flujo) y redujo el tiempo de primera respuesta sin perder calidad",
+    "cta": "Si quieres que evaluemos tu proceso antes de meter un agente de IA, escríbenos"
+   },
+   "linkedin": {
+    "hook": "Los agentes de IA están cayendo en tendencia, pero eso no significa que debas ignorarlos",
+    "slides": [
+     "El interés masivo en 'agentes de IA' bajó, pero la conversación técnica (Google News, Wikipedia) sigue creciendo",
+     "Eso significa una cosa: pasamos del hype a la ejecución real",
+     "El error #1 que veo en empresas: instalar un agente sin definir primero el proceso que va a automatizar",
+     "El error #2: creer que un solo prompt resuelve todo. No existe el 'Jarvis instantáneo'",
+     "Cada vez más equipos técnicos prefieren agentes que controlan ellos mismos, no los que rentan de terceros",
+     "La pregunta que toda empresa grande se está haciendo ahora: ¿este agente realmente cambia nuestros números, o solo se ve bien en una demo?",
+     "Antes de sumarte a la ola de agentes, define qué vas a medir: tiempo, errores, costos"
+    ],
+    "pregunta": "¿Tu empresa ya probó un agente de IA, o sigues esperando el 'prompt mágico'?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos avanzar con agentes de IA, pero con proceso mapeado primero, porque el tema está cayendo en popularidad justo porque muchas empresas los implementaron mal y sin resultados",
+    "argumentos": [
+     "La caída de interés no es porque la tecnología no sirva, es porque el hype superó la ejecución real",
+     "Las búsquedas técnicas (Google News, Wikipedia) siguen subiendo, señal de que los equipos serios siguen investigando cómo hacerlo bien",
+     "El riesgo real no es usar agentes, es usarlos sin definir contexto, control y métricas claras"
+    ],
+    "semana": "Esta semana, elige UN proceso repetitivo de tu equipo, documenta sus pasos exactos, y solo después evalúa si un agente de IA puede ejecutarlo"
+   },
+   "by": "teacher",
+   "cost_usd": 0.01285
   }
  },
  "video-voz": {
@@ -582,6 +1762,105 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.00707
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "Esta escena nunca pasó frente a una cámara",
+    "beats": [
+     {
+      "texto": "Video generado con IA, sin cámara ni actores",
+      "voz": "Lo que estás viendo no se grabó con cámara profesional, se generó con IA"
+     },
+     {
+      "texto": "Hoy cualquier equipo puede crear video, voz e imagen con modelos generativos",
+      "voz": "Esto ya no es ciencia ficción, es una herramienta que tu empresa puede usar esta semana"
+     },
+     {
+      "texto": "Ejemplo: un equipo de marketing de 5 personas crea 20 piezas al mes sin productora",
+      "voz": "Por ejemplo, un equipo pequeño puede producir contenido que antes necesitaba una productora completa"
+     },
+     {
+      "texto": "La pregunta ya no es si funciona, sino si tu negocio lo está usando",
+      "voz": "La pregunta es si tu empresa ya está aprovechando esto o se está quedando atrás"
+     }
+    ],
+    "cta": "Síguenos para ver cómo implementarlo paso a paso en tu negocio"
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "Video, voz e imagen con IA: la herramienta que ya usan las empresas (y tú no)",
+    "hook": "Esa escena que viste en redes no la grabó ninguna cámara profesional",
+    "secciones": [
+     {
+      "titulo": "Qué cambió realmente",
+      "puntos": [
+       "Ya se pueden generar video, voz e imagen desde una sola plataforma",
+       "Herramientas como Claude ahora integran creación visual con varios modelos de IA",
+       "No necesitas ser programador ni diseñador para usarlas"
+      ]
+     },
+     {
+      "titulo": "Por qué esto es estable, no una moda pasajera",
+      "puntos": [
+       "La categoría se mantiene fuerte aunque baje el ruido en redes",
+       "Grandes marcas y productos ya lo integran en sus flujos de trabajo",
+       "Ejemplo: lanzamientos de autos y empresas de tecnología usan voz sintética en sus productos"
+      ]
+     },
+     {
+      "titulo": "Casos de uso concretos para tu empresa",
+      "puntos": [
+       "Crear videos de capacitación sin grabar con cámara",
+       "Generar locuciones en varios idiomas sin contratar actores de voz",
+       "Producir piezas de marketing en minutos en lugar de semanas"
+      ]
+     },
+     {
+      "titulo": "Los riesgos que debes conocer",
+      "puntos": [
+       "La calidad varía según el modelo y la herramienta elegida",
+       "Hay que ser transparente con tu audiencia sobre contenido generado",
+       "No reemplaza la estrategia, solo acelera la producción"
+      ]
+     },
+     {
+      "titulo": "Cómo empezar sin complicarte",
+      "puntos": [
+       "Elige un caso de uso simple, como un video interno de capacitación",
+       "Prueba con una herramienta accesible antes de invertir en infraestructura",
+       "Mide el tiempo que te ahorra frente a tu proceso actual"
+      ]
+     }
+    ],
+    "ejemplo": "Por ejemplo, un equipo de 5 personas en una empresa mediana puede generar en un día lo que antes tomaba una semana con productora externa: video, voz e imagen, todo desde una misma plataforma",
+    "cta": "Si quieres ver el paso a paso completo de cómo implementar esto en tu empresa, el link está en la descripción"
+   },
+   "linkedin": {
+    "hook": "Esa escena que viste en redes no la grabó ninguna cámara profesional.",
+    "slides": [
+     "Hoy se puede generar video, voz e imagen con IA desde una sola herramienta.",
+     "Ya no es una promesa futura: empresas grandes ya lo están usando en sus productos.",
+     "Por ejemplo, un lanzamiento reciente de un auto integró voz generada por IA como parte central de su experiencia.",
+     "Esto no reemplaza tu estrategia de contenido, la acelera.",
+     "Un equipo pequeño puede producir en un día lo que antes tomaba una semana completa.",
+     "El riesgo no es usar mal la tecnología, es no usarla mientras tu competencia sí.",
+     "La clave es empezar con un caso simple y medir el tiempo que te ahorra."
+    ],
+    "pregunta": "¿Tu empresa ya probó crear contenido con video, voz o imagen generada por IA?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos explorar video, voz e imagen generativa esta semana porque ya es una categoría estable, no una moda, y las herramientas están al alcance de cualquier equipo sin conocimientos técnicos",
+    "argumentos": [
+     "Es una categoría estable: se mantiene fuerte en el interés de la audiencia que aprende a usar IA en su negocio",
+     "Ya hay adopción real en productos grandes, como lanzamientos de autos que integran voz generada por IA",
+     "Herramientas como Claude ahora permiten crear imagen y video desde varios modelos sin saber programar"
+    ],
+    "semana": "Esta semana, elige una pieza simple de tu empresa (un video interno, una locución, una imagen de marketing) y pruébala con una herramienta de IA generativa antes de pedirla a una productora externa"
+   },
+   "by": "teacher",
+   "cost_usd": 0.01207
   }
  },
  "automatizacion": {
@@ -627,6 +1906,104 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.00817
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "¿Cuántas horas dedica tu equipo cada semana a tareas que podrían automatizarse?",
+    "beats": [
+     {
+      "texto": "Tu equipo: ¿cuántas horas a la semana?",
+      "voz": "Antes de hablar de IA, hazte esta pregunta: ¿cuántas horas dedica tu equipo cada semana a tareas repetitivas?"
+     },
+     {
+      "texto": "Ejemplo: 10 personas × 3 h = 30 h/semana",
+      "voz": "Por ejemplo, un equipo de 10 personas que pasa 3 horas semanales cada uno en reportes, correos de seguimiento y captura de datos. Eso son 30 horas a la semana."
+     },
+     {
+      "texto": "Noticia: la empresa que actúa sola",
+      "voz": "Ahora se habla de sistemas como el ERP que actúa, la idea de una empresa autónoma que llegará también a la pyme. Lo que importa no es la moda, es qué proceso te quita esas horas."
+     },
+     {
+      "texto": "Empieza por una tarea, no por todo",
+      "voz": "Elige una sola tarea repetitiva, mídela una semana y automatízala. Si te devuelve tiempo, sigues con la siguiente."
+     }
+    ],
+    "cta": "Comenta cuántas horas calculas que pierde tu equipo y te digo por dónde empezar."
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "¿Cuánto tiempo pierde tu equipo en tareas que una IA podría hacer? Guía para líderes",
+    "hook": "Si tu equipo tiene 10 personas y cada una pierde solo 3 horas semanales en tareas repetitivas, ya estás tirando 30 horas a la semana. Vamos a verlo paso a paso.",
+    "secciones": [
+     {
+      "titulo": "Mide antes de automatizar",
+      "puntos": [
+       "Pide a cada persona que anote durante una semana qué tareas repite.",
+       "Separa lo que es juicio humano de lo que es copiar, pegar y reenviar.",
+       "Suma las horas: ahí está tu punto de partida."
+      ]
+     },
+     {
+      "titulo": "Qué significa la noticia de la empresa autónoma",
+      "puntos": [
+       "Se habla de sistemas de gestión que ejecutan acciones por sí solos, no solo registran datos.",
+       "Para una pyme, lo práctico hoy es automatizar flujos concretos, no esperar un sistema completo.",
+       "Pregunta a tu proveedor de software qué tareas ya ejecuta sin intervención."
+      ]
+     },
+     {
+      "titulo": "Un caso sencillo: gastos corporativos",
+      "puntos": [
+       "Argo Solutions presentó tecnología para automatizar gastos corporativos en Latam, según el Latam Fintech Market 2026.",
+       "Piensa en el flujo: recibo, clasificación, aprobación, registro contable.",
+       "Cada paso manual que desaparece es tiempo que vuelve a tu equipo."
+      ]
+     },
+     {
+      "titulo": "Cómo elegir el primer proceso",
+      "puntos": [
+       "Busca tareas frecuentes, con reglas claras y de bajo riesgo.",
+       "Evita empezar por lo más crítico o lo más complejo.",
+       "Define una meta medible, por ejemplo reducir a la mitad el tiempo de un reporte."
+      ]
+     },
+     {
+      "titulo": "Cómo sostenerlo",
+      "puntos": [
+       "Asigna a una persona responsable del proceso automatizado.",
+       "Revisa resultados cada mes y corrige errores.",
+       "Comparte el tiempo recuperado con el equipo para que lo vean como beneficio."
+      ]
+     }
+    ],
+    "ejemplo": "Por ejemplo, un equipo de 10 personas que dedica 3 horas semanales cada una a reportes de ventas. Automatizar la extracción y el envío del reporte libera 30 horas a la semana para vender y atender clientes.",
+    "cta": "Descarga la plantilla para medir tus horas, y cuéntanos en comentarios qué proceso vas a automatizar primero."
+   },
+   "linkedin": {
+    "hook": "Muchos líderes creen que automatizar es un proyecto de TI de meses. Muchas veces empieza con una sola tarea.",
+    "slides": [
+     "Antes de hablar de inteligencia artificial, mide algo simple: cuántas horas a la semana repite tu equipo tareas que no requieren juicio.",
+     "Por ejemplo, 10 personas con 3 horas repetitivas cada una son 30 horas semanales. Eso es equivalente a casi un puesto completo de trabajo.",
+     "La noticia de la 'empresa autónoma' que actúa por sí sola es llamativa, pero para una pyme la pregunta útil es otra: ¿qué flujo puedo dejar de hacer a mano?",
+     "Soluciones como la que presentó Argo Solutions para automatizar gastos corporativos en Latam muestran el camino: recibo, aprobación y registro sin pasos manuales.",
+     "Mi recomendación: elige un solo proceso, mídelo una semana, automatízalo y revisa resultados al mes.",
+     "No busques el sistema perfecto. Busca la tarea que más se repite y empieza hoy."
+    ],
+    "pregunta": "¿Cuál es la tarea repetitiva que más tiempo le quita a tu equipo cada semana?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos empezar a automatizar procesos concretos ahora, en lugar de esperar a la gran 'empresa autónoma', porque el tiempo que hoy se pierde en tareas repetitivas se puede recuperar con pasos pequeños y medibles.",
+    "argumentos": [
+     "Medir primero evita decisiones a ciegas: si tu equipo pierde 3 horas semanales por persona, el costo ya está ahí aunque no lo veas en un presupuesto.",
+     "Empezar con un proceso de bajo riesgo, como gastos o reportes, permite aprender sin poner en juego la operación completa.",
+     "Las soluciones que ya existen, como las de automatización de gastos presentadas en Latam, muestran que el beneficio es práctico y no depende de una transformación total."
+    ],
+    "semana": "Esta semana, pide a tu equipo que anote durante cinco días las tareas repetitivas y cuántas horas le toman. Elige la que más se repite y define una meta medible para la próxima semana."
+   },
+   "by": "teacher",
+   "cost_usd": 0.01759
   }
  },
  "startups-inversion": {
@@ -672,6 +2049,104 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.00791
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "¿Y si tu próxima gran idea de IA se muere antes de su primera ronda de inversión?",
+    "beats": [
+     {
+      "texto": "El riesgo que nadie te dice",
+      "voz": "Muchos líderes ven noticias de startups de IA recaudando millones y piensan que es fácil. No lo es. La mayoría de las startups no llega a una segunda ronda."
+     },
+     {
+      "texto": "Ronda 0: el primer paso",
+      "voz": "Antes de un fondo de Venture Capital, existe la Ronda 0. Es dinero pequeño, de familia, ángeles o aceleradoras, para validar que tu idea sirve. Por ejemplo, un equipo de 10 personas que vende a cinco clientes piloto ya tiene una prueba mucho más sólida que un pitch bonito."
+     },
+     {
+      "texto": "Product market fit antes que el dinero",
+      "voz": "Lluís Cañadell pasó de 4 a 15 millones de ARR. ¿Su secreto? No fue gastar más, fue encontrar el producto que el mercado de verdad necesita. Eso es el product market fit."
+     },
+     {
+      "texto": "Tu pregunta antes de invertir",
+      "voz": "Si estás evaluando una startup de IA, pregunta: ¿quién paga hoy, y por qué? Si la respuesta es 'algún día', cuidado."
+     }
+    ],
+    "cta": "Comenta 'RIESGO' y te digo qué preguntas hacerle a cualquier startup antes de invertir."
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "Startups de IA e inversión: qué mirar antes de poner tu dinero (o tu empresa)",
+    "hook": "Cada semana aparece una startup de IA con titulares enormes. Hoy te muestro qué hay detrás y cómo separar lo que sirve de lo que solo suena bien.",
+    "secciones": [
+     {
+      "titulo": "El panorama: mucho dinero, mucho ruido",
+      "puntos": [
+       "La IA atrae capital como pocas industrias, y eso genera titulares que inflan expectativas.",
+       "Un titular de inversión no dice si el negocio funciona.",
+       "Para un líder, lo útil es entender la lógica de quien invierte."
+      ]
+     },
+     {
+      "titulo": "La Ronda 0 explicada sin jerga",
+      "puntos": [
+       "Es la primera etapa de financiamiento, pequeña, para probar la idea.",
+       "Su objetivo es demostrar que alguien paga o quiere pagar.",
+       "Ejemplo: un equipo de 10 personas que consigue tres clientes piloto tiene una señal real que un fondo sí considera."
+      ]
+     },
+     {
+      "titulo": "Product market fit: la prueba que importa",
+      "puntos": [
+       "Significa que tu producto resuelve un problema que la gente ya quiere solucionar.",
+       "Señales: clientes que regresan, que recomiendan y que no quieren perder el servicio.",
+       "Caso de referencia: Lluís Cañadell habla de crecer de 4 a 15 millones de ARR (ingresos anuales recurrentes) cuando lo encontró."
+      ]
+     },
+     {
+      "titulo": "Talento o viralidad: a qué le apostamos",
+      "puntos": [
+       "Un video viral trae atención, pero no garantiza clientes que paguen.",
+       "Un equipo sólido con problema claro suele sobrevivir más que una moda.",
+       "Pregunta siempre quién es el equipo y qué problema resolvió antes."
+      ]
+     },
+     {
+      "titulo": "Cómo evaluar una startup en 3 preguntas",
+      "puntos": [
+       "¿Quién paga hoy y cuánto?",
+       "¿Qué pasa si la tecnología de IA cambia o se abarata mañana?",
+       "¿Qué tan dependiente es de un solo cliente o de una sola plataforma?"
+      ]
+     }
+    ],
+    "ejemplo": "Imagina a un director de operaciones que recibe una propuesta para invertir en una startup de IA de atención al cliente. En vez de fijarse en la demo, pide tres clientes que paguen, su tasa de renovación y el tiempo que tardan en implementarla. Si las respuestas son claras, sigue; si no, pasa al siguiente proyecto.",
+    "cta": "Si quieres la lista completa de preguntas para evaluar startups, suscríbete y déjame tu comentario con el sector que te interesa."
+   },
+   "linkedin": {
+    "hook": "Un titular dice que una startup de IA recaudó millones. Yo me pregunto otra cosa: ¿quién le paga hoy?",
+    "slides": [
+     "Las startups de IA están en todas las noticias. Pero el dinero que entra no siempre dice si el negocio funciona.",
+     "Antes de la primera gran ronda existe la Ronda 0: financiamiento pequeño para validar que tu idea tiene demanda real.",
+     "Por ejemplo, un equipo de 10 personas con cinco clientes piloto que pagan tiene más señal que una presentación perfecta sin ingresos.",
+     "Lluís Cañadell habla de pasar de 4 a 15 millones de ARR cuando encontró su product market fit: el producto que el mercado de verdad necesita.",
+     "La viralidad trae atención, pero no garantiza clientes. El talento y el problema bien definido aguantan más tiempo.",
+     "Si evalúas una startup de IA para invertir o para hacer negocio, pregunta: ¿quién paga hoy, qué tan dependiente es de una plataforma y qué pasa si la tecnología cambia mañana?"
+    ],
+    "pregunta": "En tu empresa, ¿qué prueba pedirías antes de invertir en una startup de IA: clientes que paguen, resultados medibles o el equipo?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos evaluar las startups de IA por su evidencia de clientes que pagan, no por sus titulares, porque el dinero de una ronda no garantiza que el negocio funcione.",
+    "argumentos": [
+     "La Ronda 0 y el product market fit son las señales reales de que una idea sirve, y se pueden revisar antes de invertir.",
+     "Los titulares sobre rondas millonarias y viralidad pueden inflar expectativas y distraer de la pregunta clave: ¿quién paga hoy?",
+     "Un proceso simple de tres preguntas le permite a un líder decidir con criterio aunque no sea experto en tecnología."
+    ],
+    "semana": "Esta semana elige una startup o proveedor de IA que te hayan propuesto, y pide tres cosas: clientes actuales que paguen, tasa de renovación y un caso medible. Anota las respuestas y compáralas antes de decidir."
+   },
+   "by": "teacher",
+   "cost_usd": 0.01775
   }
  },
  "copilotos": {
@@ -717,6 +2192,104 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.00839
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "¿Tu asistente de IA te responde con un muro de texto que nadie lee?",
+    "beats": [
+     {
+      "texto": "Muro de texto = tiempo perdido",
+      "voz": "Si le pides algo a tu asistente de IA y te regresa párrafos enormes, no es que la herramienta sea mala. Es que no le dijiste cómo quieres la respuesta."
+     },
+     {
+      "texto": "Dile el formato: 'Dame 3 viñetas, máximo 5 líneas'",
+      "voz": "Antes de preguntar, agrega una instrucción corta: cuántos puntos quieres, de qué largo y en qué orden. Por ejemplo, si un equipo de 10 personas pide resúmenes de juntas, con esa sola línea todos reciben lo mismo, listo para leer en un minuto."
+     },
+     {
+      "texto": "Y cuidado con las preguntas de cortesía",
+      "voz": "Lo mismo pasa con los asistentes de voz: a veces terminan con '¿Quieres saber más?' y te obligan a responder algo que no necesitas. Si te molesta, dilo en la instrucción: 'Responde solo lo que pregunté, sin cierre'."
+     },
+     {
+      "texto": "Prueba esto hoy",
+      "voz": "Escribe tu formato favorito una vez, guárdalo y úsalo cada semana. Sigue para más formas prácticas de usar IA en tu negocio."
+     }
+    ],
+    "cta": "Comenta 'FORMATO' y te comparto la lista de instrucciones que usamos para resúmenes y correos."
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "Tu asistente de IA no es el problema: el problema es cómo le pides las cosas",
+    "hook": "Muchos líderes dicen que la IA 'no sirve'. Casi siempre, el asistente sí sirve; lo que falta es una instrucción clara.",
+    "secciones": [
+     {
+      "titulo": "Qué son los copilotos y asistentes de trabajo",
+      "puntos": [
+       "Son herramientas que te ayudan a redactar, resumir y buscar información dentro de tu trabajo diario.",
+       "No piensan por ti: responden según lo que les pides y cómo lo pides.",
+       "Hoy ya hay apps de chatbot en celulares Android e iPhone, así que el acceso no es el obstáculo."
+      ]
+     },
+     {
+      "titulo": "El error más común: pedir sin formato",
+      "puntos": [
+       "Cuando no defines formato, la IA te entrega un bloque largo de texto.",
+       "Solución simple: indica cantidad de puntos, extensión y tono antes de tu pregunta.",
+       "Ejemplo: 'Resume en 3 viñetas, para un director que tiene 2 minutos'."
+      ]
+     },
+     {
+      "titulo": "Cuando la respuesta suena a conversación sin fin",
+      "puntos": [
+       "Algunos asistentes de voz cierran cada respuesta con preguntas de seguimiento que no aportan.",
+       "Puedes pedir respuestas directas y sin cierre al inicio de la conversación.",
+       "Esto ahorra tiempo sobre todo en reuniones o cuando usas el asistente con prisa."
+      ]
+     },
+     {
+      "titulo": "Cómo crear tus propias instrucciones reutilizables",
+      "puntos": [
+       "Escribe 3 o 4 plantillas para tareas que repites: resumen de junta, correo a cliente, reporte semanal.",
+       "Guárdalas en un documento compartido para que todo el equipo las use igual.",
+       "Revisa cada mes qué salió bien y ajusta."
+      ]
+     },
+     {
+      "titulo": "Cuándo sí conviene algo más avanzado",
+      "puntos": [
+       "Si tu negocio quiere conectar la IA con su propio sitio o sus propios documentos, la pregunta correcta es si ese cambio resuelve un problema real.",
+       "Antes de construir algo, prueba con instrucciones simples durante 2 semanas.",
+       "Si el problema persiste, entonces sí vale la pena invertir en una solución más completa."
+      ]
+     }
+    ],
+    "ejemplo": "Por ejemplo, un equipo de 10 personas de ventas pedía a su asistente 'un resumen de la reunión'. Recibía párrafos de 400 palabras. Al cambiar la instrucción a 'Dame 3 acuerdos y 2 pendientes, máximo 80 palabras', el resumen pasó a ser algo que todos leían en la misma reunión.",
+    "cta": "Descarga la plantilla de instrucciones en la descripción y cuéntanos en comentarios qué tarea te gustaría automatizar primero."
+   },
+   "linkedin": {
+    "hook": "Tu asistente de IA no te responde mal. Tú le pides mal. Y casi nadie te lo dice.",
+    "slides": [
+     "Muchos directivos prueban un asistente de IA una vez, reciben un texto larguísimo y concluyen que 'no sirve'.",
+     "El problema casi nunca es la herramienta. Es la falta de instrucciones claras sobre formato, extensión y tono.",
+     "Ejemplo: un equipo de 10 personas pedía resúmenes de juntas sin formato. Al agregar 'máximo 3 acuerdos y 2 pendientes', la respuesta se volvió útil en minutos.",
+     "Otro detalle: algunos asistentes de voz terminan cada respuesta con preguntas de seguimiento. Puedes pedir que respondan solo lo que preguntaste.",
+     "Lo que sí funciona: escribe 3 plantillas para tareas que repites y guárdalas para todo el equipo.",
+     "Antes de pensar en soluciones más complejas, prueba durante 2 semanas con instrucciones simples."
+    ],
+    "pregunta": "¿Cuál es la tarea que más tiempo te come hoy y que te gustaría que tu asistente resolviera bien?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos empezar con instrucciones claras en tus asistentes de IA antes de invertir en herramientas más complejas, porque el mayor cambio de productividad hoy viene de pedir mejor, no de comprar más.",
+    "argumentos": [
+     "Muchas frustraciones con la IA vienen de respuestas mal formateadas o demasiado largas, y se corrigen en minutos con una instrucción clara.",
+     "Las plantillas reutilizables hacen que todo el equipo trabaje igual y que los resultados sean predecibles.",
+     "Probar con lo que ya tienes durante 2 semanas te dice si realmente necesitas algo más avanzado, y evita gastar en problemas que no existen."
+    ],
+    "semana": "Esta semana, elige una tarea repetitiva, escribe una instrucción con formato, extensión y tono, úsala 5 veces y anota cuántos minutos ahorraste; luego compártela con tu equipo."
+   },
+   "by": "teacher",
+   "cost_usd": 0.0186
   }
  },
  "modelos-nuevos": {
@@ -762,6 +2335,104 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.00775
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "Esta semana salieron 6 modelos de IA nuevos y casi nadie en tu empresa se dio cuenta",
+    "beats": [
+     {
+      "texto": "Meta lanzó sus modelos más capaces hasta ahora",
+      "voz": "Meta presentó modelos que pueden ejecutar tareas complejas, no solo responder preguntas"
+     },
+     {
+      "texto": "DeepSeek también actualizó su modelo Flash",
+      "voz": "Y DeepSeek sacó una versión más rápida y más barata que compite directo con los gigantes"
+     },
+     {
+      "texto": "¿Y tu equipo sigue usando el mismo de hace 6 meses?",
+      "voz": "El riesgo no es elegir mal un modelo, es no revisar nunca si el que usas sigue siendo el mejor"
+     },
+     {
+      "texto": "Compara antes de que te comparen",
+      "voz": "Por ejemplo, un equipo de 10 personas puede perder horas cada semana usando un modelo viejo cuando ya existe uno más rápido y barato"
+     }
+    ],
+    "cta": "Guarda este video y compártelo con quien decide qué IA usa tu empresa"
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "6 modelos de IA nuevos: cuál le conviene a tu empresa (y cuál no)",
+    "hook": "Si tu empresa sigue usando el mismo modelo de IA de hace meses, probablemente estás pagando de más o perdiendo tiempo",
+    "secciones": [
+     {
+      "titulo": "Qué pasó esta semana",
+      "puntos": [
+       "Meta lanzó sus modelos más capaces hasta ahora para tareas complejas",
+       "DeepSeek actualizó su modelo Flash con mejor velocidad y costo",
+       "Salieron en total 6 modelos nuevos en pocos días"
+      ]
+     },
+     {
+      "titulo": "Por qué esto le importa a un ejecutivo, no solo a un programador",
+      "puntos": [
+       "Cada modelo nuevo puede significar menos costo por el mismo trabajo",
+       "Algunos son mejores para tareas largas y complejas, no solo para chatear",
+       "Elegir el modelo correcto es decisión de negocio, no solo técnica"
+      ]
+     },
+     {
+      "titulo": "El error más común",
+      "puntos": [
+       "Las empresas eligen un modelo una vez y nunca más lo revisan",
+       "Se quedan pagando de más por costumbre, no por necesidad",
+       "El miedo a 'romper algo' frena la actualización"
+      ]
+     },
+     {
+      "titulo": "Cómo comparar sin ser programador",
+      "puntos": [
+       "Usa el mismo prompt en ChatGPT, Gemini, Claude y el nuevo modelo",
+       "Compara tiempo de respuesta y calidad del resultado final",
+       "Pide a tu equipo técnico un reporte simple cada trimestre"
+      ]
+     },
+     {
+      "titulo": "Caso concreto",
+      "puntos": [
+       "Un equipo de 10 personas que automatiza reportes puede pasar de un modelo lento a uno tipo Flash y recortar el tiempo de espera por tarea a la mitad",
+       "Eso no cambia la calidad del resultado, pero sí la velocidad del equipo"
+      ]
+     }
+    ],
+    "ejemplo": "Un equipo de 10 personas que usa IA para generar reportes internos prueba el mismo prompt en el modelo viejo y en el nuevo Flash de DeepSeek, y nota que el nuevo responde más rápido sin perder calidad",
+    "cta": "Si quieres saber qué modelo le conviene a tu equipo, suscríbete, cada semana reviso esto por ti"
+   },
+   "linkedin": {
+    "hook": "Esta semana lanzaron 6 modelos de IA nuevos. Tu empresa probablemente sigue usando el de hace 6 meses.",
+    "slides": [
+     "Meta presentó sus modelos más capaces hasta ahora, pensados para tareas complejas, no solo respuestas simples",
+     "DeepSeek actualizó su modelo Flash: más rápido, más barato",
+     "En total, 6 modelos nuevos salieron en pocos días",
+     "El problema no es la tecnología, es que las empresas eligen un modelo una vez y nunca lo vuelven a revisar",
+     "Eso significa pagar de más por costumbre, no por necesidad",
+     "Por ejemplo, un equipo de 10 personas que usa IA para reportes puede recortar a la mitad el tiempo de espera solo cambiando de modelo",
+     "No necesitas ser programador para comparar: el mismo prompt, distintos modelos, y mira la diferencia"
+    ],
+    "pregunta": "¿Cuándo fue la última vez que tu empresa revisó si sigue usando el mejor modelo de IA disponible?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos revisar cada trimestre qué modelo de IA usa tu equipo, porque el panorama cambia cada pocas semanas y quedarte con el mismo modelo por costumbre te cuesta tiempo y dinero",
+    "argumentos": [
+     "Meta y DeepSeek lanzaron modelos nuevos esta misma semana, más capaces y algunos más baratos",
+     "El riesgo no es cambiar de modelo, es no revisar nunca si el que usas sigue siendo el adecuado",
+     "No se necesita ser programador para comparar: el mismo prompt en distintas herramientas te muestra la diferencia"
+    ],
+    "semana": "Esta semana, pide a tu equipo que corra la misma tarea en dos o tres modelos distintos (el que ya usan y uno nuevo) y comparen tiempo y calidad del resultado"
+   },
+   "by": "teacher",
+   "cost_usd": 0.01248
   }
  },
  "vibe-coding": {
@@ -807,6 +2478,105 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.00742
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "¿Sabías que ya puedes crear una app sin saber programar?",
+    "beats": [
+     {
+      "texto": "El vibe coding está en todas partes",
+      "voz": "Cada vez más gente usa IA para crear apps sin escribir código desde cero."
+     },
+     {
+      "texto": "Pero cuidado: no es magia",
+      "voz": "Un fundador documentó 225 días intentando llegar a un millón de dólares con una app creada así, y apenas lleva 210 mil en ingresos recurrentes."
+     },
+     {
+      "texto": "La diferencia está en el proceso",
+      "voz": "No es solo pedirle a la IA que programe, es entender qué proceso de tu negocio quieres resolver antes de escribir el primer prompt."
+     },
+     {
+      "texto": "Empieza por un problema real",
+      "voz": "Si tu equipo pierde horas en una tarea repetitiva, ahí está tu primera app con IA."
+     }
+    ],
+    "cta": "Síguenos para ver cómo transformar procesos de tu empresa con IA paso a paso."
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "Vibe coding: cómo crear apps con IA sin ser programador (y qué NO esperar)",
+    "hook": "Todo el mundo habla de vibe coding, pero casi nadie te dice cuánto tiempo y dinero toma realmente llegar a algo útil.",
+    "secciones": [
+     {
+      "titulo": "Qué es el vibe coding en términos simples",
+      "puntos": [
+       "Es describirle a una IA lo que quieres y que ella genere el código",
+       "No necesitas saber programar para empezar",
+       "Herramientas como Claude o Codex ya permiten esto desde una conversación"
+      ]
+     },
+     {
+      "titulo": "El caso real detrás del hype",
+      "puntos": [
+       "Un creador documentó públicamente 225 días construyendo una app con IA para llegar a un millón de dólares",
+       "Después de más de 200 días, su ingreso recurrente anual era de 210,364 dólares",
+       "Esto muestra que vibe coding ayuda a construir rápido, pero el negocio sigue tomando tiempo"
+      ]
+     },
+     {
+      "titulo": "Por qué las empresas grandes también lo usan",
+      "puntos": [
+       "Equipos de ingeniería en compañías como Anthropic están rediseñando cómo controlan y mantienen código generado con IA",
+       "Proyectos como Chromium ya usan IA para mantener bases de código gigantes",
+       "Si los equipos técnicos más grandes del mundo lo adoptan, es porque funciona, pero con procesos claros"
+      ]
+     },
+     {
+      "titulo": "Los errores más comunes al empezar",
+      "puntos": [
+       "Pedirle a la IA que resuelva todo sin definir el problema de negocio primero",
+       "No revisar lo que la IA genera antes de usarlo en producción",
+       "Confundir crear un prototipo rápido con tener un producto listo para vender"
+      ]
+     },
+     {
+      "titulo": "Cómo aplicarlo en tu empresa esta semana",
+      "puntos": [
+       "Elige un proceso manual y repetitivo de tu equipo",
+       "Descríbeselo a una IA como si le explicaras a una persona nueva",
+       "Pide una primera versión simple, pruébala con tu equipo antes de escalarla"
+      ]
+     }
+    ],
+    "ejemplo": "Un equipo de 10 personas en una empresa de servicios usó IA para crear una herramienta interna que ordenaba solicitudes de clientes, algo que antes hacían a mano en una hoja de cálculo.",
+    "cta": "Si quieres ver el proceso completo de cómo una empresa transforma un proceso con IA, mira el video que tenemos fijado en nuestro canal."
+   },
+   "linkedin": {
+    "hook": "Vibe coding no es magia: es describirle a una IA lo que necesitas y dejar que construya contigo.",
+    "slides": [
+     "Cada vez más líderes de empresa están probando crear herramientas internas usando solo IA, sin contratar un equipo de desarrollo.",
+     "Un creador documentó 225 días intentando construir una app con IA hasta llegar a un millón de dólares en ingresos. Hoy lleva 210,364 dólares de ingreso recurrente anual.",
+     "Ese dato importa porque muestra algo clave: el vibe coding acelera la construcción, pero el negocio sigue tomando tiempo y disciplina.",
+     "Mientras tanto, equipos de ingeniería grandes, como los que trabajan en Chromium, ya usan IA para mantener código de proyectos enormes.",
+     "Si las empresas más grandes del mundo lo están adoptando en serio, no es una moda: es una nueva forma de trabajar.",
+     "La clave no está en la herramienta, está en definir bien el problema de negocio antes de pedirle algo a la IA.",
+     "Empieza pequeño: un proceso manual, una conversación con la IA, y una primera versión que pruebes con tu equipo."
+    ],
+    "pregunta": "¿Tu equipo ya probó crear algo con IA sin depender de un programador?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos explorar vibe coding, pero con expectativas realistas, porque es una herramienta de velocidad, no un atajo al éxito",
+    "argumentos": [
+     "Grandes equipos de ingeniería, como los que trabajan en Chromium y en Anthropic, ya están incorporando IA para mantener y escribir código, lo que confirma que es una tendencia seria y no pasajera",
+     "El caso público de un creador que lleva 225 días documentando su intento de llegar a un millón de dólares con una app hecha con IA muestra que construir rápido no significa vender rápido",
+     "El formato que mejor funciona para explicar esto es alguien hablando directo a cámara, mostrando el proceso paso a paso, no solo el resultado final"
+    ],
+    "semana": "Elige un proceso manual de tu negocio, descríbeselo a una IA como si fuera un empleado nuevo, y pide una primera versión simple para probar con tu equipo antes de invertir más tiempo."
+   },
+   "by": "teacher",
+   "cost_usd": 0.01345
   }
  },
  "seguridad-riesgos": {
@@ -852,6 +2622,105 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.00815
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "Anthropic dijo que su IA podría replicarse sola en dispositivos conectados a internet",
+    "beats": [
+     {
+      "texto": "El riesgo real",
+      "voz": "Anthropic advirtió que modelos de IA podrían copiarse solos en dispositivos conectados a internet"
+     },
+     {
+      "texto": "No es ciencia ficción",
+      "voz": "Esto ya preocupa a empresas de seguridad como Reach Security, que levantó más de 50 millones de dólares para automatizar defensas"
+     },
+     {
+      "texto": "Qué significa para tu empresa",
+      "voz": "Si usas IA sin control de accesos ni monitoreo, estás expuesto a que se use en tu contra, no solo a favor"
+     },
+     {
+      "texto": "La pregunta que debes hacerte",
+      "voz": "¿Sabes qué datos tiene acceso tu IA y quién puede usarla hoy en tu empresa?"
+     }
+    ],
+    "cta": "Síguenos para la serie completa sobre seguridad en IA para empresas"
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "La IA ya es un riesgo de seguridad: lo que todo ejecutivo debe saber",
+    "hook": "Anthropic advirtió que su propia IA podría replicarse sola. Si una empresa que la crea lo dice, tú deberías preocuparte más",
+    "secciones": [
+     {
+      "titulo": "El riesgo que nadie te está contando",
+      "puntos": [
+       "Anthropic alertó sobre auto-replicación de modelos en dispositivos conectados",
+       "No es teoría: ya hay startups que facturan por defender empresas de esto",
+       "El error típico: tratar la IA como un software más, sin controles"
+      ]
+     },
+     {
+      "titulo": "Por qué esto te afecta aunque no seas tech",
+      "puntos": [
+       "Si tu equipo usa ChatGPT o Claude sin reglas, ya hay un riesgo activo",
+       "LLMs pueden ser 'armados' por actores maliciosos para ataques dirigidos",
+       "Startups en India y otros mercados emergentes ya están siendo blanco de esto"
+      ]
+     },
+     {
+      "titulo": "Los 8 puntos de seguridad que toda empresa debería revisar",
+      "puntos": [
+       "Control de acceso a modelos de IA",
+       "Monitoreo de qué datos entran y salen",
+       "Políticas claras de uso para empleados",
+       "Revisión periódica de proveedores de IA"
+      ]
+     },
+     {
+      "titulo": "El dinero habla: la seguridad en IA ya es un negocio serio",
+      "puntos": [
+       "Reach Security captó más de 50 millones de dólares para automatizar defensas empresariales",
+       "Esto confirma que el riesgo es real y las grandes empresas ya están invirtiendo en protegerse"
+      ]
+     },
+     {
+      "titulo": "Qué hacer esta semana en tu empresa",
+      "puntos": [
+       "Audita qué herramientas de IA usa tu equipo",
+       "Define quién tiene acceso y a qué información",
+       "Pregunta a tu proveedor de IA qué medidas de seguridad tiene"
+      ]
+     }
+    ],
+    "ejemplo": "Por ejemplo, un equipo de 10 personas que usa IA para atención al cliente sin revisar permisos, expone datos de clientes sin saberlo",
+    "cta": "Suscríbete para la serie completa de seguridad en IA para líderes"
+   },
+   "linkedin": {
+    "hook": "Anthropic dijo que su IA podría replicarse sola en dispositivos conectados a internet. Léelo dos veces.",
+    "slides": [
+     "La empresa que crea la IA más avanzada del mundo está advirtiendo sobre sus propios riesgos",
+     "Esto no es alarmismo: ya existen startups dedicadas 100% a defender empresas de esto",
+     "Reach Security levantó más de 50 millones de dólares para automatizar defensas empresariales contra IA",
+     "En India ya se habla de la 'weaponización' de modelos de lenguaje contra startups",
+     "Si tu empresa usa IA sin control de accesos, ya tienes un riesgo activo, aunque no lo veas",
+     "La seguridad en IA dejó de ser un tema de 'después'. Ya es un tema de ahora",
+     "Pregúntate: ¿quién en tu empresa puede acceder a tu IA y qué datos puede ver?"
+    ],
+    "pregunta": "¿Tu empresa ya tiene reglas claras de seguridad para el uso de IA, o todavía no es prioridad?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos que toda empresa que use IA haga una auditoría de seguridad esta semana, porque el riesgo ya no es hipotético",
+    "argumentos": [
+     "Anthropic, el creador de uno de los modelos más avanzados, ya advirtió sobre riesgos de auto-replicación",
+     "Startups de seguridad como Reach Security ya captan millones de dólares porque las empresas están pagando por protegerse",
+     "En mercados como India ya se reporta el uso malicioso de modelos de lenguaje contra negocios"
+    ],
+    "semana": "Haz un inventario simple: qué herramientas de IA usa tu equipo, quién tiene acceso y qué datos pueden ver o mover"
+   },
+   "by": "teacher",
+   "cost_usd": 0.01207
   }
  },
  "infra-costos": {
@@ -897,6 +2766,99 @@
    "platform": "Instagram",
    "by": "teacher",
    "cost_usd": 0.00835
+  },
+  "guiones": {
+   "reel": {
+    "duration": "45 s",
+    "hook": "Tu empresa está pagando de más por IA y ni se ha dado cuenta",
+    "beats": [
+     {
+      "texto": "El costo de IA no es parejo",
+      "voz": "No todo modelo de IA cuesta lo mismo ni rinde igual, y muchas empresas eligen el más caro sin probar antes"
+     },
+     {
+      "texto": "Prueba antes de comprar",
+      "voz": "Hoy existen herramientas que te dejan medir qué tan rápido corre un modelo antes de invertir en hardware o nube"
+     },
+     {
+      "texto": "Menos tokens, mismo resultado",
+      "voz": "En un hackathon reciente, un equipo mostró cómo usando menos tokens al desarrollar lograban lo mismo gastando menos"
+     },
+     {
+      "texto": "La pregunta no es si usar IA, es cuánto te está costando usarla mal",
+      "voz": "El problema no es adoptar IA, es adoptarla sin medir el gasto real detrás"
+     }
+    ],
+    "cta": "Síguenos para que aprendas a usar IA sin quemar tu presupuesto"
+   },
+   "largo": {
+    "duration": "5-8 min",
+    "title": "Los bancos ya están nerviosos con la deuda de IA: lo que tu empresa debe aprender",
+    "hook": "Hay bancos que financiaron centros de datos para IA y ahora están tratando de deshacerse de esa deuda. Si los grandes dudan, tú deberías medir mejor tus costos",
+    "secciones": [
+     {
+      "titulo": "Por qué esto te importa aunque no uses centros de datos",
+      "puntos": [
+       "La euforia de invertir en IA sin medir retorno no es solo de gobiernos y bancos, pasa en empresas medianas",
+       "Cuando los que prestan el dinero se ponen nerviosos, es señal de que el gasto no está dando resultados claros"
+      ]
+     },
+     {
+      "titulo": "El error más común en empresas de la región",
+      "puntos": [
+       "Contratar la nube o el modelo más potente sin validar si lo necesitas",
+       "No medir cuántos tokens o recursos realmente consume tu operación"
+      ]
+     },
+     {
+      "titulo": "Cómo probar antes de pagar",
+      "puntos": [
+       "Existen herramientas que simulan qué tan rápido correría un modelo en tu hardware antes de comprar nada",
+       "Esto evita comprar de más o de menos"
+      ]
+     },
+     {
+      "titulo": "El caso del hackathon: menos tokens, mismo resultado",
+      "puntos": [
+       "Un equipo desarrolló una solución optimizando el uso de tokens durante el desarrollo",
+       "El resultado final fue el mismo, pero el costo de construcción bajó"
+      ]
+     },
+     {
+      "titulo": "Señales del mercado que confirman esto",
+      "puntos": [
+       "Hay fabricantes de chips lanzando opciones más accesibles para correr IA localmente",
+       "Las órdenes fuertes en la cadena de semiconductores muestran que el gasto en IA sigue, pero cada vez más gente pide eficiencia, no solo potencia"
+      ]
+     }
+    ],
+    "ejemplo": "Un equipo en un hackathon de 30X mostró una demo donde, ajustando cómo construían con IA, lograban usar menos tokens sin perder calidad en el resultado final",
+    "cta": "Antes de tu próxima inversión en IA, mide. Suscríbete para la siguiente parte de esta serie sobre costos reales de IA"
+   },
+   "linkedin": {
+    "hook": "Los bancos que financiaron la fiebre de los centros de datos de IA ahora quieren deshacerse de esa deuda.",
+    "slides": [
+     "Cuando quienes prestan el dinero empiezan a dudar, es momento de revisar tus propios números.",
+     "En muchas empresas de la región pasa lo mismo: se compra la licencia o la nube más cara sin medir si realmente se necesita.",
+     "Hoy existen formas de probar qué tan rápido correría un modelo de IA antes de invertir en hardware.",
+     "En un hackathon reciente de 30X, un equipo mostró cómo optimizar el uso de tokens durante el desarrollo, logrando el mismo resultado con menos gasto.",
+     "No se trata de dejar de invertir en IA. Se trata de invertir con datos, no con moda.",
+     "La infraestructura de IA sigue creciendo (hay nuevos chips y GPUs más accesibles saliendo al mercado), pero la eficiencia ya es tan importante como la potencia."
+    ],
+    "pregunta": "¿Tu empresa ha medido cuánto le cuesta realmente usar IA, o solo contrató 'lo mejor del mercado'?"
+   },
+   "recomendacion": {
+    "duration": "60-90 s",
+    "postura": "Recomendamos medir antes de invertir en infraestructura de IA porque el riesgo de sobrepagar es real y ya hay señales de que hasta los grandes jugadores están nerviosos",
+    "argumentos": [
+     "Hay bancos tratando de soltar deuda de centros de datos de IA que ellos mismos financiaron, señal de que el mercado está revisando sus apuestas",
+     "Existen herramientas para probar el rendimiento de un modelo antes de comprar hardware, úsalas antes de decidir",
+     "Un equipo en un hackathon de 30X demostró que optimizando el uso de tokens se puede lograr el mismo resultado gastando menos"
+    ],
+    "semana": "Esta semana, pide a tu equipo técnico o proveedor que te muestre cuánto están gastando en tokens o nube por proyecto, antes de aprobar el próximo contrato"
+   },
+   "by": "teacher",
+   "cost_usd": 0.01264
   }
  }
 }

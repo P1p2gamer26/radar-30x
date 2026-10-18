@@ -197,6 +197,7 @@ def build(snap: dict | None = None) -> dict:
                  f"formato ganador: {FORMATS.get(why['format_winner'], 'sin datos')}.")
         adapt = dict(adapts.get(slug) or {})
         reel = adapt.pop("adapt_reel", None)
+        guiones = adapt.pop("guiones", None)  # 4 tipos: reel, largo, linkedin, recomendacion
         adapt = adapt or None
         topics.append({
             "slug": slug, "name": t["name"], "stage": etapa,
@@ -207,7 +208,7 @@ def build(snap: dict | None = None) -> dict:
                              "metrics": s["metrics"], "format": labs[s["id"]]["format"], "hook": labs[s["id"]]["hook"],
                              "velocity": vel[s["id"]], "by": labs[s["id"]].get("by")} for s in top],
             "early_label": ETIQUETA_TEMPRANA[etapa],
-            "adapt": adapt, "adapt_reel": reel,  # None = "guion en preparación" (sin plantillas genéricas)
+            "adapt": adapt, "adapt_reel": reel, "guiones": guiones,  # None = "guion en preparación" (sin plantillas genéricas)
         })
 
     # p = puntaje relativo de la semana (min-max entre temas); la decisión usa los umbrales sobre p

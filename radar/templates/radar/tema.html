@@ -164,7 +164,9 @@
       <div>
         <h2>Así lo haría 30X</h2>
         <div class="adapt-card">
+          {% if topic.guiones %}{% include "radar/_guiones4.html" with g=topic.guiones %}{% else %}
           {% include "radar/_guiones.html" with adapt=topic.adapt reel=topic.adapt_reel decision=topic.decision uid="tema" %}
+          {% endif %}
         </div>
       </div>
     </div>

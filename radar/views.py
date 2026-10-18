@@ -54,10 +54,18 @@ def tres_preguntas(topics) -> list:
             for q, t, r, d in cartas]
 
 
+def oportunidades_red() -> list:
+    ruta = settings.DATA_DIR / "oportunidades_red.json"
+    if not ruta.exists():
+        return []
+    return [{**o, "red_nombre": FUENTES.get(o["red"], o["red"])} for o in json.loads(ruta.read_text(encoding="utf-8"))[:6]]
+
+
 def index(request):
     radar = cargar_radar()
+    redes = oportunidades_red()
     rows = plan.filas(radar)
-    return render(request, "radar/index.html", {"radar": radar, "preguntas": tres_preguntas(radar["topics"]),
+    return render(request, "radar/index.html", {"radar": radar, "preguntas": tres_preguntas(radar["topics"]), "redes": redes, "n_redes": len(redes),
                                                 "semana": radar.get("week", "").split("-")[-1], "ejemplos": _ejemplos(radar)[:2], "plan_chat": plan.texto_chat(radar, rows),
                                                 "m": plan.metricas(radar.get("student"))})
 
@@ -111,7 +119,9 @@ def analizar(request):
 
 def como_funciona(request):
     radar = cargar_radar()
-    return render(request, "radar/como_funciona.html", {"radar": radar, "m": plan.metricas(radar.get("student"))})
+    f = settings.DATA_DIR / "llm_vs_student.json"
+    llm_vs = json.loads(f.read_text(encoding="utf-8")) if f.exists() else None  # opcional: lo genera `llm_vs_student`
+    return render(request, "radar/como_funciona.html", {"radar": radar, "m": plan.metricas(radar.get("student")), "llm_vs": llm_vs})
 
 
 def api_radar(request):

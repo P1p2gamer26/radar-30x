@@ -72,7 +72,11 @@ Serie diaria de 14 días por tema = suma de pesos de señales (peso = 1 + log1p(
            "author_mix": {"medio": 0.5, "creador": 0.3}, "formats": {"caso-de-uso": 0.4}, "hooks": {"numero-dato": 0.3}},
    "top_signals": [{"title": "...", "url": "...", "source": "hn", "published_at": "...",
                     "metrics": {}, "format": "...", "hook": "...", "velocity": 12.5}],
-   "adapt": {"title": "...", "hook": "primeros 3 s", "format": "reel-cara", "beats": ["...", "...", "..."], "cta": "..."}
+   "adapt": {"title": "...", "hook": "primeros 3 s", "format": "reel-cara", "beats": ["...", "...", "..."], "cta": "..."},
+   "guiones": {"reel": {"duration": "45 s", "hook": "...", "beats": [{"texto": "en pantalla", "voz": "se dice"}], "cta": "..."},
+               "largo": {"duration": "5-8 min", "title": "...", "hook": "...", "secciones": [{"titulo": "...", "puntos": ["..."]}], "ejemplo": "...", "cta": "..."},
+               "linkedin": {"hook": "...", "slides": ["...5 a 7"], "pregunta": "..."},
+               "recomendacion": {"duration": "60-90 s", "postura": "Recomendamos/No recomendamos ... porque ...", "argumentos": ["...", "...", "..."], "semana": "..."}}
  }]}
 ```
 `topics` ordenado por `p` desc; el frontend muestra los 10 primeros.

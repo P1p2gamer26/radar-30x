@@ -109,6 +109,15 @@ function renderHero(data) {
   renderTitle(n);
   const date = data.generated_at ? new Date(data.generated_at) : new Date();
   const dateStr = date.toLocaleDateString("es-CO", { day: "numeric", month: "long", year: "numeric" });
+  const sub = document.getElementById("hero-sub");
+  if (sub) {
+    const nA = (data.topics || []).filter((t) => t.decision === "Aprender").length;
+    const nR = Number(sub.dataset.redes) || 0;
+    const partes = [];
+    if (nA) partes.push(`y ${nA} más para preparar`);
+    if (nR) partes.push(`${nR} despegan en una red`);
+    sub.textContent = partes.join(" · ");
+  }
   weekEl.textContent = `Semana ${data.week || ""} · ${dateStr}`;
 }
 
@@ -467,27 +476,58 @@ function guionReel(r) {
   ]);
 }
 
+// 4 tipos de guion (reel, largo, linkedin, recomendación): cada uno devuelve [texto para copiar, nodos]
+function guionNodos(tipo, g, extra) {
+  const li = (arr) => el("ol", { class: "beats-list" }, arr.map((x) => el("li", { text: x })));
+  const p = (txt, cls) => el("p", { class: cls || "", text: txt });
+  if (tipo === "reel") {
+    const copy = [`Reel/Short · ${g.duration}`, `Gancho (0-3 s): ${g.hook}`, ...g.beats.map((b, i) => `${i + 1}. En pantalla: ${b.texto} | Voz: ${b.voz}`), `CTA: ${g.cta}`].join("\n");
+    const beats = el("ol", { class: "beats-list" }, g.beats.map((b) => el("li", {}, [el("strong", { text: b.texto }), el("br"), el("span", { class: "guion-meta", text: `Voz: ${b.voz}` })])));
+    const nodes = [p(`Reel / Short · ${g.duration}`, "guion-meta"), p(`Gancho (0-3 s): ${g.hook}`), beats, p(g.cta, "acento")];
+    if (extra && extra.shots) nodes.push(el("details", {}, [el("summary", { text: "Tomas sugeridas" }), guionReel(extra)]));
+    return [copy, nodes];
+  }
+  if (tipo === "largo") {
+    const copy = [g.title, `Video largo · ${g.duration}`, `Gancho: ${g.hook}`, ...g.secciones.map((s, i) => `${i + 1}. ${s.titulo}\n` + s.puntos.map((x) => `   - ${x}`).join("\n")), `Ejemplo: ${g.ejemplo}`, `CTA: ${g.cta}`].join("\n");
+    const secs = el("ol", { class: "beats-list" }, g.secciones.map((s) => el("li", {}, [el("strong", { text: s.titulo }), el("ul", {}, s.puntos.map((x) => el("li", { text: x })))])));
+    return [copy, [p(g.title, "guion-titulo"), p(`YouTube · ${g.duration}`, "guion-meta"), p(`Gancho: ${g.hook}`), secs, p(`Ejemplo: ${g.ejemplo}`), p(g.cta, "acento")]];
+  }
+  if (tipo === "linkedin") {
+    const copy = [g.hook, "", ...g.slides, "", g.pregunta].join("\n");
+    return [copy, [p("Post / carrusel LinkedIn", "guion-meta"), p(g.hook, "guion-titulo"), li(g.slides), p(g.pregunta, "acento")]];
+  }
+  const copy = [`Recomendación · ${g.duration}`, g.postura, ...g.argumentos.map((x, i) => `${i + 1}. ${x}`), `Esta semana: ${g.semana}`].join("\n");
+  return [copy, [p(`Opinión · ${g.duration}`, "guion-meta"), p(g.postura, "guion-titulo"), li(g.argumentos), p(`Esta semana: ${g.semana}`, "acento")]];
+}
+
+const TIPOS_GUION = [["reel", "Reel / Short"], ["largo", "Video largo"], ["linkedin", "Post LinkedIn"], ["recomendacion", "Recomendación"]];
+
 function renderGuiones(topic) {
   const sec = el("div", { class: "panel-section" }, [el("h3", { text: "Así lo haría 30X" })]);
-  if (!topic.adapt) {
+  const gs = topic.guiones;
+  const tipos = gs ? TIPOS_GUION.filter(([k]) => gs[k]) : [];
+  if (!tipos.length) {
     sec.appendChild(el("p", { class: "guion-meta", text: "Guion en preparación." }));
     return sec;
   }
-  const panes = [["LinkedIn / YouTube", guionLinkedin(topic.adapt)]];
-  if (topic.adapt_reel) panes.push(["Reel IG / TikTok", guionReel(topic.adapt_reel)]);
-  else if (topic.decision !== "Descartar") panes.push(["Reel IG / TikTok", el("p", { class: "guion-meta", text: "Guion en preparación." })]);
-  const bar = el("div", { class: "tab-bar", role: "tablist" });
-  const tabs = panes.map(([name, node], i) => {
-    node.hidden = i !== 0;
-    const t = el("button", {
-      type: "button", class: i === 0 ? "tab on" : "tab", role: "tab", text: name,
-      onclick: () => panes.forEach(([, n], j) => { n.hidden = j !== i; tabs[j].classList.toggle("on", j === i); }),
-    });
-    return t;
+  const panes = tipos.map(([k]) => {
+    const [txt, nodes] = guionNodos(k, gs[k], topic.adapt_reel);
+    return el("div", { class: "tab-pane", role: "tabpanel" }, [...nodes, copyBtn(() => txt)]);
   });
+  const bar = el("div", { class: "tab-bar", role: "tablist" });
+  const pick = (i) => panes.forEach((n, j) => { n.hidden = j !== i; tabs[j].classList.toggle("on", j === i); tabs[j].setAttribute("aria-selected", String(j === i)); tabs[j].tabIndex = j === i ? 0 : -1; });
+  const tabs = tipos.map(([, name], i) => el("button", {
+    type: "button", class: "tab", role: "tab", text: name,
+    onclick: () => pick(i),
+    onkeydown: (e) => {
+      const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if (d) { const j = (i + d + tabs.length) % tabs.length; pick(j); tabs[j].focus(); e.preventDefault(); }
+    },
+  }));
   tabs.forEach((t) => bar.appendChild(t));
   sec.appendChild(bar);
-  panes.forEach(([, n]) => sec.appendChild(n));
+  panes.forEach((n) => sec.appendChild(n));
+  pick(0);
   return sec;
 }
 

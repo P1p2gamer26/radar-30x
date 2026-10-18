@@ -823,3 +823,17 @@ pre.guion-oculto { display: none; }
 @keyframes est-in { from { opacity: 0; transform: translateY(6px); } }
 @media (max-width: 700px) { .estrellita-img { width: 60px; height: 60px; } .estrellita-bubble { margin-bottom: 2px; font-size: 0.82rem; } }
 @media (prefers-reduced-motion: reduce) { .estrellita-bubble { animation: none; } }
+
+/* --- guiones: 4 tipos en pestañas --- */
+.tab:focus-visible, .copy-btn:focus-visible { outline: 2px solid var(--lima); outline-offset: 2px; }
+.tab-pane ul { margin: 6px 0 10px 18px; padding: 0; color: var(--gris); }
+.tab-pane details { margin: 10px 0; }
+.tab-pane summary { cursor: pointer; color: var(--gris); font-size: 0.9rem; }
+
+/* --- oportunidades por red / subtítulo del hero --- */
+.hero-sub { margin: 0 0 8px; color: var(--gris); font-size: 1.05rem; }
+.hero-sub:empty { display: none; }
+
+/* El bloque de texto del hero no debe tapar los clics a las estrellas de atrás; solo sus botones y enlaces los reciben. */
+.hero-content { pointer-events: none; }
+.hero-content a, .hero-content button { pointer-events: auto; }

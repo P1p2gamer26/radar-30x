@@ -1,0 +1,59 @@
+{# 4 tipos de guion en pestañas (página del tema). Variable: g (topic.guiones). Autoescape; copiar usa textContent del <pre> oculto. #}
+<div class="tabs" data-tabs>
+  <div class="tab-bar" role="tablist">
+    {% if g.reel %}<button type="button" class="tab on" role="tab" aria-selected="true" data-tab="g-reel">Reel / Short</button>{% endif %}
+    {% if g.largo %}<button type="button" class="tab" role="tab" aria-selected="false" tabindex="-1" data-tab="g-largo">Video largo</button>{% endif %}
+    {% if g.linkedin %}<button type="button" class="tab" role="tab" aria-selected="false" tabindex="-1" data-tab="g-linkedin">Post LinkedIn</button>{% endif %}
+    {% if g.recomendacion %}<button type="button" class="tab" role="tab" aria-selected="false" tabindex="-1" data-tab="g-recomendacion">Recomendación</button>{% endif %}
+  </div>
+  {% if g.reel %}<div class="tab-pane" id="g-reel" role="tabpanel">
+    <p class="guion-meta">Reel / Short · {{ g.reel.duration }}</p>
+    <p><strong class="acento">Gancho (0-3 s):</strong> {{ g.reel.hook }}</p>
+    <ol class="beats-list">{% for b in g.reel.beats %}<li><strong>{{ b.texto }}</strong><br><span class="guion-meta">Voz: {{ b.voz }}</span></li>{% endfor %}</ol>
+    <p class="acento">{{ g.reel.cta }}</p>
+    <pre class="guion-oculto" id="g-reel-txt">Reel/Short · {{ g.reel.duration }}
+Gancho (0-3 s): {{ g.reel.hook }}
+{% for b in g.reel.beats %}{{ forloop.counter }}. En pantalla: {{ b.texto }} | Voz: {{ b.voz }}
+{% endfor %}CTA: {{ g.reel.cta }}</pre>
+    <button type="button" class="copy-btn" data-copy="g-reel-txt">Copiar guion</button>
+  </div>{% endif %}
+  {% if g.largo %}<div class="tab-pane" id="g-largo" role="tabpanel" hidden>
+    <p class="guion-titulo">{{ g.largo.title }}</p>
+    <p class="guion-meta">YouTube · {{ g.largo.duration }}</p>
+    <p><strong class="acento">Gancho:</strong> {{ g.largo.hook }}</p>
+    <ol class="beats-list">{% for s in g.largo.secciones %}<li><strong>{{ s.titulo }}</strong><ul>{% for x in s.puntos %}<li>{{ x }}</li>{% endfor %}</ul></li>{% endfor %}</ol>
+    <p><strong class="acento">Ejemplo:</strong> {{ g.largo.ejemplo }}</p>
+    <p class="acento">{{ g.largo.cta }}</p>
+    <pre class="guion-oculto" id="g-largo-txt">{{ g.largo.title }}
+Video largo · {{ g.largo.duration }}
+Gancho: {{ g.largo.hook }}
+{% for s in g.largo.secciones %}{{ forloop.counter }}. {{ s.titulo }}
+{% for x in s.puntos %}   - {{ x }}
+{% endfor %}{% endfor %}Ejemplo: {{ g.largo.ejemplo }}
+CTA: {{ g.largo.cta }}</pre>
+    <button type="button" class="copy-btn" data-copy="g-largo-txt">Copiar guion</button>
+  </div>{% endif %}
+  {% if g.linkedin %}<div class="tab-pane" id="g-linkedin" role="tabpanel" hidden>
+    <p class="guion-meta">Post / carrusel LinkedIn</p>
+    <p class="guion-titulo">{{ g.linkedin.hook }}</p>
+    <ol class="beats-list">{% for x in g.linkedin.slides %}<li>{{ x }}</li>{% endfor %}</ol>
+    <p class="acento">{{ g.linkedin.pregunta }}</p>
+    <pre class="guion-oculto" id="g-linkedin-txt">{{ g.linkedin.hook }}
+
+{% for x in g.linkedin.slides %}{{ x }}
+{% endfor %}
+{{ g.linkedin.pregunta }}</pre>
+    <button type="button" class="copy-btn" data-copy="g-linkedin-txt">Copiar guion</button>
+  </div>{% endif %}
+  {% if g.recomendacion %}<div class="tab-pane" id="g-recomendacion" role="tabpanel" hidden>
+    <p class="guion-meta">Opinión · {{ g.recomendacion.duration }}</p>
+    <p class="guion-titulo">{{ g.recomendacion.postura }}</p>
+    <ol class="beats-list">{% for x in g.recomendacion.argumentos %}<li>{{ x }}</li>{% endfor %}</ol>
+    <p class="acento">Esta semana: {{ g.recomendacion.semana }}</p>
+    <pre class="guion-oculto" id="g-recomendacion-txt">Recomendación · {{ g.recomendacion.duration }}
+{{ g.recomendacion.postura }}
+{% for x in g.recomendacion.argumentos %}{{ forloop.counter }}. {{ x }}
+{% endfor %}Esta semana: {{ g.recomendacion.semana }}</pre>
+    <button type="button" class="copy-btn" data-copy="g-recomendacion-txt">Copiar guion</button>
+  </div>{% endif %}
+</div>
