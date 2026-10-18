@@ -1,4 +1,4 @@
-// RadarIA — escena 3D "el universo de RadarIA". ES module, Three.js vía importmap.
+// EstelarIA — escena 3D "el universo de EstelarIA". ES module, Three.js vía importmap.
 // Planetas = redes (de donde llegan las señales); estrellas = temas; cerca del centro = producir ya.
 // Contrato: export function mountScene(canvas, topics, onOpen, sources)
 //   -> { focus(slug), discover(slug, platform), screenPos(slug) }

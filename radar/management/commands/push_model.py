@@ -12,7 +12,7 @@ license: mit
 language: [es, en]
 tags: [text-classification, naive-bayes, content-intelligence, hackathon-30x]
 ---
-# RadarIA: estudiante (Naive Bayes multinomial)
+# EstelarIA: estudiante (Naive Bayes multinomial)
 
 Clasifica titulares y textos de piezas sobre IA en **tema** (20 temas para ejecutivos LatAm), **formato**, **gancho**
 y **encaje ejecutivo** (alto/bajo). Destilado de etiquetas de un LLM profesor ({teacher}) sobre {n} señales públicas

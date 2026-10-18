@@ -1,6 +1,6 @@
-# RadarIA
+# EstelarIA
 
-> Radar + IA: si un tema de IA se está moviendo, RadarIA lo ve venir antes de que todos lo copien.
+> Estelar + IA: EstelarIA encuentra las estrellas nacientes del contenido de IA (los temas que recién empiezan a brillar) antes de que todos las copien.
 
 **Qué temas de IA están despegando en redes, por qué funcionan y cómo los adapta 30X para ejecutivos de LatAm.**
 Hackathon 30X · reto *Radar de contenido*.
@@ -8,7 +8,7 @@ Hackathon 30X · reto *Radar de contenido*.
 - Demo: https://p1p2gamer26.pythonanywhere.com/
 - Video (3 min): se agrega con la entrega
 
-![RadarIA: el radar descubre en vivo qué tema de IA despega y de qué plataforma viene](docs/hero.png)
+![EstelarIA: el radar descubre en vivo qué tema de IA despega y de qué plataforma viene](docs/hero.png)
 
 ## El problema
 El equipo de media de 30X paga scraping (miles de USD al año) que solo trae datos. No dice **por qué** funcionó una pieza, si una tendencia **recién empieza o ya todos la copiaron**, ni si **le sirve a su audiencia**.
