@@ -80,7 +80,17 @@ Corrida 2026-W42 (generada 2026-10-17; datos en `data/`, reproducible sin red). 
 
 **Jev (modelo aliado del reto):** lo intentamos el 18-oct por OpenCode Zen (`jev-1.13-free`): la API pública de Zen solo permite el plan gratis desde la app OpenCode y el cliente `opencode run` no habla el protocolo de Jev (System One), así que no pudimos medirlo a tiempo. Nuestro modelo propio clasifica a USD 0 por pieza y acierta 80 % en el hold-out; comparar Jev en ese mismo hold-out es el siguiente paso.
 
-**Backtest (indicativo):** `python manage.py backtest` corta los datos en el día 7 y compara lo marcado como "empezando" con lo que creció en los días 8-14 (`data/backtest.json`). El radar acierta 2 de 6 marcados (precisión 0,33); ordenar por popularidad acierta 0 de 6; la base al azar es 0,30. Es una sola semana y 6 marcados: una señal, no una prueba.
+**Backtest rodante (`python manage.py backtest --rodante`, `data/backtest.json`):** historia real de 16 semanas (26-jun a 17-oct-2026; Hacker News 36.420 piezas, arXiv 18.682, Wikipedia pageviews; `data/historia/`, descargable con `--descargar`), clasificada por tema con nuestro estudiante (Python puro). 13 cortes semanales (11-jul a 3-oct): en cada uno el radar ve solo datos hasta t y marca temprana/creciendo; verdad = el tema crece >= 1,3 en share de voz en las 2 semanas siguientes vs las 2 anteriores (>= 10 piezas previas). Definiciones fijadas antes de ver resultados. Con k igual al de cada corte:
+
+| Método | Precisión (aciertos/marcados) | IC95 bootstrap |
+|---|---|---|
+| Radar (regla del producto) | 0,121 (4/33) | 0,03-0,25 |
+| Azar (esperanza exacta) | 0,135 | - |
+| Popularidad (volumen 7 d) | 0,030 (1/33) | 0,00-0,10 |
+| Persistencia (lo que ya creció) | 0,121 (4/33) | 0,03-0,26 |
+| Radar top-5 fijo por momentum | 0,123 (8/65) | 0,06-0,19 |
+
+**Resultado honesto: el radar NO supera al azar ni a la persistencia ingenua** (diferencia radar - azar -0,014, IC95 -0,10 a +0,10; vs persistencia 0,00). Sí supera a la popularidad (+0,09; con top-5 +0,11, IC95 0,05 a 0,17), es decir, ordenar por volumen es peor que mirar crecimiento. Lead time: de 12 temas con pico claro, el radar los marcó antes en 9 (mediana 3 semanas, IC95 1-6), pero marcar al azar detectaría ~6 y la persistencia 10: no hay evidencia de anticipación mejor que el azar. Limitaciones: solo HN y arXiv (sin prensa en español ni redes), temas con pocas piezas, el estudiante clasifica sin etiqueta humana, 13 cortes solapados. El backtest anterior de un solo corte (2 de 6) queda en `data/backtest_corte_unico.json`.
 
 ## Integraciones: sacar el plan de la semana
 El plan (temas Recomendar + Aprender con etapa, por qué, guion, reel y plataforma) sale en dos formatos, siempre desde `data/radar.json`:
@@ -176,7 +186,7 @@ python manage.py readme_resultados  # reescribe el bloque Resultados de este REA
 - **Una semana de datos** (2026-W42): crecimiento y etapas salen de una ventana de 14 días.
 - **Hold-out de 234 piezas** (153 en la comparación con el LLM): las cifras de acierto tienen un margen de error amplio.
 - **LinkedIn solo por titulares** de Google News, sin métricas de interacción.
-- **Backtest indicativo**: 6 temas marcados y una sola semana; no mide anticipación en días.
+- **Backtest rodante**: 13 cortes sobre HN + arXiv; el radar no supera al azar ni a la persistencia ingenua (precisión 0,12 vs 0,13); sí supera a ordenar por popularidad.
 - **Jev no medido**: no tuvimos acceso a tiempo.
 - La cascada a un LLM gratis depende de límites de uso y no tiene garantía de servicio.
 
