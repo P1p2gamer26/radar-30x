@@ -10,7 +10,7 @@ from django.conf import settings
 from decision.decide import Question, decide
 
 from . import student
-from .taxonomy import FORMATS, HOOKS, TOPICS, match_topics
+from .taxonomy import FORMATS, HOOKS, TOPICS, match_topics, normalizar
 
 _PII = [(re.compile(r"[\w.+-]+@[\w-]+\.[\w.]+"), "[email]"), (re.compile(r"(?<!\w)@\w{2,}"), "[usuario]"),
         (re.compile(r"\+?\d[\d\s().-]{7,}\d"), "[telefono]"), (re.compile(r"https?://\S+"), "[link]")]
@@ -56,11 +56,34 @@ def clasificar(texto: str) -> dict:
             "cost_usd": round(d.cost_usd, 6)}
 
 
+def palabras_clave(texto: str, topic: str) -> list:
+    """Palabras del texto que más pesaron para el tema (log-verosimilitud vs. las otras clases); si no hay modelo, keywords del tema."""
+    modelo = student.cargar()
+    clases = modelo["tasks"]["topic"] if modelo else {}
+    if topic in clases:
+        otras = [m for c, m in clases.items() if c != topic]
+        peso = {}
+        for t in set(student.tokens(texto)):
+            if "_" in t or t.startswith("src:") or t not in clases[topic]["ll"]:
+                continue
+            peso[t] = clases[topic]["ll"][t] - max(m["ll"].get(t, m["unk"]) for m in otras)
+        top = [t for t, w in sorted(peso.items(), key=lambda kv: -kv[1]) if w > 0][:6]
+        if top:
+            return top
+    norm = normalizar(texto)  # ponytail: keywords de varias palabras se parten en palabras sueltas
+    kws = TOPICS.get(topic, {}).get("keywords", [])
+    return sorted({w for k in kws if k in norm for w in k.split() if len(w) > 2})[:6]
+
+
 def analizar(texto: str) -> dict:
     from .views import cargar_radar
 
-    r = clasificar(limpiar(texto))
-    tema = next((t for t in cargar_radar().get("topics", []) if t["slug"] == r["topic"]), None)
+    limpio = limpiar(texto)
+    r = clasificar(limpio)
+    radar = cargar_radar()
+    r["texto_limpio"] = limpio
+    r["claves"] = palabras_clave(limpio, r["topic"])
+    tema = next((t for t in radar.get("topics", []) if t["slug"] == r["topic"]), None)
     momentum = tema["momentum"] if tema else 0.0
     p_raw = round(0.5 * momentum + 0.5 * r["exec_fit"], 3)
     crudos = [t["p_raw"] for t in cargar_radar().get("topics", []) if "p_raw" in t]  # mismo min-max semanal del radar
@@ -80,4 +103,11 @@ def analizar(texto: str) -> dict:
     if tema and tema["why"].get("format_winner") and tema["why"]["format_winner"] != r["format"]:
         r["reason"] += f" En este tema funciona mejor: {FORMATS.get(tema['why']['format_winner'])}."
     r["adapt"] = tema["adapt"] if tema else None
+    r["stage"], r["growth"] = etapa, (tema["growth"] if tema else None)
+    r["slug_ok"] = tema is not None
+    r["similares"] = sorted(tema["top_signals"], key=lambda s: -s.get("velocity", 0))[:3] if tema else []
+    bench = radar.get("benchmark_30x") or []
+    r["benchmark"] = next((b for b in bench if b["format"] == r["format"]), None) or next((b for b in bench if b["hook"] == r["hook"]), None) or (bench[0] if bench else None)
+    r["momento_pct"] = round(min(1.0, (tema["growth"] if tema else 0) / 2) * 100)
+    r["fit_pct"], r["conf_pct"] = round(r["exec_fit"] * 100), round(r["confidence"] * 100)
     return r

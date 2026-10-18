@@ -142,3 +142,17 @@ def test_apify_mapea_y_no_guarda_handles_de_terceros():
 def test_apify_sin_token_devuelve_vacio(monkeypatch):
     monkeypatch.delenv("APIFY_TOKEN", raising=False)
     assert sources.fetch_instagram(AHORA) == [] and sources.fetch_tiktok(AHORA) == []
+
+
+def test_escaner_devuelve_tema_decision_adapt_y_similares(client, settings, db):
+    from django.core.cache import cache
+    cache.clear()
+    settings.DECISION_MODE = "replay"  # usa data/ real: radar.json + student.json
+    r = client.post("/analizar/", {"texto": "Así usamos agentes de IA para vender más y calificar prospectos en ventas", "plataforma": "LinkedIn"})
+    assert r.status_code == 200
+    res = r.context["resultado"]
+    assert res["topic"] and res["decision"] in ("Recomendar", "Aprender", "Descartar") and res["claves"]
+    assert res["adapt"] and len(res["similares"]) == 3 and res["benchmark"]
+    html = r.content.decode()
+    assert "Copiar guion" in html and "Ver el tema en el radar" in html and "Escanear" in html
+    cache.clear()

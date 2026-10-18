@@ -35,18 +35,39 @@ def tema(request, slug):
     return render(request, "radar/tema.html", {"radar": radar, "topic": topic})
 
 
+PLATAFORMAS = ("LinkedIn", "Instagram", "TikTok", "YouTube", "Otro")
+
+
+def _ejemplos(radar) -> list:
+    """Un título real por plataforma (de temas distintos) para el 'Prueba con…'."""
+    out, usadas = [], set()
+    for plat in ("linkedin", "instagram", "tiktok", "youtube"):
+        for t in radar.get("topics", []):
+            if t["slug"] in usadas:
+                continue
+            s = next((s for s in t["top_signals"] if s["source"] == plat and 25 <= len(s["title"]) <= 140), None)
+            if s:
+                out.append({"texto": s["title"], "plataforma": PLATAFORMAS[("linkedin", "instagram", "tiktok", "youtube").index(plat)]})
+                usadas.add(t["slug"])
+                break
+    return out
+
+
 def analizar(request):
-    texto, resultado = "", None
+    radar = cargar_radar()
+    ctx = {"radar": radar, "texto": "", "resultado": None, "plataformas": PLATAFORMAS, "plataforma": "Otro",
+           "ejemplos": _ejemplos(radar)}
     if request.method == "POST":
         if _excede_limite(request):
-            return render(request, "radar/analizar.html", {"radar": cargar_radar(), "texto": "", "resultado": None,
-                                                           "error": "Llegaste al límite de 20 análisis por hora. Vuelve en un rato."},
-                          status=429)
-        texto = request.POST.get("texto", "")[:MAX_TEXTO].strip()
-        if texto:
+            ctx["error"] = "Llegaste al límite de 20 análisis por hora. Vuelve en un rato."
+            return render(request, "radar/analizar.html", ctx, status=429)
+        ctx["texto"] = request.POST.get("texto", "")[:MAX_TEXTO].strip()
+        plat = request.POST.get("plataforma", "Otro")
+        ctx["plataforma"] = plat if plat in PLATAFORMAS else "Otro"
+        if ctx["texto"]:
             from .analyze import analizar as _analizar
-            resultado = _analizar(texto)
-    return render(request, "radar/analizar.html", {"radar": cargar_radar(), "texto": texto, "resultado": resultado})
+            ctx["resultado"] = _analizar(ctx["texto"])
+    return render(request, "radar/analizar.html", ctx)
 
 
 def como_funciona(request):
