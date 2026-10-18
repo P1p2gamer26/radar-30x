@@ -657,16 +657,24 @@ export function mountScene(canvas, topics, onOpen, sources, opts = {}) {
     planets.forEach((p) => test(p.mesh.position, { planet: p }));
     return best;
   }
+  // El panel espera a que termine el vuelo y salgan los rayos: primero se ve la animación, luego el texto.
+  let panelTimer = null;
   function select(hit, fly) {
+    clearTimeout(panelTimer);
+    const wait = fly && !reducedMotion ? 2300 : 0;
     if (hit.star) {
       if (fly) flyToStar(hit.star);
       showRays(hit.star.topic);
-      canvas.dispatchEvent(new CustomEvent("topic:open", { detail: hit.star.topic.slug, bubbles: true }));
-      if (typeof onOpen === "function") onOpen(hit.star.topic.slug);
+      panelTimer = setTimeout(() => {
+        canvas.dispatchEvent(new CustomEvent("topic:open", { detail: hit.star.topic.slug, bubbles: true }));
+        if (typeof onOpen === "function") onOpen(hit.star.topic.slug);
+      }, wait);
     } else {
       if (fly) flyToPlanet(hit.planet);
       showPlanetRays(hit.planet);
-      if (typeof opts.onPlanet === "function") opts.onPlanet(hit.planet.name);
+      panelTimer = setTimeout(() => {
+        if (typeof opts.onPlanet === "function") opts.onPlanet(hit.planet.name);
+      }, wait);
     }
   }
   canvas.addEventListener("click", (ev) => {
