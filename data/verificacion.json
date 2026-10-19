@@ -35,26 +35,32 @@
  },
  "copilotos": {
   "reel": {
-   "cifras": 1,
-   "verificadas": 1,
+   "cifras": 0,
+   "verificadas": 0,
    "sin_respaldo": [],
-   "ejemplos": [],
+   "ejemplos": [
+    "10 personas"
+   ],
    "quitadas": 0,
    "acciones": []
   },
   "largo": {
-   "cifras": 1,
-   "verificadas": 1,
+   "cifras": 0,
+   "verificadas": 0,
    "sin_respaldo": [],
-   "ejemplos": [],
+   "ejemplos": [
+    "10 personas"
+   ],
    "quitadas": 0,
    "acciones": []
   },
   "linkedin": {
-   "cifras": 1,
-   "verificadas": 1,
+   "cifras": 0,
+   "verificadas": 0,
    "sin_respaldo": [],
-   "ejemplos": [],
+   "ejemplos": [
+    "10 personas"
+   ],
    "quitadas": 0,
    "acciones": []
   },
@@ -111,10 +117,12 @@
    "acciones": []
   },
   "largo": {
-   "cifras": 1,
-   "verificadas": 1,
+   "cifras": 0,
+   "verificadas": 0,
    "sin_respaldo": [],
-   "ejemplos": [],
+   "ejemplos": [
+    "3 personas"
+   ],
    "quitadas": 0,
    "acciones": []
   },
@@ -208,21 +216,43 @@
  "ia-talento": {
   "reel": {
    "cifras": 1,
-   "verificadas": 1,
-   "sin_respaldo": [],
-   "ejemplos": [],
-   "quitadas": 0,
-   "acciones": []
-  },
-  "largo": {
-   "cifras": 2,
-   "verificadas": 1,
+   "verificadas": 0,
    "sin_respaldo": [
-    "100%"
+    "US$74 mil"
    ],
    "ejemplos": [],
    "quitadas": 1,
    "acciones": [
+    {
+     "accion": "cifra reescrita",
+     "antes": "US$74 mil de ahorro al mes... con IA en RR.HH."
+    },
+    {
+     "accion": "elemento quitado",
+     "antes": "{'texto': 'El resultado', 'voz': 'Ese ajuste llevó a un líder de operativo a líder de equi"
+    }
+   ]
+  },
+  "largo": {
+   "cifras": 2,
+   "verificadas": 0,
+   "sin_respaldo": [
+    "US$74 mil",
+    "100%"
+   ],
+   "ejemplos": [
+    "US$74 mil"
+   ],
+   "quitadas": 2,
+   "acciones": [
+    {
+     "accion": "cifra reescrita",
+     "antes": "Cómo una empresa ahorró US$74 mil al mes con IA en RR.HH. (paso a paso)"
+    },
+    {
+     "accion": "elemento quitado",
+     "antes": "El ahorro mensual llegó a US$74 mil"
+    },
     {
      "accion": "cifra reescrita",
      "antes": "Un equipo de RR.HH. que operaba de forma 100% manual implementó IA en su proceso de selecc"
@@ -231,11 +261,22 @@
   },
   "linkedin": {
    "cifras": 1,
-   "verificadas": 1,
-   "sin_respaldo": [],
+   "verificadas": 0,
+   "sin_respaldo": [
+    "US$74 mil"
+   ],
    "ejemplos": [],
-   "quitadas": 0,
-   "acciones": []
+   "quitadas": 1,
+   "acciones": [
+    {
+     "accion": "frase quitada",
+     "antes": "US$74 mil de ahorro al mes. Así fue como una empresa transformó su RR.HH. con IA."
+    },
+    {
+     "accion": "elemento quitado",
+     "antes": "El ahorro: US$74 mil al mes"
+    }
+   ]
   },
   "recomendacion": {
    "cifras": 0,
@@ -317,35 +358,67 @@
  "estrategia-adopcion": {
   "reel": {
    "cifras": 2,
-   "verificadas": 2,
-   "sin_respaldo": [],
+   "verificadas": 1,
+   "sin_respaldo": [
+    "25,9%"
+   ],
    "ejemplos": [],
-   "quitadas": 0,
-   "acciones": []
+   "quitadas": 1,
+   "acciones": [
+    {
+     "accion": "elemento quitado",
+     "antes": "{'texto': 'Colombia: 25,9% usa IA', 'voz': 'En Colombia solo el 25,9% de las empresas usa "
+    }
+   ]
   },
   "largo": {
    "cifras": 2,
-   "verificadas": 2,
-   "sin_respaldo": [],
+   "verificadas": 1,
+   "sin_respaldo": [
+    "25,9%"
+   ],
    "ejemplos": [],
-   "quitadas": 0,
-   "acciones": []
+   "quitadas": 1,
+   "acciones": [
+    {
+     "accion": "elemento quitado",
+     "antes": "25,9% de las empresas en Colombia usa IA"
+    }
+   ]
   },
   "linkedin": {
    "cifras": 2,
-   "verificadas": 2,
-   "sin_respaldo": [],
+   "verificadas": 1,
+   "sin_respaldo": [
+    "25,9%"
+   ],
    "ejemplos": [],
-   "quitadas": 0,
-   "acciones": []
+   "quitadas": 1,
+   "acciones": [
+    {
+     "accion": "cifra reescrita",
+     "antes": "25,9% de las empresas en Colombia usa IA. El problema no es la tecnología."
+    },
+    {
+     "accion": "elemento quitado",
+     "antes": "En Colombia, 25,9% de las empresas usa IA. El reto no es adoptarla: es conectar los agente"
+    }
+   ]
   },
   "recomendacion": {
    "cifras": 1,
-   "verificadas": 1,
-   "sin_respaldo": [],
+   "verificadas": 0,
+   "sin_respaldo": [
+    "25,9%"
+   ],
    "ejemplos": [],
-   "quitadas": 0,
-   "acciones": []
+   "quitadas": 1,
+   "acciones": [
+    {
+     "accion": "cifra reescrita",
+     "antes": "Solo 25,9% de empresas en Colombia usa IA, pese a que las herramientas están disponibles"
+    }
+   ]
   }
  },
  "roi-casos": {
@@ -691,17 +764,26 @@
  "educacion-ia": {
   "reel": {
    "cifras": 1,
-   "verificadas": 1,
-   "sin_respaldo": [],
+   "verificadas": 0,
+   "sin_respaldo": [
+    "10 veces"
+   ],
    "ejemplos": [],
-   "quitadas": 0,
-   "acciones": []
+   "quitadas": 1,
+   "acciones": [
+    {
+     "accion": "elemento quitado",
+     "antes": "{'texto': 'Error 4: te rindes rápido', 'voz': 'Un equipo que insiste y refina sus instrucc"
+    }
+   ]
   },
   "largo": {
-   "cifras": 1,
-   "verificadas": 1,
+   "cifras": 0,
+   "verificadas": 0,
    "sin_respaldo": [],
-   "ejemplos": [],
+   "ejemplos": [
+    "10 personas"
+   ],
    "quitadas": 0,
    "acciones": []
   },
